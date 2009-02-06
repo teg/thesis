@@ -1,0 +1,159 @@
+% Thesis main file
+
+\documentclass[11pt]{report}
+\usepackage{baththesis}
+
+\usepackage{graphicx}
+\usepackage{pst-all}
+\usepackage{subfigure}
+\usepackage{mathrsfs}
+\usepackage{makeidx}
+%\usepackage{harvard}
+\usepackage{epsfig}
+\usepackage{fancyhdr}
+\usepackage{amsfonts,amsmath,amssymb,amsthm,psfrag}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{wrapfig}
+\usepackage{url}
+\usepackage[numbers]{natbib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Set up page size:
+%%% Changes (Rob, 08/11/00)
+%%\setlength{\oddsidemargin}{0.5in}    %left margin for odd pages
+%\setlength{\oddsidemargin}{0.6in}    %left margin for odd pages
+%\setlength{\evensidemargin}{\oddsidemargin}  %left margin for even pages
+%\setlength{\textwidth}{5.7in}
+%%\setlength{\topmargin}{10pt}         %top of page to top of head
+%\setlength{\topmargin}{0pt}         %top of page to top of head
+%%\setlength{\topmargin}{-10pt}   
+%\setlength{\headheight}{15pt}         %no head required
+%\setlength{\headsep}{15pt}
+%\setlength{\textheight}{9.0in}       %leave default foot
+%\setlength{\parindent}{0pt}          %no paragraph indentation
+\setlength{\parskip}{0.5\baselineskip}  %allow one extra blank line as a
+                                        %default between paragraphs, as req by 3.ii
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\@jpcmakeindexhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+        \huge\bfseries \@chapapp\space \thechapter
+        \par\nobreak
+        \vskip 20\p@
+    \fi
+    \interlinepenalty\@M
+    \Huge \bfseries #1\par\nobreak
+    \vskip 40\p@
+  }}
+
+
+\newenvironment{note}{\protect\addvspace{\bigskipamount}\noindent{\bf Note}}
+{\qed\protect\vspace{\bigskipamount}}
+
+\newcommand{\inner}[2]{\langle#1,#2\rangle}
+
+%\input{defs}
+\makeindex
+
+\degree{Doctor of Philosophy}
+\author{Tom Erik Gundersen}
+\title{Atomic Flows and Normalisation in Deep Inference}
+\degreeyear{June 2009}
+\norestrictions
+
+\begin{document}
+%\bibliographystyle{agsm}
+%\bibliographystyle{harvard}
+\bibliographystyle{chicago}
+\renewcommand{\thepage}{\roman{page}}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\thispagestyle{plain}
+{\begin{center}
+\vspace*{1.7cm}
+{\def\baselinestretch{1.2}\Huge\bf Atomic Flows and Normalisation in Deep Inference \par}
+\vspace{4cm}
+%\newline
+{\begin{center}{\huge Tom Erik Gundersen }\end{center}}
+\end{center}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\thispagestyle{plain}
+%\singlespacing
+%\onehalfspacing
+%\doublespacing
+\begin{center}
+\vspace{20pt}
+  \Large\bfseries{SUMMARY}
+\end{center}
+%\input{abstract.tex}
+
+\clearpage
+\thispagestyle{plain}
+\begin{center}
+  {\Large\bfseries{ACKNOWLEDGEMENTS}}
+\end{center}
+%\input{acknowledgements.tex}
+
+\clearpage
+\thispagestyle{plain}
+\begin{center}
+  {\Large\bfseries{PUBLICATIONS}}
+\end{center}
+\begin{flushleft}
+%\input{papers.tex}
+\end{flushleft}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{
+%\setlength{\parskip}{0pt}
+\tableofcontents 
+%\listoffigures
+}
+\newpage
+\pagenumbering{arabic}
+\part{Introduction}
+%\input{chapter1.tex}
+%\input{chapter2.tex}
+%\part{Salience and Art: the benefits of \\ Higher level spatial analysis}
+%\input{chapter3.tex}
+%\input{chapter4.tex}
+%\part{Video Paintbox: the benefits of \\ Higher level temporal analysis}
+%\input{chapter5.tex}
+%\input{chapter6.tex}
+%\input{chapter7.tex}
+%\input{chapter8.tex}
+\part{Conclusions}
+%\input{chapter9.tex}
+%\part{Appendices}
+\appendix
+%\input{appendix_a.tex}
+%\setcounter{chapter}{2} %1- what you want
+%\input{appendix_b.tex}
+%\input{appendix_c.tex}
+
+\par\vfil\null\newpage
+{\pagestyle{fancy}
+\lhead   [\rm{\textbf{\thepage}}]{\scriptsize\textsc{BIBLIOGRAPHY}}
+\rhead   [\sl{\textbf{{ \leftmark}}}]{\rm{{\thepage}}}
+\cfoot{}
+\pagestyle{fancy}
+\small
+%\bibliography{npr,mypapers,books,misc}
+
+\end{document}
+
+

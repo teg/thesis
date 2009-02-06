@@ -1,0 +1,13 @@
+*~
+*.backup
+*.aux
+*.dvi
+*.log
+*.out
+*.pdf
+*.bbl
+*.blg
+*.ps
+.directory
+*.toc
+*.idx
