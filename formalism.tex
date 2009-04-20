@@ -1,4 +1,77 @@
 \chapter{A Deep-Inference Formalism}
+
 \section{Definitions}
+
+\begin{definition}
+Fix a set of logical connectives, a set of formulae and a set of inference rule instances, then a deep-inference derivation $\vlder{\Psi}{}{\beta}{\alpha}$, where $\alpha$ and $\beta$ are formulae, is defined to be
+\begin{enumerate}
+ \item a formula, $\Psi=\alpha=\beta$;
+ \item a vertical composition
+ \[
+ \Psi\;=\;
+ \vlderivation
+ {
+  \vlde{\Phi'}{}{\beta}
+  {
+   \vlin{\rho}{}{\delta}
+   {
+    \vlde{\Phi}{}{\gamma}
+    {
+     \vlhy{\alpha}
+    }
+   }
+  }
+ }\quad,
+ \]
+ where $\vlinf{\rho}{}{\delta}{\gamma}$ is a rule instance and $\vlder{\Phi}{}{\gamma}{\alpha}$ and $\vlder{\Phi'}{}{\beta}{\delta}$ are derivations;
+ \item a horizontal composition
+ \[
+ \Psi=\vlder{\circ(\Phi_1,\dots,\Phi_n)}{}{\circ(\beta_1,\dots,\beta_n)}{\circ(\alpha_1,\dots,\alpha_n)}\quad,
+ \]
+ where $\circ$ is an $n$-ary logical connective, $\alpha=\circ(\alpha_1,\dots,\alpha_n)$, $\beta=\circ(\beta_1,\dots,\beta_n)$ and $\vlder{\Phi_1}{}{\beta_1}{\alpha_1}$, $\dots$, $\vlder{\Phi_n}{}{\beta_n}{\alpha_n}$ are derivations.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}\label{LemDerComp}
+Given two derivations $\vlder{\Phi}{}{\beta}{\alpha}$ and $\vlder{\Phi'}{}{\gamma}{\beta}$, a derivation $\vlder{\Psi}{}{\gamma}{\alpha}$ can be constructed.
+\end{lemma}
+
+\begin{definition}
+Given $\Phi$ and $\Phi'$ as in the premiss of Lemma~\ref{LemDerComp}, the derivation $\Psi$ constructed in the proof of the lemma is denoted
+\[
+\vlderivation
+{
+ \vlde{\Phi'}{}{\gamma}
+ {
+  \vlde{\Phi}{}{\beta}
+  {
+   \vlhy{\alpha}
+  }
+ }
+}\quad.
+\]
+\end{definition}
+
+\begin{lemma}
+Given derivations $\vlder{\Phi_1}{}{\beta}{\alpha}$, $\vlder{\Phi_2}{}{\gamma}{\beta}$ and $\vlder{\Phi_3}{}{\delta}{\gamma}$ the derivation
+\[
+\vlderivation
+{
+ \vlde{\Phi_3}{}{\delta}
+ {
+  \vlde{\Phi_2}{}{\gamma}
+  {
+   \vlde{\Phi_1}{}{\beta}
+   {
+    \vlhy{\alpha}
+   }
+  }
+ }
+}
+\]
+is unique.
+\end{lemma}
+
 \section{Comparison with the Calculus of Structures}
+
 \section{Bureaucracy}
