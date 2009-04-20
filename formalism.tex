@@ -33,17 +33,54 @@ Fix a set of logical connectives, a set of formulae and a set of inference rule 
 \end{definition}
 
 \begin{lemma}\label{LemDerComp}
-Given two derivations $\vlder{\Phi}{}{\beta}{\alpha}$ and $\vlder{\Phi'}{}{\gamma}{\beta}$, a derivation $\vlder{\Psi}{}{\gamma}{\alpha}$ can be constructed.
+Given two derivations $\vlder{\Phi_1}{}{\beta}{\alpha}$ and $\vlder{\Phi_2}{}{\gamma}{\beta}$, a derivation $\vlder{\Psi}{}{\gamma}{\alpha}$ can be constructed.
 \end{lemma}
 
+\begin{proof}
+We have to study the following cases:
+\begin{enumerate}
+ \item $\Phi_1=\beta$
+ \item $\Phi_2=\beta$
+ \item $\Phi_1=
+ \vlderivation
+ {
+  \vlde{\Phi_1''}{}{\beta}
+  {
+   \vlin{\rho}{}{\beta'}
+   {
+    \vlde{\Phi_1'}{}{\alpha'}
+    {
+     \vlhy{\alpha}
+    }
+   }
+  }
+ }$
+ \item $\Phi_2=
+ \vlderivation
+ {
+  \vlde{\Phi_2''}{}{\gamma}
+  {
+   \vlin{\rho}{}{\gamma'}
+   {
+    \vlde{\Phi_2'}{}{\beta'}
+    {
+     \vlhy{\beta}
+    }
+   }
+  }
+ }$
+ \item $\beta=\circ(\beta_1,\dots,\beta_n)$, $\Phi_1=\circ(\Phi_{1,1},\dots,\Phi_{1,n})$ and $\Phi_2=\circ(\Phi_{2,1},\dots,\Phi_{2,n})$.
+\end{enumerate}
+\end{proof}
+
 \begin{definition}
-Given $\Phi$ and $\Phi'$ as in the premiss of Lemma~\ref{LemDerComp}, the derivation $\Psi$ constructed in the proof of the lemma is denoted
+Given $\Phi_1$ and $\Phi_2$ as in the premiss of Lemma~\ref{LemDerComp}, the derivation $\Psi$ constructed in the proof of the lemma is denoted
 \[
 \vlderivation
 {
- \vlde{\Phi'}{}{\gamma}
+ \vlde{\Phi_2}{}{\gamma}
  {
-  \vlde{\Phi}{}{\beta}
+  \vlde{\Phi_1}{}{\beta}
   {
    \vlhy{\alpha}
   }
