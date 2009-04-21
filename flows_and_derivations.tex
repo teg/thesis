@@ -1,8 +1,84 @@
-\chapter{Atomic Flows and Derivations}
+\chapter{Flows and Derivations}
 
 \section{Extracting Flows from Derivations}
 
-\section{The Size of Flows}
+%TODO: define atomic flows to always be considered modulo isomorphism
+
+%---------------------------------------
+\begin{proposition}\label{PropUnFl}
+Given an\/ $\SKS$ derivation\/ $\Phi$, there is a unique atomic flow $\phi$ (modulo isomorphisms) such that:
+\begin{enumerate}
+%-------------------
+\item there is a surjective map between the set of atom occurrences of\/ $\Phi$ and the set of edges of $\phi$;
+%-------------------
+\item for each inference step $\vlsmash{\vlinf{\rho}{}{\xi\{\beta\}}{\xi\{\alpha\}}}$ of\/ $\Phi$, where $\rho\in\{\aid,\aiu,\awd,\awu,\acd,\acu\}$ and $\vlinf{\rho}{}{\beta}{\alpha}$ is a rule instance, all atom occurrences in $\xi\vlhole$ in the premiss are respectively mapped to the same edges of $\phi$ as the atom occurrences in $\xi\vlhole$ in the conclusion; the atom occurrences in $\vlinf{\rho}{}{\beta}{\alpha}$ are mapped to edges of $\phi$ such that the edges are related with vertices as indicated below, for each possible case of the inference step:
+\[
+\begin{array}{@{}ccc@{}ccc@{}}
+\vlinf{\aid}{}{\vls[a^\one.{\bar a^\two}]}{\ttt}&\mbox{to\/}&
+\vcenter{\afaid\one{}{}\two{}{}}
+\quad,&\qquad
+\vlinf{\aiu}{}{\fff}{\vls(a^\one.{\bar a^\two})}&\mbox{to\/}&
+\vcenter{\afaiu\one{}{}\two{}{}}
+\quad,\\
+\noalign{\medskip}
+\vlinf{\awd}{}{a^\one}{\fff}                    &\mbox{to\/}&
+\vcenter{\afawd{}{}{}\one{}} 
+\quad,&\qquad
+\vlinf{\awu}{}{\ttt}{a^\one}                    &\mbox{to\/}&
+\vcenter{\afawu{}{}{}\one{}}
+\quad,\\
+\noalign{\medskip}
+\vlinf{\acd}{}{a^\three}{\vls[a^\one.a^\two]}   &\mbox{to\/}&
+\vcenter{\afacd\one{}{}\two{}\three}
+\quad,&\qquad
+\vlinf{\acu}{}{\vls(a^\two.a^\three)}{a^\one}   &\mbox{to\/}&
+\vcenter{\afacu\two{}{}\three{}\one}
+\quad,\\
+\end{array}
+\]
+where the mapping is indicated by small numerals.
+%-------------------
+\item for each inference step of\/ $\Phi$ of kind
+\[\hss
+\begin{array}{@{}r@{}l@{}}
+\vlinf{\swi}{}{\xi\vlscn[(\alpha.\beta).\gamma]}
+              {\xi\vlscn(\alpha.[\beta.\gamma])}           \quad,&\qquad
+\vlinf{\med}{}{\xi\vlscn([\alpha.\gamma].[\beta.\delta])}
+              {\xi\vlscn[(\alpha.\beta).(\gamma.\delta)]}  \quad,      \\
+\noalign{\smallskip}
+\vlinf={}{\xi\vlscn[\beta.\alpha]}{\xi\vlscn[\alpha.\beta]}\quad,&\qquad
+\vlinf={}{\xi\vlscn(\beta.\alpha)}{\xi\vlscn(\alpha.\beta)}\quad,      \\
+\noalign{\smallskip}
+\vlinf={}{\xi\vlscn[\alpha.[\beta.\gamma]]}
+         {\xi\vlscn[[\alpha.\beta].\gamma]}                \quad,&\qquad
+\vlinf={}{\xi\vlscn[[\alpha.\beta].\gamma]}
+         {\xi\vlscn[\alpha.[\beta.\gamma]]}                \quad,      \\
+\noalign{\smallskip}
+\vlinf={}{\xi\vlscn(\alpha.(\beta.\gamma))}
+         {\xi\vlscn((\alpha.\beta).\gamma)}                \quad,&\qquad
+\vlinf={}{\xi\vlscn((\alpha.\beta).\gamma)}
+         {\xi\vlscn(\alpha.(\beta.\gamma))}                \quad,      \\
+\noalign{\smallskip}
+\vlinf={}{\xi\{\alpha\}}{\xi\vlscn[\alpha.\fff]}           \quad,\qquad
+\vlinf={}{\xi\vlscn[\alpha.\fff]}{\xi\{\alpha\}}           \quad,&\qquad
+\vlinf={}{\xi\{\alpha\}}{\xi\vlscn(\alpha.\ttt)}        \qquad\hbox{and\/}\qquad
+\vlinf={}{\xi\vlscn(\alpha.\ttt)}{\xi\{\alpha\}}
+\end{array}
+\]
+all the atom occurrences in $\xi\vlhole$, $\alpha$, $\beta$, $\gamma$ and $\delta$ in the premiss are respectively mapped to the same edges of $\phi$ as the atom occurrences in $\xi\vlhole$, $\alpha$, $\beta$, $\gamma$ and $\delta$ in the conclusion.
+\end{enumerate}
+\end{proposition}
+
+%---------------------------------------
+\begin{definition}
+Given a derivation $\Phi$, we say that the unique atomic flow $\phi$ defined in Proposition~\ref{PropUnFl} is the atomic flow \emph{associated with} the derivation $\Phi$. Sometimes, when an atom occurrence $a$ in $\Phi$ maps to an edge $\epsilon$ in $\phi$, we decorate $\epsilon$ with the label $a$.
+\end{definition}
+
+\begin{theorem}
+Every atomic flow is associated with some derivation.
+\end{theorem}
+
+\section{Size}
 
 \begin{theorem}
 Given a derivation $\Phi$ with associated flow $\phi$, $|\Phi|\leq|\phi|^3$.
