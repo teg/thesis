@@ -80,8 +80,8 @@ Every atomic flow is associated with some derivation.
 
 %---------------------------------------
 \begin{proof}
-First, we construct a derivation scheme $\Phi$ that `glues together' any two atomic flows without introducing any vertices. For every $\alpha$, $\beta$, the atomic flow of the following derivation consists only of edges (there are no vertices):
-\[\Psi=
+First, we construct a derivation scheme $\Psi$ that `glues together' any two atomic flows without introducing any vertices. For every $\alpha$, $\beta$, the atomic flow of the following derivation consists only of edges (there are no vertices):
+\[
 \vlderivation
 {
  \vlin{=}{}{\vls[(\alpha.\beta).\ttt]}
@@ -117,19 +117,21 @@ First, we construct a derivation scheme $\Phi$ that `glues together' any two ato
 }
 \quad.
 \]
+%TODO: is it ok that the above derivation does not have a name?
 %TODO: define super switch or something equivalent
-We use $\Psi$ and $sus$ (see Remark~\ref{RemSupSwitch}) to `move' an atom $a$ from one context $\zeta\vlhole$ to another context $\xi\vlhole$, again with an associated atomic flow that is free of vertices:
+%TODO: use double lines instead of dots and decide on a naming convention for repeated edges
+We use the above derivation and $sus$ (see Remark~\ref{RemSupSwitch}) to `move' an atom $a$ from one context $\zeta\vlhole$ to another context $\xi\vlhole$, again with an associated atomic flow that is free of vertices:
 \[
-\vlder{\Psi}{\{\swi,\med\}}{\vls[(\xi\{a\}.\zeta\{\fff\}).\ttt]}
+\vlder{}{\{\swi,\med\}}{\vls[(\xi\{a\}.\zeta\{\fff\}).\ttt]}
 {
  \vlsbr[\vlinf{sus}{}{\vls[\xi\{a\}.\zeta\{\fff\}]}{\vls(\xi\{\ttt\}.\zeta\{a\})}\;.\;\ttt]
 }
 \quad.
 \]
-This construction can be used zero or more times to get the desired $\Phi$, for $h\ge0$:
+This construction can be used repeatedly to get the desired derivation $\Psi$, for $h\ge0$:
 \[
 \vlderivation                                                             {
-\vlde{\Phi}{\{\swi,\med\}}
+\vlde{\Psi}{\{\swi,\med\}}
      {\vls[(\xi\{a_1 \}\cdots\{a_h \}.\zeta\{\fff\}\cdots\{\fff\}).\ttt]}{
 \vlhy{\vls[(\xi\{\ttt\}\cdots\{\ttt\}.\zeta\{a_1 \}\cdots\{a_h \}).\ttt]}}}
 \quad.
@@ -180,7 +182,7 @@ We can now prove the theorem by induction on the number of vertices of a given a
 \]
 where $h,k,l,m,n\ge0$ (this can possibly be done in many different ways). By the inductive hypothesis, there exist derivations $\vlder{\Phi_1}{}{\zeta\{a_1^{\epsilon_1}\}\cdots\{a_h^{\epsilon_h}\}}{\gamma}$ and $\vlder{\Phi_2}{}{\delta}{\xi\{a_1^{\epsilon_1}\}\cdots\{a_h^{\epsilon_h}\}}$ whose flows are, respectively, $\phi_1$ and $\phi_2$. Using these, we can build
 \[
-\vlder{\Phi}{}
+\vlder{\Psi}{}
 {
  \vlsbr[(
  \vlder{\Phi_2}{}{\delta}{\xi\{a_1^{\epsilon_1}\}\cdots\{a_h^{\epsilon_h}\}}
