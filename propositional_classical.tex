@@ -1,7 +1,11 @@
 \chapter{Propositional Classical Logic}
 
-\section{System SKS}
+\newcommand{\SKS}{\mathsf{SKS}}
 
+\section{System $\SKS$}
+
+\newcommand{\fff}{\mathsf f}
+\newcommand{\ttt}{\mathsf t}
 \newcommand{\ai   }{\mathsf{ai}}
 \newcommand{\aw   }{\mathsf{aw}}
 \newcommand{\ac   }{\mathsf{ac}}
@@ -17,13 +21,13 @@
 \begin{definition}
 
 \[
-\vlinf{\aid}{}{\vls[a.\bar a]}{\top}\qquad
-\vlinf{\awd}{}{a}{\bot}\qquad
+\vlinf{\aid}{}{\vls[a.\bar a]}{\ttt}\qquad
+\vlinf{\awd}{}{a}{\fff}\qquad
 \vlinf{\acd}{}{a}{\vls[a.a]}
 \]
 \[
-\vlinf{\aiu}{}{\bot}{\vls[a.\bar a]}\qquad
-\vlinf{\awu}{}{\top}{a}\qquad
+\vlinf{\aiu}{}{\fff}{\vls[a.\bar a]}\qquad
+\vlinf{\awu}{}{\ttt}{a}\qquad
 \vlinf{\acu}{}{\vls(a.a)}{a}
 \]
 \[
@@ -58,9 +62,9 @@
 \[
 \vlinf{\cond}{}{\alpha}{\vls[\alpha.\alpha]}\qquad
 \vlinf{\conu}{}{\vls(\alpha.\alpha)}{\alpha}\qquad
-\vlinf{\wead}{}{\alpha}{\bot}\qquad
-\vlinf{\weau}{}{\top}{\alpha}\qquad
-\vlinf{\inte}{}{\vls(\alpha\vlim\alpha)}{\top}
+\vlinf{\wead}{}{\alpha}{\fff}\qquad
+\vlinf{\weau}{}{\ttt}{\alpha}\qquad
+\vlinf{\inte}{}{\vls(\alpha\vlim\alpha)}{\ttt}
 \]
 \end{definition}
 
