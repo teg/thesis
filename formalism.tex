@@ -3,27 +3,19 @@
 \section{Definitions}
 
 \begin{definition}
-Fix a set of logical connectives, a set of formulae and a set of inference rule instances, then a deep-inference derivation $\vlder{\Psi}{}{\beta}{\alpha}$, where $\alpha$ and $\beta$ are formulae, is defined to be
+An \emph{inference rule instance}, $\vlinf{\rho}{}{\beta}{\alpha}$, consists of two formulae, $\alpha$ and $\beta$, called \emph{premiss} and \emph{conclusion} respectively.
+\end{definition}
+
+\begin{definition}
+Fix a set of formulae, a set of inference rule instances and a set of logical connectives, then a \emph{Formalism A derivation $\vlder{\Psi}{}{\beta}{\alpha}$ from (the formula) $\alpha$ to (the formula) $\beta$}, is defined to be
 \begin{enumerate}
  \item a formula, $\Psi=\alpha=\beta$;
  \item a vertical composition
  \[
  \Psi\;=\;
- \vlderivation
- {
-  \vlde{\Phi'}{}{\beta}
-  {
-   \vlin{\rho}{}{\delta}
-   {
-    \vlde{\Phi}{}{\gamma}
-    {
-     \vlhy{\alpha}
-    }
-   }
-  }
- }\quad,
+ \vlder{\vlinf{\rho}{}{\Phi_2}{\Phi_1}}{}{\beta}{\alpha}
  \]
- where $\vlinf{\rho}{}{\delta}{\gamma}$ is a rule instance and $\vlder{\Phi}{}{\gamma}{\alpha}$ and $\vlder{\Phi'}{}{\beta}{\delta}$ are derivations;
+ where $\vlinf{\rho}{}{\delta}{\gamma}$ is an inference rule instance and $\vlder{\Phi_1}{}{\gamma}{\alpha}$ and $\vlder{\Phi_2}{}{\beta}{\delta}$ are derivations;
  \item a horizontal composition
  \[
  \Psi=\vlder{\circ(\Phi_1,\dots,\Phi_n)}{}{\circ(\beta_1,\dots,\beta_n)}{\circ(\alpha_1,\dots,\alpha_n)}\quad,
@@ -33,48 +25,28 @@ Fix a set of logical connectives, a set of formulae and a set of inference rule 
 \end{definition}
 
 \begin{lemma}\label{LemDerComp}
-Given two derivations $\vlder{\Phi_1}{}{\beta}{\alpha}$ and $\vlder{\Phi_2}{}{\gamma}{\beta}$, a derivation $\vlder{\Psi}{}{\gamma}{\alpha}$ can be constructed.
+Given two derivations $\vlder{\Phi_1}{}{\beta}{\alpha}$ and $\vlder{\Phi_2}{}{\gamma}{\beta}$, a derivation $\vlder{\Phi_1;\Phi_2}{}{\gamma}{\alpha}$ can be constructed.
 \end{lemma}
 
 \begin{proof}
-We have to study the following cases:
+We argue by structural induction on $\Phi_1$ and $\Phi_2$
 \begin{enumerate}
- \item $\Phi_1=\beta$
- \item $\Phi_2=\beta$
- \item $\Phi_1=
- \vlderivation
- {
-  \vlde{\Phi_1''}{}{\beta}
-  {
-   \vlin{\rho}{}{\beta'}
-   {
-    \vlde{\Phi_1'}{}{\alpha'}
-    {
-     \vlhy{\alpha}
-    }
-   }
-  }
- }$
- \item $\Phi_2=
- \vlderivation
- {
-  \vlde{\Phi_2''}{}{\gamma}
-  {
-   \vlin{\rho}{}{\gamma'}
-   {
-    \vlde{\Phi_2'}{}{\beta'}
-    {
-     \vlhy{\beta}
-    }
-   }
-  }
- }$
- \item $\beta=\circ(\beta_1,\dots,\beta_n)$, $\Phi_1=\circ(\Phi_{1,1},\dots,\Phi_{1,n})$ and $\Phi_2=\circ(\Phi_{2,1},\dots,\Phi_{2,n})$.
+
+ \item if $\Phi_1=\beta$ then $\Psi=\Phi_2$;
+
+ \item if $\Phi_2=\beta$ then $\Psi=\Phi_1$;
+
+ \item if $\Phi_1\;=\;\vlder{\vlinf{\rho}{}{\Phi_1''}{\Phi_1'}}{}{\beta}{\alpha}$, then $\Phi_1'';\Phi_2$ can be constructed by the inductive hypothesis and we can build $\Psi\;=\;\vlder{\vlinf{\rho}{}{\Phi_1'';\Phi_2}{\Phi_1'}}{}{\gamma}{\alpha}$;
+
+ \item if $\Phi_2\;=\;\vlder{\vlinf{\rho}{}{\Phi_2''}{\Phi_2'}}{}{\gamma}{\beta}$, then $\Phi_1;\Phi_2'$ can be constructed by the inductive hypothesis and we can build $\Psi\;=\;\vlder{\vlinf{\rho}{}{\Phi_2''}{\Phi_1;\Phi_2'}}{}{\gamma}{\alpha}$;
+
+ \item if $\Phi_1=\circ(\Phi_{1,1},\dots,\Phi_{1,n})$ and $\Phi_2=\circ(\Phi_{2,1},\dots,\Phi_{2,n})$ then $\Phi_{1,1};\Phi_{2,1},\dots,\Phi_{1,n};\Phi_{2,n}$ can be constructed by the inductive hypothesis and we can build $\Phi_1;\Phi_2=\circ(\Phi_{1,1};\Phi_{2,1},\dots,\Phi_{1,n};\Phi_{2,n})$.
+
 \end{enumerate}
 \end{proof}
 
 \begin{definition}
-Given $\Phi_1$ and $\Phi_2$ as in the premiss of Lemma~\ref{LemDerComp}, the derivation $\Psi$ constructed in the proof of the lemma is denoted
+Given $\Phi_1$ and $\Phi_2$ as in the premiss of Lemma~\ref{LemDerComp}, the derivation $\Phi_1;\Phi_2$ constructed in the proof of the lemma is denoted
 \[
 \vlderivation
 {
