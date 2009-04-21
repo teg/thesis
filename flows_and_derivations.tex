@@ -78,6 +78,98 @@ Given a derivation $\Phi$, we say that the unique atomic flow $\phi$ defined in 
 Every atomic flow is associated with some derivation.
 \end{theorem}
 
+%---------------------------------------
+\begin{proof}
+First, we construct a derivation scheme $\Phi$ that `glues together' any two atomic flows without introducing any vertices. For every $\alpha$, $\beta$, the atomic flow of the following derivation consists only of edges (there are no vertices):
+\[\Psi=
+\vlderivation                                                {
+\vlin{=   }{}{\vls[(\alpha.\beta).\ttt]              }      {
+\vlin{\swi}{}{\vls[[(\beta.\alpha).\ttt].\ttt]       }     {
+\vlin{=   }{}{\vls[(\beta.[\alpha.\ttt]).\ttt]       }    {
+\vlin{\swi}{}{\vls[[([\alpha.\ttt].\beta).\ttt].\ttt]}   {
+\vlin{=   }{}{\vls[([\alpha.\ttt].[\beta.\ttt]).\ttt]}  {
+\vlin{\med}{}{\vls[([\alpha.\ttt].[\ttt.\beta]).\ttt]} {
+\vlin{=   }{}{\vls[[(\alpha.\ttt).(\ttt.\beta)].\ttt]}{
+\vlhy        {\vls[[\alpha.\beta].\ttt]              }}}}}}}}}
+\quad.
+\]
+We use $\Psi$ and $sus$ (see Remark~\ref{RemSupSwitch}) to `move' an atom $a$ from one context $\zeta\vlhole$ to another context $\xi\vlhole$, again with an associated atomic flow that is free of vertices:
+\[
+\vlderivation                                                    {
+\vlde{\Psi}{\{\swi,\med\}}{\vls[(\xi\{a\}.\zeta\{\fff\}).\ttt]} {
+\vlin{sus}{             }{\vls[[\xi\{a\}.\zeta\{\fff\}].\ttt]}{
+\vlhy                     {\vls[(\xi\{\ttt\}.\zeta\{a\}).\ttt]}}}}
+\quad.
+\]
+This construction can be used zero or more times to get the desired $\Phi$, for $h\ge0$:
+\[
+\vlderivation                                                             {
+\vlde{\Phi}{\{\swi,\med\}}
+     {\vls[(\xi\{a_1 \}\cdots\{a_h \}.\zeta\{\fff\}\cdots\{\fff\}).\ttt]}{
+\vlhy{\vls[(\xi\{\ttt\}\cdots\{\ttt\}.\zeta\{a_1 \}\cdots\{a_h \}).\ttt]}}}
+\quad.
+\]
+We can now prove the theorem by induction on the number of vertices of a given atomic flow $A$. The cases where $A$ only has zero or one vertex are trivial. Let us then suppose that $A$ has more than one vertex; then $A$ can be considered as composed of two flows $B$ and $C$, each with less vertices than $A$, as follows:
+\[
+\atomicflow{
+( 0  ,10)*{\afvjd4{\hat\epsilon_1}{}};
+( 2  ,10)*{\cdots};
+( 4  ,10)*{\afvjd4{}{\hat\epsilon_k}};
+(12  ,10)*{\afvjd4{\tilde\epsilon_1}{}};
+(14  ,10)*{\cdots};
+(16  ,10)*{\afvjd4{}{\tilde\epsilon_m}};
+(17  , 6)*{\aflabelleft A};
+( 8  , 5)*{\affr{18}6};
+( 0  , 0)*{\afvju4{\hat\epsilon'_1}{}};
+( 2  , 0)*{\cdots};
+( 4  , 0)*{\afvju4{}{\hat\epsilon'_l}};
+(12  , 0)*{\afvju4{\tilde\epsilon'_1}{}};
+(14  , 0)*{\cdots};
+(16  , 0)*{\afvju4{}{\tilde\epsilon'_n}};
+(-2  , 0)*{\invisiblemark};
+(18.5, 0)*{\invisiblemark}}
+=
+\atomicflow{
+(  6  ,20)*{\afvjd4{}{\tilde\epsilon_m}};
+(  4  ,20)*{\cdots};
+(  2  ,20)*{\afvjd4{\tilde\epsilon_1}{}};
+(-11  ,20)*{\cdots};
+( 12  ,16)*{\aflabelleft B};
+(  4  ,15)*{\affr{16}6};
+( -9  ,15)*{\afvjd{14}{}{\hat\epsilon_k}};
+(-13  ,15)*{\afvjd{14}{\hat\epsilon_1}{}};
+(  1  ,10)*{\afvju4{}{\epsilon_h}};
+( -1  ,10)*{\cdots};
+( -3  ,10)*{\afvju4{\epsilon_1}{}};
+(  2  , 6)*{\aflabelleft C};
+( 11  , 5)*{\afvju{14}{}{\tilde\epsilon'_n}};
+(  7  , 5)*{\afvju{14}{\tilde\epsilon'_1}{}};
+( -6  , 5)*{\affr{16}6};
+(  9  , 0)*{\cdots};
+( -4  , 0)*{\afvju4{}{\hat\epsilon'_l}};
+( -6  , 0)*{\cdots};
+( -8  , 0)*{\afvju4{\hat\epsilon'_1}{}};
+( 13  , 0)*{\invisiblemark};
+(-15.5, 0)*{\invisiblemark}}
+\quad,
+\]
+where $h,k,l,m,n\ge0$ (this can possibly be done in many different ways). By the inductive hypothesis, there exist derivations $\vlder{\Phi_B}{}{\zeta\{a_1^{\epsilon_1}\}\cdots\{a_h^{\epsilon_h}\}}{\gamma}$ and $\vlder{\Phi_C}{}{\delta}{\xi\{a_1^{\epsilon_1}\}\cdots\{a_h^{\epsilon_h}\}}$ whose flows are, respectively, $B$ and $C$. Using these, we can build
+\[
+\vlderivation                                                             {
+\vlde{\vls[(\Phi_C.\zeta\{\fff\}\cdots\{\fff\}).\ttt]}{}
+     {\vls[(\delta.\zeta\{\fff\}\cdots\{\fff\}).\ttt]                 }  {
+\vlde{\Phi}{}
+     {\vls[(\xi\{a_1^{\epsilon_1}\}\cdots\{a_h^{\epsilon_h}\}.
+            \zeta\{\fff\}\cdots\{\fff\}).\ttt]                        } {
+\vlde{\vls[(\xi\{\ttt\}\cdots\{\ttt\}.\Phi_B).\ttt]}{}
+     {\vls[(\xi\{\ttt\}\cdots\{\ttt\}.
+            \zeta\{a_1^{\epsilon_1}\}\cdots\{a_h^{\epsilon_h}\}).\ttt]}{
+\vlhy{\vls[(\xi\{\ttt\}\cdots\{\ttt\}.\gamma).\ttt]                   }}}}}
+\quad,
+\]
+whose flow is $A$.
+\end{proof}
+
 \section{Size}
 
 \begin{theorem}
