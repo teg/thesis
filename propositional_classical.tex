@@ -2,4 +2,68 @@
 
 \section{System SKS}
 
-\section{A system without negation}
+\newcommand{\ai   }{\mathsf{ai}}
+\newcommand{\aw   }{\mathsf{ai}}
+\newcommand{\ac   }{\mathsf{ai}}
+\newcommand{\aid  }{\ai{\downarrow}}
+\newcommand{\awd  }{\aw{\downarrow}}
+\newcommand{\acd  }{\ac{\downarrow}}
+\newcommand{\aiu  }{\ai{\uparrow}}
+\newcommand{\awu  }{\aw{\uparrow}}
+\newcommand{\acu  }{\ac{\uparrow}}
+\newcommand{\swi  }{\mathsf{s}}
+\newcommand{\med  }{\mathsf{m}}
+
+\begin{definition}
+
+\[
+\vlinf{\aid}{}{\vls[a.\bar a]}{\top}\qquad
+\vlinf{\awd}{}{a}{\bot}\qquad
+\vlinf{\acd}{}{a}{\vls[a.a]}
+\]
+\[
+\vlinf{\aiu}{}{\bot}{\vls[a.\bar a]}\qquad
+\vlinf{\awu}{}{\top}{a}\qquad
+\vlinf{\acu}{}{\vls(a.a)}{a}
+\]
+\[
+\vlinf{\swi}{}{\vls[(\alpha.\beta).\gamma]}{\vls(\alpha.[\beta.\gamma])}\qquad
+\vlinf{\med}{}{\vls([\alpha.\delta].[\beta.\gamma])}{\vls[(\alpha.\beta).(\gamma.\delta)]}
+\]
+
+\end{definition}
+
+\section{A System with Implication}
+
+\newcommand{\inte}{\mathsf{i}}
+\newcommand{\wea  }{\mathsf{w}}
+\newcommand{\con  }{\mathsf{c}}
+\newcommand{\wead }{{\wea{\downarrow}}}
+\newcommand{\cond }{{\con{\downarrow}}}
+\newcommand{\weau }{{\wea{\uparrow}}}
+\newcommand{\conu }{{\con{\uparrow}}}
+\newcommand{\swio }{\mathsf{s_1}}
+\newcommand{\swit }{\mathsf{s_2}}
+\newcommand{\asso }{\mathsf{ass}}
+
+\begin{definition}
+
+\[
+\vlinf{\swi }{}{\vls[(\alpha.\beta).\gamma]}{\vls(\alpha.[\beta.\gamma])}\qquad
+\vlinf{\swio}{}{\vls(\beta\vlim(\alpha.\gamma))}{\vls(\alpha.(\beta\vlim\gamma))}\qquad
+\vlinf{\swit}{}{\vls((\alpha\vlim\beta)\vlim\gamma)}{\vls(\alpha.(\beta\vlim\gamma))}\qquad
+\vlinf{\asso}{}{\vls[(\alpha\vlim\beta).\gamma]}{\vls(\alpha\vlim[\beta.\gamma])}
+\]
+
+\[
+\vlinf{\cond}{}{\alpha}{\vls[\alpha.\alpha]}\qquad
+\vlinf{\conu}{}{\vls(\alpha.\alpha)}{\alpha}\qquad
+\vlinf{\wead}{}{\alpha}{\bot}\qquad
+\vlinf{\weau}{}{\top}{\alpha}\qquad
+\vlinf{\inte}{}{\vls(\alpha\vlim\alpha)}{\top}
+\]
+\end{definition}
+
+\begin{theorem}
+The above system is implicationally complete for propositional classical logic.
+\end{theorem}
