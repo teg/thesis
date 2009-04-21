@@ -1,1 +1,124 @@
 \chapter{Definitions}
+
+%---------------------------------------
+\begin{definition}
+We call the following six diagrams (\emph{atomic-flow}) \emph{labels}:
+\[
+\begin{array}{@{}c@{}c@{}c@{}}
+      \vcenter{\afaid{}{}{}{}{}{}}&
+\qquad\vcenter{\afawd{}{}{}{}}&
+\qquad\vcenter{\afacd{}{}{}{}{}{}}\\
+\noalign{\smallskip}
+      \mbox{$\aid$ or \emph{interaction}}&
+\qquad\mbox{$\awd$ or \emph{weakening}}&
+\qquad\mbox{$\acd$ or \emph{contraction}}\\
+\noalign{\bigskip}
+      \vcenter{\afaiu{}{}{}{}{}{}}&
+\qquad\vcenter{\afawu{}{}{}{}}&
+\qquad\vcenter{\afacu{}{}{}{}{}{}}\\
+\noalign{\smallskip}
+      \mbox{$\aiu$ or \emph{cointeraction}}&
+\qquad\mbox{$\awu$ or \emph{coweakening}}&
+\qquad\mbox{$\acu$ or \emph{cocontraction}}\\
+\end{array}\quad.
+\]
+Cointeraction is also called \emph{cut}.
+\end{definition}
+
+\newcommand{\ppl  }{{\mathchoice{\scriptstyle+}
+                                {\scriptstyle+}
+                                {\scriptstyle+}
+                                {\scriptscriptstyle+}}}
+\newcommand{\pmi  }{{\mathchoice{\scriptstyle-}
+                                {\scriptstyle-}
+                                {\scriptstyle-}
+                                {\scriptscriptstyle-}}}
+\newcommand{\one  }{{\mathchoice{\scriptstyle\mathbf1}
+                                {\scriptstyle\mathbf1}
+                                {\scriptstyle\mathbf1}
+                                {\scriptscriptstyle\mathbf1}}}
+\newcommand{\two  }{{\mathchoice{\scriptstyle\mathbf2}
+                                {\scriptstyle\mathbf2}
+                                {\scriptstyle\mathbf2}
+                                {\scriptscriptstyle\mathbf2}}}
+\newcommand{\three}{{\mathchoice{\scriptstyle\mathbf3}
+                                {\scriptstyle\mathbf3}
+                                {\scriptstyle\mathbf3}
+                                {\scriptscriptstyle\mathbf3}}}
+\newcommand{\four }{{\mathchoice{\scriptstyle\mathbf4}
+                                {\scriptstyle\mathbf4}
+                                {\scriptstyle\mathbf4}
+                                {\scriptscriptstyle\mathbf4}}}
+\newcommand{\five }{{\mathchoice{\scriptstyle\mathbf5}
+                                {\scriptstyle\mathbf5}
+                                {\scriptstyle\mathbf5}
+                                {\scriptscriptstyle\mathbf5}}}
+\newcommand{\six  }{{\mathchoice{\scriptstyle\mathbf6}
+                                {\scriptstyle\mathbf6}
+                                {\scriptstyle\mathbf6}
+                                {\scriptscriptstyle\mathbf6}}}
+\newcommand{\seven}{{\mathchoice{\scriptstyle\mathbf7}
+                                {\scriptstyle\mathbf7}
+                                {\scriptstyle\mathbf7}
+                                {\scriptscriptstyle\mathbf7}}}
+\newcommand{\eight}{{\mathchoice{\scriptstyle\mathbf8}
+                                {\scriptstyle\mathbf8}
+                                {\scriptstyle\mathbf8}
+                                {\scriptscriptstyle\mathbf8}}}
+\newcommand{\nine }{{\mathchoice{\scriptstyle\mathbf9}
+                                {\scriptstyle\mathbf9}
+                                {\scriptstyle\mathbf9}
+                                {\scriptscriptstyle\mathbf9}}}
+\newcommand{\card}[1]{\mathord\vert #1\mathord\vert}
+\newcommand{\up}{{\mathit up}}
+\newcommand{\lo}{{\mathit lo}}
+%---------------------------------------
+\begin{definition}
+An (\emph{atomic}) \emph{flow} is a tuple $(V,E,\eta,\up,\lo)$ such that:
+\begin{enumerate}
+%-------------------
+\item $V$ is a finite set of \emph{vertices}, denoted by $\nu$;
+%-------------------
+\item $E$ is a finite set of \emph{edges}, denoted by $\epsilon$;
+%-------------------
+\item $\eta\colon V\to\{\aid,\aiu,\awd,\awu,\acd,\acu\}$ maps vertices to their \emph{labels};
+%-------------------
+\item $\up\colon E\to V\cup\{\top\}$ and $\lo\colon E\to V\cup\{\bot\}$ are, respectively, the \emph{upper} and \emph{lower} maps, and $\top$ and $\bot$ are special vertices not belonging to $V$; we define, for every $\nu\in V\cup\{\top,\bot\}$, the set $L_\nu=\{\,\epsilon\mid\up(\epsilon)=\nu\,\}$ of \emph{lower edges of $\nu$}, the set $U_\nu=\{\,\epsilon\mid\lo(\epsilon)=\nu\,\}$ of \emph{upper edges of $\nu$}, and the set $E_\nu=L_\nu\cup U_\nu$ of \emph{edges of $\nu$};
+%-------------------
+\item if $\card S$ denotes the cardinality of set $S$, we have that
+\begin{align*}
+\mbox{if $\eta(\nu)=\aid$ then $\card{L_\nu}=2$ and $\card{U_\nu}=0$,}&\\
+\mbox{if $\eta(\nu)=\aiu$ then $\card{L_\nu}=0$ and $\card{U_\nu}=2$,}&\\
+\mbox{if $\eta(\nu)=\awd$ then $\card{L_\nu}=1$ and $\card{U_\nu}=0$,}&\\
+\mbox{if $\eta(\nu)=\awu$ then $\card{L_\nu}=0$ and $\card{U_\nu}=1$,}&\\
+\mbox{if $\eta(\nu)=\acd$ then $\card{L_\nu}=1$ and $\card{U_\nu}=2$,}&\\
+\mbox{if $\eta(\nu)=\acu$ then $\card{L_\nu}=2$ and $\card{U_\nu}=1$;}&
+\end{align*}
+%-------------------
+\item\label{ItAcycl} there is no sequence $\epsilon_1,\dots,\epsilon_h$ of edges of $V$ such that $\up(\epsilon_i)=\lo(\epsilon_{i+1\pmod h})$, for $1\le i\le h$;
+%-------------------
+\item\label{ItPol} there is a \emph{polarity assignment} $\pi\colon E\to\{\pmi,\ppl\}$ such that, for every $\nu\in V$,
+\begin{enumerate}
+%---------
+\item if $\eta(\nu)\in\{\acd,\acu\}$ then $\pi(E_\nu)=\{\pmi\}$ or $\pi(E_\nu)=\{\ppl\}$;
+%---------
+\item if $\eta(\nu)\in\{\aid,\aiu\}$ then $\pi(E_\nu)=\{\pmi,\ppl\}$.
+\end{enumerate}
+\end{enumerate}
+Besides $\epsilon$, we use small numerals $\one$, $\two$, \dots\ and colours to denote edges. Atomic flows are denoted with $A$, $B$, $C$ and $D$. Given an atomic flow $A$, we say that the sets $L_\top=\{\epsilon_1,\dots,\epsilon_h\}$ and $U_\bot=\{\epsilon'_1,\dots,\epsilon'_k\}$ contain, respectively, the \emph{upper} and \emph{lower edges of $A$}; in such a case, we can represent $A$ as
+\[
+\atomicflow{
+( 0,10)*{\afvju4{\epsilon_1}{}};
+( 2,10)*{\cdots};
+( 4,10)*{\afvju4{}{\epsilon_h}};
+( 5, 6)*{\aflabelleft A};
+( 2, 5)*{\affr66};
+( 0, 0)*{\afvjd4{\epsilon'_1}{}};
+( 2, 0)*{\cdots};
+( 4, 0)*{\afvjd4{}{\epsilon'_k}};
+(-2, 0)*{\invisiblemark};
+( 6, 0)*{\invisiblemark}}
+\quad.
+\]
+In general, we represent atomic flows as directed-graph diagrams, except that the special vertices $\top$ and $\bot$ are not shown, and the labels of the vertices are explicitly shown as graphical elements. When we refer to the vertices of an atomic flow, we do not include $\top$ and $\bot$. Sometimes we identify vertices with their labels. 
+\end{definition}
