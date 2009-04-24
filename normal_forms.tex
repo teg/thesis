@@ -1,1 +1,221 @@
 \chapter{Normal Forms}
+
+%TODO: define labels on boxes
+\newbox\contrup\setbox\contrup=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afacu{}{}{}{}{}{}}}$}
+\newbox\contrdown\setbox\contrdown=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afacd{}{}{}{}{}{}}}$}
+\newbox\interdown\setbox\interdown=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afaid{}{}{}{}{}{}}}$}
+\newbox\interup\setbox\interup=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afaiu{}{}{}{}{}{}}}$}
+\newbox\weakdown\setbox\weakdown=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afawd{}{}{}{}{}{}}}$}
+\newbox\weakup\setbox\weakup=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afawu{}{}{}{}{}{}}}$}
+
+%---------------------------------------
+\begin{definition}
+An atomic flow is \emph{weakly streamlined} if it can be represented as
+\[
+\atomicflow{
+(-5, 11)*{\afvjm3};
+%---
+( -5, 5.5)*{\affr{18}8};
+(-10, 5.5)*{\copy\contrup};
+( -5, 5.5)*{\copy\weakdown};
+(  0, 5.5)*{\copy\contrdown};
+( 10, 5.5)*{\affr88};
+( 10, 5.5)*{\copy\interdown};
+%---
+(-10, 0)*{\afvjm3};
+(  0, 0)*{\afvjm3};
+( 10, 0)*{\afvjm3};
+%---
+(-10,-5.5)*{\affr88};
+(-10,-5.5)*{\copy\interup};
+(  5,-5.5)*{\affr{18}8};
+(  0,-5.5)*{\copy\contrup};
+(  5,-5.5)*{\copy\weakup};
+( 10,-5.5)*{\copy\contrdown};
+%---
+(  5,-11)*{\afvjm3};
+}\quad.
+\]
+\end{definition}
+
+%---------------------------------------
+\begin{definition}
+An atomic flow is \emph{streamlined} if it can be represented as
+\[
+\atomicflow{
+(-10,11)*{\afvjm3};
+%---
+(-15, 5.5)*{\copy\contrup};
+(-10, 5.5)*{\affr{28}8};
+( -5, 5.5)*{\copy\contrdown};
+( 10, 5.5)*{\copy\interdown};
+( 10, 5.5)*{\affr88};
+( 20, 5.5)*{\copy\weakdown};
+( 20, 5.5)*{\affr88};
+%---
+(-20, 0)*{\afvjm3};
+(-10, 0)*{\afvjm3};
+(  0, 0)*{\afvjm3};
+( 10, 0)*{\afvjm3};
+( 20, 0)*{\afvjm3};
+%---
+(-20,-5.5)*{\copy\weakup};
+(-20,-5.5)*{\affr88};
+(-10,-5.5)*{\copy\interup};
+(-10,-5.5)*{\affr88};
+(  5,-5.5)*{\copy\contrup};
+( 10,-5.5)*{\affr{28}8};
+( 15,-5.5)*{\copy\contrdown};
+%---
+(  10,-11)*{\afvjm3};
+}\quad.
+\]
+\end{definition}
+
+%---------------------------------------
+\begin{proposition}
+A streamlined atomic flow with no upper (resp., lower) edges can be represented as
+\[
+\atomicflow{
+( 10, 5.5)*{\copy\interdown};
+( 10, 5.5)*{\affr88};
+( 20, 5.5)*{\copy\weakdown};
+( 20, 5.5)*{\affr88};
+%---
+( 10, 0)*{\afvjm3};
+( 20, 0)*{\afvjm3};
+%---
+( 12,-5.5)*{\copy\contrup};
+( 15,-5.5)*{\affr{18}8};
+( 18,-5.5)*{\copy\contrdown};
+%---
+(  15,-11)*{\afvjm3};
+}\quad\mbox{and}\quad
+\atomicflow{
+(-15,11)*{\afvjm3};
+%---
+(-18, 5.5)*{\copy\contrup};
+(-15, 5.5)*{\affr{18}8};
+(-12, 5.5)*{\copy\contrdown};
+%---
+(-20, 0)*{\afvjm3};
+(-10, 0)*{\afvjm3};
+%---
+(-20,-5.5)*{\copy\weakup};
+(-20,-5.5)*{\affr88};
+(-10,-5.5)*{\copy\interup};
+(-10,-5.5)*{\affr88};
+}\quad,
+\]
+respectively.
+\end{proposition}
+
+%---------------------------------------
+\begin{definition}
+An atomic flow is \emph{super streamlined} if it can be represented as
+\[
+\atomicflow{
+( -5,11)*{\afvjm3};
+(-20,11)*{\afvjm3};
+%---
+(-20, 5.5)*{\copy\weakup};
+(-20, 5.5)*{\affr88};
+( -8, 5.5)*{\copy\contrup};
+( -5, 5.5)*{\affr{18}8};
+( -2, 5.5)*{\copy\contrdown};
+( 10, 5.5)*{\copy\interdown};
+( 10, 5.5)*{\affr88};
+%---
+(-10, 0)*{\afvjm3};
+(  0, 0)*{\afvjm3};
+( 10, 0)*{\afvjm3};
+%---
+(-10,-5.5)*{\copy\interup};
+(-10,-5.5)*{\affr88};
+(  2,-5.5)*{\copy\contrup};
+(  5,-5.5)*{\affr{18}8};
+(  8,-5.5)*{\copy\contrdown};
+( 20,-5.5)*{\copy\weakdown};
+( 20,-5.5)*{\affr88};
+%---
+( 20,-11)*{\afvjm3};
+( 10,-11)*{\afvjm3};
+}\quad.
+\]
+\end{definition}
+
+%---------------------------------------
+\begin{definition}
+An atomic flow is \emph{hyper streamlined} if it can be represented as
+\[
+\atomicflow{
+( -5,11)*{\afvjm3};
+(-20,11)*{\afvjm3};
+%---
+(-20, 5.5)*{\copy\weakup};
+(-20, 5.5)*{\affr88};
+( -5, 5.5)*{\copy\contrup};
+( -5, 5.5)*{\affr{18}8};
+( 10, 5.5)*{\copy\interdown};
+( 10, 5.5)*{\affr88};
+%---
+(-10, 0)*{\afvjm3};
+(  0, 0)*{\afvjm3};
+( 10, 0)*{\afvjm3};
+%---
+(-10,-5.5)*{\copy\interup};
+(-10,-5.5)*{\affr88};
+(  5,-5.5)*{\affr{18}8};
+(  5,-5.5)*{\copy\contrdown};
+( 20,-5.5)*{\copy\weakdown};
+( 20,-5.5)*{\affr88};
+%---
+( 20,-11)*{\afvjm3};
+( 10,-11)*{\afvjm3};
+}\quad.
+\]
+\end{definition}
+
+%---------------------------------------
+\begin{proposition}
+A hyper streamlined atomic flow with no upper (resp., lower) edges can be represented as
+\[
+\atomicflow{
+( 10, 5.5)*{\copy\interdown};
+( 10, 5.5)*{\affr88};
+%---
+( 10, 0)*{\afvjm3};
+%---
+( 10,-5.5)*{\affr88};
+( 10,-5.5)*{\copy\contrdown};
+%---
+( 10,-11)*{\afvjm3};
+( 18,-8.5)*{\afawdm{}{}{}{}};
+}\quad\mbox{and}\quad
+\atomicflow{
+(-18,8.5)*{\afawum{}{}{}{}};
+(-10,11)*{\afvjm3};
+%---
+(-10, 5.5)*{\copy\contrup};
+(-10, 5.5)*{\affr88};
+%---
+(-10, 0)*{\afvjm3};
+%---
+(-10,-5.5)*{\copy\interup};
+(-10,-5.5)*{\affr88};
+}\quad,
+\]
+respectively.
+\end{proposition}
