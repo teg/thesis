@@ -28,9 +28,17 @@ Negation is only defined for atoms, which is not a limitation thanks to De Morga
 \newcommand{\acu  }{\ac{\uparrow}}
 \newcommand{\swi  }{\mathsf{s}}
 \newcommand{\med  }{\mathsf{m}}
+\newcommand{\asor }{=_{\vee\mathsf{a}}}
+\newcommand{\asand}{=_{\wedge\mathsf{a}}}
+\newcommand{\coor }{=_{\vee\mathsf{c}}}
+\newcommand{\coand}{=_{\wedge\mathsf{c}}}
+\newcommand{\unor }{=_{\vee\mathsf{u}}}
+\newcommand{\unand}{=_{\wedge\mathsf{u}}}
+\newcommand{\idor }{=_{\vee\mathsf{i}}}
+\newcommand{\idand}{=_{\wedge\mathsf{i}}}
 
 \begin{definition}
-
+System $\SKS$ is defined by the following \emph{structural} rules:
 \[
 \vlinf{\aid}{}{\vls[a.\bar a]}{\ttt}\qquad
 \vlinf{\awd}{}{a}{\fff}\qquad
@@ -39,14 +47,40 @@ Negation is only defined for atoms, which is not a limitation thanks to De Morga
 \[
 \vlinf{\aiu}{}{\fff}{\vls[a.\bar a]}\qquad
 \vlinf{\awu}{}{\ttt}{a}\qquad
-\vlinf{\acu}{}{\vls(a.a)}{a}
+\vlinf{\acu}{}{\vls(a.a)}{a}\quad,
 \]
+the two \emph{logical} rules
 \[
 \vlinf{\swi}{}{\vls[(\alpha.\beta).\gamma]}{\vls(\alpha.[\beta.\gamma])}\qquad
 \vlinf{\med}{}{\vls([\alpha.\delta].[\beta.\gamma])}{\vls[(\alpha.\beta).(\gamma.\delta)]}
 \]
-
+and, for $\rho\in\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}$, the \emph{invertible} rule $\vlinf{\rho}{}{\delta}{\gamma}$, such that $\gamma$ and $\delta$ are opposite sides of
+\vlstore{
+\vls[\alpha.\beta]         &\coor\vls[\beta.\alpha]         \quad,&
+\vls[\alpha.\fff]          &\unor\vls[\alpha]               \quad,\\
+\vls(\alpha.\beta)         &\coand\vls(\beta.\alpha)         \quad,&
+\vls(\alpha.\ttt)          &\unand\vls(\alpha)               \quad,\\
+\vls[[\alpha.\beta].\gamma]&\asor\vls[\alpha.[\beta.\gamma]]\quad,&
+\vls[\ttt.\ttt]            &\idor\vls[\ttt]                 \quad,\\
+\vls((\alpha.\beta).\gamma)&\asand\vls(\alpha.(\beta.\gamma))\quad,&
+\vls(\fff.\fff)            &\idand\vls(\fff)                 \quad,}
+\begin{align*}
+\vlread
+\end{align*}
+respectively.
 \end{definition}
+
+%TODO: check and prove (Complexity paper by Paola and Alessio)
+
+\begin{lemma}
+If there exists a derivation $\vlder{}{\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}}{\beta}{\alpha}$, then there exists a derivation $\vlder{\Phi}{\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}}{\beta}{\alpha}$, such that $|\Phi|\le|\alpha+\beta|^2$.
+\end{lemma}
+
+%TODO: reread
+
+\begin{remark}
+When $\vlder{}{\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}}{\beta}{\alpha}$, we say that $\alpha=\beta$ and we often write $\vlinf{=}{}{\beta}{\alpha}$ instead of the derivation. Using this shorthand only compresses derivations by a polynomial, so it does not affect any complexity results.
+\end{remark}
 
 \section{A System with Implication}
 
