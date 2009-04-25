@@ -1,7 +1,7 @@
 \chapter{Local Transformations}
 
 \begin{definition}
-In Figure~\ref{FigRed}, we define graphical expressions of the kind $r\colon A\to B$, where $r$ is a name and $A$ and $B$ are flows.
+In Figure~\ref{FigRed}, we define graphical expressions of the kind $r\colon\phi'\to\psi'$, where $r$ is a name and $\phi'$ and $\psi'$ are flows.
 \end{definition}
 
 \newcommand{\rwdcd}{{{\mathsf w}{\downarrow}{\hbox{-}}{\mathsf c}{\downarrow}}}
@@ -188,17 +188,17 @@ This prompts us to define reduction rules and reductions for atomic flows as fol
 
 %---------------------------------------
 \begin{definition}
-An (\emph{atomic-flow}) \emph{reduction rule $r$ from flow $A$ to flow $B$} is a quadruple $(A,B,f,g)$ such that:
+An (\emph{atomic-flow}) \emph{reduction rule $r$ from flow $\phi'$ to flow $\psi'$} is a quadruple $(\phi',\psi',f,g)$ such that:
 \begin{enumerate}
-\item $f$ is a one-to-one map from the upper edges of $A$ to the upper edges of $B$,
-\item $g$ is a one-to-one map from the lower edges of $A$ to the lower edges of $B$,
-\item for every polarity assignment $\pi$ for $A$, there is a polarity assignment $\pi'$ for $B$ such that $\pi'(f(\epsilon))=\pi(\epsilon)$ and $\pi'(g(\epsilon'))=\pi(\epsilon')$, for any upper edge $\epsilon$ and any lower edge $\epsilon'$ of $A$;
+\item $f$ is a one-to-one map from the upper edges of $\phi'$ to the upper edges of $\psi'$,
+\item $g$ is a one-to-one map from the lower edges of $\phi'$ to the lower edges of $\psi'$,
+\item for every polarity assignment $\pi$ for $\phi'$, there is a polarity assignment $\pi'$ for $\psi'$ such that $\pi'(f(\epsilon))=\pi(\epsilon)$ and $\pi'(g(\epsilon'))=\pi(\epsilon')$, for any upper edge $\epsilon$ and any lower edge $\epsilon'$ of $\phi'$;
 \end{enumerate}
-we define reduction rules with graphical expressions $r\colon A\to B$, where $f$ and $g$ are indicated by labelling edges. A binary relation $R$ on the set of atomic flows is called an (\emph{atomic-flow}) \emph{reduction} if, whenever $C\mathrel{R}D$, there is a one-to-one map from the upper edges of $C$ to the upper edges of $D$ and a one-to-one map from the lower edges of $C$ to the lower edges of $D$. For every reduction rule $r\colon A\to B$, the reduction ${\to_r}$ is defined, such that $C\to_r D$ if and only if $A$ appears as a subgraph in $C$ and we obtain $D$ by replacing $A$ with $B$ in $C$, while respecting the correspondence of edges; we call this operation a \emph{reduction by $r$}.
+we define reduction rules with graphical expressions $r\colon\phi'\to\psi'$, where $f$ and $g$ are indicated by labelling edges. A binary relation $R$ on the set of atomic flows is called an (\emph{atomic-flow}) \emph{reduction} if, whenever $\phi\mathrel{R}\psi$, there is a one-to-one map from the upper edges of $\phi$ to the upper edges of $\psi$ and a one-to-one map from the lower edges of $\phi$ to the lower edges of $\psi$. For every reduction rule $r\colon\phi'\to\psi'$, the reduction ${\to_r}$ is defined, such that $\phi\to_r\psi$ if and only if $\phi'$ appears as a subgraph in $\phi$ and we obtain $\psi$ by replacing $\phi'$ with $\psi'$ in $\phi$, while respecting the correspondence of edges; we call this operation a \emph{reduction by $r$}.
 \end{definition}
 
 \begin{remark}
-The condition on polarity assignments for a reduction rule $r$ guarantees that the $D$ in $C\to_r D$ is a proper atomic flow, if $C$ is one.
+The condition on polarity assignments for a reduction rule $r$ guarantees that the $\psi$ in $\phi\to_r\psi$ is a proper atomic flow, if $\phi$ is one.
 \end{remark}
 
 \begin{remark}
@@ -249,7 +249,7 @@ The graphical expressions in Figure~\ref{FigRed} are atomic-flow reduction rules
 
 %---------------------------------------
 \begin{definition}
-A finite set of reduction rules is a \emph{flow rewriting system}. For every flow rewriting system $F=\{r_1,\dots,r_h\}$ we define ${\to_F}={\to_{r_1}\cup\cdots\cup{\to_{r_h}}}$. The reflexive transitive closure of $\to_F$ is denoted by $\to_F^\star$. Given a set of atomic flows $S$, we say that a flow rewriting system $F$ is \emph{terminating on $S$} if there is no infinite chain $A_1\to_F A_2\to_F\cdots$, for every $A_1\in S$; if $F$ is terminating on the set of atomic flows, we say that it is \emph{terminating}. We say that atomic flow $A$ is \emph{normal} for flow rewriting system $F$ if there is no atomic flow $B$ such that $A\to_F B$.
+A finite set of reduction rules is a \emph{flow rewriting system}. For every flow rewriting system $F=\{r_1,\dots,r_h\}$ we define ${\to_F}={\to_{r_1}\cup\cdots\cup{\to_{r_h}}}$. The reflexive transitive closure of $\to_F$ is denoted by $\to_F^\star$. Given a set of atomic flows $S$, we say that a flow rewriting system $F$ is \emph{terminating on $S$} if there is no infinite chain $\phi_1\to_F\phi_2\to_F\cdots$, for every $\phi_1\in S$; if $F$ is terminating on the set of atomic flows, we say that it is \emph{terminating}. We say that atomic flow $\phi$ is \emph{normal} for flow rewriting system $F$ if there is no atomic flow $\psi$ such that $\phi\to_F\psi$.
 \end{definition}
 
 \newcommand{\frw}{{\mathsf w}}
@@ -275,7 +275,7 @@ The following flow rewriting system is called $\frc$:
 
 %---------------------------------------
 \begin{definition}
-A reduction $R$ is \emph{sound} if, for every $A$ and $B$ such that $A\mathrel{R}B$ and for every derivation $\Phi$ with atomic flow $A$, there is a derivation $\Psi$ with atomic flow $B$ such that $\Phi$ and $\Psi$ have the same premiss and conclusion; in this case we write $\Phi\mathrel{R}\Psi$. A reduction rule $r$ is \emph{sound} if $\to_r$ is sound.
+A reduction $R$ is \emph{sound} if, for every $\phi$ and $\psi$ such that $\phi\mathrel{R}\psi$ and for every derivation $\Phi$ with atomic flow $\phi$, there is a derivation $\Psi$ with atomic flow $\psi$ such that $\Phi$ and $\Psi$ have the same premiss and conclusion; in this case we write $\Phi\mathrel{R}\Psi$. A reduction rule $r$ is \emph{sound} if $\to_r$ is sound.
 \end{definition}
 
 The proof of the following theorem is essentially contained in Figures~\ref{FigRedW} and \ref{FigRedC}.
@@ -480,19 +480,19 @@ The reduction rules\/ $\rwdcd$, $\rwdiu$, $\rwdwu $, $\rwdcu$, $\rcdiu$, $\rcdcu
 \end{theorem}
 
 \begin{proof}
-For $r\in\{\rwdcd,\rwdiu,\rwdwu,\rwdcu,\rcdiu,\rcdcu\}$ and $r\colon A\to B$ as in the left columns of Figures~\ref{FigRedW} and \ref{FigRedC}, for every $C$ and $D$ such that $C\to_r D$ and for every $\Psi$ with flow $C$, the right columns of the tables provide reductions $\Psi\to_r\Psi'$, where $\Psi'$ has flow $D$, as follows. If $\Phi'\to_r\Phi''$ is the reduction provided by the table, then
+For $r\in\{\rwdcd,\rwdiu,\rwdwu,\rwdcu,\rcdiu,\rcdcu\}$ and $r\colon\phi'\to\psi'$ as in the left columns of Figures~\ref{FigRedW} and \ref{FigRedC}, for every $\phi$ and $\psi$ such that $\phi\to_r\psi$ and for every $\Phi$ with flow $\phi$, the right columns of the tables provide reductions $\Phi\to_r\Psi$, where $\Psi$ has flow $\psi$, as follows. If $\Phi'\to_r\Psi'$ is the reduction provided by the table, then
 \[
-\Psi=
+\Phi=
 \vlderivation              {
 \vlde{\Psi_2}{}{\beta  }  {
 \vlde{\Phi' }{}{\beta' } {
 \vlde{\Psi_1}{}{\alpha'}{
 \vlhy          {\alpha }}}}}
 \qquad\hbox{and}\qquad
-\Psi'=
+\Psi=
 \vlderivation              {
 \vlde{\Psi_2}{}{\beta  }  {
-\vlde{\Phi''}{}{\beta' } {
+\vlde{\Psi'}{}{\beta' } {
 \vlde{\Psi_1}{}{\alpha'}{
 \vlhy          {\alpha }}}}}
 \quad.
