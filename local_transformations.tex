@@ -300,22 +300,11 @@ The proof of the following theorem is essentially contained in Figures~\ref{FigR
 (-1.5,0  )*{\invisiblemark};
 ( 3  ,0  )*{\invisiblemark}}
 &\qquad
-\vlderivation                                 {
-\vlin{\acd}{}{\zeta\{a^\two\}             }  {
-\vlde{\Phi}{}{\zeta\vlscn[a^\three.a^\one]} {
-\vlin{\awd}{}{\xi\{a^\three\}             }{
-\vlhy        {\xi\{\fff\}                 }}}}}
+\vlder{\Phi}{}{\zeta\left\{\vlinf{}{}{a^\two}{\vls[a^\three.a^\one]}\right\}}
+              {\xi\left\{\vlinf{}{}{a^\three}{\fff}\right\}}
 \quad\to_\rwdcd\quad
-\vlderivation
-{
- \vlin{=}{}{\zeta\{a^{\one,\two}\}}
- {
-  \vlde{\Phi\{a^\three\ot\fff\}}{}{\zeta\vlscn[\fff.a^{\one,\two}]}
-  {
-   \vlhy{\xi\{\fff\}}
-  }
- }
-}
+\vlder{\Phi\{a^\three\ot\fff\}}{}{\zeta\left\{\vlinf{=}{}{a^{\one,\two}}{\vls[\fff.a^{\one,\two}]}\right\}}
+              {\xi\{\fff\}}
 \\
 \noalign{\bigskip}
 %---------------------------------------
@@ -330,17 +319,11 @@ The proof of the following theorem is essentially contained in Figures~\ref{FigR
 (-1.5,0)*{\invisiblemark};
 ( 1.5,0)*{\invisiblemark}}}
 &\qquad
-\vlderivation                                    {
-\vlin{\aiu}{}{\zeta\{\fff\}                  }  {
-\vlde{\Phi}{}{\zeta\vlscn(a^\two.\bar a^\one)} {
-\vlin{\awd}{}{\xi\{a^\two\}                  }{
-\vlhy        {\xi\{\fff\}                    }}}}}
+\vlder{\Phi}{}{\zeta\left\{\vlinf{}{}{\fff}{\vls(a^\two.\bar a^\one)}\right\}}
+              {\xi\left\{\vlinf{}{}{a^\two}{\fff}\right\}}
 \quad\to_\rwdiu\quad
-\vlderivation                                                   {
-\vlin{=                    }{}{\zeta\{\fff\}                }  {
-\vlin{\awu                 }{}{\zeta\vlscn(\fff.\ttt)       } {
-\vlde{\Phi\{a^\two\ot\fff\}}{}{\zeta\vlscn(\fff.\bar a^\one)}{
-\vlhy                         {\xi\{\fff\}                  }}}}}
+\vlder{\Phi\{a^\two\ot\fff\}}{}{\zeta\left\{\vlinf{=}{}{\fff}{\vls(\fff\;.\;\vlinf{}{}{\ttt}{\bar a^\one})}\right\}}
+              {\xi\{\fff\}}
 \\
 \noalign{\bigskip}
 %---------------------------------------
@@ -352,18 +335,23 @@ The proof of the following theorem is essentially contained in Figures~\ref{FigR
 \quad\to\quad
 \atomicflow{}
 &\qquad
-\vlderivation                    {
-\vlin{\awu}{}{\zeta\{\ttt  \}}  {
-\vlde{\Phi}{}{\zeta\{a^\one\}} {
-\vlin{\awd}{}{\xi\{a^\one\}  }{
-\vlhy        {\xi\{\fff  \}  }}}}}
+\vlder{\Phi}{}{\zeta\left\{\vlinf{}{}{\ttt}{a^\one}\right\}}
+              {\xi\left\{\vlinf{}{}{a^\one}{\fff}\right\}}
 \quad\to_\rwdwu\quad
-\vlderivation                                                    {
-\vlin{=                    }{}{\zeta\{\ttt\}                }   {
-\vlin{\swi                 }{}{\zeta\vlscn[(\fff.\fff).\ttt]}  {
-\vlin{=                    }{}{\zeta\vlscn(\fff.[\fff.\ttt])} {
-\vlde{\Phi\{a^\one\ot\fff\}}{}{\zeta\{\fff\}                }{
-\vlhy                         {\xi\{\fff\}                  }}}}}}
+\vlder{\Phi\{a^\one\ot\fff\}}{}{\zeta\left\{\vlderivation
+                           {
+                            \vlin{=}{}{\ttt}
+                            {
+                             \vlin{\swi}{}{\vls[(\fff.\fff).\ttt]}
+                             {
+                              \vlin{=}{}{\vls(\fff.[\fff.\ttt])}
+                              {
+                               \vlhy{\fff}
+                              }
+                             }
+                            }
+                           }\right\}}
+              {\xi\{\fff\}}
 \\
 \noalign{\bigskip}
 %---------------------------------------
@@ -379,18 +367,11 @@ The proof of the following theorem is essentially contained in Figures~\ref{FigR
 (-3.5, 0)*{\invisiblemark};
 ( 3.5, 0)*{\invisiblemark}}
 &\qquad
-\vlderivation                               {
-\vlin{\acu}{}{\zeta\vlscn(a^\one.a^\two)}  {
-\vlde{\Phi}{}{\zeta\{a^\three\}         } {
-\vlin{\awd}{}{\xi\{a^\three\}           }{
-\vlhy        {\xi\{\fff\}               }}}}}
+\vlder{\Phi}{}{\zeta\left\{\vlinf{}{}{\vls(a^\one.a^\two)}{a^\three}\right\}}
+              {\xi\left\{\vlinf{}{}{a^\three}{\fff}\right\}}
 \quad\to_\rwdcu\quad
-\vlderivation                                                   {
-\vlin{\awd                   }{}{\zeta\vlscn(a^\one.a^\two)}   {
-\vlin{\awd                   }{}{\zeta\vlscn(a^\one.\fff)  }  {
-\vlin{=                      }{}{\zeta\vlscn(\fff.\fff)    } {
-\vlde{\Phi\{a^\three\ot\fff\}}{}{\zeta\{\fff\}             }{
-\vlhy                           {\xi\{\fff\}               }}}}}}
+\vlder{\Phi\{a^\three\ot\fff\}}{}{\zeta\left\{\vlinf{=}{}{\vls(\vlinf{}{}{a^\one}{\fff}\;.\;\vlinf{}{}{a^\two}{\fff})}{\fff}\right\}}
+              {\xi\{\fff\}}
 \\
 %---------------------------------------
 \end{array}
@@ -399,6 +380,27 @@ The proof of the following theorem is essentially contained in Figures~\ref{FigR
 \label{FigRedW}
 \end{figure}%
 
+\newbox\ContDownIntUp
+\setbox\ContDownIntUp=
+\hbox{$
+\vlderivation
+{
+ \vlin{}{}{\fff}
+ {
+  \vlin{=}{}{\vlsbr(\vlinf{\swi}{}{\vlinf{=}{}{a^\one}{\vlsbr[\vlinf{}{}{\fff}{\vls(\bar a.a^\two)}\;.\;a^\one]}}{\vls(\bar a.[a^\two.a^\one])}\;\;\;.\;\;\;\bar a)}
+  {
+   \vlhy{\vlsbr([a^\one.a^\two]\;.\;\vlinf{}{}{\vls(\bar a.\bar a)}{\bar a^\three})}
+  }
+ }
+}
+$}
+
+\newbox\ContDownContUp
+\setbox\ContDownContUp=
+\hbox{$
+\vlinf{\med}{}{\vlsbr(\vlinf{}{}{a^\three}{\vls[a.a]}\;.\;\vlinf{}{}{a^\four}{\vls[a.a]})}
+              {\vlsbr[\vlinf{}{}{\vls(a.a)}{a^\one}\;.\;\vlinf{}{}{\vls(a.a)}{a^\two}]}
+$}
 %---------------------------------------
 \begin{figure}[tbp]
 \[
@@ -418,22 +420,11 @@ The proof of the following theorem is essentially contained in Figures~\ref{FigR
 ( 6,2)*{\afaiunw{}{}};
 ( 6,0)*{\afaiuex{}{}{}{}{}{}31}}}
 &\qquad
-\vlderivation                                       {
-\vlin{\aiu}{}{\zeta\{\fff\}                     }  {
-\vlde{\Phi}{}{\zeta\vlscn(a^\four.\bar a^\three)} {
-\vlin{\acd}{}{\xi\{a^\four\}                    }{
-\vlhy        {\xi\vlscn[a^\one.a^\two]          }}}}}
+\vlder{\Phi}{}{\zeta\left\{\vlinf{}{}{\fff}{\vls(a^\four.\bar a^\three)}\right\}}
+              {\xi\left\{\vlinf{}{}{a^\four}{\vls[a^\one.a^\two]}\right\}}
 \quad\to_\rcdiu\quad
-\vlderivation                                                     {
-\vlin{\aiu}{}{\zeta\{\fff\}                               }      {
-\vlin{=   }{}{\zeta\vlscn(a^\one.\bar a)                  }     {
-\vlin{\aiu}{}{\zeta\vlscn([\fff.a^\one].\bar a)           }    {
-\vlin{\swi}{}{\zeta\vlscn([(\bar a.a^\two).a^\one].\bar a)}   {
-\vlin{=   }{}{\zeta\vlscn((\bar a.[a^\two.a^\one]).\bar a)}  {
-\vlin{\acu}{}{\zeta\vlscn([a^\one.a^\two].(\bar a.\bar a))} {
-\vlde{\Phi\{a^\four\ot\vls[a.a]\}}
-           {}{\zeta\vlscn([a^\one.a^\two].\bar a^\three)  }{
-\vlhy        {\xi\vlscn[a^\one.a^\two]                    }}}}}}}}}
+\vlder{\Phi\{a^\four\ot\vls[a^\one.a^\two]\}}{}{\zeta\left\{\box\ContDownIntUp\right\}}
+                                     {\xi\left\{\vls[a^\one.a^\two]\right\}}
 \\
 \noalign{\bigskip}
 %---------------------------------------
@@ -452,20 +443,11 @@ The proof of the following theorem is essentially contained in Figures~\ref{FigR
 ( 8, 6)*{\afvj4};
 ( 3, 6)*{\afex24}}
 &\qquad
-\vlderivation                                  {
-\vlin{\acu}{}{\zeta\vlscn(a^\three.a^\four)}  {
-\vlde{\Phi}{}{\zeta\{a^\five\}             } {
-\vlin{\acd}{}{\xi\{a^\five\}               }{
-\vlhy        {\xi\vlscn[a^\one.a^\two]     }}}}}
+\vlder{\Phi}{}{\zeta\left\{\vlinf{}{}{\vls(a^\three.a^\four)}{a^\five}\right\}}
+              {\xi\left\{\vlinf{}{}{a^\five}{\vls[a^\one.a^\two]}\right\}}
 \quad\to_\rcdcu\quad
-\vlderivation                                                            {
-\vlin{\acd                       }{}{\zeta\vlscn(a^\three.a^\four)}     {
-\vlin{\acd                       }{}{\zeta\vlscn(a^\three.[a.a])  }    {
-\vlin{\med                       }{}{\zeta\vlscn([a.a].[a.a])     }   {
-\vlin{\acu                       }{}{\zeta\vlscn[(a.a).(a.a)]     }  {
-\vlin{\acu                       }{}{\zeta\vlscn[a^\one.(a.a)]    } {
-\vlde{\Phi\{a^\five\ot\vls[a.a]\}}{}{\zeta\vlscn[a^\one.a^\two]   }{
-\vlhy                               {\xi\vlscn[a^\one.a^\two]     }}}}}}}}
+\vlder{\Phi\{a^\five\ot\vls[a^\one.a^\two]\}}{}{\zeta\left\{\box\ContDownContUp\right\}}
+                                     {\xi\left\{\vls[a^\one.a^\two]\right\}}
 \\
 %---------------------------------------
 \end{array}
