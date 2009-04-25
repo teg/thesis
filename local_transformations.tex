@@ -280,6 +280,9 @@ A reduction $R$ is \emph{sound} if, for every $A$ and $B$ such that $A\mathrel{R
 
 The proof of the following theorem is essentially contained in Figures~\ref{FigRedW} and \ref{FigRedC}.
 
+%TODO: define \ot (should use \shortleftarrow, but it gives errors)
+\newcommand{\ot}{\mathbin\leftarrow}
+
 %---------------------------------------
 \begin{figure}[tbp]
 \[
@@ -303,10 +306,16 @@ The proof of the following theorem is essentially contained in Figures~\ref{FigR
 \vlin{\awd}{}{\xi\{a^\three\}             }{
 \vlhy        {\xi\{\fff\}                 }}}}}
 \quad\to_\rwdcd\quad
-\vlderivation                                                      {
-\vlin{=                      }{}{\zeta\{a^{\one,\two}\}         } {
-\vlde{\Phi\{a^\three\ot\fff\}}{}{\zeta\vlscn[\fff.a^{\one,\two}]}{
-\vlhy                           {\xi\{\fff\}                    }}}}
+\vlderivation
+{
+ \vlin{=}{}{\zeta\{a^{\one,\two}\}}
+ {
+  \vlde{\Phi\{a^\three\ot\fff\}}{}{\zeta\vlscn[\fff.a^{\one,\two}]}
+  {
+   \vlhy{\xi\{\fff\}}
+  }
+ }
+}
 \\
 \noalign{\bigskip}
 %---------------------------------------
