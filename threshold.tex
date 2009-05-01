@@ -1,0 +1,300 @@
+\section{Quasi Polynomial Normalisation via Threshold Formulae}
+
+%-------------------------------------------------------------------------------
+\begin{proposition}\label{PropAuxNorm}
+For any formula $\alpha$ and atom $a$, there exist derivations whose size is cubic in\/ $\size\alpha$ and that have shape
+\[
+\vlder{}{\{\awd,\acd,\swi\}}{\vls[a.\alpha\{a/\fff\}]}\alpha
+\qquad\text{and}\qquad
+\vlder{}{\{\awu,\acu,\swi\}}\alpha{\vls(a.\alpha\{a/\ttt\})}
+\quad.
+\]
+\end{proposition}
+
+%-------------------------------------------------------------------------------
+\begin{proof}
+If there are no occurrences of $a$ in $\alpha$, the desired derivations are
+\[
+\vlderivation                 {
+\vlin{}{}{\vls[a   .\alpha]} {
+\vlin= {}{\vls[\fff.\alpha]}{
+\vlhy    \alpha             }}}
+\qquad\text{and}\qquad
+\vlderivation                 {
+\vlin= {}\alpha              {
+\vlin{}{}{\vls(\ttt.\alpha)}{
+\vlhy    {\vls(a   .\alpha)}}}}
+\quad.
+\]
+If there are $h>0$ occurrences of $a$ in $\alpha$, obtain, by repeatedly applying Proposition~\ref{PropSwitch}, the following derivations:
+\[
+\vlder{}
+      {\{\swi\}}
+      {\vlsbr[\vlinf{(h-1)\cdot\acd}
+                    {}
+                    a
+                    {\vls[a.\vldots.a]}.\alpha\{a/\fff\}]}
+      \alpha
+\qquad\text{and}\qquad
+\vlder{}
+      {\{\swi\}}
+      \alpha
+      {\vlsbr(\vlinf{(h-1)\cdot\acu}
+                    {}
+                    {\vls(a.\vldots.a)}
+                    a.\alpha\{a/\fff\})}
+\quad.
+\]
+If $\size\alpha=n$, the size of the desired derivations is $\Ord{n^3}$ because we have to apply Proposition~\ref{PropSwitch} at most $\Ord n$ times.
+\end{proof}
+
+%-------------------------------------------------------------------------------
+\begin{definition}\label{DefNorm}
+For $n>0$, let $\Pi$ be a proof in simple form over $\avec1n$, such that it and its atomic flow have shape
+\[
+\hbox{\phantom{$\vls[\alpha.{}]$}}
+\vlder\Psi
+      {}
+      {\vls[\llap{$\vls[\alpha.{}]$}
+            \vlinf{}{}\fff{\vls(a_1.\bar a_1^{\phi_1})}.\cdots.
+            \vlinf{}{}\fff{\vls(a_n.\bar a_n^{\phi_n})}]}
+      {\vls(\vlinf{}{}{\vls[a_1.\bar a_1^{\phi_1}]}\ttt.\cdots.
+            \vlinf{}{}{\vls[a_n.\bar a_n^{\phi_n}]}\ttt)}
+\qquad\text{and}\qquad
+\atomicflow{
+(17.75 ,16  )*{\afaidex{}{}{}{}{}{}{43}8};
+(14.25 ,14  )*{\afaidex{}{}{}{}{}{}{13}8};
+( 9    ,12  )*{\cdots};
+( 7    ,11  )*{\afvj2};
+(28.5  ,11  )*{\afvj2};
+(18.5  , 9  )*{\aflabelright{\phi_1}};
+(29.5  , 9  )*{\aflabelright{\phi_n}};
+( 1    , 6  )*{\copy\interdown};
+( 4    , 6  )*{\copy\weakdown};
+( 5.5  , 6  )*{\affr{13}8};
+( 6    , 6  )*{\copy\weakup};
+( 8    , 6  )*{\copy\contrdown};
+(10    , 6  )*{\copy\contrup};
+(16    , 6  )*{\copy\contrdown};
+(17.5  , 6  )*{\affr78};
+(18    , 6  )*{\copy\contrdown};
+(23    , 6  )*{\cdots};
+(27    , 6  )*{\copy\contrup};
+(28.5  , 6  )*{\affr78};
+(29    , 6  )*{\copy\contrup};
+( 7    , 1  )*{\afvj2};
+(28.5  , 1  )*{\afvj2};
+( 9    , 0  )*{\cdots};
+( 1    ,-1.5)*{\afvjm7};
+(14.25 ,-2  )*{\afaiuex{}{}{}{}{}{}{13}8};
+(17.75 ,-4  )*{\afaiuex{}{}{}{}{}{}{43}8}}
+\quad,
+\]
+for some derivation $\Psi$. For $0\le i\le n+1$, let $\theta_i\equiv\th in\avec1n$. For $0\le k\le n$, we define the derivations $\vlder{\Phi_k}{\SKS\setminus\{\aiu\}}{\vls[\alpha.\theta_{k+1}]}{\theta_k}$ as
+\[ %%%%% The \dimen's must be adjusted if fonts and layout parameters are changed
+\dimen0=2560000sp
+\kern\dimen0
+\vlder{\Psi_k}
+      {\SKS\setminus\{\aiu\}}
+      {\kern-\dimen0\vlsbr[\alpha.
+       \vlinf{\scriptstyle(n-1)\cdot\gcd}
+             {}
+             {\theta_{k+1}}
+             {\vls[\vlder{}
+                         {\{\awu,\acu,\swi\}}
+                         {\theta_{k+1}}
+                         {\vlsbr(a_1
+                                .\;\;
+                                \vlder{\Gth k1n\avec1n}
+                                      {\{\awd,\awu\}}
+                                      {\theta_{k+1}\{a_1/\ttt\}}
+                                      {\theta_k    \{a_1/\fff\}})}
+                  \;\;\;.\vldots.\;\;\;
+                   \vlder{}
+                         {\{\awu,\acu,\swi\}}
+                         {\theta_{k+1}}
+                         {\vlsbr(a_n
+                                .\;\;
+                                \vlder{\Gth knn\avec1n}
+                                      {\{\awd,\awu\}}
+                                      {\theta_{k+1}\{a_n/\ttt\}}
+                                      {\theta_k    \{a_n/\fff\}})}
+                 ]}]                                              }  
+      {\vlinf{\llap{$\scriptstyle(n-1)\cdot\cou$}}
+             {}
+             {\vlsbr(\vlder{}
+                           {\{\awd,\acd,\swi\}}
+                           {\vls[a_1.\theta_k\{a_1/\fff\}]}
+                           {\theta_k                      }
+                    \;\;\;.\vldots.\;\;\;
+                     \vlder{}
+                           {\{\awd,\acd,\swi\}}
+                           {\vls[a_n.\theta_k\{a_n/\fff\}]}
+                           {\theta_k                      })}
+             {\theta_k                                    }}
+\quad,
+\]
+where $\Psi_k=\Psi\{\bar a_1^{\phi_1}/\theta_k\{a_1/\fff\},\dots,\bar a_n^{\phi_n}/\theta_k\{a_n/\fff\}\}$ and where we use Proposition~\ref{PropAuxNorm}. We define the \emph{cut-free form of\/ $\Pi$} as the following proof in $\SKS\setminus\{\aiu\}$:
+\[ %%%%% The \dimen's must be adjusted if fonts and layout parameters are changed
+\dimen0=910000sp
+\dimen1=2970000sp
+\dimen2=3870000sp
+\vlinf{n\cdot\gcd}
+      {\quad.}
+      \alpha
+      {\kern\dimen2\vlder{\Phi_0}
+             {}
+             {\kern-\dimen2
+              \vlsbr[\alpha
+                    .
+                    \kern\dimen1
+                    \vlder{\Phi_1}
+                          {}
+                          {\kern-\dimen1
+                           \vlsbr[\alpha
+                                 .
+                                 \cdots.\kern\dimen0
+                                 \begin{tabular}{@{}c@{}}
+                                 $\theta_2$\\
+                                 $\vdots$\\
+                                 $\kern-\dimen0
+                                  \vlsbr[\alpha
+                                        .
+                                        \vlder{\Phi_n}
+                                              {}
+                                              {\vlsbr[\alpha
+                                                     .\theta_{n+1}]}
+                                              {\theta_n}]$
+                                 \end{tabular}]}
+                          {\theta_1}]}
+            {\theta_0}}
+\]
+(We recall that $\theta_0\equiv\ttt$ and $\theta_{n+1}\equiv\fff$.)
+\end{definition}
+
+\begin{theorem}\label{ThPreNorm}
+Given any proof\/ $\Pi$ of $\alpha$ in\/ $\SKS$, we can construct a proof of $\alpha$ in\/ $\SKS\setminus\{\aiu\}$ in time quasipolynomial in the size of\/ $\Pi$.
+\end{theorem}
+
+%-------------------------------------------------------------------------------
+\begin{proof}
+By Theorem~\ref{ThSimpleForm} we can construct from $\Pi$, in polynomial time, a proof $\Pi'$ of $\alpha$ in simple form. We can then proceed with the construction of Definition~\ref{DefNorm}, to which we refer here. For $0\le k\le n$, constructing $\Phi_k$ requires quasipolynomial time because of Propositions~\ref{PropGenAtPol}, \ref{PropSubst} and \ref{PropAuxNorm} and Theorems~\ref{TheoQuas} and \ref{TheoThrDer}, and because obtaining $\Psi_k$ from $\Psi$ requires quasipolynomial time. Constructing the cut-free from of $\Pi'$ from $\Phi_0$, \dots, $\Phi_n$ is done in polynomial time.
+\end{proof}
+
+%-------------------------------------------------------------------------------
+\begin{remark}
+In Figure~\ref{FigNormFlow}, we show the atomic flow of the cut-free form obtained from a proof $\Pi$ in simple form. We refer to Definition~\ref{DefNorm}. Let the following be the flow of the simple core $\Psi$ of $\Pi$:
+\[
+\atomicflow{
+(12  ,12)*{\afvjm4};
+(20  ,12)*{\afvjm4};
+(12  , 9)*{\aflabelright\phi};
+(21.5, 9)*{\aflabelright\psi};
+( 2  , 6)*{\copy\interdown};
+( 5  , 6)*{\copy\weakdown};
+( 7  , 6)*{\copy\weakup};
+( 7  , 6)*{\affr{14}8};
+( 9  , 6)*{\copy\contrdown};
+(11  , 6)*{\copy\contrup};
+(18.5, 6)*{\copy\contrdown};
+(20  , 6)*{\affr78};
+(20.5, 6)*{\copy\contrup};
+( 2  , 0)*{\afvjum4\alpha{}};
+(12  , 0)*{\afvjm4};
+(20  , 0)*{\afvjm4};
+}\quad,
+\]
+where $\psi$ is the union of flows $\phi_1$, \dots, $\phi_n$, and where we denote by $\alpha$ the edges corresponding to the atom occurrences appearing in the conclusion $\alpha$ of $\Pi$. We then have that, for $0<k<n$, the flow of $\Phi_k$ is $\phi'_k$, as in Figure~\ref{FigNormFlow}, where $\psi_k$ is the flow of the derivation $\Psi_k$. The flows of $\Phi_0$ and $\Phi_n$ are, respectively, $\phi'_0$ and $\phi'_n$.
+\end{remark}
+
+%-------------------------------------------------------------------------------
+\begin{figure}
+\[
+\atomicflow{
+(1,47)="A";
+"A"+(16,15  )*{\aflabelright{\phi'_0}};
+"A"+(12,14  )*{\afawdm{}{}{}{}};
+"A"+(12, 9  )*{\aflabelright\phi};
+"A"+( 2, 6  )*{\copy\interdown};
+"A"+( 5, 6  )*{\copy\weakdown};
+"A"+( 7, 6  )*{\copy\weakup};
+"A"+( 7, 6  )*{\affr{14}8};
+"A"+( 9, 6  )*{\copy\contrdown};
+"A"+(11, 6  )*{\copy\contrup};
+"A"+(9 , 4.5)*{\affr{19}{23}};
+"A"+(16, 4  )*{\afawdm{}{}{}{}};
+"A"+(12, 1  )*{\afvjm2};
+"A"+(14,-3  )*{\affr86};
+"A"+(14,-3  )*{\copy\contrdown};
+"A"+(14,-8.5)*{\afvjum5{}{\theta_1}};
+(15  ,35   )*{\vdots};
+(15  ,28.5 )*{\afvjdm5{}{\theta_k}};
+(22.5,26   )*{\aflabelright{\phi'_k}};
+(15  ,23   )*{\affr46};
+(15  ,23   )*{\copy\contrup};
+(13  ,19   )*{\afcjrm22};
+(17.5,15   )*{\afcjlm3{10}};
+(12  ,15   )*{\affr46};
+(12  ,15   )*{\copy\contrdown};
+(12  ,11   )*{\afvjm2};
+(22  ,10   )*{\aflabelright{\psi_k}};
+(12  , 9   )*{\aflabelright\phi};
+( 2  , 6   )*{\copy\interdown};
+( 5  , 6   )*{\copy\weakdown};
+( 7  , 6   )*{\copy\weakup};
+( 7  , 6   )*{\affr{14}8};
+( 9  , 6   )*{\copy\contrdown};
+(11  , 6   )*{\copy\contrup};
+(12  , 6   )*{\affr{25}{10}};
+(12  , 6   )*{\affr{26}{42}};
+(18  , 6   )*{\copy\contrdown};
+(19  , 6   )*{\affr68};
+(20  , 6   )*{\copy\contrup};
+(12  , 1   )*{\afvjm2};
+(19  , 1   )*{\afvjm2};
+(12  ,-3   )*{\affr46};
+(12  ,-3   )*{\copy\contrup};
+(18  ,-3   )*{\copy\weakdown};
+(19  ,-3   )*{\affr66};
+(20  ,-3   )*{\copy\weakup};
+(13  ,-7   )*{\afcjlm22};
+(17.5,-7   )*{\afcjrm32};
+(15  ,-11  )*{\affr46};
+(15  ,-11  )*{\copy\contrdown};
+(15  ,-16.5)*{\afvjum5{}{\theta_{k+1}}};
+(0,-35)="B";
+"B"+( 2  ,-15  )*{\afvjm{10}};
+"B"+(12  ,-14  )*{\afawum{}{}{}{}};
+"B"+(19  ,-14  )*{\afawum{}{}{}{}};
+"B"+( 2  , -6  )*{\copy\interdown};
+"B"+( 5  , -6  )*{\copy\weakdown};
+"B"+( 7  , -6  )*{\copy\weakup};
+"B"+( 7  , -6  )*{\affr{14}8};
+"B"+( 9  , -6  )*{\copy\contrdown};
+"B"+(11  , -6  )*{\copy\contrup};
+"B"+(18  , -6  )*{\copy\contrdown};
+"B"+(19  , -6  )*{\affr68};
+"B"+(20  , -6  )*{\copy\contrup};
+"B"+(11  , -4.5)*{\affr{23}{23}};
+"B"+(12  , -3  )*{\aflabelright\phi};
+"B"+(13  , -1  )*{\afcjrm22};
+"B"+(17.5, -1  )*{\afcjlm32};
+"B"+(15  ,  3  )*{\affr66};
+"B"+(15  ,  3  )*{\copy\contrup};
+"B"+(20  ,  6  )*{\aflabelright{\phi'_n}};
+"B"+(15  ,  8.5)*{\afvjdm5{}{\theta_n}};
+"B"+(15  ,  15 )*{\vdots};
+(-1.5, 28  )*{\afcjrm9{42}};
+( 0  ,-20  )*{\afcjrm4{44}};
+(-6  ,-24  )*{\afvjm{62}};
+(-2  ,-48.5)*{\afvjm{13}};
+(-4  ,-53  )*{\cdots};
+( 0  ,-53  )*{\cdots};
+(-2  ,-58  )*{\affr{10}6};
+(-2  ,-58  )*{\copy\contrdown};
+(-2  ,-63  )*{\afvjum4\alpha{}};
+}
+\]
+\caption{Atomic flow of a proof in cut-free form.}
+\label{FigNormFlow}
+\end{figure}
