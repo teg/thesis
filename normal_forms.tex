@@ -219,3 +219,143 @@ A hyper streamlined atomic flow with no upper (resp., lower) edges can be repres
 \]
 respectively.
 \end{proposition}
+
+%---------------------------------------
+\begin{definition}
+An atomic flow is \emph{on simple form with respect to the polarity assignment $\pi$} if it can be represented as
+\[
+\atomicflow{
+(-14, 14)*{\afvjm4};
+( -6, 16)*{\afaidm{}{}{}{}{}{}};
+( -4,  8)*{\afvjm8};
+(-11,  8)*{\affr88};
+(-12, 10)*{\aflabelleft{\ppl}};
+(-16,  0)*{\afcjrm48};
+(-18,-10)*{\afvjm{12}};
+%-
+(-18, 10)*{\afvjm{12}};
+(-16,  0)*{\afcjlm48};
+(-11, -8)*{\affr88};
+(-12, -6)*{\aflabelleft{\ppl}};
+(-14,-14)*{\afvjm4};
+( -4, -8)*{\afvjm8};
+( -6,-16)*{\afaium{}{}{}{}{}{}};
+%--
+(  6,  8)*{\afaidm{}{}{}{}{}{}};
+(  0, 10)*{\afvjm{12}};
+(  0,  0)*{\affr{10}8};
+( -2,  2)*{\aflabelleft{\pmi}};
+(  0,-10)*{\afvjm{12}};
+( 11,  0)*{\affr88};
+( 10,  2)*{\aflabelleft{\ppl}};
+(  6, -8)*{\afaium{}{}{}{}{}{}};
+}\qquad
+\atomicflow{
+(-5, 11)*{\afvjm3};
+%---
+( -5, 5.5)*{\affr{18}8};
+(-10, 5.5)*{\copy\contrup};
+( -5, 5.5)*{\copy\weakdown};
+(  0, 5.5)*{\copy\contrdown};
+( 10, 5.5)*{\affr88};
+( 10, 5.5)*{\copy\interdown};
+%---
+(-10, 0)*{\afvjm3};
+(  0, 0)*{\afvjm3};
+( 10, 0)*{\afvjm3};
+%---
+(-10,-5.5)*{\affr88};
+(-10,-5.5)*{\copy\interup};
+(  5,-5.5)*{\affr{18}8};
+(  0,-5.5)*{\copy\contrup};
+(  5,-5.5)*{\copy\weakup};
+( 10,-5.5)*{\copy\contrdown};
+%---
+(  5,-11)*{\afvjm3};
+}\quad,
+\]
+\end{definition}
+
+%---------------------------------------
+\begin{proposition}
+Given a polarity assignment $\pi$, an atomic flow on simple form with respect to $\pi$ with no upper (resp., lower) edges can be represented as
+\[
+\atomicflow{
+( -5,  8)*{\afaidm{}{}{}{}{}{}};
+(-10,  0)*{\affr88};
+(-11,  2)*{\aflabelleft{\ppl}};
+(-10, -6)*{\afvjm4};
+%--
+(  5,  8)*{\afaidm{}{}{}{}{}{}};
+(  0,  0)*{\affr88};
+( -1,  2)*{\aflabelleft{\pmi}};
+( -3, -6)*{\afvjm4};
+( 10,  0)*{\affr88};
+(  9,  2)*{\aflabelleft{\ppl}};
+(  5, -8)*{\afaium{}{}{}{}{}{}};
+}\qquad
+\atomicflow{
+(-5, 14)*{\invisiblemark};
+%---
+( -5, 5.5)*{\affr{18}8};
+(-10, 5.5)*{\copy\contrup};
+( -5, 5.5)*{\copy\weakdown};
+(  0, 5.5)*{\copy\contrdown};
+( 10, 5.5)*{\affr88};
+( 10, 5.5)*{\copy\interdown};
+%---
+(-10, 0)*{\afvjm3};
+(  0, 0)*{\afvjm3};
+( 10, 0)*{\afvjm3};
+%---
+(-10,-5.5)*{\affr88};
+(-10,-5.5)*{\copy\interup};
+(  5,-5.5)*{\affr{18}8};
+(  0,-5.5)*{\copy\contrup};
+(  5,-5.5)*{\copy\weakup};
+( 10,-5.5)*{\copy\contrdown};
+%---
+(  5,-11)*{\afvjm3};
+}\quad\mbox{and}\quad
+\]
+\[
+\atomicflow{
+( -5, -8)*{\afaium{}{}{}{}{}{}};
+(-10,  0)*{\affr88};
+(-11,  2)*{\aflabelleft{\ppl}};
+(-10,  6)*{\afvjm4};
+%--
+(  5, -8)*{\afaium{}{}{}{}{}{}};
+(  0,  0)*{\affr88};
+( -1,  2)*{\aflabelleft{\pmi}};
+( -3,  6)*{\afvjm4};
+( 10,  0)*{\affr88};
+(  9,  2)*{\aflabelleft{\ppl}};
+(  5,  8)*{\afaidm{}{}{}{}{}{}};
+}\qquad
+\atomicflow{
+( -5, 11)*{\afvjm3};
+%---
+( -5, 5.5)*{\affr{18}8};
+(-10, 5.5)*{\copy\contrup};
+( -5, 5.5)*{\copy\weakdown};
+(  0, 5.5)*{\copy\contrdown};
+( 10, 5.5)*{\affr88};
+( 10, 5.5)*{\copy\interdown};
+%---
+(-10, 0)*{\afvjm3};
+(  0, 0)*{\afvjm3};
+( 10, 0)*{\afvjm3};
+%---
+(-10,-5.5)*{\affr88};
+(-10,-5.5)*{\copy\interup};
+(  5,-5.5)*{\affr{18}8};
+(  0,-5.5)*{\copy\contrup};
+(  5,-5.5)*{\copy\weakup};
+( 10,-5.5)*{\copy\contrdown};
+%---
+(-5,-14)*{\invisiblemark};
+}\quad,
+\]
+respectively.
+\end{proposition}
