@@ -16,6 +16,8 @@ In Figure~\ref{FigRed}, we define graphical expressions of the kind $r\colon\phi
 \newcommand{\rcdcu}{{{\mathsf c}{\downarrow}{\hbox{-}}{\mathsf c}{\uparrow  }}}
 \newcommand{\ridwu}{{{\mathsf i}{\downarrow}{\hbox{-}}{\mathsf w}{\uparrow  }}}
 \newcommand{\ridcu}{{{\mathsf i}{\downarrow}{\hbox{-}}{\mathsf c}{\uparrow  }}}
+\newcommand{\rcd}{{\mathsf c}{\downarrow  }}
+\newcommand{\rcu}{{\mathsf c}{\uparrow  }}
 %---------------------------------------
 \begin{figure}[tbp]
 \[
@@ -149,6 +151,38 @@ $\hfil}\\
 ( 8,6)*{\afvj4};
 ( 3,6)*{\afex24}}
 $\hfil}\\
+%-------------------
+\rcd\colon\quad\aflower{\atomicflow{
+(   0, 4)*{\afacd\one{}{}\two{}\three};
+(-3.5, 0)*{\invisiblemark};
+( 3.5, 0)*{\invisiblemark}
+}}
+\quad\to\quad
+\aflower{\atomicflow{
+(13,12)*{\afaidex{}{}{}{}{}{}32};
+(16, 4)*{\afvju8{}\three};
+(10, 6)*{\afacunw{}{}{}{}};
+( 0, 8)*{\afvjd8\one{}};
+( 4, 8)*{\afvjd8{}\two};
+( 6, 2)*{\afaiunw{}{}};
+( 6, 0)*{\afaiuex{}{}{}{}{}{}31}}}
+&\qquad
+%-------------------
+\rcu\colon\quad\afraise{\atomicflowinv{
+(   0,-4)*{\afacu\one{}{}\two{}\three};
+(-3.5, 0)*{\invisiblemark};
+( 3.5, 0)*{\invisiblemark}
+}}
+\quad\to\quad
+\aflower{\atomicflow{
+(13,-12)*{\afaiuex{}{}{}{}{}{}32};
+(16, -4)*{\afvjd8{}\three};
+(10,-8.25)*{\afacdnw{}{}{}{}};
+( 0, -8)*{\afvju8\one{}};
+( 4, -8)*{\afvju8{}\two};
+( 6, -4)*{\afaidnw{}{}};
+( 6,  0)*{\afaidex{}{}{}{}{}{}31}}}
+\\
 \end{array}
 \]
 \caption{Atomic-flow reduction rules.}
@@ -396,12 +430,58 @@ The proof of the following theorem is essentially contained in Figures~\ref{FigR
  }
 }
 $}
-
 \newbox\ContDownContUp
 \setbox\ContDownContUp=
 \hbox{$
 \vlinf{\med}{}{\vlsbr(\vlinf{}{}{a^\three}{\vls[a.a]}\;.\;\vlinf{}{}{a^\four}{\vls[a.a]})}
               {\vlsbr[\vlinf{}{}{\vls(a.a)}{a^\one}\;.\;\vlinf{}{}{\vls(a.a)}{a^\two}]}
+$}
+\newbox\ContDown
+\setbox\ContDown=
+\hbox{$
+\vlinf\swi{}{
+			 \vlsbr[\vlderivation
+			        {
+			         \vlin\swi{}
+			         {
+			          \vls[\vlinf{}{}
+                           {\fff}
+                           {\vls(\bar a.a^\one)}
+                          .
+                           \vlinf{}{}
+                           {\fff}
+                           {\vls(\bar a.a^\two)}
+                          ]
+                     }
+                     {
+                      \vlin\swi{}
+                      {
+                       \vls(\bar a.[(\bar a.a^\one).a^\two])
+                      }
+                      {
+                       \vlhy
+                       {\vls(\vlinf{}{}
+                             {\vls(\bar a.\bar a)}
+                             {\bar a}          
+                            .
+                             [a^\one.a^\two]
+                            )
+                       }
+                      }
+                     }
+                    }
+                   \;\;\;.
+                    {a^\three}
+                   ]
+            }
+            {
+             \vls(\vlinf{}{}
+                  {\vls[\bar a.a^\three]}
+                  {\ttt}
+                 .
+                  [a^\one.a^\two]
+                 )
+            }
 $}
 %---------------------------------------
 \begin{figure}[tbp]
@@ -450,6 +530,25 @@ $}
 \quad\to_\rcdcu\quad
 \vlder{\Phi\{a^\five\ot\vls[a^\one.a^\two]\}}{}{\zeta\left\{\box\ContDownContUp\right\}}
                                      {\xi\left\{\vls[a^\one.a^\two]\right\}}
+\\
+%---------------------------------------
+\rcd\colon\hfil\atomicflow{
+(   0, 4)*{\afacd\one{}{}\two{}\three};
+(-3.5, 0)*{\invisiblemark};
+( 3.5, 0)*{\invisiblemark}}
+\quad\to\quad
+\atomicflow{
+(13,12)*{\afaidex{}{}{}{}{}{}32};
+(16, 4)*{\afvju8{}\three};
+(10, 6)*{\afacunw{}{}{}{}};
+( 0, 8)*{\afvjd8\one{}};
+( 4, 8)*{\afvjd8{}\two};
+( 6, 2)*{\afaiunw{}{}};
+( 6, 0)*{\afaiuex{}{}{}{}{}{}31}}
+&\qquad
+\xi\left\{\vlinf{}{}{a^\three}{\vls[a^\one.a^\two]}\right\}
+\quad\to_\rcd\quad
+\xi\left\{\box\ContDown\right\}
 \\
 %---------------------------------------
 \end{array}
