@@ -307,6 +307,21 @@ The following flow rewriting system is called $\frc$:
 \]
 \end{definition}
 
+\TODO{Change the definition of reduction rule so they can apply under a given polarity assignment.}
+%---------------------------------------
+\begin{definition}
+The reduction rules $\rcdiu^\ppl$, $\ridcu^\ppl$, $\rcdcu^\ppl$, $\rcd^\ppl$ and $\rcu^\ppl$ are the rules $\rcdiu$, $\ridcu$, $\rcdcu$, $\rcd$ and $\rcu$, respectively, where the (co)contraction vertex in the redex is positive under a given polarity assignment.
+\end{definition}
+
+\newcommand{\frcp}{{\frc^\ppl}}
+%---------------------------------------
+\begin{definition}
+The following flow rewriting system is called $\frcp$:
+\[
+\{\;\rcdiu^\ppl\;,\;\ridcu^\ppl\;,\;\rcdcu^\ppl\;\}\quad.
+\]
+\end{definition}
+
 \subsection{Soundness}
 
 %---------------------------------------
@@ -559,11 +574,11 @@ $}
 
 %---------------------------------------
 \begin{theorem}\label{TheoSound}
-The reduction rules\/ $\rwdcd$, $\rwdiu$, $\rwdwu $, $\rwdcu$, $\rcdiu$, $\rcdcu$, $\rcuwu$, $\ridwu$, $\rcdwu$ and\/ $\ridcu$ are sound.
+The reduction rules\/ $\rwdcd$, $\rwdiu$, $\rwdwu $, $\rwdcu$, $\rcdiu$, $\rcdcu$, $\rcuwu$, $\ridwu$, $\rcdwu$, $\ridcu$, $\rcd$ and\/ $\rcu$ are sound.
 \end{theorem}
 
 \begin{proof}
-For $r\in\{\rwdcd,\rwdiu,\rwdwu,\rwdcu,\rcdiu,\rcdcu\}$ and $r\colon\phi'\to\psi'$ as in the left columns of Figures~\ref{FigRedW} and \ref{FigRedC}, for every $\phi$ and $\psi$ such that $\phi\to_r\psi$ and for every $\Phi$ with flow $\phi$, the right columns of the tables provide reductions $\Phi\to_r\Psi$, where $\Psi$ has flow $\psi$, as follows. If $\Phi'\to_r\Psi'$ is the reduction provided by the table, then
+For $r\in\{\rwdcd,\rwdiu,\rwdwu,\rwdcu,\rcdiu,\rcdcu,\rcd\}$ and $r\colon\phi'\to\psi'$ as in the left columns of Figures~\ref{FigRedW} and \ref{FigRedC}, for every $\phi$ and $\psi$ such that $\phi\to_r\psi$ and for every $\Phi$ with flow $\phi$, the right columns of the tables provide reductions $\Phi\to_r\Psi$, where $\Psi$ has flow $\psi$, as follows. If $\Phi'\to_r\Psi'$ is the reduction provided by the table, then
 \[
 \Phi=
 \vlderivation              {
@@ -640,6 +655,16 @@ Flow rewriting system\/ $\frw$ is terminating.
 \begin{proof}
 At every reduction, either the number of vertices decreases, or it stays the same but the number of contraction and cocontraction vertices decreases.
 \end{proof}
+
+%---------------------------------------
+\begin{theorem}\label{TheoCPTerm}
+Flow rewriting system\/ $\frcp$ is terminating.
+\end{theorem}
+
+%---------------------------------------
+\begin{theorem}\label{TheoCdPCuPTerm}
+Flow rewriting system\/ $\{\rcd^\ppl,\rcu^\ppl\}$ is terminating.
+\end{theorem}
 
 %---------------------------------------
 \begin{theorem}\label{TheoCTerm}
