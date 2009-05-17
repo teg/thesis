@@ -6,6 +6,8 @@
 In Figure~\ref{FigRed}, we define graphical expressions of the kind $r\colon\phi'\to\psi'$, where $r$ is a name and $\phi'$ and $\psi'$ are flows.
 \end{definition}
 
+\TODO{In Figures~\ref{FigRed}, \ref{FigRedW} and \ref{FigRedC} extend the edges so the atomic flows on either side of the arrow has equal height.}
+
 \newcommand{\rwdcd}{{{\mathsf w}{\downarrow}{\hbox{-}}{\mathsf c}{\downarrow}}}
 \newcommand{\rwdiu}{{{\mathsf w}{\downarrow}{\hbox{-}}{\mathsf i}{\uparrow  }}}
 \newcommand{\rwdwu}{{{\mathsf w}{\downarrow}{\hbox{-}}{\mathsf w}{\uparrow  }}}
@@ -598,9 +600,11 @@ For $r\in\{\rwdcd,\rwdiu,\rwdwu,\rwdcu,\rcdiu,\rcdcu,\rcd\}$ and $r\colon\phi'\t
 We can deal with the remaining rules by employing dual derivations to the ones shown.
 \end{proof}
 
+\TODO{Check why the inference rule $\swi'$ taken from AFI used atoms instead of formulae.}
+
 %---------------------------------------
 \begin{remark}\label{RemIndep}
-The previous soundness theorem only depends on the switch and medial rules for the reductions in Figure~\ref{FigRedC}. Any system obtained from $\SKS$ by replacing $\swi$ and $\med$ with linear rules that can derive them would support a soundness theorem like the one above, for the same reduction rules. For example, we could think of replacing $\swi$ with the rule $\vlinf{\swi'}{}{\vls[(a.c).[b.d]]}{\vls([a.b].[c.d])}$, from which $\swi$ is derivable.
+The previous soundness theorem only depends on the switch and medial rules for the reductions in Figure~\ref{FigRedC}. Any system obtained from $\SKS$ by replacing $\swi$ and $\med$ with linear rules that can derive them would support a soundness theorem like the one above, for the same reduction rules. For example, we could think of replacing $\swi$ with the rule $\vlinf{\swi'}{}{\vls[(\alpha.\gamma).[\beta.\delta]]}{\vls([\alpha.\beta].[\gamma.\delta])}$, from which $\swi$ is derivable.
 \end{remark}
 
 

@@ -2,8 +2,12 @@
 
 \section{Extracting Flows from Derivations}
 
-%TODO: define atomic flows to always be considered modulo isomorphism
-%TODO: redo the following proposition once the definition of Formalism A is set in stone
+\TODO{Define atomic flows to always be considered modulo isomorphism.}
+
+\TODO{Redo the following proposition once the definition of Formalism A is set in stone.}
+
+\TODO{Does it look better with or without the names of structural rules...?}
+
 %---------------------------------------
 \begin{proposition}\label{PropUnFl}
 Given an\/ $\SKS$ derivation\/ $\Phi$, there is a unique atomic flow $\phi$ (modulo isomorphisms) such that:
@@ -14,24 +18,24 @@ Given an\/ $\SKS$ derivation\/ $\Phi$, there is a unique atomic flow $\phi$ (mod
 \item for each vertical composition $\vlsmash{\vlinf{\rho}{}{\Phi_2}{\Phi_1}}$ of\/ $\Phi$, where $\rho\in\{\aid,\aiu,\awd,\awu,\acd,\acu\}$ and $\vlinf{\rho}{}{\beta}{\alpha}$ is a rule instance, the atom occurrences in $\vlinf{\rho}{}{\beta}{\alpha}$ are mapped to edges of $\phi$ such that the edges are related with vertices as indicated below, for each possible case of the inference rules:
 \[
 \begin{array}{@{}ccc@{}ccc@{}}
-\vlinf{\aid}{}{\vls[a^\one.{\bar a^\two}]}{\ttt}&\mbox{to\/}&
+\vlinf{}{}{\vls[a^\one.{\bar a^\two}]}{\ttt}&\mbox{to\/}&
 \vcenter{\afaid\one{}{}\two{}{}}
 \quad,&\qquad
-\vlinf{\aiu}{}{\fff}{\vls(a^\one.{\bar a^\two})}&\mbox{to\/}&
+\vlinf{}{}{\fff}{\vls(a^\one.{\bar a^\two})}&\mbox{to\/}&
 \vcenter{\afaiu\one{}{}\two{}{}}
 \quad,\\
 \noalign{\medskip}
-\vlinf{\awd}{}{a^\one}{\fff}                    &\mbox{to\/}&
+\vlinf{}{}{a^\one}{\fff}                    &\mbox{to\/}&
 \vcenter{\afawd{}{}{}\one{}} 
 \quad,&\qquad
-\vlinf{\awu}{}{\ttt}{a^\one}                    &\mbox{to\/}&
+\vlinf{}{}{\ttt}{a^\one}                    &\mbox{to\/}&
 \vcenter{\afawu{}{}{}\one{}}
 \quad,\\
 \noalign{\medskip}
-\vlinf{\acd}{}{a^\three}{\vls[a^\one.a^\two]}   &\mbox{to\/}&
+\vlinf{}{}{a^\three}{\vls[a^\one.a^\two]}   &\mbox{to\/}&
 \vcenter{\afacd\one{}{}\two{}\three}
 \quad,&\qquad
-\vlinf{\acu}{}{\vls(a^\two.a^\three)}{a^\one}   &\mbox{to\/}&
+\vlinf{}{}{\vls(a^\two.a^\three)}{a^\one}   &\mbox{to\/}&
 \vcenter{\afacu\two{}{}\three{}\one}
 \quad,\\
 \end{array}
@@ -77,6 +81,14 @@ Given a derivation $\Phi$, we say that the unique atomic flow $\phi$ defined in 
 \begin{theorem}
 Every atomic flow is associated with some derivation.
 \end{theorem}
+
+\TODO{Show the first two derivations first with only their premiss/conclusion in the following proof, to make it more clear what we are trying to do.}
+
+\TODO{Reintroduce super switch.}
+
+\TODO{Decide on a convention of when to put the name of the derivation on the `stem' and when to say that the name equals the derivation.}
+
+\TODO{Use double lines instead of $\cdots$ and change the proof to fit to this.}
 
 %---------------------------------------
 \begin{proof}
