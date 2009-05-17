@@ -11,3 +11,5 @@
 .directory
 *.toc
 *.idx
+*.synctex.gz
+*.tmproj
