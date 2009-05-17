@@ -1244,3 +1244,140 @@ Refer to the atomics in Figure~\ref{FigFlowBreak}.
 	\item If there is a path from an upper edge $\epsilon''$ to a lower edge $\mu''$ in the atomic flow of $\Psi$ the path must pass through one of the three copies of either $\phi$ or $\psi$, hence there must be a path from the corresponding upper edge $\lambda''$ to the corresponding lower edge $\mu''$ in the atomic flow of $\Phi$.
 \end{itemize}
 \end{proof}
+
+\subsection{Unnamed Transformation}
+
+\TODO{Either rephrase this in terms of an atomic flow transformation and a soundness proof or move it away from here.}
+
+\TODO{Define for derivations instead of proofs. Use simple form of derivations with respect to a polarity assignment. Use the decomposed normal form, yet to be given a name, for derivations.}
+
+\TODO{Come up with a better name than cut-free form (as it is not an accurate description if we talk about derivations.).}
+
+\newcommand{\frqp}{{\mathsf{qp}}}
+
+\TODO{Use the symbol $\frqp$ to denote the following reduction.}
+
+%-------------------------------------------------------------------------------
+\begin{definition}\label{DefNorm}
+For $n>0$, let $\Pi$ be a proof in simple form over $\avec1n$, such that it and its atomic flow have shape
+\[
+\hbox{\phantom{$\vls[\alpha.{}]$}}
+\vlder\Psi
+      {}
+      {\vls[\llap{$\vls[\alpha.{}]$}
+            \vlinf{}{}\fff{\vls(a_1.\bar a_1^{\phi_1})}.\cdots.
+            \vlinf{}{}\fff{\vls(a_n.\bar a_n^{\phi_n})}]}
+      {\vls(\vlinf{}{}{\vls[a_1.\bar a_1^{\phi_1}]}\ttt.\cdots.
+            \vlinf{}{}{\vls[a_n.\bar a_n^{\phi_n}]}\ttt)}
+\qquad\text{and}\qquad
+\atomicflow{
+(17.75 ,16  )*{\afaidex{}{}{}{}{}{}{43}8};
+(14.25 ,14  )*{\afaidex{}{}{}{}{}{}{13}8};
+( 9    ,12  )*{\cdots};
+( 7    ,11  )*{\afvj2};
+(28.5  ,11  )*{\afvj2};
+(18.5  , 9  )*{\aflabelright{\phi_1}};
+(29.5  , 9  )*{\aflabelright{\phi_n}};
+( 1    , 6  )*{\copy\interdown};
+( 4    , 6  )*{\copy\weakdown};
+( 5.5  , 6  )*{\affr{13}8};
+( 6    , 6  )*{\copy\weakup};
+( 8    , 6  )*{\copy\contrdown};
+(10    , 6  )*{\copy\contrup};
+(16    , 6  )*{\copy\contrdown};
+(17.5  , 6  )*{\affr78};
+(18    , 6  )*{\copy\contrdown};
+(23    , 6  )*{\cdots};
+(27    , 6  )*{\copy\contrup};
+(28.5  , 6  )*{\affr78};
+(29    , 6  )*{\copy\contrup};
+( 7    , 1  )*{\afvj2};
+(28.5  , 1  )*{\afvj2};
+( 9    , 0  )*{\cdots};
+( 1    ,-1.5)*{\afvjm7};
+(14.25 ,-2  )*{\afaiuex{}{}{}{}{}{}{13}8};
+(17.75 ,-4  )*{\afaiuex{}{}{}{}{}{}{43}8}}
+\quad,
+\]
+
+for some derivation $\Psi$. For $0\le i\le n+1$, let $\theta_i\equiv\th in\avec1n$. For $0\le k\le n$, we define the derivations $\vlder{\Phi_k}{\SKS\setminus\{\aiu\}}{\vls[\alpha.\theta_{k+1}]}{\theta_k}$ as
+\[ %%%%% The \dimen's must be adjusted if fonts and layout parameters are changed
+\dimen0=2560000sp
+\kern\dimen0
+\vlder{\Psi_k}
+      {\SKS\setminus\{\aiu\}}
+      {\kern-\dimen0\vlsbr[\alpha.
+       \vlinf{\scriptstyle(n-1)\cdot\cod}
+             {}
+             {\theta_{k+1}}
+             {\vls[\vlder{}
+                         {\{\awu,\acu,\swi\}}
+                         {\theta_{k+1}}
+                         {\vlsbr(a_1
+                                .\;\;
+                                \vlder{\Gth k1n\avec1n}
+                                      {\{\awd,\awu\}}
+                                      {\theta_{k+1}\{a_1/\ttt\}}
+                                      {\theta_k    \{a_1/\fff\}})}
+                  \;\;\;.\vldots.\;\;\;
+                   \vlder{}
+                         {\{\awu,\acu,\swi\}}
+                         {\theta_{k+1}}
+                         {\vlsbr(a_n
+                                .\;\;
+                                \vlder{\Gth knn\avec1n}
+                                      {\{\awd,\awu\}}
+                                      {\theta_{k+1}\{a_n/\ttt\}}
+                                      {\theta_k    \{a_n/\fff\}})}
+                 ]}]                                              }  
+      {\vlinf{\llap{$\scriptstyle(n-1)\cdot\cou$}}
+             {}
+             {\vlsbr(\vlder{}
+                           {\{\awd,\acd,\swi\}}
+                           {\vls[a_1.\theta_k\{a_1/\fff\}]}
+                           {\theta_k                      }
+                    \;\;\;.\vldots.\;\;\;
+                     \vlder{}
+                           {\{\awd,\acd,\swi\}}
+                           {\vls[a_n.\theta_k\{a_n/\fff\}]}
+                           {\theta_k                      })}
+             {\theta_k                                    }}
+\quad,
+\]
+where $\Psi_k=\Psi\{\bar a_1^{\phi_1}/\theta_k\{a_1/\fff\},\dots,\bar a_n^{\phi_n}/\theta_k\{a_n/\fff\}\}$ and where we use Proposition~\ref{PropAuxNorm}. We define the \emph{cut-free form of\/ $\Pi$} as the following proof in $\SKS\setminus\{\aiu\}$:
+\[ %%%%% The \dimen's must be adjusted if fonts and layout parameters are changed
+\dimen0=910000sp
+\dimen1=2970000sp
+\dimen2=3870000sp
+\vlinf{n\cdot\gcd}
+      {\quad.}
+      \alpha
+      {\kern\dimen2\vlder{\Phi_0}
+             {}
+             {\kern-\dimen2
+              \vlsbr[\alpha
+                    .
+                    \kern\dimen1
+                    \vlder{\Phi_1}
+                          {}
+                          {\kern-\dimen1
+                           \vlsbr[\alpha
+                                 .
+                                 \cdots.\kern\dimen0
+                                 \begin{tabular}{@{}c@{}}
+                                 $\theta_2$\\
+                                 $\vdots$\\
+                                 $\kern-\dimen0
+                                  \vlsbr[\alpha
+                                        .
+                                        \vlder{\Phi_n}
+                                              {}
+                                              {\vlsbr[\alpha
+                                                     .\theta_{n+1}]}
+                                              {\theta_n}]$
+                                 \end{tabular}]}
+                          {\theta_1}]}
+            {\theta_0}}
+\]
+(We recall that $\theta_0\equiv\ttt$ and $\theta_{n+1}\equiv\fff$.)
+\end{definition}
