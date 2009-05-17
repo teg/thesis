@@ -70,7 +70,7 @@ and, for $\rho\in\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}$, the \
 respectively.
 \end{definition}
 
-%TODO: check and prove (Complexity paper by Paola and Alessio)
+\TODO{Check and prove (Complexity paper with Paola, Alessio and Lutz).}
 
 \begin{lemma}
 If there exists a derivation $\vlder{}{\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}}{\beta}{\alpha}$, then there exists a derivation $\vlder{\Phi}{\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}}{\beta}{\alpha}$, such that $|\Phi|\le|\alpha+\beta|^2$.
@@ -117,7 +117,66 @@ We show how to construct the first derivation, the second one can be done symmet
 for some $\xi'\vlhole$ and $\beta$ where $\beta$ is not a unit and $\Psi$ and $\Psi'$ exist by the inductive hypothesis.
 \end{proof}
 
-%TODO: introduce notation for super switch
+\TODO{Introduce notation for super switch.}
+
+\TODO{Use notation for super switch.}
+
+\TODO{Give the following derivation a name.}
+
+\begin{lemma}\label{LemDecompInt}
+Given a derivation $\vlder{}{}{\beta}{\alpha}$ with associated atomic flow $\phi$, there exists a derivation
+\[
+\vlder{}{\SKS\setminus\{\aid,\aiu\}}{\vlsbr[\beta\;.\;\vlinf{}{}{\fff}{\vls(b_m.\bar b_m)}\;.\;\cdots\;.\;\vlinf{}{}{\fff}{\vls(b_1.\bar b_1)}]}{\vlsbr(\vlinf{}{}{\vls[a_1.\bar a_1]}{\ttt}\;.\;\cdots\;.\;\vlinf{}{}{\vls[a_n.\bar a_n]}{\ttt}\;.\;\alpha)}
+\]
+with associated atomic flow $\phi$, for some atoms $a_1,\dots,a_n,b_1,\dots,b_m$.
+\end{lemma}
+
+\begin{proof}
+Using Lemma~\ref{LemSuperSwitch} apply the following transformations to each of the identity and cut instances in $\Phi$:
+\[
+\vlderivation
+{
+ \vlde{\Psi'}{}{\beta}
+ {
+  \vlde{\Psi}{}{\xi\left\{\vlinf{}{}{\vls[a.{\bar a}]}{\ttt}\right\}}
+  {
+   \vlhy{\alpha}
+  }
+ }
+}\quad\rightarrow\quad
+\vlderivation
+{
+ \vlde{\Psi'}{}{\beta}
+ {
+  \vlde{}{\{\swi\}}{\xi\vlsbr[a.{\bar a}]}
+  {
+   \vlhy{\vlsbr(\vlinf{}{}{\vls[a.{\bar a}]}{\ttt}\;\;.\;\;\vlder{\Psi}{}{\xi\{\ttt\}}{\alpha})}
+  }
+ }
+}\qquad\mbox{and}\qquad
+\vlderivation
+{
+ \vlde{\Psi'}{}{\beta}
+ {
+  \vlde{\Psi}{}{\xi\left\{\vlinf{}{}{\fff}{\vls(a.{\bar a})}\right\}}
+  {
+   \vlhy{\alpha}
+  }
+ }
+}\quad\rightarrow\quad
+\vlderivation
+{
+ \vlde{}{\{\swi\}}{\vlsbr[\vlder{\Psi'}{}{\beta}{\xi\{\fff\}}\;\;.\;\;\vlinf{}{}{\fff}{\vls(a.{\bar a})}]}
+ {
+  \vlde{\Psi}{}{\xi\vlsbr(a.{\bar a})}
+  {
+   \vlhy{\alpha}
+  }
+ }
+}\quad.
+\]
+\end{proof}
+
 
 \begin{lemma}\label{LemGenericContraction}
 Given a formula $\alpha$ and a positive integer $n$, there exist derivations $\vlupsmash{\vlder{}{\{\acd,\med\}}{\alpha}{\bigvee_{i=1}^{n}\alpha}}$ and $\vlupsmash{\vlder{}{\{\acu,\med\}}{\bigwedge_{i=1}^{n}\alpha}{\alpha}}$.
