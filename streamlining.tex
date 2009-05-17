@@ -1,5 +1,30 @@
 \chapter{Streamlining}
 
+\section{Preliminaries}
+
+\TODO{Define polarity assignments such that it makes sense to talk about the same polarity assignment for two flows where one flow has been transformed into the other.}
+
+\TODO{State and prove:
+\begin{enumerate}
+	\item Given an atomic flow $\phi$ and a polarity assignment $\pi$ there exists an atomic flow $\psi$, which is on simple form with respect to $\pi$, such that $\phi\to_\frfb\psi$.
+	\item For any two atomic flows $\phi$ and $\psi$ such that $\phi\to_\frfb\psi$ the size of $\psi$ is at most four times the size of $\phi$.
+	\item Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such that $\phi\to_\frfb\psi$ and $\phi$ is weakly streamlined with respect to $\pi$ then $\psi$ is weakly streamlined with respect to $\pi$.
+	\item Given an atomic flow $\phi$ and a polarity assignment $\pi$ there exists an atomic flow $\psi$, which is on simple form with respect to $\pi$ and which is normal for $\frc^\ppl$, such that $\phi\to_{\frc^\ppl}\psi$.
+	\item Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such that $\phi\to_{\frc^\ppl}\psi$ and $\phi$ is weakly streamlined with respect to $\pi$ then $\psi$ is weakly streamlined with respect to $\pi$ (maybe this should be proven for $\frc\cup\frw$).
+	\item Given an atomic flow $\phi$ and a polarity assignment $\pi$ there exists an atomic flow $\psi$, which is on simple form with respect to $\pi$ and which is normal for $\{\rcd^\ppl,\rcu^\ppl\}$, such that $\phi\to_{\{\rcd^\ppl,\rcu^\ppl\}}\psi$.
+	\item For any two atomic flows $\phi$ and $\psi$ such that $\phi\to_{\{\rcd^\ppl,\rcu^\ppl\}}\psi$ the size of $\psi$ is at most four times the size of $\phi$.
+\end{enumerate}
+}
+
+\TODO{Explain that
+\begin{enumerate}
+	\item Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such that $\phi\to_{\{\rcd^\ppl,\rcu^\ppl\}}\psi$ and $\phi$ is weakly streamlined with respect to $\pi$ then $\psi$ might NOT be weakly streamlined with respect to $\pi$.
+	\item Given two atomic flows $\phi$ and $\psi$ such that $\phi\to_{\frc^\ppl}\psi$, then $\psi$ might be exponentially bigger than $\phi$.
+\end{enumerate}
+}
+
+\TODO{Prove how we can transform from a weakly streamlined atomic flow to all of the other types of streamlined atomic flows using $\frw$ and $\frc$ and the cost of each transformation.}
+
 \section{The Normaliser}\label{SectNorm}
 
 \newcommand{\Norm}{\mathsf{Norm}}
@@ -455,4 +480,119 @@ where $\phi'_1$, $\phi''_1$, $\phi'_2$ and $\phi''_2$ contain no identity and no
 }\quad.
 \]
 By comparing the copies of $\phi_1$ with the copies of $\phi_2$ in $\Norm_2(\Phi,\phi_1,\phi_2)$ we can see why the procedure is non-confluent. We could trivially change our procedure to make the subflows more similar by permuting the weakening (resp., coweakening) vertices down (resp., up) in the second subflow. However, the subflows marked in red will still differ.
-\end{example} 
+\end{example}
+
+\section{The Exponential Procedure}
+
+\TODO{Prove how, given a polarity assignment $\pi$ and an atomic flow $\phi$ that is on simple form with respect to $\pi$ there exists an atomic flow $\psi$ such that $\phi\to_{\frsf^\star}\psi$ and $\psi$ is weakly streamlined with respect to $\pi$. Furthermore, if $\phi$ is weakly streamlined with respect to $\pi^{-1}$, then so is $\psi$.}
+
+\TODO{Prove (or state if it becomes too much of a mess) that $\{\frsf,\frfb\}$ is strongly normalising.}
+
+\TODO{Prove weak streamlining.}
+
+\section{The Quasi Polynomial Procedure}
+
+\TODO{Prove how, given a polarity assignment $\pi$ and an atomic flow $\phi$ that is on simple form with respect to $\pi$ there exists an atomic flow $\psi$ such that $\phi\to_{\frqp}\psi$ and $\psi$ is weakly streamlined with respect to $\pi$. Furthermore, if $\phi$ is weakly streamlined with respect to $\pi^{-1}$, then so is $\psi$.}
+
+\TODO{State the following theorem in terms of derivations instead of proofs and weakly streamlining instead of cut-elimination.}
+
+\begin{theorem}\label{ThPreNorm}
+Given any proof\/ $\Pi$ of $\alpha$ in\/ $\SKS$, we can construct a proof of $\alpha$ in\/ $\SKS\setminus\{\aiu\}$ in time quasipolynomial in the size of\/ $\Pi$.
+\end{theorem}
+
+%-------------------------------------------------------------------------------
+\begin{proof}
+By Theorem~\ref{ThSimpleForm} we can construct from $\Pi$, in polynomial time, a proof $\Pi'$ of $\alpha$ in simple form. We can then proceed with the construction of Definition~\ref{DefNorm}, to which we refer here. For $0\le k\le n$, constructing $\Phi_k$ requires quasipolynomial time because of Propositions~\ref{PropGenAtPol}, \ref{PropSubst} and \ref{PropAuxNorm} and Theorems~\ref{TheoQuas} and \ref{TheoThrDer}, and because obtaining $\Psi_k$ from $\Psi$ requires quasipolynomial time. Constructing the cut-free from of $\Pi'$ from $\Phi_0$, \dots, $\Phi_n$ is done in polynomial time.
+\end{proof}
+
+%-------------------------------------------------------------------------------
+\begin{figure}
+\[
+\atomicflow{
+(1,47)="A";
+"A"+(16,15  )*{\aflabelright{\phi'_0}};
+"A"+(12,14  )*{\afawdm{}{}{}{}};
+"A"+(12, 9  )*{\aflabelright\phi};
+"A"+( 2, 6  )*{\copy\interdown};
+"A"+( 5, 6  )*{\copy\weakdown};
+"A"+( 7, 6  )*{\copy\weakup};
+"A"+( 7, 6  )*{\affr{14}8};
+"A"+( 9, 6  )*{\copy\contrdown};
+"A"+(11, 6  )*{\copy\contrup};
+"A"+(9 , 4.5)*{\affr{19}{23}};
+"A"+(16, 4  )*{\afawdm{}{}{}{}};
+"A"+(12, 1  )*{\afvjm2};
+"A"+(14,-3  )*{\affr86};
+"A"+(14,-3  )*{\copy\contrdown};
+"A"+(14,-8.5)*{\afvjum5{}{\theta_1}};
+(15  ,35   )*{\vdots};
+(15  ,28.5 )*{\afvjdm5{}{\theta_k}};
+(22.5,26   )*{\aflabelright{\phi'_k}};
+(15  ,23   )*{\affr46};
+(15  ,23   )*{\copy\contrup};
+(13  ,19   )*{\afcjrm22};
+(17.5,15   )*{\afcjlm3{10}};
+(12  ,15   )*{\affr46};
+(12  ,15   )*{\copy\contrdown};
+(12  ,11   )*{\afvjm2};
+(22  ,10   )*{\aflabelright{\psi_k}};
+(12  , 9   )*{\aflabelright\phi};
+( 2  , 6   )*{\copy\interdown};
+( 5  , 6   )*{\copy\weakdown};
+( 7  , 6   )*{\copy\weakup};
+( 7  , 6   )*{\affr{14}8};
+( 9  , 6   )*{\copy\contrdown};
+(11  , 6   )*{\copy\contrup};
+(12  , 6   )*{\affr{25}{10}};
+(12  , 6   )*{\affr{26}{42}};
+(18  , 6   )*{\copy\contrdown};
+(19  , 6   )*{\affr68};
+(20  , 6   )*{\copy\contrup};
+(12  , 1   )*{\afvjm2};
+(19  , 1   )*{\afvjm2};
+(12  ,-3   )*{\affr46};
+(12  ,-3   )*{\copy\contrup};
+(18  ,-3   )*{\copy\weakdown};
+(19  ,-3   )*{\affr66};
+(20  ,-3   )*{\copy\weakup};
+(13  ,-7   )*{\afcjlm22};
+(17.5,-7   )*{\afcjrm32};
+(15  ,-11  )*{\affr46};
+(15  ,-11  )*{\copy\contrdown};
+(15  ,-16.5)*{\afvjum5{}{\theta_{k+1}}};
+(0,-35)="B";
+"B"+( 2  ,-15  )*{\afvjm{10}};
+"B"+(12  ,-14  )*{\afawum{}{}{}{}};
+"B"+(19  ,-14  )*{\afawum{}{}{}{}};
+"B"+( 2  , -6  )*{\copy\interdown};
+"B"+( 5  , -6  )*{\copy\weakdown};
+"B"+( 7  , -6  )*{\copy\weakup};
+"B"+( 7  , -6  )*{\affr{14}8};
+"B"+( 9  , -6  )*{\copy\contrdown};
+"B"+(11  , -6  )*{\copy\contrup};
+"B"+(18  , -6  )*{\copy\contrdown};
+"B"+(19  , -6  )*{\affr68};
+"B"+(20  , -6  )*{\copy\contrup};
+"B"+(11  , -4.5)*{\affr{23}{23}};
+"B"+(12  , -3  )*{\aflabelright\phi};
+"B"+(13  , -1  )*{\afcjrm22};
+"B"+(17.5, -1  )*{\afcjlm32};
+"B"+(15  ,  3  )*{\affr66};
+"B"+(15  ,  3  )*{\copy\contrup};
+"B"+(20  ,  6  )*{\aflabelright{\phi'_n}};
+"B"+(15  ,  8.5)*{\afvjdm5{}{\theta_n}};
+"B"+(15  ,  15 )*{\vdots};
+(-1.5, 28  )*{\afcjrm9{42}};
+( 0  ,-20  )*{\afcjrm4{44}};
+(-6  ,-24  )*{\afvjm{62}};
+(-2  ,-48.5)*{\afvjm{13}};
+(-4  ,-53  )*{\cdots};
+( 0  ,-53  )*{\cdots};
+(-2  ,-58  )*{\affr{10}6};
+(-2  ,-58  )*{\copy\contrdown};
+(-2  ,-63  )*{\afvjum4\alpha{}};
+}
+\]
+\caption{Atomic flow of a proof in cut-free form.}
+\label{FigNormFlow}
+\end{figure}
