@@ -20,6 +20,8 @@
    \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
    \atomicflow{(0,0)*{\afawu{}{}{}{}{}{}}}$}
 
+\TODO{Justify the following definitions in terms of `super-paths'.}
+
 %---------------------------------------
 \begin{definition}
 An atomic flow is \emph{weakly streamlined} if it can be represented as
@@ -48,6 +50,10 @@ An atomic flow is \emph{weakly streamlined} if it can be represented as
 (  5,-11)*{\afvjm3};
 }\quad.
 \]
+\end{definition}
+
+\begin{definition}
+A weakly streamlined atomic flow with no upper (resp., lower) edges is called \emph{weakly cut-free} (reps., \emph{weakly interaction-free}).
 \end{definition}
 
 %---------------------------------------
@@ -280,7 +286,7 @@ An atomic flow is \emph{on simple form with respect to the polarity assignment $
 ( 10,-5.5)*{\copy\contrdown};
 %---
 (  5,-11)*{\afvjm3};
-}\quad,
+}\quad.
 \]
 \end{definition}
 
@@ -367,3 +373,229 @@ Given a polarity assignment $\pi$, an atomic flow on simple form with respect to
 \]
 respectively.
 \end{proposition}
+
+%---------------------------------------
+\begin{definition}
+An atomic flow is \emph{weakly streamlined with respect to the polarity assignment $\pi$} if it can be represented as
+\[
+\atomicflow{
+(-21, 14)*{\afvjm4};
+(-21,  8)*{\affr88};
+(-22, 10)*{\aflabelleft{\ppl}};
+%-
+(-24,  0)*{\afvjm8};
+%-
+(-21, -8)*{\affr88};
+(-22, -6)*{\aflabelleft{\ppl}};
+(-21,-14)*{\afvjm4};
+%-
+( -6, 16)*{\afaidm{}{}{}{}{}{}};
+( -4,  8)*{\afvjm8};
+(-11,  8)*{\affr88};
+(-12, 10)*{\aflabelleft{\ppl}};
+(-16,  0)*{\afcjrm48};
+%-
+(-16,  0)*{\afcjlm48};
+(-11, -8)*{\affr88};
+(-12, -6)*{\aflabelleft{\ppl}};
+( -4, -8)*{\afvjm8};
+( -6,-16)*{\afaium{}{}{}{}{}{}};
+%--
+(  2, 10)*{\afvjm{12}};
+( -1,  0)*{\affr88};
+( -2,  2)*{\aflabelleft{\pmi}};
+(  2,-10)*{\afvjm{12}};
+}\qquad
+\atomicflow{
+(-5, 11)*{\afvjm3};
+%---
+( -5, 5.5)*{\affr{18}8};
+(-10, 5.5)*{\copy\contrup};
+( -5, 5.5)*{\copy\weakdown};
+(  0, 5.5)*{\copy\contrdown};
+( 10, 5.5)*{\affr88};
+( 10, 5.5)*{\copy\interdown};
+%---
+(-10, 0)*{\afvjm3};
+(  0, 0)*{\afvjm3};
+( 10, 0)*{\afvjm3};
+%---
+(-10,-5.5)*{\affr88};
+(-10,-5.5)*{\copy\interup};
+(  5,-5.5)*{\affr{18}8};
+(  0,-5.5)*{\copy\contrup};
+(  5,-5.5)*{\copy\weakup};
+( 10,-5.5)*{\copy\contrdown};
+%---
+(  5,-11)*{\afvjm3};
+}\quad.
+\]
+\end{definition}
+
+\TODO{Define the inverse of a polarity assignment.}
+
+\begin{proposition}
+Given a polarity assignment $\pi$, an atomic flow which is weakly streamlined with respect to both $\pi$ and $\pi^{-1}$ is weakly streamlined. 
+\end{proposition}
+
+\begin{proposition}
+Given a polarity assignment $\pi$, a weakly streamlined atomic flow with respect to $\pi$ that has no upper (resp., lower) edges is weakly cut-free (resp., weakly identity-free).
+\end{proposition}
+
+\TODO{Consider defining `ordered choice of components' somewhere else.}
+
+\TODO{This might be more suitable somewhere else.}
+
+\newcommand{\Core}{\mathsf{Core}}
+\begin{definition}\label{DefFlowCore}
+Given an atomic flow
+\[
+\phi\;\;=\;\;\atomicflow
+{
+(-13,0)*{\affr{22}{20}};
+(-5,8)*{\aflabelright{\phi_1}};
+%
+(-20, 9)*{\afvjdm{10}{\boldsymbol\epsilon'_1}{}};
+(-13, 8)*{\afaidm{}{}{}{}{}{}};
+( -6, 9)*{\afvjdm{10}{}{\boldsymbol\epsilon''_1}};
+(-18, 0)*{\affr{8}{8}};
+(-17, 2)*{\aflabelright{\phi'_1}};
+( -8, 0)*{\affr{8}{8}};
+( -7, 2)*{\aflabelright{\phi''_1}};
+( -6,-9)*{\afvjum{10}{}{\boldsymbol\iota''_1}};
+(-13,-8)*{\afaium{}{}{}{}{}{}};
+(-20,-9)*{\afvjum{10}{\boldsymbol\iota'_1}{}};
+%------------
+(0,0)*{\cdots};
+%------------
+(13,0)*{\affr{22}{20}};
+(21,8)*{\aflabelright{\phi_n}};
+%
+(20, 9)*{\afvjdm{10}{}{\boldsymbol\epsilon''_n}};
+(13, 8)*{\afaidm{}{}{}{}{}{}};
+( 6, 9)*{\afvjdm{10}{\boldsymbol\epsilon'_n}{}};
+( 8, 0)*{\affr{8}{8}};
+( 9, 2)*{\aflabelright{\phi'_n}};
+(18, 0)*{\affr{8}{8}};
+(19, 2)*{\aflabelright{\phi''_n}};
+( 6,-9)*{\afvjum{10}{\boldsymbol\iota'_n}{}};
+(13,-8)*{\afaium{}{}{}{}{}{}};
+(20,-9)*{\afvjum{10}{}{\boldsymbol\iota''_n}};
+%------------
+(  35,12)*{\afvjm4};
+%---
+(  35, 6)*{\affr{18}8};
+(41.5, 8)*{\aflabelright{\psi_1}};
+(  30, 6)*{\copy\contrup};
+(  35, 6)*{\copy\weakdown};
+(  40, 6)*{\copy\contrdown};
+(  50, 6)*{\affr88};
+(51.5, 8)*{\aflabelright{\psi_2}};
+(  50, 6)*{\copy\interdown};
+%---
+( 30, 0)*{\afvjum4{}{\tilde{\boldsymbol\epsilon}_1}};
+( 40, 0)*{\afvjum4{}{\tilde{\boldsymbol\epsilon}_2}};
+( 50, 0)*{\afvjum4{}{\tilde{\boldsymbol\epsilon}_3}};
+%---
+(  30,-6)*{\affr88};
+(31.5,-4)*{\aflabelright{\psi_3}};
+(  30,-6)*{\copy\interup};
+(  45,-6)*{\affr{18}8};
+(51.5,-4)*{\aflabelright{\psi_4}};
+(  40,-6)*{\copy\contrup};
+(  45,-6)*{\copy\weakup};
+(  50,-6)*{\copy\contrdown};
+%---
+( 45,-12)*{\afvjm4};
+}\quad,
+\]
+where, for $1\le i\le n$, $\phi'_i$ and $\phi''_i$ contain no identity and no cut vertices and $\phi_i$ is a connected, non-weakly-streamlined subflow, we define the \emph{core of $\phi$}, denoted $\Core(\phi)$, to be
+\[
+\atomicflow
+{
+(-21,11)*{\afvjdm{14}{\boldsymbol\epsilon'_1}{}};
+(-17,16)*{\afvjd4{}{\lambda'_1}};
+(-17,10)*{\affr{6}{8}};
+(-17,10)*{\copy\contrup};
+(-17, 5)*{\afvjm{2}};
+(-18, 0)*{\affr{8}{8}};
+(-17, 2)*{\aflabelright{\phi'_1}};
+(-21,-11)*{\afvjum{14}{\boldsymbol\iota'_1}{}};
+(-17,-16)*{\afvju4{}{\mu'_1}};
+(-17,-10)*{\affr{6}{8}};
+(-17,-10)*{\copy\contrdown};
+(-17, -5)*{\afvjm{2}};
+%
+( -9,16)*{\afvjd4{}{\lambda''_1}};
+( -9,10)*{\affr{6}{8}};
+( -9,10)*{\copy\contrup};
+( -9, 5)*{\afvjm{2}};
+( -5,11)*{\afvjdm{14}{}{\boldsymbol\epsilon''_1}};
+( -8, 0)*{\affr{8}{8}};
+( -7, 2)*{\aflabelright{\phi''_1}};
+( -9,-16)*{\afvju4{}{\mu''_1}};
+( -9,-10)*{\affr{6}{8}};
+( -9,-10)*{\copy\contrdown};
+( -9, -5)*{\afvjm{2}};
+( -5,-11)*{\afvjum{14}{}{\boldsymbol\iota''_1}};
+( -8, 0)*{\affr{8}{8}};
+%------------
+(0,0)*{\cdots};
+%------------
+( 9,16)*{\afvjd4{}{\lambda'_n}};
+( 9,10)*{\affr{6}{8}};
+( 9,10)*{\copy\contrup};
+( 9, 5)*{\afvjm{2}};
+( 5,11)*{\afvjdm{14}{\boldsymbol\epsilon'_n}{}};
+( 8, 0)*{\affr{8}{8}};
+( 9, 2)*{\aflabelright{\phi'_n}};
+( 9,-16)*{\afvju4{}{\mu'_n}};
+( 9,-10)*{\affr{6}{8}};
+( 9,-10)*{\copy\contrdown};
+( 9, -5)*{\afvjm{2}};
+( 5,-11)*{\afvjum{14}{\boldsymbol\iota'_n}{}};
+( 8, 0)*{\affr{8}{8}};
+%
+(21,11)*{\afvjdm{14}{}{\boldsymbol\epsilon''_n}};
+(17,16)*{\afvjd4{}{\lambda''_n}};
+(17,10)*{\affr{6}{8}};
+(17,10)*{\copy\contrup};
+(17, 5)*{\afvjm{2}};
+(18, 0)*{\affr{8}{8}};
+(19, 2)*{\aflabelright{\phi''_n}};
+(21,-11)*{\afvjum{14}{}{\boldsymbol\iota''_n}};
+(17,-16)*{\afvju4{}{\mu''_n}};
+(17,-10)*{\affr{6}{8}};
+(17,-10)*{\copy\contrdown};
+(17, -5)*{\afvjm{2}};
+%---------
+(  35,14)*{\afvjm8};
+%---
+(  35, 6)*{\affr{18}8};
+(41.5, 8)*{\aflabelright{\psi_1}};
+(  30, 6)*{\copy\contrup};
+(  35, 6)*{\copy\weakdown};
+(  40, 6)*{\copy\contrdown};
+(  50, 6)*{\affr88};
+(51.5, 8)*{\aflabelright{\psi_2}};
+(  50, 6)*{\copy\interdown};
+%---
+( 30, 0)*{\afvjum4{}{\tilde{\boldsymbol\epsilon}_1}};
+( 40, 0)*{\afvjum4{}{\tilde{\boldsymbol\epsilon}_2}};
+( 50, 0)*{\afvjum4{}{\tilde{\boldsymbol\epsilon}_3}};
+%---
+(  30,-6)*{\affr88};
+(31.5,-4)*{\aflabelright{\psi_3}};
+(  30,-6)*{\copy\interup};
+(  45,-6)*{\affr{18}8};
+(51.5,-4)*{\aflabelright{\psi_4}};
+(  40,-6)*{\copy\contrup};
+(  45,-6)*{\copy\weakup};
+(  50,-6)*{\copy\contrdown};
+%---
+( 45,-14)*{\afvjm8};
+}\quad.
+\]
+For every $1\le i\le n$, the \emph{new upper edge of} $\phi'_i$ (resp., $\phi''_i$) is $\lambda'_i$ (resp., $\lambda''_i$), the \emph{new lower edge of} $\phi'_i$ (resp., $\phi''_i$) is $\mu'_i$ (resp., $\mu''_i$) and the \emph{new upper} (resp., \emph{lower}) \emph{edges of} $\phi_i$ are $\lambda'_i$ and $\lambda''_i$ (resp., $\mu'_i$ and $\mu''_i$).
+We say that $\phi_1$, $\dots$, $\phi_n$ is an \emph{ordered choice of components from $\phi$}.
+\end{definition}
