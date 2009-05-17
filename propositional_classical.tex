@@ -231,38 +231,3 @@ Finally, we show the inductive case, $n>2$:
 \begin{remark}\label{RemGenericContraction}
 In the non-atomic version of system $\SKS$ the derivations shown in Lemma~\ref{LemGenericContraction} correspond to repeated applications of (co)contractions. For this reason we sometimes write the inference rules $\vlinf{n\cdot\cod}{}{\alpha}{\bigvee_{i=1}^{n}\alpha}$ and $\vlinf{n\cdot\cou}{}{\bigwedge_{i=1}^{n}\alpha}{\alpha}$ instead of the derivations $\vlder{}{\{\acd,\med\}}{\alpha}{\bigvee_{i=1}^{n}\alpha}$ and $\vlupsmash{\vlder{}{\{\acu,\med\}}{\bigwedge_{i=1}^{n}\alpha}{\alpha}}$, respectively.
 \end{remark}
-
-\section{A System with Implication}
-
-\newcommand{\inte}{\mathsf{i}}
-\newcommand{\wea  }{\mathsf{w}}
-\newcommand{\con  }{\mathsf{c}}
-\newcommand{\wead }{{\wea{\downarrow}}}
-\newcommand{\cond }{{\con{\downarrow}}}
-\newcommand{\weau }{{\wea{\uparrow}}}
-\newcommand{\conu }{{\con{\uparrow}}}
-\newcommand{\swio }{\mathsf{s_1}}
-\newcommand{\swit }{\mathsf{s_2}}
-\newcommand{\asso }{\mathsf{ass}}
-
-\begin{definition}
-
-\[
-\vlinf{\swi }{}{\vls[(\alpha.\beta).\gamma]}{\vls(\alpha.[\beta.\gamma])}\qquad
-\vlinf{\swio}{}{\vls(\beta\vlim(\alpha.\gamma))}{\vls(\alpha.(\beta\vlim\gamma))}\qquad
-\vlinf{\swit}{}{\vls((\alpha\vlim\beta)\vlim\gamma)}{\vls(\alpha.(\beta\vlim\gamma))}\qquad
-\vlinf{\asso}{}{\vls[(\alpha\vlim\beta).\gamma]}{\vls(\alpha\vlim[\beta.\gamma])}
-\]
-
-\[
-\vlinf{\cond}{}{\alpha}{\vls[\alpha.\alpha]}\qquad
-\vlinf{\conu}{}{\vls(\alpha.\alpha)}{\alpha}\qquad
-\vlinf{\wead}{}{\alpha}{\fff}\qquad
-\vlinf{\weau}{}{\ttt}{\alpha}\qquad
-\vlinf{\inte}{}{\vls(\alpha\vlim\alpha)}{\ttt}
-\]
-\end{definition}
-
-\begin{theorem}
-The above system is implicationally complete for propositional classical logic.
-\end{theorem}
