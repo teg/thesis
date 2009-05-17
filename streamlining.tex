@@ -1,3 +1,458 @@
 \chapter{Streamlining}
-\section{The Core}
-\section{The Normaliser}
+
+\section{The Normaliser}\label{SectNorm}
+
+\newcommand{\Norm}{\mathsf{Norm}}
+\begin{definition}
+For every $n\ge0$ the \emph{normaliser of degree n}, $\Norm_n$, is an operator whose arguments are a derivation $\vlder{\Phi}{}{\beta}{\alpha}$, with atomic flow $\phi$, and $\phi_1$, $\dots$, $\phi_n$, an ordered choice of components from $\phi$; let
+\[
+\Core(\Phi)=
+\vlder{}{}{\vls[\beta.(a_1^{\mu'_1}.\bar a_1).\dots.(a_n^{\mu'_n}.\bar a_n)]}{\vls([a_1^{\lambda'_1}.\bar a_1].\dots.[a_n^{\lambda'_n}.\bar a_n].\alpha)}
+\]
+such that for every $1\le i\le n$, we have that $\lambda'_i$ (resp., $\mu'_i$) is the new upper (resp., lower) edge of $\phi_i$, and let
+\[
+\Psi=\Break(\Break(\dots(\Break(\Core(\Phi),a^{\lambda'_n}_n,a^{\mu'_n}_n))\dots),a^{\lambda'_1}_1,a^{\mu'_1}_1)\quad,
+\]
+then
+\[
+\Norm_n(\Phi,\phi_1,\dots,\phi_n)=
+\vlder{\Psi}{}{\vlsbr[\beta\;.\;\vlinf{}{}{\fff}{\vls(a_1.\bar a_1)}\;.\;\cdots\;.\;\vlinf{}{}{\fff}{\vls(a_n.\bar a_n)}]}{\vlsbr(\vlinf{}{}{\vls[a_1.\bar a_1]}{\ttt}\;.\;\cdots\;.\;\vlinf{}{}{\vls[a_n.\bar a_n]}{\ttt}\;.\;\alpha)}\quad.
+\]
+\end{definition}
+
+\begin{theorem}
+Given a derivation $\vlder{\Phi}{}{\beta}{\alpha}$, with atomic flow $\phi$, and $\phi_1$, $\dots$, $\phi_n$, an ordered choice of components from $\phi$, the derivation $\Norm_n(\Phi,\phi_1,\dots,\phi_n)$ is weakly streamlined and has the same premiss and conclusion as $\Phi$.
+\end{theorem}
+
+\begin{proof}
+Let
+\[
+\Norm_n(\Phi,\phi_1,\dots,\phi_n)=
+\vlder{\Psi}{}{\vlsbr[\beta\;.\;\vlinf{}{}{\fff}{\vls(a^{\mu'_1}_1.\bar a^{\mu''_1}_1)}\;.\;\cdots\;.\;\vlinf{}{}{\fff}{\vls(a^{\mu'_n}_n.\bar a^{\mu''_n}_n)}]}{\vlsbr(\vlinf{}{}{\vls[a^{\lambda'_1}_1.\bar a^{\lambda''_1}_1]}{\ttt}\;.\;\cdots\;.\;\vlinf{}{}{\vls[a^{\lambda'_n}_n.\bar a^{\lambda'_n}_n]}{\ttt}\;.\;\alpha)}\quad.
+\]
+By induction on Proposition~\ref{PropPathBreak} it follows that, for $1\le i\le n$, there are no paths from $a^{\lambda'_i}_i$ to $a^{\mu'_i}_i$ and no paths from $\bar a^{\lambda''_i}_i$ to $\bar a^{\mu''_i}_i$. It then follows, by Definition~\ref{DefFlowCore}, that $\Norm_n(\Phi,\phi_1,\dots,\phi_n)$ is weakly streamlined.
+\end{proof}
+
+\begin{example}
+Given a derivation $\Phi$ with atomic flow
+\[
+\phi\;\;=\;\;\atomicflow
+{
+(-13,0)*{\affr{22}{20}};
+(-5,8)*{\aflabelright{\phi_1}};
+%
+(-20, 9)*{\afvjm{10}};
+(-13, 8)*{\afaid{}{}{}{}{}{}};
+( -6, 9)*{\afvjm{10}};
+(-18, 0)*{\affr{8}{8}};
+(-17, 2)*{\aflabelright{\phi'_1}};
+( -8, 0)*{\affr{8}{8}};
+( -7, 2)*{\aflabelright{\phi''_1}};
+( -6,-9)*{\afvjm{10}};
+(-13,-8)*{\afaiu{}{}{}{}{}{}};
+(-20,-9)*{\afvjm{10}};
+%------------
+(13,0)*{\affr{22}{20}};
+(21,8)*{\aflabelright{\phi_2}};
+%
+(20, 9)*{\afvjm{10}};
+(13, 8)*{\afaid{}{}{}{}{}{}};
+( 6, 9)*{\afvjm{10}};
+( 8, 0)*{\affr{8}{8}};
+( 9, 2)*{\aflabelright{\phi'_n}};
+(18, 0)*{\affr{8}{8}};
+(19, 2)*{\aflabelright{\phi''_n}};
+( 6,-9)*{\afvjm{10}};
+(13,-8)*{\afaiu{}{}{}{}{}{}};
+(20,-9)*{\afvjm{10}};
+}\qquad
+\atomicflow
+{
+(0,9)*{\afvjm{10}};
+(0,0)*{\affr88};
+(2,2)*{\aflabelright{\psi}};
+(0,-9)*{\afvjm{10}};
+}\quad,
+\]
+where $\phi'_1$, $\phi''_1$, $\phi'_2$ and $\phi''_2$ contain no identity and no cut vertices and $\phi_1$ and $\phi_2$ are connected, non-weakly-streamlined subflows, the atomic flow of $\Norm_2(\Phi,\phi'_1,\phi'_2)$ is
+\[
+\atomicflow
+{
+%cocontraction - top
+(12,43.5)*{\afvjm{3}};
+(12,38)*{\affr{34}8};
+(12,38)*{\copy\contrup};
+(-18,46)*{\afaidex{}{}{}{}{}{}31};
+(-24,38)*{\affr{10}8};
+(-24,38)*{\copy\contrup};
+(-12,38)*{\affr{10}8};
+(-12,38)*{\copy\contrup};
+%contraction - bot
+(-12,-43.5)*{\afvjm{3}};
+(-12,-38)*{\affr{34}8};
+(-12,-38)*{\copy\contrdown};
+(18,-46)*{\afaiuex{}{}{}{}{}{}31};
+(24,-38)*{\affr{10}8};
+(24,-38)*{\copy\contrdown};
+(12,-38)*{\affr{10}8};
+(12,-38)*{\copy\contrdown};
+%---------------------
+(4,-20)="D";
+(0,-10)="Dhalf";
+%----------------
+%%first
+(-20,0)="B";
+% cocontractions
+"B"-"D"-"D"-(-12,7)="A";
+"A"+(4,-4)*{\afcjrm{16}{10}};
+"A"+(8,-4)*{\afcjrm{16}{10}};
+"A"+(12,-4)*{\afcjrm{16}{10}};
+"A"+"Dhalf"+"Dhalf"+(4,-9)*{\afvjm{40}};
+"A"+"Dhalf"+(0,-9)*{\afvjm{20}};
+"A"+(-12,-4)*{\afvj{10}};
+"A"+(-4,-4)*{\afcjr{8}{10}};
+% contractions
+"B"+"D"+"D"+(-12,7)="A";
+"A"+(4,4)*{\afvjm{10}};
+"A"+(0,4)-"Dhalf"*{\afvjm{30}};
+"A"+(-4,4)-"Dhalf"-"Dhalf"*{\afvjm{50}};
+"A"-(-20,-4)*{\afcjl{24}{10}};
+"A"-(-28,-4)*{\afcjl{32}{10}};
+%---
+% top boxes
+"B"-"D"="A";
+"A"+( 0,-8)*{\afawu{}{}{}{}{}};
+"A"+( 0, 0)*{\affr{10}{8}};
+"A"+( 2, 2)*{\aflabelright{\phi_1}};
+% join one
+"A"+(4,-10)*{\afvjcol{12}{Red}};
+% middle boxes
+"B"="A";
+"A"+(-4, 8)*{\afawd{}{}{}{}{}};
+"A"+( 4,-8)*{\afawu{}{}{}{}{}};
+"A"+( 0, 0)*{\affr{10}{8}};
+"A"+( 2, 2)*{\aflabelright{\phi_1}};
+% join two
+"A"+(0,-10)*{\afvjcol{12}{Red}};
+% bottom boxes
+"B"+"D"="A";
+"A"+(0, 8)*{\afawd{}{}{}{}{}};
+"A"+(0, 0)*{\affr{10}{8}};
+"A"+( 2, 2)*{\aflabelright{\phi_1}};
+%----------------
+%%second
+(0,0)="B";
+% cocontractions
+"B"-"D"-"D"-(-12,7)="A";
+"A"+(0,-4)*{\afcjrm8{10}};
+"A"+(4,-4)*{\afcjrm8{10}};
+"A"+(8,-4)*{\afcjrm8{10}};
+"A"+"Dhalf"+"Dhalf"+(4,-9)*{\afvjm{40}};
+"A"+"Dhalf"+(0,-9)*{\afvjm{20}};
+"A"+(-20,-4)*{\afcjl{16}{10}};
+"A"+(-12,-4)*{\afcjl{8}{10}};
+% contractions
+"B"+"D"+"D"+(-12,7)="A";
+"A"-(0,-4)*{\afcjrm8{10}};
+"A"-(4,-4)*{\afcjrm8{10}};
+"A"-(8,-4)*{\afcjrm8{10}};
+"A"-"Dhalf"-"Dhalf"-(4,-9)*{\afvjm{40}};
+"A"-"Dhalf"-(0,-9)*{\afvjm{20}};
+"A"-(-20,-4)*{\afcjl{16}{10}};
+"A"-(-12,-4)*{\afcjl{8}{10}};
+%---
+% top boxes
+"B"-"D"="A";
+"A"+( 0,-8)*{\afawu{}{}{}{}{}};
+"A"+( 0, 0)*{\affr{10}{8}};
+"A"+( 2, 2)*{\aflabelright{\phi_1}};
+% join one
+"A"+(4,-10)*{\afvjcol{12}{Red}};
+% middle boxes
+"B"="A";
+"A"+(-4, 8)*{\afawd{}{}{}{}{}};
+"A"+( 4,-8)*{\afawu{}{}{}{}{}};
+"A"+( 0, 0)*{\affr{10}{8}};
+"A"+( 2, 2)*{\aflabelright{\phi_1}};
+% join two
+"A"+(0,-10)*{\afvjcol{12}{Red}};
+% bottom boxes
+"B"+"D"="A";
+"A"+(0, 8)*{\afawd{}{}{}{}{}};
+"A"+(0, 0)*{\affr{10}{8}};
+"A"+( 2, 2)*{\aflabelright{\phi_1}};
+%----------------
+%%third
+(20,0)="B";
+% cocontractions
+"B"-"D"-"D"-(-12,7)="A";
+"A"+"Dhalf"+"Dhalf"+(4,-4)*{\afvjm{50}};
+"A"+"Dhalf"+(0,-4)*{\afvjm{30}};
+"A"+(-4,-4)*{\afvjm{10}};
+"A"+(-20,-4)*{\afcjl{24}{10}};
+"A"+(-28,-4)*{\afcjl{32}{10}};
+% contractions
+"B"+"D"+"D"+(-12,7)="A";
+"A"-(4,-4)*{\afcjrm{16}{10}};
+"A"-(8,-4)*{\afcjrm{16}{10}};
+"A"-(12,-4)*{\afcjrm{16}{10}};
+"A"-"Dhalf"-"Dhalf"-(4,-9)*{\afvjm{40}};
+"A"-"Dhalf"-(0,-9)*{\afvjm{20}};
+"A"-(-12,-4)*{\afvj{10}};
+"A"-(-4,-4)*{\afcjr{8}{10}};
+%---
+% top boxes
+"B"-"D"="A";
+"A"+( 0,-8)*{\afawu{}{}{}{}{}};
+"A"+( 0, 0)*{\affr{10}{8}};
+"A"+( 2, 2)*{\aflabelright{\phi_1}};
+% join one
+"A"+(4,-10)*{\afvjcol{12}{Red}};
+% middle boxes
+"B"="A";
+"A"+(-4, 8)*{\afawd{}{}{}{}{}};
+"A"+( 4,-8)*{\afawu{}{}{}{}{}};
+"A"+( 0, 0)*{\affr{10}{8}};
+"A"+( 2, 2)*{\aflabelright{\phi_1}};
+% join two
+"A"+(0,-10)*{\afvjcol{12}{Red}};
+% bottom boxes
+"B"+"D"="A";
+"A"+(0, 8)*{\afawd{}{}{}{}{}};
+"A"+(0, 0)*{\affr{10}{8}};
+"A"+( 2, 2)*{\aflabelright{\phi_1}};
+}
+\]
+\[
+\atomicflow
+{
+(12,-52)="D";
+% cocontractions
+(18,-11)="A";
+%
+"A"+(6,5.5)*{\afvjm3};
+"A"+(6,0)*{\affr{34}8};
+"A"+(6,0)*{\copy\contrup};
+"A"+(2,-30)*{\afvjm{52}};
+"A"+(6,-30)*{\afvjm{52}};
+"A"+(10,-34)*{\afvjm{60}};
+"A"+(14,-56)*{\afvjm{104}};
+"A"+(18,-56)*{\afvjm{104}};
+"A"+(22,-60)*{\afvjm{112}};
+% === BOX ONE ===
+(0,-27)="A";
+%-
+"A"+( -6,24)*{\afaidex{}{}{}{}{}{}31};
+%-
+"A"+(-12,16)*{\affr{10}8};
+"A"+(-12,16)*{\copy\contrup};
+"A"+(  0,16)*{\affr{10}8};
+"A"+(  0,16)*{\copy\contrup};
+%-
+"A"+(-16,8)*{\afvj8};
+"A"+(-8,8)*{\afcjr88};
+"A"+(0,8)*{\afcjrm{16}8};
+%
+"A"+(-8,8)*{\afcjl88};
+"A"+(0,8)*{\afvj8};
+"A"+(8,8)*{\afcjrm88};
+%
+"A"+(0,8)*{\afcjl{16}8};
+"A"+(8,8)*{\afcjl88};
+"A"+(16,8)*{\afvjm8};
+%-
+"A"+(-12,0)*{\affr{10}8};
+"A"+(0,0)*{\affr{10}8};
+"A"+(12,0)*{\affr{10}8};
+"A"+(-10,2)*{\aflabelright{\phi_2}};
+"A"+(2,2)*{\aflabelright{\phi_2}};
+"A"+(14,2)*{\aflabelright{\phi_2}};
+%-
+"A"+(-8,-8)*{\afcjl88};
+"A"+(0,-8)*{\afcjlcol{16}8{Red}};
+%-
+"A"+(-8,-8)*{\afcjrm88};
+"A"+(0,-8)*{\afvj8};
+"A"+(8,-8)*{\afcjlcol88{Red}};
+%
+"A"+(0,-8)*{\afcjrm{16}8};
+"A"+(8,-8)*{\afcjr88};
+"A"+(16,-8)*{\afvjcol8{Red}};
+%
+"A"+(  0,-16)*{\affr{10}8};
+"A"+(  0,-16)*{\copy\contrdown};
+"A"+( 12,-16)*{\affr{10}8};
+"A"+( 12,-16)*{\copy\contrdown};
+%---
+"A"+(0,-24)*{\afawu{}{}{}{}};
+"A"+(12,-26)*{\afvjcol{12}{Red}};
+% === BOX TWO ===
+"A"+"D"="A";
+%-
+"A"+(-12,24)*{\afawd{}{}{}{}};
+%-
+"A"+(-12,16)*{\affr{10}8};
+"A"+(-12,16)*{\copy\contrup};
+"A"+(  0,16)*{\affr{10}8};
+"A"+(  0,16)*{\copy\contrup};
+%-
+"A"+(-16,8)*{\afvj8};
+"A"+(-8,8)*{\afcjrcol88{Red}};
+"A"+(0,8)*{\afcjrm{16}8};
+%
+"A"+(-8,8)*{\afcjl88};
+"A"+(0,8)*{\afvjcol8{Red}};
+"A"+(8,8)*{\afcjrm88};
+%
+"A"+(0,8)*{\afcjl{16}8};
+"A"+(8,8)*{\afcjlcol88{Red}};
+%-
+"A"+(-12,0)*{\affr{10}8};
+"A"+(0,0)*{\affr{10}8};
+"A"+(12,0)*{\affr{10}8};
+"A"+(-10,2)*{\aflabelright{\phi_2}};
+"A"+(2,2)*{\aflabelright{\phi_2}};
+"A"+(14,2)*{\aflabelright{\phi_2}};
+%-
+"A"+(-8,-8)*{\afcjlcol88{Red}};
+"A"+(0,-8)*{\afcjl{16}8};
+%-
+"A"+(-8,-8)*{\afcjrm88};
+"A"+(0,-8)*{\afvjcol8{Red}};
+"A"+(8,-8)*{\afcjl88};
+%
+"A"+(0,-8)*{\afcjrm{16}8};
+"A"+(8,-8)*{\afcjrcol88{Red}};
+"A"+(16,-8)*{\afvj8};
+%
+"A"+(  0,-16)*{\affr{10}8};
+"A"+(  0,-16)*{\copy\contrdown};
+"A"+( 12,-16)*{\affr{10}8};
+"A"+( 12,-16)*{\copy\contrdown};
+%---
+"A"+(12,-24)*{\afawu{}{}{}{}};
+"A"+(0,-26)*{\afvjcol{12}{Red}};
+% === BOX THREE ===
+"A"+"D"="A";
+%-
+"A"+(  0,24)*{\afawd{}{}{}{}};
+%-
+"A"+(-12,16)*{\affr{10}8};
+"A"+(-12,16)*{\copy\contrup};
+"A"+(  0,16)*{\affr{10}8};
+"A"+(  0,16)*{\copy\contrup};
+%-
+"A"+(-16,8)*{\afvjcol8{Red}};
+"A"+(-8,8)*{\afcjr88};
+"A"+(0,8)*{\afcjrm{16}8};
+%
+"A"+(-8,8)*{\afcjlcol88{Red}};
+"A"+(0,8)*{\afvj8};
+"A"+(8,8)*{\afcjrm88};
+%
+"A"+(0,8)*{\afcjlcol{16}8{Red}};
+"A"+(8,8)*{\afcjl88};
+%-
+"A"+(-12,0)*{\affr{10}8};
+"A"+(0,0)*{\affr{10}8};
+"A"+(12,0)*{\affr{10}8};
+"A"+(-10,2)*{\aflabelright{\phi_2}};
+"A"+(2,2)*{\aflabelright{\phi_2}};
+"A"+(14,2)*{\aflabelright{\phi_2}};
+%-
+"A"+(-16,-8)*{\afvjm8};
+"A"+(-8,-8)*{\afcjl88};
+"A"+(0,-8)*{\afcjl{16}8};
+%-
+"A"+(-8,-8)*{\afcjrm88};
+"A"+(8,-8)*{\afcjl88};
+"A"+(0,-8)*{\afvj8};
+%
+"A"+(0,-8)*{\afcjrm{16}8};
+"A"+(8,-8)*{\afcjr88};
+"A"+(16,-8)*{\afvj8};
+%
+"A"+(  0,-16)*{\affr{10}8};
+"A"+(  0,-16)*{\copy\contrdown};
+"A"+( 12,-16)*{\affr{10}8};
+"A"+( 12,-16)*{\copy\contrdown};
+%-
+"A"+(  6,-24)*{\afaiuex{}{}{}{}{}{}31};
+% contractions
+"A"+(-20,-16)="A";
+"A"+(-20,60)*{\afvjm{112}};
+"A"+(-16,56)*{\afvjm{104}};
+"A"+(-12,56)*{\afvjm{104}};
+"A"+(-8,34)*{\afvjm{60}};
+"A"+(-4,30)*{\afvjm{52}};
+"A"+( 0,30)*{\afvjm{52}};
+"A"+(-4,0)*{\affr{34}8};
+"A"+(-4,0)*{\copy\contrdown};
+"A"+(-4,-5.5)*{\afvjm3};
+}
+\]
+\[
+\atomicflow{
+(0,34.5)*{\afvjm3};
+(0,29)*{\affr{82}8};
+(0,29)*{\copy\contrup};
+%
+(0,-29)*{\affr{82}8};
+(0,-29)*{\copy\contrdown};
+(0,-34.5)*{\afvjm3};
+%-------------------
+(30,0)="B";
+%---------------
+(0,0)-"B"="A";
+"A"+(-10,14.5)*{\afvjm{21}};
+"A"+(0,14.5)*{\afvjm{21}};
+"A"+(10,14.5)*{\afvjm{21}};
+%---
+"A"+(-10,0)*{\affr88};
+"A"+( -9,2)*{\aflabelright\psi};
+"A"+(  0,0)*{\affr88};
+"A"+(  1,2)*{\aflabelright\psi};
+"A"+( 10,0)*{\affr88};
+"A"+( 11,2)*{\aflabelright\psi};
+%---
+"A"+(-10,-14.5)*{\afvjm{21}};
+"A"+(0,-14.5)*{\afvjm{21}};
+"A"+(10,-14.5)*{\afvjm{21}};
+%---------------
+(0,0)="A";
+%---
+"A"+(-10,14.5)*{\afvjm{21}};
+"A"+(0,14.5)*{\afvjm{21}};
+"A"+(10,14.5)*{\afvjm{21}};
+%---
+"A"+(-10,0)*{\affr88};
+"A"+( -9,2)*{\aflabelright\psi};
+"A"+(  0,0)*{\affr88};
+"A"+(  1,2)*{\aflabelright\psi};
+"A"+( 10,0)*{\affr88};
+"A"+( 11,2)*{\aflabelright\psi};
+%---
+"A"+(-10,-14.5)*{\afvjm{21}};
+"A"+(0,-14.5)*{\afvjm{21}};
+"A"+(10,-14.5)*{\afvjm{21}};
+%---------------
+"A"+"B"="A";
+%---
+"A"+(-10,14.5)*{\afvjm{21}};
+"A"+(0,14.5)*{\afvjm{21}};
+"A"+(10,14.5)*{\afvjm{21}};
+%---
+"A"+(-10,0)*{\affr88};
+"A"+( -9,2)*{\aflabelright\psi};
+"A"+(  0,0)*{\affr88};
+"A"+(  1,2)*{\aflabelright\psi};
+"A"+( 10,0)*{\affr88};
+"A"+( 11,2)*{\aflabelright\psi};
+%---
+"A"+(-10,-14.5)*{\afvjm{21}};
+"A"+(0,-14.5)*{\afvjm{21}};
+"A"+(10,-14.5)*{\afvjm{21}};
+}\quad.
+\]
+By comparing the copies of $\phi_1$ with the copies of $\phi_2$ in $\Norm_2(\Phi,\phi_1,\phi_2)$ we can see why the procedure is non-confluent. We could trivially change our procedure to make the subflows more similar by permuting the weakening (resp., coweakening) vertices down (resp., up) in the second subflow. However, the subflows marked in red will still differ.
+\end{example} 
