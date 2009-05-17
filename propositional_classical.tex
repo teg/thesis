@@ -16,6 +16,7 @@
 Negation is only defined for atoms, which is not a limitation thanks to De Morgan laws.
 \end{remark}
 
+\TODO{Define how the inference rules we are about to define are used to generate the inference rule instances.}
 
 \newcommand{\ai   }{\mathsf{ai}}
 \newcommand{\aw   }{\mathsf{aw}}
@@ -54,7 +55,7 @@ the two \emph{logical} rules
 \vlinf{\swi}{}{\vls[(\alpha.\beta).\gamma]}{\vls(\alpha.[\beta.\gamma])}\qquad
 \vlinf{\med}{}{\vls([\alpha.\delta].[\beta.\gamma])}{\vls[(\alpha.\beta).(\gamma.\delta)]}
 \]
-and, for $\rho\in\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}$, the \emph{invertible} rule $\vlinf{\rho}{}{\delta}{\gamma}$, such that $\gamma$ and $\delta$ are opposite sides of
+and, for each $\rho\in\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}$, the \emph{invertible} rule $\vlinf{\rho}{}{\delta}{\gamma}$, such that $\gamma$ and $\delta$ are opposite sides of
 \vlstore{
 \vls[\alpha.\beta]         &\coor\vls[\beta.\alpha]         \quad,&
 \vls[\alpha.\fff]          &\unor\vls[\alpha]               \quad,\\
@@ -73,7 +74,7 @@ respectively.
 \TODO{Check and prove (Complexity paper with Paola, Alessio and Lutz).}
 
 \begin{lemma}
-If there exists a derivation $\vlder{}{\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}}{\beta}{\alpha}$, then there exists a derivation $\vlder{\Phi}{\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}}{\beta}{\alpha}$, such that $|\Phi|\le|\alpha+\beta|^2$.
+If there exists a derivation $\vlder{}{\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}}{\beta}{\alpha}$, then there exists a derivation $\vlder{\Phi}{\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}}{\beta}{\alpha}$, such that $|\Phi|\le(|\alpha|+|\beta|)^2$.
 \end{lemma}
 
 %TODO: reread
@@ -117,7 +118,7 @@ We show how to construct the first derivation, the second one can be done symmet
 for some $\xi'\vlhole$ and $\beta$ where $\beta$ is not a unit and $\Psi$ and $\Psi'$ exist by the inductive hypothesis.
 \end{proof}
 
-\TODO{Introduce notation for super switch.}
+\TODO{Introduce notation for super switch (up, down and generic).}
 
 \TODO{Use notation for super switch.}
 
