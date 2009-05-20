@@ -327,6 +327,7 @@ The following flow rewriting system is called $\frcp$:
 \]
 \end{definition}
 
+%=======================================
 \subsection{Soundness}
 
 %---------------------------------------
@@ -610,8 +611,8 @@ We can deal with the remaining rules by employing dual derivations to the ones s
 The previous soundness theorem only depends on the switch and medial rules for the reductions in Figure~\ref{FigRedC}. Any system obtained from $\SKS$ by replacing $\swi$ and $\med$ with linear rules that can derive them would support a soundness theorem like the one above, for the same reduction rules. For example, we could think of replacing $\swi$ with the rule $\vlinf{\swi'}{}{\vls[(\alpha.\gamma).[\beta.\delta]]}{\vls([\alpha.\beta].[\gamma.\delta])}$, from which $\swi$ is derivable.
 \end{remark}
 
-
-\subsection{Non-termination}
+%=======================================
+\subsection{Termination and Confluence}
 
 %---------------------------------------
 \begin{remark}\label{RemCycle}
@@ -652,16 +653,6 @@ Flow rewriting system $\frc$ is not terminating:
 We see that if a contraction vertex belongs to an $\ai$-cycle, reductions by $\frc$ make it `bounce' in the $\ai$-cycle and create a trail; while bouncing, the vertex alternates between contraction and cocontraction; if we assign a polarity to the flow, the vertex alternates between being positive and negative.
 \end{remark}
 
-\subsection{Termination and Confluence}
-%---------------------------------------
-\begin{theorem}\label{TheoWTerm}
-Flow rewriting system\/ $\frw$ is terminating.
-\end{theorem}
-
-%---------------------------------------
-\begin{proof}
-At every reduction, either the number of vertices decreases, or it stays the same but the number of contraction and cocontraction vertices decreases.
-\end{proof}
 
 %---------------------------------------
 \begin{theorem}\label{TheoCPTerm}
@@ -679,9 +670,64 @@ Flow rewriting system\/ $\frc$ is terminating on the set of cycle-free atomic fl
 \end{theorem}
 
 %---------------------------------------
+\begin{theorem}\label{TheoWTerm}
+Flow rewriting system\/ $\frw$ is terminating.
+\end{theorem}
+
+%---------------------------------------
+\begin{proof}
+At every reduction, either the number of vertices decreases, or it stays the same but the number of contraction and cocontraction vertices decreases.
+\end{proof}
+
+%---------------------------------------
 \begin{theorem}\label{TheoWCConf}
 Flow rewriting system\/ $\frw\cup\frc$ is confluent.
 \end{theorem}
+
+%=======================================
+\subsection{Conservation of Paths}
+
+\TODO{Show that the number and length of `super paths' are conserved by all reduction rules except $\rcd^\ppl$ and $\rcu^\ppl$.}
+
+%========================================
+\subsection{Complexity}
+
+\begin{lemma}
+For any two atomic flows $\phi$ and $\psi$ such that $\phi\to_{\{\rcd^\ppl,\rcu^\ppl\}}\psi$ the size of $\psi$ is at most four times the size of $\phi$.
+\end{lemma}
+
+\TODO{Merge the two following remarks.}
+
+\begin{remark}
+Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such that $\phi\to_{\frc^\ppl}\psi$, then $\psi$ might be exponentially bigger than $\phi$.
+\end{remark}
+
+%---------------------------------------
+\begin{remark}\label{RemExpC}
+Normalising by $\frc$ can blow the size of atomic flows exponentially, in particular in a situation like the following (noted by Lutz Stra{\ss}burger):
+\[
+\atomicflow{
+(0,29  )*{\afacu{}{}{}{}{}{}};
+(0,21  )*{\afacd{}{}{}{}{}{}};
+(0,15.8)*{\vdots};
+(0, 8  )*{\afacu{}{}{}{}{}{}};
+(0, 0  )*{\afacd{}{}{}{}{}{}}}
+\quad\to_\frc^\star\quad
+\atomicflow{
+( 0,29  )*{\afacuexsq{}{}{}{}{}{}21};
+(-4,21  )*{\afacunw{}{}{}{}{}{}};
+( 4,21  )*{\afacunw{}{}{}{}{}{}};
+(-6,17.8)*{\vdots};
+(-2,17.8)*{\vdots};
+( 2,17.8)*{\vdots};
+( 6,17.8)*{\vdots};
+( 0, 4  )*{\afacdexsq{}{}{}{}{}{}21};
+(-4,10  )*{\afacdnw{}{}{}{}{}{}};
+( 4,10  )*{\afacdnw{}{}{}{}{}{}}}
+\quad.
+\]
+In fact, if there are $n$ couples cocontraction/contraction like the two shown above on the left, then there are $2^n$ maximal $\ai$-paths, and their number (and length) is conserved by $\to_\frc^\star$ (see Remark~\ref{RemRank}). Exactly one $\ai$-path passes through each edge in the middle portion of the flow on the right.
+\end{remark}
 
 %======================================
 \section{Global Transformations}
@@ -702,75 +748,77 @@ we define global transformations with graphical expressions $r\colon\phi\to\psi$
 %======================================
 \subsection{Four Boxes}
 
-\TODO{Flesh out the definition.}
+\TODO{More labels in the atomic flow in the definition to make sure it is unambiguous.}
 
 \TODO{Come up with a better name.}
 
 \newcommand{\frfb}{{\mathsf{fb}}}
 %---------------------------------------
 \begin{definition}\label{DefFourBox}
+We define the reduction $\to_\frfb$ (where $\frfb$ stands for \emph{four boxes}) as follows, for any two atomic flows $\phi$ and $\psi$:
 \[
 \atomicflow{
-(-8, 6)*{\afvjm4};
+(-8, 6)*{\afvjdm4{\boldsymbol{\epsilon}}{}};
 ( 0, 8)*{\afaidm{}{}{}{}{}{}};
-( 8, 6)*{\afvjm4};
+( 8, 6)*{\afvjdm4{}{\boldsymbol{\epsilon'}}};
 %-
 (-5, 0)*{\affr88};
 (-4, 2)*{\aflabelright\phi};
 ( 5, 0)*{\affr88};
 ( 6, 2)*{\aflabelright\psi};
 %-
-(-8,-6)*{\afvjm4};
+(-8,-6)*{\afvjum4{\boldsymbol{\iota}}{}};
 ( 0,-8)*{\afaium{}{}{}{}{}{}};
-( 8,-6)*{\afvjm4};
+( 8,-6)*{\afvjum4{}{\boldsymbol{\iota'}}};
 }
 \quad\to_\frfb\quad
 \atomicflow{
 %left
 (-27, 8)*{\afawdm{}{}{}{}};
-(-19,15)*{\afvjdm6{}{}};
+(-19,15)*{\afvjdm6{\boldsymbol{\epsilon'}}{}};
 (-19, 8)*{\afacum{}{}{}{}{}{}};
 (-24, 0)*{\affr88};
-(-20, 2)*{\aflabelleft\phi};
+(-20, 2)*{\aflabelleft{\psi_1}};
 (-27,-8)*{\afawum{}{}{}{}};
 (-19,-8)*{\afacdm{}{}{}{}{}{}};
-(-19,-15)*{\afvjum6{}{}};
+(-19,-15)*{\afvjum6{\boldsymbol{\iota'}}{}};
 %top
 (-15,18)*{\afawdm{}{}{}{}};
 ( -7,18)*{\afaidnw{}{}};
 ( -9,16)*{\afvjm4};
 ( -2,15)*{\afcjlm66};
 (-12,10)*{\affr88};
-( -8,12)*{\aflabelleft\phi};
+( -8,12)*{\aflabelleft{\psi_2}};
 (-16, 1)*{\afcjrm2{10}};
 ( -9, 2)*{\afawum{}{}{}{}};
 %bot
 (-16,-1)*{\afcjlm2{10}};
 ( -9,-2)*{\afawdm{}{}{}{}};
 (-12,-10)*{\affr88};
-( -8, -8)*{\aflabelleft\phi};
+( -8, -8)*{\aflabelleft{\psi_3}};
 ( -9,-16)*{\afvjm4};
 ( -2,-15)*{\afcjrm66};
 ( -7,-20)*{\afaiunw{}{}};
 (-15,-18)*{\afawum{}{}{}{}};
 %center
-(-3, 11)*{\afvjm{14}};
+(-3, 11)*{\afvjdm{14}{}{\boldsymbol{\epsilon}}};
 ( 3,  8)*{\afacdm{}{}{}{}{}{}};
 ( 7, 12)*{\afaidnw{}{}};
 ( 0,  0)*{\affr88};
-( 4,  2)*{\aflabelleft\psi};
+( 4,  2)*{\aflabelleft\phi};
 ( 7,-14)*{\afaiunw{}{}};
 ( 3, -8)*{\afacum{}{}{}{}{}{}};
-(-3,-11)*{\afvjm{14}};
+(-3,-11)*{\afvjum{14}{}{\boldsymbol{\iota}}};
 %right
 (15, 8)*{\afawdm{}{}{}{}};
 ( 9, 8)*{\afvjm8};
 (12, 0)*{\affr88};
-(16, 2)*{\aflabelleft\phi};
+(16, 2)*{\aflabelleft{\psi_4}};
 ( 9,-8)*{\afvjm8};
 (15,-8)*{\afawum{}{}{}{}};
-}
+}\quad,
 \]
+where $\psi_1$, $\psi_2$, $\psi_3$ and $\psi_4$ are isomorphic to $\psi$.
 \end{definition}
 
 %---------------------------------------
@@ -778,75 +826,89 @@ we define global transformations with graphical expressions $r\colon\phi\to\psi$
 Reduction\/ $\to_\frfb$ is sound.
 \end{theorem}
 
-\TODO{Redo proof to be in line with the rest of the thesis.}
-
-\TODO{Use Formalism A notation.}
-
-\TODO{B -> $\phi$ and A -> $\psi$.}
+\TODO{Tidy up derivations (commutativity before switches, etc.)}
 
 %---------------------------------------
 \begin{proof}
-For every atom occurence, $a$, which maps to an edge in $B$. We substitute $a$ with the formula $\vls([a_1.a_2].[a_3.a_4])$, where $a=a_1=a_2=a_3=a_4$ and the subscripts denote which of the $B_1,B_2,B_3,B_4$ the atom occurence maps to. Rule instances $\vlinf{\aid}{}{\vls[\bar{a}.a]}{\ttt}$ and $\vlinf{\aiu}{}{\fff}{\vls(\bar{a}.a)}$ are substituted with derivations
+For every atom occurrence $a$ which maps to an edge in $\psi$;
+\begin{enumerate}
+	\item If $a$ is not in the premiss or conclusion of the derivation substitute it with the formula $\vls([a_1.a_2].[a_3.a_4])$, where $a=a_1=a_2=a_3=a_4$ and the subscripts denote which of $\psi_1$, $\psi_2$, $\psi_3$ or $\psi_4$ the atom occurrence maps to.
+	\item If $a$ is in the premiss or conclusion of the derivation then substitute it with the derivations
+\[
+\vlinf{}{}
+{
+ \vls(
+  [
+   a_1
+  \;.\;
+   \vlinf{}{}{a_2}{\fff}
+  ]
+ \;.\;
+  [
+   a_3
+  \;.\;
+   \vlinf{}{}{a_4}{\fff}
+  ]
+ )
+}
+{a}
+\qquad
+\vlinf{}{}
+{a}
+{
+ \vls[
+  (a_1.a_2)
+ \;.\;
+  (
+   \vlinf{}{}{\fff}{a_3}
+  \;.\;
+   \vlinf{}{}{\fff}{a_4}
+  )
+ ]
+}
+\quad,
+\]
+respectively.
+	\item Substitute rule instances $\vlinf{}{}{\vls[a.\bar a]}{\ttt}$ and $\vlinf{}{}{\fff}{\vls(a.\bar a)}$ with the derivations
 \[
 \vlderivation
 {
-\vlin{\awd\times2}{}{\vls[\bar{a}.([a_1.a_2].[a_3.a_4])]}
+ \vlin{=}{}{\vls[([\vlinf{}{}{a_1}{\fff}\;.\;a_2]\;.\;[\vlinf{}{}{a_3}{\fff}\;.\;a_4])\;.\;\vlinf{}{}{\bar a}{\vls[\bar a.\bar a]}]}
  {
- \vlin{\acd}{}{\vls[\bar{a}.(a_2.a_4)]}
+  \vlin{\swi}{}{\vls[\vlinf{\swi}{}{\vls[(a_2.a_4).\bar a]}{\vls(a_2.[a_4.\bar a])}\;.\;\bar a]}
   {
-  \vlin{\swi\times2}{}{\vls[\bar{a}.\bar{a}.(a_2.a_4)]}
-   {
-   \vlin{\aid\times2}{}{\vls([\bar{a}.a_2].[\bar{a}.a_4])}
-    {
-    \vlhy{\ttt}
-    }
-   }
+   \vlhy{\vls(\vlinf{}{}{\vls[a_2.\bar a]}{\ttt}\;.\;\vlinf{}{}{\vls[a_4.\bar a]}{\ttt})}
   }
  }
 }\qquad
 \vlderivation
 {
-\vlin{\aiu\times2}{}{\fff}
+ \vlin{\swi}{}{\vls[\vlinf{}{}{\fff}{\vls(a_3.\bar a)}\;.\;\vlinf{}{}{\fff}{\vls(a_4.\bar a)}]}
  {
- \vlin{\swi\times2}{}{\vls[(\bar{a}.a_3).(\bar{a}.a_4)]}
+  \vlin{=}{}{\vls(\vlinf{\swi}{}{\vls[a_3.(a_4.\bar a)]}{\vls([a_3.a_4].\bar a)}\;.\;\bar a)}
   {
-  \vlin{\acu}{}{\vls(\bar{a}.\bar{a}.[a_3.a_4])}
-   {
-   \vlin{\awu\times2}{}{\vls(\bar{a}.[a_3.a_4])}
-    {
-    \vlhy{\vls(\bar{a}.[a_1.a_2].[a_3.a_4])}
-    }
-   }
+   \vlhy{\vls(([\vlinf{}{}{\ttt}{a_1}\;.\;\vlinf{}{}{\ttt}{a_2}]\;.\;[a_3.a_4])\;.\;\vlinf{}{}{\vls(\bar a.\bar a)}{\bar a})}
   }
  }
 }\quad,
 \]
-respectively. Rule instances $\acd,\acu,\awd,\awu$ which apply to $a$ are substituted with their generic counterparts applied to $\vls([a_1.a_2].[a_3.a_4])$. Finally any occurence of $\vls([a_1.a_2].[a_3.a_4])$ in the premiss or conclusion are substituted with the derivations
-\[
-\vlderivation
-{
- \vlin{\awd\times2}{}{\vls([a_1.a_2].[a_3.a_4])}
- {
-  \vlin{\acu}{}{\vls(a_1.a_3)}
-  {
-   \vlhy{a}
-  }
- }
-}\qquad
-\vlderivation
-{
- \vlin{\acd}{}{a}
- {
-  \vlin{\awu\times2}{}{\vls[a_1.a_2]}
-  {
-   \vlhy{\vls([a_1.a_2].[a_3.a_4])}
-  }
- }
-}\quad,
-\]
-respectively. It is now straightforward to verify that the derivation so obtained has the aforementioned atomic flow and the result follows.
+respectively.
+	\item Substitute rule instances $\acd,\acu,\awd,\awu$ which apply to $a$ with their generic counterparts applied to $\vls([a_1.a_2].[a_3.a_4])$.
+\end{enumerate}
+It is now straightforward to verify that the derivation so obtained has the desired atomic flow.
 \end{proof}
 
+\begin{lemma}
+Given an atomic flow $\phi$ and a polarity assignment $\pi$ there exists an atomic flow $\psi$, which is on simple form with respect to $\pi$, such that $\phi\to_\frfb\psi$.
+\end{lemma}
+
+\begin{lemma}
+For any two atomic flows $\phi$ and $\psi$ such that $\phi\to_\frfb\psi$ the size of $\psi$ is at most four times the size of $\phi$.
+\end{lemma}
+
+\begin{lemma}
+Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such that $\phi\to_\frfb\psi$ and $\phi$ is weakly streamlined with respect to $\pi$ then $\psi$ is weakly streamlined with respect to $\pi$.
+\end{lemma}
 
 %======================================
 \subsection{Simple Flow Removal}
