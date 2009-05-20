@@ -244,6 +244,8 @@ A derivation $\vlder{\Phi}{}{\beta}{\alpha}$ with associated atomic flow $\phi$,
 with associated atomic flow $\Core(\phi)$, such that, for every $1\le i\le n$, $\lambda'_i$ and $\lambda''_i$ (resp., $\mu'_i$ and $\mu''_i$) are the new upper (resp., lower) edges of $\phi_i$.
 \end{definition}
 
+\TODO{Update statement of theorem and proof to reflect the new definition.}
+
 \begin{theorem}\label{ThmExistCore}
 Given a derivation $\vlder{\Phi}{}{\beta}{\alpha}$, a core of\/ $\Phi$ can be constructed.
 \end{theorem}
@@ -268,8 +270,35 @@ Let $\phi$ be the atomic flow of $\Phi$ and label the sublfows of $\phi$ as in D
 where $\Phi'$ exists by Lemma~\ref{LemDecompInt} and $\Psi_1$ and $\Psi_2$ exist by Lemma~\ref{LemGenericContraction}. By studying the proofs of Lemma~\ref{LemDecompInt} and Lemma~\ref{LemGenericContraction}, we can observe that the derivation has atomic flow $\Core(\phi)$.
 \end{proof}
 
-%TODO: by the above remarks it is obvious how this is unique, but maybe we should make a final remark?
+\TODO{In what sense is this unique?}
 
 \begin{definition}
 Given a derivation $\Phi$, the core of $\Phi$ obtained as described in the proof of Theorem~\ref{ThmExistCore} is called \emph{the core of\/ $\Phi$}, denoted $\Core(\Phi)$.
 \end{definition}
+
+
+\begin{definition}\label{DefDerExp}
+Given a proof $\vlproof{\Pi}{}{\alpha}$ with associated atomic flow $\phi$ and a polarity assignment, $\pi$, to $\phi$, such that $\phi_1$, $\dots$, $\phi_n$ are all the non-weakly-cut-free, connected subflows of $\phi$, an \emph{experiment on\/ $\Pi$ with respect to $\pi$} is defined to be a derivation
+\[
+\vlder{}{}{\beta}{\vls(a^{\lambda'_1}_1.\cdots.a^{\lambda'_n}_n.\alpha)}
+\]
+with associated atomic flow $\Exp(\phi,\pi)$, such that, for every $1\le i\le n$, $\lambda'_i$ is the new upper edge of $\phi_i$.
+\end{definition}
+
+\TODO{Update statement of theorem and proof to reflect the new definition.}
+
+\begin{theorem}\label{ThmExistExp}
+Given a proof $\vlproof{\Pi}{}{\alpha}$ with associated atomic flow $\phi$ and a polarity assignment, $\pi$, to $\phi$, such that $\phi_1$, $\dots$, $\phi_n$ are all the non-weakly-cut-free, connected subflows of $\phi$, an experiment on $\Pi$ with respect to $\pi$ can be constructed.
+\end{theorem}
+
+\begin{proof}
+\[
+\vlder{\Core(\Pi)}{}{\vls[\beta.\vlinf{}{}{\fff}{\vls(a^{\mu'_1}_1.\bar a^{\mu''_1}_1)}.\cdots.\vlinf{}{}{\fff}{\vls(a^{\mu'_n}_n.\bar a^{\mu''_n}_n)}]}{\vls([a^{\lambda'_1}_1.\vlinf{}{}{\bar a_1}{\fff}].\cdots.[a_n^{\lambda'_n}.\vlinf{}{}{\bar a_n}{\fff}])}\quad,
+\]
+\end{proof}
+
+\begin{definition}
+Given a proof $\Pi$ and a polarity assignment to its atomic flow $\pi$, the experiment on $\Phi$ with respect to $\pi$ obtained as described in the proof of Theorem~\ref{ThmExistExp} is called \emph{the experiment on\/ $\Pi$ with respect to $\pi$}, denoted $\Exp(\Pi,\pi)$.
+\end{definition}
+
+\TODO{In what sense is this unique?}
