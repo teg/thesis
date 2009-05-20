@@ -230,14 +230,14 @@ Finally, we show the inductive case, $n>2$:
 In the non-atomic version of system $\SKS$ the derivations shown in Lemma~\ref{LemGenericContraction} correspond to repeated applications of (co)contractions. For this reason we sometimes write the inference rules $\vlinf{n\cdot\cod}{}{\alpha}{\bigvee_{i=1}^{n}\alpha}$ and $\vlinf{n\cdot\cou}{}{\bigwedge_{i=1}^{n}\alpha}{\alpha}$ instead of the derivations $\vlder{}{\{\acd,\med\}}{\alpha}{\bigvee_{i=1}^{n}\alpha}$ and $\vlupsmash{\vlder{}{\{\acu,\med\}}{\bigwedge_{i=1}^{n}\alpha}{\alpha}}$, respectively.
 \end{remark}
 
-\TODO{Make some comments about how the next subsection will both serve as an introduction to many deep inference techniques as well as prepare definitions for later use.}
+%===============================================================================
+\section{Threshold Formulae}\label{SectThresh}
+
+\TODO{Make some comments about how this subsection will both serve as an introduction to many deep inference techniques as well as prepare definitions for later use.}
 
 \TODO{Integrate this section better.}
 
 \TODO{Check that is the most up-to-date relative to the submitted paper.}
-
-%===============================================================================
-\subsection{Threshold Formulae}\label{SectThresh}
 
 \newcommand{\Gammasf}{\mathsf\Gamma}
 We present here the main construction of this paper, \emph{i.e.}, a class of derivations $\Gammasf$ that only depend on a given set of atoms and that allow us to normalise any proof containing those atoms. The complexity of the $\Gammasf$ derivations dominates the complexity of the normal proof, and is due to the complexity of certain `threshold formulae', on which the $\Gammasf$ derivations are based. The $\Gammasf$ derivations are constructed in Definition~\ref{DefThrDer}; this directly leads to Theorem~\ref{TheoThrDer}, which states a crucial property of the $\Gammasf$ derivations and which is the main result of this section.
