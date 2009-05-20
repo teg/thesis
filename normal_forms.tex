@@ -599,3 +599,153 @@ where, for $1\le i\le n$, $\phi'_i$ and $\phi''_i$ contain no identity and no cu
 For every $1\le i\le n$, the \emph{new upper edge of} $\phi'_i$ (resp., $\phi''_i$) is $\lambda'_i$ (resp., $\lambda''_i$), the \emph{new lower edge of} $\phi'_i$ (resp., $\phi''_i$) is $\mu'_i$ (resp., $\mu''_i$) and the \emph{new upper} (resp., \emph{lower}) \emph{edges of} $\phi_i$ are $\lambda'_i$ and $\lambda''_i$ (resp., $\mu'_i$ and $\mu''_i$).
 We say that $\phi_1$, $\dots$, $\phi_n$ is an \emph{ordered choice of components from $\phi$}.
 \end{definition}
+
+\TODO{Once the definition of Core has been fixed in the paper, adapt the same style for Exp.}
+
+\newcommand{\Exp}{\mathsf{Exp}}
+
+\begin{definition}\label{DefFlowExp}
+Given a polarity assignment $\pi$ and an atomic flow
+\[
+\phi\;\;=\;\;\atomicflow
+{
+(-13,0)*{\affr{22}{20}};
+(-5,8)*{\aflabelright{\phi_1}};
+%
+(-13, 8)*{\afaidm{}{}{}{}{}{}};
+(-18, 0)*{\affr{8}{8}};
+(-19, 2)*{\aflabelleft\ppl};
+(-17, 2)*{\aflabelright{\phi'_1}};
+( -8, 0)*{\affr{8}{8}};
+( -9, 2)*{\aflabelleft\pmi};
+( -7, 2)*{\aflabelright{\phi''_1}};
+( -6,-9)*{\afvjum{10}{}{\boldsymbol\iota''_1}};
+(-13,-8)*{\afaium{}{}{}{}{}{}};
+(-20,-9)*{\afvjum{10}{\boldsymbol\iota'_1}{}};
+%------------
+(0,0)*{\cdots};
+%------------
+(13,0)*{\affr{22}{20}};
+(21,8)*{\aflabelright{\phi_n}};
+%
+(13, 8)*{\afaidm{}{}{}{}{}{}};
+( 8, 0)*{\affr{8}{8}};
+( 7, 2)*{\aflabelleft\ppl};
+( 9, 2)*{\aflabelright{\phi'_n}};
+(18, 0)*{\affr{8}{8}};
+(17, 2)*{\aflabelleft\pmi};
+(19, 2)*{\aflabelright{\phi''_n}};
+( 6,-9)*{\afvjum{10}{\boldsymbol\iota'_n}{}};
+(13,-8)*{\afaium{}{}{}{}{}{}};
+(20,-9)*{\afvjum{10}{}{\boldsymbol\iota''_n}};
+%------------
+(  35, 6)*{\affr{18}8};
+(41.5, 8)*{\aflabelright{\psi_1}};
+(  30, 6)*{\copy\contrup};
+(  35, 6)*{\copy\weakdown};
+(  40, 6)*{\copy\contrdown};
+(  50, 6)*{\affr88};
+(51.5, 8)*{\aflabelright{\psi_2}};
+(  50, 6)*{\copy\interdown};
+%---
+( 30, 0)*{\afvjum4{}{\tilde{\boldsymbol\epsilon}_1}};
+( 40, 0)*{\afvjum4{}{\tilde{\boldsymbol\epsilon}_2}};
+( 50, 0)*{\afvjum4{}{\tilde{\boldsymbol\epsilon}_3}};
+%---
+(  30,-6)*{\affr88};
+(31.5,-4)*{\aflabelright{\psi_3}};
+(  30,-6)*{\copy\interup};
+(  45,-6)*{\affr{18}8};
+(51.5,-4)*{\aflabelright{\psi_4}};
+(  40,-6)*{\copy\contrup};
+(  45,-6)*{\copy\weakup};
+(  50,-6)*{\copy\contrdown};
+%---
+( 45,-12)*{\afvjm4};
+}\quad,
+\]
+where, for $1\le i\le n$, $\phi_i$ is a connected, non-weakly-cut-free subflow, we define the \emph{experiment on $\phi$ with respect to $\pi$}, denoted $\Exp(\phi,\pi)$, to be
+\[
+\atomicflow
+{
+(-17,16)*{\afvjd4{}{\lambda'_1}};
+(-17,10)*{\affr{6}{8}};
+(-17,10)*{\copy\contrup};
+(-17, 5)*{\afvjm{2}};
+(-18, 0)*{\affr{8}{8}};
+(-17, 2)*{\aflabelright{\phi'_1}};
+(-21,-11)*{\afvjum{14}{\boldsymbol\iota'_1}{}};
+(-17,-10)*{\affr{6}{8}};
+(-17,-10)*{\copy\contrdown};
+(-17, -5)*{\afvjm{2}};
+%
+( -9,18)*{\afawd{}{}{}{}};
+( -9,10)*{\affr{6}{8}};
+( -9,10)*{\copy\contrup};
+( -9, 5)*{\afvjm{2}};
+( -8, 0)*{\affr{8}{8}};
+( -7, 2)*{\aflabelright{\phi''_1}};
+( -9,-10)*{\affr{6}{8}};
+( -9,-10)*{\copy\contrdown};
+( -9, -5)*{\afvjm{2}};
+( -5,-11)*{\afvjum{14}{}{\boldsymbol\iota''_1}};
+( -8, 0)*{\affr{8}{8}};
+%
+(-13,-18)*{\afaiuex{}{}{}{}{}{}21};
+%------------
+(0,0)*{\cdots};
+%------------
+( 9,16)*{\afvjd4{}{\lambda'_n}};
+( 9,10)*{\affr{6}{8}};
+( 9,10)*{\copy\contrup};
+( 9, 5)*{\afvjm{2}};
+( 8, 0)*{\affr{8}{8}};
+( 9, 2)*{\aflabelright{\phi'_n}};
+( 9,-10)*{\affr{6}{8}};
+( 9,-10)*{\copy\contrdown};
+( 9, -5)*{\afvjm{2}};
+( 5,-11)*{\afvjum{14}{\boldsymbol\iota'_n}{}};
+( 8, 0)*{\affr{8}{8}};
+%
+(17,18)*{\afawd{}{}{}{}};
+(17,10)*{\affr{6}{8}};
+(17,10)*{\copy\contrup};
+(17, 5)*{\afvjm{2}};
+(18, 0)*{\affr{8}{8}};
+(19, 2)*{\aflabelright{\phi''_n}};
+(21,-11)*{\afvjum{14}{}{\boldsymbol\iota''_n}};
+(17,-10)*{\affr{6}{8}};
+(17,-10)*{\copy\contrdown};
+(17, -5)*{\afvjm{2}};
+%
+(13,-18)*{\afaiuex{}{}{}{}{}{}21};
+%---------
+(  35,18)*{\invisiblemark};
+%---
+(  35, 6)*{\affr{18}8};
+(41.5, 8)*{\aflabelright{\psi_1}};
+(  30, 6)*{\copy\contrup};
+(  35, 6)*{\copy\weakdown};
+(  40, 6)*{\copy\contrdown};
+(  50, 6)*{\affr88};
+(51.5, 8)*{\aflabelright{\psi_2}};
+(  50, 6)*{\copy\interdown};
+%---
+( 30, 0)*{\afvjum4{}{\tilde{\boldsymbol\epsilon}_1}};
+( 40, 0)*{\afvjum4{}{\tilde{\boldsymbol\epsilon}_2}};
+( 50, 0)*{\afvjum4{}{\tilde{\boldsymbol\epsilon}_3}};
+%---
+(  30,-6)*{\affr88};
+(31.5,-4)*{\aflabelright{\psi_3}};
+(  30,-6)*{\copy\interup};
+(  45,-6)*{\affr{18}8};
+(51.5,-4)*{\aflabelright{\psi_4}};
+(  40,-6)*{\copy\contrup};
+(  45,-6)*{\copy\weakup};
+(  50,-6)*{\copy\contrdown};
+%---
+( 45,-14)*{\afvjm8};
+}\quad.
+\]
+For every $1\le i\le n$, the \emph{new upper edge of} $\phi'_i$ is $\lambda'_i$.
+\end{definition}
