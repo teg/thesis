@@ -1,27 +1,24 @@
 \chapter{Streamlining}
 
-\section{Preliminaries}
+%--------------
 
 \TODO{Define polarity assignments such that it makes sense to talk about the same polarity assignment for two flows where one flow has been transformed into the other.}
 
-\TODO{State and prove:
-\begin{enumerate}
-	\item Given an atomic flow $\phi$ and a polarity assignment $\pi$ there exists an atomic flow $\psi$, which is on simple form with respect to $\pi$, such that $\phi\to_\frfb\psi$.
-	\item For any two atomic flows $\phi$ and $\psi$ such that $\phi\to_\frfb\psi$ the size of $\psi$ is at most four times the size of $\phi$.
-	\item Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such that $\phi\to_\frfb\psi$ and $\phi$ is weakly streamlined with respect to $\pi$ then $\psi$ is weakly streamlined with respect to $\pi$.
-	\item Given an atomic flow $\phi$ and a polarity assignment $\pi$ there exists an atomic flow $\psi$, which is on simple form with respect to $\pi$ and which is normal for $\frc^\ppl$, such that $\phi\to_{\frc^\ppl}\psi$.
-	\item Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such that $\phi\to_{\frc^\ppl}\psi$ and $\phi$ is weakly streamlined with respect to $\pi$ then $\psi$ is weakly streamlined with respect to $\pi$ (maybe this should be proven for $\frc\cup\frw$).
-	\item Given an atomic flow $\phi$ and a polarity assignment $\pi$ there exists an atomic flow $\psi$, which is on simple form with respect to $\pi$ and which is normal for $\{\rcd^\ppl,\rcu^\ppl\}$, such that $\phi\to_{\{\rcd^\ppl,\rcu^\ppl\}}\psi$.
-	\item For any two atomic flows $\phi$ and $\psi$ such that $\phi\to_{\{\rcd^\ppl,\rcu^\ppl\}}\psi$ the size of $\psi$ is at most four times the size of $\phi$.
-\end{enumerate}
-}
+\begin{lemma}
+Given an atomic flow $\phi$ and a polarity assignment $\pi$ there exists an atomic flow $\psi$, which is on simple form with respect to $\pi$ and which is normal for $\frc^\ppl$, such that $\phi\to_{\frc^\ppl}\psi$.
+\end{lemma}
 
-\TODO{Explain that
-\begin{enumerate}
-	\item Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such that $\phi\to_{\{\rcd^\ppl,\rcu^\ppl\}}\psi$ and $\phi$ is weakly streamlined with respect to $\pi$ then $\psi$ might NOT be weakly streamlined with respect to $\pi$.
-	\item Given two atomic flows $\phi$ and $\psi$ such that $\phi\to_{\frc^\ppl}\psi$, then $\psi$ might be exponentially bigger than $\phi$.
-\end{enumerate}
-}
+\begin{lemma}
+Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such that $\phi\to_{\frc^\ppl}\psi$ and $\phi$ is weakly streamlined with respect to $\pi$ then $\psi$ is weakly streamlined with respect to $\pi$ (maybe this should be proven for $\frc\cup\frw$).
+\end{lemma}
+
+\begin{lemma}
+Given an atomic flow $\phi$ and a polarity assignment $\pi$ there exists an atomic flow $\psi$, which is on simple form with respect to $\pi$ and which is normal for $\{\rcd^\ppl,\rcu^\ppl\}$, such that $\phi\to_{\{\rcd^\ppl,\rcu^\ppl\}}\psi$.
+\end{lemma}
+
+\begin{remark}
+Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such that $\phi\to_{\{\rcd^\ppl,\rcu^\ppl\}}\psi$ then $\psi$ is not weakly streamlined with respect to $\pi$.
+\end{remark}
 
 \TODO{Prove how we can transform from a weakly streamlined atomic flow to all of the other types of streamlined atomic flows using $\frw$ and $\frc$ and the cost of each transformation.}
 
