@@ -122,6 +122,107 @@ Given an atomic flow $\phi$, we say that the sets $L_\top=\{\epsilon_1,\dots,\ep
 
 \TODO{Clean out old stuff from the following sub section.}
 
+\newpage
+
+\begin{definition}
+Given two atomic flows $\phi$ and $\psi$, we say that \emph{$\phi$ is a copy of $\psi$} if $\phi$ and $\psi$ are isomorphic and we have chosen a bijection between their edges. If $\phi$ is a copy of $\psi$ and $f$ is the bijection between their edges, we give $\phi$ and $\psi$ the same label and if $\epsilon$ is an edge of $\phi$ then we label $f(\epsilon)$ by $\hat\epsilon$, $\tilde\epsilon$ or $\epsilon^1$, $\epsilon^2$, $\dots$.
+\end{definition}
+
+\begin{definition}
+Given two atomic flows $\phi$ and $\psi$, we say that the upper (resp., lower) edge $\epsilon$ of $\psi$ \emph{corresponds to} the upper (resp., lower) edge $\epsilon'$ of $\phi$ if $\psi$ contains $n\ge1$ copies of $\phi$, and $f_1$, $\dots$, $f_n$ (resp., $g_1$, $\dots$, $g_n$) are the bijections, restricted to the upper (resp., lower) edges, between $\phi$ and each of its copies, and for every $1\le i\le n$, there is a path from $\epsilon'$ to $f_i(\epsilon)$ (resp., $g_i(\epsilon)$) and, for every other upper (resp., lower) edge $\epsilon''$ of $\psi$, there is no path form $\epsilon'$ to $f_i(\epsilon'')$ (resp., $g_i(\epsilon'')$). If $\epsilon$ corresponds to $\epsilon'$ we sometimes refer to them by the same name.
+%If $\epsilon_1$, $\dots$, $\epsilon_n$ correspond to $\epsilon'_1$, $\dots$, $\epsilon'_n$, respectively, we write $\langle\epsilon_1,\dots,\epsilon_n\rangle\leftrightarrow\langle\epsilon'_1,\dots,\epsilon'_n\rangle$.
+\end{definition}
+
+\begin{remark}
+If $\epsilon$ in $\phi$ corresponds to $\epsilon'$ in $\psi$ it is not a problem to refer to them by the same name since they belong to different atomic flows and since $\epsilon$ can at most correspond to one edge in $\psi$.
+\end{remark}
+
+\begin{example}
+Consider the following atomic flow:
+\[
+\atomicflow
+{
+(0,0)="A";
+"A"+(-2, 6)*{\afvju4{\epsilon_1}{}};
+"A"+( 0, 6)*{\cdots};
+"A"+( 2, 6)*{\afvju4{}{\epsilon_n}};
+"A"+( 0, 0)*{\affr88};
+"A"+( 1, 2)*{\aflabelright{\phi}};
+"A"+(-2,-6)*{\afvjd4{\iota_1}{}};
+"A"+( 0,-6)*{\cdots};
+"A"+( 2,-6)*{\afvjd4{}{\iota_m}};
+}\quad.
+\]
+We now build a flow containing two copies of $\phi$ where we indicate both the correspondence between upper (reps., lower) edges of $\phi$ and the new flow, and the bijections between the upper (resp., lower) edges of $\phi$ and each of its copies:
+\[
+\atomicflow
+{
+(-2,12)*{\afacuex{}{}{}{}{\epsilon_1}{}52};
+( 0,14)*{\cdots};
+( 2,12)*{\afacuex{}{}{}{}{}{\epsilon_n}52};
+%
+(-5,0)="A";
+"A"+(-2, 6)*{\afvju4{\hat\epsilon_1}{}};
+"A"+( 0, 6)*{\cdots};
+"A"+( 2, 6)*{\afvju4{}{\hat\epsilon_n}};
+"A"+( 0, 0)*{\affr88};
+"A"+( 1, 2)*{\aflabelright{\phi}};
+"A"+(-2,-6)*{\afvjd4{\hat\iota_1}{}};
+"A"+( 0,-6)*{\cdots};
+"A"+( 2,-6)*{\afvjd4{}{\hat\iota_m}};
+%
+(5,0)="A";
+"A"+(-2, 6)*{\afvju4{\tilde\epsilon_1}{}};
+"A"+( 0, 6)*{\cdots};
+"A"+( 2, 6)*{\afvju4{}{\tilde\epsilon_n}};
+"A"+( 0, 0)*{\affr88};
+"A"+( 1, 2)*{\aflabelright{\phi}};
+"A"+(-2,-6)*{\afvjd4{\tilde\iota_1}{}};
+"A"+( 0,-6)*{\cdots};
+"A"+( 2,-6)*{\afvjd4{}{\tilde\iota_m}};
+%
+(-2,-12)*{\afacdex{}{}{}{}{\iota_1}{}52};
+( 0,-14)*{\cdots};
+( 2,-12)*{\afacdex{}{}{}{}{}{\iota_n}52};
+}\quad.
+\]
+Note that the above atomic flow contains redundant information and the following atomic flow is indeed unique modulo isomorphism:
+\[
+\atomicflow
+{
+(-2,12)*{\afacuex{}{}{}{}{\epsilon_1}{}52};
+( 0,14)*{\cdots};
+( 2,12)*{\afacuex{}{}{}{}{}{\epsilon_n}52};
+%
+(-5,0)="A";
+"A"+(-2, 6)*{\afvju4{}{}};
+"A"+( 0, 6)*{\cdots};
+"A"+( 2, 6)*{\afvju4{}{}};
+"A"+( 0, 0)*{\affr88};
+"A"+( 1, 2)*{\aflabelright{\phi}};
+"A"+(-2,-6)*{\afvjd4{}{}};
+"A"+( 0,-6)*{\cdots};
+"A"+( 2,-6)*{\afvjd4{}{}};
+%
+(5,0)="A";
+"A"+(-2, 6)*{\afvju4{}{}};
+"A"+( 0, 6)*{\cdots};
+"A"+( 2, 6)*{\afvju4{}{}};
+"A"+( 0, 0)*{\affr88};
+"A"+( 1, 2)*{\aflabelright{\phi}};
+"A"+(-2,-6)*{\afvjd4{}{}};
+"A"+( 0,-6)*{\cdots};
+"A"+( 2,-6)*{\afvjd4{}{}};
+%
+(-2,-12)*{\afacdex{}{}{}{}{\iota_1}{}52};
+( 0,-14)*{\cdots};
+( 2,-12)*{\afacdex{}{}{}{}{}{\iota_n}52};
+}\quad.
+\]
+\end{example}
+
+\newpage
+
 %=======================================
 \subsection{Paths and Cycles}
 
