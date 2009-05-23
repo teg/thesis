@@ -18,7 +18,7 @@ Given distinct and pairwise non-dual atoms, $a_1,\dots,a_n$, define
 
 The base case is
 \[
-\Sym(a_1)=\vlinf{\aid}{}{\vls[a_1.\bar a_1]}{\ttt}\quad,
+\Sym(a_1)=\vlinf{}{}{\vls[a_1.\bar a_1]}{\ttt}\quad,
 \]
 and the inductive case is
 \[
@@ -29,7 +29,7 @@ and the inductive case is
 {
  \vlde{}{\{\acu,\med\}}{\bigwedge_{i=1}^{2^{k-1}}[b_k.\bar b_k]}
  {
-  \vlin{\aid}{}{\vls[b_k.\bar b_k]}
+  \vlin{}{}{\vls[b_k.\bar b_k]}
   {
    \vlhy{\ttt}
   }
@@ -43,7 +43,7 @@ and the inductive case is
 {
  \vlde{}{\{\acu,\med\}}{\bigwedge_{i=1}^{2^{k-1}}\vls[b_k.\bar b_k]}
  {
-  \vlin{\aid}{}{\vls[b_k.\bar b_k]}
+  \vlin{}{}{\vls[b_k.\bar b_k]}
   {
    \vlhy{\ttt}
   }
@@ -57,7 +57,7 @@ and the inductive case is
  {
   \vlde{}{\{\swi\}}{\bigvee_{\{b_1,\dots,b_{k-1}\}\in \Assignments_{n-1}}\vlsbr[(b_1.\cdots.b_{k-1}.b_n).(b_1.\cdots.b_{k-1}.\bar b_k)]}
   {
-  \vlpr{\Sym(a_1,\dots,a_{k-1})}{\{\aid,\acu,\swi,\med\}}{\vlsbr(\box\DerCap.\bigvee_{\{b_1,\dots,b_{k-1}\}\in \Assignments_{k-1}}(\vlinf{\acu}{}{\vls(b_1.b_1)}{b_1}.\cdots.\vlinf{\acu}{}{\vls(b_{k-1}.b_{k-1})}{b_{k-1}}))}
+  \vlpr{\Sym(a_1,\dots,a_{k-1})}{\{\aid,\acu,\swi,\med\}}{\vlsbr(\box\DerCap.\bigvee_{\{b_1,\dots,b_{k-1}\}\in \Assignments_{k-1}}(\vlinf{}{}{\vls(b_1.b_1)}{b_1}.\cdots.\vlinf{}{}{\vls(b_{k-1}.b_{k-1})}{b_{k-1}}))}
   }
  }
 }\quad,
