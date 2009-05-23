@@ -116,7 +116,26 @@ We show how to construct the first derivation, the second one can be done symmet
 for some $\xi'\vlhole$ and $\beta$ where $\beta$ is not a unit and $\Psi$ and $\Psi'$ exist by the inductive hypothesis.
 \end{proof}
 
-\TODO{Introduce notation for super switch (up, down and generic).}
+\newcommand{\supers}{\mathsf{ss}}
+\newcommand{\ssu}{\supers\uparrow}
+\newcommand{\ssd}{\supers\downarrow}
+
+\TODO{Point out that `only containing switches' or $\{\swi\}$ allows the use of equations.}
+\TODO{Define `macro rules'}
+
+\begin{remark}\label{RemSuperSwitch}
+To ease legibility we introduce three macro rules for some derivations built up of switches. Instead of the derivations $\vlder{}{\{\swi\}}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlder{}{\{\swi\}}{\vls[\xi\{\fff\}.\alpha]}{\xi\{\alpha\}}$, as defined in the proof of Lemma~\ref{RemSuperSwitch}, we write $\vlinf{\ssu}{}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlinf{\ssd}{}{\vls[\xi\{\ttt\}.\alpha]}{\xi\{\alpha\}}$, respectively. Instead of the derivation
+\[
+\vlinf{\swi}{}
+{
+ \vls[\zeta\{\fff\}\;.\;\vlinf{\ssu}{}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}]
+}
+{
+ \vls(\vlinf{\ssd}{}{\vls[\zeta\{\fff\}.\alpha]}{\zeta\{\alpha\}}\;.\;\xi\{\ttt\})
+}
+\]
+we write $\vlinf{\supers}{}{\vls[\zeta\{\fff\}.\xi\{\alpha\}]}{\vls(\zeta\{\alpha\}.\xi\{\ttt\})}$.
+\end{remark}
 
 \TODO{Use notation for super switch.}
 
