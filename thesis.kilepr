@@ -1,4 +1,5 @@
 [General]
+def_graphic_ext=
 img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
@@ -72,24 +73,6 @@ order=-1
 [item:introduction.tex]
 archive=true
 column=0
-encoding=
-highlight=
-line=0
-open=false
-order=-1
-
-[item:local_transformations.tex]
-archive=true
-column=110
-encoding=
-highlight=
-line=0
-open=false
-order=-1
-
-[item:modal.tex]
-archive=true
-column=778989417
 encoding=
 highlight=
 line=0
