@@ -314,7 +314,7 @@ Given a derivation $\Phi$, the $\ai$-decomposed (resp., $\ai$-free) normal form 
 \begin{definition}\label{DefDerCore}
 Given a derivation $\vlder{\Phi}{}{\beta}{\alpha}$ with associated atomic flow $\phi$, such that $\phi_1$, $\dots$, $\phi_n$ are all the non-weakly-streamlined, connected subflows of $\phi$, a \emph{core of\/ $\Phi$} is defined to be a derivation
 \[
-\vlder{}{}{\vls[\beta.(a^{\mu'_n}_n.{\bar a^{\mu''_n}_n}).\cdots.(a^{\mu'_1}_1.{\bar a^{\mu'_1}_1})]}{\vls([a^{\lambda'_1}_1.{\bar a^{\lambda''_1}_1}].\cdots.[a^{\lambda'_n}_n.{\bar a^{\lambda'_n}_n}].\alpha)}
+\vlder{}{}{\vlsmallbrackets\vls[\beta.(a^{\mu'_n}_n.{\bar a^{\mu''_n}_n}).\cdots.(a^{\mu'_1}_1.{\bar a^{\mu'_1}_1})]}{\vlsmallbrackets\vls([a^{\lambda'_1}_1.{\bar a^{\lambda''_1}_1}].\cdots.[a^{\lambda'_n}_n.{\bar a^{\lambda'_n}_n}].\alpha)}
 \]
 with associated atomic flow $\Core(\phi)$, such that, for every $1\le i\le n$, $\lambda'_i$ and $\lambda''_i$ (resp., $\mu'_i$ and $\mu''_i$) are the new upper (resp., lower) edges of $\phi_i$.
 \end{definition}
@@ -322,27 +322,51 @@ with associated atomic flow $\Core(\phi)$, such that, for every $1\le i\le n$, $
 \TODO{Update statement of theorem and proof to reflect the new definition.}
 
 \begin{theorem}\label{ThmExistCore}
-Given a derivation $\vlder{\Phi}{}{\beta}{\alpha}$, a core of\/ $\Phi$ can be constructed.
+Given a derivation $\Phi$, a core of\/ $\Phi$ can be constructed.
 \end{theorem}
 
+\TODO{Revisit definition of new upper and new lower edges. Should it also refer to $\Core$?S}
+
+\TODO{Double check references.}
+
+\TODO{There are some missing equations...}
+
+\TODO{define $\star$ notation.}
+
 \begin{proof}
-Let $\phi$ be the atomic flow of $\Phi$ and label the sublfows of $\phi$ as in Definition~\ref{DefFlowCore}. Let atom occurrences of the atoms $a_1,\dots,a_n$ map to edges in the subflows $\phi_1,\dots,\phi_n$ respectively, let atom occurrences of the atoms $b_1,\dots,b_k$ map to edges in the subflow $\psi_2$ and let atom occurrences of the atoms $c_1,\dots,c_l$ map to edges in the subflow $\psi_3$. Then we build a core of $\Phi$ as follows:
+Let $\phi$ be the atomic flow of $\Phi$, let $\phi_1$, $\dots$, $\phi_n$ be the connected, non-weakly-streamlined sublfows of $\phi$, and, for $1\le i\le n$, let $\lambda'_i$ and $\lambda''_i$ (resp., $\mu'_i$ and $\mu''_i$) be the new upper (resp., lower) edges of $\phi_i$ in $\Core(\phi)$. Furthermore, for some atoms $a_1$, $\dots$, $a_n$, $b_1$, $\dots$, $b_k$, $c_1$, $\dots$ $c_l$, such that, for $1\le i\le n$, occurrences of $a_i$ maps to edges in $\phi_i$, and all the occurrences of $b_1$, $\dots$, $b_k$, $c_1$, $\dots$ $c_l$ map to edges in a weakly-stremlined subflow of $\phi$, let the $\ai$-free normal form of $\Phi$ be $\Psi$. Then we build a core of $\Phi$ as follows:
 \[
-\vlderivation
+\vlder{\Psi}{\SKS\setminus\{\aid,\aiu\}}
 {
- \vlde{\Psi_2}{\{\acd,\med\}}{\vls[\beta.(a_n.{\bar a_n}).\cdots.(a_1.{\bar a_1})]}
- {
-  \vlde{\Phi'}{\SKS\setminus\{\aid,\aiu\}}{{\vlsbr[\beta\;.\;\vlinf{}{}{\fff}{\vls(c_l.\bar c_l)}\;.\;\cdots\;.\;\vlinf{}{}{\fff}{\vls(c_1.\bar c_1)}\;.\;(a_n.\bar a_n)\;.\;\cdots\;.\;(a_n.\bar a_n)\;.\;\cdots\;.\;(a_1.\bar a_1)\;.\;\cdots\;.\;(a_1.\bar a_1)]}}
-  {
-   \vlde{\Psi_1}{\{\acu,\med\}}{{\vlsbr([a_1.\bar a_1]\;.\;\cdots\;.\;[a_1.\bar a_1]\;.\;\cdots\;.\;[a_n.\bar a_n]\;.\;\cdots\;.\;[a_n.\bar a_n]\;.\;\vlinf{}{}{\vls[b_1.\bar b_1]}{\ttt}\;.\;\cdots\;.\;\vlinf{}{}{\vls[b_k.\bar b_k]}{\ttt}\;.\;\alpha)}}
-   {
-    \vlhy{\vls([a_1.{\bar a_1}].\cdots.[a_n.{\bar a_n}].\alpha)}
-   }
-  }
- }
-}\quad,
+ \vlsbr
+ [
+  \beta
+ \;.\;
+  \vlinf{}{}{\fff}{\vls(c_l.\bar c_l)}
+ \;.\;\cdots\;.\;
+  \vlinf{}{}{\fff}{\vls(c_1.\bar c_1)}
+ \;.\;
+  \vlinf{\cod^\star}{}{\vls(a^{\mu'_n}_n.\bar a^{\mu''_n}_n)}{\vls[(a_n.\bar a_n).\cdots.(a_n.\bar a_n)]}
+ \;.\;\cdots\;.\;
+ \vlinf{\cod^\star}{}{\vls(a^{\mu'_1}_1.\bar a^{\mu''_1}_1)}{\vls[(a_1.\bar a_1).\cdots.(a_1.\bar a_1)]}
+ ]
+}
+{
+ \vlsbr
+ (
+  \vlinf{\cou^\star}{}{\vls([a_1.\bar a_1].\cdots.[a_1.\bar a_1])}{\vls[a^{\lambda'_1}_1.\bar a^{\lambda''_1}_1]}
+ \;.\;\cdots\;.\;
+  \vlinf{\cou^\star}{}{\vls([a_n.\bar a_n].\cdots.[a_n.\bar a_n])}{\vls[a^{\lambda'_n}_n.\bar a^{\lambda''_n}_n]}
+ \;.\;
+  \vlinf{}{}{\vls[b_1.\bar b_1]}{\ttt}
+ \;.\;\cdots\;.\;
+  \vlinf{}{}{\vls[b_k.\bar b_k]}{\ttt}
+ \;.\;
+  \alpha
+ )
+}\quad.
 \]
-where $\Phi'$ exists by Lemma~\ref{LemDecompInt} and $\Psi_1$ and $\Psi_2$ exist by Lemma~\ref{LemGenericContraction}. By studying the proofs of Lemma~\ref{LemDecompInt} and Lemma~\ref{LemGenericContraction}, we can observe that the derivation has atomic flow $\Core(\phi)$.
+By studying Definitions~\ref{DefFlowCore} and \ref{DefDecompInt}, and the proof of Lemma~\ref{LemGenericContraction}, we can observe that the derivation has atomic flow $\Core(\phi)$.
 \end{proof}
 
 \TODO{In what sense is this unique?}
