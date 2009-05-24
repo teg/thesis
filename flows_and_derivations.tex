@@ -236,6 +236,63 @@ A derivation with associated atomic flow $\phi$ is \emph{weakly streamlined} (re
 A streamlined proof is cut-free, a super streamlined proof is analytic and a hyper streamlined proof is in system $\KS$.
 \end{remark}
 
+\TODO{Give the following derivation a name.}
+
+\begin{lemma}\label{LemDecompInt}
+Given a derivation $\vlder{}{}{\beta}{\alpha}$ with associated atomic flow $\phi$, there exists a derivation
+\[
+\vlder{}{\SKS\setminus\{\aid,\aiu\}}{\vlsbr[\beta\;.\;\vlinf{}{}{\fff}{\vls(b_m.\bar b_m)}\;.\;\cdots\;.\;\vlinf{}{}{\fff}{\vls(b_1.\bar b_1)}]}{\vlsbr(\vlinf{}{}{\vls[a_1.\bar a_1]}{\ttt}\;.\;\cdots\;.\;\vlinf{}{}{\vls[a_n.\bar a_n]}{\ttt}\;.\;\alpha)}
+\]
+with associated atomic flow $\phi$, for some atoms $a_1,\dots,a_n,b_1,\dots,b_m$.
+\end{lemma}
+
+\begin{proof}
+Using Lemma~\ref{LemSuperSwitch} apply the following transformations to each of the identity and cut instances in $\Phi$:
+\[
+\vlderivation
+{
+ \vlde{\Psi'}{}{\beta}
+ {
+  \vlde{\Psi}{}{\xi\left\{\vlinf{}{}{\vls[a.{\bar a}]}{\ttt}\right\}}
+  {
+   \vlhy{\alpha}
+  }
+ }
+}\quad\rightarrow\quad
+\vlderivation
+{
+ \vlde{\Psi'}{}{\beta}
+ {
+  \vlin{\ssu}{}{\xi\vlsbr[a.{\bar a}]}
+  {
+   \vlhy{\vlsbr(\vlinf{}{}{\vls[a.{\bar a}]}{\ttt}\;\;.\;\;\vlder{\Psi}{}{\xi\{\ttt\}}{\alpha})}
+  }
+ }
+}\qquad\mbox{and}\qquad
+\vlderivation
+{
+ \vlde{\Psi'}{}{\beta}
+ {
+  \vlde{\Psi}{}{\xi\left\{\vlinf{}{}{\fff}{\vls(a.{\bar a})}\right\}}
+  {
+   \vlhy{\alpha}
+  }
+ }
+}\quad\rightarrow\quad
+\vlderivation
+{
+ \vlin{\ssd}{}{\vlsbr[\vlder{\Psi'}{}{\beta}{\xi\{\fff\}}\;\;.\;\;\vlinf{}{}{\fff}{\vls(a.{\bar a})}]}
+ {
+  \vlde{\Psi}{}{\xi\vlsbr(a.{\bar a})}
+  {
+   \vlhy{\alpha}
+  }
+ }
+}\quad.
+\]
+\end{proof}
+
+
 \begin{definition}\label{DefDerCore}
 A derivation $\vlder{\Phi}{}{\beta}{\alpha}$ with associated atomic flow $\phi$, such that $\phi_1$, $\dots$, $\phi_n$ are all the non-weakly-streamlined, connected subflows of $\phi$, a \emph{core of\/ $\Phi$} is defined to be a derivation
 \[

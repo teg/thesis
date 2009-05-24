@@ -139,63 +139,6 @@ we write $\vlinf{\supers}{}{\vls[\zeta\{\fff\}.\xi\{\alpha\}]}{\vls(\zeta\{\alph
 
 \TODO{Use notation for super switch.}
 
-\TODO{Give the following derivation a name.}
-
-\begin{lemma}\label{LemDecompInt}
-Given a derivation $\vlder{}{}{\beta}{\alpha}$ with associated atomic flow $\phi$, there exists a derivation
-\[
-\vlder{}{\SKS\setminus\{\aid,\aiu\}}{\vlsbr[\beta\;.\;\vlinf{}{}{\fff}{\vls(b_m.\bar b_m)}\;.\;\cdots\;.\;\vlinf{}{}{\fff}{\vls(b_1.\bar b_1)}]}{\vlsbr(\vlinf{}{}{\vls[a_1.\bar a_1]}{\ttt}\;.\;\cdots\;.\;\vlinf{}{}{\vls[a_n.\bar a_n]}{\ttt}\;.\;\alpha)}
-\]
-with associated atomic flow $\phi$, for some atoms $a_1,\dots,a_n,b_1,\dots,b_m$.
-\end{lemma}
-
-\begin{proof}
-Using Lemma~\ref{LemSuperSwitch} apply the following transformations to each of the identity and cut instances in $\Phi$:
-\[
-\vlderivation
-{
- \vlde{\Psi'}{}{\beta}
- {
-  \vlde{\Psi}{}{\xi\left\{\vlinf{}{}{\vls[a.{\bar a}]}{\ttt}\right\}}
-  {
-   \vlhy{\alpha}
-  }
- }
-}\quad\rightarrow\quad
-\vlderivation
-{
- \vlde{\Psi'}{}{\beta}
- {
-  \vlin{\ssu}{}{\xi\vlsbr[a.{\bar a}]}
-  {
-   \vlhy{\vlsbr(\vlinf{}{}{\vls[a.{\bar a}]}{\ttt}\;\;.\;\;\vlder{\Psi}{}{\xi\{\ttt\}}{\alpha})}
-  }
- }
-}\qquad\mbox{and}\qquad
-\vlderivation
-{
- \vlde{\Psi'}{}{\beta}
- {
-  \vlde{\Psi}{}{\xi\left\{\vlinf{}{}{\fff}{\vls(a.{\bar a})}\right\}}
-  {
-   \vlhy{\alpha}
-  }
- }
-}\quad\rightarrow\quad
-\vlderivation
-{
- \vlin{\ssd}{}{\vlsbr[\vlder{\Psi'}{}{\beta}{\xi\{\fff\}}\;\;.\;\;\vlinf{}{}{\fff}{\vls(a.{\bar a})}]}
- {
-  \vlde{\Psi}{}{\xi\vlsbr(a.{\bar a})}
-  {
-   \vlhy{\alpha}
-  }
- }
-}\quad.
-\]
-\end{proof}
-
-
 \begin{lemma}\label{LemGenericContraction}
 Given a formula $\alpha$ and a positive integer $n$, there exist derivations $\vlupsmash{\vlder{}{\{\acd,\med\}}{\alpha}{\bigvee_{i=1}^{n}\alpha}}$ and $\vlupsmash{\vlder{}{\{\acu,\med\}}{\bigwedge_{i=1}^{n}\alpha}{\alpha}}$.
 \end{lemma}
