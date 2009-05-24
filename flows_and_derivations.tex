@@ -379,39 +379,23 @@ Given a derivation $\Phi$, the core of $\Phi$ obtained as described in the proof
 \begin{definition}\label{DefDerExp}
 Given a proof $\vlproof{\Pi}{}{\alpha}$ with associated atomic flow $\phi$ and a polarity assignment, $\pi$, to $\phi$, such that $\phi_1$, $\dots$, $\phi_n$ are all the non-weakly-cut-free, connected subflows of $\phi$, an \emph{experiment on\/ $\Pi$ with respect to $\pi$} is defined to be a derivation
 \[
-\vlder{}{}{\beta}{\vlsmallbrackets\vls((a^{\lambda'_{1,1}}_1.\cdots.a^{\lambda'_{1,k_1}}_1).\cdots.(a^{\lambda'_{n,1}}_n.\cdots.a^{\lambda'_{n,k_n}}_n).\alpha)}
+\vlder{}{}{\alpha}{\vlsmallbrackets\vls((a^{\lambda'_{1,1}}_1.\cdots.a^{\lambda'_{1,k_1}}_1).\cdots.(a^{\lambda'_{n,1}}_n.\cdots.a^{\lambda'_{n,k_n}}_n))}
 \]
 with associated atomic flow $\Exp(\phi,\pi)$, such that, for every $1\le i\le n$, $\lambda'_{i,1}$, $\dots$, $\lambda'_{i,k_i}$ are the new upper edges of $\phi_i$.
 \end{definition}
 
-\TODO{Update statement of theorem and proof to reflect the new definition.}
+\TODO{Update definition of `new upper edges of $\phi_i$' to also mention $\Exp$}
 
-\begin{theorem}\label{ThmExistExp}
-Given a proof $\vlproof{\Pi}{}{\alpha}$ with associated atomic flow $\phi$ and a polarity assignment, $\pi$, to $\phi$, an experiment on $\Pi$ with respect to $\pi$ can be constructed.
+\TODO{We are glossing over some associativity/commutativity...}
+
+\begin{theorem}\label{ThmConstrExp}
+Given a proof\/ $\vlproof{\Pi}{}{\alpha}$ with associated atomic flow $\phi$, and a polarity assignment, $\pi$, to $\phi$, an experiment on $\Pi$ with respect to $\pi$ can be constructed.
 \end{theorem}
 
 \begin{proof}
-Let $\phi_1$, $\dots$, $\phi_n$ be all the non-weakly-cut-free, connected subflows of $\phi$ and, for every $1\le i\le n$, let $\lambda'_{i,1}$, $\dots$, $\lambda'_{i,k_i}$ be the new upper edges of $\phi_i$. Obtain $\Pi'$ from $\Pi$ by Lemma~\ref{LemDecompInt}:
-\[
-\vlder{\Pi'}{\SKS\setminus\{\aid\}}{\alpha}
-{
- \vlsbr
- (
-  (
-   \vlinf{}{}{\vls[a_1^{\lambda'_{1,1}}.\bar a_1]}{\ttt}
-  \;.\;\cdots\;.\;
-   \vlinf{}{}{\vls[a_1^{\lambda'_{1,k_1}}.\bar a_1]}{\ttt}
-  )
- \;.\;\cdots\;.\;
-  (
-   \vlinf{}{}{\vls[a_n^{\lambda'_{n,1}}.\bar a_n]}{\ttt}
-  \;.\;\cdots\;.\;
-   \vlinf{}{}{\vls[a_n^{\lambda'_{n,k_n}}.\bar a_n]}{\ttt}
-  )
- )
-}\quad,
-\]
-with atomic flow $\phi$. For every $1\le i\le n$ and every $1\le j\le k_i$, substitute $\vlinf{}{}{\vls[a_i^{\lambda'_{i,j}}.\bar a_i]}{\ttt}$ with $\vlsbr[a_i^{\lambda'_{i,j}}.\vlinf{}{}{\bar a_i}{\fff}]$ in $\Pi'$ to obtain a derivation with atomic flow $\Exp(\phi,\pi)$:
+Let $\phi_1$, $\dots$, $\phi_n$ be all the non-weakly-cut-free, connected subflows of $\phi$ and, for every $1\le i\le n$, let $\lambda'_{i,1}$, $\dots$, $\lambda'_{i,k_i}$ be the new upper edges of $\phi_i$ in $\Exp(\phi,\pi)$.
+
+For every $1\le i\le n$ and every $1\le j\le k_i$, substitute $\vlinf{}{}{\vls[a_i^{\lambda'_{i,j}}.\bar a_i]}{\ttt}$ with $\vlsbr[a_i^{\lambda'_{i,j}}.\vlinf{}{}{\bar a_i}{\fff}]$ in the $\ai$-decomposed normal form of $\Pi$ to obtain a derivation with atomic flow $\Exp(\phi,\pi)$:
 \[
 \vlder{}{}{\alpha}
 {
@@ -429,12 +413,12 @@ with atomic flow $\phi$. For every $1\le i\le n$ and every $1\le j\le k_i$, subs
    [a_n^{\lambda'_{n,k_n}}.\vlinf{}{}{\bar a_n}{\fff}]
   )
  )
-}\quad,
+}\quad.
 \]
 \end{proof}
 
 \begin{definition}
-Given a proof $\Pi$ and a polarity assignment to its atomic flow $\pi$, the experiment on $\Phi$ with respect to $\pi$ obtained as described in the proof of Theorem~\ref{ThmExistExp} is called \emph{the experiment on\/ $\Pi$ with respect to $\pi$}, denoted $\Exp(\Pi,\pi)$.
+Given a proof $\Pi$ and a polarity assignment to its atomic flow $\pi$, the experiment on $\Phi$ with respect to $\pi$ obtained as described in the proof of Theorem~\ref{ThmConstrExp} is called \emph{the experiment on\/ $\Pi$ with respect to $\pi$}, denoted $\Exp(\Pi,\pi)$.
 \end{definition}
 
 \TODO{In what sense is this unique?}
