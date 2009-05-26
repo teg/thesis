@@ -18,7 +18,7 @@ Given distinct and pairwise non-dual atoms, $a_1,\dots,a_n$, define
 
 The base case is
 \[
-\Sym(a_1)=\vlinf{\aid}{}{\vls[a_1.\bar a_1]}{\ttt}\quad,
+\Sym(a_1)=\vlinf{}{}{\vls[a_1.\bar a_1]}{\ttt}\quad,
 \]
 and the inductive case is
 \[
@@ -29,7 +29,7 @@ and the inductive case is
 {
  \vlde{}{\{\acu,\med\}}{\bigwedge_{i=1}^{2^{k-1}}[b_k.\bar b_k]}
  {
-  \vlin{\aid}{}{\vls[b_k.\bar b_k]}
+  \vlin{}{}{\vls[b_k.\bar b_k]}
   {
    \vlhy{\ttt}
   }
@@ -43,7 +43,7 @@ and the inductive case is
 {
  \vlde{}{\{\acu,\med\}}{\bigwedge_{i=1}^{2^{k-1}}\vls[b_k.\bar b_k]}
  {
-  \vlin{\aid}{}{\vls[b_k.\bar b_k]}
+  \vlin{}{}{\vls[b_k.\bar b_k]}
   {
    \vlhy{\ttt}
   }
@@ -57,7 +57,7 @@ and the inductive case is
  {
   \vlde{}{\{\swi\}}{\bigvee_{\{b_1,\dots,b_{k-1}\}\in \Assignments_{n-1}}\vlsbr[(b_1.\cdots.b_{k-1}.b_n).(b_1.\cdots.b_{k-1}.\bar b_k)]}
   {
-  \vlpr{\Sym(a_1,\dots,a_{k-1})}{\{\aid,\acu,\swi,\med\}}{\vlsbr(\box\DerCap.\bigvee_{\{b_1,\dots,b_{k-1}\}\in \Assignments_{k-1}}(\vlinf{\acu}{}{\vls(b_1.b_1)}{b_1}.\cdots.\vlinf{\acu}{}{\vls(b_{k-1}.b_{k-1})}{b_{k-1}}))}
+  \vlpr{\Sym(a_1,\dots,a_{k-1})}{\{\aid,\acu,\swi,\med\}}{\vlsbr(\box\DerCap.\bigvee_{\{b_1,\dots,b_{k-1}\}\in \Assignments_{k-1}}(\vlinf{}{}{\vls(b_1.b_1)}{b_1}.\cdots.\vlinf{}{}{\vls(b_{k-1}.b_{k-1})}{b_{k-1}}))}
   }
  }
 }\quad,
@@ -96,14 +96,28 @@ The atomic flow associated with $\Sym(a_1,\dots,a_n)$ is
 \]
 \end{proposition}
 
+\TODO{This is not weakly-cut-free... There are paths from cuts to axioms...}
+
 \begin{definition}
-Given a proof, $\vlproof{\Phi}{}{\beta}$, where the distinct and non-dual atoms $a_1,\dots,a_n$ and their duals are all the atoms that occur, \emph{a symmetric cut-free proof obtained from $\Phi$} is:
+Given a proof $\vlproof{\Pi}{}{\alpha}$ with atomic flow $\phi$, the set $P$ of all the polarity assignments to $\phi$, and, for every $\pi$ in $P$ and every non-weakly-cut-free subflow $\phi_i$ of $\phi$, let $\lambda'_{i,1}$, $\dots$, $\lambda'_{i,k_i}$ be the new upper edges of $\phi_i$, then \emph{a symmetric weakly-cut-free proof obtained from $\Phi$} is:
 \[
 \vlderivation
 {
- \vlin{(2^n-1)\times\cod}{}{\beta}
+ \vlin{(|P|-1)\cdot\cod}{}{\alpha}
  {
-  \vlpr{\Sym(a_1,\dots,a_n)}{\{\aid,\acu,\swi,\med\}}{\bigvee_{\{b_1,\dots,b_n\}\in\Assignments_n}\left(\vlder{\Exp(\Phi,b_1,\dots,b_n)}{\SKS\setminus\{\aid,\aiu\}}{\beta}{\vls(b_1.\cdots.b_n)}\right)}
+  \vlpr{\Sym(a_1,\dots,a_n)}{\{\aid,\acu,\swi,\med\}}
+  {
+  \bigvee_{\pi\in P}
+  \left(
+   \vlder{\Exp(\Pi,\pi)}{}{\alpha}
+    {
+     \vls(
+      \vlinf{}{}{\vls(b^{\lambda'_{1,1}}_1.\cdots.b^{\lambda'_{1,k_1}}_1)}{b_1}
+     \;.\;\cdots\;.\;
+      \vlinf{}{}{\vls(b^{\lambda'_{n,1}}_n.\cdots.b^{\lambda'_{n,k_n}}_n)}{b_n}
+     )
+    }
+  \right)}
  }
 }\quad.
 \]
