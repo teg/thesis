@@ -122,15 +122,24 @@ Given an atomic flow $\phi$, we say that the sets $L_\top=\{\epsilon_1,\dots,\ep
 
 \TODO{Clean out old stuff from the following sub section.}
 
-\newpage
-
 \begin{definition}
 Given two atomic flows $\phi$ and $\psi$, we say that \emph{$\phi$ is a copy of $\psi$} if $\phi$ and $\psi$ are isomorphic and we have chosen a bijection between their edges. If $\phi$ is a copy of $\psi$ and $f$ is the bijection between their edges, we give $\phi$ and $\psi$ the same label and if $\epsilon$ is an edge of $\phi$ then we label $f(\epsilon)$ by $\hat\epsilon$, $\tilde\epsilon$ or $\epsilon^1$, $\epsilon^2$, $\dots$.
 \end{definition}
 
 \begin{definition}
-Given two atomic flows $\phi$ and $\psi$, we say that the upper (resp., lower) edge $\epsilon$ of $\psi$ \emph{corresponds to} the upper (resp., lower) edge $\epsilon'$ of $\phi$ if $\psi$ contains $n\ge1$ copies of $\phi$, and $f_1$, $\dots$, $f_n$ (resp., $g_1$, $\dots$, $g_n$) are the bijections, restricted to the upper (resp., lower) edges, between $\phi$ and each of its copies, and for every $1\le i\le n$, there is a path from $\epsilon'$ to $f_i(\epsilon)$ (resp., $g_i(\epsilon)$) and, for every other upper (resp., lower) edge $\epsilon''$ of $\psi$, there is no path form $\epsilon'$ to $f_i(\epsilon'')$ (resp., $g_i(\epsilon'')$). If $\epsilon$ corresponds to $\epsilon'$ we sometimes refer to them by the same name.
-%If $\epsilon_1$, $\dots$, $\epsilon_n$ correspond to $\epsilon'_1$, $\dots$, $\epsilon'_n$, respectively, we write $\langle\epsilon_1,\dots,\epsilon_n\rangle\leftrightarrow\langle\epsilon'_1,\dots,\epsilon'_n\rangle$.
+Given two atomic flows $\phi$ and $\psi$, such that
+\begin{itemize}
+  \item $\psi$ contains $n\ge1$ copies of $\phi$,
+  \item $f_1$, $\dots$, $f_n$ are the bijections, restricted to the upper (resp., lower) edges, between $\phi$ and each of its copies,
+  \item $\epsilon$, $\epsilon_1$, $\dots$, $\epsilon_m$ are the upper (resp., lower) edges of $\psi$, and
+  \item $\epsilon'$ is an upper (resp., lower) edge of $\phi$,
+\end{itemize}
+then we say that \emph{$\epsilon$ corresponds to $\epsilon'$} if
+\begin{itemize}
+  \item for every $1\le i\le n$, there is a path from $\epsilon'$ to $f_i(\epsilon)$, and
+  \item for every $1\le j \le m$, there is no path form $\epsilon'$ to $f_i(\epsilon_j)$.
+\end{itemize}
+Whenever we give the same name, $\epsilon$, to two edges in different atomic flows, $\phi$ and $\psi$ we mean that $\epsilon$ in $\psi$ corresponds to $\epsilon$ in $\phi$.
 \end{definition}
 
 \begin{remark}
@@ -220,8 +229,6 @@ Note that the above atomic flow contains redundant information and the following
 }\quad.
 \]
 \end{example}
-
-\newpage
 
 %=======================================
 \subsection{Paths and Cycles}
