@@ -69,6 +69,38 @@ and, for each $\rho\in\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}$, 
 respectively.
 \end{definition}
 
+\begin{theorem}
+A deep inference system $\mathcal{S}$ is complete for propositional classical logic if
+\begin{enumerate}
+ \item Given a formula $\alpha$ and an atom $a$, there exists a derivation 
+  \[
+   \vlder{}{\mathcal{S}}
+   {
+    \alpha
+   }
+   {
+    \vls(\alpha\{a/\ttt,\bar a/\fff\}.\alpha\{a/\fff,\bar a/\ttt\})
+   }\quad
+  \]
+ and
+ \item Given a formula $\alpha$ that is logically equivalent to $\ttt$ and that does not contain any atoms, there exists a derivation
+  \[
+   \vlder{}{\mathcal{S}}
+   {
+    \alpha
+   }
+   {
+    \ttt
+   }\quad.
+  \]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Sketch of Proof]
+Let $\alpha$ be a tautology. Apply (1) repeatedly to obtain a conjunction of formulae not containing atoms. Each of the conjuncts is a truth value assignment to $\alpha$, so the conjunction is logically equivalent to $\ttt$. Apply (2) to obtain the proof.
+\end{proof}
+
+
 \TODO{Check and prove (Complexity paper by Alessio and Paola).}
 
 \begin{lemma}
