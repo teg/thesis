@@ -270,6 +270,84 @@ See, in Figure~\ref{FigThrEx}, some examples of threshold formulae.
 
 The only reason why we require atoms to be distinct in threshold formulae is to avoid certain technical problems with substitutions in the definition of cut-free form, later on. However, there is no substantial difficulty in relaxing this definition to any set of atoms.
 
+\begin{remark}
+Given a derivation $\Phi$ with $\ai$-free form
+\[
+\vlder{\Psi}{}
+{
+ \vls[\beta.\bigvee_{i=1}^n (a_i.\bar a_i)]
+}
+{
+ \vls(\bigwedge_{i=1}^n [a_i.\bar a_i].\alpha)
+}\quad,
+\]
+such that, for every $1\le i\le n$, we could substitute all occurrences of $\bar a_i$ with a formula, without changing $\alpha$ or $\beta$ in the premiss or conclusion, respectively. By observing that 
+\[
+\th{k}{n}\avec{1}{n}=\bigwedge_{i=1}^n\vls[a_i.\th{k}{n-1}(\avec{1}{n}\setminus a_i)] 
+\quad\mbox{and}\quad
+\th{k+1}{n}\avec{1}{n}=\bigvee_{i=1}^n\vls(a_i.\th{k}{n-1}(\avec{1}{n}\setminus a_i))
+\quad,
+\]
+we know there exists a derivation
+\[
+\vlder{\Psi\{\bar a_1/\th{k}{n-1}\avec{2}{n},\dots,\bar a_n/\th{k}{n-1}\avec{1}{n-1}\}}{}
+{
+ \vlsbr
+ [
+  \beta
+ \;\;.\;\;
+  \vlder{}{}
+  {
+   \th{k+1}{n}\avec{1}{n}
+  }
+  {
+   \bigvee_{i=1}^n\vls(a_i.\th{k}{n-1}(\avec{1}{n}\setminus a_i))
+  }
+ ]
+}
+{
+ \vlsbr
+ (
+  \vlder{}{}
+  {
+   \bigwedge_{i=1}^n\vls[a_i.\th{k}{n-1}(\avec{1}{n}\setminus a_i)]
+  }
+  {
+   \th{k}{n}\avec{1}{n}
+  }
+ \;\;.\;\;
+  \alpha
+ )
+}\quad.
+\]
+
+By chaining several of these derivations together we can build a derivation from $\vls(\th{0}{n}\avec{1}{n}.\alpha)=\alpha$ to $\vls[\beta.\th{n+1}{n}\avec{1}{n}]=\beta$.
+
+The challenge is, for every $1\le k\le n+1$, to find $\th{k}{n}\avec{1}{n}$ and, for every $1\le i\le n$, to find $\th{k}{n-1}(\avec{1}{n}\setminus a_i)$, such that the derivations
+\[
+\vlder{}{}
+{
+ \bigwedge_{i=1}^n\vls[a_i.\th{k}{n-1}(\avec{1}{n}\setminus a_i)]
+}
+{
+ \th{k}{n}\avec{1}{n}
+}
+\quad\mbox{and}\quad
+\vlder{}{}
+{
+ \th{k+1}{n}\avec{1}{n}
+}
+{
+ \bigvee_{i=1}^n\vls(a_i.\th{k}{n-1}(\avec{1}{n}\setminus a_i))
+}\quad,
+\]
+have the desired atomic flow.
+
+\[
+\th{k}{n-1}(\avec{1}{n}\setminus a_i)=\th{k}{n}\avec{1}{n}\{a_i/\fff\}
+\]
+\end{remark}
+
 %-------------------------------------------------------------------------------
 \begin{figure}
 \vlsmallbrackets

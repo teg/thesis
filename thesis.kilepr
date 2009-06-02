@@ -36,12 +36,12 @@ order=-1
 
 [item:defs.tex]
 archive=true
-column=1769234798
-encoding=
-highlight=
-line=0
-open=false
-order=-1
+column=0
+encoding=UTF-8
+highlight=LaTeX
+line=47
+open=true
+order=2
 
 [item:flows.tex]
 archive=true
@@ -90,10 +90,10 @@ order=-1
 
 [item:propositional_classical.tex]
 archive=true
-column=29
+column=81
 encoding=UTF-8
 highlight=LaTeX
-line=98
+line=323
 open=true
 order=1
 

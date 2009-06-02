@@ -252,13 +252,13 @@ Given two derivations
  \vlsbr(\vlinf{}{}{\vls[a_1.\bar a_1]}{\ttt}\;.\;\cdots\;.\;\vlinf{}{}{\vls[a_n.\bar a_n]}{\ttt}\;.\;\alpha)
 }\quad,
 \]
-for some atoms $a_1,\dots,a_n,b_1,\dots,b_m$, such that $\Phi$ and $\Psi$ have the same atomic flow, we say that $\Psi$ is an \emph{$\ai$-decomposed normal form of\/ $\Phi$}, and $\Psi'$ is an \emph{$\ai$-free normal form of\/ $\Phi$}.
+for some atoms $a_1,\dots,a_n,b_1,\dots,b_m$, such that $\Phi$ and $\Psi$ have the same atomic flow, we say that $\Psi$ is an \emph{$\ai$-decomposed form of\/ $\Phi$}, and $\Psi'$ is an \emph{$\ai$-free form of\/ $\Phi$}.
 \end{definition}
 
-\TODO{Is it ok that the theorem does not mention the induced $\ai$-free-normal form}
+\TODO{Is it ok that the theorem does not mention the induced $\ai$-free form}
 
 \begin{theorem}\label{ThmConstrDecomp}
-Given a derivation $\Phi$, an $\ai$-decomposed normal form of\/ $\Phi$ can be constructed.
+Given a derivation $\Phi$, an $\ai$-decomposed form of\/ $\Phi$ can be constructed.
 \end{theorem}
 \begin{proof}
 Using Lemma~\ref{LemSuperSwitch} apply, from top-to-bottom and left-to-right, the following transformations to each of the identity and cut instances in $\Phi$:
@@ -304,11 +304,11 @@ Using Lemma~\ref{LemSuperSwitch} apply, from top-to-bottom and left-to-right, th
  }
 }\quad
 \]
-to obtain an $\ai$-decomposed normal form of $\Phi$.
+to obtain an $\ai$-decomposed form of $\Phi$.
 \end{proof}
 
 \begin{definition}
-Given a derivation $\Phi$, the $\ai$-decomposed (resp., $\ai$-free) normal form of $\Phi$ obtained as described in the proof of Theorem~\ref{ThmConstrDecomp} is called \emph{the $\ai$-decomposed} (resp., \emph{$\ai$-free}) \emph{normal form of\/ $\Phi$}.
+Given a derivation $\Phi$, the $\ai$-decomposed (resp., $\ai$-free) form of $\Phi$ obtained as described in the proof of Theorem~\ref{ThmConstrDecomp} is called \emph{the $\ai$-decomposed} (resp., \emph{$\ai$-free}) \emph{form of\/ $\Phi$}.
 \end{definition}
 
 \begin{definition}\label{DefDerCore}
@@ -334,7 +334,7 @@ Given a derivation $\Phi$, a core of\/ $\Phi$ can be constructed.
 \TODO{define $\star$ notation.}
 
 \begin{proof}
-Let $\phi$ be the atomic flow of $\Phi$, let $\phi_1$, $\dots$, $\phi_n$ be the connected, non-weakly-streamlined sublfows of $\phi$, and, for $1\le i\le n$, let $\lambda'_i$ and $\lambda''_i$ (resp., $\mu'_i$ and $\mu''_i$) be the new upper (resp., lower) edges of $\phi_i$ in $\Core(\phi)$. Furthermore, for some atoms $a_1$, $\dots$, $a_n$, $b_1$, $\dots$, $b_k$, $c_1$, $\dots$ $c_l$, such that, for $1\le i\le n$, occurrences of $a_i$ maps to edges in $\phi_i$, and all the occurrences of $b_1$, $\dots$, $b_k$, $c_1$, $\dots$ $c_l$ map to edges in a weakly-stremlined subflow of $\phi$, let the $\ai$-free normal form of $\Phi$ be $\Psi$. Then we build a core of $\Phi$ as follows:
+Let $\phi$ be the atomic flow of $\Phi$, let $\phi_1$, $\dots$, $\phi_n$ be the connected, non-weakly-streamlined sublfows of $\phi$, and, for $1\le i\le n$, let $\lambda'_i$ and $\lambda''_i$ (resp., $\mu'_i$ and $\mu''_i$) be the new upper (resp., lower) edges of $\phi_i$ in $\Core(\phi)$. Furthermore, for some atoms $a_1$, $\dots$, $a_n$, $b_1$, $\dots$, $b_k$, $c_1$, $\dots$ $c_l$, such that, for $1\le i\le n$, occurrences of $a_i$ maps to edges in $\phi_i$, and all the occurrences of $b_1$, $\dots$, $b_k$, $c_1$, $\dots$ $c_l$ map to edges in a weakly-stremlined subflow of $\phi$, let the $\ai$-free form of $\Phi$ be $\Psi$. Then we build a core of $\Phi$ as follows:
 \[
 \vlder{\Psi}{\SKS\setminus\{\aid,\aiu\}}
 {
@@ -395,7 +395,7 @@ Given a proof\/ $\vlproof{\Pi}{}{\alpha}$ with associated atomic flow $\phi$, an
 \begin{proof}
 Let $\phi_1$, $\dots$, $\phi_n$ be all the non-weakly-cut-free, connected subflows of $\phi$ and, for every $1\le i\le n$, let $\lambda'_{i,1}$, $\dots$, $\lambda'_{i,k_i}$ be the new upper edges of $\phi_i$ in $\Exp(\phi,\pi)$.
 
-For every $1\le i\le n$ and every $1\le j\le k_i$, substitute $\vlinf{}{}{\vls[a_i^{\lambda'_{i,j}}.\bar a_i]}{\ttt}$ with $\vlsbr[a_i^{\lambda'_{i,j}}.\vlinf{}{}{\bar a_i}{\fff}]$ in the $\ai$-decomposed normal form of $\Pi$ to obtain a derivation with atomic flow $\Exp(\phi,\pi)$:
+For every $1\le i\le n$ and every $1\le j\le k_i$, substitute $\vlinf{}{}{\vls[a_i^{\lambda'_{i,j}}.\bar a_i]}{\ttt}$ with $\vlsbr[a_i^{\lambda'_{i,j}}.\vlinf{}{}{\bar a_i}{\fff}]$ in the $\ai$-decomposed form of $\Pi$ to obtain a derivation with atomic flow $\Exp(\phi,\pi)$:
 \[
 \vlder{}{}{\alpha}
 {

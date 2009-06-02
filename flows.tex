@@ -130,13 +130,13 @@ Given two atomic flows $\phi$ and $\psi$, we say that \emph{$\phi$ is a copy of 
 Given two atomic flows $\phi$ and $\psi$, such that
 \begin{itemize}
   \item $\psi$ contains $n\ge1$ copies of $\phi$,
-  \item $f_1$, $\dots$, $f_n$ are the bijections, restricted to the upper (resp., lower) edges, between $\phi$ and each of its copies,
+  \item $f_1$, $\dots$, $f_n$ are the bijections, restricted to the upper (resp., lower) edges, from $\phi$ to each of its copies,
   \item $\epsilon$, $\epsilon_1$, $\dots$, $\epsilon_m$ are the upper (resp., lower) edges of $\psi$, and
   \item $\epsilon'$ is an upper (resp., lower) edge of $\phi$,
 \end{itemize}
-then we say that \emph{$\epsilon$ corresponds to $\epsilon'$} if
+then we say that \emph{$\epsilon$ corresponds to $\epsilon'$} if, for every $1\le i\le n$,
 \begin{itemize}
-  \item for every $1\le i\le n$, there is a path from $\epsilon'$ to $f_i(\epsilon)$, and
+  \item there is a path from $\epsilon'$ to $f_i(\epsilon)$, and
   \item for every $1\le j \le m$, there is no path form $\epsilon'$ to $f_i(\epsilon_j)$.
 \end{itemize}
 Whenever we give the same name, $\epsilon$, to two edges in different atomic flows, $\phi$ and $\psi$ we mean that $\epsilon$ in $\psi$ corresponds to $\epsilon$ in $\phi$.
