@@ -455,58 +455,56 @@ Given an atomic flow
 (-13,0)*{\affr{22}{20}};
 (-5,8)*{\aflabelright{\phi_1}};
 %
-(-20, 9)*{\afvjdm{10}{\boldsymbol\epsilon'_1}{}};
+(-20,10)*{\afvjdm{12}{\boldsymbol\epsilon'_1}{}};
 (-13, 8)*{\afaidm{}{}{}{}{}{}};
-( -6, 9)*{\afvjdm{10}{}{\boldsymbol\epsilon''_1}};
+( -6,10)*{\afvjdm{12}{}{\boldsymbol\epsilon''_1}};
 (-18, 0)*{\affr{8}{8}};
 (-17, 2)*{\aflabelright{\phi'_1}};
 ( -8, 0)*{\affr{8}{8}};
 ( -7, 2)*{\aflabelright{\phi''_1}};
-( -6,-9)*{\afvjum{10}{}{\boldsymbol\iota''_1}};
+( -6,-10)*{\afvjum{12}{}{\boldsymbol\iota''_1}};
 (-13,-8)*{\afaium{}{}{}{}{}{}};
-(-20,-9)*{\afvjum{10}{\boldsymbol\iota'_1}{}};
+(-20,-10)*{\afvjum{12}{\boldsymbol\iota'_1}{}};
 %------------
 (0,0)*{\cdots};
 %------------
 (13,0)*{\affr{22}{20}};
 (21,8)*{\aflabelright{\phi_n}};
 %
-(20, 9)*{\afvjdm{10}{}{\boldsymbol\epsilon''_n}};
+(20,10)*{\afvjdm{12}{}{\boldsymbol\epsilon''_n}};
 (13, 8)*{\afaidm{}{}{}{}{}{}};
-( 6, 9)*{\afvjdm{10}{\boldsymbol\epsilon'_n}{}};
+( 6,10)*{\afvjdm{12}{\boldsymbol\epsilon'_n}{}};
 ( 8, 0)*{\affr{8}{8}};
 ( 9, 2)*{\aflabelright{\phi'_n}};
 (18, 0)*{\affr{8}{8}};
 (19, 2)*{\aflabelright{\phi''_n}};
-( 6,-9)*{\afvjum{10}{\boldsymbol\iota'_n}{}};
+( 6,-10)*{\afvjum{12}{\boldsymbol\iota'_n}{}};
 (13,-8)*{\afaium{}{}{}{}{}{}};
-(20,-9)*{\afvjum{10}{}{\boldsymbol\iota''_n}};
+(20,-10)*{\afvjum{12}{}{\boldsymbol\iota''_n}};
 %------------
-(  35,11.5)*{\afvjm4};
+(  35,12.5)*{\afvjm6};
 %---
 (  35, 5.5)*{\affr{18}8};
-(41.5, 7.5)*{\aflabelright{\psi_1}};
 (  30, 5.5)*{\copy\contrup};
 (  35, 5.5)*{\copy\weakdown};
 (  40, 5.5)*{\copy\contrdown};
 (  50, 5.5)*{\affr88};
-(51.5, 7.5)*{\aflabelright{\psi_2}};
 (  50, 5.5)*{\copy\interdown};
 %---
 (  30, 0)*{\afvjm3};
 (  40, 0)*{\afvjm3};
+(  40, 0)*{\affr{30}{28}};
+(  52,12)*{\aflabelright{\psi}};
 (  50, 0)*{\afvjm3};
 %---
 (  30,-5.5)*{\affr88};
-(31.5,-3.5)*{\aflabelright{\psi_3}};
 (  30,-5.5)*{\copy\interup};
 (  45,-5.5)*{\affr{18}8};
-(51.5,-3.5)*{\aflabelright{\psi_4}};
 (  40,-5.5)*{\copy\contrup};
 (  45,-5.5)*{\copy\weakup};
 (  50,-5.5)*{\copy\contrdown};
 %---
-( 45,-11.5)*{\afvjm4};
+( 45,-12.5)*{\afvjm6};
 }\quad,
 \]
 where, for $1\le i\le n$, $\phi'_i$ and $\phi''_i$ contain no identity and no cut vertices and $\phi_i$ is a connected, non-weakly-streamlined subflow, we define the \emph{core of $\phi$}, denoted $\Core(\phi)$, to be
@@ -572,23 +570,21 @@ where, for $1\le i\le n$, $\phi'_i$ and $\phi''_i$ contain no identity and no cu
 (  35,13.5)*{\afvjm8};
 %---
 (  35, 5.5)*{\affr{18}8};
-(41.5, 7.5)*{\aflabelright{\psi_1}};
 (  30, 5.5)*{\copy\contrup};
 (  35, 5.5)*{\copy\weakdown};
 (  40, 5.5)*{\copy\contrdown};
 (  50, 5.5)*{\affr88};
-(51.5, 7.5)*{\aflabelright{\psi_2}};
 (  50, 5.5)*{\copy\interdown};
 %---
 (  30, 0)*{\afvjm3};
 (  40, 0)*{\afvjm3};
+(  40, 0)*{\affr{30}{28}};
+(  52,12)*{\aflabelright{\psi}};
 (  50, 0)*{\afvjm3};
 %---
 (  30,-5.5)*{\affr88};
-(31.5,-3.5)*{\aflabelright{\psi_3}};
 (  30,-5.5)*{\copy\interup};
 (  45,-5.5)*{\affr{18}8};
-(51.5,-3.5)*{\aflabelright{\psi_4}};
 (  40,-5.5)*{\copy\contrup};
 (  45,-5.5)*{\copy\weakup};
 (  50,-5.5)*{\copy\contrdown};
@@ -640,23 +636,21 @@ Given a polarity assignment $\pi$ and an atomic flow
 (20,-9)*{\afvjum{10}{}{\boldsymbol\iota''_n}};
 %------------
 (  35, 5.5)*{\affr{18}8};
-(41.5, 7.5)*{\aflabelright{\psi_1}};
 (  30, 5.5)*{\copy\contrup};
 (  35, 5.5)*{\copy\weakdown};
 (  40, 5.5)*{\copy\contrdown};
 (  50, 5.5)*{\affr88};
-(51.5, 7.5)*{\aflabelright{\psi_2}};
 (  50, 5.5)*{\copy\interdown};
 %---
 (  30, 0)*{\afvjm3};
 (  40, 0)*{\afvjm3};
+(  40, 2)*{\affr{30}{24}};
+(  52,12)*{\aflabelright{\psi}};
 (  50, 0)*{\afvjm3};
 %---
 (  30,-5.5)*{\affr88};
-(31.5,-3.5)*{\aflabelright{\psi_3}};
 (  30,-5.5)*{\copy\interup};
 (  45,-5.5)*{\affr{18}8};
-(51.5,-3.5)*{\aflabelright{\psi_4}};
 (  40,-5.5)*{\copy\contrup};
 (  45,-5.5)*{\copy\weakup};
 (  50,-5.5)*{\copy\contrdown};
@@ -695,23 +689,21 @@ where, for $1\le i\le n$, $\phi_i$ is a connected, non-weakly-cut-free subflow, 
 (20,-9)*{\afvjum{10}{}{\boldsymbol\iota''_n}};
 %------------
 (  35, 5.5)*{\affr{18}8};
-(41.5, 7.5)*{\aflabelright{\psi_1}};
 (  30, 5.5)*{\copy\contrup};
 (  35, 5.5)*{\copy\weakdown};
 (  40, 5.5)*{\copy\contrdown};
 (  50, 5.5)*{\affr88};
-(51.5, 7.5)*{\aflabelright{\psi_2}};
 (  50, 5.5)*{\copy\interdown};
 %---
 (  30, 0)*{\afvjm3};
 (  40, 0)*{\afvjm3};
+(  40, 2)*{\affr{30}{24}};
+(  52,12)*{\aflabelright{\psi}};
 (  50, 0)*{\afvjm3};
 %---
 (  30,-5.5)*{\affr88};
-(31.5,-3.5)*{\aflabelright{\psi_3}};
 (  30,-5.5)*{\copy\interup};
 (  45,-5.5)*{\affr{18}8};
-(51.5,-3.5)*{\aflabelright{\psi_4}};
 (  40,-5.5)*{\copy\contrup};
 (  45,-5.5)*{\copy\weakup};
 (  50,-5.5)*{\copy\contrdown};
