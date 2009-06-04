@@ -1323,61 +1323,59 @@ We present here the main construction of this paper, \emph{i.e.}, a class of der
 
 \subsubsection{Threshold Formulae}
 
-Threshold formulae realise boolean threshold functions, which are defined as boolean functions that are true if and only if at least $k$ of $n$ inputs are true (see \cite{Wege:87:The-Comp:vn} for a thorough reference on threshold functions). 
-
 \TODO{Define $\lfloor x\rfloor$.}
 %In the following, $\lfloor x\rfloor$ denotes the maximum integer $n$ such that $n\le x$.
 
 There are several ways of encoding threshold functions into formulae, and the problem is to find, among them, an encoding that allows us to obtain Theorem~\ref{TheoThrDer}. Efficiently obtaining the property stated in Theorem~\ref{TheoThrDer} crucially depends also on the proof system we adopt.
 
-\newpage
+\TODO{Lemma on substituting into isolated subflows}
 
 \begin{remark}
 Consider the derivation
 \[
 \vlder{\Phi}{}
 {
- \vls[\beta\;.\;\vlinf{}{}{\fff}{\vls(a_1.\bar a_1)}\;.\;\vlinf{}{}{\fff}{\vls(a_n.\bar a_n)}]
+ \vls[\beta\;.\;\vlinf{}{}{\fff}{\vls(a_1.\bar a_1^{\phi_1})}\;.\;\vlinf{}{}{\fff}{\vls(a_n.\bar a_n^{\phi_n})}]
 }
 {
- \vls(\vlinf{}{}{\vls[a_1.\bar a_1]}{\ttt}\;.\;\vlinf{}{}{\vls[a_n.\bar a_n]}{\ttt}\;.\;\alpha)
+ \vls(\vlinf{}{}{\vls[a_1.\bar a_1^{\phi_1}]}{\ttt}\;.\;\vlinf{}{}{\vls[a_n.\bar a_n^{\phi_n}]}{\ttt}\;.\;\alpha)
 }\quad,
 \]
-which is on simple form with respect to the polarity assignment $\pi$, such that, for every $1\le i\le n$, $\bar a_i$ maps to a positive non-weakly-streamlined subflow. By studying the atomic flow of $\Phi$ we can observe that, for some threshold formulae $\th{k}{n-1}\avec{2}{n}$, $\dots$ $\th{k}{n-1}\avec{1}{n-1}$ the following derivation exists
+such that, for $1\le i\le n$, $\phi_i$ is an isolated subflow. For every $k\ge0$, consider some class of formulae $\gamma_{k,1}$, $\dots$, $\gamma_{k,n}$, then, by Lemma~\ref{TODO}, we can construct the derivation
 \[
-\Psi\quad=\quad
-\vlder{\Phi\{\bar a_1/\th{k}{n-1}\avec{2}{n},\dots,\bar a_n/\th{k}{n-1}\avec{1}{n-1}\}}{}
+\Phi_k\quad=\quad
+\vlder{\Phi\{\bar a_1^{\phi_1}/\gamma_{k,1},\dots,\bar a_n^{\phi_n}/\gamma_{k,n}\}}{}
 {
  \vls
  [
-  \beta.(a_1.\th{k}{n-1}\avec{2}{n}).\cdots.(a_n.\th{k}{n-1}\avec{1}{n-1})
+  \beta.(a_1.\gamma_{k,1}).\cdots.(a_n.\gamma_{k,n})
  ]
 }
 {
  \vls
  (
-  [a_1.\th{k}{n-1}\avec{2}{n}].\cdots.[a_n.\th{k}{n-1}\avec{1}{n-1}].\alpha
+  [a_1.\gamma_{k,1}].\cdots.[a_n.\gamma_{k,n}].\alpha
  )
-}\quad.
+}.
 \]
 
-By observing that 
+If
+\begin{itemize}
+ \item $\gamma_{0,1}=\cdots=\gamma_{0,n}=\ttt$,
+ \item there is an $l\ge0$ such that $\gamma_{l,1}=\cdots=\gamma_{l,n}=\fff$ and,
+ \item for every $1\le k\le l$, there exists a derivation
 \[
-\th{k}{n}\avec{1}{n}=\vls[(a_1.\th{k-1}{n-1}\avec{2}{n}).\cdots.(a_n.\th{k-1}{n-1}\avec{1}{n-1})]=\vls([a_1.\th{k}{n-1}\avec{2}{n}].\cdots.[a_n.\th{k}{n-1}\avec{1}{n-1}])
-\quad,
-\]
-we know there exists a derivation
-\[
-\vlder{}{}
+\Gammasf_k\quad=\quad
+\vlder{}{\SKS\setminus\{\aid,\aiu\}}
 {
- \vls([a_1.\th{k}{n-1}\avec{2}{n}].\cdots.[a_n.\th{k}{n-1}\avec{1}{n-1}])
+ \vls([a_1.\gamma_{k,1}].\cdots.[a_n.\gamma_{k,n}])
 }
 {
- \vls[(a_1.\th{k-1}{n-1}\avec{2}{n}).\cdots.(a_n.\th{k-1}{n-1}\avec{1}{n-1})]
-}
+ \vls[(a_1.\gamma_{k-1,1}).\cdots.(a_n.\gamma_{k-1,n})]
+}\quad,
 \]
-
-Since $\th{0}{n-1}\avec{2}{n}=\cdots=\th{0}{n-1}\avec{1}{n-1}=\ttt$ and $\th{n}{n-1}\avec{2}{n}=\cdots=\th{n}{n-1}\avec{1}{n-1}=\fff$, we can compose the above derivations to create
+\end{itemize}
+then we can compose $\Phi_0$, $\dots$, $\Phi_l$, $\Gammasf_1$, $\Gammasf_l$ to obtain
 \[
 \vlder{}{}
 {
@@ -1386,10 +1384,39 @@ Since $\th{0}{n-1}\avec{2}{n}=\cdots=\th{0}{n-1}\avec{1}{n-1}=\ttt$ and $\th{n}{
 {
  \vls([\vlinf{\awd}{}{a_1}{\fff}\;.\;\ttt]\;.\;\cdots\;.\;[\vlinf{\awd}{}{a_n}{\fff}\;.\;\ttt]\;.\;\alpha)
 }
-\quad.
+\]
+with the desired atomic flow.
+\end{remark}
+
+\begin{remark}
+Threshold formulae realise boolean threshold functions, which are defined as boolean functions that are true if and only if at least $k$ of $n$ inputs are true (see \cite{Wege:87:The-Comp:vn} for a thorough reference on threshold functions). 
+
+If we let $\gamma_{k,i}$ be a threshold formula which is true if and only if at least $k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true, then we can trivially observe the following
+\[
+\gamma_{0,1}=\cdots=\gamma_{0,n}=\ttt
+\quad\mbox{and}\quad
+\gamma_{n,1}=\cdots=\gamma_{n,n}=\fff
 \]
 
-The challenge is, for every $1\le k\le n+1$, to find $\th{k}{n}\avec{1}{n}$ and, for every $1\le i\le n$, to find $\th{k}{n-1}\langle a_1,\dots,a_{i-1},a_{i+1},\dots,a_n\rangle$, such that the resulting derivation is weakly streamlined with respect to $\pi$.
+Furthermore, the two formulae
+\[
+\vls[(a_1.\gamma_{k-1,1}).\cdots.(a_n.\gamma_{k-1,n})]
+\quad\mbox{and}\quad
+\vls([a_1.\gamma_{k,1}].\cdots.[a_n.\gamma_{k,n}])
+\]
+are equivalent since they are true if and only if at least $k$ of the atoms $a_1$, $\dots$, $a_n$ are true. Hence, since system $\SKS$ is implicationally complete, the derivation
+\[
+\vlder{}{\SKS}
+{
+ \vls([a_1.\gamma_{k,1}].\cdots.[a_n.\gamma_{k,n}])
+}
+{
+ \vls[(a_1.\gamma_{k-1,1}).\cdots.(a_n.\gamma_{k-1,n})]
+}
+\]
+exists.
+
+The challenge lies in finding a class of threshold formulae such that the above derivation is as small as possible and does not contain any interaction or cut instances.
 \end{remark}
 
 The following class of threshold formulae, which we found to work for system $\SKS$, is a simplification of the one adopted in \cite{AtseGalePudl:02:Monotone:yu}.
@@ -1573,6 +1600,262 @@ For any $k\ge0$ the size of\/ $\th kn\avec1n$ is $n^{\Ord{\log n}}$.
 It immediately follows from Proposition~\ref{PropQuasAux} and Lemma~\ref{LemmaQuas}.
 \end{proof}
 
+\subsubsection{Glue derivations}
+
+\newcommand{\Uth}[3]{\mathop{\mathsf\Upsilon_{#1,#2}^{#3}}}
+\newcommand{\Dth}[3]{\mathop{\mathsf\Delta_{#1,#2}^{#3}}}
+%-------------------------------------------------------------------------------
+\begin{definition}\label{DefThrDer}
+Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$, and let $p=\lfloor n/2\rfloor$ and $q=n-p$.
+\begin{itemize}
+%---------------------------------------
+%---------------------------------------
+\item
+For $n>1$ and $1\le l\le n$, we define the derivations $\Uth kln\avec1n$ and $\Dth kln\avec1n$ as follows:
+\[
+\Uth kln\avec1n=\begin{cases}
+\vlinf{\gwu}
+      {}
+      {\fff}
+      {\vls({\vlnos(\th pp\avec1p)}\{a_l/\fff\}.\th{k-p}q\avec{p+1}n)}
+             &\text{if $p\le k\le n$ and $l\le p$}\\
+\noalign{\medskip}
+\vlinf{\gwu}
+      {}
+      {\fff}
+      {\vls(\th{k-q}p\avec1p.{\vlnos(\th qq\avec{p+1}n)}\{a_l/\fff\})}
+             &\text{if $q\le k\le n$ and $p<l$}\\
+\noalign{\medskip}
+\fff         &\text{otherwise}
+              \end{cases}
+\]
+and
+\[
+\Dth kln\avec1n=\begin{cases}
+\vlinf{\gwd}
+      {}
+      {\th kq\avec{p+1}n}
+      {\fff}
+             &\text{if $0<k\le q$ and $l\le p$}\\
+\noalign{\medskip}
+\vlinf{\gwd}
+      {}
+      {\th kp\avec1p}
+      {\fff}
+             &\text{if $0<k\le p$ and $p<l$}\\
+\noalign{\medskip}
+\fff         &\text{otherwise}
+              \end{cases}\quad.
+\]
+%---------------------------------------
+%---------------------------------------
+\item
+For $k\ge0$ and $1\le l\le n$, we define the derivations $\vlsmash{\Gth kln\avec1n}$, recursively on $n$, as follows:
+\begin{itemize}
+%---------------------------------------
+\item $\Gth 011(a_1)=\ttt$;
+%---------------------------------------
+\item for $k>0$, $\Gth k11(a_1)=\fff$;
+%---------------------------------------
+\item for $k>n$, $\Gth kln\avec1n=\fff$;
+%---------------------------------------
+\item for $n>1$ and $k\le n$, let
+\[
+\Gth kln\avec1n=\begin{cases}
+%---------------------------------------
+\vls[
+\bigvee_{\begin{subarray}{l}i+j=k      \\ 
+                            0\le i<p   \\ 
+                            0\le j\le q
+         \end{subarray}}(
+\Gth ilp\avec1p.
+\th jq\avec{p+1}n).
+\Uth kln\avec1n.\Dth{k+1}ln\avec1n]
+&\text{if $l\le p$}\\
+\noalign{\medskip}
+%---------------------------------------
+\vls[
+\bigvee_{\begin{subarray}{l}i+j=k      \\
+                            0\le i\le p\\ 
+                            0\le j<q
+         \end{subarray}}(
+\th ip\avec1p.
+\Gth j{l-p}q\avec{p+1}n).
+\Uth kln\avec1n.\Dth{k+1}ln\avec1n]
+&\text{if $p<l$}
+\end{cases}
+\quad.
+\]
+%---------------------------------------
+\end{itemize}
+%---------------------------------------
+%---------------------------------------
+\end{itemize}
+\end{definition}
+
+
+%-------------------------------------------------------------------------------
+\begin{example}
+See, in Figure~\ref{FigPThEx}, some example of derivations $\vlsmash{\Gth kln\avec1n}$. Note that, for clarity, we removed all instances of the trivial derivations $\Uth112\avec12=\Uth122\avec12=\Uth113\avec13=\vldownsmash{\vlinf\gwu{}\fff\fff}$. We can do so because these derivation instances appear as disjuncts.
+\end{example}
+
+%-------------------------------------------------------------------------------
+\begin{theorem}\label{TheoThrDer}
+For any $n>0$, $k\ge0$ and\/ $1\le l\le n$, the derivation\/ $\vlsmash{\Gth kln\avec1n}$ has shape
+\[
+\vlder{}{\{\awd,\awu\}}{(\th{k+1}n\avec1n)\{a_l/\ttt\}}
+                       {(\th kn\avec1n)\{a_l/\fff\}}
+\quad,
+\]
+and\/ $\size{\Gth kln\avec1n}$ is $n^{\Ord{\log n}}$.
+\end{theorem}
+
+%-------------------------------------------------------------------------------
+\begin{proof}
+The shape of $\Gth kln\avec1n$ can be verified by inspecting Definition~\ref{DefThrDer}. For example, this is the case when $n>1$ and $l\le p\le k<q$, where $p=\lfloor n/2\rfloor$ and $q=n-p$:
+\vlstore{\noalign{\medskip}
+\vls[
+\textstyle\bigvee_{\begin{subarray}{l}i+j=k      \\
+                                      0\le i<p   \\
+                                      0\le j\le q
+                   \end{subarray}}(
+\vlder{\Gth ilp\avec1p}
+      {}
+      {(\th{i+1}p\avec1p)\{a_l/\ttt\}}
+      {(\th ip\avec1p)\{a_l/\fff\}}
+.
+\th jq\avec{p+1}n)
+.
+\vlinf{\gwu}
+      {}
+      {\fff}
+      {\vls({\vlnos(\th pp\avec1p)}\{a_l/\fff\}.\th{k-p}q\avec{p+1}n)}
+.
+\vlinf{\gwd}
+      {}
+      {\th{k+1}q\avec{p+1}n}
+      {\fff}
+]}
+\begin{multline*}
+\vlder{\Gth kln\avec1n}
+      {}
+      {(\th{k+1}n\avec1n)\{a_l/\ttt\}}
+      {(\th kn\avec1n)\{a_l/\fff\}}
+={}\\
+\vlread
+\quad.
+\end{multline*}
+(Remember that
+\[
+\th kn\avec1n\equiv\bigvee_{\begin{subarray}{l}
+                            i+j=k\\ 
+                            0\le i\le p\\ 
+                            0\le j\le q
+                            \end{subarray}}
+                   \vlsbr(\th ip\avec1p.\th jq\avec{p+1}n)
+\]
+and $\th0p\avec1p\equiv\ttt$.) General (co)weak\-en\-ing rule instances can be replaced by atomic ones because of Proposition~\ref{PropGenAtPol}. The size bound on $\Gth kln\avec1n$ follows from Proposition~\ref{PropGenAtPol} and Theorem~\ref{TheoQuas}.
+\end{proof}
+
+\TODO{Define operator for the following definition}
+
+\begin{definition}\label{DefThrDer2}
+Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the derivations $\vlsmash{\Gth k{}n\avec1n}$ as follows:
+\[
+\Gth k{}n\avec1n\quad=\quad
+\vlderivation
+{
+ \vlin{n\cdot\cou}{}
+ {
+  \vls
+  (
+   \vlder{}{}
+   {
+    \vls[a_1.(\th {k+1}n\avec1n)\{a_1/\fff\}]
+   }
+   {
+    \th {k+1}n\avec1n
+   }
+  \;\;.\;\;
+   \vlder{}{}
+   {
+    \vls[a_n.(\th {k+1}n\avec1n)\{a_n/\fff\}]
+   }
+   {
+    \th {k+1}n\avec1n
+   }
+  )
+ }
+ {
+  \vlin{n\cdot\cod}{}
+  {
+   \th {k+1}n\avec1n
+  }
+  {
+   \vlhy
+   {
+    \vls
+    [
+     \vlder{}{}
+     {
+      \th {k+1}n\avec1n
+     }
+     {
+      \vlsbr
+      (
+       a_1
+      .
+       \vlder{\Gth kin\avec1n}{}
+       {
+        (\th {k+1}n\avec1n)\{a_1/\ttt\}
+       }
+       {
+        (\th kn\avec1n)\{a_1/\fff\}
+       }
+      )
+     }
+    \;.\;
+     \vlder{}{}
+     {
+      \th {k+1}n\avec1n
+     }
+     {
+      \vlsbr
+      (
+       a_n
+      .
+       \vlder{\Gth knn\avec1n}{}
+       {
+        (\th {k+1}n\avec1n)\{a_n/\ttt\}
+       }
+       {
+        (\th kn\avec1n)\{a_n/\fff\}
+       }
+      )
+     }
+    ]
+   }
+  }
+ }
+}
+\]
+\end{definition}
+
+%-------------------------------------------------------------------------------
+\begin{theorem}\label{TheoThrDer}
+For any $n>0$ and $k\ge0$, the derivation\/ $\vlsmash{\Gth k{}n\avec1n}$ has shape
+\[
+\vlder{}{\SKS\setminus\{\aid,\aiu\}}
+{
+ \vls([a_1.(\th{k+1}n\avec1n)\{a_1/\fff\}].\cdots.[a_n.(\th{k+1}n\avec1n)\{a_n/\fff\}])
+}
+{
+ \vls[(a_1.(\th{k}n\avec1n)\{a_1/\fff\}).\cdots.(a_n.(\th{k}n\avec1n)\{a_n/\fff\})]
+}
+\quad,
+\]
+and\/ $\size{\Gth k{}n\avec1n}$ is $n^{\Ord{\log n}}$.
+\end{theorem}
 
 \subsubsection{Quasipolynomial Reduction}
 
@@ -1588,125 +1871,163 @@ It immediately follows from Proposition~\ref{PropQuasAux} and Lemma~\ref{LemmaQu
 
 %-------------------------------------------------------------------------------
 \begin{definition}\label{DefNorm}
-For $n>0$, let $\Pi$ be a proof in simple form over $\avec1n$, such that it and its atomic flow have shape
+Consider the derivation
 \[
-\hbox{\phantom{$\vls[\alpha.{}]$}}
-\vlder\Psi
-      {}
-      {\vls[\llap{$\vls[\alpha.{}]$}
-            \vlinf{}{}\fff{\vls(a_1.\bar a_1^{\phi_1})}.\cdots.
-            \vlinf{}{}\fff{\vls(a_n.\bar a_n^{\phi_n})}]}
-      {\vls(\vlinf{}{}{\vls[a_1.\bar a_1^{\phi_1}]}\ttt.\cdots.
-            \vlinf{}{}{\vls[a_n.\bar a_n^{\phi_n}]}\ttt)}
-\qquad\text{and}\qquad
-\atomicflow{
-(17.75 ,16  )*{\afaidex{}{}{}{}{}{}{43}8};
-(14.25 ,14  )*{\afaidex{}{}{}{}{}{}{13}8};
-( 9    ,12  )*{\cdots};
-( 7    ,11  )*{\afvj2};
-(28.5  ,11  )*{\afvj2};
-(18.5  , 9  )*{\aflabelright{\phi_1}};
-(29.5  , 9  )*{\aflabelright{\phi_n}};
-( 1    , 6  )*{\copy\interdown};
-( 4    , 6  )*{\copy\weakdown};
-( 5.5  , 6  )*{\affr{13}8};
-( 6    , 6  )*{\copy\weakup};
-( 8    , 6  )*{\copy\contrdown};
-(10    , 6  )*{\copy\contrup};
-(16    , 6  )*{\copy\contrdown};
-(17.5  , 6  )*{\affr78};
-(18    , 6  )*{\copy\contrdown};
-(23    , 6  )*{\cdots};
-(27    , 6  )*{\copy\contrup};
-(28.5  , 6  )*{\affr78};
-(29    , 6  )*{\copy\contrup};
-( 7    , 1  )*{\afvj2};
-(28.5  , 1  )*{\afvj2};
-( 9    , 0  )*{\cdots};
-( 1    ,-1.5)*{\afvjm7};
-(14.25 ,-2  )*{\afaiuex{}{}{}{}{}{}{13}8};
-(17.75 ,-4  )*{\afaiuex{}{}{}{}{}{}{43}8}}
-\quad,
+\vlder{\Phi}{}
+{
+ \vls[\beta\;.\;\vlinf{}{}{\fff}{\vls(a_1.\bar a_1^{\phi_1})}\;.\;\vlinf{}{}{\fff}{\vls(a_n.\bar a_n^{\phi_n})}]
+}
+{
+ \vls(\vlinf{}{}{\vls[a_1.\bar a_1^{\phi_1}]}{\ttt}\;.\;\vlinf{}{}{\vls[a_n.\bar a_n^{\phi_n}]}{\ttt}\;.\;\alpha)
+}\quad,
 \]
+such that, for $1\le i\le n$, $\phi_i$ is an isolated subflow that does not contain identity or cut instances. For $0\le i\le n+1$, let $\theta_i\equiv\vlsmallbrackets\vls([a_1.(\th in\avec1n)\{a_1/\fff\}].\cdots.[a_n.(\th in\avec1n)\{a_n/\fff\}])$. We define $\Phi_0$ and $\Phi_n$ as
+\[
+\vlder{\Phi\{\bar a_1^{\phi_1}/\ttt,\dots,\bar a_n^{\phi_n}/\ttt\}}{}
+{
+ \vlsbr
+ [
+  \beta
+ \;\;.\;\;
+  \vlder{\Gth k{}n\avec1n}{}
+  {
+   \theta_1
+  }
+  {
+   \vls[a_1.\cdots.a_n]
+  }
+ ]
+}
+{
+ \vls([\vlinf{}{}{a_1}{\fff}\;.\;\ttt]\;.\;[\vlinf{}{}{a_n}{\fff}\;.\;\ttt]\;.\;\alpha)
+}
+\quad\mbox{and}\quad
+\vlder{\Phi\{\bar a_1^{\phi_1}/\fff,\dots,\bar a_n^{\phi_n}/\fff\}}{}
+{
+ \vls[\beta\;.\;(\vlinf{}{}{\ttt}{a_1}\;.\;\fff)\;.\;\cdots\;.\;(\vlinf{}{}{\ttt}{a_1}\;.\;\fff)]
+}
+{
+ \vls(\theta_n.\alpha)
+}\quad,
+\]
+respectively. For $1\le k\le n-1$, we define the derivations $\Phi_k$:
+\[
+\vlder{\Phi\{\bar a_1^{\phi_1}/(\th kn\avec1n)\{a_1/\fff\},\dots,\bar a_n^{\phi_n}/(\th kn\avec1n)\{a_n/\fff\}\}}{}
+{
+ \vlsbr
+ [
+  \beta
+ \;\;.\;\;
+  \vlder{\Gth k{}n\avec1n}{}
+  {
+   \theta_{k+1}
+  }
+  {
+   \vls[(a_1.(\th{k}n\avec1n)\{a_1/\fff\}).\cdots.(a_n.(\th{k}n\avec1n)\{a_n/\fff\})]
+  }
+ ]
+}
+{
+ \vls(\theta_k.\alpha)
+}
+\]
+ where we use Proposition~\ref{PropAuxNorm}.
 
-for some derivation $\Psi$. For $0\le i\le n+1$, let $\theta_i\equiv\th in\avec1n$. For $0\le k\le n$, we define the derivations $\vlder{\Phi_k}{\SKS\setminus\{\aiu\}}{\vls[\alpha.\theta_{k+1}]}{\theta_k}$ as
-\[ %%%%% The \dimen's must be adjusted if fonts and layout parameters are changed
-\dimen0=2560000sp
-\kern\dimen0
-\vlder{\Psi_k}
-      {\SKS\setminus\{\aiu\}}
-      {\kern-\dimen0\vlsbr[\alpha.
-       \vlinf{\scriptstyle(n-1)\cdot\cod}
-             {}
-             {\theta_{k+1}}
-             {\vls[\vlder{}
-                         {\{\awu,\acu,\swi\}}
-                         {\theta_{k+1}}
-                         {\vlsbr(a_1
-                                .\;\;
-                                \vlder{\Gth k1n\avec1n}
-                                      {\{\awd,\awu\}}
-                                      {\theta_{k+1}\{a_1/\ttt\}}
-                                      {\theta_k    \{a_1/\fff\}})}
-                  \;\;\;.\vldots.\;\;\;
-                   \vlder{}
-                         {\{\awu,\acu,\swi\}}
-                         {\theta_{k+1}}
-                         {\vlsbr(a_n
-                                .\;\;
-                                \vlder{\Gth knn\avec1n}
-                                      {\{\awd,\awu\}}
-                                      {\theta_{k+1}\{a_n/\ttt\}}
-                                      {\theta_k    \{a_n/\fff\}})}
-                 ]}]                                              }  
-      {\vlinf{\llap{$\scriptstyle(n-1)\cdot\cou$}}
-             {}
-             {\vlsbr(\vlder{}
-                           {\{\awd,\acd,\swi\}}
-                           {\vls[a_1.\theta_k\{a_1/\fff\}]}
-                           {\theta_k                      }
-                    \;\;\;.\vldots.\;\;\;
-                     \vlder{}
-                           {\{\awd,\acd,\swi\}}
-                           {\vls[a_n.\theta_k\{a_n/\fff\}]}
-                           {\theta_k                      })}
-             {\theta_k                                    }}
-\quad,
+\TODO{Change the rest of this definition}
+ 
+We define the \emph{cut-free form of\/ $\Pi$} as the following proof in $\SKS\setminus\{\aiu\}$:
+\[
+\vlderivation
+{
+ \vlin{n\cdot\cou}{}
+ {
+  \beta
+ }
+ {
+  \vlin{\swi}{}
+  {
+   \vls
+   [
+    \beta\;\;.\;\;\cdots\;\;.\beta
+   \;\;.\;\;
+    \vlder{\Phi_n}{}
+    {
+     \beta
+    }
+    {
+     \vls(\theta_n.\alpha)
+    }
+   ]
+  }
+  {
+   \vlin{\swi}{}
+   {
+    \vls
+    (
+     [
+      \beta\;\;.\;\;\cdots\;\;.\beta
+     \;\;.\;\;
+      \vlder{\Phi_{n-1}}{}
+      {
+       \vls[\beta.\theta_n]
+      }
+      {
+       \vls(\theta_{n-1}.\alpha)
+      }
+     ]
+    \;\;.\;\;
+     \alpha
+    )
+   }
+   {
+    \vlin{\swi}{}
+    {
+     \vdots
+    }
+    {
+     \vlin{\swi}{}
+     {
+      \vls
+      (
+       [
+        \beta
+       \;\;.\;\;
+        \vlder{\Phi_1}{}
+        {
+         \vls[\beta.\theta_2]
+        }
+        {
+         \vls(\theta_1.\alpha)
+        }
+       ]
+      \;\;.\;\;
+       \alpha\;\;.\;\;\cdots\;\;.\alpha
+      )
+     }
+     {
+      \vlin{n\cdot\cod}{}
+      {
+       \vls
+       (
+        \vlder{\Phi_0}{}
+        {
+         \vls[\beta.\theta_1]
+        }
+        {
+         \alpha
+        }
+       \;\;.\;\;
+        \alpha\;\;.\;\;\cdots\;\;.\alpha
+       )
+      }
+      {
+       \vlhy{\alpha}
+      }
+     }
+    }
+   }
+  }
+ }
+}
 \]
-where $\Psi_k=\Psi\{\bar a_1^{\phi_1}/\theta_k\{a_1/\fff\},\dots,\bar a_n^{\phi_n}/\theta_k\{a_n/\fff\}\}$ and where we use Proposition~\ref{PropAuxNorm}. We define the \emph{cut-free form of\/ $\Pi$} as the following proof in $\SKS\setminus\{\aiu\}$:
-\[ %%%%% The \dimen's must be adjusted if fonts and layout parameters are changed
-\dimen0=910000sp
-\dimen1=2970000sp
-\dimen2=3870000sp
-\vlinf{n\cdot\gcd}
-      {\quad.}
-      \alpha
-      {\kern\dimen2\vlder{\Phi_0}
-             {}
-             {\kern-\dimen2
-              \vlsbr[\alpha
-                    .
-                    \kern\dimen1
-                    \vlder{\Phi_1}
-                          {}
-                          {\kern-\dimen1
-                           \vlsbr[\alpha
-                                 .
-                                 \cdots.\kern\dimen0
-                                 \begin{tabular}{@{}c@{}}
-                                 $\theta_2$\\
-                                 $\vdots$\\
-                                 $\kern-\dimen0
-                                  \vlsbr[\alpha
-                                        .
-                                        \vlder{\Phi_n}
-                                              {}
-                                              {\vlsbr[\alpha
-                                                     .\theta_{n+1}]}
-                                              {\theta_n}]$
-                                 \end{tabular}]}
-                          {\theta_1}]}
-            {\theta_0}}
-\]
-(We recall that $\theta_0\equiv\ttt$ and $\theta_{n+1}\equiv\fff$.)
 \end{definition}
