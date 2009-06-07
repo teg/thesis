@@ -1,3 +1,97 @@
+\TODO{Define an atomic flow transformation and prove it sound (based on the following figure).}
+
+%-------------------------------------------------------------------------------
+\begin{figure}
+\[
+\atomicflow{
+(1,47)="A";
+"A"+(16,15  )*{\aflabelright{\phi'_0}};
+"A"+(12,14  )*{\afawdm{}{}{}{}};
+"A"+(12, 9  )*{\aflabelright\phi};
+"A"+( 2, 6  )*{\copy\interdown};
+"A"+( 5, 6  )*{\copy\weakdown};
+"A"+( 7, 6  )*{\copy\weakup};
+"A"+( 7, 6  )*{\affr{14}8};
+"A"+( 9, 6  )*{\copy\contrdown};
+"A"+(11, 6  )*{\copy\contrup};
+"A"+(9 , 4.5)*{\affr{19}{23}};
+"A"+(16, 4  )*{\afawdm{}{}{}{}};
+"A"+(12, 1  )*{\afvjm2};
+"A"+(14,-3  )*{\affr86};
+"A"+(14,-3  )*{\copy\contrdown};
+"A"+(14,-8.5)*{\afvjum5{}{\theta_1}};
+(15  ,35   )*{\vdots};
+(15  ,28.5 )*{\afvjdm5{}{\theta_k}};
+(22.5,26   )*{\aflabelright{\phi'_k}};
+(15  ,23   )*{\affr46};
+(15  ,23   )*{\copy\contrup};
+(13  ,19   )*{\afcjrm22};
+(17.5,15   )*{\afcjlm3{10}};
+(12  ,15   )*{\affr46};
+(12  ,15   )*{\copy\contrdown};
+(12  ,11   )*{\afvjm2};
+(22  ,10   )*{\aflabelright{\psi_k}};
+(12  , 9   )*{\aflabelright\phi};
+( 2  , 6   )*{\copy\interdown};
+( 5  , 6   )*{\copy\weakdown};
+( 7  , 6   )*{\copy\weakup};
+( 7  , 6   )*{\affr{14}8};
+( 9  , 6   )*{\copy\contrdown};
+(11  , 6   )*{\copy\contrup};
+(12  , 6   )*{\affr{25}{10}};
+(12  , 6   )*{\affr{26}{42}};
+(18  , 6   )*{\copy\contrdown};
+(19  , 6   )*{\affr68};
+(20  , 6   )*{\copy\contrup};
+(12  , 1   )*{\afvjm2};
+(19  , 1   )*{\afvjm2};
+(12  ,-3   )*{\affr46};
+(12  ,-3   )*{\copy\contrup};
+(18  ,-3   )*{\copy\weakdown};
+(19  ,-3   )*{\affr66};
+(20  ,-3   )*{\copy\weakup};
+(13  ,-7   )*{\afcjlm22};
+(17.5,-7   )*{\afcjrm32};
+(15  ,-11  )*{\affr46};
+(15  ,-11  )*{\copy\contrdown};
+(15  ,-16.5)*{\afvjum5{}{\theta_{k+1}}};
+(0,-35)="B";
+"B"+( 2  ,-15  )*{\afvjm{10}};
+"B"+(12  ,-14  )*{\afawum{}{}{}{}};
+"B"+(19  ,-14  )*{\afawum{}{}{}{}};
+"B"+( 2  , -6  )*{\copy\interdown};
+"B"+( 5  , -6  )*{\copy\weakdown};
+"B"+( 7  , -6  )*{\copy\weakup};
+"B"+( 7  , -6  )*{\affr{14}8};
+"B"+( 9  , -6  )*{\copy\contrdown};
+"B"+(11  , -6  )*{\copy\contrup};
+"B"+(18  , -6  )*{\copy\contrdown};
+"B"+(19  , -6  )*{\affr68};
+"B"+(20  , -6  )*{\copy\contrup};
+"B"+(11  , -4.5)*{\affr{23}{23}};
+"B"+(12  , -3  )*{\aflabelright\phi};
+"B"+(13  , -1  )*{\afcjrm22};
+"B"+(17.5, -1  )*{\afcjlm32};
+"B"+(15  ,  3  )*{\affr66};
+"B"+(15  ,  3  )*{\copy\contrup};
+"B"+(20  ,  6  )*{\aflabelright{\phi'_n}};
+"B"+(15  ,  8.5)*{\afvjdm5{}{\theta_n}};
+"B"+(15  ,  15 )*{\vdots};
+(-1.5, 28  )*{\afcjrm9{42}};
+( 0  ,-20  )*{\afcjrm4{44}};
+(-6  ,-24  )*{\afvjm{62}};
+(-2  ,-48.5)*{\afvjm{13}};
+(-4  ,-53  )*{\cdots};
+( 0  ,-53  )*{\cdots};
+(-2  ,-58  )*{\affr{10}6};
+(-2  ,-58  )*{\copy\contrdown};
+(-2  ,-63  )*{\afvjum4\alpha{}};
+}
+\]
+\caption{Atomic flow of a proof in cut-free form.}
+\label{FigNormFlow}
+\end{figure}
+
 \TODO{Change this introduction}
 
 %\newcommand{\Gammasf}{\mathsf\Gamma}
@@ -6,6 +100,9 @@ We present here the main construction of this paper, \emph{i.e.}, a class of der
 \subsubsection{Threshold Formulae}
 
 \TODO{Define $\lfloor x\rfloor$.}
+
+\TODO{Define $a^\phi$.}
+
 %In the following, $\lfloor x\rfloor$ denotes the maximum integer $n$ such that $n\le x$.
 
 There are several ways of encoding threshold functions into formulae, and the problem is to find, among them, an encoding that allows us to obtain Theorem~\ref{TheoThrDer}. Efficiently obtaining the property stated in Theorem~\ref{TheoThrDer} crucially depends also on the proof system we adopt.
@@ -126,6 +223,8 @@ $\th kn\avec1n\equiv\bigvee_{\begin{subarray}{l}i+j=k      \\
 \end{definition}
 
 See, in Figure~\ref{FigThrEx}, some examples of threshold formulae.
+
+\TODO{Check if this still holds, if it does, find a new explanation:}
 
 The only reason why we require atoms to be distinct in threshold formulae is to avoid certain technical problems with substitutions in the definition of cut-free form, later on. However, there is no substantial difficulty in relaxing this definition to any set of atoms.
 
