@@ -2,6 +2,8 @@
 
 \TODO{Come up with a better name.}
 
+\TODO{Make sure this works with how the labeling is defined. (If not, change the definition of labeling).}
+
 \newcommand{\frfb}{{\mathsf{fb}}}
 %---------------------------------------
 \begin{definition}\label{DefFourBox}
@@ -83,7 +85,7 @@ Reduction\/ $\to_\frfb$ is sound.
 For every atom occurrence $a$ which maps to an edge in $\psi$;
 \begin{enumerate}
 	\item If $a$ is not in the premiss or conclusion of the derivation substitute it with the formula $\vls([a_1.a_2].[a_3.a_4])$, where $a=a_1=a_2=a_3=a_4$ and the subscripts denote which of $\psi_1$, $\psi_2$, $\psi_3$ or $\psi_4$ the atom occurrence maps to.
-	\item If $a$ is in the premiss or conclusion of the derivation then substitute it with the derivations
+	\item If $a$ is in the premiss or conclusion of the derivation then substitute it with the derivation
 \[
 \vlinf{}{}
 {
@@ -102,7 +104,7 @@ For every atom occurrence $a$ which maps to an edge in $\psi$;
  )
 }
 {a}
-\qquad
+\quad\mbox{or}\quad
 \vlinf{}{}
 {a}
 {
@@ -130,7 +132,8 @@ respectively.
    \vlhy{\vls(\vlinf{}{}{\vls[a_2.\bar a]}{\ttt}\;.\;\vlinf{}{}{\vls[a_4.\bar a]}{\ttt})}
   }
  }
-}\qquad
+}
+\quad\mbox{and}\quad
 \vlderivation
 {
  \vlin{\swi}{}{\vls[\vlinf{}{}{\fff}{\vls(a_3.\bar a)}\;.\;\vlinf{}{}{\fff}{\vls(a_4.\bar a)}]}
@@ -148,6 +151,8 @@ respectively.
 It is now straightforward to verify that the derivation so obtained has the desired atomic flow.
 \end{proof}
 
+\TODO{One exists, but we would very much like to know what it is... Is it unique?}
+
 \begin{lemma}
 Given an atomic flow $\phi$ and a polarity assignment $\pi$ there exists an atomic flow $\psi$, which is on simple form with respect to $\pi$, such that $\phi\to_\frfb\psi$.
 \end{lemma}
@@ -159,3 +164,9 @@ For any two atomic flows $\phi$ and $\psi$ such that $\phi\to_\frfb\psi$ the siz
 \begin{lemma}
 Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such that $\phi\to_\frfb\psi$ and $\phi$ is weakly streamlined with respect to $\pi$ then $\psi$ is weakly streamlined with respect to $\pi$.
 \end{lemma}
+
+\TODO{Check:}
+
+\begin{remark}
+Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such that $\phi\to_\frfb\psi$, $\phi$ is not weakly streamlined with respect to $\pi^{-1}$, and $\psi$ is on simple form with respect to $\pi$, then $\psi$ is not on simple form with respect to $\pi^{-1}$.
+\end{remark}
