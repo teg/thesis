@@ -1,0 +1,986 @@
+\TODO{Change this introduction}
+
+%\newcommand{\Gammasf}{\mathsf\Gamma}
+We present here the main construction of this paper, \emph{i.e.}, a class of derivations $\Gammasf$ that only depend on a given set of atoms and that allow us to normalise any proof containing those atoms. The complexity of the $\Gammasf$ derivations dominates the complexity of the normal proof, and is due to the complexity of certain `threshold formulae', on which the $\Gammasf$ derivations are based. The $\Gammasf$ derivations are constructed in Definition~\ref{DefThrDer}; this directly leads to Theorem~\ref{TheoThrDer}, which states a crucial property of the $\Gammasf$ derivations and which is the main result of this section.
+
+\subsubsection{Threshold Formulae}
+
+\TODO{Define $\lfloor x\rfloor$.}
+%In the following, $\lfloor x\rfloor$ denotes the maximum integer $n$ such that $n\le x$.
+
+There are several ways of encoding threshold functions into formulae, and the problem is to find, among them, an encoding that allows us to obtain Theorem~\ref{TheoThrDer}. Efficiently obtaining the property stated in Theorem~\ref{TheoThrDer} crucially depends also on the proof system we adopt.
+
+\TODO{Lemma on substituting into isolated subflows}
+
+\begin{remark}
+Consider the derivation
+\[
+\vlder{\Phi}{}
+{
+ \vls[\beta\;.\;\vlinf{}{}{\fff}{\vls(a_1.\bar a_1^{\phi_1})}\;.\;\vlinf{}{}{\fff}{\vls(a_n.\bar a_n^{\phi_n})}]
+}
+{
+ \vls(\vlinf{}{}{\vls[a_1.\bar a_1^{\phi_1}]}{\ttt}\;.\;\vlinf{}{}{\vls[a_n.\bar a_n^{\phi_n}]}{\ttt}\;.\;\alpha)
+}\quad,
+\]
+such that, for $1\le i\le n$, $\phi_i$ is an isolated subflow. For every $k\ge0$, consider some class of formulae $\gamma_{k,1}$, $\dots$, $\gamma_{k,n}$, then, by Lemma~\ref{TODO}, we can construct the derivation
+\[
+\Phi_k\quad=\quad
+\vlder{\Phi\{\bar a_1^{\phi_1}/\gamma_{k,1},\dots,\bar a_n^{\phi_n}/\gamma_{k,n}\}}{}
+{
+ \vls
+ [
+  \beta.(a_1.\gamma_{k,1}).\cdots.(a_n.\gamma_{k,n})
+ ]
+}
+{
+ \vls
+ (
+  [a_1.\gamma_{k,1}].\cdots.[a_n.\gamma_{k,n}].\alpha
+ )
+}.
+\]
+
+If
+\begin{itemize}
+ \item $\gamma_{0,1}=\cdots=\gamma_{0,n}=\ttt$,
+ \item there is an $l\ge0$ such that $\gamma_{l,1}=\cdots=\gamma_{l,n}=\fff$ and,
+ \item for every $1\le k\le l$, there exists a derivation
+\[
+\Gammasf_k\quad=\quad
+\vlder{}{\SKS\setminus\{\aid,\aiu\}}
+{
+ \vls([a_1.\gamma_{k,1}].\cdots.[a_n.\gamma_{k,n}])
+}
+{
+ \vls[(a_1.\gamma_{k-1,1}).\cdots.(a_n.\gamma_{k-1,n})]
+}\quad,
+\]
+\end{itemize}
+then we can compose $\Phi_0$, $\dots$, $\Phi_l$, $\Gammasf_1$, $\Gammasf_l$ to obtain
+\[
+\vlder{}{}
+{
+ \vls[\beta\;.\;(\vlinf{\awu}{}{\ttt}{a_1}\;.\;\fff)\;.\;\cdots\;.\;(\vlinf{\awu}{}{\ttt}{a_n}\;.\;\fff)]
+}
+{
+ \vls([\vlinf{\awd}{}{a_1}{\fff}\;.\;\ttt]\;.\;\cdots\;.\;[\vlinf{\awd}{}{a_n}{\fff}\;.\;\ttt]\;.\;\alpha)
+}
+\]
+with the desired atomic flow.
+\end{remark}
+
+\begin{remark}
+Threshold formulae realise boolean threshold functions, which are defined as boolean functions that are true if and only if at least $k$ of $n$ inputs are true (see \cite{Wege:87:The-Comp:vn} for a thorough reference on threshold functions). 
+
+If we let $\gamma_{k,i}$ be a threshold formula which is true if and only if at least $k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true, then we can trivially observe the following
+\[
+\gamma_{0,1}=\cdots=\gamma_{0,n}=\ttt
+\quad\mbox{and}\quad
+\gamma_{n,1}=\cdots=\gamma_{n,n}=\fff
+\]
+
+Furthermore, the two formulae
+\[
+\vls[(a_1.\gamma_{k-1,1}).\cdots.(a_n.\gamma_{k-1,n})]
+\quad\mbox{and}\quad
+\vls([a_1.\gamma_{k,1}].\cdots.[a_n.\gamma_{k,n}])
+\]
+are equivalent since they are true if and only if at least $k$ of the atoms $a_1$, $\dots$, $a_n$ are true. Hence, since system $\SKS$ is implicationally complete, the derivation
+\[
+\vlder{}{\SKS}
+{
+ \vls([a_1.\gamma_{k,1}].\cdots.[a_n.\gamma_{k,n}])
+}
+{
+ \vls[(a_1.\gamma_{k-1,1}).\cdots.(a_n.\gamma_{k-1,n})]
+}
+\]
+exists.
+
+The challenge lies in finding a class of threshold formulae such that the above derivation is as small as possible and does not contain any interaction or cut instances.
+\end{remark}
+
+The following class of threshold formulae, which we found to work for system $\SKS$, is a simplification of the one adopted in \cite{AtseGalePudl:02:Monotone:yu}.
+
+\renewcommand{\th}[2]{\mathop{\thetaup_{#1}^{#2}}}
+%-------------------------------------------------------------------------------
+\begin{definition}
+Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$, and let $p=\lfloor n/2\rfloor$ and $q=n-p$; for $k\ge0$, we define the \emph{threshold formulae\/} $\th kn\avec1n$ as follows:
+\begin{itemize}
+%---------------------------------------
+\item for any $n>0$ let $\th0n\avec1n\equiv\ttt$;
+%---------------------------------------
+\item for any $n>0$ and $k>n$ let $\th kn\avec1n\equiv\fff$;
+%---------------------------------------
+\item $\th11(a_1)\equiv a_1$;
+%---------------------------------------
+\item for any $n>1$ and $0<k\le n$ let
+$\th kn\avec1n\equiv\bigvee_{\begin{subarray}{l}i+j=k      \\ 
+                                                0\le i\le p\\ 
+                                                0\le j\le q
+                             \end{subarray}}
+\vlsbr(\th ip\avec1p.\th jq\avec{p+1}n)$.
+%---------------------------------------
+\end{itemize}
+\end{definition}
+
+See, in Figure~\ref{FigThrEx}, some examples of threshold formulae.
+
+The only reason why we require atoms to be distinct in threshold formulae is to avoid certain technical problems with substitutions in the definition of cut-free form, later on. However, there is no substantial difficulty in relaxing this definition to any set of atoms.
+
+%-------------------------------------------------------------------------------
+\begin{figure}
+\vlsmallbrackets
+\begin{eqnarray*}
+%---------------------------------------
+\th02(a,b)&\equiv&\ttt
+\quad,\\
+\noalign{\medskip}
+%---------------------------------------
+\th12(a,b)&\equiv&\vls[({\vlnos\th11(a)}.{\vlnos\th01(b)}).
+                       ({\vlnos\th01(a)}.{\vlnos\th11(b)})]
+           \equiv     [(a.\ttt).(\ttt.b)]\\
+          &=     &\vls [a      .      b ]
+\quad,\\
+\noalign{\medskip}
+%---------------------------------------
+\th22(a,b)&\equiv&\vls({\vlnos\th11(a)}.{\vlnos\th11(b)})\\
+          &\equiv&\vls(a.b)
+\quad,\\
+\noalign{\medskip}
+%---------------------------------------
+\th03(a,b,c)&\equiv&\ttt
+\quad,\\
+\noalign{\medskip}
+%---------------------------------------
+\th13(a,b,c)&\equiv&\vls[({\vlnos\th11(a)}.{\vlnos\th02(b,c)}).
+                         ({\vlnos\th01(a)}.{\vlnos\th12(b,c)})]
+             \equiv     [(a.\ttt).(\ttt.[(b.\ttt).(\ttt.c)])]\\
+            &=     &\vls[a.b.c]
+\quad,\\
+\noalign{\medskip}
+%---------------------------------------
+\th23(a,b,c)&\equiv&\vls[({\vlnos\th11(a)}.{\vlnos\th12(b,c)}).
+                    ({\vlnos\th01(a)}.{\vlnos\th22(b,c)})]\\
+            &=     &\vls[(a.[b.c]).(b.c)]
+\quad,\\
+\noalign{\medskip}
+%---------------------------------------
+\th33(a,b,c)&\equiv&\vls({\vlnos\th11(a)}.{\vlnos\th22(b,c)})
+             \equiv     [(a.(b.c))]\\
+            &=     &\vls(a.b.c)
+\quad,\\
+\noalign{\medskip}
+%---------------------------------------
+\th05(a,b,c,d,e)&\equiv&\ttt
+\quad,\\
+\noalign{\medskip}
+%---------------------------------------
+\th15(a,b,c,d,e)&\equiv&\vls[({\vlnos\th12(a,b)}.{\vlnos\th03(c,d,e)}).
+                             ({\vlnos\th02(a,b)}.{\vlnos\th13(c,d,e)})]\\
+                &=     &\vls[a.b.c.d.e]
+\quad,\\
+\noalign{\medskip}
+%---------------------------------------
+\th25(a,b,c,d,e)&\equiv&\vls[({\vlnos\th22(a,b)}.{\vlnos\th03(c,d,e)}).
+                             ({\vlnos\th12(a,b)}.{\vlnos\th13(c,d,e)}).
+                             ({\vlnos\th02(a,b)}.{\vlnos\th23(c,d,e)})]\\
+                &=     &\vls[(a.b                                    ).
+                             ([a.b]             .[c.d.e]             ).
+                                                 (c.[d.e]).(d.e)      ]
+\quad,\\
+\noalign{\medskip}
+%---------------------------------------
+\th35(a,b,c,d,e)&\equiv&\vls[({\vlnos\th22(a,b)}.{\vlnos\th13(c,d,e)}).
+                             ({\vlnos\th12(a,b)}.{\vlnos\th23(c,d,e)}).
+                             ({\vlnos\th02(a,b)}.{\vlnos\th33(c,d,e)})]\\
+                &=     &\vls[(a.b               .[c.d.e]             ).
+                             ([a.b]             .[(c.[d.e]).(d.e)]   ).
+                                                 (c.d.e)              ]
+\quad,\\
+\noalign{\medskip}
+%---------------------------------------
+\th45(a,b,c,d,e)&\equiv&\vls[({\vlnos\th22(a,b)}.{\vlnos\th23(c,d,e)}).
+                             ({\vlnos\th12(a,b)}.{\vlnos\th33(c,d,e)})]\\
+                &=     &\vls[(a.b               .[(c.[d.e]).(d.e)]   ).
+                             ([a.b]             .c.d.e               )]
+\quad,\\
+\noalign{\medskip}
+%---------------------------------------
+\th55(a,b,c,d,e)&\equiv&\vls({\vlnos\th22(a,b)}.{\vlnos\th33(c,d,e)})\\
+                &=     &\vls(a.b.c.d.e)
+\quad,\\
+\noalign{\medskip}
+%---------------------------------------
+\th65(a,b,c,d,e)&\equiv&\fff
+\quad.
+\end{eqnarray*}
+\caption{Examples of threshold formulae.}
+\label{FigThrEx}
+\end{figure}
+
+The formulae for threshold functions adopted in \cite{AtseGalePudl:02:Monotone:yu} correspond, for each choice of $k$ and $n$, to $\bigvee_{i\ge k}\th in\avec1n$. We presume that \cite{AtseGalePudl:02:Monotone:yu} employs these more complicated formulae because the formalism adopted there, the sequent calculus, is less flexible than deep inference, requiring more information in threshold formulae in order to construct suitable derivations.
+
+%-------------------------------------------------------------------------------
+\begin{remark}
+For $n>0$, we have $\th1n\avec1n=\vls[a_1.\vldots.a_n]$ and $\th nn\avec1n=\vls(a_1.\vldots.a_n)$.
+\end{remark}
+
+The size of the threshold formulae dominates the cost of the normalisation procedure, so, we evaluate their size. We leave as an exercise the proof of the following proposition.
+
+%-------------------------------------------------------------------------------
+\begin{proposition}\label{PropQuasAux}
+For any $n>0$ and $k\ge0$, $\size{\th kn\avec1n}\le\size{\th{\lfloor n/2\rfloor+1}n\avec1n}$.
+\end{proposition}
+
+%-------------------------------------------------------------------------------
+\begin{lemma}\label{LemmaQuas}
+The size of\/ $\th{\lfloor n/2\rfloor+1}n\avec1n$ is $n^{\Ord{\log n}}$.
+\end{lemma}
+
+%-------------------------------------------------------------------------------
+\begin{proof}
+Observe that $\size{\th kn\avec1n}\le\size{\th k{n+1}\avec1{n+1}}$. Let $p=\lfloor n/2\rfloor$ and $q=n-p$ and consider:
+\begin{equation}\label{PropQuasIneq}
+\begin{split}
+\size{\th{p+1}n\avec1n}
+&=\textstyle\sum_{\begin{subarray}{l}i+j=p+1    \\
+                                     0\le i\le p\\
+                                     0\le j\le q
+                  \end{subarray}}
+  \left(\size{\th ip\avec1p}+
+        \size{\th jq\avec{p+1}n}\right)             \\
+&\le\textstyle\sum_{\begin{subarray}{l}i+j=p+1\\
+                                       0\le i,j\le q
+                    \end{subarray}}
+  \left(\size{\th iq\avec1q}+
+        \size{\th jq\avec1q}\right)                 \\
+&\le2(q+1)
+  \size{\th{\lfloor q/2\rfloor+1}q\avec1q}\quad,
+\end{split}
+\end{equation}
+where we use Proposition~\ref{PropQuasAux}. We show that, for $h=2/(\log3-\log2)$ and for any $n>0$, we have $\size{\th{\lfloor n/2\rfloor+1}n\avec1n}\le n^{h\log n}$. We reason by induction on $n$; the case $n=1$ trivially holds. By the inequality~\eqref{PropQuasIneq}, and for $n>1$, we have
+\begin{equation*}
+\begin{split}
+\size{\th{\lfloor n/2\rfloor+1}n\avec1n}
+&\le2(n-\lfloor n/2\rfloor+1)
+     (n-\lfloor n/2\rfloor)^{h\log(n-\lfloor n/2\rfloor)}       \\
+&\le n^2n^{h\log(2n/3)}=n^{h\log n-h(\log3-\log2)+2}=n^{h\log n}
+\quad.
+\end{split}
+\end{equation*}
+\end{proof}
+
+%-------------------------------------------------------------------------------
+\begin{theorem}\label{TheoQuas}
+For any $k\ge0$ the size of\/ $\th kn\avec1n$ is $n^{\Ord{\log n}}$.
+\end{theorem}
+
+%-------------------------------------------------------------------------------
+\begin{proof}
+It immediately follows from Proposition~\ref{PropQuasAux} and Lemma~\ref{LemmaQuas}.
+\end{proof}
+
+\subsubsection{Glue derivations}
+
+\newcommand{\Uth}[3]{\mathop{\mathsf\Upsilon_{#1,#2}^{#3}}}
+\newcommand{\Dth}[3]{\mathop{\mathsf\Delta_{#1,#2}^{#3}}}
+%-------------------------------------------------------------------------------
+\begin{definition}\label{DefThrDer}
+Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$, and let $p=\lfloor n/2\rfloor$ and $q=n-p$.
+\begin{itemize}
+%---------------------------------------
+%---------------------------------------
+\item
+For $n>1$ and $1\le l\le n$, we define the derivations $\Uth kln\avec1n$ and $\Dth kln\avec1n$ as follows:
+\[
+\Uth kln\avec1n=\begin{cases}
+\vlinf{\gwu}
+      {}
+      {\fff}
+      {\vls({\vlnos(\th pp\avec1p)}\{a_l/\fff\}.\th{k-p}q\avec{p+1}n)}
+             &\text{if $p\le k\le n$ and $l\le p$}\\
+\noalign{\medskip}
+\vlinf{\gwu}
+      {}
+      {\fff}
+      {\vls(\th{k-q}p\avec1p.{\vlnos(\th qq\avec{p+1}n)}\{a_l/\fff\})}
+             &\text{if $q\le k\le n$ and $p<l$}\\
+\noalign{\medskip}
+\fff         &\text{otherwise}
+              \end{cases}
+\]
+and
+\[
+\Dth kln\avec1n=\begin{cases}
+\vlinf{\gwd}
+      {}
+      {\th kq\avec{p+1}n}
+      {\fff}
+             &\text{if $0<k\le q$ and $l\le p$}\\
+\noalign{\medskip}
+\vlinf{\gwd}
+      {}
+      {\th kp\avec1p}
+      {\fff}
+             &\text{if $0<k\le p$ and $p<l$}\\
+\noalign{\medskip}
+\fff         &\text{otherwise}
+              \end{cases}\quad.
+\]
+%---------------------------------------
+%---------------------------------------
+\item
+For $k\ge0$ and $1\le l\le n$, we define the derivations $\vlsmash{\Gth kln\avec1n}$, recursively on $n$, as follows:
+\begin{itemize}
+%---------------------------------------
+\item $\Gth 011(a_1)=\ttt$;
+%---------------------------------------
+\item for $k>0$, $\Gth k11(a_1)=\fff$;
+%---------------------------------------
+\item for $k>n$, $\Gth kln\avec1n=\fff$;
+%---------------------------------------
+\item for $n>1$ and $k\le n$, let
+\[
+\Gth kln\avec1n=\begin{cases}
+%---------------------------------------
+\vls[
+\bigvee_{\begin{subarray}{l}i+j=k      \\ 
+                            0\le i<p   \\ 
+                            0\le j\le q
+         \end{subarray}}(
+\Gth ilp\avec1p.
+\th jq\avec{p+1}n).
+\Uth kln\avec1n.\Dth{k+1}ln\avec1n]
+&\text{if $l\le p$}\\
+\noalign{\medskip}
+%---------------------------------------
+\vls[
+\bigvee_{\begin{subarray}{l}i+j=k      \\
+                            0\le i\le p\\ 
+                            0\le j<q
+         \end{subarray}}(
+\th ip\avec1p.
+\Gth j{l-p}q\avec{p+1}n).
+\Uth kln\avec1n.\Dth{k+1}ln\avec1n]
+&\text{if $p<l$}
+\end{cases}
+\quad.
+\]
+%---------------------------------------
+\end{itemize}
+%---------------------------------------
+%---------------------------------------
+\end{itemize}
+\end{definition}
+
+
+%-------------------------------------------------------------------------------
+\begin{example}
+See, in Figure~\ref{FigPThEx}, some example of derivations $\vlsmash{\Gth kln\avec1n}$. Note that, for clarity, we removed all instances of the trivial derivations $\Uth112\avec12=\Uth122\avec12=\Uth113\avec13=\vldownsmash{\vlinf\gwu{}\fff\fff}$. We can do so because these derivation instances appear as disjuncts.
+\end{example}
+
+%-------------------------------------------------------------------------------
+\begin{theorem}\label{TheoThrDer}
+For any $n>0$, $k\ge0$ and\/ $1\le l\le n$, the derivation\/ $\vlsmash{\Gth kln\avec1n}$ has shape
+\[
+\vlder{}{\{\awd,\awu\}}{(\th{k+1}n\avec1n)\{a_l/\ttt\}}
+                       {(\th kn\avec1n)\{a_l/\fff\}}
+\quad,
+\]
+and\/ $\size{\Gth kln\avec1n}$ is $n^{\Ord{\log n}}$.
+\end{theorem}
+
+%-------------------------------------------------------------------------------
+\begin{proof}
+The shape of $\Gth kln\avec1n$ can be verified by inspecting Definition~\ref{DefThrDer}. For example, this is the case when $n>1$ and $l\le p\le k<q$, where $p=\lfloor n/2\rfloor$ and $q=n-p$:
+\vlstore{\noalign{\medskip}
+\vls[
+\textstyle\bigvee_{\begin{subarray}{l}i+j=k      \\
+                                      0\le i<p   \\
+                                      0\le j\le q
+                   \end{subarray}}(
+\vlder{\Gth ilp\avec1p}
+      {}
+      {(\th{i+1}p\avec1p)\{a_l/\ttt\}}
+      {(\th ip\avec1p)\{a_l/\fff\}}
+.
+\th jq\avec{p+1}n)
+.
+\vlinf{\gwu}
+      {}
+      {\fff}
+      {\vls({\vlnos(\th pp\avec1p)}\{a_l/\fff\}.\th{k-p}q\avec{p+1}n)}
+.
+\vlinf{\gwd}
+      {}
+      {\th{k+1}q\avec{p+1}n}
+      {\fff}
+]}
+\begin{multline*}
+\vlder{\Gth kln\avec1n}
+      {}
+      {(\th{k+1}n\avec1n)\{a_l/\ttt\}}
+      {(\th kn\avec1n)\{a_l/\fff\}}
+={}\\
+\vlread
+\quad.
+\end{multline*}
+(Remember that
+\[
+\th kn\avec1n\equiv\bigvee_{\begin{subarray}{l}
+                            i+j=k\\ 
+                            0\le i\le p\\ 
+                            0\le j\le q
+                            \end{subarray}}
+                   \vlsbr(\th ip\avec1p.\th jq\avec{p+1}n)
+\]
+and $\th0p\avec1p\equiv\ttt$.) General (co)weak\-en\-ing rule instances can be replaced by atomic ones because of Proposition~\ref{PropGenAtPol}. The size bound on $\Gth kln\avec1n$ follows from Proposition~\ref{PropGenAtPol} and Theorem~\ref{TheoQuas}.
+\end{proof}
+
+\TODO{Define operator for the following definition}
+
+\begin{definition}\label{DefThrDer2}
+Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the derivations $\vlsmash{\Gth k{}n\avec1n}$ as follows:
+\[
+\Gth k{}n\avec1n\quad=\quad
+\vlderivation
+{
+ \vlin{n\cdot\cou}{}
+ {
+  \vls
+  (
+   \vlder{}{}
+   {
+    \vls[a_1.(\th {k+1}n\avec1n)\{a_1/\fff\}]
+   }
+   {
+    \th {k+1}n\avec1n
+   }
+  \;\;.\;\;
+   \vlder{}{}
+   {
+    \vls[a_n.(\th {k+1}n\avec1n)\{a_n/\fff\}]
+   }
+   {
+    \th {k+1}n\avec1n
+   }
+  )
+ }
+ {
+  \vlin{n\cdot\cod}{}
+  {
+   \th {k+1}n\avec1n
+  }
+  {
+   \vlhy
+   {
+    \vls
+    [
+     \vlder{}{}
+     {
+      \th {k+1}n\avec1n
+     }
+     {
+      \vlsbr
+      (
+       a_1
+      .
+       \vlder{\Gth kin\avec1n}{}
+       {
+        (\th {k+1}n\avec1n)\{a_1/\ttt\}
+       }
+       {
+        (\th kn\avec1n)\{a_1/\fff\}
+       }
+      )
+     }
+    \;.\;
+     \vlder{}{}
+     {
+      \th {k+1}n\avec1n
+     }
+     {
+      \vlsbr
+      (
+       a_n
+      .
+       \vlder{\Gth knn\avec1n}{}
+       {
+        (\th {k+1}n\avec1n)\{a_n/\ttt\}
+       }
+       {
+        (\th kn\avec1n)\{a_n/\fff\}
+       }
+      )
+     }
+    ]
+   }
+  }
+ }
+}
+\]
+\end{definition}
+
+%-------------------------------------------------------------------------------
+\begin{theorem}\label{TheoThrDer}
+For any $n>0$ and $k\ge0$, the derivation\/ $\vlsmash{\Gth k{}n\avec1n}$ has shape
+\[
+\vlder{}{\SKS\setminus\{\aid,\aiu\}}
+{
+ \vls([a_1.(\th{k+1}n\avec1n)\{a_1/\fff\}].\cdots.[a_n.(\th{k+1}n\avec1n)\{a_n/\fff\}])
+}
+{
+ \vls[(a_1.(\th{k}n\avec1n)\{a_1/\fff\}).\cdots.(a_n.(\th{k}n\avec1n)\{a_n/\fff\})]
+}
+\quad,
+\]
+and\/ $\size{\Gth k{}n\avec1n}$ is $n^{\Ord{\log n}}$.
+\end{theorem}
+
+\TODO{Check correctness and integrate into the rest a bit better. Also find the correct place for it (before/after the definition of the class of threshold formulae we use (as is, it expects to be after)).}
+
+\TODO{Add a few words to the effect: `We have now seen that threshold formulae do the job, but do we HAVE to use threshold formulae?'}
+
+%------------------------------------------------------
+\begin{theorem}
+Given atoms $a_1$, $\dots$, $a_n$ and, for every $0\le k\le n$, formulae $\gamma_{k,1}$, $\dots$, $\gamma_{k,n}$, such that
+\[
+\gamma_{0,1}=\cdots=\gamma_{0,n}=\ttt
+\quad\mbox{and}\quad
+\gamma_{n,1}=\cdots=\gamma_{n,n}=\fff
+\]
+and for every $1\le k\le n$ there exists a derivation
+\[
+\vlder{}{\SKS\setminus\{\aid,\aiu\}}
+{
+ \vls([a_1.\gamma_{k,1}].\cdots.[a_n.\gamma_{k,n}])
+}
+{
+ \vls[(a_1.\gamma_{k-1,1}).\cdots.(a_n.\gamma_{k-1,n})]
+}\quad.
+\]
+Then, for every $1\le i\le n$ and every $0\le k\le n$, the formula $\gamma_{k,i}$ is true if and only if at least $k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true.
+\end{theorem}
+
+%------------------------------------------------------
+\begin{proof}
+In this proof we will use $\theta_k\equiv\theta_k^n\avec 1n$.
+
+We first observe that both $\theta_k\{a_i/\fff\}$ and $\theta_{k+1}\{a_i/\ttt\}$ are true if and only if at least $k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true.
+
+Hence, we can proceed by proving the following two claims:
+\begin{enumerate}
+ \item for every $0\le k\le n$ and for every $1\le i\le n$ we show that $\theta_k\{a_i/\fff\}\rightarrow\gamma_{k,i}$, and
+ \item for every $0\le k\le n$ and for every $1\le i\le n$ we show that $\gamma_{k,i}\rightarrow\theta_{k+1}\{a_i/\ttt\}$.
+\end{enumerate}
+
+\TODO{The following observation, while true, might not be obvious. There are two options: 1) Prove it. 2) Define two classes of threshold formulae specifically for this proof so that it is true by construction (the definition would be so that the following derivations are just an equality).}
+
+First we note that the following derivations exist for every $0\le k\le n$
+\[
+\vlder{}{\SKS\setminus\{\aid,\aiu\}}
+{
+\vls[(a_1.\theta_k\{a_1/\fff\}).\cdots.(a_n.\theta_k\{a_n/\fff\})]
+}
+{
+ \theta_{k+1}
+}
+\quad\mbox{and}\quad
+\vlder{}{\SKS\setminus\{\aid,\aiu\}}
+{
+ \theta_k
+}
+{
+\vls([a_1.\theta_{k+1}\{a_1/\ttt\}].\cdots.[a_n.\theta_{k+1}\{a_n/\ttt\}])
+}
+\]
+
+%-----------------
+We prove the implication by showing the existence of a derivation from the premiss to the conclusion. The base case is trivial:
+\[
+ \vlinf{=}{}
+ {
+  \gamma_{0,i}
+ }
+ {
+  \theta_0\{a_i/\fff\}
+ }
+\]
+We prove the inductive case by fixing a $k\ge 1$ and assuming the following derivations exist
+\[
+\vlder{\Phi_{k,1}}{\SKS\setminus\{\aid,\aiu\}}
+{
+ \gamma_{k,1}
+}
+{
+ \theta_k\{a_1/\fff\}
+}
+\quad,\cdots,\quad
+\vlder{\Phi_{k,n}}{\SKS\setminus\{\aid,\aiu\}}
+{
+ \gamma_{k,n}
+}
+{
+ \theta_k\{a_n/\fff\}
+}\quad.
+\]
+Then we can construct, for every $1\le i\le n$:
+\[
+\Phi'_{k+1,i}\quad=\quad
+\vlderivation
+{
+ \vlde{}{\{\awu\}}
+ {
+  \vls[a_i.\gamma_{k+1,i}]
+ }
+ {
+  \vlde{\Gamma_k}{\SKS\setminus\{\aid,\aiu\}}
+  {
+   \vls([a_1.\gamma_{k+1,1}].\cdots.[a_n.\gamma_{k+1,n}])
+  }
+  {
+   \vlde{}{\SKS\setminus\{\aid,\aiu\}}
+   {
+    \vls
+    [
+     (
+      a_1
+     .
+      \vlder{\Phi_{k,1}}{\SKS\setminus\{\aid,\aiu\}}
+      {
+       \gamma_{k,1}
+      }
+      {
+       \theta_k\{a_1/\fff\}
+      }
+     )
+    .\cdots.
+     (
+      a_n
+     .
+      \vlder{\Phi_{k,n}}{\SKS\setminus\{\aid,\aiu\}}
+      {
+       \gamma_{k,n}
+      }
+      {
+       \theta_n\{a_1/\fff\}
+      }
+     )
+    ]
+   }
+   {
+    \vlde{}{\{\awd\}}
+    {
+     \theta_{k+1}
+    }
+    {
+     \vlhy{\theta_{k+1}\{a_i/\fff\}}
+    }
+   }
+  }
+ }
+}\quad.
+\]
+Since $\Phi'_{k+1,i}$ does not contain any $\aid$ instances and the premiss of $\Phi'_{k+1,i}$ does not contain any instances of $a_i$, we can apply weakening reductions to obtain:
+\[
+\vlder{\Phi_{k+1,i}}{\SKS\setminus\{\aid,\aiu\}}
+{
+ \vlsbr[\vlinf{}{}{a_i}{\fff}.\gamma_{k+1,i}]
+}
+{
+ \theta_{k+1}\{a_i/\fff\}
+}\quad,
+\]
+where $\Phi_{k+1,i}$ is the required derivation.
+
+
+
+%-----------------
+We prove the implication by showing the existence of a derivation from the premiss to the conclusion. The base case is trivial:
+\[
+ \vlinf{=}{}
+ {
+  \theta_{n+1}\{a_i/\ttt\}
+ }
+ {
+  \gamma_{n,i}
+ }
+\]
+We prove the inductive case by fixing a $k\ge 1$ and assuming the following derivations exist
+\[
+\vlder{\Psi_{k,1}}{\SKS\setminus\{\aid,\aiu\}}
+{
+ \theta_{k+1}\{a_1/\ttt\}
+}
+{
+ \gamma_{k,1}
+}
+\quad,\cdots,\quad
+\vlder{\Psi_{k,n}}{\SKS\setminus\{\aid,\aiu\}}
+{
+ \theta_{k+1}\{a_n/\ttt\}
+}
+{
+ \gamma_{k,n}
+}\quad.
+\]
+Then we can construct, for every $1\le i\le n$:
+\[
+\Psi'_{k-1,i}\quad=\quad
+\vlderivation
+{
+ \vlde{}{\{\awu\}}
+ {
+  \theta_k\{a_i/\ttt\}
+ }
+ {
+  \vlde{}{}
+  {
+   \theta_k
+  }
+  {
+   \vlde{\Gamma_k}{\SKS\setminus\{\aid,\aiu\}}
+   {
+    \vls
+    (
+     [
+      a_1
+     .
+      \vlder{\Psi_{k,1}}{\SKS\setminus\{\aid,\aiu\}}
+      {
+       \theta_{k+1}\{a_1/\ttt\}
+      }
+      {
+       \gamma_{k,1}
+      }
+     ]
+    .\cdots.
+     [
+      a_n
+     .
+      \vlder{\Psi_{k,n}}{\SKS\setminus\{\aid,\aiu\}}
+      {
+       \theta_{k+1}\{a_n/\ttt\}
+      }
+      {
+       \gamma_{k,n}
+      }
+     ]
+    )
+   }
+   {
+    \vlde{}{\{\awd\}}
+    {
+     \vls[(a_1.\gamma_{k-1,1}).\cdots.(a_n.\gamma_{k-1,n})]
+    }
+    {
+     \vlhy{\vls(a_i.\gamma_{k-1,i})}
+    }
+   }
+  }
+ }
+}\quad.
+\]
+Since $\Psi'_{k-1,i}$ does not contain any $\aiu$ instances and the conclusion of $\Psi'_{k-1,i}$ does not contain any instances of $a_i$, we can apply weakening reductions to obtain:
+\[
+\vlder{\Psi_{k-1,i}}{\SKS\setminus\{\aid,\aiu\}}
+{
+ \theta_k\{a_i/\ttt\}
+}
+{
+ \vlsbr(\vlinf{}{}{\ttt}{a_i}.\gamma_{k-1,i})
+}\quad,
+\]
+where $\Psi_{k-1,i}$ is the required derivation.
+\end{proof}
+
+\TODO{Fix the ambiguous subscripts in the following remark.}
+
+\begin{remark}
+We could generalise the theorem, without significantly changing the proof, by changing the condition on $\gamma_{0,i}$ and $\gamma_{n,i}$ into
+\[
+\gamma_{k,1}=\cdots=\gamma_{k,n}=\ttt
+\quad\mbox{and}\quad
+\gamma_{l,1}=\cdots=\gamma_{l,n}=\fff
+\quad,
+\]
+for some $k<l$. Then, for every $i\ge0$, we would have that $\theta_{i-k}\rightarrow\gamma_i\rightarrow\theta_{i+n-l}$. This might serve as a starting point for finding a class of formulae, which are not threshold formulae, that will allow for smaller proofs, or alternatively to show that one does not exist.
+\end{remark}
+
+%================================================================================
+\subsubsection{Quasipolynomial Reduction}
+
+\TODO{Either rephrase this in terms of an atomic flow transformation and a soundness proof or move it away from here.}
+
+\TODO{Define for derivations instead of proofs. Use simple form of derivations with respect to a polarity assignment. Use the decomposed normal form, yet to be given a name, for derivations.}
+
+\TODO{Come up with a better name than cut-free form (as it is not an accurate description if we talk about derivations.).}
+
+\newcommand{\frqp}{{\mathsf{qp}}}
+
+\TODO{Use the symbol $\frqp$ to denote the following reduction.}
+
+%-------------------------------------------------------------------------------
+\begin{definition}\label{DefNorm}
+Consider the derivation
+\[
+\vlder{\Phi}{}
+{
+ \vls[\beta\;.\;\vlinf{}{}{\fff}{\vls(a_1.\bar a_1^{\phi_1})}\;.\;\vlinf{}{}{\fff}{\vls(a_n.\bar a_n^{\phi_n})}]
+}
+{
+ \vls(\vlinf{}{}{\vls[a_1.\bar a_1^{\phi_1}]}{\ttt}\;.\;\vlinf{}{}{\vls[a_n.\bar a_n^{\phi_n}]}{\ttt}\;.\;\alpha)
+}\quad,
+\]
+such that, for $1\le i\le n$, $\phi_i$ is an isolated subflow that does not contain identity or cut instances. For $0\le i\le n+1$, let $\theta_i\equiv\vlsmallbrackets\vls([a_1.(\th in\avec1n)\{a_1/\fff\}].\cdots.[a_n.(\th in\avec1n)\{a_n/\fff\}])$. We define $\Phi_0$ and $\Phi_n$ as
+\[
+\vlder{\Phi\{\bar a_1^{\phi_1}/\ttt,\dots,\bar a_n^{\phi_n}/\ttt\}}{}
+{
+ \vlsbr
+ [
+  \beta
+ \;\;.\;\;
+  \vlder{\Gth k{}n\avec1n}{}
+  {
+   \theta_1
+  }
+  {
+   \vls[a_1.\cdots.a_n]
+  }
+ ]
+}
+{
+ \vls([\vlinf{}{}{a_1}{\fff}\;.\;\ttt]\;.\;[\vlinf{}{}{a_n}{\fff}\;.\;\ttt]\;.\;\alpha)
+}
+\quad\mbox{and}\quad
+\vlder{\Phi\{\bar a_1^{\phi_1}/\fff,\dots,\bar a_n^{\phi_n}/\fff\}}{}
+{
+ \vls[\beta\;.\;(\vlinf{}{}{\ttt}{a_1}\;.\;\fff)\;.\;\cdots\;.\;(\vlinf{}{}{\ttt}{a_1}\;.\;\fff)]
+}
+{
+ \vls(\theta_n.\alpha)
+}\quad,
+\]
+respectively. For $1\le k\le n-1$, we define the derivations $\Phi_k$:
+\[
+\vlder{\Phi\{\bar a_1^{\phi_1}/(\th kn\avec1n)\{a_1/\fff\},\dots,\bar a_n^{\phi_n}/(\th kn\avec1n)\{a_n/\fff\}\}}{}
+{
+ \vlsbr
+ [
+  \beta
+ \;\;.\;\;
+  \vlder{\Gth k{}n\avec1n}{}
+  {
+   \theta_{k+1}
+  }
+  {
+   \vls[(a_1.(\th{k}n\avec1n)\{a_1/\fff\}).\cdots.(a_n.(\th{k}n\avec1n)\{a_n/\fff\})]
+  }
+ ]
+}
+{
+ \vls(\theta_k.\alpha)
+}
+\]
+ where we use Proposition~\ref{PropAuxNorm}.
+
+\TODO{Change the rest of this definition}
+ 
+We define the \emph{cut-free form of\/ $\Pi$} as the following proof in $\SKS\setminus\{\aiu\}$:
+\[
+\vlderivation
+{
+ \vlin{n\cdot\cou}{}
+ {
+  \beta
+ }
+ {
+  \vlin{\swi}{}
+  {
+   \vls
+   [
+    \beta\;\;.\;\;\cdots\;\;.\beta
+   \;\;.\;\;
+    \vlder{\Phi_n}{}
+    {
+     \beta
+    }
+    {
+     \vls(\theta_n.\alpha)
+    }
+   ]
+  }
+  {
+   \vlin{\swi}{}
+   {
+    \vls
+    (
+     [
+      \beta\;\;.\;\;\cdots\;\;.\beta
+     \;\;.\;\;
+      \vlder{\Phi_{n-1}}{}
+      {
+       \vls[\beta.\theta_n]
+      }
+      {
+       \vls(\theta_{n-1}.\alpha)
+      }
+     ]
+    \;\;.\;\;
+     \alpha
+    )
+   }
+   {
+    \vlin{\swi}{}
+    {
+     \vdots
+    }
+    {
+     \vlin{\swi}{}
+     {
+      \vls
+      (
+       [
+        \beta
+       \;\;.\;\;
+        \vlder{\Phi_1}{}
+        {
+         \vls[\beta.\theta_2]
+        }
+        {
+         \vls(\theta_1.\alpha)
+        }
+       ]
+      \;\;.\;\;
+       \alpha\;\;.\;\;\cdots\;\;.\alpha
+      )
+     }
+     {
+      \vlin{n\cdot\cod}{}
+      {
+       \vls
+       (
+        \vlder{\Phi_0}{}
+        {
+         \vls[\beta.\theta_1]
+        }
+        {
+         \alpha
+        }
+       \;\;.\;\;
+        \alpha\;\;.\;\;\cdots\;\;.\alpha
+       )
+      }
+      {
+       \vlhy{\alpha}
+      }
+     }
+    }
+   }
+  }
+ }
+}
+\]
+\end{definition}

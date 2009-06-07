@@ -1,0 +1,160 @@
+\TODO{Change the following definition to be inline with notation and conventions in the rest of the thesis.}
+
+\TODO{Change the definition to show a simple sub flow instead of a simple edge.}
+
+\TODO{Define simple subflow and make sure we use that instead of simple edge elsewhere.}
+
+\newcommand{\frsf}{{\mathsf{sf}}}
+%---------------------------------------
+\begin{definition}\label{DefSimSubRem}
+We define the reduction $\to_\frsf$ (where $\frsf$ stands for \emph{simple flow}) as follows, for every atomic flow $A$:
+\[
+\atomicflow{
+(10,16)*{\afaidnw{}{}};
+( 0,14)*{\afvju4{\epsilon_1}{}};
+( 2,14)*{\cdots};
+( 4,14)*{\afvju4{}{\epsilon_h}};
+( 8,14)*{\afvju4{}\two};
+( 9,10)*{\aflabelleft A};
+( 4, 9)*{\affr{10}6};
+(12,11)*{\afvj{10}};
+( 0, 4)*{\afvjd4{\epsilon'_1}{}};
+( 2, 4)*{\cdots};
+( 4, 4)*{\afvjd4{}{\epsilon'_k}};
+(10, 2)*{\afaiu{}\three{}\one{}{}};
+(-3, 0)*{\invisiblemark};
+(14, 0)*{\invisiblemark}}
+\quad\to_\frsf\quad
+\atomicflow{
+( 0,24   )*{\afvju{16}{\hat\epsilon_1}{}};
+( 2,18   )*{\cdots};
+( 4,24   )*{\afvju{16}{}{\hat\epsilon_h}};
+( 8,18.25)*{\aflabelright{\hat\two}};
+( 9,14   )*{\aflabelleft {\hat A}};
+( 4,13   )*{\affr{10}6};
+( 0, 8.4 )*{\afvjd2{\hat\epsilon'_1}{}};
+( 2, 8   )*{\cdots};
+( 4, 8.4 )*{\afvjd2{}{\hat\epsilon'_k}};
+(12,32   )*{\afvju2{\tilde\epsilon_1}{}};
+(14,32   )*{\cdots};
+(16,32   )*{\afvju2{}{\tilde\epsilon_h}};
+(17,28   )*{\aflabelleft {\tilde A}};
+(12,27   )*{\affr{10}6};
+(12,16   )*{\afvjd{16}{\tilde\epsilon'_1}{}};
+(14,22   )*{\cdots}; 
+(16,16   )*{\afvjd{16}{}{\tilde\epsilon'_k}};
+( 8,22.25)*{\aflabelleft{\tilde\three}};
+( 8,34   )*{\afawd{}{}{\tilde\two}{}};
+( 8,42   )*{\cdots};
+( 6,38   )*{\afacuexsq{}{}{}{}{\epsilon_1}{}31};
+(10,38   )*{\afacuexsq{}{}{}{}{}{\epsilon_h}31};
+( 8,20   )*{\afvj8};
+( 8, 6   )*{\afawu{}{}{}{\hat\three}};
+( 6, 2   )*{\afacdexsq{}{}{}{}{\epsilon'_1}{}31};
+(10, 2   )*{\afacdexsq{}{}{}{}{}{\epsilon'_k}31};
+( 8,-2   )*{\cdots};
+(-3, 0   )*{\invisiblemark};
+(19, 0   )*{\invisiblemark}}
+\quad,
+\]
+where $h,k\ge0$, edges have been renamed with $\hat{\enspace}$ and $\tilde{\enspace}$ accents, flows $\tilde A$ and $\hat A$ are both isomorphic to $A$, and edges $\hat\two$ and $\tilde\three$ are identified.
+\end{definition}
+
+%---------------------------------------
+\begin{theorem}\label{ThSFSound}
+Reduction\/ $\to_\frsf$ is sound.
+\end{theorem}
+
+\TODO{Redo proof to be in line with the rest of the thesis.}
+
+\TODO{Use Formalism A notation.}
+
+\TODO{Define super switch, super switch down and super switch up.}
+
+%---------------------------------------
+\begin{proof}
+Let $\Phi$ be a derivation with flow $B$, such that $B\to_\frsf C$. We show that there exists a derivation $\Psi$ with flow $C$ and with the same premiss and conclusion as $\Phi$. In the following, we refer to the figure in Definition~\ref{DefRedS}. We assume that $\Phi$ has premiss $\xi\{\ttt\}$ and conclusion $\zeta\{\fff\}$, where the evidenced and labelled $\ttt$ and $\fff$ can be traced to the interaction and cointeraction vertices eliminated by $\to_\frsf$, respectively (this can always be done by using switches and unit equations). Intuitively, we can think of $\ttt$ and $\fff$ as mapping to special `unit edges', which can be substituted just like normal edges. So, we assume that $\Phi$ is
+\[
+\vlderivation                                           {
+\vlde{\Phi_3}{}{\zeta\{ \fff\}                 }    {
+\vlin{\aiu  }{}{\zeta'\{ \fff\}                }   {
+\vlde{\Phi_2}{}{\zeta'\vlscn(\bar a^\three.a^\one)}  {
+\vlin{\aid  }{}{\xi'\vlscn[\bar a^\two.a^\one]    } {
+\vlde{\Phi_1}{}{\xi'\{ \ttt\}                  }{
+\vlhy          {\xi\{ \ttt\}                   }}}}}}}
+\quad.
+\]
+We obtain the two derivations $\Psi'$ and $\Psi''$ from $\Phi$ as follows:
+\[
+\Psi'=\;\;
+\vlderivation                                                  {
+\vlde{\Phi_3\{\fff\ot\bar a\}}
+             {}{\zeta\{\bar a^{\tilde\three}\}          }     {
+\vlin{=     }{}{\zeta'\{\bar a^{\tilde\three}\}         }    {
+\vlde{\Phi_2\{a^\one\ot\ttt\}}
+             {}{\zeta'\vlscn(\bar a^{\tilde\three}.\ttt)}   {
+\vlin{\awd  }{}{\xi'\vlscn[\bar a^{\tilde\two}.\ttt]    }  {
+\vlin{=     }{}{\xi'\vlscn[\fff.\ttt]                   } {
+\vlde{\Phi_1}{}{\xi'\{\ttt\}                            }{
+\vlhy          {\xi\{\ttt\}                             }}}}}}}}
+\qquad\hbox{and}\qquad
+\Psi''=\;\;
+\vlderivation                                                                  {
+\vlde{\Phi_3                  }{}{\zeta\{\fff\}                         }     {
+\vlin{=                       }{}{\zeta'\{\fff\}                        }    {
+\vlin{\awu                    }{}{\zeta'\vlscn(\ttt.\fff)               }   {
+\vlde{\Phi_2\{a^\one\ot \fff\}}{}{\zeta'\vlscn(\bar a^{\hat\three}.\fff)}  {
+\vlin{=                       }{}{\xi'\vlscn[\bar a^{\hat\two}.\fff]    } {
+\vlde{\Phi_1\{\ttt\ot\bar a\}}
+                               {}{\xi'\{\bar a^{\hat\two}\}             }{
+\vlhy                            {\xi\{\bar a^{\hat\two}\}              }}}}}}}}
+\quad.
+\]
+Derivation $\Psi'$ has flow $B'$ and $\Psi''$ has $B''$:
+\nopagebreak[4]\bigskip\afnegspace
+\[
+B'=\raise2\atflowelheight\hbox{$
+\atomicflow{
+( 4,14)*{\afvju4{\tilde\epsilon_1}{}};
+( 6,14)*{\cdots};
+( 8,14)*{\afvju4{}{\tilde\epsilon_h}};
+( 0, 4)*{\afvjd4{\tilde\three}{}};
+( 9,10)*{\aflabelleft {\tilde A}};
+( 4, 9)*{\affr{10}6};
+( 4, 4)*{\afvjd4{\tilde\epsilon'_1}{}};
+( 6, 4)*{\cdots};
+( 8, 4)*{\afvjd4{}{\tilde\epsilon'_k}};
+( 0,16)*{\afawd{}{}{\tilde\two}{}};
+(-2, 4)*{\invisiblemark};
+(11, 4)*{\invisiblemark}}$}
+\qquad\hbox{and}\qquad
+B''=\lower2\atflowelheight\hbox{$
+\atomicflow{
+( 0,14)*{\afvju4{\hat\epsilon_1}{}};
+( 2,14)*{\cdots};
+( 4,14)*{\afvju4{}{\hat\epsilon_h}};
+( 8,14)*{\afvju4{}{\hat\two}};
+( 9,10)*{\aflabelleft {\hat A}};
+( 4, 9)*{\affr{10}6}; 
+( 0, 4)*{\afvjd4{\hat\epsilon'_1}{}};
+( 2, 4)*{\cdots};
+( 4, 4)*{\afvjd4{}{\hat\epsilon'_k}};
+( 8, 2)*{\afawu{}{}{}{\hat\three}};
+(-3, 4)*{\invisiblemark}}$}
+\quad.
+\]
+\afnegspace
+We combine $\Psi'$ and $\Psi''$ to get the desired derivation $\Psi$ with flow $C$ and the same premiss and conclusion as $\Phi$:
+\[
+\Psi=\;\;
+\vlderivation                                                              {
+\vlin{\cod                      }{}{\zeta\{\fff\}                    }    {
+\vlde{\vls[\Psi''.\zeta\{\fff\}]}{}{\vls[\zeta\{\fff\}.\zeta\{\fff\}]}   {
+\vlin{\swi                      }{}{\vls[\xi\{\bar a\}.\zeta\{\fff\}]}  {
+\vlde{\vls(\xi\{\ttt\}.\Psi')   }{}{\vls(\xi\{\ttt\}.\zeta\{\bar a\})} {
+\vlin{\cou                      }{}{\vls(\xi\{\ttt\}.\xi\{\ttt\})    }{
+\vlhy                              {\xi\{\ttt\}                      }}}}}}}
+\quad,
+\]
+where $\swi$, $\cod$ and $\cou$ are `macro' rules introduced in Remarks~\ref{RemSupSwitch} and \ref{RemGenContr}.
+\end{proof}
