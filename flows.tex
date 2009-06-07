@@ -122,14 +122,15 @@ Given an atomic flow $\phi$, we say that the sets $L_\top=\{\epsilon_1,\dots,\ep
 
 \TODO{Clean out old stuff from the following sub section.}
 
-\begin{definition}
+\begin{definition}\label{DefFlowCopy}
 By giving two atomic flows the same label we indicated that there is a bijection between them.
 Given two atomic flows $\phi$ and $\psi$, a bijection $f$ between them and the edge $\epsilon$ in $\phi$, by labeling an edge in $\psi$ by $\hat\epsilon$ (resp., $\tilde\epsilon$ or $\epsilon^1$, $\epsilon^2$, $\dots$) we indicate that $f(\epsilon)=\hat\epsilon$ (resp., $f(\epsilon)=\tilde\epsilon$ or $f(\epsilon)=\epsilon^1$, $f(\epsilon)=\epsilon^2$, $\dots$).
 \end{definition}
 
 \begin{example}
-Consider the following atomic flow:
+Consider the following atomic flows:
 \[
+\phi\;=\;
 \atomicflow
 {
 (0,0)="A";
@@ -141,11 +142,9 @@ Consider the following atomic flow:
 "A"+(-2,-6)*{\afvjd4{\iota_1}{}};
 "A"+( 0,-6)*{\cdots};
 "A"+( 2,-6)*{\afvjd4{}{\iota_m}};
-}\quad.
-\]
-We now build a flow $\psi$ containing two flows that are isomorphic to $\phi$ where we indicate the isomorphism restricted to the upper (resp., lower) edges by adding decorations to the original labels:
-\[
-\psi\quad=\quad
+}
+\quad\mbox{and}\quad
+\psi\;=\;
 \atomicflow
 {
 (-2,12)*{\afacuex{}{}{}{}{}{}52};
@@ -177,10 +176,15 @@ We now build a flow $\psi$ containing two flows that are isomorphic to $\phi$ wh
 ( 2,-12)*{\afacdex{}{}{}{}{}{}52};
 }\quad.
 \]
-Note that when we compose flows in this way we only connect two edges $\hat\epsilon_i$ and $\tilde\epsilon_j$ (resp., $\hat\iota_i$ and $\tilde\iota_j$) by a cocontraction (resp., contraction) if $i=j$, in other words if $\hat\epsilon_i$ and $\tilde\epsilon_j$ (resp., $\hat\iota_i$ and $\tilde\iota_j$) are mapped to from the same edge in $\phi$ by the bijections between the flows.
+By Defintion~\ref{DefFlowCopy} this means that there are bijections $f_1$ and $f_2$ between $\phi$ and each of the subflows labelled $\phi$ in $\psi$, such that, for every $1\le i\le n$ (resp., $1\le i\le m$), we have $f_1(\epsilon_i)=\hat\epsilon_i$ and $f_2(\epsilon_i)=\tilde\epsilon_i$ (resp., $f_1(\iota_i)=\hat\iota_i$ and $f_2(\iota_i)=\tilde\iota_i$).
 
-Labeling both $\hat\epsilon_i$ and $\tilde\epsilon_j$ (resp., $\hat\iota_i$ and $\tilde\iota_j$) is in other words redundant and for this reason we wish to introduce the following notation instead:
+This way of creating atomic flows by joining together (by use of (co) contractions) copies of an existing flow will be crucial for the global transformations we present later on. We note that in the construction above, and also in all the constructions we will present, we always respect the bijections between the sublfows when we join together edges with (co)contractions. In other words, we only connect two edges $\hat\epsilon_i$ and $\tilde\epsilon_j$ (resp., $\hat\iota_i$ and $\tilde\iota_j$) by a cocontraction (resp., contraction) if $i=j$.
+
+Since we know that we will always respect this restriction, the labeling of both $\hat\epsilon_i$ and $\tilde\epsilon_i$ is redundant. One can be deduced from the other.
+
+To reduce the amount of redundant information in the representation of our flows we wish to use the following notation to represent the above atomic flow:
 \[
+\psi\;=\;
 \atomicflow
 {
 (-2,12)*{\afacuex{}{}{}{}{\epsilon_1}{}52};
@@ -239,6 +243,7 @@ Whenever we give the same name, $\epsilon$, to two edges in different atomic flo
 If $\epsilon$ in $\phi$ corresponds to $\epsilon'$ in $\psi$ it is not a problem to refer to them by the same name since they belong to different atomic flows and since $\epsilon$ can at most correspond to one edge in $\psi$.
 \end{remark}
 
+\TODO{Remark with references to (all) the uses of this notation.}
 
 %=======================================
 \section{Paths and Cycles}
