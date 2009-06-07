@@ -236,7 +236,7 @@ A derivation with associated atomic flow $\phi$ is \emph{weakly streamlined} (re
 A streamlined proof is cut-free, a super streamlined proof is analytic and a hyper streamlined proof is in system $\KS$.
 \end{remark}
 
-\TODO{Give the following derivation a name.}
+\TODO{Try to remove the definition of $\ai$-free form.}
 
 \begin{definition}\label{DefDecompInt}
 Given two derivations
@@ -307,6 +307,10 @@ Using Lemma~\ref{LemSuperSwitch} apply, from top-to-bottom and left-to-right, th
 to obtain an $\ai$-decomposed form of $\Phi$.
 \end{proof}
 
+\begin{remark}
+The only reason to insist on doing the transformations in the above proof in a certain order is to ensure that the resulting derivation is unique. The uniqueness is useful in the following definition.
+\end{remark}
+
 \begin{definition}
 Given a derivation $\Phi$, the $\ai$-decomposed (resp., $\ai$-free) form of $\Phi$ obtained as described in the proof of Theorem~\ref{ThmConstrDecomp} is called \emph{the $\ai$-decomposed} (resp., \emph{$\ai$-free}) \emph{form of\/ $\Phi$}.
 \end{definition}
@@ -316,16 +320,14 @@ Given a derivation $\vlder{\Phi}{}{\beta}{\alpha}$ with associated atomic flow $
 \[
 \vlder{}{}{\vlsmallbrackets\vls[\beta.(a^{\mu'_n}_n.{\bar a^{\mu''_n}_n}).\cdots.(a^{\mu'_1}_1.{\bar a^{\mu'_1}_1})]}{\vlsmallbrackets\vls([a^{\lambda'_1}_1.{\bar a^{\lambda''_1}_1}].\cdots.[a^{\lambda'_n}_n.{\bar a^{\lambda'_n}_n}].\alpha)}
 \]
-with associated atomic flow $\Core(\phi)$, such that, for every $1\le i\le n$, $\lambda'_i$ and $\lambda''_i$ (resp., $\mu'_i$ and $\mu''_i$) are the new upper (resp., lower) edges of $\phi_i$.
+with associated atomic flow $\Core(\phi)$, such that, for every $1\le i\le n$, $\lambda'_i$ and $\lambda''_i$ (resp., $\mu'_i$ and $\mu''_i$) are the new upper (resp., lower) edges of $\phi_i$ in $\Core(\phi)$.
 \end{definition}
-
-\TODO{Update statement of theorem and proof to reflect the new definition.}
 
 \begin{theorem}\label{ThmExistCore}
 Given a derivation $\Phi$, a core of\/ $\Phi$ can be constructed.
 \end{theorem}
 
-\TODO{Revisit definition of new upper and new lower edges. Should it also refer to $\Core$?S}
+\TODO{Rephrase in terms of $\ai$-decomposed form instead of $\ai$-free form.}
 
 \TODO{Double check references.}
 
