@@ -1857,6 +1857,277 @@ For any $n>0$ and $k\ge0$, the derivation\/ $\vlsmash{\Gth k{}n\avec1n}$ has sha
 and\/ $\size{\Gth k{}n\avec1n}$ is $n^{\Ord{\log n}}$.
 \end{theorem}
 
+\TODO{Check correctness and integrate into the rest a bit better. Also find the correct place for it (before/after the definition of the class of threshold formulae we use (as is, it expects to be after)).}
+
+\TODO{Add a few words to the effect: `We have now seen that threshold formulae do the job, but do we HAVE to use threshold formulae?'}
+
+%------------------------------------------------------
+\begin{theorem}
+Given atoms $a_1$, $\dots$, $a_n$ and, for every $0\le k\le n$, formulae $\gamma_{k,1}$, $\dots$, $\gamma_{k,n}$, such that
+\[
+\gamma_{0,1}=\cdots=\gamma_{0,n}=\ttt
+\quad\mbox{and}\quad
+\gamma_{n,1}=\cdots=\gamma_{n,n}=\fff
+\]
+and for every $1\le k\le n$ there exists a derivation
+\[
+\vlder{}{\SKS\setminus\{\aid,\aiu\}}
+{
+ \vls([a_1.\gamma_{k,1}].\cdots.[a_n.\gamma_{k,n}])
+}
+{
+ \vls[(a_1.\gamma_{k-1,1}).\cdots.(a_n.\gamma_{k-1,n})]
+}\quad.
+\]
+Then, for every $1\le i\le n$ and every $0\le k\le n$, the formula $\gamma_{k,i}$ is true if and only if at least $k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true.
+\end{theorem}
+
+%------------------------------------------------------
+\begin{proof}
+In this proof we will use $\theta_k\equiv\theta_k^n\avec 1n$.
+
+We first observe that both $\theta_k\{a_i/\fff\}$ and $\theta_{k+1}\{a_i/\ttt\}$ are true if and only if at least $k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true.
+
+Hence, we can proceed by proving the following two claims:
+\begin{enumerate}
+ \item for every $0\le k\le n$ and for every $1\le i\le n$ we show that $\theta_k\{a_i/\fff\}\rightarrow\gamma_{k,i}$, and
+ \item for every $0\le k\le n$ and for every $1\le i\le n$ we show that $\gamma_{k,i}\rightarrow\theta_{k+1}\{a_i/\ttt\}$.
+\end{enumerate}
+
+\TODO{The following observation, while true, might not be obvious. There are two options: 1) Prove it. 2) Define two classes of threshold formulae specifically for this proof so that it is true by construction (the definition would be so that the following derivations are just an equality).}
+
+First we note that the following derivations exist for every $0\le k\le n$
+\[
+\vlder{}{\SKS\setminus\{\aid,\aiu\}}
+{
+\vls[(a_1.\theta_k\{a_1/\fff\}).\cdots.(a_n.\theta_k\{a_n/\fff\})]
+}
+{
+ \theta_{k+1}
+}
+\quad\mbox{and}\quad
+\vlder{}{\SKS\setminus\{\aid,\aiu\}}
+{
+ \theta_k
+}
+{
+\vls([a_1.\theta_{k+1}\{a_1/\ttt\}].\cdots.[a_n.\theta_{k+1}\{a_n/\ttt\}])
+}
+\]
+
+%-----------------
+We prove the implication by showing the existence of a derivation from the premiss to the conclusion. The base case is trivial:
+\[
+ \vlinf{=}{}
+ {
+  \gamma_{0,i}
+ }
+ {
+  \theta_0\{a_i/\fff\}
+ }
+\]
+We prove the inductive case by fixing a $k\ge 1$ and assuming the following derivations exist
+\[
+\vlder{\Phi_{k,1}}{\SKS\setminus\{\aid,\aiu\}}
+{
+ \gamma_{k,1}
+}
+{
+ \theta_k\{a_1/\fff\}
+}
+\quad,\cdots,\quad
+\vlder{\Phi_{k,n}}{\SKS\setminus\{\aid,\aiu\}}
+{
+ \gamma_{k,n}
+}
+{
+ \theta_k\{a_n/\fff\}
+}\quad.
+\]
+Then we can construct, for every $1\le i\le n$:
+\[
+\Phi'_{k+1,i}\quad=\quad
+\vlderivation
+{
+ \vlde{}{\{\awu\}}
+ {
+  \vls[a_i.\gamma_{k+1,i}]
+ }
+ {
+  \vlde{\Gamma_k}{\SKS\setminus\{\aid,\aiu\}}
+  {
+   \vls([a_1.\gamma_{k+1,1}].\cdots.[a_n.\gamma_{k+1,n}])
+  }
+  {
+   \vlde{}{\SKS\setminus\{\aid,\aiu\}}
+   {
+    \vls
+    [
+     (
+      a_1
+     .
+      \vlder{\Phi_{k,1}}{\SKS\setminus\{\aid,\aiu\}}
+      {
+       \gamma_{k,1}
+      }
+      {
+       \theta_k\{a_1/\fff\}
+      }
+     )
+    .\cdots.
+     (
+      a_n
+     .
+      \vlder{\Phi_{k,n}}{\SKS\setminus\{\aid,\aiu\}}
+      {
+       \gamma_{k,n}
+      }
+      {
+       \theta_n\{a_1/\fff\}
+      }
+     )
+    ]
+   }
+   {
+    \vlde{}{\{\awd\}}
+    {
+     \theta_{k+1}
+    }
+    {
+     \vlhy{\theta_{k+1}\{a_i/\fff\}}
+    }
+   }
+  }
+ }
+}\quad.
+\]
+Since $\Phi'_{k+1,i}$ does not contain any $\aid$ instances and the premiss of $\Phi'_{k+1,i}$ does not contain any instances of $a_i$, we can apply weakening reductions to obtain:
+\[
+\vlder{\Phi_{k+1,i}}{\SKS\setminus\{\aid,\aiu\}}
+{
+ \vlsbr[\vlinf{}{}{a_i}{\fff}.\gamma_{k+1,i}]
+}
+{
+ \theta_{k+1}\{a_i/\fff\}
+}\quad,
+\]
+where $\Phi_{k+1,i}$ is the required derivation.
+
+
+
+%-----------------
+We prove the implication by showing the existence of a derivation from the premiss to the conclusion. The base case is trivial:
+\[
+ \vlinf{=}{}
+ {
+  \theta_{n+1}\{a_i/\ttt\}
+ }
+ {
+  \gamma_{n,i}
+ }
+\]
+We prove the inductive case by fixing a $k\ge 1$ and assuming the following derivations exist
+\[
+\vlder{\Psi_{k,1}}{\SKS\setminus\{\aid,\aiu\}}
+{
+ \theta_{k+1}\{a_1/\ttt\}
+}
+{
+ \gamma_{k,1}
+}
+\quad,\cdots,\quad
+\vlder{\Psi_{k,n}}{\SKS\setminus\{\aid,\aiu\}}
+{
+ \theta_{k+1}\{a_n/\ttt\}
+}
+{
+ \gamma_{k,n}
+}\quad.
+\]
+Then we can construct, for every $1\le i\le n$:
+\[
+\Psi'_{k-1,i}\quad=\quad
+\vlderivation
+{
+ \vlde{}{\{\awu\}}
+ {
+  \theta_k\{a_i/\ttt\}
+ }
+ {
+  \vlde{}{}
+  {
+   \theta_k
+  }
+  {
+   \vlde{\Gamma_k}{\SKS\setminus\{\aid,\aiu\}}
+   {
+    \vls
+    (
+     [
+      a_1
+     .
+      \vlder{\Psi_{k,1}}{\SKS\setminus\{\aid,\aiu\}}
+      {
+       \theta_{k+1}\{a_1/\ttt\}
+      }
+      {
+       \gamma_{k,1}
+      }
+     ]
+    .\cdots.
+     [
+      a_n
+     .
+      \vlder{\Psi_{k,n}}{\SKS\setminus\{\aid,\aiu\}}
+      {
+       \theta_{k+1}\{a_n/\ttt\}
+      }
+      {
+       \gamma_{k,n}
+      }
+     ]
+    )
+   }
+   {
+    \vlde{}{\{\awd\}}
+    {
+     \vls[(a_1.\gamma_{k-1,1}).\cdots.(a_n.\gamma_{k-1,n})]
+    }
+    {
+     \vlhy{\vls(a_i.\gamma_{k-1,i})}
+    }
+   }
+  }
+ }
+}\quad.
+\]
+Since $\Psi'_{k-1,i}$ does not contain any $\aiu$ instances and the conclusion of $\Psi'_{k-1,i}$ does not contain any instances of $a_i$, we can apply weakening reductions to obtain:
+\[
+\vlder{\Psi_{k-1,i}}{\SKS\setminus\{\aid,\aiu\}}
+{
+ \theta_k\{a_i/\ttt\}
+}
+{
+ \vlsbr(\vlinf{}{}{\ttt}{a_i}.\gamma_{k-1,i})
+}\quad,
+\]
+where $\Psi_{k-1,i}$ is the required derivation.
+\end{proof}
+
+\TODO{Fix the ambiguous subscripts in the following remark.}
+
+\begin{remark}
+We could generalise the theorem, without significantly changing the proof, by changing the condition on $\gamma_{0,i}$ and $\gamma_{n,i}$ into
+\[
+\gamma_{k,1}=\cdots=\gamma_{k,n}=\ttt
+\quad\mbox{and}\quad
+\gamma_{l,1}=\cdots=\gamma_{l,n}=\fff
+\quad,
+\]
+for some $k<l$. Then, for every $i\ge0$, we would have that $\theta_{i-k}\rightarrow\gamma_i\rightarrow\theta_{i+n-l}$. This might serve as a starting point for finding a class of formulae, which are not threshold formulae, that will allow for smaller proofs, or alternatively to show that one does not exist.
+\end{remark}
+
+%================================================================================
 \subsubsection{Quasipolynomial Reduction}
 
 \TODO{Either rephrase this in terms of an atomic flow transformation and a soundness proof or move it away from here.}
