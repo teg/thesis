@@ -1,3 +1,5 @@
+\TODO{This reduction differs from the other ones, since the atomic flows in the contractum is not yet defined.}
+
 \newcommand{\frmis}{{\mathsf{mis}}}
 %---------------------------------------
 \begin{definition}\label{DefMulIsoSubRem}
@@ -111,16 +113,16 @@ Consider the derivation
 \[
 \vlder{\Phi}{}
 {
- \vls[\beta\;.\;\vlinf{}{}{\fff}{\vls(a_1.\bar a_1^{\phi_1})}\;.\;\vlinf{}{}{\fff}{\vls(a_n.\bar a_n^{\phi_n})}]
+ \vls[\beta\;.\;\vlinf{}{}{\fff}{\vls(a_1.\bar a_1^{\psi_1})}\;.\;\vlinf{}{}{\fff}{\vls(a_n.\bar a_n^{\psi_n})}]
 }
 {
- \vls(\vlinf{}{}{\vls[a_1.\bar a_1^{\phi_1}]}{\ttt}\;.\;\vlinf{}{}{\vls[a_n.\bar a_n^{\phi_n}]}{\ttt}\;.\;\alpha)
+ \vls(\vlinf{}{}{\vls[a_1.\bar a_1^{\psi_1}]}{\ttt}\;.\;\vlinf{}{}{\vls[a_n.\bar a_n^{\psi_n}]}{\ttt}\;.\;\alpha)
 }\quad,
 \]
 such that, for $1\le i\le n$, $\phi_i$ is an isolated subflow. For every $k\ge0$, consider some class of formulae $\gamma_{k,1}$, $\dots$, $\gamma_{k,n}$, then, by Lemma~\ref{TODO}, we can construct the derivation
 \[
 \Phi_k\quad=\quad
-\vlder{\Phi\{\bar a_1^{\phi_1}/\gamma_{k,1},\dots,\bar a_n^{\phi_n}/\gamma_{k,n}\}}{}
+\vlder{\Phi\{\bar a_1^{\psi_1}/\gamma_{k,1},\dots,\bar a_n^{\psi_n}/\gamma_{k,n}\}}{}
 {
  \vls
  [
@@ -945,15 +947,15 @@ Consider the derivation
 \[
 \vlder{\Phi}{}
 {
- \vls[\beta\;.\;\vlinf{}{}{\fff}{\vls(a_1.\bar a_1^{\phi_1})}\;.\;\vlinf{}{}{\fff}{\vls(a_n.\bar a_n^{\phi_n})}]
+ \vls[\beta\;.\;\vlinf{}{}{\fff}{\vls(a_1.\bar a_1^{\psi_1})}\;.\;\vlinf{}{}{\fff}{\vls(a_n.\bar a_n^{\psi_n})}]
 }
 {
- \vls(\vlinf{}{}{\vls[a_1.\bar a_1^{\phi_1}]}{\ttt}\;.\;\vlinf{}{}{\vls[a_n.\bar a_n^{\phi_n}]}{\ttt}\;.\;\alpha)
+ \vls(\vlinf{}{}{\vls[a_1.\bar a_1^{\psi_1}]}{\ttt}\;.\;\vlinf{}{}{\vls[a_n.\bar a_n^{\psi_n}]}{\ttt}\;.\;\alpha)
 }\quad,
 \]
-such that, for $1\le i\le n$, $\phi_i$ is an isolated subflow that does not contain identity or cut instances. For $0\le i\le n+1$, let $\theta_i\equiv\vlsmallbrackets\vls([a_1.(\th in\avec1n)\{a_1/\fff\}].\cdots.[a_n.(\th in\avec1n)\{a_n/\fff\}])$. We define $\Phi_0$ and $\Phi_n$ as
+with atomic flow $\phi$, such that, for $1\le i\le n$, $\psi_i$ is an isolated subflow of $\phi$ that does not contain identity or cut instances. For $0\le i\le n+1$, let $\theta_i\equiv\vlsmallbrackets\vls([a_1.(\th in\avec1n)\{a_1/\fff\}].\cdots.[a_n.(\th in\avec1n)\{a_n/\fff\}])$. We define $\Phi_0$ and $\Phi_n$ as
 \[
-\vlder{\Phi\{\bar a_1^{\phi_1}/\ttt,\dots,\bar a_n^{\phi_n}/\ttt\}}{}
+\vlder{\Phi\{\bar a_1^{\psi_1}/\ttt,\dots,\bar a_n^{\psi_n}/\ttt\}}{}
 {
  \vlsbr
  [
@@ -972,7 +974,7 @@ such that, for $1\le i\le n$, $\phi_i$ is an isolated subflow that does not cont
  \vls([\vlinf{}{}{a_1}{\fff}\;.\;\ttt]\;.\;[\vlinf{}{}{a_n}{\fff}\;.\;\ttt]\;.\;\alpha)
 }
 \quad\mbox{and}\quad
-\vlder{\Phi\{\bar a_1^{\phi_1}/\fff,\dots,\bar a_n^{\phi_n}/\fff\}}{}
+\vlder{\Phi\{\bar a_1^{\psi_1}/\fff,\dots,\bar a_n^{\psi_n}/\fff\}}{}
 {
  \vls[\beta\;.\;(\vlinf{}{}{\ttt}{a_1}\;.\;\fff)\;.\;\cdots\;.\;(\vlinf{}{}{\ttt}{a_1}\;.\;\fff)]
 }
@@ -982,7 +984,7 @@ such that, for $1\le i\le n$, $\phi_i$ is an isolated subflow that does not cont
 \]
 respectively. For $1\le k\le n-1$, we define the derivations $\Phi_k$:
 \[
-\vlder{\Phi\{\bar a_1^{\phi_1}/(\th kn\avec1n)\{a_1/\fff\},\dots,\bar a_n^{\phi_n}/(\th kn\avec1n)\{a_n/\fff\}\}}{}
+\vlder{\Phi\{\bar a_1^{\psi_1}/(\th kn\avec1n)\{a_1/\fff\},\dots,\bar a_n^{\psi_n}/(\th kn\avec1n)\{a_n/\fff\}\}}{}
 {
  \vlsbr
  [
