@@ -1,96 +1,93 @@
-\TODO{Define an atomic flow transformation and prove it sound (based on the following figure).}
-
-%-------------------------------------------------------------------------------
-\begin{figure}
+\newcommand{\frmis}{{\mathsf{mis}}}
+%---------------------------------------
+\begin{definition}\label{DefMulIsoSubRem}
+We define the reduction $\to_\frmis$ (where $\frmis$ stands for \emph{multiple isolated subflow}) as follows, for any atomic flows $\phi$ with upper edges $\boldsymbol\epsilon$ and lower edges $\boldsymbol\iota$, and $\psi_1$, $\dots$, $\psi_n$:
 \[
 \atomicflow{
-(1,47)="A";
-"A"+(16,15  )*{\aflabelright{\phi'_0}};
-"A"+(12,14  )*{\afawdm{}{}{}{}};
-"A"+(12, 9  )*{\aflabelright\phi};
-"A"+( 2, 6  )*{\copy\interdown};
-"A"+( 5, 6  )*{\copy\weakdown};
-"A"+( 7, 6  )*{\copy\weakup};
-"A"+( 7, 6  )*{\affr{14}8};
-"A"+( 9, 6  )*{\copy\contrdown};
-"A"+(11, 6  )*{\copy\contrup};
-"A"+(9 , 4.5)*{\affr{19}{23}};
-"A"+(16, 4  )*{\afawdm{}{}{}{}};
-"A"+(12, 1  )*{\afvjm2};
-"A"+(14,-3  )*{\affr86};
-"A"+(14,-3  )*{\copy\contrdown};
-"A"+(14,-8.5)*{\afvjum5{}{\theta_1}};
-(15  ,35   )*{\vdots};
-(15  ,28.5 )*{\afvjdm5{}{\theta_k}};
-(22.5,26   )*{\aflabelright{\phi'_k}};
-(15  ,23   )*{\affr46};
-(15  ,23   )*{\copy\contrup};
-(13  ,19   )*{\afcjrm22};
-(17.5,15   )*{\afcjlm3{10}};
-(12  ,15   )*{\affr46};
-(12  ,15   )*{\copy\contrdown};
-(12  ,11   )*{\afvjm2};
-(22  ,10   )*{\aflabelright{\psi_k}};
-(12  , 9   )*{\aflabelright\phi};
-( 2  , 6   )*{\copy\interdown};
-( 5  , 6   )*{\copy\weakdown};
-( 7  , 6   )*{\copy\weakup};
-( 7  , 6   )*{\affr{14}8};
-( 9  , 6   )*{\copy\contrdown};
-(11  , 6   )*{\copy\contrup};
-(12  , 6   )*{\affr{25}{10}};
-(12  , 6   )*{\affr{26}{42}};
-(18  , 6   )*{\copy\contrdown};
-(19  , 6   )*{\affr68};
-(20  , 6   )*{\copy\contrup};
-(12  , 1   )*{\afvjm2};
-(19  , 1   )*{\afvjm2};
-(12  ,-3   )*{\affr46};
-(12  ,-3   )*{\copy\contrup};
-(18  ,-3   )*{\copy\weakdown};
-(19  ,-3   )*{\affr66};
-(20  ,-3   )*{\copy\weakup};
-(13  ,-7   )*{\afcjlm22};
-(17.5,-7   )*{\afcjrm32};
-(15  ,-11  )*{\affr46};
-(15  ,-11  )*{\copy\contrdown};
-(15  ,-16.5)*{\afvjum5{}{\theta_{k+1}}};
-(0,-35)="B";
-"B"+( 2  ,-15  )*{\afvjm{10}};
-"B"+(12  ,-14  )*{\afawum{}{}{}{}};
-"B"+(19  ,-14  )*{\afawum{}{}{}{}};
-"B"+( 2  , -6  )*{\copy\interdown};
-"B"+( 5  , -6  )*{\copy\weakdown};
-"B"+( 7  , -6  )*{\copy\weakup};
-"B"+( 7  , -6  )*{\affr{14}8};
-"B"+( 9  , -6  )*{\copy\contrdown};
-"B"+(11  , -6  )*{\copy\contrup};
-"B"+(18  , -6  )*{\copy\contrdown};
-"B"+(19  , -6  )*{\affr68};
-"B"+(20  , -6  )*{\copy\contrup};
-"B"+(11  , -4.5)*{\affr{23}{23}};
-"B"+(12  , -3  )*{\aflabelright\phi};
-"B"+(13  , -1  )*{\afcjrm22};
-"B"+(17.5, -1  )*{\afcjlm32};
-"B"+(15  ,  3  )*{\affr66};
-"B"+(15  ,  3  )*{\copy\contrup};
-"B"+(20  ,  6  )*{\aflabelright{\phi'_n}};
-"B"+(15  ,  8.5)*{\afvjdm5{}{\theta_n}};
-"B"+(15  ,  15 )*{\vdots};
-(-1.5, 28  )*{\afcjrm9{42}};
-( 0  ,-20  )*{\afcjrm4{44}};
-(-6  ,-24  )*{\afvjm{62}};
-(-2  ,-48.5)*{\afvjm{13}};
-(-4  ,-53  )*{\cdots};
-( 0  ,-53  )*{\cdots};
-(-2  ,-58  )*{\affr{10}6};
-(-2  ,-58  )*{\copy\contrdown};
-(-2  ,-63  )*{\afvjum4\alpha{}};
+(-12,  8)*{\afvjdm8{}{\boldsymbol\epsilon}};
+(  4, 10)*{\afaidex{}{}{}{}{}{}{20}{4}};
+( -6,  5)*{\afvj2};
+( -4,  6)*{\cdots};
+( 14,  5)*{\afvj2};
+(  1,  8)*{\afaidex{}{}{}{}{}{}{6}{4}};
+( -7,  0)*{\affr{12}{8}};
+( -4,  2)*{\aflabelright{\phi}};
+(  4,  0)*{\affr{6}{8}};
+(  4,  2)*{\aflabelright{\psi_1}};
+(  9,  0)*{\cdots};
+( 14,  0)*{\affr{6}{8}};
+( 14,  2)*{\aflabelright{\psi_n}};
+(  1, -8)*{\afaiuex{}{}{}{}{}{}{6}{4}};
+( -6, -5)*{\afvj2};
+( -4, -6)*{\cdots};
+( 14, -5)*{\afvj2};
+(  4,-10)*{\afaiuex{}{}{}{}{}{}{20}{4}};
+(-12, -8)*{\afvjum8{}{\boldsymbol\iota}};
 }
+\quad\to_\frmis\quad
+\atomicflow{
+(-12, 54)*{\afvjdm4{}{\boldsymbol\epsilon}};
+(-12, 48)*{\copy\contrup};
+(-12, 48)*{\affr{16}{8}};
+( -5, 43)*{\afvjm2};
+( -7, 33)*{\afcjlm{4}{22}};
+(-12, 42)*{\cdots};
+(-10,  2)*{\afcjlm{10}{32}};
+(-15, 31)*{\afvjm{26}};
+(-12,-13)*{\afcjlm{14}{42}};
+(-19, 26)*{\afvjm{36}};
+%--
+( 5, 46)*{\afawdm{}{}{}{}};
+( 0, 38)*{\affr{12}{8}};
+( 3, 40)*{\aflabelright{\phi}};
+( 5, 33)*{\afvjm2};
+( 9, 28)*{\affr{10}{8}};
+(11, 30)*{\aflabelright{\gamma_0}};
+( 5, 23)*{\afvjm2};
+(11, 23)*{\afvjm2};
+( 0, 18)*{\affr{12}{8}};
+( 3, 20)*{\aflabelright{\phi}};
+( 5, 13)*{\afvjm2};
+(11, 13)*{\afvjm2};
+(11, 18)*{\affr{6}{8}};
+(11, 20)*{\aflabelright{\delta_1}};
+( 9,  8)*{\affr{10}{8}};
+(11, 10)*{\aflabelright{\gamma_1}};
+%-
+( 9,  1)*{\vdots};
+%-
+( 9, -8)*{\affr{10}{8}};
+(10, -6)*{\aflabelright{\gamma_{n-1}}};
+( 5,-13)*{\afvjm2};
+(11,-13)*{\afvjm2};
+( 0,-18)*{\affr{12}{8}};
+( 3,-16)*{\aflabelright{\phi}};
+(11,-18)*{\affr{6}{8}};
+(11,-16)*{\aflabelright{\delta_n}};
+( 5,-23)*{\afvjm2};
+(11,-23)*{\afvjm2};
+( 9,-28)*{\affr{10}{8}};
+(11,-26)*{\aflabelright{\gamma_n}};
+( 5,-33)*{\afvjm2};
+( 0,-38)*{\affr{12}{8}};
+( 3,-36)*{\aflabelright{\phi}};
+( 5,-46)*{\afawum{}{}{}{}};
+%--
+(-12, 13)*{\afcjrm{14}{42}};
+(-19,-26)*{\afvjm{36}};
+(-10, -2)*{\afcjrm{10}{32}};
+(-15,-31)*{\afvjm{26}};
+(-12,-42)*{\cdots};
+( -7,-33)*{\afcjrm{4}{22}};
+( -5,-43)*{\afvjm2};
+(-12,-48)*{\affr{16}{8}};
+(-12,-48)*{\copy\contrdown};
+(-12,-54)*{\afvjum4{}{\boldsymbol\iota}};
+}\quad,
 \]
-\caption{Atomic flow of a proof in cut-free form.}
-\label{FigNormFlow}
-\end{figure}
+for  some flows $\gamma_0$, $\dots$, $\gamma_n$, $\delta_1$, $\dots$, $\delta_n$, which do not contain interaction or cut vertices, where, for each $1\le i\le n$, the subflow $\psi_i$ is connected and does not contain any interaction or cut vertices.
+\end{definition}
+
 
 \TODO{Change this introduction}
 
