@@ -648,9 +648,10 @@ Given atoms $a_1$, $\dots$, $a_n$ and, for every $0\le k\le n$, formulae $\gamma
 \[
 \gamma_{0,1}=\cdots=\gamma_{0,n}=\ttt
 \quad\mbox{and}\quad
-\gamma_{n,1}=\cdots=\gamma_{n,n}=\fff
+\gamma_{l,1}=\cdots=\gamma_{l,n}=\fff
+\quad,
 \]
-and for every $1\le k\le n$ there exists a derivation
+for some $l>0$, and such that, for every $1\le k\le l$, there exists a derivation
 \[
 \vlder{}{\SKS\setminus\{\aid,\aiu\}}
 {
@@ -660,44 +661,47 @@ and for every $1\le k\le n$ there exists a derivation
  \vls[(a_1.\gamma_{k-1,1}).\cdots.(a_n.\gamma_{k-1,n})]
 }\quad.
 \]
-Then, for every $1\le i\le n$ and every $0\le k\le n$, the formula $\gamma_{k,i}$ is true if and only if at least $k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true.
+Then, for every $1\le i\le n$ and every $0\le k\le l$, the formula $\gamma_{k,i}$
+\begin{itemize}
+ \item is true if at least $k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true, and
+ \item is false if at least $l-k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are false.
+\end{itemize}
 \end{theorem}
 
 %------------------------------------------------------
 \begin{proof}
-In this proof we will use $\theta_k\equiv\theta_k^n\avec 1n$.
+Let $\theta_k\equiv\theta_k^n\avec 1n$, be the threshold formulae defined in Definition~\ref{TODO}.
 
-We first observe that both $\theta_k\{a_i/\fff\}$ and $\theta_{k+1}\{a_i/\ttt\}$ are true if and only if at least $k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true.
-
-Hence, we can proceed by proving the following two claims:
-\begin{enumerate}
- \item for every $0\le k\le n$ and for every $1\le i\le n$ we show that $\theta_k\{a_i/\fff\}\rightarrow\gamma_{k,i}$, and
- \item for every $0\le k\le n$ and for every $1\le i\le n$ we show that $\gamma_{k,i}\rightarrow\theta_{k+1}\{a_i/\ttt\}$.
-\end{enumerate}
-
-\TODO{The following observation, while true, might not be obvious. There are two options: 1) Prove it. 2) Define two classes of threshold formulae specifically for this proof so that it is true by construction (the definition would be so that the following derivations are just an equality).}
-
-First we note that the following derivations exist for every $0\le k\le n$
+We first observe that, for every $0\le k\le n$ and for every $1\le i\le n$
+\begin{itemize}
+ \item $\theta_k\{a_i/\fff\}$ is true if at least $k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true, and
+ \item $\theta_{n-l+k+1}\{a_i/\ttt\}$ is false if at least $l-k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are false.
+\end{itemize}
+Hence, we can prove the claim by showing that derivations $\Phi_{k,i}$ and $\Psi_{k,i}$ exist such that:
 \[
-\vlder{}{\SKS\setminus\{\aid,\aiu\}}
+\vlderivation
 {
-\vls[(a_1.\theta_k\{a_1/\fff\}).\cdots.(a_n.\theta_k\{a_n/\fff\})]
-}
-{
- \theta_{k+1}
-}
-\quad\mbox{and}\quad
-\vlder{}{\SKS\setminus\{\aid,\aiu\}}
-{
- \theta_k
-}
-{
-\vls([a_1.\theta_{k+1}\{a_1/\ttt\}].\cdots.[a_n.\theta_{k+1}\{a_n/\ttt\}])
-}
+ \vlde{\Psi_{k,i}}{}
+ {
+  \theta_{n-l+k+1}\{a_i/\ttt\}
+ }
+ {
+  \vlde{\Phi_{k,i}}{}
+  {
+   \gamma_{k,i}
+  }
+  {
+   \vlhy
+   {
+    \theta_{k,i}\{a_i/\fff\}
+   }
+  }
+ }
+}\quad.
 \]
 
-%-----------------
-We prove the implication by showing the existence of a derivation from the premiss to the conclusion. The base case is trivial:
+%---
+We prove by induction on $k$ how to build $\Phi_{k,i}$. The base case is trivial:
 \[
  \vlinf{=}{}
  {
@@ -705,9 +709,19 @@ We prove the implication by showing the existence of a derivation from the premi
  }
  {
   \theta_0\{a_i/\fff\}
- }
+ }\quad.
 \]
-We prove the inductive case by fixing a $k\ge 1$ and assuming the following derivations exist
+We prove the inductive case by fixing a $k>0$. We need the following derivation:
+\[
+\vlder{}{\SKS\setminus\{\aid,\aiu\}}
+{
+\vls[(a_1.\theta_k\{a_1/\fff\}).\cdots.(a_n.\theta_k\{a_n/\fff\})]
+}
+{
+ \theta_{k+1}
+}\quad.
+\]
+We know such a derivation exists in system $\SKS$ since the premiss and conclusion are logically equivalent. Furthermore, since the premiss and conclusion do not contain any pair of dual atom occurrences we know that a derivation exists in the system $\SKS\setminus\{\aid,\aiu\}$, by Proposition~\ref{TODO}. We assume the following derivations exist
 \[
 \vlder{\Phi_{k,1}}{\SKS\setminus\{\aid,\aiu\}}
 {
@@ -782,7 +796,7 @@ Then we can construct, for every $1\le i\le n$:
  }
 }\quad.
 \]
-Since $\Phi'_{k+1,i}$ does not contain any $\aid$ instances and the premiss of $\Phi'_{k+1,i}$ does not contain any instances of $a_i$, we can apply weakening reductions to obtain:
+Since $\Phi'_{k+1,i}$ does not contain any $\aid$ instances and the premiss of $\Phi'_{k+1,i}$ does not contain any occurrences of $a_i$, we can apply weakening reductions to obtain:
 \[
 \vlder{\Phi_{k+1,i}}{\SKS\setminus\{\aid,\aiu\}}
 {
@@ -794,24 +808,33 @@ Since $\Phi'_{k+1,i}$ does not contain any $\aid$ instances and the premiss of $
 \]
 where $\Phi_{k+1,i}$ is the required derivation.
 
-
-
-%-----------------
-We prove the implication by showing the existence of a derivation from the premiss to the conclusion. The base case is trivial:
+%---
+We prove by induction on $k$ how to build $\Psi_{k,i}$. The base case is trivial:
 \[
  \vlinf{=}{}
  {
   \theta_{n+1}\{a_i/\ttt\}
  }
  {
-  \gamma_{n,i}
+  \gamma_{l,i}
  }
 \]
-We prove the inductive case by fixing a $k\ge 1$ and assuming the following derivations exist
+We prove the inductive case by fixing a $k<l$. We need the following derivation:
+\[
+\vlder{}{\SKS\setminus\{\aid,\aiu\}}
+{
+\vls[(a_1.\theta_{n-l+k}\{a_1/\fff\}).\cdots.(a_n.\theta_{n-l+k}\{a_n/\fff\})]
+}
+{
+ \theta_{n-l+k+1}
+}\quad,
+\]
+We know such a derivation exists in system $\SKS$ since the premiss and conclusion are logically equivalent. Furthermore, since the premiss and conclusion do not contain any pair of dual atom occurrences we know that a derivation exists in the system $\SKS\setminus\{\aid,\aiu\}$, by Proposition~\ref{TODO}. We assume the following derivations exist
+
 \[
 \vlder{\Psi_{k,1}}{\SKS\setminus\{\aid,\aiu\}}
 {
- \theta_{k+1}\{a_1/\ttt\}
+ \theta_{n-l+k+1}\{a_1/\ttt\}
 }
 {
  \gamma_{k,1}
@@ -819,7 +842,7 @@ We prove the inductive case by fixing a $k\ge 1$ and assuming the following deri
 \quad,\cdots,\quad
 \vlder{\Psi_{k,n}}{\SKS\setminus\{\aid,\aiu\}}
 {
- \theta_{k+1}\{a_n/\ttt\}
+ \theta_{n-l+k+1}\{a_n/\ttt\}
 }
 {
  \gamma_{k,n}
@@ -832,12 +855,12 @@ Then we can construct, for every $1\le i\le n$:
 {
  \vlde{}{\{\awu\}}
  {
-  \theta_k\{a_i/\ttt\}
+  \theta_{n-l+k}\{a_i/\ttt\}
  }
  {
   \vlde{}{}
   {
-   \theta_k
+   \theta_{n-l+k}
   }
   {
    \vlde{\Gamma_k}{\SKS\setminus\{\aid,\aiu\}}
@@ -849,7 +872,7 @@ Then we can construct, for every $1\le i\le n$:
      .
       \vlder{\Psi_{k,1}}{\SKS\setminus\{\aid,\aiu\}}
       {
-       \theta_{k+1}\{a_1/\ttt\}
+       \theta_{n-l+k+1}\{a_1/\ttt\}
       }
       {
        \gamma_{k,1}
@@ -861,7 +884,7 @@ Then we can construct, for every $1\le i\le n$:
      .
       \vlder{\Psi_{k,n}}{\SKS\setminus\{\aid,\aiu\}}
       {
-       \theta_{k+1}\{a_n/\ttt\}
+       \theta_{n-l+k+1}\{a_n/\ttt\}
       }
       {
        \gamma_{k,n}
@@ -882,11 +905,11 @@ Then we can construct, for every $1\le i\le n$:
  }
 }\quad.
 \]
-Since $\Psi'_{k-1,i}$ does not contain any $\aiu$ instances and the conclusion of $\Psi'_{k-1,i}$ does not contain any instances of $a_i$, we can apply weakening reductions to obtain:
+Since $\Psi'_{k-1,i}$ does not contain any $\aiu$ instances and the conclusion of $\Psi'_{k-1,i}$ does not contain any occurrences of $a_i$, we can apply weakening reductions to obtain:
 \[
 \vlder{\Psi_{k-1,i}}{\SKS\setminus\{\aid,\aiu\}}
 {
- \theta_k\{a_i/\ttt\}
+ \theta_{n-l+k}\{a_i/\ttt\}
 }
 {
  \vlsbr(\vlinf{}{}{\ttt}{a_i}.\gamma_{k-1,i})
@@ -897,15 +920,13 @@ where $\Psi_{k-1,i}$ is the required derivation.
 
 \TODO{Fix the ambiguous subscripts in the following remark.}
 
+%------------------------------------------------
 \begin{remark}
-We could generalise the theorem, without significantly changing the proof, by changing the condition on $\gamma_{0,i}$ and $\gamma_{n,i}$ into
+In the above theorem $l\ge n$ and if $l=n$, then
 \[
-\gamma_{k,1}=\cdots=\gamma_{k,n}=\ttt
-\quad\mbox{and}\quad
-\gamma_{l,1}=\cdots=\gamma_{l,n}=\fff
-\quad,
+\theta_{k,i}\{a_i/\fff\}\leftrightarrow\gamma_{k,i}\leftrightarrow\theta_{k+1,i}\{a_i/\ttt\}
+\quad.
 \]
-for some $k<l$. Then, for every $i\ge0$, we would have that $\theta_{i-k}\rightarrow\gamma_i\rightarrow\theta_{i+n-l}$. This might serve as a starting point for finding a class of formulae, which are not threshold formulae, that will allow for smaller proofs, or alternatively to show that one does not exist.
 \end{remark}
 
 %================================================================================
