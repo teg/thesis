@@ -1,6 +1,133 @@
 \TODO{Import from AFII when the paper is final.}
 
-\TODO{Consider changing into the style of simple flow remover above: first define a reduction on atomic flows then show it is sound. It fits better with the message of the thesis.}
+
+
+\newcommand{\frpb}{{\mathsf{pb}}}
+%---------------------------------------
+\begin{definition}\label{DefPathBreaker}
+We define the reduction $\to_\frpb$ (where $\frpb$ stands for \emph{path breaker}) as follows, for any two atomic flows $\phi$, with upper edges $\lambda$ and $\boldsymbol\epsilon$, and lower edges $\mu$ and $\boldsymbol\iota$; and $\psi$ with upper edges $\lambda$ and $\boldsymbol{\epsilon'}$ and lower edges $\mu'$ and $\boldsymbol{\iota'}$:
+\[
+\atomicflow
+{
+(-8, 6)*{\afvjdm{4}{\boldsymbol\epsilon}{}};
+(-2, 6)*{\afvjd{4}{\lambda}{}};
+( 2, 6)*{\afvjd{4}{}{\lambda'}};
+( 8, 6)*{\afvjdm{4}{}{\boldsymbol{\epsilon'}}};
+(-5, 0)*{\affr{8}{8}};
+(-4, 2)*{\aflabelright\phi};
+%---
+( 5, 0)*{\affr{8}{8}};
+( 6, 2)*{\aflabelright{\psi}};
+( 8,-6)*{\afvjum{4}{}{\boldsymbol{\iota'}}};
+(-2,-6)*{\afvju{4}{\mu}{}};
+( 2,-6)*{\afvju{4}{}{\mu'}};
+(-8,-6)*{\afvjum{4}{\boldsymbol\iota}{}};
+}
+\quad\to_\frpb\quad
+\atomicflow
+{
+%%%%% RED %%%%%
+(0,-20)="D";
+(0,-10)="Dhalf";
+%% contractions
+"D"+"D"="A";
+%left
+"A"+(-14,-15.5)-"D"*{\afvjmcol{23}{Red}};
+"A"+(-11,-17)*{\afvjumcol{4}{\boldsymbol\iota}{}{Red}};
+%right
+"A"+(11,-11.5)-"Dhalf"*{\afvjmcol{11}{Red}};
+"A"+(14,-15.5)-"D"*{\afvjmcol{23}{Red}};
+"A"+(11,-17)*{\afvjumcol{4}{}{\boldsymbol{\iota'}}{Red}};
+% top boxes
+(0,0)="A";
+"A"+(-11,-14)*{\afcjrmcol{6}{20}{Red}};
+"A"+(11,-14)*{\afcjlmcol{6}{20}{Red}};
+"A"+(-2, 11.5)*{\afvjdcol{15}{\lambda}{}{Red}};
+"A"+( 2, 11.5)*{\afvjdcol{15}{}{\lambda'}{Red}};
+"A"+(-2, -8)*{\afawucol{}{}{}{}{}{Red}};
+% join one
+"A"+(2,-10)*{\afvjcol{12}{Red}};
+% middle boxes
+"A"+"D"="A";
+"A"+(9.5,-10)*{\afcjlmcol{3}{12}{Red}};
+"A"+( 2,-8)*{\afawucol{}{}{}{}{}{Red}};
+%%%%% GREEN %%%%%
+%% cocontractions
+(0,0)="A";
+%left
+"A"+(-11,17)*{\afvjdmcol{4}{\boldsymbol\epsilon}{}{OliveGreen}};
+"A"+"D"+(-14,15.5)*{\afvjmcol{23}{OliveGreen}};
+"A"+"Dhalf"+(-11,11.5)*{\afvjmcol{11}{OliveGreen}};
+%right
+"A"+(11,17)*{\afvjdmcol{4}{}{\boldsymbol{\epsilon'}}{OliveGreen}};
+"A"+"D"+(14,15.5)*{\afvjmcol{23}{OliveGreen}};
+% middle boxes
+"A"+"D"="A";
+"A"+(-9.5,10)*{\afcjlmcol{3}{12}{OliveGreen}};
+"A"+(-2, 8)*{\afawdcol{}{}{}{}{}{OliveGreen}};
+% join two
+"A"+(-2,-10)*{\afvjcol{12}{OliveGreen}};
+% bottom boxes
+"A"+"D"="A";
+"A"+(-11,14)*{\afcjlmcol{6}{20}{OliveGreen}};
+"A"+(11,14)*{\afcjrmcol{6}{20}{OliveGreen}};
+"A"+(-2,-11.5)*{\afvjucol{15}{\mu}{}{OliveGreen}};
+"A"+( 2,-11.5)*{\afvjucol{15}{}{\mu'}{OliveGreen}};
+"A"+( 2, 8)*{\afawdcol{}{}{}{}{}{OliveGreen}};
+%%%%% BLACK %%%%%
+%% cocontractions
+(0,0)="A";
+%left
+"A"+(-8,5.5)*{\afvjm3};
+"A"+(-11,11)*{\affr88};
+"A"+(-11,11)*{\copy\contrup};
+%right
+"A"+(8,5.5)*{\afvjm3};
+"A"+"Dhalf"+(11,11.5)*{\afvjm{11}};
+"A"+(11,11)*{\affr88};
+"A"+(11,11)*{\copy\contrup};
+%% contractions
+"D"+"D"="A";
+%left
+"A"+(-11,-11.5)-"Dhalf"*{\afvjm{11}};
+"A"+(-8,-5.5)*{\afvjm3};
+"A"+(-11,-11)*{\affr88};
+"A"+(-11,-11)*{\copy\contrdown};
+%right
+"A"+(8,-5.5)*{\afvjm3};
+"A"+(11,-11)*{\affr88};
+"A"+(11,-11)*{\copy\contrdown};
+% top boxes
+(0,0)="A";
+"A"+(-5,  0)*{\affr{8}{8}};
+"A"+(-4,  2)*{\aflabelright{\phi}};
+"A"+( 5,  0)*{\affr{8}{8}};
+"A"+( 6,  2)*{\aflabelright{\psi}};
+% middle boxes
+"A"+"D"="A";
+"A"+(9.5,10)*{\afcjrm{3}{12}};
+"A"+(-9.5,-10)*{\afcjrm{3}{12}};
+"A"+(-5, 0)*{\affr{8}{8}};
+"A"+(-4, 2)*{\aflabelright{\phi}};
+"A"+( 5, 0)*{\affr{8}{8}};
+"A"+( 6, 2)*{\aflabelright{\psi}};
+% bottom boxes
+"A"+"D"="A";
+"A"+(-5, 0)*{\affr{8}{8}};
+"A"+(-4, 2)*{\aflabelright{\phi}};
+"A"+( 5, 0)*{\affr{8}{8}};
+"A"+( 6, 2)*{\aflabelright{\psi}};
+}\quad.
+\]
+\end{definition}
+
+\begin{theorem}
+Reduction $\to_\frpb$ is sound.
+\end{theorem}
+
+\begin{proof}
+Let $\Phi$ be a derivation with flow $\phi'$, such that $\phi'\to_\frpb\psi'$. We show that there exists a derivation $\Psi$ with flow $\psi'$ and with the same premiss and conclusion as $\Phi$. In the following, we refer to the figure in Definition~\ref{DefPathBreak}.
+\end{proof}
 
 \newcommand{\Break}{\mathsf{Break}}
 \begin{definition}\label{DefPathBreak}
@@ -109,120 +236,6 @@ and if\/ $\Break(\Phi,a^\lambda,a^\mu)=\left(\vlder{\Psi}{}{\beta}{\alpha},a^\ep
 \end{proposition}
 
 \begin{figure}
-\[
-\atomicflow
-{
-(-8, 6)*{\afvjm{4}};
-(-2, 6)*{\afvju{4}{\lambda}{}};
-( 2, 6)*{\afvju{4}{}{\lambda'}};
-( 8, 6)*{\afvjm{4}};
-(-5, 0)*{\affr{8}{8}};
-(-4, 2)*{\aflabelright\phi};
-%---
-( 5, 0)*{\affr{8}{8}};
-( 6, 2)*{\aflabelright{\psi}};
-( 8,-6)*{\afvjm{4}};
-(-2,-6)*{\afvjd{4}{\mu}{}};
-( 2,-6)*{\afvjd{4}{}{\mu'}};
-(-8,-6)*{\afvjm{4}};
-}\qquad\qquad
-\atomicflow
-{
-%%%%% RED %%%%%
-(0,-20)="D";
-(0,-10)="Dhalf";
-%% contractions
-"D"+"D"="A";
-%left
-"A"+(-14,-15.5)-"D"*{\afvjmcol{23}{Red}};
-"A"+(-11,-16.5)*{\afvjmcol{3}{Red}};
-%right
-"A"+(11,-11.5)-"Dhalf"*{\afvjmcol{11}{Red}};
-"A"+(14,-15.5)-"D"*{\afvjmcol{23}{Red}};
-"A"+(11,-16.5)*{\afvjmcol{3}{Red}};
-% top boxes
-(0,0)="A";
-"A"+(-11,-14)*{\afcjrmcol{6}{20}{Red}};
-"A"+(11,-14)*{\afcjlmcol{6}{20}{Red}};
-"A"+(-2, 11)*{\afvjdcol{14}{\epsilon}{}{Red}};
-"A"+( 2, 11)*{\afvjdcol{14}{}{\epsilon'}{Red}};
-"A"+(-2, -8)*{\afawucol{}{}{\mu}{}{}{Red}};
-% join one
-"A"+(2,-7)*{\afvjdcol6{}{\mu'}{Red}};
-"A"+(2,-13)*{\afvjucol6{}{\lambda'}{Red}};
-% middle boxes
-"A"+"D"="A";
-"A"+(9.5,-10)*{\afcjlmcol{3}{12}{Red}};
-"A"+( 2,-8)*{\afawucol{}{}{}{\mu'}{}{Red}};
-%%%%% GREEN %%%%%
-%% cocontractions
-(0,0)="A";
-%left
-"A"+(-11,16.5)*{\afvjmcol{3}{OliveGreen}};
-"A"+"D"+(-14,15.5)*{\afvjmcol{23}{OliveGreen}};
-"A"+"Dhalf"+(-11,11.5)*{\afvjmcol{11}{OliveGreen}};
-%right
-"A"+(11,16.5)*{\afvjmcol{3}{OliveGreen}};
-"A"+"D"+(14,15.5)*{\afvjmcol{23}{OliveGreen}};
-% middle boxes
-"A"+"D"="A";
-"A"+(-9.5,10)*{\afcjlmcol{3}{12}{OliveGreen}};
-"A"+(-2, 8)*{\afawdcol{}{}{\lambda}{}{}{OliveGreen}};
-% join two
-"A"+(-2, -7)*{\afvjdcol6{\mu}{}{OliveGreen}};
-"A"+(-2,-13)*{\afvjucol6{\lambda}{}{OliveGreen}};
-% bottom boxes
-"A"+"D"="A";
-"A"+(-11,14)*{\afcjlmcol{6}{20}{OliveGreen}};
-"A"+(11,14)*{\afcjrmcol{6}{20}{OliveGreen}};
-"A"+(-2,-11)*{\afvjucol{14}{\iota}{}{OliveGreen}};
-"A"+( 2,-11)*{\afvjucol{14}{}{\iota'}{OliveGreen}};
-"A"+( 2, 8)*{\afawdcol{}{}{}{\lambda'}{}{OliveGreen}};
-%%%%% BLACK %%%%%
-%% cocontractions
-(0,0)="A";
-%left
-"A"+(-8,5.5)*{\afvjm3};
-"A"+(-11,11)*{\affr88};
-"A"+(-11,11)*{\copy\contrup};
-%right
-"A"+(8,5.5)*{\afvjm3};
-"A"+"Dhalf"+(11,11.5)*{\afvjm{11}};
-"A"+(11,11)*{\affr88};
-"A"+(11,11)*{\copy\contrup};
-%% contractions
-"D"+"D"="A";
-%left
-"A"+(-11,-11.5)-"Dhalf"*{\afvjm{11}};
-"A"+(-8,-5.5)*{\afvjm3};
-"A"+(-11,-11)*{\affr88};
-"A"+(-11,-11)*{\copy\contrdown};
-%right
-"A"+(8,-5.5)*{\afvjm3};
-"A"+(11,-11)*{\affr88};
-"A"+(11,-11)*{\copy\contrdown};
-% top boxes
-(0,0)="A";
-"A"+(-5,  0)*{\affr{8}{8}};
-"A"+(-4,  2)*{\aflabelright{\phi}};
-"A"+( 5,  0)*{\affr{8}{8}};
-"A"+( 6,  2)*{\aflabelright{\psi}};
-% middle boxes
-"A"+"D"="A";
-"A"+(9.5,10)*{\afcjrm{3}{12}};
-"A"+(-9.5,-10)*{\afcjrm{3}{12}};
-"A"+(-5, 0)*{\affr{8}{8}};
-"A"+(-4, 2)*{\aflabelright{\phi}};
-"A"+( 5, 0)*{\affr{8}{8}};
-"A"+( 6, 2)*{\aflabelright{\psi}};
-% bottom boxes
-"A"+"D"="A";
-"A"+(-5, 0)*{\affr{8}{8}};
-"A"+(-4, 2)*{\aflabelright{\phi}};
-"A"+( 5, 0)*{\affr{8}{8}};
-"A"+( 6, 2)*{\aflabelright{\psi}};
-}
-\]
 \caption{The atomic flows of $\Phi$ (left) and $\Psi$ (right) such that $\Break(\Phi,a^\lambda,a^\mu)=(\Psi,a^\epsilon,a^\iota)$.}
 \label{FigFlowBreak}
 \end{figure}
