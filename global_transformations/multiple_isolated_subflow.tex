@@ -93,7 +93,7 @@ for  some flows $\gamma_0$, $\dots$, $\gamma_n$, $\delta_1$, $\dots$, $\delta_n$
 
 \TODO{Change this introduction}
 
-%\newcommand{\Gammasf}{\mathsf\Gamma}
+\newcommand{\Gammasf}{\mathsf\Gamma}
 We present here the main construction of this paper, \emph{i.e.}, a class of derivations $\Gammasf$ that only depend on a given set of atoms and that allow us to normalise any proof containing those atoms. The complexity of the $\Gammasf$ derivations dominates the complexity of the normal proof, and is due to the complexity of certain `threshold formulae', on which the $\Gammasf$ derivations are based. The $\Gammasf$ derivations are constructed in Definition~\ref{DefThrDer}; this directly leads to Theorem~\ref{TheoThrDer}, which states a crucial property of the $\Gammasf$ derivations and which is the main result of this section.
 
 \subsubsection{Threshold Formulae}
@@ -382,8 +382,46 @@ It immediately follows from Proposition~\ref{PropQuasAux} and Lemma~\ref{LemmaQu
 
 \subsubsection{Glue derivations}
 
+\TODO{Define generic weakening.}
+
+%-------------------------------------------------------------------------------
+\begin{remark}
+Given $n>1$, let $p=\lfloor n/2\rfloor$ and $q=n-p$. For $0\le k\le q$ and $1\le l\le p$, the following derivation is well defined:
+\[
+\vlinf{\gwu}
+      {}
+      {\fff}
+      {\vls({\vlnos(\th pp\avec1p)}\{a_l/\fff\}.\th kq\avec{p+1}n)}
+=
+\vls(
+\vlinf{\gwu}
+      {}
+      {\vls(\ttt)}
+      {\vls(a_1.\cdots.a_{l-1}.a_{l+1}.\cdots.a_p.\th kq\avec{p+1}n)}
+.\fff)
+\quad.
+\]
+Analogously, for $0\le k\le p$ and $p+1\le l\le n$, we can define the following derivation:
+\[
+\vlinf{\gwu}
+      {}
+      {\fff}
+      {\vls(\th kp\avec1p.{\vlnos(\th qq\avec{p+1}n)}\{a_l/\fff\})}
+=
+\vls(
+\vlinf{\gwu}
+      {}
+      {\vls(\ttt)}
+      {\vls(\th kp\avec1p.a_{p+1}.\cdots.a_{l-1}.a_{l+1}.\cdots.a_n)}
+.\fff)
+\quad.
+\]
+Both classes of derivations are used in Definition~\ref{DefThrDer}.
+\end{remark}
+
 \newcommand{\Uth}[3]{\mathop{\mathsf\Upsilon_{#1,#2}^{#3}}}
 \newcommand{\Dth}[3]{\mathop{\mathsf\Delta_{#1,#2}^{#3}}}
+\newcommand{\Gth}[3]{\mathop{\Gammasf_{#1,#2}^{#3}}}
 %-------------------------------------------------------------------------------
 \begin{definition}\label{DefThrDer}
 Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$, and let $p=\lfloor n/2\rfloor$ and $q=n-p$.
@@ -476,8 +514,254 @@ For $k\ge0$ and $1\le l\le n$, we define the derivations $\vlsmash{\Gth kln\avec
 
 %-------------------------------------------------------------------------------
 \begin{example}
-See, in Figure~\ref{FigPThEx}, some example of derivations $\vlsmash{\Gth kln\avec1n}$. Note that, for clarity, we removed all instances of the trivial derivations $\Uth112\avec12=\Uth122\avec12=\Uth113\avec13=\vldownsmash{\vlinf\gwu{}\fff\fff}$. We can do so because these derivation instances appear as disjuncts.
+See, in Figure~\ref{FigPThEx}, some examples of derivations $\vlsmash{\Gth kln\avec1n}$. Note that, for clarity, we removed all instances of the trivial derivations $\Uth112\avec12=\Uth122\avec12=\Uth113\avec13=\vldownsmash{\vlinf\gwu{}\fff\fff}$. We can do so because these derivation instances appear as disjuncts.
 \end{example}
+
+%-------------------------------------------------------------------------------
+\begin{figure}
+\begin{eqnarray*}
+%---------------------------------------
+\Gth 015\avecletter&=&
+\vls [\ttt.\vlderivation{
+\vlin{}{}{b}{
+\vlhy{\vls \fff}
+}}
+.\vlderivation{
+\vlin{}{}{\vls [c.d.e]}{
+\vlhy{\vls \fff}
+}}
+]\quad,\\
+\noalign{\smallskip}
+%---------------------------------------
+\Gth 115\avecletter&=&
+\vls [b.([\ttt.\vlderivation{
+\vlin{}{}{b}{
+\vlhy{\vls \fff}
+}}
+].[c.d.e]).\vlderivation{
+\vlin{}{}{\vls [(c.[d.e]).(d.e)]}{
+\vlhy{\vls \fff}
+}}
+]\quad,\\
+\noalign{\smallskip}
+%---------------------------------------
+\Gth 215\avecletter&=&
+\vls [(b.[c.d.e]).([\ttt.\vlderivation{
+\vlin{}{}{b}{
+\vlhy{\vls \fff}
+}}
+].[(c.[d.e]).(d.e)]).\vlderivation{
+\vlin{}{}{\vls \fff}{
+\vlhy{\vls (\fff.b)}
+}}
+.\vlderivation{
+\vlin{}{}{\vls (c.d.e)}{
+\vlhy{\vls \fff}
+}}
+]\quad,\\
+\noalign{\smallskip}
+%---------------------------------------
+\Gth 315\avecletter&=&
+\vls [(b.[(c.[d.e]).(d.e)]).([\ttt.\vlderivation{
+\vlin{}{}{b}{
+\vlhy{\vls \fff}
+}}
+].c.d.e).\vlderivation{
+\vlin{}{}{\vls \fff}{
+\vlhy{\vls (\fff.b.[c.d.e])}
+}}
+]\quad,\\
+\noalign{\smallskip}
+%---------------------------------------
+\Gth 415\avecletter&=&
+\vls [(b.c.d.e).\vlderivation{
+\vlin{}{}{\vls \fff}{
+\vlhy{\vls (\fff.b.[(c.[d.e]).(d.e)])}
+}}
+]\quad,\\
+\noalign{\smallskip}
+%---------------------------------------
+\Gth 515\avecletter&=&
+\vlderivation{
+\vlin{}{}{\vls \fff}{
+\vlhy{\vls (\fff.b.c.d.e)}
+}}
+\quad,\\
+\noalign{\smallskip}
+%---------------------------------------
+\Gth 035\avecletter&=&
+\vls [\ttt.\vlderivation{
+\vlin{}{}{\vls [d.e]}{
+\vlhy{\vls \fff}
+}}
+.\vlderivation{
+\vlin{}{}{\vls [a.b]}{
+\vlhy{\vls \fff}
+}}
+]\quad,\\
+\noalign{\smallskip}
+%---------------------------------------
+\Gth 135\avecletter&=&
+\vls [([a.b].[\ttt.\vlderivation{
+\vlin{}{}{\vls [d.e]}{
+\vlhy{\vls \fff}
+}}
+]).d.e.\vlderivation{
+\vlin{}{}{\vls (d.e)}{
+\vlhy{\vls \fff}
+}}
+.\vlderivation{
+\vlin{}{}{\vls (a.b)}{
+\vlhy{\vls \fff}
+}}
+]\quad,\\
+\noalign{\smallskip}
+%---------------------------------------
+\Gth 235\avecletter&=&
+\vls [(a.b.[\ttt.\vlderivation{
+\vlin{}{}{\vls [d.e]}{
+\vlhy{\vls \fff}
+}}
+]).([a.b].[d.e.\vlderivation{
+\vlin{}{}{\vls (d.e)}{
+\vlhy{\vls \fff}
+}}
+]).(d.e).\vlderivation{
+\vlin{}{}{\vls \fff}{
+\vlhy{\vls (\fff.[d.e])}
+}}
+]\quad,\\
+\noalign{\smallskip}
+%---------------------------------------
+\Gth 335\avecletter&=&
+\vls [(a.b.[d.e.\vlderivation{
+\vlin{}{}{\vls (d.e)}{
+\vlhy{\vls \fff}
+}}
+]).([a.b].[(d.e).\vlderivation{
+\vlin{}{}{\vls \fff}{
+\vlhy{\vls (\fff.[d.e])}
+}}
+]).\vlderivation{
+\vlin{}{}{\vls \fff}{
+\vlhy{\vls (\fff.d.e)}
+}}
+]\quad,\\
+\noalign{\smallskip}
+%---------------------------------------
+\Gth 435\avecletter&=&
+\vls [(a.b.[(d.e).\vlderivation{
+\vlin{}{}{\vls \fff}{
+\vlhy{\vls (\fff.[d.e])}
+}}
+]).\vlderivation{
+\vlin{}{}{\vls \fff}{
+\vlhy{\vls ([a.b].\fff.d.e)}
+}}
+]\quad,\\
+\noalign{\smallskip}
+%---------------------------------------
+\Gth 535\avecletter&=&
+\vlderivation{
+\vlin{}{}{\vls \fff}{
+\vlhy{\vls (a.b.\fff.d.e)}
+}}\quad,\\
+\noalign{\smallskip}
+%---------------------------------------
+\Gth 055\avecletter&=&
+\vls [\ttt.\vlderivation{
+\vlin{}{}{d}{
+\vlhy{\vls \fff}
+}}
+.\vlderivation{
+\vlin{}{}{c}{
+\vlhy{\vls \fff}
+}}
+.\vlderivation{
+\vlin{}{}{\vls [a.b]}{
+\vlhy{\vls \fff}
+}}
+]\quad,\\
+\noalign{\smallskip}
+%---------------------------------------
+\Gth 155\avecletter&=&
+\vls [([a.b].[\ttt.\vlderivation{
+\vlin{}{}{d}{
+\vlhy{\vls \fff}
+}}
+.\vlderivation{
+\vlin{}{}{c}{
+\vlhy{\vls \fff}
+}}
+]).(c.[\ttt.\vlderivation{
+\vlin{}{}{d}{
+\vlhy{\vls \fff}
+}}
+]).d.\vlderivation{
+\vlin{}{}{\vls (a.b)}{
+\vlhy{\vls \fff}
+}}
+]\quad,\\
+\noalign{\smallskip}
+%---------------------------------------
+\Gth 255\avecletter&=&
+\vls [(a.b.[\ttt.\vlderivation{
+\vlin{}{}{d}{
+\vlhy{\vls \fff}
+}}
+.\vlderivation{
+\vlin{}{}{c}{
+\vlhy{\vls \fff}
+}}
+]).([a.b].[(c.[\ttt.\vlderivation{
+\vlin{}{}{d}{
+\vlhy{\vls \fff}
+}}
+]).d]).(c.d).\vlderivation{
+\vlin{}{}{\vls \fff}{
+\vlhy{\vls (d.\fff)}
+}}
+]\quad,\\
+\noalign{\smallskip}
+%---------------------------------------
+\Gth 355\avecletter&=&
+\vls [(a.b.[(c.[\ttt.\vlderivation{
+\vlin{}{}{d}{
+\vlhy{\vls \fff}
+}}
+]).d]).([a.b].[(c.d).\vlderivation{
+\vlin{}{}{\vls \fff}{
+\vlhy{\vls (d.\fff)}
+}}
+]).\vlderivation{
+\vlin{}{}{\vls \fff}{
+\vlhy{\vls (c.d.\fff)}
+}}
+]\quad,\\
+\noalign{\smallskip}
+%---------------------------------------
+\Gth 455\avecletter&=&
+\vls [(a.b.[(c.d).\vlderivation{
+\vlin{}{}{\vls \fff}{
+\vlhy{\vls (d.\fff)}
+}}
+]).\vlderivation{
+\vlin{}{}{\vls \fff}{
+\vlhy{\vls ([a.b].c.d.\fff)}
+}}
+]\quad,\\
+\noalign{\smallskip}
+%---------------------------------------
+\Gth 555\avecletter&=&
+\vlderivation{
+\vlin{}{}{\vls \fff}{
+\vlhy{\vls (a.b.c.d.\fff)}
+}}\quad.
+\end{eqnarray*}
+\caption{Examples of $\Gth kl5\avecletter$, where $\avecletter=(a,b,c,d,e)$.}
+\label{FigPThEx}
+\end{figure}
+
 
 %-------------------------------------------------------------------------------
 \begin{theorem}\label{TheoThrDer}
