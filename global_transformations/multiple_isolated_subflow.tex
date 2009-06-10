@@ -1,9 +1,7 @@
-\TODO{This reduction differs from the other ones, since the atomic flows in the contractum is not yet defined.}
-
 \newcommand{\frmis}{{\mathsf{mis}}}
 %---------------------------------------
 \begin{definition}\label{DefMulIsoSubRem}
-We define the reduction $\to_\frmis$ (where $\frmis$ stands for \emph{multiple isolated subflow}) as follows, for any atomic flows $\phi$ with upper edges $\boldsymbol\epsilon$ and lower edges $\boldsymbol\iota$, and $\psi_1$, $\dots$, $\psi_n$:
+Given atomic flows $\gamma_0$, $\dots$, $\gamma_l$, $\delta_1$, $\dots$, $\delta_l$ that do not contain interaction or cut vertices, we define the reduction $\to_\frmis$ (where $\frmis$ stands for \emph{multiple isolated subflows}) as follows, for any atomic flow $\phi$ and any connected atomic flows $\psi_1$, $\dots$, $\psi_n$ that do not contain interaction or cut vertices:
 \[
 \atomicflow{
 (-12,  8)*{\afvjdm8{}{\boldsymbol\epsilon}};
@@ -55,9 +53,13 @@ We define the reduction $\to_\frmis$ (where $\frmis$ stands for \emph{multiple i
 (11, 20)*{\aflabelright{\delta_1}};
 ( 9,  8)*{\affr{10}{8}};
 (11, 10)*{\aflabelright{\gamma_1}};
+( 5,  3)*{\afvjm2};
+(11,  3)*{\afvjm2};
 %-
 ( 9,  1)*{\vdots};
 %-
+( 5, -3)*{\afvjm2};
+(11, -3)*{\afvjm2};
 ( 9, -8)*{\affr{10}{8}};
 (10, -6)*{\aflabelright{\gamma_{n-1}}};
 ( 5,-13)*{\afvjm2};
@@ -85,21 +87,225 @@ We define the reduction $\to_\frmis$ (where $\frmis$ stands for \emph{multiple i
 (-12,-48)*{\affr{16}{8}};
 (-12,-48)*{\copy\contrdown};
 (-12,-54)*{\afvjum4{}{\boldsymbol\iota}};
-}\quad,
+}\quad.
 \]
-for  some flows $\gamma_0$, $\dots$, $\gamma_n$, $\delta_1$, $\dots$, $\delta_n$, which do not contain interaction or cut vertices, where, for each $1\le i\le n$, the subflow $\psi_i$ is connected and does not contain any interaction or cut vertices.
 \end{definition}
+
+\TODO{This reduction differs from the other ones, since the atomic flows in the contractum are not yet defined.}
 
 \TODO{Redo this theorem:}
 
+\newcommand{\Gammasf}{\mathsf\Gamma}
+
 \begin{theorem}
-Given a set of formulae $\gamma_{i,k}$ such that $\dots$, let $\gamma_k$ be the atomic flow of $\Gamma_k$ and $\delta_k$ be the atomic flow consisting of, for every $1\le i\le n$, $|\gamma_{i,k}|$ copies of $\psi_i$, then $\to_\frmis$ is sound.
+Given $n>0$ distinct atoms $a_1$, $\dots$, $a_n$, an $N>0$, and, for $0\le k\le N$, formulae $\gamma_{k,1}$, $\dots$, $\gamma_{k,n}$, such that
+\begin{itemize}
+ \item $\gamma_{0,1}=\cdots=\gamma_{0,n}=\ttt$,
+ \item $\gamma_{N,1}=\cdots=\gamma_{N,n}=\fff$, and
+ \item for $1\le k\le N$, there exists a derivation
+\[
+\Gammasf_k\quad=\quad
+\vlder{}{\SKS\setminus\{\aid,\aiu\}}
+{
+ \vls([a_1.\gamma_{k,1}].\cdots.[a_n.\gamma_{k,n}])
+}
+{
+ \vls[(a_1.\gamma_{k-1,1}).\cdots.(a_n.\gamma_{k-1,n})]
+}\quad.
+\]
+\end{itemize}
+Let
+\begin{itemize}
+ \item $\gamma_k$ be the atomic flow of\/ $\Gamma_k$, and 
+ \item $\delta_k$ be the atomic flow consisting of, for $1\le i\le n$, one copy of $\psi_i$ for every atom occurrence in $\gamma_{i,k}$,
+\end{itemize}
+then
+\begin{itemize}
+ \item $\to_\frmis$ is sound, and
+ \item if $\phi'\to_\frmis\psi'$, then $|\psi'|/|\phi'|$ is $\Ord {N\cdot\max(|\gamma_j|)}$.
+\end{itemize}
 \end{theorem}
+
+%-------------------------------------------------------------------------------
+\begin{proof}
+Let $\Phi$ be a derivation with flow $\phi'$, such that $\phi'\to_\frmis$. We show that there exists a derivation $\Psi$ with flow $\psi'$ and with the same premiss and conclusion as $\Phi$. In the following, we refer to the figure in Definition~\ref{DefMulIsoSubRem}.
+
+Since each of $\psi_1$, $\dots$, $\psi_n$ is connected, we can assume that the $\ai$-decomposed form of $\Phi$ is
+\[
+\vlder{\Phi'}{}
+{
+ \vls[\beta\;.\;\vlinf{}{}{\fff}{\vls(a_1.\bar a_1^{\psi_1})}\;.\;\vlinf{}{}{\fff}{\vls(a_n.\bar a_n^{\psi_n})}]
+}
+{
+ \vls(\vlinf{}{}{\vls[a_1.\bar a_1^{\psi_1}]}{\ttt}\;.\;\vlinf{}{}{\vls[a_n.\bar a_n^{\psi_n}]}{\ttt}\;.\;\alpha)
+}\quad,
+\]
+for some atoms $a_1$, $\dots$, $a_n$ and formulae $\alpha$ and $\beta$.
+
+For every $0\le k\le N$, we obtain the derivation $\Phi_k$ from $\Phi'$ as follows:
+\[
+\Phi_k\quad=\quad
+\vlder{\Phi'\{\bar a_1^{\psi_1}/\gamma_{k,1},\dots,\bar a_n^{\psi_n}/\gamma_{k,n}\}}{}
+{
+ \vlsbr[\beta.(a_1.\gamma_{k,1}).\cdots.(a_n.\gamma_{k,n})]
+}
+{
+ \vls([a_1.\gamma_{k,1}].\cdots.[a_n.\gamma_{k,n}].\alpha)
+}
+\]
+Since each of $\psi_1$, $\dots$, $\psi_n$ is connected and contains no interaction or cut vertices, the mapping from occurrences of $\bar a^\psi$ to edges of $\psi$ is surjective. Hence, we know that $\Phi_k$ has atomic flow
+\[
+\atomicflow{
+(-5, 6)*{\afvjm4};
+( 1, 6)*{\afvj4};
+( 3, 6)*{\cdots};
+( 5, 6)*{\afvj4};
+(11, 6)*{\afvjm4};
+( 0, 0)*{\affr{12}{8}};
+( 3, 2)*{\aflabelright{\phi}};
+(11, 0)*{\affr{6}{8}};
+(11, 2)*{\aflabelright{\delta_k}};
+(-5,-6)*{\afvjm4};
+( 1,-6)*{\afvj4};
+( 3,-6)*{\cdots};
+( 5,-6)*{\afvj4};
+(11,-6)*{\afvjm4};
+}\quad.
+\]
+We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gamma_1$, $\dots$, $\Gamma_N$ to get the desired derivation $\Psi$ with atomic flow $\psi'$ and the same premiss and conclusion as $\Phi$:
+\[
+\Psi\quad=\quad
+\vlderivation
+{
+ \vlin{(N-1)\cdot\cou}{}
+ {
+  \beta
+ }
+ {
+  \vlin{\swi}{}
+  {
+   \vls
+   [
+    \beta\;\;\;.\;\;\;\cdots\;\;\;.\;\;\;\beta
+   \;\;\;.\;\;\;
+    \vlder{\Phi_N}{}
+    {
+     \vlsbr[\beta\;.\;(\vlinf{}{}{\ttt}{a_1}\;.\;\fff)\;.\;\cdots\;.\;(\vlinf{}{}{\ttt}{a_n}\;.\;\fff)]
+    }
+    {
+     \vls([a_1.\gamma_{N,1}].\cdots.[a_n.\gamma_{N,n}].\alpha)
+    }
+   ]
+  }
+  {
+   \vlin{\swi}{}
+   {
+    \vls
+    (
+     [
+      \beta\;\;\;\;.\;\;\;\;\cdots\;\;\;\;.\;\;\;\;\beta
+     \;\;\;\;.\;\;\;\;
+      \vlder{\Phi_{N-1}}{}
+      {
+       \vlsbr
+       [
+        \beta
+       \;\;.\;\;
+        \vlder{\Gamma_N}{}
+        {
+         \vls([a_1.\gamma_{N,1}].\cdots.[a_n.\gamma_{N,n}])
+        }
+        {
+         \vls[(a_1.\gamma_{N-1,1}).\cdots.(a_n.\gamma_{N-1,n})]
+        }
+       ]
+      }
+      {
+       \vls([(a_1.\gamma_{N-1,1}).\cdots.(a_n.\gamma_{N-1,n})].\alpha)
+      }
+     ]
+    \;\;\;\;.\;\;\;\;
+     \alpha
+    )
+   }
+   {
+    \vlin{\swi}{}
+    {
+     \vdots
+    }
+    {
+     \vlin{\swi}{}
+     {
+      \vls
+      (
+       [
+        \beta
+       \;\;\;\;.\;\;\;\;
+        \vlder{\Phi_1}{}
+        {
+         \vlsbr
+         [
+          \beta
+         \;\;.\;\;
+          \vlder{\Gamma_2}{}
+          {
+           \vls([a_1.\gamma_{2,1}].\cdots.[a_n.\gamma_{2,n}])
+          }
+          {
+           \vls[(a_1.\gamma_{1,1}).\cdots.(a_n.\gamma_{1,n})]
+          }
+         ]
+        }
+        {
+         \vls((a_1.\gamma_{0,1}).\cdots.(a_n.\gamma_{0,n}).\alpha)
+        }
+       ]
+      \;\;\;\;.\;\;\;\;
+       \alpha\;\;\;\;.\;\;\;\;\cdots\;\;\;\;.\;\;\;\;\alpha
+      )
+     }
+     {
+      \vlin{(N-1)\cdot\cod}{}
+      {
+       \vls
+       (
+        \vlder{\Phi_0}{}
+        {
+         \vlsbr
+         [
+          \beta
+         \;\;.\;\;
+          \vlder{\Gamma_1}{}
+          {
+           \vls([a_1.\gamma_{1,1}].\cdots.[a_n.\gamma_{1,n}])
+          }
+          {
+           \vls[(a_1.\gamma_{0,1}).\cdots.(a_n.\gamma_{0,n})]
+          }
+         ]
+        }
+        {
+         \vlsbr([\vlinf{}{}{a_1}{\fff}\;.\;\ttt]\;.\;\cdots\;.\;[\vlinf{}{}{a_n}{\fff}\;.\;\ttt]\;.\;\alpha)
+        }
+       \;\;\;\;.\;\;\;\;
+        \alpha\;\;\;\;.\;\;\;\;\cdots\;\;\;\;.\;\;\;\;\alpha
+       )
+      }
+      {
+       \vlhy{\alpha}
+      }
+     }
+    }
+   }
+  }
+ }
+}\quad.
+\]
+\end{proof}
 
 
 \TODO{Change this introduction}
 
-\newcommand{\Gammasf}{\mathsf\Gamma}
 We present here the main construction of this paper, \emph{i.e.}, a class of derivations $\Gammasf$ that only depend on a given set of atoms and that allow us to normalise any proof containing those atoms. The complexity of the $\Gammasf$ derivations dominates the complexity of the normal proof, and is due to the complexity of certain `threshold formulae', on which the $\Gammasf$ derivations are based. The $\Gammasf$ derivations are constructed in Definition~\ref{DefThrDer}; this directly leads to Theorem~\ref{TheoThrDer}, which states a crucial property of the $\Gammasf$ derivations and which is the main result of this section.
 
 \subsubsection{Threshold Formulae}
@@ -1229,167 +1435,4 @@ In the above theorem $l\ge n$ and if $l=n$, then
 
 \newcommand{\frqp}{{\mathsf{qp}}}
 
-\TODO{Use the symbol $\frqp$ to denote the following reduction.}
-
-%-------------------------------------------------------------------------------
-\begin{definition}\label{DefNorm}
-Consider the derivation
-\[
-\vlder{\Phi}{}
-{
- \vls[\beta\;.\;\vlinf{}{}{\fff}{\vls(a_1.\bar a_1^{\psi_1})}\;.\;\vlinf{}{}{\fff}{\vls(a_n.\bar a_n^{\psi_n})}]
-}
-{
- \vls(\vlinf{}{}{\vls[a_1.\bar a_1^{\psi_1}]}{\ttt}\;.\;\vlinf{}{}{\vls[a_n.\bar a_n^{\psi_n}]}{\ttt}\;.\;\alpha)
-}\quad,
-\]
-with atomic flow $\phi$, such that, for $1\le i\le n$, $\psi_i$ is an isolated subflow of $\phi$ that does not contain identity or cut instances. For $0\le i\le n+1$, let $\theta_i\equiv\vlsmallbrackets\vls([a_1.(\th in\avec1n)\{a_1/\fff\}].\cdots.[a_n.(\th in\avec1n)\{a_n/\fff\}])$. We define $\Phi_0$ and $\Phi_n$ as
-\[
-\vlder{\Phi\{\bar a_1^{\psi_1}/\ttt,\dots,\bar a_n^{\psi_n}/\ttt\}}{}
-{
- \vlsbr
- [
-  \beta
- \;\;.\;\;
-  \vlder{\Gth k{}n\avec1n}{}
-  {
-   \theta_1
-  }
-  {
-   \vls[a_1.\cdots.a_n]
-  }
- ]
-}
-{
- \vls([\vlinf{}{}{a_1}{\fff}\;.\;\ttt]\;.\;[\vlinf{}{}{a_n}{\fff}\;.\;\ttt]\;.\;\alpha)
-}
-\quad\mbox{and}\quad
-\vlder{\Phi\{\bar a_1^{\psi_1}/\fff,\dots,\bar a_n^{\psi_n}/\fff\}}{}
-{
- \vls[\beta\;.\;(\vlinf{}{}{\ttt}{a_1}\;.\;\fff)\;.\;\cdots\;.\;(\vlinf{}{}{\ttt}{a_1}\;.\;\fff)]
-}
-{
- \vls(\theta_n.\alpha)
-}\quad,
-\]
-respectively. For $1\le k\le n-1$, we define the derivations $\Phi_k$:
-\[
-\vlder{\Phi\{\bar a_1^{\psi_1}/(\th kn\avec1n)\{a_1/\fff\},\dots,\bar a_n^{\psi_n}/(\th kn\avec1n)\{a_n/\fff\}\}}{}
-{
- \vlsbr
- [
-  \beta
- \;\;.\;\;
-  \vlder{\Gth k{}n\avec1n}{}
-  {
-   \theta_{k+1}
-  }
-  {
-   \vls[(a_1.(\th{k}n\avec1n)\{a_1/\fff\}).\cdots.(a_n.(\th{k}n\avec1n)\{a_n/\fff\})]
-  }
- ]
-}
-{
- \vls(\theta_k.\alpha)
-}
-\]
- where we use Proposition~\ref{PropAuxNorm}.
-
-\TODO{Change the rest of this definition}
- 
-We define the \emph{cut-free form of\/ $\Pi$} as the following proof in $\SKS\setminus\{\aiu\}$:
-\[
-\vlderivation
-{
- \vlin{n\cdot\cou}{}
- {
-  \beta
- }
- {
-  \vlin{\swi}{}
-  {
-   \vls
-   [
-    \beta\;\;.\;\;\cdots\;\;.\beta
-   \;\;.\;\;
-    \vlder{\Phi_n}{}
-    {
-     \beta
-    }
-    {
-     \vls(\theta_n.\alpha)
-    }
-   ]
-  }
-  {
-   \vlin{\swi}{}
-   {
-    \vls
-    (
-     [
-      \beta\;\;.\;\;\cdots\;\;.\beta
-     \;\;.\;\;
-      \vlder{\Phi_{n-1}}{}
-      {
-       \vls[\beta.\theta_n]
-      }
-      {
-       \vls(\theta_{n-1}.\alpha)
-      }
-     ]
-    \;\;.\;\;
-     \alpha
-    )
-   }
-   {
-    \vlin{\swi}{}
-    {
-     \vdots
-    }
-    {
-     \vlin{\swi}{}
-     {
-      \vls
-      (
-       [
-        \beta
-       \;\;.\;\;
-        \vlder{\Phi_1}{}
-        {
-         \vls[\beta.\theta_2]
-        }
-        {
-         \vls(\theta_1.\alpha)
-        }
-       ]
-      \;\;.\;\;
-       \alpha\;\;.\;\;\cdots\;\;.\alpha
-      )
-     }
-     {
-      \vlin{n\cdot\cod}{}
-      {
-       \vls
-       (
-        \vlder{\Phi_0}{}
-        {
-         \vls[\beta.\theta_1]
-        }
-        {
-         \alpha
-        }
-       \;\;.\;\;
-        \alpha\;\;.\;\;\cdots\;\;.\alpha
-       )
-      }
-      {
-       \vlhy{\alpha}
-      }
-     }
-    }
-   }
-  }
- }
-}
-\]
-\end{definition}
+\TODO{Definition has been removed...}
