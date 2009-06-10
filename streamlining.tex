@@ -24,6 +24,18 @@ Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such t
 
 \section{The Normaliser}\label{SectNorm}
 
+
+\TODO{Redefine this in terms of the flow reduction.}
+
+\newcommand{\Break}{\mathsf{Break}}
+\begin{definition}\label{DefPathBreak}
+The \emph{path breaker}, $\Break$, is an operator whose arguments are a derivation $\vlder{\Phi}{}{\beta}{\alpha}$ and the atom occurrences $a^\lambda$ and $a^\mu$, such that $\alpha=\vlsmallbrackets\vls([a^\lambda.\bar a].\gamma)$, $\beta=\vls[\delta.(a^\mu.\bar a)]$, and the results are a derivation and two atom occurrences $a^\epsilon$ and $a^\iota$ such that $\Break(\Phi,a^\lambda,a^\mu)=(\Psi,a^\epsilon,a^\iota)$, where:
+\[
+\ddots
+\]
+where $\epsilon$, $\lambda'$ and $\epsilon'$ correspond to $\lambda$ and $\mu'$, $\epsilon'$ and $\iota$ correspond to $\mu$ in the atomic flow of $\Phi$.
+\end{definition}
+
 \newcommand{\Norm}{\mathsf{Norm}}
 \begin{definition}
 For every $n\ge0$ the \emph{normaliser of degree n}, $\Norm_n$, is an operator whose arguments are a derivation $\vlder{\Phi}{}{\beta}{\alpha}$, with atomic flow $\phi$, and $\phi_1$, $\dots$, $\phi_n$, an ordered choice of components from $\phi$; let
