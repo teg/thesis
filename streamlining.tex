@@ -24,48 +24,56 @@ Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such t
 
 \section{The Normaliser}\label{SectNorm}
 
-
-\TODO{Redefine this in terms of the flow reduction.}
-
-\newcommand{\Break}{\mathsf{Break}}
-\begin{definition}\label{DefPathBreak}
-The \emph{path breaker}, $\Break$, is an operator whose arguments are a derivation $\vlder{\Phi}{}{\beta}{\alpha}$ and the atom occurrences $a^\lambda$ and $a^\mu$, such that $\alpha=\vlsmallbrackets\vls([a^\lambda.\bar a].\gamma)$, $\beta=\vls[\delta.(a^\mu.\bar a)]$, and the results are a derivation and two atom occurrences $a^\epsilon$ and $a^\iota$ such that $\Break(\Phi,a^\lambda,a^\mu)=(\Psi,a^\epsilon,a^\iota)$, where:
-\[
-\ddots
-\]
-where $\epsilon$, $\lambda'$ and $\epsilon'$ correspond to $\lambda$ and $\mu'$, $\epsilon'$ and $\iota$ correspond to $\mu$ in the atomic flow of $\Phi$.
-\end{definition}
-
 \newcommand{\Norm}{\mathsf{Norm}}
 \begin{definition}
 For every $n\ge0$ the \emph{normaliser of degree n}, $\Norm_n$, is an operator whose arguments are a derivation $\vlder{\Phi}{}{\beta}{\alpha}$, with atomic flow $\phi$, and $\phi_1$, $\dots$, $\phi_n$, an ordered choice of components from $\phi$; let
 \[
-\Core(\Phi)=
-\vlder{}{}{\vls[\beta.(a_1^{\mu'_1}.\bar a_1).\dots.(a_n^{\mu'_n}.\bar a_n)]}{\vls([a_1^{\lambda'_1}.\bar a_1].\dots.[a_n^{\lambda'_n}.\bar a_n].\alpha)}
+\Psi_0\quad=\quad
+\vlder{\Core(\Phi)}{}
+{
+ \vlsmallbrackets\vls[\beta.(a^{\mu_n}_n.\bar a_n).\cdots.(a^{\mu_1}_1.\bar a_1)]
+}
+{
+ \vlsmallbrackets\vls([a^{\lambda_1}_1.\bar a_1].\cdots.[a^{\lambda_n}_n.\bar a_n].\alpha)
+}
+\quad,
 \]
-such that for every $1\le i\le n$, we have that $\lambda'_i$ (resp., $\mu'_i$) is the new upper (resp., lower) edge of $\phi_i$, and let
+for $1\le i\le n$, let
 \[
-\Psi=\Break(\Break(\dots(\Break(\Core(\Phi),a^{\lambda'_n}_n,a^{\mu'_n}_n))\dots),a^{\lambda'_1}_1,a^{\mu'_1}_1)\quad,
+\Psi'_i\quad=\quad
+\vlder{\Psi_{i-1}}{}
+{
+ \vlsbr[\beta\;.\;\vlsmallbrackets(a_n^{\mu_n}.\bar a_n)\;.\;\cdots\;.\;(a^{\mu_{i+1}}_{i+1}.\bar a_{i+1})\;.\;\vlinf{}{}{\fff}{\vls[a_i^{\mu_i}.\bar a_i]}]
+}
+{
+ \vlsbr(\vlinf{}{}{\vls[a^{\lambda_i}_i.\bar a_i]}{\ttt}\;.\;\vlsmallbrackets[a^{\lambda_{i+1}}_{i+1}.\bar a_{i+1}]\;.\;\cdots\;.\;[a^{\lambda_n}_n.\bar a_n]\;.\;\alpha)
+}
+\quad,
 \]
-then
+with atomic flow
 \[
-\Norm_n(\Phi,\phi_1,\dots,\phi_n)=
-\vlder{\Psi}{}{\vlsbr[\beta\;.\;\vlinf{}{}{\fff}{\vls(a_1.\bar a_1)}\;.\;\cdots\;.\;\vlinf{}{}{\fff}{\vls(a_n.\bar a_n)}]}{\vlsbr(\vlinf{}{}{\vls[a_1.\bar a_1]}{\ttt}\;.\;\cdots\;.\;\vlinf{}{}{\vls[a_n.\bar a_n]}{\ttt}\;.\;\alpha)}\quad.
+\atomicflow
+{
+(-8, 7)*{\afvjdm{6}{}{}};
+( 0, 8)*{\afaid{\lambda_i}{}{}{}{}{}};
+( 8, 7)*{\afvjdm{6}{}{}};
+(-5, 0)*{\affr{8}{8}};
+%(-4, 2)*{\aflabelright\phi};
+%---
+( 5, 0)*{\affr{8}{8}};
+%( 6, 2)*{\aflabelright{\psi}};
+( 8,-7)*{\afvjum{6}{}{}};
+( 0,-8)*{\afaiu{\mu_i}{}{}{}{}{}};
+(-8,-7)*{\afvjum{6}{}{}};
+}
+\quad,
 \]
+and let $\Psi_i$ be such that $\Psi'_i\to_\frpb\Psi_i$. We define $\Norm_n(\Phi,\phi_1,\dots,\phi_n)=\Psi_n$.
 \end{definition}
 
 \begin{theorem}
-Given a derivation $\vlder{\Phi}{}{\beta}{\alpha}$, with atomic flow $\phi$, and $\phi_1$, $\dots$, $\phi_n$, an ordered choice of components from $\phi$, the derivation $\Norm_n(\Phi,\phi_1,\dots,\phi_n)$ is weakly streamlined and has the same premiss and conclusion as $\Phi$.
+Given a derivation $\Phi$ with atomic flow $\phi$, and an ordered choice of components from $\phi$: $\phi_1$, $\dots$, $\phi_n$, then $\Norm_n(\Phi,\phi_1,\dots,\phi_n)$ is weakly streamlined and has the same premiss and conclusion as $\Phi$.
 \end{theorem}
-
-\begin{proof}
-Let
-\[
-\Norm_n(\Phi,\phi_1,\dots,\phi_n)=
-\vlder{\Psi}{}{\vlsbr[\beta\;.\;\vlinf{}{}{\fff}{\vls(a^{\mu'_1}_1.\bar a^{\mu''_1}_1)}\;.\;\cdots\;.\;\vlinf{}{}{\fff}{\vls(a^{\mu'_n}_n.\bar a^{\mu''_n}_n)}]}{\vlsbr(\vlinf{}{}{\vls[a^{\lambda'_1}_1.\bar a^{\lambda''_1}_1]}{\ttt}\;.\;\cdots\;.\;\vlinf{}{}{\vls[a^{\lambda'_n}_n.\bar a^{\lambda'_n}_n]}{\ttt}\;.\;\alpha)}\quad.
-\]
-By induction on Proposition~\ref{PropPathBreak} it follows that, for $1\le i\le n$, there are no paths from $a^{\lambda'_i}_i$ to $a^{\mu'_i}_i$ and no paths from $\bar a^{\lambda''_i}_i$ to $\bar a^{\mu''_i}_i$. It then follows, by Definition~\ref{DefFlowCore}, that $\Norm_n(\Phi,\phi_1,\dots,\phi_n)$ is weakly streamlined.
-\end{proof}
 
 \begin{example}
 Given a derivation $\Phi$ with atomic flow
@@ -93,9 +101,9 @@ Given a derivation $\Phi$ with atomic flow
 (13, 8)*{\afaid{}{}{}{}{}{}};
 ( 6, 9)*{\afvjm{10}};
 ( 8, 0)*{\affr{8}{8}};
-( 9, 2)*{\aflabelright{\phi'_n}};
+( 9, 2)*{\aflabelright{\phi'_2}};
 (18, 0)*{\affr{8}{8}};
-(19, 2)*{\aflabelright{\phi''_n}};
+(19, 2)*{\aflabelright{\phi''_2}};
 ( 6,-9)*{\afvjm{10}};
 (13,-8)*{\afaiu{}{}{}{}{}{}};
 (20,-9)*{\afvjm{10}};
