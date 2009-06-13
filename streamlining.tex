@@ -26,7 +26,7 @@ Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such t
 
 \newcommand{\Norm}{\mathsf{Norm}}
 \begin{definition}
-For every $n\ge0$ the \emph{normaliser of degree n}, $\Norm_n$, is an operator whose arguments are a derivation $\vlder{\Phi}{}{\beta}{\alpha}$, with atomic flow $\phi$, and $\phi_1$, $\dots$, $\phi_n$, an ordered choice of components from $\phi$; let
+For every $n\ge0$ the \emph{normaliser of degree $n$}, $\Norm_n$, is an operator whose arguments are a derivation $\vlder{\Phi}{}{\beta}{\alpha}$, with atomic flow $\phi$, and $\phi_1$, $\dots$, $\phi_n$, an ordered choice of components from $\phi$; let
 \[
 \Psi_0\quad=\quad
 \vlder{\Core(\Phi)}{}
@@ -507,17 +507,93 @@ By comparing the copies of $\phi_1$ with the copies of $\phi_2$ in $\Norm_2(\Phi
 
 \TODO{Prove weak streamlining.}
 
-\section{The Quasi Polynomial Procedure}
+\newcommand{\Str}{\mathsf{Str}}
+\begin{definition}
+For every $n\ge0$ the \emph{streamliner of degree $n$}, $\Str_n$, is an operator whose arguments are a derivation $\vlder{\Phi}{}{\beta}{\alpha}$, with atomic flow $\phi$, which is on simple form with respect to the polarity assignment $\pi$, and $\phi_1$, $\dots$, $\phi_n$, an ordered choice of components from $\phi$ with respect to $\pi$; let
+\[
+\Psi_0\quad=\quad
+\vlder{\Core(\Phi,\pi)}{}
+{
+ \vlsmallbrackets\vls[\beta.(a^{\mu_n}_n.\bar a_n).\cdots.(a^{\mu_1}_1.\bar a_1)]
+}
+{
+ \vlsmallbrackets\vls([a^{\lambda_1}_1.\bar a_1].\cdots.[a^{\lambda_n}_n.\bar a_n].\alpha)
+}
+\quad,
+\]
+for $1\le i\le n$, let
+\[
+\Psi'_i\quad=\quad
+\vlder{\Psi_{i-1}}{}
+{
+ \vlsbr[\beta\;.\;\vlsmallbrackets(a_n^{\mu_n}.\bar a_n)\;.\;\cdots\;.\;(a^{\mu_{i+1}}_{i+1}.\bar a_{i+1})\;.\;\vlinf{}{}{\fff}{\vls[a_i^{\mu_i}.\bar a_i]}]
+}
+{
+ \vlsbr(\vlinf{}{}{\vls[a^{\lambda_i}_i.\bar a_i]}{\ttt}\;.\;\vlsmallbrackets[a^{\lambda_{i+1}}_{i+1}.\bar a_{i+1}]\;.\;\cdots\;.\;[a^{\lambda_n}_n.\bar a_n]\;.\;\alpha)
+}
+\quad,
+\]
+with atomic flow\TODO{Get the right atomic flow}
+\[
+\atomicflow
+{
+(-8, 7)*{\afvjdm{6}{}{}};
+( 0, 8)*{\afaid{\lambda_i}{}{}{}{}{}};
+( 8, 7)*{\afvjdm{6}{}{}};
+(-5, 0)*{\affr{8}{8}};
+%(-4, 2)*{\aflabelright\phi};
+%---
+( 5, 0)*{\affr{8}{8}};
+%( 6, 2)*{\aflabelright{\psi}};
+( 8,-7)*{\afvjum{6}{}{}};
+( 0,-8)*{\afaiu{\mu_i}{}{}{}{}{}};
+(-8,-7)*{\afvjum{6}{}{}};
+}
+\quad,
+\]
+and let $\Psi_i$ be such that $\Psi'_i\to_\fris\Psi_i$. We define $\Str_n(\Phi,\phi_1,\dots,\phi_n)=\Psi_n$.
+\end{definition}
 
-\TODO{Prove how, given a polarity assignment $\pi$ and an atomic flow $\phi$ that is on simple form with respect to $\pi$ there exists an atomic flow $\psi$ such that $\phi\to_{\frqp}\psi$ and $\psi$ is weakly streamlined with respect to $\pi$. Furthermore, if $\phi$ is weakly streamlined with respect to $\pi^{-1}$, then so is $\psi$.}
-
-\TODO{State the following theorem in terms of derivations instead of proofs and weakly streamlining instead of cut-elimination.}
-
-\begin{theorem}\label{ThPreNorm}
-Given any proof\/ $\Pi$ of $\alpha$ in\/ $\SKS$, we can construct a proof of $\alpha$ in\/ $\SKS\setminus\{\aiu\}$ in time quasipolynomial in the size of\/ $\Pi$.
+\begin{theorem}
+Given a derivation $\Phi$ with atomic flow $\phi$ that is on simple form with respect to the polarity assignment $\pi$, and an ordered choice of components from $\phi$ with respect to $\pi$: $\phi_1$, $\dots$, $\phi_n$, then $\Str_n(\Phi,\phi_1,\dots,\phi_n)$ is weakly streamlined with respect to $\pi$ and has the same premiss and conclusion as $\Phi$.
 \end{theorem}
 
-%-------------------------------------------------------------------------------
-\begin{proof}
-By Theorem~\ref{ThSimpleForm} we can construct from $\Pi$, in polynomial time, a proof $\Pi'$ of $\alpha$ in simple form. We can then proceed with the construction of Definition~\ref{DefNorm}, to which we refer here. For $0\le k\le n$, constructing $\Phi_k$ requires quasipolynomial time because of Propositions~\ref{PropGenAtPol}, \ref{PropSubst} and \ref{PropAuxNorm} and Theorems~\ref{TheoQuas} and \ref{TheoThrDer}, and because obtaining $\Psi_k$ from $\Psi$ requires quasipolynomial time. Constructing the cut-free from of $\Pi'$ from $\Phi_0$, \dots, $\Phi_n$ is done in polynomial time.
-\end{proof}
+\section{The Quasi Polynomial Procedure}
+
+\newcommand{\QStr}{\mathsf{QStr}}
+\begin{definition}
+For every $n\ge0$ the \emph{quasipolynomial streamliner of degree $n$}, $\QStr_n$, is an operator whose arguments are a derivation $\vlder{\Phi}{}{\beta}{\alpha}$, with atomic flow $\phi$, which is on simple form with respect to the polarity assignment $\pi$, and $\phi_1$, $\dots$, $\phi_n$, an ordered choice of components from $\phi$ with respect to $\pi$; let
+\[
+\Psi'\quad=\quad
+\vlder{\Core(\Phi,\pi)}{}
+{
+ \vlsmallbrackets\vls[\beta\;.\;\vlinf{}{}{\fff}{\vls(a^{\mu_n}_n.\bar a_n)}\;.\;\cdots\;.\;\vlinf{}{}{\fff}{\vls(a^{\mu_1}_1.\bar a_1)}]
+}
+{
+ \vlsmallbrackets\vls(\vlinf{}{}{\vls[a^{\lambda_1}_1.\bar a_1]}{\ttt}\;.\;\cdots\;.\;\vlinf{}{}{\vls[a^{\lambda_n}_n.\bar a_n]}{\ttt}\;.\;\alpha)
+}
+\]
+with atomic flow\TODO{Get the right atomic flow}
+\[
+\atomicflow
+{
+(-8, 7)*{\afvjdm{6}{}{}};
+( 0, 8)*{\afaid{\lambda_i}{}{}{}{}{}};
+( 8, 7)*{\afvjdm{6}{}{}};
+(-5, 0)*{\affr{8}{8}};
+%(-4, 2)*{\aflabelright\phi};
+%---
+( 5, 0)*{\affr{8}{8}};
+%( 6, 2)*{\aflabelright{\psi}};
+( 8,-7)*{\afvjum{6}{}{}};
+( 0,-8)*{\afaiu{\mu_i}{}{}{}{}{}};
+(-8,-7)*{\afvjum{6}{}{}};
+}
+\quad,
+\]
+and let $\Psi$ be such that $\Psi'\to_\frmis\Psi$. We define $\QStr_n(\Phi,\phi_1,\dots,\phi_n)=\Psi$.
+\end{definition}
+
+\begin{theorem}
+Given a derivation $\Phi$ with atomic flow $\phi$ that is on simple form with respect to the polarity assignment $\pi$, and an ordered choice of components from $\phi$ with respect to $\pi$: $\phi_1$, $\dots$, $\phi_n$, then $\QStr_n(\Phi,\phi_1,\dots,\phi_n)$ is weakly streamlined with respect to $\pi$ and has the same premiss and conclusion as $\Phi$.
+\end{theorem}
