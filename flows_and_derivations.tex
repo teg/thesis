@@ -1,6 +1,6 @@
-\chapter{Flows and Derivations}
+\chapter{Flows and Derivations}\label{chapter:FlowsAndDerivations}
 
-\section{Extracting Flows from Derivations}
+\section{Extracting Flows from Derivations}\label{section:ExtractingFlowsFromDerivations}
 
 \TODO{Define atomic flows to always be considered modulo isomorphism.}
 
@@ -9,7 +9,7 @@
 \TODO{Does it look better with or without the names of structural rules...?}
 
 %---------------------------------------
-\begin{proposition}\label{PropUnFl}
+\begin{proposition}\label{proposition:UniqueFlow}
 Given an\/ $\SKS$ derivation\/ $\Phi$, there is a unique atomic flow $\phi$ (modulo isomorphisms) such that:
 \begin{enumerate}
 %-------------------
@@ -74,11 +74,11 @@ all the atom occurrences in $\alpha$, $\beta$, $\gamma$ and $\delta$ in the prem
 \end{proposition}
 
 %---------------------------------------
-\begin{definition}
+\begin{definition}\label{definition:AssociatedFlow}
 Given a derivation $\Phi$, we say that the unique atomic flow $\phi$ defined in Proposition~\ref{PropUnFl} is the atomic flow \emph{associated with} the derivation $\Phi$. Sometimes, when an atom occurrence $a$ in $\Phi$ maps to an edge $\epsilon$ in $\phi$, we decorate $\epsilon$ with the label $a$.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}\label{theorem:SurjectiveDerToFlow}
 Every atomic flow is associated with some derivation.
 \end{theorem}
 
@@ -129,9 +129,6 @@ First, we construct a derivation scheme $\Psi$ that `glues together' any two ato
 }
 \quad.
 \]
-%TODO: is it ok that the above derivation does not have a name?
-%TODO: define super switch or something equivalent
-%TODO: use double lines instead of dots and decide on a naming convention for repeated edges
 We use the above derivation and $\supers$ (see Remark~\ref{RemSuperSwitch}) to `move' an atom $a$ from one context $\zeta\vlhole$ to another context $\xi\vlhole$, again with an associated atomic flow that is free of vertices:
 \[
 \vlder{}{\{\swi,\med\}}{\vls[(\xi\{a\}.\zeta\{\fff\}).\ttt]}
@@ -216,29 +213,29 @@ where $h,k,l,m,n\ge0$ (this can possibly be done in many different ways). By the
 whose flow is $\phi$.
 \end{proof}
 
-\section{Size}
+\section{Size}\label{section:FlowSize}
 
-\begin{theorem}
+\begin{theorem}\label{theorem:FlowSize}
 Given a derivation $\Phi$ with associated flow $\phi$, $|\Phi|\leq|\phi|^3$.
 \end{theorem}
 
-\section{Normal Forms of Derivations}
+\section{Normal Forms of Derivations}\label{section:DerNormalForm}
 
 \TODO{Ensure that all the normal forms of atomic flows have a corresponding definition for derivations.}
 
-\begin{definition}
+\begin{definition}\label{definition:DerStreamlined}
 A derivation with associated atomic flow $\phi$ is \emph{weakly streamlined} (resp., \emph{streamlined}, \emph{super streamlined} and \emph{hyper streamlined}) if $\phi$ is \emph{weakly streamlined} (resp., \emph{streamlined}, \emph{super streamlined} and \emph{hyper streamlined}).
 \end{definition}
 
 \TODO{Add references to Propositions.}
 
-\begin{remark}
+\begin{remark}\label{remark:DerCutFree}
 A streamlined proof is cut-free, a super streamlined proof is analytic and a hyper streamlined proof is in system $\KS$.
 \end{remark}
 
 \TODO{Try to remove the definition of $\ai$-free form.}
 
-\begin{definition}\label{DefDecompInt}
+\begin{definition}\label{definition:aiDecomposedForm}
 Given two derivations
 \[
 \vlder{\Phi}{}{\beta}{\alpha}
@@ -257,7 +254,7 @@ for some atoms $a_1,\dots,a_n,b_1,\dots,b_m$, such that $\Phi$ and $\Psi$ have t
 
 \TODO{Is it ok that the theorem does not mention the induced $\ai$-free form}
 
-\begin{theorem}\label{ThmConstrDecomp}
+\begin{theorem}\label{theorem:aiDecomposedForm}
 Given a derivation $\Phi$, an $\ai$-decomposed form of\/ $\Phi$ can be constructed.
 \end{theorem}
 \begin{proof}
@@ -307,15 +304,15 @@ Using Lemma~\ref{LemSuperSwitch} apply, from top-to-bottom and left-to-right, th
 to obtain an $\ai$-decomposed form of $\Phi$.
 \end{proof}
 
-\begin{remark}
+\begin{remark}\label{remakr:aiDecomposedFormUnique}
 The only reason to insist on doing the transformations in the above proof in a certain order is to ensure that the resulting derivation is unique. The uniqueness is useful in the following definition.
 \end{remark}
 
-\begin{definition}
+\begin{definition}\label{definition:TheAiDecomposedForm}
 Given a derivation $\Phi$, the $\ai$-decomposed (resp., $\ai$-free) form of $\Phi$ obtained as described in the proof of Theorem~\ref{ThmConstrDecomp} is called \emph{the $\ai$-decomposed} (resp., \emph{$\ai$-free}) \emph{form of\/ $\Phi$}.
 \end{definition}
 
-\begin{definition}\label{DefDerCore}
+\begin{definition}\label{definition:DerCore}
 Given a derivation $\vlder{\Phi}{}{\beta}{\alpha}$ with associated atomic flow $\phi$, such that $\phi_1$, $\dots$, $\phi_n$ are all the non-weakly-streamlined, connected subflows of $\phi$, a \emph{core of\/ $\Phi$} is defined to be a derivation
 \[
 \vlder{}{}{\vlsmallbrackets\vls[\beta.(a^{\mu'_n}_n.{\bar a^{\mu''_n}_n}).\cdots.(a^{\mu'_1}_1.{\bar a^{\mu'_1}_1})]}{\vlsmallbrackets\vls([a^{\lambda'_1}_1.{\bar a^{\lambda''_1}_1}].\cdots.[a^{\lambda'_n}_n.{\bar a^{\lambda'_n}_n}].\alpha)}
@@ -323,7 +320,7 @@ Given a derivation $\vlder{\Phi}{}{\beta}{\alpha}$ with associated atomic flow $
 with associated atomic flow $\Core(\phi)$, such that, for every $1\le i\le n$, $\lambda'_i$ and $\lambda''_i$ (resp., $\mu'_i$ and $\mu''_i$) are the new upper (resp., lower) edges of $\phi_i$ in $\Core(\phi)$.
 \end{definition}
 
-\begin{theorem}\label{ThmExistCore}
+\begin{theorem}\label{therome:DerCore}
 Given a derivation $\Phi$, a core of\/ $\Phi$ can be constructed.
 \end{theorem}
 
@@ -373,12 +370,12 @@ By studying Definitions~\ref{DefFlowCore} and \ref{DefDecompInt}, and the proof 
 
 \TODO{In what sense is this unique?}
 
-\begin{definition}
+\begin{definition}\label{definition:DerTheCore}
 Given a derivation $\Phi$, the core of $\Phi$ obtained as described in the proof of Theorem~\ref{ThmExistCore} is called \emph{the core of\/ $\Phi$}, denoted $\Core(\Phi)$.
 \end{definition}
 
 
-\begin{definition}\label{DefDerExp}
+\begin{definition}\label{definition:DerExperiment}
 Given a proof $\vlproof{\Pi}{}{\alpha}$ with associated atomic flow $\phi$ and a polarity assignment, $\pi$, to $\phi$, such that $\phi_1$, $\dots$, $\phi_n$ are all the non-weakly-cut-free, connected subflows of $\phi$, an \emph{experiment on\/ $\Pi$ with respect to $\pi$} is defined to be a derivation
 \[
 \vlder{}{}{\alpha}{\vlsmallbrackets\vls((a^{\lambda'_{1,1}}_1.\cdots.a^{\lambda'_{1,k_1}}_1).\cdots.(a^{\lambda'_{n,1}}_n.\cdots.a^{\lambda'_{n,k_n}}_n))}
@@ -390,7 +387,7 @@ with associated atomic flow $\Exp(\phi,\pi)$, such that, for every $1\le i\le n$
 
 \TODO{We are glossing over some associativity/commutativity...}
 
-\begin{theorem}\label{ThmConstrExp}
+\begin{theorem}\label{theorem:DerExperiment}
 Given a proof\/ $\vlproof{\Pi}{}{\alpha}$ with associated atomic flow $\phi$, and a polarity assignment, $\pi$, to $\phi$, an experiment on $\Pi$ with respect to $\pi$ can be constructed.
 \end{theorem}
 
@@ -419,7 +416,7 @@ For every $1\le i\le n$ and every $1\le j\le k_i$, substitute $\vlinf{}{}{\vls[a
 \]
 \end{proof}
 
-\begin{definition}
+\begin{definition}\label{definition:DerTheExperiment}
 Given a proof $\Pi$ and a polarity assignment to its atomic flow $\pi$, the experiment on $\Phi$ with respect to $\pi$ obtained as described in the proof of Theorem~\ref{ThmConstrExp} is called \emph{the experiment on\/ $\Pi$ with respect to $\pi$}, denoted $\Exp(\Pi,\pi)$.
 \end{definition}
 

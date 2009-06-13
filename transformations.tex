@@ -2,11 +2,11 @@
 
 \section{Local Transformations}
 
-\begin{definition}
-In Figure~\ref{FigRed}, we define graphical expressions of the kind $r\colon\phi'\to\psi'$, where $r$ is a name and $\phi'$ and $\psi'$ are flows.
+\begin{definition}\label{definition:FlowGraphicalExpressions}
+In Figure~\ref{figure:ReductionRules}, we define graphical expressions of the kind $r\colon\phi'\to\psi'$, where $r$ is a name and $\phi'$ and $\psi'$ are flows.
 \end{definition}
 
-\TODO{In Figures~\ref{FigRed}, \ref{FigRedW} and \ref{FigRedC} extend the edges so the atomic flows on either side of the arrow has equal height.}
+\TODO{In Figures~\ref{figure:FlowReductionRules}, \ref{figure:ReductionRulesWeakening} and \ref{figure:ReductionRulesContraction} extend the edges so the atomic flows on either side of the arrow has equal height.}
 
 \newcommand{\rwdcd}{{{\mathsf w}{\downarrow}{\hbox{-}}{\mathsf c}{\downarrow}}}
 \newcommand{\rwdiu}{{{\mathsf w}{\downarrow}{\hbox{-}}{\mathsf i}{\uparrow  }}}
@@ -188,11 +188,11 @@ $\hfil}\\
 \end{array}
 \]
 \caption{Atomic-flow reduction rules.}
-\label{FigRed}
+\label{figure:ReductionRules}
 \end{figure}%
 
 %---------------------------------------
-\begin{example}
+\begin{example}\label{example:NoPolarityAssignment}
 The `reduction' on the left, when used inside a larger atomic flow, might create a situation as on the right:
 \nopagebreak[4]\medskip\afnegspace
 \[
@@ -225,7 +225,7 @@ where the graph at the right is not an atomic flow, for lack of a polarity assig
 This prompts us to define reduction rules and reductions for atomic flows as follows.
 
 %---------------------------------------
-\begin{definition}
+\begin{definition}\label{definition:FlowReductionRule}
 An (\emph{atomic-flow}) \emph{reduction rule $r$ from flow $\phi'$ to flow $\psi'$} is a quadruple $(\phi',\psi',f,g)$ such that:
 \begin{enumerate}
 \item $f$ is a one-to-one map from the upper edges of $\phi'$ to the upper edges of $\psi'$,
@@ -235,11 +235,11 @@ An (\emph{atomic-flow}) \emph{reduction rule $r$ from flow $\phi'$ to flow $\psi
 we define reduction rules with graphical expressions $r\colon\phi'\to\psi'$, where $f$ and $g$ are indicated by labelling edges. A binary relation $R$ on the set of atomic flows is called an (\emph{atomic-flow}) \emph{reduction} if, whenever $\phi\mathrel{R}\psi$, there is a one-to-one map from the upper edges of $\phi$ to the upper edges of $\psi$ and a one-to-one map from the lower edges of $\phi$ to the lower edges of $\psi$. For every reduction rule $r\colon\phi'\to\psi'$, the reduction ${\to_r}$ is defined, such that $\phi\to_r\psi$ if and only if $\phi'$ appears as a subgraph in $\phi$ and we obtain $\psi$ by replacing $\phi'$ with $\psi'$ in $\phi$, while respecting the correspondence of edges; we call this operation a \emph{reduction by $r$}.
 \end{definition}
 
-\begin{remark}
+\begin{remark}\label{remark:FlowReductionRuleProperFlow}
 The condition on polarity assignments for a reduction rule $r$ guarantees that the $\psi$ in $\phi\to_r\psi$ is a proper atomic flow, if $\phi$ is one.
 \end{remark}
 
-\begin{remark}
+\begin{remark}\label{remark:FlowReductionRuleNoConnect}
 Because of the condition on polarity assignments for reduction rules, two distinct connected components in a flow cannot be connected by a reduction. To see that this is impossible, consider the following `reduction rule', which violates the condition on polarity assignments:
 \[
 \aflower{\atomicflow{
@@ -281,18 +281,18 @@ For this `reduction rule' there exist both valid (left) and invalid (right) pola
 
 It is immediate to check:
 
-\begin{proposition}
-The graphical expressions in Figure~\ref{FigRed} are atomic-flow reduction rules.
+\begin{proposition}\label{proposition:ValidReductionRules}
+The graphical expressions in Figure~\ref{figure:FlowReductionRules} are atomic-flow reduction rules.
 \end{proposition}
 
 %---------------------------------------
-\begin{definition}
+\begin{definition}\label{definition:FlowRewritingSystem}
 A finite set of reduction rules is a \emph{flow rewriting system}. For every flow rewriting system $F=\{r_1,\dots,r_h\}$ we define ${\to_F}={\to_{r_1}\cup\cdots\cup{\to_{r_h}}}$. The reflexive transitive closure of $\to_F$ is denoted by $\to_F^\star$. Given a set of atomic flows $S$, we say that a flow rewriting system $F$ is \emph{terminating on $S$} if there is no infinite chain $\phi_1\to_F\phi_2\to_F\cdots$, for every $\phi_1\in S$; if $F$ is terminating on the set of atomic flows, we say that it is \emph{terminating}. We say that atomic flow $\phi$ is \emph{normal} for flow rewriting system $F$ if there is no atomic flow $\psi$ such that $\phi\to_F\psi$.
 \end{definition}
 
 \newcommand{\frw}{{\mathsf w}}
 %---------------------------------------
-\begin{definition}
+\begin{definition}\label{definition:FlowRewritingWeakening}
 The following flow rewriting system is called $\frw$:
 \[
 \{\;\rwdcd\;,\;\rcuwu\;,\;\rwdiu\;,\;\ridwu\;,\;\rwdwu\;,\;\rwdcu\;,\;\rcdwu\;\}
@@ -302,7 +302,7 @@ The following flow rewriting system is called $\frw$:
 
 \newcommand{\frc}{{\mathsf c}}
 %---------------------------------------
-\begin{definition}
+\begin{definition}\label{definition:FlowRewritingContraction}
 The following flow rewriting system is called $\frc$:
 \[
 \{\;\rcdiu\;,\;\ridcu\;,\;\rcdcu\;\}\quad.
@@ -312,6 +312,8 @@ The following flow rewriting system is called $\frc$:
 \TODO{Change the definition of reduction rule so they can apply under a given polarity assignment.}
 
 \TODO{Rethink how these reduction rules are defined. It might not be the best way.}
+
+\TODO{Remove all the rules with polarities:}
 
 %---------------------------------------
 \begin{definition}
@@ -328,16 +330,16 @@ The following flow rewriting system is called $\frcp$:
 \end{definition}
 
 %=======================================
-\subsection{Soundness}
+\subsection{Soundness}\label{subsection:soundness}
 
 %---------------------------------------
-\begin{definition}
+\begin{definition}\label{definition:SoundRedcution}
 A reduction $R$ is \emph{sound} if, for every $\phi$ and $\psi$ such that $\phi\mathrel{R}\psi$ and for every derivation $\Phi$ with atomic flow $\phi$, there is a derivation $\Psi$ with atomic flow $\psi$ such that $\Phi$ and $\Psi$ have the same premiss and conclusion; in this case we write $\Phi\mathrel{R}\Psi$. A reduction rule $r$ is \emph{sound} if $\to_r$ is sound.
 \end{definition}
 
-The proof of the following theorem is essentially contained in Figures~\ref{FigRedW} and \ref{FigRedC}.
+The proof of the following theorem is essentially contained in Figures~\ref{figure:ReductionRulesWeakening} and \ref{figure:ReductionRulesContraction}.
 
-%TODO: define \ot (should use \shortleftarrow, but it gives errors)
+\TODO{Use slash for substitution.}
 \newcommand{\ot}{\mathbin\leftarrow}
 
 %---------------------------------------
@@ -434,7 +436,7 @@ The proof of the following theorem is essentially contained in Figures~\ref{FigR
 \end{array}
 \]
 \caption{`Downwards' reduction rules for weakening and their soundness.}
-\label{FigRedW}
+\label{figure:ReductionRulesWeakening}
 \end{figure}%
 
 \newbox\ContDownIntUp
@@ -575,11 +577,11 @@ $}
 \end{array}
 \]
 \caption{`Downwards' reduction rules for contraction and their soundness.}
-\label{FigRedC}
+\label{figure:ReductionRulesContraction}
 \end{figure}%
 
 %---------------------------------------
-\begin{theorem}\label{TheoSound}
+\begin{theorem}\label{theorem:ReductionRulesSound}
 The reduction rules\/ $\rwdcd$, $\rwdiu$, $\rwdwu $, $\rwdcu$, $\rcdiu$, $\rcdcu$, $\rcuwu$, $\ridwu$, $\rcdwu$, $\ridcu$, $\rcd$ and\/ $\rcu$ are sound.
 \end{theorem}
 
@@ -607,12 +609,12 @@ We can deal with the remaining rules by employing dual derivations to the ones s
 \TODO{Check why the inference rule $\swi'$ taken from AFI used atoms instead of formulae.}
 
 %---------------------------------------
-\begin{remark}\label{RemIndep}
+\begin{remark}\label{remark:ReductionRulesSoundIndependence}
 The previous soundness theorem only depends on the switch and medial rules for the reductions in Figure~\ref{FigRedC}. Any system obtained from $\SKS$ by replacing $\swi$ and $\med$ with linear rules that can derive them would support a soundness theorem like the one above, for the same reduction rules. For example, we could think of replacing $\swi$ with the rule $\vlinf{\swi'}{}{\vls[(\alpha.\gamma).[\beta.\delta]]}{\vls([\alpha.\beta].[\gamma.\delta])}$, from which $\swi$ is derivable.
 \end{remark}
 
 %=======================================
-\subsection{Termination and Confluence}
+\subsection{Termination and Confluence}\label{subsection:TerminationConfluence}
 
 %---------------------------------------
 \begin{remark}\label{RemCycle}
@@ -655,22 +657,12 @@ We see that if a contraction vertex belongs to an $\ai$-cycle, reductions by $\f
 
 
 %---------------------------------------
-\begin{theorem}\label{TheoCPTerm}
-Flow rewriting system\/ $\frcp$ is terminating.
-\end{theorem}
-
-%---------------------------------------
-\begin{theorem}\label{TheoCdPCuPTerm}
-Flow rewriting system\/ $\{\rcd^\ppl,\rcu^\ppl\}$ is terminating.
-\end{theorem}
-
-%---------------------------------------
-\begin{theorem}\label{TheoCTerm}
+\begin{theorem}\label{theorem:RewritingSystemContractionTerminating}
 Flow rewriting system\/ $\frc$ is terminating on the set of cycle-free atomic flows.
 \end{theorem}
 
 %---------------------------------------
-\begin{theorem}\label{TheoWTerm}
+\begin{theorem}\label{theorem:RewritingSystemWeakeningTerminating}
 Flow rewriting system\/ $\frw$ is terminating.
 \end{theorem}
 
@@ -680,30 +672,20 @@ At every reduction, either the number of vertices decreases, or it stays the sam
 \end{proof}
 
 %---------------------------------------
-\begin{theorem}\label{TheoWCConf}
+\begin{theorem}\label{theorem:RewritingSystemContractionWeakeningConfluent}
 Flow rewriting system\/ $\frw\cup\frc$ is confluent.
 \end{theorem}
 
 %=======================================
-\subsection{Conservation of Paths}
+\subsection{Conservation of Paths}\label{subsection:FlowRewritePathConservation}
 
 \TODO{Show that the number and length of `super paths' are conserved by all reduction rules except $\rcd^\ppl$ and $\rcu^\ppl$.}
 
 %========================================
-\subsection{Complexity}
-
-\begin{lemma}
-For any two atomic flows $\phi$ and $\psi$ such that $\phi\to_{\{\rcd^\ppl,\rcu^\ppl\}}\psi$ the size of $\psi$ is at most four times the size of $\phi$.
-\end{lemma}
-
-\TODO{Merge the two following remarks.}
-
-\begin{remark}
-Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such that $\phi\to_{\frc^\ppl}\psi$, then $\psi$ might be exponentially bigger than $\phi$.
-\end{remark}
+\subsection{Complexity}\label{subsection:FlowRewriteComplexity}
 
 %---------------------------------------
-\begin{remark}\label{RemExpC}
+\begin{remark}\label{remark:RewriteContractionExponential}
 Normalising by $\frc$ can blow the size of atomic flows exponentially, in particular in a situation like the following (noted by Lutz Stra{\ss}burger):
 \[
 \atomicflow{
@@ -729,26 +711,28 @@ Normalising by $\frc$ can blow the size of atomic flows exponentially, in partic
 In fact, if there are $n$ couples cocontraction/contraction like the two shown above on the left, then there are $2^n$ maximal $\ai$-paths, and their number (and length) is conserved by $\to_\frc^\star$ (see Remark~\ref{RemRank}). Exactly one $\ai$-path passes through each edge in the middle portion of the flow on the right.
 \end{remark}
 
+\TODO{Lemma about complexity of weakening reductions.}
+
 %======================================
-\section{Global Transformations}
+\section{Global Transformations}\label{section:GlobalTransformations}
 
 
 %======================================
-\subsection{Path Breaker}
+\subsection{Path Breaker}\label{subsection:PathBreaker}
 
 \input{global_transformations/path_breaker.tex}
 
 %======================================
-\subsection{Four Boxes}
+\subsection{Four Boxes}\label{subsection:FourBoxes}
 
 \input{global_transformations/four_boxes}
 
 %======================================
-\subsection{Isolated Subflow Removal}
+\subsection{Isolated Subflow Removal}\label{subsection:IsolatedSubflowRemoval}
 
 \input{global_transformations/isolated_subflow.tex}
 
 %======================================
-\subsection{Multiple Isolated Subflow Removal}
+\subsection{Multiple Isolated Subflows Removal}\label{subsection:MultipleIsolatedSubflowsRemoval}
 
 \input{global_transformations/multiple_isolated_subflow.tex}

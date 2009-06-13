@@ -6,7 +6,7 @@
 
 \newcommand{\frfb}{{\mathsf{fb}}}
 %---------------------------------------
-\begin{definition}\label{DefFourBox}
+\begin{definition}\label{definition:FourBoxes}
 We define the reduction $\to_\frfb$ (where $\frfb$ stands for \emph{four boxes}) as follows, for any two atomic flows $\phi$ and $\psi$:
 \[
 \atomicflow{
@@ -74,7 +74,7 @@ where $\psi_1$, $\psi_2$, $\psi_3$ and $\psi_4$ are isomorphic to $\psi$.
 \end{definition}
 
 %---------------------------------------
-\begin{theorem}\label{ThFBSound}
+\begin{theorem}\label{theorem:SoundFourBoxes}
 Reduction\/ $\to_\frfb$ is sound.
 \end{theorem}
 
@@ -153,20 +153,22 @@ It is now straightforward to verify that the derivation so obtained has the desi
 
 \TODO{One exists, but we would very much like to know what it is... Is it unique?}
 
+\TODO{Remove?}
+
 \begin{lemma}
 Given an atomic flow $\phi$ and a polarity assignment $\pi$ there exists an atomic flow $\psi$, which is on simple form with respect to $\pi$, such that $\phi\to_\frfb\psi$.
 \end{lemma}
 
-\begin{lemma}
+\begin{lemma}\label{lemma:FourBoxesSize}
 For any two atomic flows $\phi$ and $\psi$ such that $\phi\to_\frfb\psi$ the size of $\psi$ is at most four times the size of $\phi$.
 \end{lemma}
 
-\begin{lemma}
+\begin{lemma}\label{lemma:FourBoxesStreamlining}
 Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such that $\phi\to_\frfb\psi$ and $\phi$ is weakly streamlined with respect to $\pi$ then $\psi$ is weakly streamlined with respect to $\pi$.
 \end{lemma}
 
 \TODO{Check:}
 
-\begin{remark}
+\begin{remark}\label{remark:FourBoxesDestroySimpleForm}
 Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such that $\phi\to_\frfb\psi$, $\phi$ is not weakly streamlined with respect to $\pi^{-1}$, and $\psi$ is on simple form with respect to $\pi$, then $\psi$ is not on simple form with respect to $\pi^{-1}$.
 \end{remark}

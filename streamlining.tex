@@ -1,31 +1,15 @@
-\chapter{Streamlining}
+\chapter{Streamlining}\label{chapter:Streamlining}
 
 %--------------
 
 \TODO{Define polarity assignments such that it makes sense to talk about the same polarity assignment for two flows where one flow has been transformed into the other.}
 
-\begin{lemma}
-Given an atomic flow $\phi$ and a polarity assignment $\pi$ there exists an atomic flow $\psi$, which is on simple form with respect to $\pi$ and which is normal for $\frc^\ppl$, such that $\phi\to_{\frc^\ppl}\psi$.
-\end{lemma}
-
-\begin{lemma}
-Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such that $\phi\to_{\frc^\ppl}\psi$ and $\phi$ is weakly streamlined with respect to $\pi$ then $\psi$ is weakly streamlined with respect to $\pi$ (maybe this should be proven for $\frc\cup\frw$).
-\end{lemma}
-
-\begin{lemma}
-Given an atomic flow $\phi$ and a polarity assignment $\pi$ there exists an atomic flow $\psi$, which is on simple form with respect to $\pi$ and which is normal for $\{\rcd^\ppl,\rcu^\ppl\}$, such that $\phi\to_{\{\rcd^\ppl,\rcu^\ppl\}}\psi$.
-\end{lemma}
-
-\begin{remark}
-Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such that $\phi\to_{\{\rcd^\ppl,\rcu^\ppl\}}\psi$ then $\psi$ is not weakly streamlined with respect to $\pi$.
-\end{remark}
-
 \TODO{Prove how we can transform from a weakly streamlined atomic flow to all of the other types of streamlined atomic flows using $\frw$ and $\frc$ and the cost of each transformation.}
 
-\section{The Normaliser}\label{SectNorm}
+\section{The Normaliser}\label{section:TheNormaliser}
 
 \newcommand{\Norm}{\mathsf{Norm}}
-\begin{definition}
+\begin{definition}\label{definition:Normaliser}
 For every $n\ge0$ the \emph{normaliser of degree $n$}, $\Norm_n$, is an operator whose arguments are a derivation $\vlder{\Phi}{}{\beta}{\alpha}$, with atomic flow $\phi$, and $\phi_1$, $\dots$, $\phi_n$, an ordered choice of components from $\phi$; let
 \[
 \Psi_0\quad=\quad
@@ -71,11 +55,11 @@ with atomic flow
 and let $\Psi_i$ be such that $\Psi'_i\to_\frpb\Psi_i$. We define $\Norm_n(\Phi,\phi_1,\dots,\phi_n)=\Psi_n$.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}\label{theorem:Normaliser}
 Given a derivation $\Phi$ with atomic flow $\phi$, and an ordered choice of components from $\phi$: $\phi_1$, $\dots$, $\phi_n$, then $\Norm_n(\Phi,\phi_1,\dots,\phi_n)$ is weakly streamlined and has the same premiss and conclusion as $\Phi$.
 \end{theorem}
 
-\begin{example}
+\begin{example}\label{example:Normaliser}
 Given a derivation $\Phi$ with atomic flow
 \[
 \phi\;\;=\;\;\atomicflow
@@ -499,16 +483,10 @@ where $\phi'_1$, $\phi''_1$, $\phi'_2$ and $\phi''_2$ contain no identity and no
 By comparing the copies of $\phi_1$ with the copies of $\phi_2$ in $\Norm_2(\Phi,\phi_1,\phi_2)$ we can see why the procedure is non-confluent. We could trivially change our procedure to make the subflows more similar by permuting the weakening (resp., coweakening) vertices down (resp., up) in the second subflow. However, the subflows marked in red will still differ.
 \end{example}
 
-\section{The Exponential Procedure}
-
-\TODO{Prove how, given a polarity assignment $\pi$ and an atomic flow $\phi$ that is on simple form with respect to $\pi$ there exists an atomic flow $\psi$ such that $\phi\to_{\fris^\star}\psi$ and $\psi$ is weakly streamlined with respect to $\pi$. Furthermore, if $\phi$ is weakly streamlined with respect to $\pi^{-1}$, then so is $\psi$.}
-
-\TODO{Prove (or state if it becomes too much of a mess) that $\{\fris,\frfb\}$ is strongly normalising.}
-
-\TODO{Prove weak streamlining.}
+\section{The Streamliner}\label{section:TheStreamliner}
 
 \newcommand{\Str}{\mathsf{Str}}
-\begin{definition}
+\begin{definition}\label{definition:Streamliner}
 For every $n\ge0$ the \emph{streamliner of degree $n$}, $\Str_n$, is an operator whose arguments are a derivation $\vlder{\Phi}{}{\beta}{\alpha}$, with atomic flow $\phi$, which is on simple form with respect to the polarity assignment $\pi$, and $\phi_1$, $\dots$, $\phi_n$, an ordered choice of components from $\phi$ with respect to $\pi$; let
 \[
 \Psi_0\quad=\quad
@@ -554,14 +532,14 @@ with atomic flow\TODO{Get the right atomic flow}
 and let $\Psi_i$ be such that $\Psi'_i\to_\fris\Psi_i$. We define $\Str_n(\Phi,\phi_1,\dots,\phi_n)=\Psi_n$.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}\label{theorem:Streamliner}
 Given a derivation $\Phi$ with atomic flow $\phi$ that is on simple form with respect to the polarity assignment $\pi$, and an ordered choice of components from $\phi$ with respect to $\pi$: $\phi_1$, $\dots$, $\phi_n$, then $\Str_n(\Phi,\phi_1,\dots,\phi_n)$ is weakly streamlined with respect to $\pi$ and has the same premiss and conclusion as $\Phi$.
 \end{theorem}
 
-\section{The Quasi Polynomial Procedure}
+\section{The Quasipolynomial Streamliner}\label{section:TheQuasipolynomialStreamliner}
 
 \newcommand{\QStr}{\mathsf{QStr}}
-\begin{definition}
+\begin{definition}\label{definition:QuasipolynomialStreamliner}
 For every $n\ge0$ the \emph{quasipolynomial streamliner of degree $n$}, $\QStr_n$, is an operator whose arguments are a derivation $\vlder{\Phi}{}{\beta}{\alpha}$, with atomic flow $\phi$, which is on simple form with respect to the polarity assignment $\pi$, and $\phi_1$, $\dots$, $\phi_n$, an ordered choice of components from $\phi$ with respect to $\pi$; let
 \[
 \Psi'\quad=\quad
@@ -594,6 +572,6 @@ with atomic flow\TODO{Get the right atomic flow}
 and let $\Psi$ be such that $\Psi'\to_\frmis\Psi$. We define $\QStr_n(\Phi,\phi_1,\dots,\phi_n)=\Psi$.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}\label{theorem:QuasipolynomialStreamliner}
 Given a derivation $\Phi$ with atomic flow $\phi$ that is on simple form with respect to the polarity assignment $\pi$, and an ordered choice of components from $\phi$ with respect to $\pi$: $\phi_1$, $\dots$, $\phi_n$, then $\QStr_n(\Phi,\phi_1,\dots,\phi_n)$ is weakly streamlined with respect to $\pi$ and has the same premiss and conclusion as $\Phi$.
 \end{theorem}

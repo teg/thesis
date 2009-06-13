@@ -4,7 +4,7 @@
 
 \newcommand{\frpb}{{\mathsf{pb}}}
 %---------------------------------------
-\begin{definition}\label{DefPathBreaker}
+\begin{definition}\label{definition:PathBreaker}
 We define the reduction $\to_\frpb$ (where $\frpb$ stands for \emph{path breaker}) as follows, for any two atomic flows $\phi$, with upper edges $\boldsymbol\epsilon$ and lower edges $\boldsymbol\iota$, and $\psi$ with upper edges $\boldsymbol{\epsilon'}$ and lower edges $\boldsymbol{\iota'}$:
 \[
 \atomicflow
@@ -118,7 +118,7 @@ We define the reduction $\to_\frpb$ (where $\frpb$ stands for \emph{path breaker
 where the evidenced interaction and cut vertices belong to the same connected component.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}\label{theorem:PathBreakerSound}
 Reduction $\to_\frpb$ is sound.
 \end{theorem}
 
@@ -203,7 +203,7 @@ $}
 
 \TODO{Find a way to define `evidenced' so this makes sense...}
 
-\begin{proposition}\label{PropPathBreak}
+\begin{proposition}\label{proposition:PathBreak}
 Given atomic flows $\phi$ and $\psi$, such that $\phi\to_\frpb\psi$, then
 \begin{itemize}
  \item there is no path from the evidenced interaction vertex to the evidenced cut vertex in $\psi$, and

@@ -4,7 +4,7 @@
 
 \newcommand{\fris}{{\mathsf{is}}}
 %---------------------------------------
-\begin{definition}\label{DefIsoSubRem}
+\begin{definition}\label{definition:IsolatedSubflowRemoval}
 We define the reduction $\to_\fris$ (where $\fris$ stands for \emph{isolated subflow}) as follows, for any atomic flow $\phi$ and any connected atomic flow $\psi$:
 \[
 \atomicflow{
@@ -35,7 +35,7 @@ We define the reduction $\to_\fris$ (where $\fris$ stands for \emph{isolated sub
 \end{definition}
 
 %---------------------------------------
-\begin{theorem}\label{ThSFSound}
+\begin{theorem}\label{theorem:SoundIsolatedSubflowRemoval}
 Reduction\/ $\to_\fris$ is sound.
 \end{theorem}
 
@@ -131,6 +131,6 @@ Since $\psi$ is connected, the mapping from occurrences of $a^\psi$ and $\bar a^
 \]
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\label{lemma:IsolatedSubflowRemovalStreamlining}
 Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such that $\phi\to_\fris\psi$ and $\phi$ is weakly streamlined with respect to $\pi$ then $\psi$ is weakly streamlined with respect to $\pi$.
 \end{lemma}

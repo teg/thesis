@@ -1,6 +1,6 @@
 \newcommand{\frmis}{{\mathsf{mis}}}
 %---------------------------------------
-\begin{definition}\label{DefMulIsoSubRem}
+\begin{definition}\label{definition:MultipleIsolatedSubflowRemoval}
 Given atomic flows $\gamma_0$, $\dots$, $\gamma_l$, $\delta_1$, $\dots$, $\delta_l$ that do not contain interaction or cut vertices, we define the reduction $\to_\frmis$ (where $\frmis$ stands for \emph{multiple isolated subflows}) as follows, for any atomic flow $\phi$ and any connected atomic flows $\psi_1$, $\dots$, $\psi_n$ that do not contain interaction or cut vertices:
 \[
 \atomicflow{
@@ -97,7 +97,7 @@ Given atomic flows $\gamma_0$, $\dots$, $\gamma_l$, $\delta_1$, $\dots$, $\delta
 
 \newcommand{\Gammasf}{\mathsf\Gamma}
 
-\begin{theorem}
+\begin{theorem}\label{theorem:MaybeSoundMultipleIsolatedSubflowRemoval}
 Given $n>0$ distinct atoms $a_1$, $\dots$, $a_n$, an $N>0$, and, for $0\le k\le N$, formulae $\gamma_{k,1}$, $\dots$, $\gamma_{k,n}$, such that
 \begin{itemize}
  \item $\gamma_{0,1}=\cdots=\gamma_{0,n}=\ttt$,
@@ -303,7 +303,7 @@ We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gamma_1$, $\dots$, $\Gamma_N$ to get t
 \]
 \end{proof}
 
-\subsubsection{Threshold Formulae}
+\subsubsection{Threshold Formulae}\label{subsection:ThresholdFormulae}
 
 \TODO{Change this introduction}
 
@@ -325,7 +325,7 @@ The following class of threshold formulae, which we found to work for system $\S
 
 \renewcommand{\th}[2]{\mathop{\thetaup_{#1}^{#2}}}
 %-------------------------------------------------------------------------------
-\begin{definition}
+\begin{definition}\label{definition:ThresholdFormulae}
 Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$, and let $p=\lfloor n/2\rfloor$ and $q=n-p$; for $k\ge0$, we define the \emph{threshold formulae\/} $\th kn\avec1n$ as follows:
 \begin{itemize}
 %---------------------------------------
@@ -439,10 +439,12 @@ The only reason why we require atoms to be distinct in threshold formulae is to 
 \quad.
 \end{eqnarray*}
 \caption{Examples of threshold formulae.}
-\label{FigThrEx}
+\label{figure:ThresholdFormulae}
 \end{figure}
 
 The formulae for threshold functions adopted in \cite{AtseGalePudl:02:Monotone:yu} correspond, for each choice of $k$ and $n$, to $\bigvee_{i\ge k}\th in\avec1n$. We presume that \cite{AtseGalePudl:02:Monotone:yu} employs these more complicated formulae because the formalism adopted there, the sequent calculus, is less flexible than deep inference, requiring more information in threshold formulae in order to construct suitable derivations.
+
+\TODO{Remove?}
 
 %-------------------------------------------------------------------------------
 \begin{remark}
@@ -452,19 +454,19 @@ For $n>0$, we have $\th1n\avec1n=\vls[a_1.\vldots.a_n]$ and $\th nn\avec1n=\vls(
 
 \TODO{Read again:}
 %-------------------------------------------------------------------------------
-\begin{remark}
+\begin{remark}\label{remark:ThersholdSubstitution}
 Given a threshold formula $\th kn\avec1n$ and an atom $a_i$, both $\th kn\avec1n\{a_i/\fff\}$ and $\th kn\avec 1n\{a_i/\ttt\}$ are threshold formula as well. In particular, $\th kn\avec1n\{a_i/\fff\}$ (resp., $\th kn\avec 1n\{a_i/\ttt\}$) is true if and only if at least $k$ (resp., $k-1$) of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true.
 \end{remark}
 
 The size of the threshold formulae dominates the cost of the normalisation procedure, so, we evaluate their size. We leave as an exercise the proof of the following proposition.
 
 %-------------------------------------------------------------------------------
-\begin{proposition}\label{PropQuasAux}
+\begin{proposition}\label{proposition:LargestThresholdFormula}
 For any $n>0$ and $k\ge0$, $\size{\th kn\avec1n}\le\size{\th{\lfloor n/2\rfloor+1}n\avec1n}$.
 \end{proposition}
 
 %-------------------------------------------------------------------------------
-\begin{lemma}\label{LemmaQuas}
+\begin{lemma}\label{lemma:SizeThresholdMax}
 The size of\/ $\th{\lfloor n/2\rfloor+1}n\avec1n$ is $n^{\Ord{\log n}}$.
 \end{lemma}
 
@@ -502,7 +504,7 @@ where we use Proposition~\ref{PropQuasAux}. We show that, for $h=2/(\log3-\log2)
 \end{proof}
 
 %-------------------------------------------------------------------------------
-\begin{theorem}\label{TheoQuas}
+\begin{theorem}\label{theorem:SizeThreshold}
 For any $k\ge0$ the size of\/ $\th kn\avec1n$ is $n^{\Ord{\log n}}$.
 \end{theorem}
 
@@ -513,10 +515,12 @@ It immediately follows from Proposition~\ref{PropQuasAux} and Lemma~\ref{LemmaQu
 
 \subsubsection{Glue derivations}
 
+\TODO{Rename or remove subsubsectoin}
+
 \TODO{Define generic weakening.}
 
 %-------------------------------------------------------------------------------
-\begin{remark}
+\begin{remark}\label{remark:UpsideDownCoweakening}
 Given $n>1$, let $p=\lfloor n/2\rfloor$ and $q=n-p$. For $0\le k\le q$ and $1\le l\le p$, the following derivation is well defined:
 \[
 \vlinf{\gwu}
@@ -554,7 +558,7 @@ Both classes of derivations are used in Definition~\ref{DefThrDer}.
 \newcommand{\Dth}[3]{\mathop{\mathsf\Delta_{#1,#2}^{#3}}}
 \newcommand{\Gth}[3]{\mathop{\Gammasf_{#1,#2}^{#3}}}
 %-------------------------------------------------------------------------------
-\begin{definition}\label{DefThrDer}
+\begin{definition}\label{definition:AuxillaryThresholdDerivation}
 Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$, and let $p=\lfloor n/2\rfloor$ and $q=n-p$.
 \begin{itemize}
 %---------------------------------------
@@ -644,7 +648,7 @@ For $k\ge0$ and $1\le l\le n$, we define the derivations $\vlsmash{\Gth kln\avec
 
 
 %-------------------------------------------------------------------------------
-\begin{example}
+\begin{example}\label{example:AuxillaryThresholdDerivations}
 See, in Figure~\ref{FigPThEx}, some examples of derivations $\vlsmash{\Gth kln\avec1n}$. Note that, for clarity, we removed all instances of the trivial derivations $\Uth112\avec12=\Uth122\avec12=\Uth113\avec13=\vldownsmash{\vlinf\gwu{}\fff\fff}$. We can do so because these derivation instances appear as disjuncts.
 \end{example}
 
@@ -890,12 +894,12 @@ See, in Figure~\ref{FigPThEx}, some examples of derivations $\vlsmash{\Gth kln\a
 }}\quad.
 \end{eqnarray*}
 \caption{Examples of $\Gth kl5\avecletter$, where $\avecletter=(a,b,c,d,e)$.}
-\label{FigPThEx}
+\label{figure:AuxillaryThresholdDerivations}
 \end{figure}
 
 
 %-------------------------------------------------------------------------------
-\begin{theorem}\label{TheoThrDer}
+\begin{theorem}\label{theorem:AuxillaryThresholdDerivations}
 For any $n>0$, $k\ge0$ and\/ $1\le l\le n$, the derivation\/ $\vlsmash{\Gth kln\avec1n}$ has shape
 \[
 \vlder{}{\{\awd,\awu\}}{(\th{k+1}n\avec1n)\{a_l/\ttt\}}
@@ -954,7 +958,7 @@ and $\th0p\avec1p\equiv\ttt$.) General (co)weak\-en\-ing rule instances can be r
 
 \TODO{Define operator for the following definition}
 
-\begin{definition}\label{DefThrDer2}
+\begin{definition}\label{definition:ThresholdDerivations}
 Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the derivations $\vlsmash{\Gth k{}n\avec1n}$ as follows:
 \[
 \Gth k{}n\avec1n\quad=\quad
@@ -1037,7 +1041,7 @@ Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the d
 \end{definition}
 
 %-------------------------------------------------------------------------------
-\begin{theorem}\label{TheoThrDer}
+\begin{theorem}\label{theorem:ThresholdDerivations}
 For any $n>0$ and $k\ge0$, the derivation\/ $\vlsmash{\Gth k{}n\avec1n}$ has shape
 \[
 \vlder{}{\SKS\setminus\{\aid,\aiu\}}
@@ -1055,7 +1059,7 @@ and\/ $\size{\Gth k{}n\avec1n}$ is $n^{\Ord{\log n}}$.
 
 \newcommand{\frqmis}{{\mathsf{qmis}}}
 %---------------------------------------
-\begin{definition}\label{DefQMulIsoSubRem}
+\begin{definition}\label{definition:QuasipolynomialMultipleSubflowRemoval}
 We define the reduction $\to_\frqmis$ (where $\frqmis$ stands for \emph{quasipolynomial multiple isolated subflows}) as follows,
 Let $\avec 1n$ be any atoms, then, for $1\le k\le n$, instantiate $\to_\frmis$ with
 \begin{itemize}
@@ -1064,7 +1068,7 @@ Let $\avec 1n$ be any atoms, then, for $1\le k\le n$, instantiate $\to_\frmis$ w
 \end{itemize}
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}\label{theorem:SoundQuasipolynomialMultipleSubflowRemoval}
 $\to_\frqmis$ is sound.
 \end{theorem}
 
@@ -1074,14 +1078,14 @@ $\to_\frqmis$ is sound.
 
 \TODO{Rephrase:}
 
-\begin{theorem}
+\begin{theorem}\label{theorem:SizeQuasipolynomialMultipleSubflowRemoval}
 $\to_\frqmis$ is quasipolynomial.
 \end{theorem}
 
 \TODO{Add a few words to the effect: `We have now seen that threshold formulae do the job, but do we HAVE to use threshold formulae?'}
 
 %------------------------------------------------------
-\begin{theorem}
+\begin{theorem}\label{theorem:AlternativeToThresholdDerivations}
 Given atoms $a_1$, $\dots$, $a_n$ and, for every $0\le k\le n$, formulae $\gamma_{k,1}$, $\dots$, $\gamma_{k,n}$, such that
 \[
 \gamma_{0,1}=\cdots=\gamma_{0,n}=\ttt
@@ -1366,16 +1370,3 @@ In the above theorem $l\ge n$ and if $l=n$, then
 \quad.
 \]
 \end{remark}
-
-%================================================================================
-\subsubsection{Quasipolynomial Reduction}
-
-\TODO{Either rephrase this in terms of an atomic flow transformation and a soundness proof or move it away from here.}
-
-\TODO{Define for derivations instead of proofs. Use simple form of derivations with respect to a polarity assignment. Use the decomposed normal form, yet to be given a name, for derivations.}
-
-\TODO{Come up with a better name than cut-free form (as it is not an accurate description if we talk about derivations.).}
-
-\newcommand{\frqp}{{\mathsf{qp}}}
-
-\TODO{Definition has been removed...}

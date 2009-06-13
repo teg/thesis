@@ -3,12 +3,12 @@
 \newcommand{\fff}{\mathsf f}
 \newcommand{\ttt}{\mathsf t}
 %---------------------------------------
-\begin{definition}
+\begin{definition}\label{definition:RuleInstance}
 \emph{Formulae}, $\alpha$, $\beta$, $\gamma$, $\delta$ are freely built from: \emph{units}, $\fff$ (false), $\ttt$ (true); \emph{atoms}, $a$, $b$, $c$, $d$, $e$; \emph{disjunction} and \emph{conjunction}, ${\vlsbr[\alpha.\beta]}$ and $\vlsbr(\alpha.\beta)$. On the set of atoms a (non-identical) involution $\bar\cdot$ is defined, and dual atom occurrences, as $a$ and $\bar a$, can appear in formulae. We denote \emph{contexts}, \emph{i.e.}, formulae with a hole, by $\xi\vlhole$ and $\zeta\vlhole$.
 \end{definition}
 
 %---------------------------------------
-\begin{remark}
+\begin{remark}\label{remark:DeMorganNegation}
 Negation is only defined for atoms, which is not a limitation thanks to De Morgan laws.
 \end{remark}
 
@@ -36,7 +36,7 @@ Negation is only defined for atoms, which is not a limitation thanks to De Morga
 
 \newcommand{\SKS}{\mathsf{SKS}}
 
-\begin{definition}
+\begin{definition}\label{definition:SKS}
 System $\SKS$ is defined by the following \emph{structural} rules:
 \[
 \vlinf{\aid}{}{\vls[a.\bar a]}{\ttt}\qquad
@@ -69,7 +69,9 @@ and, for each $\rho\in\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}$, 
 respectively.
 \end{definition}
 
-\begin{theorem}
+\TODO{Change into a completeness proof of SKS.}
+
+\begin{theorem}\label{theorem:SKSComplete}
 A deep inference system $\mathcal{S}$ is complete for propositional classical logic if
 \begin{enumerate}
  \item Given a formula $\alpha$ and an atom $a$, there exists a derivation 
@@ -103,17 +105,17 @@ Let $\alpha$ be a tautology. Apply (1) repeatedly to obtain a conjunction of for
 
 \TODO{Check and prove (Complexity paper by Alessio and Paola).}
 
-\begin{lemma}
+\begin{lemma}\label{lemma:EquationsSize}
 If there exists a derivation $\vlder{}{\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}}{\beta}{\alpha}$, then there exists a derivation $\vlder{\Phi}{\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}}{\beta}{\alpha}$, such that $|\Phi|\le(|\alpha|+|\beta|)^2$.
 \end{lemma}
 
 %TODO: reread
 
-\begin{remark}
+\begin{remark}\label{remark:EquationsShorthand}
 When $\vlder{}{\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}}{\beta}{\alpha}$, we say that $\alpha=\beta$ and we often write $\vlinf{=}{}{\beta}{\alpha}$ instead of the derivation. Using this shorthand only compresses derivations by a polynomial, so it does not affect any complexity results.
 \end{remark}
 
-\begin{lemma}\label{LemSuperSwitch}
+\begin{lemma}\label{lemma:SuperSwitch}
 Given a context $\xi\vlhole$ and a formula $\alpha$ there exist derivations $\vlder{}{\{\swi\}}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlder{}{\{\swi\}}{\vls[\xi\{\fff\}.\alpha]}{\xi\{\alpha\}}$.
 \end{lemma}
 
@@ -155,8 +157,8 @@ for some $\xi'\vlhole$ and $\beta$ where $\beta$ is not a unit and $\Psi$ and $\
 \TODO{Point out that `only containing switches' or $\{\swi\}$ allows the use of equations.}
 \TODO{Define `macro rules'}
 
-\begin{remark}\label{RemSuperSwitch}
-To ease legibility we introduce three macro rules for some derivations built up of switches. Instead of the derivations $\vlder{}{\{\swi\}}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlder{}{\{\swi\}}{\vls[\xi\{\fff\}.\alpha]}{\xi\{\alpha\}}$, as defined in the proof of Lemma~\ref{LemSuperSwitch}, we write $\vlinf{\ssu}{}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlinf{\ssd}{}{\vls[\xi\{\ttt\}.\alpha]}{\xi\{\alpha\}}$, respectively. Instead of the derivation
+\begin{remark}\label{remark:SuperSwitch}
+To ease legibility we introduce three macro rules for some derivations built up of switches. Instead of the derivations $\vlder{}{\{\swi\}}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlder{}{\{\swi\}}{\vls[\xi\{\fff\}.\alpha]}{\xi\{\alpha\}}$, as defined in the proof of Lemma~\ref{lemma:SuperSwitch}, we write $\vlinf{\ssu}{}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlinf{\ssd}{}{\vls[\xi\{\ttt\}.\alpha]}{\xi\{\alpha\}}$, respectively. Instead of the derivation
 \[
 \vlinf{\swi}{}
 {
@@ -171,7 +173,7 @@ we write $\vlinf{\supers}{}{\vls[\zeta\{\fff\}.\xi\{\alpha\}]}{\vls(\zeta\{\alph
 
 \TODO{Use notation for super switch.}
 
-\begin{lemma}\label{LemGenericContraction}
+\begin{lemma}\label{lemma:GenericContraction}
 Given a formula $\alpha$ and a positive integer $n$, there exist derivations $\vlupsmash{\vlder{}{\{\acd,\med\}}{\alpha}{\bigvee_{i=1}^{n}\alpha}}$ and $\vlupsmash{\vlder{}{\{\acu,\med\}}{\bigwedge_{i=1}^{n}\alpha}{\alpha}}$.
 \end{lemma}
 
@@ -220,6 +222,6 @@ Finally, we show the inductive case, $n>2$:
 \newcommand{\cod}{{\contr{\downarrow}}}
 \newcommand{\cou}{{\contr{\uparrow}}}
 
-\begin{remark}\label{RemGenericContraction}
-In the non-atomic version of system $\SKS$ the derivations shown in Lemma~\ref{LemGenericContraction} correspond to repeated applications of (co)contractions. For this reason we sometimes write the inference rules $\vlinf{n\cdot\cod}{}{\alpha}{\bigvee_{i=1}^{n}\alpha}$ and $\vlinf{n\cdot\cou}{}{\bigwedge_{i=1}^{n}\alpha}{\alpha}$ instead of the derivations $\vlder{}{\{\acd,\med\}}{\alpha}{\bigvee_{i=1}^{n}\alpha}$ and $\vlupsmash{\vlder{}{\{\acu,\med\}}{\bigwedge_{i=1}^{n}\alpha}{\alpha}}$, respectively.
+\begin{remark}\label{remark:GenericContraction}
+In the non-atomic version of system $\SKS$ the derivations shown in Lemma~\ref{lemma:GenericContraction} correspond to repeated applications of (co)contractions. For this reason we sometimes write the inference rules $\vlinf{n\cdot\cod}{}{\alpha}{\bigvee_{i=1}^{n}\alpha}$ and $\vlinf{n\cdot\cou}{}{\bigwedge_{i=1}^{n}\alpha}{\alpha}$ instead of the derivations $\vlder{}{\{\acd,\med\}}{\alpha}{\bigvee_{i=1}^{n}\alpha}$ and $\vlupsmash{\vlder{}{\{\acu,\med\}}{\bigwedge_{i=1}^{n}\alpha}{\alpha}}$, respectively.
 \end{remark}

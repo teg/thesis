@@ -1,15 +1,17 @@
-\chapter{A Deep-Inference Formalism}
+\chapter{The Functorial Calculus}\label{chapter:TheFunctorialCalculus}
 
-\section{Definitions}
+\section{Definitions}\label{section:FunctorialCalculus}
 
-\begin{definition}
+\TODO{Give credit to Francois}
+
+\begin{definition}\label{definition:InferenceRuleInstance}
 An \emph{inference rule instance}, $\vlinf{\rho}{}{\beta}{\alpha}$, consists of two formulae, $\alpha$ and $\beta$, called \emph{premiss} and \emph{conclusion} respectively.
 \end{definition}
 
 \TODO{Make the label on the derivation in item 2 smaller.}
 
-\begin{definition}
-Fix a set of formulae, a set of inference rule instances and a set of logical connectives, then a \emph{(Formalism A) derivation $\vlder{\Psi}{}{\beta}{\alpha}$ from (the formula) $\alpha$ to (the formula) $\beta$}, is defined to be
+\begin{definition}\label{definition:Derivation}
+Fix a set of formulae, a set of inference rule instances and a set of logical connectives, then a \emph{(functorial calculus) derivation $\vlder{\Psi}{}{\beta}{\alpha}$ from (the formula) $\alpha$ to (the formula) $\beta$}, is defined to be
 \begin{enumerate}
  \item a formula, $\Psi=\alpha=\beta$;
 
@@ -29,7 +31,7 @@ Fix a set of formulae, a set of inference rule instances and a set of logical co
 
 \TODO{State that we consider derivations equal modulo associativity of vertical composition.}
 
-\begin{lemma}\label{LemDerComp}
+\begin{lemma}\label{lemma:DerivationComposition}
 Given two derivations $\vlder{\Phi_1}{}{\beta}{\alpha}$ and $\vlder{\Phi_2}{}{\gamma}{\beta}$, a derivation $\vlder{\Phi_1;\Phi_2}{}{\gamma}{\alpha}$ can be constructed.
 \end{lemma}
 
@@ -50,7 +52,7 @@ We argue by structural induction on $\Phi_1$ and $\Phi_2$
 \end{enumerate}
 \end{proof}
 
-\begin{definition}
+\begin{definition}\label{definition:DerivationComposition}
 Given $\Phi_1$ and $\Phi_2$ as in the premiss of Lemma~\ref{LemDerComp}, the derivation $\Phi_1;\Phi_2$ constructed in the proof of the lemma is denoted
 \[
 \vlderivation
@@ -66,7 +68,7 @@ Given $\Phi_1$ and $\Phi_2$ as in the premiss of Lemma~\ref{LemDerComp}, the der
 \]
 \end{definition}
 
-\begin{lemma}
+\begin{lemma}\label{lemma:AssociativeDerivationComposition}
 Given derivations $\vlder{\Phi_1}{}{\beta}{\alpha}$, $\vlder{\Phi_2}{}{\gamma}{\beta}$ and $\vlder{\Phi_3}{}{\delta}{\gamma}$ the derivation
 \[
 \vlderivation
@@ -86,19 +88,21 @@ Given derivations $\vlder{\Phi_1}{}{\beta}{\alpha}$, $\vlder{\Phi_2}{}{\gamma}{\
 is unique.
 \end{lemma}
 
-\section{Comparison with the Calculus of Structures}
+\section{Comparison with the Calculus of Structures}\label{section:CalculusOfStructures}
 
 \TODO{Double check the following definition, that it is in line with Paola and and Alessio's complexity paper.}
 
 \newcommand{\size}[1]{{\left\vert #1\right\vert}}\vlupdate\size
-\begin{definition}
+\begin{definition}\label{definition:DerivationSize}
 The \emph{size} $\size\alpha$ of a formula $\alpha$, and the \emph{size} $\size\Phi$ of a derivation $\Phi$, is the number of unit and atom occurrences appearing in it.
 \end{definition}
 
 \begin{theorem}
-Formalism A p-simulates the calculus of structures and the calculus of structures p-simulates Formalism A.
+The functorial calculus p-simulates the calculus of structures and the calculus of structures p-simulates the functorial calculus.
 \end{theorem}
 
 \begin{theorem}
-A formalism A derivation corresponds to an equivalence class of calculus of structures derivations modulo bureaucracy of type A.
+A functorial calculus derivation corresponds to an equivalence class of calculus of structures derivations modulo bureaucracy of type A.
 \end{theorem}
+
+\TODO{Compare with the paper by Stephane and Kai.}

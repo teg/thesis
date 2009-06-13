@@ -1,7 +1,7 @@
 \chapter{Definitions}
 
 %---------------------------------------
-\begin{definition}
+\begin{definition}\label{definition:FlowLabels}
 We call the following six diagrams (\emph{atomic-flow}) \emph{labels}:
 \[
 \begin{array}{@{}c@{}c@{}c@{}}
@@ -38,7 +38,7 @@ We call the following six diagrams (\emph{atomic-flow}) \emph{labels}:
 \newcommand{\up}{{\mathit up}}
 \newcommand{\lo}{{\mathit lo}}
 %---------------------------------------
-\begin{definition}
+\begin{definition}\label{definition:AtomicFlow}
 An (\emph{atomic}) \emph{flow} is a tuple $(V,E,\eta,\up,\lo)$, denoted $\phi$ or $\psi$, such that:
 \begin{enumerate}
 %-------------------
@@ -122,12 +122,12 @@ Given an atomic flow $\phi$, we say that the sets $L_\top=\{\epsilon_1,\dots,\ep
 
 \TODO{Clean out old stuff from the following sub section.}
 
-\begin{definition}\label{DefFlowCopy}
+\begin{definition}\label{definition:LabelsIsomorphicFlows}
 By giving two atomic flows the same label we indicated that there is a bijection between them.
 Given two atomic flows $\phi$ and $\psi$, a bijection $f$ between them and the edge $\epsilon$ in $\phi$, by labeling an edge in $\psi$ by $\hat\epsilon$ (resp., $\tilde\epsilon$ or $\epsilon^1$, $\epsilon^2$, $\dots$) we indicate that $f(\epsilon)=\hat\epsilon$ (resp., $f(\epsilon)=\tilde\epsilon$ or $f(\epsilon)=\epsilon^1$, $f(\epsilon)=\epsilon^2$, $\dots$).
 \end{definition}
 
-\begin{example}
+\begin{example}\label{example:LabelsIsomorphicFlows}
 Consider the following atomic flows:
 \[
 \phi\;=\;
@@ -176,7 +176,7 @@ Consider the following atomic flows:
 ( 2,-12)*{\afacdex{}{}{}{}{}{}52};
 }\quad.
 \]
-By Defintion~\ref{DefFlowCopy} this means that there are bijections $f_1$ and $f_2$ between $\phi$ and each of the subflows labelled $\phi$ in $\psi$, such that, for every $1\le i\le n$ (resp., $1\le i\le m$), we have $f_1(\epsilon_i)=\hat\epsilon_i$ and $f_2(\epsilon_i)=\tilde\epsilon_i$ (resp., $f_1(\iota_i)=\hat\iota_i$ and $f_2(\iota_i)=\tilde\iota_i$).
+By Defintion~\ref{definition:LabelsIsomorphicFlows} this means that there are bijections $f_1$ and $f_2$ between $\phi$ and each of the subflows labelled $\phi$ in $\psi$, such that, for every $1\le i\le n$ (resp., $1\le i\le m$), we have $f_1(\epsilon_i)=\hat\epsilon_i$ and $f_2(\epsilon_i)=\tilde\epsilon_i$ (resp., $f_1(\iota_i)=\hat\iota_i$ and $f_2(\iota_i)=\tilde\iota_i$).
 
 This way of creating atomic flows by joining together (by use of (co) contractions) copies of an existing flow will be crucial for the global transformations we present later on. We note that in the construction above, and also in all the constructions we will present, we always respect the bijections between the sublfows when we join together edges with (co)contractions. In other words, we only connect two edges $\hat\epsilon_i$ and $\tilde\epsilon_j$ (resp., $\hat\iota_i$ and $\tilde\iota_j$) by a cocontraction (resp., contraction) if $i=j$.
 
@@ -223,7 +223,7 @@ To reduce the amount of redundant information in the representation of our flows
 
 \TODO{There might be more isomorphic subflows than the ones we mentioned, that would be bad. We need a way of saying which ones we care about. This was the use of the term `copy' and it is accomplished by giving them the same name.}
 
-\begin{definition}
+\begin{definition}\label{definition:CorrespondingEdges}
 Given two atomic flows $\phi$ and $\psi$, such that
 \begin{itemize}
   \item $\psi$ contains the subflows $\phi_1$, $\dots$, $\phi_n$, each of which is isomorphic to $\phi$,
@@ -246,17 +246,17 @@ If $\epsilon$ in $\phi$ corresponds to $\epsilon'$ in $\psi$ it is not a problem
 \TODO{Remark with references to (all) the uses of this notation.}
 
 %=======================================
-\section{Paths and Cycles}
+\section{Paths and Cycles}\label{section:PathsAndCycles}
 
 We now define the notions of `$\ai$-path' and `$\ai$-cycle' in atomic flows. Paths are sequences of adjacent edges that only `go down' or only `go up'; $\ai$-paths are formed by joining paths at interaction or cointeraction vertices; $\ai$-cycles are circular $\ai$-paths. We also define the notion of `simple edge', \emph{i.e.}, an edge connecting an interaction and a cointeraction, as in the first diagram in this paper.
 
 %---------------------------------------
-\begin{definition}
+\begin{definition}\label{definition:FlowPaths}
 Given an atomic flow $(V,E,\eta,\up,\lo)$ and $\epsilon_1,\dots,\epsilon_h\in E$ such that, for $1\le i<h$, we have $\lo(\epsilon_i)=\up(\epsilon_{i+1})$, $\up(\epsilon_1)=\nu$ and $\lo(\epsilon_h)=\nu'$, we say that $\epsilon_1,\dots,\epsilon_h$ is a \emph{path from $\nu$ to $\nu'$} and that $\epsilon_h,\dots,\epsilon_1$ is a \emph{path from $\nu'$ to $\nu$}; both paths have \emph{length} $h$. An \emph{$\ai$-path from $\nu$ to $\nu'$} of \emph{length} $h$ is either a path from $\nu$ to $\nu'$ of length $h$ or a sequence of edges $\epsilon_1,\dots,\epsilon_k,\epsilon_{k+1},\dots,\epsilon_h$ such that $\epsilon_k \ne \epsilon_{k+1}$ and, for some $\nu''\in V$ with $\eta(\nu'')\in\{\aid,\aiu\}$, we have that $\epsilon_1,\dots,\epsilon_k$ is an $\ai$-path from $\nu$ to $\nu''$ and $\epsilon_{k+1},\dots,\epsilon_h$ is an $\ai$-path from $\nu''$ to $\nu'$. An $\ai$-path of length $h$ is \emph{maximal} if no $\ai$-path containing its edges has length greater than $h$. An $\ai$-path from (resp., to) $\nu$ of length $h$ is a \emph{maximal\/ $\ai$-path from} (resp., \emph{to}) $\nu$ if no $\ai$-path from (resp., to) $\nu$ containing its edges has length greater than $h$. A path from an interaction to a cointeraction vertex or vice versa is called an \emph{$\ai$-connection}.
 \end{definition}
 
 %---------------------------------------
-\begin{example}
+\begin{example}\label{example:Paths}
 The atomic flow on the left has the $\ai$-paths on the right, and the paths are marked with an asterisk:
 \[
 \begin{array}{@{}c@{}c@{}}
@@ -283,6 +283,8 @@ In addition, the flow has the paths and $\ai$-paths obtained from the shown ones
 \end{example}
 
 Simple edges represent immediate causality relations between axioms and cuts. They play a crucial role in the following, in particular when they belong to $\ai$-cycles.
+
+\TODO{Remove the rest of this section:}
 
 %---------------------------------------
 \begin{definition}\label{DefSimple}

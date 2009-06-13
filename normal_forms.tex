@@ -25,7 +25,7 @@
 \TODO{Justify the following definitions in terms of `super-paths'. Redefine weak streamlining.}
 
 %---------------------------------------
-\begin{definition}
+\begin{definition}\label{definition:FlowWeaklyStreamlined}
 An atomic flow is \emph{weakly streamlined} if it can be represented as
 \[
 \atomicflow{
@@ -54,14 +54,14 @@ An atomic flow is \emph{weakly streamlined} if it can be represented as
 \]
 \end{definition}
 
-\begin{definition}
+\begin{definition}\label{definition:FlowWeaklyCutFree}
 A weakly streamlined atomic flow with no upper (resp., lower) edges is called \emph{weakly cut-free} (reps., \emph{weakly interaction-free}).
 \end{definition}
 
 \TODO{Decide on `boxes with weakenings' v.\ `repeated weakenings'.}
 
 %---------------------------------------
-\begin{definition}
+\begin{definition}\label{definition:FlowStreamlined}
 An atomic flow is \emph{streamlined} if it can be represented as
 \[
 \atomicflow{
@@ -97,7 +97,7 @@ An atomic flow is \emph{streamlined} if it can be represented as
 \TODO{A streamlined atomic flow with no pair of upper (resp., lower) edges with an $ai$-path between them is cut (resp., axiom) free.}
 
 %---------------------------------------
-\begin{proposition}
+\begin{proposition}\label{proposition:FlowStreamlinedNoUpper}
 A streamlined atomic flow with no upper (resp., lower) edges can be represented as
 \[
 \atomicflow{
@@ -135,7 +135,7 @@ respectively.
 \end{proposition}
 
 %---------------------------------------
-\begin{definition}
+\begin{definition}\label{definition:FlowSuperStreamlined}
 An atomic flow is \emph{super streamlined} if it can be represented as
 \[
 \atomicflow{
@@ -169,7 +169,7 @@ An atomic flow is \emph{super streamlined} if it can be represented as
 \end{definition}
 
 %---------------------------------------
-\begin{proposition}
+\begin{proposition}\label{proposition:FlowSuperStreamlinedNoUpper}
 A super streamlined atomic flow with no upper (resp., lower) edges can be represented as
 \[
 \atomicflow{
@@ -203,7 +203,7 @@ respectively.
 \end{proposition}
 
 %---------------------------------------
-\begin{definition}
+\begin{definition}\label{definition:FlowHyperStreamlined}
 An atomic flow is \emph{hyper streamlined} if it can be represented as
 \[
 \atomicflow{
@@ -235,7 +235,7 @@ An atomic flow is \emph{hyper streamlined} if it can be represented as
 \end{definition}
 
 %---------------------------------------
-\begin{proposition}
+\begin{proposition}\label{proposition:FlowHyperStreamlinedNoUpper}
 A hyper streamlined atomic flow with no upper (resp., lower) edges can be represented as
 \[
 \atomicflow{
@@ -271,7 +271,7 @@ respectively.
 \TODO{Define the polarity assignment used here.}
 
 %---------------------------------------
-\begin{definition}
+\begin{definition}\label{definition:FlowSimple}
 An atomic flow is \emph{on simple form with respect to the polarity assignment $\pi$} if it can be represented as
 \[
 \atomicflow{
@@ -333,7 +333,7 @@ An atomic flow is \emph{on simple form with respect to the polarity assignment $
 \end{definition}
 
 %---------------------------------------
-\begin{proposition}
+\begin{proposition}\label{proposition:FlowSimpleNoUpper}
 Given a polarity assignment $\pi$, an atomic flow on simple form with respect to $\pi$ with no upper (resp., lower) edges can be represented as
 \[
 \atomicflow{
@@ -417,7 +417,7 @@ respectively.
 \end{proposition}
 
 %---------------------------------------
-\begin{definition}
+\begin{definition}\label{definition:FlowWeaklyStreamlinedPolarity}
 An atomic flow is \emph{weakly streamlined with respect to the polarity assignment $\pi$} if it can be represented as
 \[
 \atomicflow{
@@ -476,11 +476,11 @@ An atomic flow is \emph{weakly streamlined with respect to the polarity assignme
 
 \TODO{Define the inverse of a polarity assignment (and change the notation!).}
 
-\begin{proposition}
+\begin{proposition}\label{proposition:FlowWeaklyStreamlinedPolarity}
 Given a polarity assignment $\pi$, an atomic flow which is weakly streamlined with respect to both $\pi$ and $\pi^{-1}$ is weakly streamlined. 
 \end{proposition}
 
-\begin{proposition}
+\begin{proposition}\label{proposition:FlowWeaklyCutFreePolarity}
 Given a polarity assignment $\pi$, a weakly streamlined atomic flow with respect to $\pi$ that has no upper (resp., lower) edges is weakly cut-free (resp., weakly identity-free).
 \end{proposition}
 
@@ -489,7 +489,7 @@ Given a polarity assignment $\pi$, a weakly streamlined atomic flow with respect
 \TODO{This might be more suitable somewhere else.}
 
 \newcommand{\Core}{\mathsf{Core}}
-\begin{definition}\label{DefFlowCore}
+\begin{definition}\label{definition:FlowCore}
 Given an atomic flow
 \[
 \phi\;\;=\;\;\atomicflow
@@ -642,7 +642,7 @@ We say that $\phi_1$, $\dots$, $\phi_n$ is an \emph{ordered choice of components
 
 \newcommand{\Exp}{\mathsf{Exp}}
 
-\begin{definition}\label{DefFlowExp}
+\begin{definition}\label{definition:FlowExperiment}
 Given a polarity assignment $\pi$ and an atomic flow
 \[
 \phi\;\;=\;\;\atomicflow
