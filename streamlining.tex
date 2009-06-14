@@ -483,6 +483,8 @@ where $\phi'_1$, $\phi''_1$, $\phi'_2$ and $\phi''_2$ contain no identity and no
 By comparing the copies of $\phi_1$ with the copies of $\phi_2$ in $\Norm_2(\Phi,\phi_1,\phi_2)$ we can see why the procedure is non-confluent. We could trivially change our procedure to make the subflows more similar by permuting the weakening (resp., coweakening) vertices down (resp., up) in the second subflow. However, the subflows marked in red will still differ.
 \end{example}
 
+
+%======================================================
 \section{The Streamliner}\label{section:TheStreamliner}
 
 \newcommand{\Str}{\mathsf{Str}}
@@ -536,6 +538,11 @@ and let $\Psi_i$ be such that $\Psi'_i\to_\fris\Psi_i$. We define $\Str_n(\Phi,\
 Given a derivation $\Phi$ with atomic flow $\phi$ that is on simple form with respect to the polarity assignment $\pi$, and an ordered choice of components from $\phi$ with respect to $\pi$: $\phi_1$, $\dots$, $\phi_n$, then $\Str_n(\Phi,\phi_1,\dots,\phi_n)$ is weakly streamlined with respect to $\pi$ and has the same premiss and conclusion as $\Phi$.
 \end{theorem}
 
+\begin{corollary}\label{corollary:Streamliner}
+Given a derivation $\Phi$ and a polarity assignment $\pi$, let $\Simpl(\Phi,\pi)$ have atomic flow $\phi$,
+let $\phi_1$, $\dots$, $\phi_n$ be an ordered choice of components from $\phi$, and let $\Psi=\Str_n(\Simpl(\Phi,\pi),\phi_1,\dots,\phi_n)$. Let $\Simpl(\Psi,\bar\pi)$ have atomic flow $\psi$, let $\psi_1$, $\dots$, $\psi_m$ be an ordered choice of components from $\psi$, then $\Str_m(\Simpl(\Psi,\bar \pi),\psi_1,\dots,\psi_m)$ is weakly streamlined and has the same premiss and conclusion as $\Phi$.
+\end{corollary}
+
 \section{The Quasipolynomial Streamliner}\label{section:TheQuasipolynomialStreamliner}
 
 \newcommand{\QStr}{\mathsf{QStr}}
@@ -575,3 +582,8 @@ and let $\Psi$ be such that $\Psi'\to_\frmis\Psi$. We define $\QStr_n(\Phi,\phi_
 \begin{theorem}\label{theorem:QuasipolynomialStreamliner}
 Given a derivation $\Phi$ with atomic flow $\phi$ that is on simple form with respect to the polarity assignment $\pi$, and an ordered choice of components from $\phi$ with respect to $\pi$: $\phi_1$, $\dots$, $\phi_n$, then $\QStr_n(\Phi,\phi_1,\dots,\phi_n)$ is weakly streamlined with respect to $\pi$ and has the same premiss and conclusion as $\Phi$.
 \end{theorem}
+
+\begin{corollary}\label{corollary:Streamliner}
+Given a derivation $\Phi$ and a polarity assignment $\pi$, let $\Simpl(\Phi,\pi)$ have atomic flow $\phi$,
+let $\phi_1$, $\dots$, $\phi_n$ be an ordered choice of components from $\phi$, and let $\Psi=\QStr_n(\Simpl(\Phi,\pi),\phi_1,\dots,\phi_n)$. Let $\Simpl(\Psi,\bar\pi)$ have atomic flow $\psi$, let $\psi_1$, $\dots$, $\psi_m$ be an ordered choice of components from $\psi$, then $\QStr_m(\Simpl(\Psi,\bar \pi),\psi_1,\dots,\psi_m)$ is weakly streamlined and has the same premiss and conclusion as $\Phi$.
+\end{corollary}
