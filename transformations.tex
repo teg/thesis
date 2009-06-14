@@ -3,10 +3,10 @@
 \section{Local Transformations}
 
 \begin{definition}\label{definition:FlowGraphicalExpressions}
-In Figure~\ref{figure:ReductionRules}, we define graphical expressions of the kind $r\colon\phi'\to\psi'$, where $r$ is a name and $\phi'$ and $\psi'$ are flows.
+In Figure~\vref{figure:ReductionRules}, we define graphical expressions of the kind $r\colon\phi'\to\psi'$, where $r$ is a name and $\phi'$ and $\psi'$ are flows.
 \end{definition}
 
-\TODO{In Figures~\ref{figure:FlowReductionRules}, \ref{figure:ReductionRulesWeakening} and \ref{figure:ReductionRulesContraction} extend the edges so the atomic flows on either side of the arrow has equal height.}
+\TODO{In Figures~\vref{figure:ReductionRules}, \vref{figure:ReductionRulesWeakening} and \vref{figure:ReductionRulesContraction} extend the edges so the atomic flows on either side of the arrow has equal height.}
 
 \newcommand{\rwdcd}{{{\mathsf w}{\downarrow}{\hbox{-}}{\mathsf c}{\downarrow}}}
 \newcommand{\rwdiu}{{{\mathsf w}{\downarrow}{\hbox{-}}{\mathsf i}{\uparrow  }}}
@@ -282,7 +282,7 @@ For this `reduction rule' there exist both valid (left) and invalid (right) pola
 It is immediate to check:
 
 \begin{proposition}\label{proposition:ValidReductionRules}
-The graphical expressions in Figure~\ref{figure:FlowReductionRules} are atomic-flow reduction rules.
+The graphical expressions in Figure~\vref{figure:ReductionRules} are atomic-flow reduction rules.
 \end{proposition}
 
 %---------------------------------------
@@ -337,7 +337,7 @@ The following flow rewriting system is called $\frcp$:
 A reduction $R$ is \emph{sound} if, for every $\phi$ and $\psi$ such that $\phi\mathrel{R}\psi$ and for every derivation $\Phi$ with atomic flow $\phi$, there is a derivation $\Psi$ with atomic flow $\psi$ such that $\Phi$ and $\Psi$ have the same premiss and conclusion; in this case we write $\Phi\mathrel{R}\Psi$. A reduction rule $r$ is \emph{sound} if $\to_r$ is sound.
 \end{definition}
 
-The proof of the following theorem is essentially contained in Figures~\ref{figure:ReductionRulesWeakening} and \ref{figure:ReductionRulesContraction}.
+The proof of the following theorem is essentially contained in Figures~\vref{figure:ReductionRulesWeakening} and \vref{figure:ReductionRulesContraction}.
 
 \TODO{Use slash for substitution.}
 \newcommand{\ot}{\mathbin\leftarrow}
@@ -586,7 +586,7 @@ The reduction rules\/ $\rwdcd$, $\rwdiu$, $\rwdwu $, $\rwdcu$, $\rcdiu$, $\rcdcu
 \end{theorem}
 
 \begin{proof}
-For $r\in\{\rwdcd,\rwdiu,\rwdwu,\rwdcu,\rcdiu,\rcdcu,\rcd\}$ and $r\colon\phi'\to\psi'$ as in the left columns of Figures~\ref{FigRedW} and \ref{FigRedC}, for every $\phi$ and $\psi$ such that $\phi\to_r\psi$ and for every $\Phi$ with flow $\phi$, the right columns of the tables provide reductions $\Phi\to_r\Psi$, where $\Psi$ has flow $\psi$, as follows. If $\Phi'\to_r\Psi'$ is the reduction provided by the table, then
+For $r\in\{\rwdcd,\rwdiu,\rwdwu,\rwdcu,\rcdiu,\rcdcu,\rcd\}$ and $r\colon\phi'\to\psi'$ as in the left columns of Figures~\vref{figure:ReductionRulesWeakening} and \vref{figure:ReductionRulesContraction}, for every $\phi$ and $\psi$ such that $\phi\to_r\psi$ and for every $\Phi$ with flow $\phi$, the right columns of the tables provide reductions $\Phi\to_r\Psi$, where $\Psi$ has flow $\psi$, as follows. If $\Phi'\to_r\Psi'$ is the reduction provided by the table, then
 \[
 \Phi=
 \vlderivation              {
@@ -610,7 +610,7 @@ We can deal with the remaining rules by employing dual derivations to the ones s
 
 %---------------------------------------
 \begin{remark}\label{remark:ReductionRulesSoundIndependence}
-The previous soundness theorem only depends on the switch and medial rules for the reductions in Figure~\ref{FigRedC}. Any system obtained from $\SKS$ by replacing $\swi$ and $\med$ with linear rules that can derive them would support a soundness theorem like the one above, for the same reduction rules. For example, we could think of replacing $\swi$ with the rule $\vlinf{\swi'}{}{\vls[(\alpha.\gamma).[\beta.\delta]]}{\vls([\alpha.\beta].[\gamma.\delta])}$, from which $\swi$ is derivable.
+The previous soundness theorem only depends on the switch and medial rules for the reductions in Figure~\vref{figure:ReductionRulesContraction}. Any system obtained from $\SKS$ by replacing $\swi$ and $\med$ with linear rules that can derive them would support a soundness theorem like the one above, for the same reduction rules. For example, we could think of replacing $\swi$ with the rule $\vlinf{\swi'}{}{\vls[(\alpha.\gamma).[\beta.\delta]]}{\vls([\alpha.\beta].[\gamma.\delta])}$, from which $\swi$ is derivable.
 \end{remark}
 
 %=======================================
@@ -708,7 +708,7 @@ Normalising by $\frc$ can blow the size of atomic flows exponentially, in partic
 ( 4,10  )*{\afacdnw{}{}{}{}{}{}}}
 \quad.
 \]
-In fact, if there are $n$ couples cocontraction/contraction like the two shown above on the left, then there are $2^n$ maximal $\ai$-paths, and their number (and length) is conserved by $\to_\frc^\star$ (see Remark~\ref{RemRank}). Exactly one $\ai$-path passes through each edge in the middle portion of the flow on the right.
+In fact, if there are $n$ couples cocontraction/contraction like the two shown above on the left, then there are $2^n$ maximal $\ai$-paths, and their number (and length) is conserved by $\to_\frc^\star$ (see Remark~\vref{remark:TODO}). Exactly one $\ai$-path passes through each edge in the middle portion of the flow on the right.
 \end{remark}
 
 \TODO{Lemma about complexity of weakening reductions.}

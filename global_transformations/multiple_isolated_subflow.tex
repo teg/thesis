@@ -1,6 +1,6 @@
 \newcommand{\frmis}{{\mathsf{mis}}}
 %---------------------------------------
-\begin{definition}\label{definition:MultipleIsolatedSubflowRemoval}
+\begin{definition}\label{definition:MultipleIsolatedSubflowsRemoval}
 Given atomic flows $\gamma_0$, $\dots$, $\gamma_l$, $\delta_1$, $\dots$, $\delta_l$ that do not contain interaction or cut vertices, we define the reduction $\to_\frmis$ (where $\frmis$ stands for \emph{multiple isolated subflows}) as follows, for any atomic flow $\phi$ and any connected atomic flows $\psi_1$, $\dots$, $\psi_n$ that do not contain interaction or cut vertices:
 \[
 \atomicflow{
@@ -97,7 +97,7 @@ Given atomic flows $\gamma_0$, $\dots$, $\gamma_l$, $\delta_1$, $\dots$, $\delta
 
 \newcommand{\Gammasf}{\mathsf\Gamma}
 
-\begin{theorem}\label{theorem:MaybeSoundMultipleIsolatedSubflowRemoval}
+\begin{theorem}\label{theorem:MaybeSoundMultipleIsolatedSubflowsRemoval}
 Given $n>0$ distinct atoms $a_1$, $\dots$, $a_n$, an $N>0$, and, for $0\le k\le N$, formulae $\gamma_{k,1}$, $\dots$, $\gamma_{k,n}$, such that
 \begin{itemize}
  \item $\gamma_{0,1}=\cdots=\gamma_{0,n}=\ttt$,
@@ -128,7 +128,7 @@ then
 
 %-------------------------------------------------------------------------------
 \begin{proof}
-Let $\Phi$ be a derivation with flow $\phi'$, such that $\phi'\to_\frmis$. We show that there exists a derivation $\Psi$ with flow $\psi'$ and with the same premiss and conclusion as $\Phi$. In the following, we refer to the figure in Definition~\ref{DefMulIsoSubRem}.
+Let $\Phi$ be a derivation with flow $\phi'$, such that $\phi'\to_\frmis$. We show that there exists a derivation $\Psi$ with flow $\psi'$ and with the same premiss and conclusion as $\Phi$. In the following, we refer to the figure in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}.
 
 Since each of $\psi_1$, $\dots$, $\psi_n$ is connected, we can assume that the $\ai$-decomposed form of $\Phi$ is
 \[
@@ -307,7 +307,7 @@ We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gamma_1$, $\dots$, $\Gamma_N$ to get t
 
 \TODO{Change this introduction}
 
-We present here the main construction of this paper, \emph{i.e.}, a class of derivations $\Gammasf$ that only depend on a given set of atoms and that allow us to normalise any proof containing those atoms. The complexity of the $\Gammasf$ derivations dominates the complexity of the normal proof, and is due to the complexity of certain `threshold formulae', on which the $\Gammasf$ derivations are based. The $\Gammasf$ derivations are constructed in Definition~\ref{DefThrDer}; this directly leads to Theorem~\ref{TheoThrDer}, which states a crucial property of the $\Gammasf$ derivations and which is the main result of this section.
+We present here the main construction of this paper, \emph{i.e.}, a class of derivations $\Gammasf$ that only depend on a given set of atoms and that allow us to normalise any proof containing those atoms. The complexity of the $\Gammasf$ derivations dominates the complexity of the normal proof, and is due to the complexity of certain `threshold formulae', on which the $\Gammasf$ derivations are based. The $\Gammasf$ derivations are constructed in Definition~\vref{definition:ThresholdDerivations}; this directly leads to Theorem~\vref{theorem:ThresholdDerivations}, which states a crucial property of the $\Gammasf$ derivations and which is the main result of this section.
 
 \TODO{Define $\lfloor x\rfloor$.}
 
@@ -315,7 +315,7 @@ We present here the main construction of this paper, \emph{i.e.}, a class of der
 
 %In the following, $\lfloor x\rfloor$ denotes the maximum integer $n$ such that $n\le x$.
 
-There are several ways of encoding threshold functions into formulae, and the problem is to find, among them, an encoding that allows us to obtain Theorem~\ref{TheoThrDer}. Efficiently obtaining the property stated in Theorem~\ref{TheoThrDer} crucially depends also on the proof system we adopt.
+There are several ways of encoding threshold functions into formulae, and the problem is to find, among them, an encoding that allows us to obtain Theorem~\vref{theorem:ThresholdDerivations}. Efficiently obtaining the property stated in Theorem~\vref{theorem:ThresholdDerivations} crucially depends also on the proof system we adopt.
 
 \TODO{Lemma on substituting into isolated subflows}
 
@@ -345,7 +345,7 @@ $\th kn\avec1n\equiv\bigvee_{\begin{subarray}{l}i+j=k      \\
 \end{itemize}
 \end{definition}
 
-See, in Figure~\ref{FigThrEx}, some examples of threshold formulae.
+See, in Figure~\vref{figure:ThresholdFormulae}, some examples of threshold formulae.
 
 \TODO{Check if this still holds, if it does, find a new explanation:}
 
@@ -491,7 +491,7 @@ Observe that $\size{\th kn\avec1n}\le\size{\th k{n+1}\avec1{n+1}}$. Let $p=\lflo
   \size{\th{\lfloor q/2\rfloor+1}q\avec1q}\quad,
 \end{split}
 \end{equation}
-where we use Proposition~\ref{PropQuasAux}. We show that, for $h=2/(\log3-\log2)$ and for any $n>0$, we have $\size{\th{\lfloor n/2\rfloor+1}n\avec1n}\le n^{h\log n}$. We reason by induction on $n$; the case $n=1$ trivially holds. By the inequality~\eqref{PropQuasIneq}, and for $n>1$, we have
+where we use Proposition~\vref{proposition:LargestThresholdFormula}. We show that, for $h=2/(\log3-\log2)$ and for any $n>0$, we have $\size{\th{\lfloor n/2\rfloor+1}n\avec1n}\le n^{h\log n}$. We reason by induction on $n$; the case $n=1$ trivially holds. By the inequality~\eqref{PropQuasIneq}, and for $n>1$, we have
 \begin{equation*}
 \begin{split}
 \size{\th{\lfloor n/2\rfloor+1}n\avec1n}
@@ -510,7 +510,7 @@ For any $k\ge0$ the size of\/ $\th kn\avec1n$ is $n^{\Ord{\log n}}$.
 
 %-------------------------------------------------------------------------------
 \begin{proof}
-It immediately follows from Proposition~\ref{PropQuasAux} and Lemma~\ref{LemmaQuas}.
+It immediately follows from Proposition~\vref{proposition:LargestThresholdFormula} and Lemma~\vref{lemma:SizeThresholdMax}.
 \end{proof}
 
 \subsubsection{Glue derivations}
@@ -551,7 +551,7 @@ Analogously, for $0\le k\le p$ and $p+1\le l\le n$, we can define the following 
 .\fff)
 \quad.
 \]
-Both classes of derivations are used in Definition~\ref{DefThrDer}.
+Both classes of derivations are used in Definition~\vref{definition:AuxillaryThresholdDerivation}.
 \end{remark}
 
 \newcommand{\Uth}[3]{\mathop{\mathsf\Upsilon_{#1,#2}^{#3}}}
@@ -649,7 +649,7 @@ For $k\ge0$ and $1\le l\le n$, we define the derivations $\vlsmash{\Gth kln\avec
 
 %-------------------------------------------------------------------------------
 \begin{example}\label{example:AuxillaryThresholdDerivations}
-See, in Figure~\ref{FigPThEx}, some examples of derivations $\vlsmash{\Gth kln\avec1n}$. Note that, for clarity, we removed all instances of the trivial derivations $\Uth112\avec12=\Uth122\avec12=\Uth113\avec13=\vldownsmash{\vlinf\gwu{}\fff\fff}$. We can do so because these derivation instances appear as disjuncts.
+See, in Figure~\vref{figure:AuxillaryThresholdDerivations}, some examples of derivations $\vlsmash{\Gth kln\avec1n}$. Note that, for clarity, we removed all instances of the trivial derivations $\Uth112\avec12=\Uth122\avec12=\Uth113\avec13=\vldownsmash{\vlinf\gwu{}\fff\fff}$. We can do so because these derivation instances appear as disjuncts.
 \end{example}
 
 %-------------------------------------------------------------------------------
@@ -911,7 +911,7 @@ and\/ $\size{\Gth kln\avec1n}$ is $n^{\Ord{\log n}}$.
 
 %-------------------------------------------------------------------------------
 \begin{proof}
-The shape of $\Gth kln\avec1n$ can be verified by inspecting Definition~\ref{DefThrDer}. For example, this is the case when $n>1$ and $l\le p\le k<q$, where $p=\lfloor n/2\rfloor$ and $q=n-p$:
+The shape of $\Gth kln\avec1n$ can be verified by inspecting Definition~\vref{definition:AuxillaryThresholdDerivation}. For example, this is the case when $n>1$ and $l\le p\le k<q$, where $p=\lfloor n/2\rfloor$ and $q=n-p$:
 \vlstore{\noalign{\medskip}
 \vls[
 \textstyle\bigvee_{\begin{subarray}{l}i+j=k      \\
@@ -953,7 +953,7 @@ The shape of $\Gth kln\avec1n$ can be verified by inspecting Definition~\ref{Def
                             \end{subarray}}
                    \vlsbr(\th ip\avec1p.\th jq\avec{p+1}n)
 \]
-and $\th0p\avec1p\equiv\ttt$.) General (co)weak\-en\-ing rule instances can be replaced by atomic ones because of Proposition~\ref{PropGenAtPol}. The size bound on $\Gth kln\avec1n$ follows from Proposition~\ref{PropGenAtPol} and Theorem~\ref{TheoQuas}.
+and $\th0p\avec1p\equiv\ttt$.) General (co)weak\-en\-ing rule instances can be replaced by atomic ones because of Proposition~\vref{TODO}. The size bound on $\Gth kln\avec1n$ follows from Proposition~\vref{TODO} and Theorem~\vref{theorem:SizeThreshold}.
 \end{proof}
 
 \TODO{Define operator for the following definition}
@@ -1112,7 +1112,7 @@ Then, for every $1\le i\le n$ and every $0\le k\le l$, the formula $\gamma_{k,i}
 
 %------------------------------------------------------
 \begin{proof}
-Let $\theta_k\equiv\theta_k^n\avec 1n$, be the threshold formulae defined in Definition~\ref{TODO}.
+Let $\theta_k\equiv\theta_k^n\avec 1n$, be the threshold formulae defined in Definition~\vref{definition:ThresholdFormulae}.
 
 We first observe that, for every $0\le k\le n$ and for every $1\le i\le n$
 \begin{itemize}
@@ -1163,7 +1163,7 @@ We prove the inductive case by fixing a $k>0$. We need the following derivation:
  \theta_{k+1}
 }\quad.
 \]
-We know such a derivation exists in system $\SKS$ since the premiss and conclusion are logically equivalent. Furthermore, since the premiss and conclusion do not contain any pair of dual atom occurrences we know that a derivation exists in the system $\SKS\setminus\{\aid,\aiu\}$, by Proposition~\ref{TODO}. We assume the following derivations exist
+We know such a derivation exists in system $\SKS$ since the premiss and conclusion are logically equivalent. Furthermore, since the premiss and conclusion do not contain any pair of dual atom occurrences we know that a derivation exists in the system $\SKS\setminus\{\aid,\aiu\}$, by Proposition~\vref{TODO}. We assume the following derivations exist
 \[
 \vlder{\Phi_{k,1}}{\SKS\setminus\{\aid,\aiu\}}
 {
@@ -1271,7 +1271,7 @@ We prove the inductive case by fixing a $k<l$. We need the following derivation:
  \theta_{n-l+k+1}
 }\quad,
 \]
-We know such a derivation exists in system $\SKS$ since the premiss and conclusion are logically equivalent. Furthermore, since the premiss and conclusion do not contain any pair of dual atom occurrences we know that a derivation exists in the system $\SKS\setminus\{\aid,\aiu\}$, by Proposition~\ref{TODO}. We assume the following derivations exist
+We know such a derivation exists in system $\SKS$ since the premiss and conclusion are logically equivalent. Furthermore, since the premiss and conclusion do not contain any pair of dual atom occurrences we know that a derivation exists in the system $\SKS\setminus\{\aid,\aiu\}$, by Proposition~\vref{TODO}. We assume the following derivations exist
 
 \[
 \vlder{\Psi_{k,1}}{\SKS\setminus\{\aid,\aiu\}}

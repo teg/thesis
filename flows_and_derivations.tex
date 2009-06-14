@@ -9,7 +9,7 @@
 \TODO{Does it look better with or without the names of structural rules...?}
 
 %---------------------------------------
-\begin{proposition}\label{proposition:UniqueFlow}
+\begin{proposition}\label{proposition:FlowUnique}
 Given an\/ $\SKS$ derivation\/ $\Phi$, there is a unique atomic flow $\phi$ (modulo isomorphisms) such that:
 \begin{enumerate}
 %-------------------
@@ -75,7 +75,7 @@ all the atom occurrences in $\alpha$, $\beta$, $\gamma$ and $\delta$ in the prem
 
 %---------------------------------------
 \begin{definition}\label{definition:AssociatedFlow}
-Given a derivation $\Phi$, we say that the unique atomic flow $\phi$ defined in Proposition~\ref{PropUnFl} is the atomic flow \emph{associated with} the derivation $\Phi$. Sometimes, when an atom occurrence $a$ in $\Phi$ maps to an edge $\epsilon$ in $\phi$, we decorate $\epsilon$ with the label $a$.
+Given a derivation $\Phi$, we say that the unique atomic flow $\phi$ defined in Proposition~\vref{proposition:FlowUnique} is the atomic flow \emph{associated with} the derivation $\Phi$. Sometimes, when an atom occurrence $a$ in $\Phi$ maps to an edge $\epsilon$ in $\phi$, we decorate $\epsilon$ with the label $a$.
 \end{definition}
 
 \begin{theorem}\label{theorem:SurjectiveDerToFlow}
@@ -129,7 +129,7 @@ First, we construct a derivation scheme $\Psi$ that `glues together' any two ato
 }
 \quad.
 \]
-We use the above derivation and $\supers$ (see Remark~\ref{RemSuperSwitch}) to `move' an atom $a$ from one context $\zeta\vlhole$ to another context $\xi\vlhole$, again with an associated atomic flow that is free of vertices:
+We use the above derivation and $\supers$ (see Remark~\vref{remark:SuperSwitch}) to `move' an atom $a$ from one context $\zeta\vlhole$ to another context $\xi\vlhole$, again with an associated atomic flow that is free of vertices:
 \[
 \vlder{}{\{\swi,\med\}}{\vls[(\xi\{a\}.\zeta\{\fff\}).\ttt]}
 {
@@ -258,7 +258,7 @@ for some atoms $a_1,\dots,a_n,b_1,\dots,b_m$, such that $\Phi$ and $\Psi$ have t
 Given a derivation $\Phi$, an $\ai$-decomposed form of\/ $\Phi$ can be constructed.
 \end{theorem}
 \begin{proof}
-Using Lemma~\ref{LemSuperSwitch} apply, from top-to-bottom and left-to-right, the following transformations to each of the identity and cut instances in $\Phi$:
+Using Lemma~\vref{lemma:SuperSwitch} apply, from top-to-bottom and left-to-right, the following transformations to each of the identity and cut instances in $\Phi$:
 \[
 \vlderivation
 {
@@ -309,7 +309,7 @@ The only reason to insist on doing the transformations in the above proof in a c
 \end{remark}
 
 \begin{definition}\label{definition:TheAiDecomposedForm}
-Given a derivation $\Phi$, the $\ai$-decomposed (resp., $\ai$-free) form of $\Phi$ obtained as described in the proof of Theorem~\ref{ThmConstrDecomp} is called \emph{the $\ai$-decomposed} (resp., \emph{$\ai$-free}) \emph{form of\/ $\Phi$}.
+Given a derivation $\Phi$, the $\ai$-decomposed (resp., $\ai$-free) form of $\Phi$ obtained as described in the proof of Theorem~\vref{theorem:aiDecomposedForm} is called \emph{the $\ai$-decomposed} (resp., \emph{$\ai$-free}) \emph{form of\/ $\Phi$}.
 \end{definition}
 
 \begin{definition}\label{definition:DerCore}
@@ -365,13 +365,13 @@ Let $\phi$ be the atomic flow of $\Phi$, let $\phi_1$, $\dots$, $\phi_n$ be the 
  )
 }\quad.
 \]
-By studying Definitions~\ref{DefFlowCore} and \ref{DefDecompInt}, and the proof of Lemma~\ref{LemGenericContraction}, we can observe that the derivation has atomic flow $\Core(\phi)$.
+By studying Definitions~\vref{definition:FlowCore} and \vref{definition:aiDecomposedForm}, and the proof of Lemma~\vref{lemma:GenericContraction}, we can observe that the derivation has atomic flow $\Core(\phi)$.
 \end{proof}
 
 \TODO{In what sense is this unique?}
 
 \begin{definition}\label{definition:DerTheCore}
-Given a derivation $\Phi$, the core of $\Phi$ obtained as described in the proof of Theorem~\ref{ThmExistCore} is called \emph{the core of\/ $\Phi$}, denoted $\Core(\Phi)$.
+Given a derivation $\Phi$, the core of $\Phi$ obtained as described in the proof of Theorem~\v¤ref{theorem:DerCore} is called \emph{the core of\/ $\Phi$}, denoted $\Core(\Phi)$.
 \end{definition}
 
 
@@ -417,7 +417,7 @@ For every $1\le i\le n$ and every $1\le j\le k_i$, substitute $\vlinf{}{}{\vls[a
 \end{proof}
 
 \begin{definition}\label{definition:DerTheExperiment}
-Given a proof $\Pi$ and a polarity assignment to its atomic flow $\pi$, the experiment on $\Phi$ with respect to $\pi$ obtained as described in the proof of Theorem~\ref{ThmConstrExp} is called \emph{the experiment on\/ $\Pi$ with respect to $\pi$}, denoted $\Exp(\Pi,\pi)$.
+Given a proof $\Pi$ and a polarity assignment to its atomic flow $\pi$, the experiment on $\Phi$ with respect to $\pi$ obtained as described in the proof of Theorem~\vref{theorem:DerExperiment} is called \emph{the experiment on\/ $\Pi$ with respect to $\pi$}, denoted $\Exp(\Pi,\pi)$.
 \end{definition}
 
 \TODO{In what sense is this unique?}
