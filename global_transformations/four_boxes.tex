@@ -151,14 +151,6 @@ respectively.
 It is now straightforward to verify that the derivation so obtained has the desired atomic flow.
 \end{proof}
 
-\TODO{One exists, but we would very much like to know what it is... Is it unique?}
-
-\TODO{Remove?}
-
-\begin{lemma}
-Given an atomic flow $\phi$ and a polarity assignment $\pi$ there exists an atomic flow $\psi$, which is on simple form with respect to $\pi$, such that $\phi\to_\frfb\psi$.
-\end{lemma}
-
 \begin{lemma}\label{lemma:FourBoxesSize}
 For any two atomic flows $\phi$ and $\psi$ such that $\phi\to_\frfb\psi$ the size of $\psi$ is at most four times the size of $\phi$.
 \end{lemma}
@@ -166,6 +158,19 @@ For any two atomic flows $\phi$ and $\psi$ such that $\phi\to_\frfb\psi$ the siz
 \begin{lemma}\label{lemma:FourBoxesStreamlining}
 Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such that $\phi\to_\frfb\psi$ and $\phi$ is weakly streamlined with respect to $\pi$ then $\psi$ is weakly streamlined with respect to $\pi$.
 \end{lemma}
+
+\TODO{Prove. Unique...}
+
+\begin{lemma}\label{lemma:FlowExistsSimpleForm}
+Given an atomic flow $\phi$ and a polarity assignment $\pi$ there exists an atomic flow $\psi$, which is on simple form with respect to $\pi$, such that $\phi\to_\frfb\psi$.
+\end{lemma}
+
+\TODO{Reread this:}
+
+\newcommand{\Simpl}{\mathsf{Simpl}}
+\begin{definition}\label{definition:TheSimpleForm}
+Given an atomic flow $\phi$ and a polarity assignment $\pi$, let $\psi$ be the atomic flow obtained in the proof of Lemma~\vref{lemma:FlowExistsSimpleForm}, such that $\phi\to_\frfb\psi$ and $\psi$ is on simple form with respect to $\pi$, then we say that $\psi$ is \emph{the simple form of $\phi$ with respect to $\pi$}, denoted $\Simpl(\phi,\pi)$. If $\phi$ is the atomic flow of the derivation $\Phi$ and $\psi$ is the atomic flow of the derivation $\Psi$, then we say that $\Psi$ is \emph{the simple form of $\Phi$ with respect to $\pi$}, denoted $\Simpl(\Phi,\pi)$.
+\end{definition}
 
 \TODO{Check:}
 
