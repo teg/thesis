@@ -123,7 +123,7 @@ Reduction $\to_\frpb$ is sound.
 \begin{proof}
 Let $\Phi$ be a derivation with flow $\phi'$, such that $\phi'\to_\frpb\psi'$. We show that there exists a derivation $\Psi$ with flow $\psi'$ and with the same premiss and conclusion as $\Phi$. In the following, we refer to the figure in Definition~\vref{definition:PathBreaker}.
 
-Since the evidenced interaction and cut vertices belong to the same connected component, we can, using Remark~\vref{remark:AlternativeAiDecomposedForm}, construct the following $\ai$-decomposed form of $\Phi$:
+Since the evidenced interaction and cut vertices belong to the same connected component, we assume, using Remark~\vref{remark:AlternativeAiDecomposedForm}, that the following derivation is an $\ai$-decomposed form of $\Phi$:
 \[
 \vlder{\Phi'}{}
 {
@@ -131,8 +131,10 @@ Since the evidenced interaction and cut vertices belong to the same connected co
 }
 {
  \vlsbr(\vlinf{}{}{\vls[a^\phi.\bar a^\psi]}{\ttt}\;.\;\alpha)
-}\quad.
+}\quad,
 \]
+for some atom $a$ and formulae $\alpha$ and $\beta$.
+
 We combine three copies of $\Phi'$ to obtain the desired derivation $\Psi$ with flow $\psi'$ and the same premiss and conclusion as $\Phi$:
 
 \TODO{Make an example of this use of switches:}
