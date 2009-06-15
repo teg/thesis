@@ -233,15 +233,13 @@ A derivation with associated atomic flow $\phi$ is \emph{weakly streamlined} (re
 A streamlined proof is cut-free, a super streamlined proof is analytic and a hyper streamlined proof is in system $\KS$.
 \end{remark}
 
-\TODO{Try to remove the definition of $\ai$-free form.}
-
 \begin{definition}\label{definition:aiDecomposedForm}
 Given two derivations
 \[
 \vlder{\Phi}{}{\beta}{\alpha}
 \quad\mbox{and}\quad
 \Psi\;=\;
-\vlder{\Psi'}{\SKS\setminus\{\aid,\aiu\}}
+\vlder{}{\SKS\setminus\{\aid,\aiu\}}
 {
  \vlsbr[\beta\;.\;\vlinf{}{}{\fff}{\vls(b_m.\bar b_m)}\;.\;\cdots\;.\;\vlinf{}{}{\fff}{\vls(b_1.\bar b_1)}]
 }
@@ -249,10 +247,49 @@ Given two derivations
  \vlsbr(\vlinf{}{}{\vls[a_1.\bar a_1]}{\ttt}\;.\;\cdots\;.\;\vlinf{}{}{\vls[a_n.\bar a_n]}{\ttt}\;.\;\alpha)
 }\quad,
 \]
-for some atoms $a_1,\dots,a_n,b_1,\dots,b_m$, such that $\Phi$ and $\Psi$ have the same atomic flow, we say that $\Psi$ is an \emph{$\ai$-decomposed form of\/ $\Phi$}, and $\Psi'$ is an \emph{$\ai$-free form of\/ $\Phi$}.
+for some atoms $a_1,\dots,a_n,b_1,\dots,b_m$, such that $\Phi$ and $\Psi$ have the same atomic flow, we say that $\Psi$ is an \emph{$\ai$-decomposed form of\/ $\Phi$}.
 \end{definition}
 
-\TODO{Is it ok that the theorem does not mention the induced $\ai$-free form}
+\begin{remark}\label{remark:AlternativeAiDecomposedForm}
+Given a derivation $\Phi$ and an $\ai$-decomposed form of $\Phi$:
+\[
+\vlder{}{\SKS\setminus\{\aid,\aiu\}}
+{
+ \vlsbr[\beta\;.\;\vlinf{}{}{\fff}{\vls(d_l.\bar d_l)}\;.\;\cdots\;.\;\vlinf{}{}{\fff}{\vls(d_1.\bar d_1)}\;.\;\vlinf{}{}{\fff}{\vls(b_m.\bar b_m)}\;.\;\cdots\;.\;\vlinf{}{}{\fff}{\vls(b_1.\bar b_1)}]
+}
+{
+ \vlsbr(\vlinf{}{}{\vls[a_1.\bar a_1]}{\ttt}\;.\;\cdots\;.\;\vlinf{}{}{\vls[a_n.\bar a_n]}{\ttt}\;.\;\vlinf{}{}{\vls[c_1.\bar c_1]}{\ttt}\;.\;\cdots\;.\;\vlinf{}{}{\vls[c_k.\bar c_k]}{\ttt}\;.\;\alpha)
+}\quad,
+\]
+we sometimes want to single out only some of the interaction or cut instances. We therefore also call the following, partially sequentialised, derivation an $\ai$-decomposed form of $\Phi$:
+\[
+\vlderivation
+{
+ \vlin{=}{}
+ {
+  \vlsbr[\beta\;.\;\vlinf{}{}{\fff}{\vls(b_m.\bar b_m)}\;.\;\cdots\;.\;\vlinf{}{}{\fff}{\vls(b_1.\bar b_1)}]
+ }
+ {
+  \vlde{}{\SKS\setminus\{\aid,\aiu\}}
+  {
+   \vlsbr[\beta\;.\;\vlinf{}{}{\fff}{\vls(d_l.\bar d_l)}\;.\;\cdots\;.\;\vlinf{}{}{\fff}{\vls(d_1.\bar d_1)}\;.\;(b_m.\bar b_m)\;.\;\cdots\;.\;(b_1.\bar b_1)]
+  }
+  {
+   \vlin{=}{}
+   {
+    \vlsbr([a_1.\bar a_1]\;.\;\cdots\;.\;[a_n.\bar a_n]\;.\;\vlinf{}{}{\vls[c_1.\bar c_1]}{\ttt}\;.\;\cdots\;.\;\vlinf{}{}{\vls[c_k.\bar c_k]}{\ttt}\;.\;\alpha)
+   }
+   {
+    \vlhy
+    {
+     \vlsbr(\vlinf{}{}{\vls[a_1.\bar a_1]}{\ttt}\;.\;\cdots\;.\;\vlinf{}{}{\vls[a_n.\bar a_n]}{\ttt}\;.\;\alpha)
+    }
+   }
+  }
+ }
+}\quad.
+\]
+\end{remark}
 
 \begin{theorem}\label{theorem:aiDecomposedForm}
 Given a derivation $\Phi$, an $\ai$-decomposed form of\/ $\Phi$ can be constructed.
@@ -305,11 +342,11 @@ to obtain an $\ai$-decomposed form of $\Phi$.
 \end{proof}
 
 \begin{remark}\label{remakr:aiDecomposedFormUnique}
-The only reason to insist on doing the transformations in the above proof in a certain order is to ensure that the resulting derivation is unique. The uniqueness is useful in the following definition.
+The only reason to insist on performing the transformations in the proof of Theorem~\vref{theorem:aiDecomposedForm} in a certain order is to ensure that the resulting derivation is unique. The uniqueness is useful in the following definition.
 \end{remark}
 
 \begin{definition}\label{definition:TheAiDecomposedForm}
-Given a derivation $\Phi$, the $\ai$-decomposed (resp., $\ai$-free) form of $\Phi$ obtained as described in the proof of Theorem~\vref{theorem:aiDecomposedForm} is called \emph{the $\ai$-decomposed} (resp., \emph{$\ai$-free}) \emph{form of\/ $\Phi$}.
+Given a derivation $\Phi$, the $\ai$-decomposed form of $\Phi$ obtained as described in the proof of Theorem~\vref{theorem:aiDecomposedForm} is called \emph{the $\ai$-decomposed form of\/ $\Phi$}.
 \end{definition}
 
 \begin{definition}\label{definition:DerCore}
