@@ -1,7 +1,3 @@
-\TODO{Import from AFII when the paper is final.}
-
-
-
 \newcommand{\frpb}{{\mathsf{pb}}}
 %---------------------------------------
 \begin{definition}\label{definition:PathBreaker}
@@ -127,28 +123,29 @@ Reduction $\to_\frpb$ is sound.
 \begin{proof}
 Let $\Phi$ be a derivation with flow $\phi'$, such that $\phi'\to_\frpb\psi'$. We show that there exists a derivation $\Psi$ with flow $\psi'$ and with the same premiss and conclusion as $\Phi$. In the following, we refer to the figure in Definition~\vref{definition:PathBreaker}.
 
-\TODO{Make sure it is correct to refer to this kind of $ai$-decomposed form.}
-
 Since the evidenced interaction and cut vertices belong to the same connected component, we can, using Remark~\vref{remark:AlternativeAiDecomposedForm}, construct the following $\ai$-decomposed form of $\Phi$:
 \[
 \vlder{\Phi'}{}
 {
- \vls[\beta\;.\;\vlinf{}{}{\fff}{\vls(a^\phi.\bar a^\psi)}]
+ \vlsbr[\beta\;.\;\vlinf{}{}{\fff}{\vls(a^\phi.\bar a^\psi)}]
 }
 {
- \vls(\vlinf{}{}{\vls[a^\phi.\bar a^\psi]}{\ttt}\;.\;\alpha)
+ \vlsbr(\vlinf{}{}{\vls[a^\phi.\bar a^\psi]}{\ttt}\;.\;\alpha)
 }\quad.
 \]
 We combine three copies of $\Phi'$ to obtain the desired derivation $\Psi$ with flow $\psi'$ and the same premiss and conclusion as $\Phi$:
+
+\TODO{Make an example of this use of switches:}
+
 \newbox\DeltaTopK
 \setbox\DeltaTopK=
 \hbox{$
 \vlder{\Phi'}{}
 {
- \vls[\beta\;.\;(\vlinf{}{}{\ttt}{a^\phi}\;.\;\bar a^\psi)]
+ \vlsbr[\beta\;.\;(\vlinf{}{}{\ttt}{a^\phi}\;.\;\bar a^\psi)]
 }
 {
- \vls(\vlinf{}{}{\vls[a^\phi.\bar a^\psi]}{\ttt}\;.\;\alpha)
+ \vlsbr(\vlinf{}{}{\vls[a^\phi.\bar a^\psi]}{\ttt}\;.\;\alpha)
 }
 $}
 \newbox\DeltaK
@@ -156,10 +153,10 @@ $}
 \hbox{$
 \vlder{\Phi'}{}
 {
- \vls[\beta\;.\;(a^\phi.\vlinf{}{}{\ttt}{\bar a^\psi})]
+ \vlsbr[\beta\;.\;(a^\phi\;.\;\vlinf{}{}{\ttt}{\bar a^\psi})]
 }
 {
- \vls([\vlinf{}{}{a^\phi}{\fff}\;.\;\bar a^\psi]\;.\;\alpha)
+ \vlsbr([\vlinf{}{}{a^\phi}{\fff}\;.\;\bar a^\psi]\;.\;\alpha)
 }
 $}
 \newbox\DeltaBotK
@@ -167,10 +164,10 @@ $}
 \hbox{$
 \vlder{\Phi'}{}
 {
- \vls[\beta.\vlinf{}{}{\fff}{\vls(a^\phi.\bar a^\psi)}]
+ \vlsbr[\beta\;.\;\vlinf{}{}{\fff}{\vls(a^\phi.\bar a^\psi)}]
 }
 {
- \vls([a^\phi\;.\;\vlinf{}{}{\bar a^\psi}{\fff}]\;.\;\alpha)
+ \vlsbr([a^\phi\;.\;\vlinf{}{}{\bar a^\psi}{\fff}]\;.\;\alpha)
 }
 $}
 \[
@@ -179,27 +176,39 @@ $}
 {
  \vlin{2\cdot\cod}{}{\beta}
  {
-  \vlin{=}{}{\vlsbr[\beta\;\;\;\;.\;\;\;\;\beta\;\;\;\;.\;\;\;\;\box\DeltaBotK]}
+  \vlin{\swi}{}{\vls[\beta\;\;\;\;.\;\;\;\;\beta\;\;\;\;.\;\;\;\;\box\DeltaBotK]}
   {
-   \vlin{\swi}{}{\vlsmallbrackets\vls[(\alpha.a^\phi).[\beta.\beta]]}
+   \vlin{2\cdot\cou}{}
    {
-    \vlin{=}{}{\vlsmallbrackets\vls(\alpha.[a^\phi.[\beta.\beta]])}
-    {
-     \vlin{=}{}{\vlsbr([\beta\;\;\;\;.\;\;\;\;\box\DeltaK]\;\;\;\;.\;\;\;\;\alpha)}
+    \vls
+    (
+     \vlinf{\swi}{}
      {
-      \vlin{=}{}{\vls(\vlinf{\swi}{}{\vlsmallbrackets\vls[(\alpha.\bar a^\psi).\beta]}{\vlsmallbrackets\vls(\alpha.[\bar a^\psi.\beta])}\;.\;\alpha)}
-      {
-       \vlin{2\cdot\cou}{}{\vlsbr(\box\DeltaTopK\;\;\;\;.\;\;\;\;\alpha\;\;\;\;.\;\;\;\;\alpha)}
-       {
-        \vlhy{\alpha}
-       }
-      }
+      \vls
+      [
+       \beta
+      \;\;\;\;.\;\;\;\;
+       \box\DeltaK
+      ]
      }
-    }
+     {
+      \vls
+      (
+       \box\DeltaTopK
+      \;\;\;\;.\;\;\;\;
+       \alpha
+      )
+     }
+    \;\;\;\;\;\;\;\;.\;\;\;\;\;\;\;\;
+     \alpha
+    )
+   }
+   {
+    \vlhy{\alpha}
    }
   }
  } 
-}\quad.
+}\qquad.
 \]
 \end{proof}
 
