@@ -112,6 +112,58 @@ Given an atomic flow $\phi$, we say that the sets $L_\top=\{\epsilon_1,\dots,\ep
                                 {\scriptstyle\mathbf9}
                                 {\scriptscriptstyle\mathbf9}}}
 
+\begin{remark}\label{remark:LabelsOnBoxes}
+Let $\phi$ be an atomic flow with upper edges $\boldsymbol\epsilon$ and lower edges $\boldsymbol\iota$, we then represent it as
+\[
+\atomicflow{
+( 0,6)*{\afvjum4{\boldsymbol\epsilon}{}};
+( 0,0)*{\affr88};
+( 2,2)*{\aflabelright\phi};
+( 0,-6)*{\afvjdm4{\boldsymbol\iota}{}};
+}\quad.
+\]
+
+\newbox\contrup\setbox\contrup=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afacu{}{}{}{}{}{}}}$}
+\newbox\contrdown\setbox\contrdown=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afacd{}{}{}{}{}{}}}$}
+\newbox\interdown\setbox\interdown=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afaid{}{}{}{}{}{}}}$}
+\newbox\interup\setbox\interup=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afaiu{}{}{}{}{}{}}}$}
+\newbox\weakdown\setbox\weakdown=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afawd{}{}{}{}{}{}}}$}
+\newbox\weakup\setbox\weakup=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afawu{}{}{}{}{}{}}}$}
+
+We sometimes label an atomic flow by the image of its labeling function, $\eta(V)$, \emph{e.g.}
+\[
+\atomicflow{
+( 0,8)*{\invisiblemark};
+( 0,0)*{\affr88};
+( 0,0)*{\copy\interdown};
+( 0,-6)*{\afvjm4};
+( 4,0)*{\invisiblemark}
+}\quad,\quad
+\atomicflow{
+(-6,0)*{\invisiblemark};
+( 0,6)*{\afvjm4};
+( 0,0)*{\affr{12}8};
+(-3,0)*{\copy\contrdown};
+( 3,0)*{\copy\contrup};
+( 0,-6)*{\afvjm4};
+}\quad.
+\]
+
+In general, we represent atomic flows as directed-graph diagrams, except that the special vertices $\top$ and $\bot$ are not shown, and the labels of the vertices are explicitly shown as graphical elements. When we refer to the vertices of an atomic flow, we do not include $\top$ and $\bot$. Sometimes we identify vertices with their labels. 
+\end{remark}
+
 \TODO{Make sure we define atomic flows modulo associativity of contraction and graph isomorphism.}
 
 \TODO{Define `\emph{super paths}'.}
