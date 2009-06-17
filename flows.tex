@@ -62,7 +62,7 @@ An (\emph{atomic}) \emph{flow} is a tuple $(V,E,\eta,\up,\lo)$, denoted $\phi$ o
 %-------------------
 \item\label{ItAcycl} there is no sequence $\epsilon_1,\dots,\epsilon_h$ of edges of $V$ such that $\up(\epsilon_i)=\lo(\epsilon_{i+1\pmod h})$, for $1\le i\le h$;
 %-------------------
-\item\label{ItPol} there is a \emph{polarity assignment} $\pi\colon E\to\{\pmi,\ppl\}$ such that, for every $\nu\in V$,
+\item\label{definition:AtomicFlow:item:PolarityAssignment} there is a \emph{polarity assignment} $\pi\colon E\to\{\pmi,\ppl\}$ such that, for every $\nu\in V$,
 \begin{enumerate}
 %---------
 \item if $\eta(\nu)\in\{\acd,\acu\}$ then $\pi(E_\nu)=\{\pmi\}$ or $\pi(E_\nu)=\{\ppl\}$;
@@ -118,7 +118,7 @@ Let $\phi$ be an atomic flow with upper edges $\boldsymbol\epsilon$ and lower ed
 \atomicflow{
 ( 0,6)*{\afvjum4{\boldsymbol\epsilon}{}};
 ( 0,0)*{\affr88};
-( 2,2)*{\aflabelright\phi};
+( 1,2)*{\aflabelright\phi};
 ( 0,-6)*{\afvjdm4{\boldsymbol\iota}{}};
 }\quad.
 \]
@@ -162,6 +162,29 @@ We sometimes label an atomic flow by the image of its labeling function, $\eta(V
 \]
 
 In general, we represent atomic flows as directed-graph diagrams, except that the special vertices $\top$ and $\bot$ are not shown, and the labels of the vertices are explicitly shown as graphical elements. When we refer to the vertices of an atomic flow, we do not include $\top$ and $\bot$. Sometimes we identify vertices with their labels. 
+\end{remark}
+
+\begin{remark}
+Given an atomic flow $\phi$ and a polarity assignment $\pi$, we write
+\[
+\atomicflow{
+( 0,6)*{\afvjum4{}{}};
+( 0,0)*{\affr88};
+(-1,2)*{\aflabelleft\ppl};
+( 1,2)*{\aflabelright\phi};
+( 0,-6)*{\afvjdm4{}{}};
+}\quad\mbox{or}\quad
+\atomicflow{
+( 0,6)*{\afvjum4{}{}};
+( 0,0)*{\affr88};
+(-1,2)*{\aflabelleft\pmi};
+( 1,2)*{\aflabelright\phi};
+( 0,-6)*{\afvjdm4{}{}};
+}\quad,
+\]
+respectively, if all the edges in $\phi$ have polarity assignment $\ppl$ (resp., $\pmi$).
+
+If we label an atomic flow with a polarity assignment it can not contain any interaction or cut vertices duo to property~\ref{definition:AtomicFlow:item:PolarityAssignment} of Definition~\vref{definition:AtomicFlow}.
 \end{remark}
 
 \TODO{Make sure we define atomic flows modulo associativity of contraction and graph isomorphism.}
