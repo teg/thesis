@@ -115,6 +115,42 @@ If there exists a derivation $\vlder{}{\{\coor,\coand,\asor,\asand,\unor,\unand,
 When $\vlder{}{\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}}{\beta}{\alpha}$, we say that $\alpha=\beta$ and we often write $\vlinf{=}{}{\beta}{\alpha}$ instead of the derivation. Using this shorthand only compresses derivations by a polynomial, so it does not affect any complexity results.
 \end{remark}
 
+\begin{remark}\label{remark:ImplicitEquations}
+When we work in (subsystems of) $\SKS$, we often omit mentioning the invertible rules $\coor$, $\coand$, $\asor$, $\asand$, $\unor$, $\unand$, $\idor$ and $\idand$. \emph{E.g.}, when we refer to the system $\{\swi\}$ we mean the system $\{\swi,\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}$, and we write
+\[
+\vlinf{\swi}{}{\vls[\alpha.(\beta.\gamma)]}{\vls([\alpha.\beta].\gamma)}\quad,
+\]
+instead of
+\[
+\vlderivation
+{
+ \vlin{=}{}
+ {
+  \vls[\alpha.(\beta.\gamma)]
+ }
+ {
+  \vlin{\swi}{}
+  {
+   \vls[(\gamma.\beta).\alpha]
+  }
+  {
+   \vlin{=}{}
+   {
+    \vls(\gamma.[\beta.\alpha])
+   }
+   {
+    \vlhy
+    {
+     \vls([\alpha.\beta].\gamma)
+    }
+   }
+  }
+ }
+}\quad.
+\]
+See the proofs of Theorems~\vrefrange{theorem:PathBreakerSound}{theorem:MultipleIsolatedSubflowsRemovalMaybeSound} for more examples of implicit equations.
+\end{remark}
+
 \begin{lemma}\label{lemma:SuperSwitch}
 Given a context $\xi\vlhole$ and a formula $\alpha$ there exist derivations $\vlder{}{\{\swi\}}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlder{}{\{\swi\}}{\vls[\xi\{\fff\}.\alpha]}{\xi\{\alpha\}}$.
 \end{lemma}
