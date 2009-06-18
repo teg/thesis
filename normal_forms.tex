@@ -733,3 +733,176 @@ where, for $1\le i\le n$, $\phi_i$ is a connected, non-weakly-cut-free subflow, 
 \]
 For every $1\le i\le n$, the \emph{new upper edges of} $\phi_i$ are $\boldsymbol{\lambda'_i}$.
 \end{definition}
+
+
+\begin{definition}\label{definition:FlowCore}
+Given an atomic flow $\phi$ and a polarity assignment $\pi$, such that
+\[
+\phi\;=\;
+\atomicflow{
+(-21, 14)*{\afvjm4};
+(-21,  8)*{\affr88};
+(-22, 10)*{\aflabelleft{\ppl}};
+%-
+(-24,  0)*{\afvjm8};
+%-
+(-21, -8)*{\affr88};
+(-22, -6)*{\aflabelleft{\ppl}};
+(-21,-14)*{\afvjm4};
+%-
+( -6, 16)*{\afaidm{}{}{}{}{}{}};
+( -4,  8)*{\afvjm8};
+(-11,  8)*{\affr88};
+(-12, 10)*{\aflabelleft{\ppl}};
+(-16,  0)*{\afcjrm48};
+%-
+(-16,  0)*{\afcjlm48};
+(-11, -8)*{\affr88};
+(-12, -6)*{\aflabelleft{\ppl}};
+( -4, -8)*{\afvjm8};
+( -6,-16)*{\afaium{}{}{}{}{}{}};
+%--
+( 12, 10)*{\afaidmex{}{}{}{}{}{}{20}{4}};
+(  2,  5)*{\afvjm2};
+(  4,  6)*{\cdots};
+( 22,  5)*{\afvjm2};
+(  9,  8)*{\afaidmex{}{}{}{}{}{}{6}{4}};
+(  1,  0)*{\affr{12}{8}};
+( -2,  2)*{\aflabelleft{\pmi}};
+( 12,  0)*{\affr{6}{8}};
+( 12,  2)*{\aflabelright{\phi_1}};
+( 12,  2)*{\aflabelleft{\ppl}};
+( 17,  0)*{\cdots};
+( 22,  0)*{\affr{6}{8}};
+( 22,  2)*{\aflabelright{\phi_n}};
+( 22,  2)*{\aflabelleft{\ppl}};
+(  9, -8)*{\afaiumex{}{}{}{}{}{}{6}{4}};
+(  2, -5)*{\afvjm2};
+(  4, -6)*{\cdots};
+( 22, -5)*{\afvjm2};
+( 12,-10)*{\afaiumex{}{}{}{}{}{}{20}{4}};
+}\qquad
+\atomicflow{
+(  35,12.5)*{\afvjm6};
+%---
+(  35, 5.5)*{\affr{18}8};
+(  30, 5.5)*{\copy\contrup};
+(  35, 5.5)*{\copy\weakdown};
+(  40, 5.5)*{\copy\contrdown};
+(  50, 5.5)*{\affr88};
+(  50, 5.5)*{\copy\interdown};
+%---
+(  30, 0)*{\afvjm3};
+(  40, 0)*{\afvjm3};
+(  40, 0)*{\affr{30}{28}};
+(  52,12)*{\aflabelright{\psi}};
+(  50, 0)*{\afvjm3};
+%---
+(  30,-5.5)*{\affr88};
+(  30,-5.5)*{\copy\interup};
+(  45,-5.5)*{\affr{18}8};
+(  40,-5.5)*{\copy\contrup};
+(  45,-5.5)*{\copy\weakup};
+(  50,-5.5)*{\copy\contrdown};
+%---
+( 45,-12.5)*{\afvjm6};
+}\quad,
+\]
+where, for $1\le i\le n$, the subflow $\phi_i$ is a connected subflow, we define the \emph{core of $\phi$ with respect to $\pi$}, denoted $\Core(\phi,\pi)$, to be
+\[
+\atomicflow{
+(-21, 14)*{\afvjm4};
+(-21,  8)*{\affr88};
+(-22, 10)*{\aflabelleft{\ppl}};
+%-
+(-24,  0)*{\afvjm8};
+%-
+(-21, -8)*{\affr88};
+(-22, -6)*{\aflabelleft{\ppl}};
+(-21,-14)*{\afvjm4};
+%-
+( -6, 16)*{\afaidm{}{}{}{}{}{}};
+( -4,  8)*{\afvjm8};
+(-11,  8)*{\affr88};
+(-12, 10)*{\aflabelleft{\ppl}};
+(-16,  0)*{\afcjrm48};
+%-
+(-16,  0)*{\afcjlm48};
+(-11, -8)*{\affr88};
+(-12, -6)*{\aflabelleft{\ppl}};
+( -4, -8)*{\afvjm8};
+( -6,-16)*{\afaium{}{}{}{}{}{}};
+%--
+( 10, 10)*{\affr{6}{8}};
+( 10, 10)*{\copy\contrup};
+( 10,-10)*{\affr{6}{8}};
+( 10,-10)*{\copy\contrdown};
+(  2, 10)*{\affr{6}{8}};
+(  2, 10)*{\copy\contrup};
+(  2,-10)*{\affr{6}{8}};
+(  2,-10)*{\copy\contrdown};
+(  2, 16)*{\afvj4};
+(  2,  5)*{\afvjm2};
+(  6,5.5)*{\cdots};
+( 10, 16)*{\afvj4};
+( 10,  5)*{\afvjm2};
+( 18, 16)*{\afvjd4{}{\lambda_1}};
+( 28, 16)*{\afvjd4{}{\lambda_n}};
+( 18,  5)*{\afvjm2};
+( 28,  5)*{\afvjm2};
+(  4,  0)*{\affr{18}{8}};
+( -2,  2)*{\aflabelleft{\pmi}};
+( 18, 10)*{\affr{6}{8}};
+( 18, 10)*{\copy\contrup};
+( 18,  0)*{\affr{6}{8}};
+( 18,-10)*{\affr{6}{8}};
+( 18,-10)*{\copy\contrdown};
+( 18,  2)*{\aflabelright{\phi_1}};
+( 18,  2)*{\aflabelleft{\ppl}};
+( 23,  0)*{\cdots};
+( 28, 10)*{\affr{6}{8}};
+( 28, 10)*{\copy\contrup};
+( 28,  0)*{\affr{6}{8}};
+( 28,-10)*{\affr{6}{8}};
+( 28,-10)*{\copy\contrdown};
+( 28,  2)*{\aflabelright{\phi_n}};
+( 28,  2)*{\aflabelleft{\ppl}};
+(  2, -5)*{\afvjm2};
+(  2,-16)*{\afvj4};
+(  6, -5)*{\cdots};
+( 10,-16)*{\afvj4};
+( 10, -5)*{\afvjm2};
+( 18, -5)*{\afvjm2};
+( 28, -5)*{\afvjm2};
+( 18,-16)*{\afvju4{}{\mu_1}};
+( 28,-16)*{\afvju4{}{\mu_n}};
+}\qquad
+\atomicflow{
+(  35,12.5)*{\afvjm6};
+%---
+(  35, 5.5)*{\affr{18}8};
+(  30, 5.5)*{\copy\contrup};
+(  35, 5.5)*{\copy\weakdown};
+(  40, 5.5)*{\copy\contrdown};
+(  50, 5.5)*{\affr88};
+(  50, 5.5)*{\copy\interdown};
+%---
+(  30, 0)*{\afvjm3};
+(  40, 0)*{\afvjm3};
+(  40, 0)*{\affr{30}{28}};
+(  52,12)*{\aflabelright{\psi}};
+(  50, 0)*{\afvjm3};
+%---
+(  30,-5.5)*{\affr88};
+(  30,-5.5)*{\copy\interup};
+(  45,-5.5)*{\affr{18}8};
+(  40,-5.5)*{\copy\contrup};
+(  45,-5.5)*{\copy\weakup};
+(  50,-5.5)*{\copy\contrdown};
+%---
+( 45,-12.5)*{\afvjm6};
+}\quad.
+\]
+For every $1\le i\le n$, the \emph{new upper} (resp., \emph{lower}) \emph{edge of $\phi_i$ in $\Core{\phi,\pi}$} is $\lambda_i$ (resp., $\mu_i$). We say that $\phi_1$, $\dots$, $\phi_n$ is an \emph{ordered choice of components from $\phi$ with respect to $\pi$}.
+\end{definition}
+
