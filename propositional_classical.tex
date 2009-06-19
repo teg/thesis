@@ -207,8 +207,6 @@ To ease legibility we introduce three macro rules for some derivations built up 
 we write $\vlinf{\supers}{}{\vls[\zeta\{\fff\}.\xi\{\alpha\}]}{\vls(\zeta\{\alpha\}.\xi\{\ttt\})}$.
 \end{remark}
 
-\TODO{Use notation for super switch.}
-
 \begin{lemma}\label{lemma:GenericContraction}
 Given a formula $\alpha$ and a positive integer $n$, there exist derivations $\vlupsmash{\vlder{}{\{\acd,\med\}}{\alpha}{\bigvee_{i=1}^{n}\alpha}}$ and $\vlupsmash{\vlder{}{\{\acu,\med\}}{\bigwedge_{i=1}^{n}\alpha}{\alpha}}$.
 \end{lemma}
@@ -257,6 +255,8 @@ Finally, we show the inductive case, $n>2$:
 \newcommand{\contr}{\mathsf{c}}
 \newcommand{\cod}{{\contr{\downarrow}}}
 \newcommand{\cou}{{\contr{\uparrow}}}
+
+\TODO{Define $\star$ notation}
 
 \begin{remark}\label{remark:GenericContraction}
 In the non-atomic version of system $\SKS$ the derivations shown in Lemma~\vref{lemma:GenericContraction} correspond to repeated applications of (co)contractions. For this reason we sometimes write the inference rules $\vlinf{n\cdot\cod}{}{\alpha}{\bigvee_{i=1}^{n}\alpha}$ and $\vlinf{n\cdot\cou}{}{\bigwedge_{i=1}^{n}\alpha}{\alpha}$ instead of the derivations $\vlder{}{\{\acd,\med\}}{\alpha}{\bigvee_{i=1}^{n}\alpha}$ and $\vlupsmash{\vlder{}{\{\acu,\med\}}{\bigwedge_{i=1}^{n}\alpha}{\alpha}}$, respectively.
