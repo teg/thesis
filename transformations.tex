@@ -716,6 +716,23 @@ In fact, if there are $n$ couples cocontraction/contraction like the two shown a
 %======================================
 \section{Global Transformations}\label{section:GlobalTransformations}
 
+\TODO{Clarify the consequences of this: it means that the flow of generic contractions have the shape we require in the following theorems...}
+
+\begin{remark}\label{remark:FlowGenericContraction}
+For some formula $\alpha$ and some natural number $n$, let the atomic flow of $\vlinf{n\cdot\cou}{}{\bigwedge_{i=1}^n\alpha}{\alpha}$ be
+\[
+\atomicflow
+{
+( 0, 6)*{\afvjdm4{\boldsymbol\epsilon}{}};
+( 0, 0)*{\affr88};
+( 0, 0)*{\copy\contrup};
+(-3,-6)*{\afvjum4{\boldsymbol\epsilon_1}{}};
+( 0,-6)*{\cdots};
+( 3,-6)*{\afvjum4{}{\boldsymbol\epsilon_n}};
+}\quad,
+\]
+where, for every $1\le i\le n$, there is exactly one instance of $\alpha$ in the conclusion of the derivation such that the atom occurrences in $\alpha$ map to the edges $\boldsymbol\epsilon_i$. By studying the proof of Lemma~\vref{lemma:GenericContraction} we see that there is a path from every edge in $\boldsymbol\epsilon$ to exactly one edge in every set of edges $\boldsymbol\epsilon_1$, $\dots$, $\boldsymbol\epsilon_n$.
+\end{remark}
 
 %======================================
 \subsection{Path Breaker}\label{subsection:PathBreaker}
