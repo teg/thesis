@@ -7,7 +7,7 @@
 \newcommand{\frfb}{{\mathsf{fb}}}
 %---------------------------------------
 \begin{definition}\label{definition:FourBoxes}
-We define the reduction $\to_\frfb$ (where $\frfb$ stands for \emph{four boxes}) as follows, for any two atomic flows $\phi$ and $\psi$:
+We define the reduction $\to_\frfb$ (where $\frfb$ stands for \emph{four boxes}) as follows, for any atomic flows $\phi$ and $\psi$ that do not contain interaction or cut vertices:
 \[
 \atomicflow{
 (-8, 6)*{\afvjdm4{\boldsymbol{\epsilon}}{}};
@@ -27,50 +27,49 @@ We define the reduction $\to_\frfb$ (where $\frfb$ stands for \emph{four boxes})
 \atomicflow{
 %left
 (-27, 8)*{\afawdm{}{}{}{}};
-(-19,15)*{\afvjdm6{\boldsymbol{\epsilon'}}{}};
+(-19,16)*{\afvjdm8{\boldsymbol{\epsilon}}{}};
 (-19, 8)*{\afacum{}{}{}{}{}{}};
 (-24, 0)*{\affr88};
-(-20, 2)*{\aflabelleft{\psi_1}};
+(-20, 2)*{\aflabelleft{\phi}};
 (-27,-8)*{\afawum{}{}{}{}};
 (-19,-8)*{\afacdm{}{}{}{}{}{}};
-(-19,-15)*{\afvjum6{\boldsymbol{\iota'}}{}};
+(-19,-16)*{\afvjum8{\boldsymbol{\iota}}{}};
 %top
-(-15,18)*{\afawdm{}{}{}{}};
+(-15,18)*{\afawdm{}{}{}{\boldsymbol{\tilde\epsilon}}};
 ( -7,18)*{\afaidnw{}{}};
 ( -9,16)*{\afvjm4};
 ( -2,15)*{\afcjlm66};
 (-12,10)*{\affr88};
-( -8,12)*{\aflabelleft{\psi_2}};
+( -8,12)*{\aflabelleft{\phi}};
 (-16, 1)*{\afcjrm2{10}};
 ( -9, 2)*{\afawum{}{}{}{}};
 %bot
 (-16,-1)*{\afcjlm2{10}};
 ( -9,-2)*{\afawdm{}{}{}{}};
 (-12,-10)*{\affr88};
-( -8, -8)*{\aflabelleft{\psi_3}};
+( -8, -8)*{\aflabelleft{\phi}};
 ( -9,-16)*{\afvjm4};
 ( -2,-15)*{\afcjrm66};
 ( -7,-20)*{\afaiunw{}{}};
-(-15,-18)*{\afawum{}{}{}{}};
+(-15,-18)*{\afawum{}{}{}{\boldsymbol{\tilde\iota}}};
 %center
-(-3, 11)*{\afvjdm{14}{}{\boldsymbol{\epsilon}}};
+(-3, 12)*{\afvjdm{16}{}{\boldsymbol{\epsilon'}}};
 ( 3,  8)*{\afacdm{}{}{}{}{}{}};
 ( 7, 12)*{\afaidnw{}{}};
 ( 0,  0)*{\affr88};
-( 4,  2)*{\aflabelleft\phi};
+( 4,  2)*{\aflabelleft\psi};
 ( 7,-14)*{\afaiunw{}{}};
 ( 3, -8)*{\afacum{}{}{}{}{}{}};
-(-3,-11)*{\afvjum{14}{}{\boldsymbol{\iota}}};
+(-3,-12)*{\afvjum{16}{}{\boldsymbol{\iota'}}};
 %right
-(15, 8)*{\afawdm{}{}{}{}};
+(15, 8)*{\afawdm{}{}{}{\boldsymbol{\hat\epsilon}}};
 ( 9, 8)*{\afvjm8};
 (12, 0)*{\affr88};
-(16, 2)*{\aflabelleft{\psi_4}};
+(16, 2)*{\aflabelleft{\phi}};
 ( 9,-8)*{\afvjm8};
-(15,-8)*{\afawum{}{}{}{}};
-}\quad,
+(15,-8)*{\afawum{}{}{}{\boldsymbol{\hat\iota}}};
+}\quad.
 \]
-where $\psi_1$, $\psi_2$, $\psi_3$ and $\psi_4$ are isomorphic to $\psi$.
 \end{definition}
 
 %---------------------------------------
@@ -78,14 +77,14 @@ where $\psi_1$, $\psi_2$, $\psi_3$ and $\psi_4$ are isomorphic to $\psi$.
 Reduction\/ $\to_\frfb$ is sound.
 \end{theorem}
 
-\TODO{Tidy up derivations (commutativity before switches, etc.)}
-
 %---------------------------------------
 \begin{proof}
-For every atom occurrence $a$ which maps to an edge in $\psi$;
+Let $\Phi$ be a derivation with flow $\phi'$, such that $\phi'\to_\frfb\psi'$. We show that there exists a derivation $\Psi$ with flow $\psi'$ and with the same premiss and conclusion as $\Phi$. In the following, we refer to the figure in Definition~\vref{definition:FourBoxes}.
+
+We obtain $\Psi$ from $\Phi$ by, for every atom occurrence $a$ in $\Phi$ that maps to an edge in $\phi$;
 \begin{enumerate}
-	\item If $a$ is not in the premiss or conclusion of the derivation substitute it with the formula $\vls([a_1.a_2].[a_3.a_4])$, where $a=a_1=a_2=a_3=a_4$ and the subscripts denote which of $\psi_1$, $\psi_2$, $\psi_3$ or $\psi_4$ the atom occurrence maps to.
-	\item If $a$ is in the premiss or conclusion of the derivation then substitute it with the derivation
+	\item If $a$ is not in the premiss or conclusion of $\Phi$, substitute it with the formula $\vls([a_1.a_2].[a_3.a_4])$, where $a=a_1=a_2=a_3=a_4$.
+	\item If $a$ is in the premiss or conclusion of $\Phi$, substitute it with the derivation
 \[
 \vlinf{}{}
 {
@@ -108,15 +107,16 @@ For every atom occurrence $a$ which maps to an edge in $\psi$;
 \vlinf{}{}
 {a}
 {
- \vls[
-  (a_1.a_2)
+ \vls
+ (
+  [a_1.a_2]
  \;.\;
-  (
-   \vlinf{}{}{\fff}{a_3}
+  [
+   \vlinf{}{}{\ttt}{a_3}
   \;.\;
-   \vlinf{}{}{\fff}{a_4}
-  )
- ]
+   \vlinf{}{}{\ttt}{a_4}
+  ]
+ )
 }
 \quad,
 \]
@@ -148,8 +148,10 @@ respectively.
 respectively.
 	\item Substitute rule instances $\acd,\acu,\awd,\awu$ which apply to $a$ with their generic counterparts applied to $\vls([a_1.a_2].[a_3.a_4])$.
 \end{enumerate}
-It is now straightforward to verify that the derivation so obtained has the desired atomic flow.
+$\Psi$ then has atomic flow $\psi'$ where $a_1$, $a_2$, $a_3$ and $a_4$ map to, respectively, the leftmost, top, bottom and rightmost copies of $\phi$ in $\psi'$.
 \end{proof}
+
+\TODO{Make a proposition? Rephrase?}
 
 \begin{lemma}\label{lemma:FourBoxesSize}
 For any two atomic flows $\phi$ and $\psi$ such that $\phi\to_\frfb\psi$ the size of $\psi$ is at most four times the size of $\phi$.
@@ -159,11 +161,34 @@ For any two atomic flows $\phi$ and $\psi$ such that $\phi\to_\frfb\psi$ the siz
 Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such that $\phi\to_\frfb\psi$ and $\phi$ is weakly streamlined with respect to $\pi$ then $\psi$ is weakly streamlined with respect to $\pi$.
 \end{lemma}
 
-\TODO{Prove. Unique...}
+\begin{proof}
+By studying the atomic flows in Definition~\vref{definition:FourBoxes} we can observe that for every path from an interaction vertex to a cut vertex in $\psi$ there is a path from an interaction vertex to a cut vertex in $\phi$ with the same polarity assignment.
+\end{proof}
 
 \begin{lemma}\label{lemma:FlowExistsSimpleForm}
 Given an atomic flow $\phi$ and a polarity assignment $\pi$ there exists an atomic flow $\psi$, which is on simple form with respect to $\pi$, such that $\phi\to_\frfb\psi$.
 \end{lemma}
+
+\begin{proof}
+Since we can represent $\phi$ with polarity assignment $\pi$ as follows:
+\[
+\atomicflow{
+(-8, 6)*{\afvjdm4{\boldsymbol{\epsilon}}{}};
+( 0, 8)*{\afaidm{}{}{}{}{}{}};
+( 8, 6)*{\afvjdm4{}{\boldsymbol{\epsilon'}}};
+%-
+(-5, 0)*{\affr88};
+(-6, 2)*{\aflabelleft\ppl};
+( 5, 0)*{\affr88};
+( 4, 2)*{\aflabelleft\pmi};
+%-
+(-8,-6)*{\afvjum4{\boldsymbol{\iota}}{}};
+( 0,-8)*{\afaium{}{}{}{}{}{}};
+( 8,-6)*{\afvjum4{}{\boldsymbol{\iota'}}};
+}\quad.
+\]
+It is routine to check Definition~\vref{definition:FlowSimpleForm} and Definition~\vref{definition:FourBoxes} to verify that $\psi$ is on simple form with respect to $\pi$.
+\end{proof}
 
 \TODO{Reread this:}
 
