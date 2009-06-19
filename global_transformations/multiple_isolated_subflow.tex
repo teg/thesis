@@ -174,10 +174,9 @@ Since each of $\psi_1$, $\dots$, $\psi_n$ is connected and contains no interacti
 \]
 We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gamma_1$, $\dots$, $\Gamma_N$ to get the desired derivation $\Psi$ with atomic flow $\psi'$ and the same premiss and conclusion as $\Phi$:
 \[
-\Psi\quad=\quad
 \vlderivation
 {
- \vlin{(N-1)\cdot\cou}{}
+ \vlin{\cod}{}
  {
   \beta
  }
@@ -186,7 +185,7 @@ We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gamma_1$, $\dots$, $\Gamma_N$ to get t
   {
    \vls
    [
-    \beta\;\;\;.\;\;\;\cdots\;\;\;.\;\;\;\beta
+    \vlinf{\cod}{}{\beta}{\vls[\beta.\beta]}
    \;\;\;.\;\;\;
     \vlder{\Phi_N}{}
     {
@@ -203,7 +202,7 @@ We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gamma_1$, $\dots$, $\Gamma_N$ to get t
     \vls
     (
      [
-      \beta\;\;\;\;.\;\;\;\;\cdots\;\;\;\;.\;\;\;\;\beta
+      \vlinf{\cod}{}{\beta}{\vls[\beta.\beta]}
      \;\;\;\;.\;\;\;\;
       \vlder{\Phi_{N-1}}{}
       {
@@ -261,11 +260,11 @@ We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gamma_1$, $\dots$, $\Gamma_N$ to get t
         }
        ]
       \;\;\;\;.\;\;\;\;
-       \alpha\;\;\;\;.\;\;\;\;\cdots\;\;\;\;.\;\;\;\;\alpha
+       \vlinf{\cou}{}{\vls(\alpha.\alpha)}{\alpha}
       )
      }
      {
-      \vlin{(N-1)\cdot\cod}{}
+      \vlin{\cou}{}
       {
        \vls
        (
@@ -288,7 +287,7 @@ We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gamma_1$, $\dots$, $\Gamma_N$ to get t
          \vlsbr([\vlinf{}{}{a_1}{\fff}\;.\;\ttt]\;.\;\cdots\;.\;[\vlinf{}{}{a_n}{\fff}\;.\;\ttt]\;.\;\alpha)
         }
        \;\;\;\;.\;\;\;\;
-        \alpha\;\;\;\;.\;\;\;\;\cdots\;\;\;\;.\;\;\;\;\alpha
+        \vlinf{\cou}{}{\vls(\alpha.\alpha)}{\alpha}
        )
       }
       {
@@ -299,7 +298,8 @@ We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gamma_1$, $\dots$, $\Gamma_N$ to get t
    }
   }
  }
-}\quad.
+}
+\qquad.
 \]
 \end{proof}
 
