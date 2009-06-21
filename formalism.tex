@@ -4,11 +4,37 @@
 
 \TODO{Give credit to Francois}
 
-\begin{definition}\label{definition:InferenceRuleInstance}
-An \emph{inference rule instance}, $\vlinf{\rho}{}{\beta}{\alpha}$, consists of two formulae, $\alpha$ and $\beta$, called \emph{premiss} and \emph{conclusion} respectively.
+\newcommand{\fff}{\mathsf f}
+\newcommand{\ttt}{\mathsf t}
+\newcommand{\size}[1]{{\left\vert #1\right\vert}}\vlupdate\size
+
+
+\TODO{Definitions~\vrefrange{definition:Formula}{definition:InferenceRuleInstance} and Definition~\vref{definition:CoS} is taken from \emph{On the Proof Complexity of Deep Inference}.}
+
+\TODO{Note: Removed negated formula variables; DeMorgan dual of formulae; formula variables from the examples and the size of the context.} 
+
+\begin{definition}\label{definition:Formula}
+\emph{Formulae} of the \emph{functorial calculus} are denoted by $\alpha$, $\beta$, $\gamma$, $\delta$ and are freely built from:
+\begin{itemize}
+ \item \emph{units}, like $\fff$ (false) and $\ttt$ (true),
+ \item \emph{atoms} $a$, $b$, $c$, $d$ and $\bar a$, $\bar b$, $\bar c$, $\bar d$,
+ \item \emph{formula variables} $A$, $B$, $C$, $D$, and
+ \item \emph{logical relations}, like \emph{disjunction} $\vlsbr[\alpha.\beta]$ and \emph{conjunction} $\vlsbr(\alpha.\beta)$.
+\end{itemize}
+A formula is \emph{ground} if it contains no variables. We usually omit external brackets of formulae, and sometimes we omit dispensable brackets under associativity. We use $\equiv$ to denote literal equality of formulae. The \emph{size} $\size\alpha$ of a formula $\alpha$ is the number of unit, atom and variable occurrences appearing in it. On the set of atoms there is an involution $\bar\cdot$, called \emph{negation} (\emph{i.e.}, $\bar\cdot$ is a bijection from the set of atoms to itself such that $\bar{\bar a}\equiv a$); we require that $\bar a\not\equiv a$ for every $a$; when both $a$ and $\bar a$ appear in a formula, we mean that atom $a$ is mapped to by $\bar a$ by $\bar\cdot$. A \emph{context} is a formula where one \emph{hole} $\vlhole$ appears in the place of a subformula; for example, $\vls[a.(b.\vlhole)]$ is a context; the generic context is denoted by $\xi\vlhole$. The hole can be filled with formulae; for example, if $\xi\vlhole\equiv\vls(b.[\vlhole.c])$, then $\xi\{a\}\equiv\vls(b.[a.c])$, $\xi\{b\}\equiv\vls(b.[b.c])$ and $\xi\{\vls(a.b)\}\equiv\vls(b.[(a.b).c])$.
 \end{definition}
 
-\TODO{Make the label on the derivation in item 2 smaller.}
+\TODO{Note: I removed mention of $\rho$ and $\sigma$ as well as DeMorgan duals. I changed the example.}
+
+\begin{definition}\label{definition:RenamingSubstitution}
+A \emph{renaming} is a map from the set of atoms to itself, and it is denoted by $\{a_1/b_1,a_2/b_2,\dots\}$. A renaming of $\alpha$ by $\{a_1/b_1,a_2/b_2,\dots\}$ is indicated by $\alpha\{a_1/b_1,a_2/b_2,\dots\}$ and is obtained by simultaneously substituting every occurrence of $a_i$ in $\alpha$ by $b_i$ and every occurrence of $\bar a_i$ by $\bar b_i$; for example, if $\alpha\equiv\vls(a.[b.(a.[\bar a.c])])$ then $\alpha\{a/\bar b,\bar b/c\}\equiv\vls(\bar b.[\bar c.(\bar b.[b.c])])$. A \emph{substitution} is a map from the set of formula variables to formulae, denoted by $\{A_1/\beta_1,A_2/\beta_2,\dots\}$. An \emph{instance} of $\alpha$ by $\{A_1/\beta_1,A_2/\beta_2,\dots\}$ is indicated by $\alpha\{A_1/\beta_1,A_2/\beta_2,\dots\}$ and is obtained by simultaneously substituting every occurrence of variable $A_i$ in $\alpha$ by formula $\beta_i$; for example if $\alpha\equiv\vls[A.(b.c)]$ then $\alpha\{A/\vls(c.\bar b)\}\equiv\vls[(c.\bar b).(b.c)]$.
+\end{definition}
+
+\begin{definition}\label{definition:InferenceRuleInstance}
+An \emph{inference rule} $\rho$ is an expression $\vlinf{\rho}{}{\beta}{\alpha}$, where formulae $\alpha$ and $\beta$ are called \emph{premiss} and \emph{conclusion}, respectively. An \emph{inference rule instance} $\vlinf{\rho}{}{\delta}{\gamma}$ of $\vlinf{\rho}{}{\beta}{\alpha}$ is such that $\gamma\equiv\alpha\{a_1/b_1,a_2/b_2,\dots\}\{A_1/\beta_1,A_2/\beta_2,\dots\}$ and $\delta\equiv\beta\{a_1/b_1,a_2/b_2,\dots\}\{A_1/\beta_1,A_2/\beta_2,\dots\}$, for some renaming $\{a_1/b_1,a_2/b_2,\dots\}$ and substiution $\{A_1/\beta_1,A_2/\beta_2,\dots\}$.
+\end{definition}
+
+\TODO{Define size of derivation}
 
 \begin{definition}\label{definition:Derivation}
 Fix a set of formulae, a set of inference rule instances and a set of logical connectives, then a \emph{(functorial calculus) derivation $\vlder{\Psi}{}{\beta}{\alpha}$ from (the formula) $\alpha$ to (the formula) $\beta$}, is defined to be
