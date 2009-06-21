@@ -13,14 +13,33 @@ An \emph{inference rule instance}, $\vlinf{\rho}{}{\beta}{\alpha}$, consists of 
 \begin{definition}\label{definition:Derivation}
 Fix a set of formulae, a set of inference rule instances and a set of logical connectives, then a \emph{(functorial calculus) derivation $\vlder{\Psi}{}{\beta}{\alpha}$ from (the formula) $\alpha$ to (the formula) $\beta$}, is defined to be
 \begin{enumerate}
- \item a formula, $\Psi=\alpha=\beta$;
+ \item a formula, $\Psi=\alpha=\beta$,
 
  \item a vertical composition
  \[
  \Psi\;=\;
- \vlder{\vlinf{\rho}{}{\Phi_2}{\Phi_1}}{}{\beta}{\alpha}
+ \vlinf{\rho}{}
+ {
+  \vlder{\Phi_2}{}
+  {
+   \beta_2
+  }
+  {
+   \alpha_2
+  }
+ }
+ {
+  \vlder{\Phi_1}{}
+  {
+   \beta_1
+  }
+  {
+   \alpha_1
+  }
+ }
+ \quad,
  \]
- where $\vlinf{\rho}{}{\delta}{\gamma}$ is an inference rule instance and $\vlder{\Phi_1}{}{\gamma}{\alpha}$ and $\vlder{\Phi_2}{}{\beta}{\delta}$ are derivations;
+ where $\vlinf{\rho}{}{\alpha_2}{\beta_1}$ is an inference rule instance, and $\vlder{\Phi_1}{}{\beta_1}{\alpha_1}$ and $\vlder{\Phi_2}{}{\beta_2}{\alpha_1}$ are derivations, and
  \item a horizontal composition
  \[
  \Psi=\vlder{\circ(\Phi_1,\dots,\Phi_n)}{}{\circ(\beta_1,\dots,\beta_n)}{\circ(\alpha_1,\dots,\alpha_n)}\quad,
@@ -29,7 +48,120 @@ Fix a set of formulae, a set of inference rule instances and a set of logical co
 \end{enumerate}
 \end{definition}
 
-\TODO{State that we consider derivations equal modulo associativity of vertical composition.}
+\begin{remark}\label{remark:DerAssociativeComposition}
+Given derivations $\vlder{\Phi_1}{}{\beta_1}{\alpha_1}$, $\vlder{\Phi_2}{}{\beta_2}{\alpha_2}$ and $\vlder{\Phi_3}{}{\beta_3}{\alpha_3}$, and inference rule instances $\vlinf{\rho_1}{}{\alpha_2}{\beta_1}$ and $\vlinf{\rho_2}{}{\alpha_3}{\beta_2}$ we consider
+\[
+\vlinf{\rho_2}{}
+{
+ \vlder{\Phi_3}{}
+ {
+  \beta_3
+ }
+ {
+  \alpha_3
+ }
+}
+{
+ \left(
+ \vlinf{\rho_1}{}
+ {
+  \vlder{\Phi_2}{}
+  {
+   \beta_2
+  }
+  {
+   \alpha_2
+  }
+ }
+ {
+  \vlder{\Phi_1}{}
+  {
+   \beta_1
+  }
+  {
+   \alpha_1
+  }
+ }
+ \right)
+}
+\quad\mbox{and}\quad
+\vlinf{\rho_1}{}
+{
+ \left(
+ \vlinf{\rho_2}{}
+ {
+  \vlder{\Phi_3}{}
+  {
+   \beta_3
+  }
+  {
+   \alpha_3
+  }
+ }
+ {
+  \vlder{\Phi_2}{}
+  {
+   \beta_2
+  }
+  {
+   \alpha_2
+  }
+ }
+ \right)
+}
+{
+ \vlder{\Phi_1}{}
+ {
+  \beta_1
+ }
+ {
+  \alpha_1
+ }
+}
+\quad,
+\]
+to be equal, and we denote them both by:
+\[
+\vlderivation
+{
+ \vlde{\Phi_3}{}
+ {
+  \beta_3
+ }
+ {
+  \vlin{\rho_2}{}
+  {
+   \alpha_3
+  }
+  {
+   \vlde{\Phi_2}{}
+   {
+    \beta_2
+   }
+   {
+    \vlin{\rho_1}{}
+    {
+     \alpha_2
+    }
+    {
+     \vlde{\Phi_1}{}
+     {
+      \beta_1
+     }
+     {
+      \vlhy
+      {
+       \alpha_1
+      }
+     }
+    }
+   }
+  }
+ }
+}
+\quad.
+\]
+\end{remark}
 
 \begin{lemma}\label{lemma:DerComposition}
 Given two derivations $\vlder{\Phi_1}{}{\beta}{\alpha}$ and $\vlder{\Phi_2}{}{\gamma}{\beta}$, a derivation $\vlder{\Phi_1;\Phi_2}{}{\gamma}{\alpha}$ can be constructed.
@@ -67,26 +199,6 @@ Given $\Phi_1$ and $\Phi_2$ as in the premiss of Lemma~\vref{lemma:DerCompositio
 }\quad.
 \]
 \end{definition}
-
-\begin{lemma}\label{lemma:DerAssociativeComposition}
-Given derivations $\vlder{\Phi_1}{}{\beta}{\alpha}$, $\vlder{\Phi_2}{}{\gamma}{\beta}$ and $\vlder{\Phi_3}{}{\delta}{\gamma}$ the derivation
-\[
-\vlderivation
-{
- \vlde{\Phi_3}{}{\delta}
- {
-  \vlde{\Phi_2}{}{\gamma}
-  {
-   \vlde{\Phi_1}{}{\beta}
-   {
-    \vlhy{\alpha}
-   }
-  }
- }
-}
-\]
-is unique.
-\end{lemma}
 
 \section{Comparison with the Calculus of Structures}\label{section:CalculusOfStructures}
 
