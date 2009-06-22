@@ -65,50 +65,10 @@ and, for each $\rho\in\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}$, 
 respectively.
 \end{definition}
 
-\TODO{Change into a completeness proof of SKS.}
-
-\begin{theorem}\label{theorem:SKSComplete}
-A deep inference system $\mathcal{S}$ is complete for propositional classical logic if
-\begin{enumerate}
- \item Given a formula $\alpha$ and an atom $a$, there exists a derivation 
-  \[
-   \vlder{}{\mathcal{S}}
-   {
-    \alpha
-   }
-   {
-    \vls(\alpha\{a/\ttt,\bar a/\fff\}.\alpha\{a/\fff,\bar a/\ttt\})
-   }\quad
-  \]
- and
- \item Given a formula $\alpha$ that is logically equivalent to $\ttt$ and that does not contain any atoms, there exists a derivation
-  \[
-   \vlder{}{\mathcal{S}}
-   {
-    \alpha
-   }
-   {
-    \ttt
-   }\quad.
-  \]
-\end{enumerate}
-\end{theorem}
-
-\begin{proof}[Sketch of Proof]
-Let $\alpha$ be a tautology. Apply (1) repeatedly to obtain a conjunction of formulae not containing atoms. Each of the conjuncts is a truth value assignment to $\alpha$, so the conjunction is logically equivalent to $\ttt$. Apply (2) to obtain the proof.
-\end{proof}
-
-
-\TODO{Check and prove (Complexity paper by Alessio and Paola).}
-
-\begin{lemma}\label{lemma:EquationsSize}
-If there exists a derivation $\vlder{}{\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}}{\beta}{\alpha}$, then there exists a derivation $\vlder{\Phi}{\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}}{\beta}{\alpha}$, such that $|\Phi|\le(|\alpha|+|\beta|)^2$.
-\end{lemma}
-
-%TODO: reread
+\TODO{Reference Complexity paper by Alessio and Paola:}
 
 \begin{remark}\label{remark:EquationsShorthand}
-When $\vlder{}{\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}}{\beta}{\alpha}$, we say that $\alpha=\beta$ and we often write $\vlinf{=}{}{\beta}{\alpha}$ instead of the derivation. Using this shorthand only compresses derivations by a polynomial, so it does not affect any complexity results.
+If there is a derivation $\vlder{\Phi}{\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}}{\beta}{\alpha}$, we say that $\alpha=\beta$ and we often write $\vlinf{=}{}{\beta}{\alpha}$ instead $\Phi$. Using this shorthand only compresses derivations by a polynomial.
 \end{remark}
 
 \begin{remark}\label{remark:ImplicitEquations}
@@ -254,3 +214,116 @@ Finally, we show the inductive case, $n>2$:
 \begin{remark}\label{remark:GenericContraction}
 In the non-atomic version of system $\SKS$ the derivations shown in Lemma~\vref{lemma:GenericContraction} correspond to repeated applications of (co)contractions. For this reason we sometimes write the inference rules $\vlinf{n\cdot\cod}{}{\alpha}{\bigvee_{i=1}^{n}\alpha}$ and $\vlinf{n\cdot\cou}{}{\bigwedge_{i=1}^{n}\alpha}{\alpha}$ instead of the derivations $\vlder{}{\{\acd,\med\}}{\alpha}{\bigvee_{i=1}^{n}\alpha}$ and $\vlupsmash{\vlder{}{\{\acu,\med\}}{\bigwedge_{i=1}^{n}\alpha}{\alpha}}$, respectively.
 \end{remark}
+
+\begin{theorem}\label{theorem:SKSComplete}
+System $\SKS$ is complete for propositional classical logic.
+\end{theorem}
+
+\begin{proof}
+Consider a tautology $\alpha$. We show by induction on the number of atoms in $\alpha$ that there exists a proof of $\alpha$ in $\SKS$. For the base case, consider an $\alpha$ consisting only of units. Since $\alpha$ is a tautology, there exists a derivation
+\[
+\vlinf{=}{}{\alpha}{\ttt}\quad.
+\]
+
+For the inductive case, let $\alpha$ be a tautology containing instances of the atom $a$ or the atom $\bar a$. By the inductive hypothesis, there exists a proof of, $\vls(\alpha\{a/\ttt,\bar a/\fff\}.\alpha\{a/\fff,\bar a/\ttt\})$ in $\SKS$. Hence, the following proof exists
+\[
+\vlderivation
+{
+ \vlin{\cod}{}
+ {
+  \alpha
+ }
+ {
+  \vlin{\supers}{}
+  {
+   \vls
+   [
+    \vlder{}{\{\ssu\}}
+    {
+     \alpha
+    }
+    {
+     \vlsbr
+     (
+      \vlder{}{\{\acu,\awu\}}
+      {
+       \vls(a.\cdots.a)
+      }
+      {
+       a
+      }
+     \;\;.\;\;
+      \vlder{}{\{\awd\}}
+      {
+       \alpha\{a/\ttt\}
+      }
+      {
+       \alpha\{a/\ttt,\bar a/\fff\}
+      }
+     )
+    }
+   \;\;\;\;.\;\;\;\;
+    \vlder{}{\{\ssu\}}
+    {
+     \alpha
+    }
+    {
+     \vlsbr
+     (
+      \vlder{}{\{\acu,\awu\}}
+      {
+       \vls(\bar a.\cdots.\bar a)
+      }
+      {
+       \bar a
+      }
+     \;\;.\;\;
+      \vlder{}{\{\awd\}}
+      {
+       \alpha\{\bar a/\ttt\}
+      }
+      {
+       \alpha\{a/\fff,\bar a/\ttt\}
+      }
+     )
+    }
+   ]
+  }
+  {
+   \vlin{=}{}
+   {
+    \vls
+    (
+     \vlder{}{}
+     {
+      \vls
+      (
+       \alpha\{a/\ttt,\bar a/\fff\}
+      .
+       \alpha\{a/\fff,\bar a/\ttt\}
+      )
+     }
+     {
+      \ttt
+     }
+    \;\;.\;\;
+     \vlinf{}{}
+     {
+      \vls[a.\bar a]
+     }
+     {
+      \ttt
+     }
+    )
+   }
+   {
+    \vlhy
+    {
+     \ttt
+    }
+   }
+  }
+ }
+}\quad.
+\]
+\end{proof}
