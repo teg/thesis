@@ -11,7 +11,9 @@
 
 \TODO{Definitions~\vrefrange{definition:Formula}{definition:InferenceRuleInstance} and Definition~\vref{definition:CoS} is taken from \emph{On the Proof Complexity of Deep Inference}.}
 
-\TODO{Note: Removed negated formula variables; DeMorgan dual of formulae; formula variables from the examples and the size of the context.} 
+\TODO{Note: Removed negated formula variables; DeMorgan dual of formulae; formula variables from the examples.} 
+
+\TODO{Check again the definition of size of a context against the paper.}
 
 \begin{definition}\label{definition:Formula}
 \emph{Formulae} of the \emph{functorial calculus} are denoted by $\alpha$, $\beta$, $\gamma$, $\delta$ and are freely built from:
@@ -21,7 +23,7 @@
  \item \emph{formula variables} $A$, $B$, $C$, $D$, and
  \item \emph{logical relations}, like \emph{disjunction} $\vlsbr[\alpha.\beta]$ and \emph{conjunction} $\vlsbr(\alpha.\beta)$.
 \end{itemize}
-A formula is \emph{ground} if it contains no variables. We usually omit external brackets of formulae, and sometimes we omit dispensable brackets under associativity. We use $\equiv$ to denote literal equality of formulae. The \emph{size} $\size\alpha$ of a formula $\alpha$ is the number of unit, atom and variable occurrences appearing in it. On the set of atoms there is an involution $\bar\cdot$, called \emph{negation} (\emph{i.e.}, $\bar\cdot$ is a bijection from the set of atoms to itself such that $\bar{\bar a}\equiv a$); we require that $\bar a\not\equiv a$ for every $a$; when both $a$ and $\bar a$ appear in a formula, we mean that atom $a$ is mapped to by $\bar a$ by $\bar\cdot$. A \emph{context} is a formula where one \emph{hole} $\vlhole$ appears in the place of a subformula; for example, $\vls[a.(b.\vlhole)]$ is a context; the generic context is denoted by $\xi\vlhole$. The hole can be filled with formulae; for example, if $\xi\vlhole\equiv\vls(b.[\vlhole.c])$, then $\xi\{a\}\equiv\vls(b.[a.c])$, $\xi\{b\}\equiv\vls(b.[b.c])$ and $\xi\{\vls(a.b)\}\equiv\vls(b.[(a.b).c])$.
+A formula is \emph{ground} if it contains no variables. We usually omit external brackets of formulae, and sometimes we omit dispensable brackets under associativity. We use $\equiv$ to denote literal equality of formulae. The \emph{size} $\size\alpha$ of a formula $\alpha$ is the number of unit, atom and variable occurrences appearing in it. On the set of atoms there is an involution $\bar\cdot$, called \emph{negation} (\emph{i.e.}, $\bar\cdot$ is a bijection from the set of atoms to itself such that $\bar{\bar a}\equiv a$); we require that $\bar a\not\equiv a$ for every $a$; when both $a$ and $\bar a$ appear in a formula, we mean that atom $a$ is mapped to by $\bar a$ by $\bar\cdot$. A \emph{context} is a formula where one \emph{hole} $\vlhole$ appears in the place of a subformula; for example, $\vls[a.(b.\vlhole)]$ is a context; the generic context is denoted by $\xi\vlhole$. The hole can be filled with formulae; for example, if $\xi\vlhole\equiv\vls(b.[\vlhole.c])$, then $\xi\{a\}\equiv\vls(b.[a.c])$, $\xi\{b\}\equiv\vls(b.[b.c])$ and $\xi\{\vls(a.b)\}\equiv\vls(b.[(a.b).c])$. The size of a context is defined to be $\size{\xi\vlhole}=\size{\xi\{a\}}-1$.
 \end{definition}
 
 \TODO{Note: I removed mention of $\rho$ and $\sigma$ as well as DeMorgan duals. I changed the example.}
@@ -39,9 +41,9 @@ An \emph{inference rule} $\rho$ is an expression $\vlinf{\rho}{}{\beta}{\alpha}$
 \begin{definition}\label{definition:Derivation}
 Fix a set of formulae, a set of inference rule instances and a set of logical connectives, then a \emph{(functorial calculus) derivation $\vlder{\Psi}{}{\beta}{\alpha}$ from (the formula) $\alpha$ to (the formula) $\beta$}, is defined to be
 \begin{enumerate}
- \item a formula, $\Psi=\alpha=\beta$,
+ \item\label{definition:Derivation:item:Formula} a formula: $\Psi=\alpha\equiv\beta$;
 
- \item a vertical composition
+ \item\label{definition:Derivation:item:Vertical} the result of a vertical composition:
  \[
  \Psi\;=\;
  \vlinf{\rho}{}
@@ -65,12 +67,13 @@ Fix a set of formulae, a set of inference rule instances and a set of logical co
  }
  \quad,
  \]
- where $\vlinf{\rho}{}{\alpha_2}{\beta_1}$ is an inference rule instance, and $\vlder{\Phi_1}{}{\beta_1}{\alpha_1}$ and $\vlder{\Phi_2}{}{\beta_2}{\alpha_1}$ are derivations, and
- \item a horizontal composition
+ where $\vlinf{\rho}{}{\alpha_2}{\beta_1}$ is an inference rule instance, and $\vlder{\Phi_1}{}{\beta_1}{\alpha_1}$ and $\vlder{\Phi_2}{}{\beta_2}{\alpha_1}$ are derivations; we define $\size{\Psi}$ to be $\size{\Phi_1}+\size{\Phi_2}$; and
+
+ \item\label{definition:Derivation:item:Horizontal} the result of a horizontal composition:
  \[
  \Psi=\vlder{\circ(\Phi_1,\dots,\Phi_n)}{}{\circ(\beta_1,\dots,\beta_n)}{\circ(\alpha_1,\dots,\alpha_n)}\quad,
  \]
- where $\circ$ is an $n$-ary logical connective, $\alpha=\circ(\alpha_1,\dots,\alpha_n)$, $\beta=\circ(\beta_1,\dots,\beta_n)$ and $\vlder{\Phi_1}{}{\beta_1}{\alpha_1}$, $\dots$, $\vlder{\Phi_n}{}{\beta_n}{\alpha_n}$ are derivations.
+ where $\circ$ is an $n$-ary logical relation, $\alpha\equiv\circ(\alpha_1,\dots,\alpha_n)$, $\beta\equiv\circ(\beta_1,\dots,\beta_n)$, and $\vlder{\Phi_1}{}{\beta_1}{\alpha_1}$, $\dots$, $\vlder{\Phi_n}{}{\beta_n}{\alpha_n}$ are derivations; we define $\size{\Psi}$ to be $\size{\Phi_1}+\cdots+\size{\Phi_n}$.
 \end{enumerate}
 \end{definition}
 
@@ -189,29 +192,76 @@ to be equal, and we denote them both by:
 \]
 \end{remark}
 
+\begin{lemma}\label{lemma:DerInContext}
+Given a derivation $\vlder{\Phi}{}{\beta}{\alpha}$ and a context $\xi\vlhole$, a derivation $\vlder{\xi\{\Phi\}}{}{\xi\{\beta\}}{\xi\{\alpha\}}$, with size $\size{\Phi}+\size{\xi\vlhole}$, can be constructed.
+\end{lemma}
+
+\begin{proof}
+We proceed by structural induction on $\xi\vlhole$. The base case, $\xi\vlhole\equiv\vlhole$, is trivial.
+For the inductive case, let
+\[
+ \xi\vlhole\equiv\circ(\alpha_1,\dots,\alpha_{i-1},\xi'\vlhole,\alpha_{i+1},\dots,\alpha_n)
+\]
+for some $n$-ary logical relation $\circ$, some formulae $\alpha_1$, $\dots$, $\alpha_n$ and a context $\xi'\vlhole$. By the inductive hypothesis we can construct the derivation $\xi'\{\Phi\}$, so the result follows by item \ref{definition:Derivation:item:Horizontal} of Definition~\vref{definition:Derivation}.
+\end{proof}
+
+
 \begin{lemma}\label{lemma:DerComposition}
-Given two derivations $\vlder{\Phi_1}{}{\beta}{\alpha}$ and $\vlder{\Phi_2}{}{\gamma}{\beta}$, a derivation $\vlder{\Phi_1;\Phi_2}{}{\gamma}{\alpha}$ can be constructed.
+Given two derivations $\vlder{\Phi_1}{}{\beta}{\alpha}$ and $\vlder{\Phi_2}{}{\gamma}{\beta}$, a derivation $\vlder{\Psi}{}{\gamma}{\alpha}$, with size $\size{\Phi_1}+\size{\Phi_2}-\size{\beta}$, can be constructed.
 \end{lemma}
 
 \begin{proof}
 We argue by structural induction on $\Phi_1$ and $\Phi_2$
 \begin{enumerate}
 
- \item if $\Phi_1=\beta$ then $\Psi=\Phi_2$;
+ \item if $\Phi_1=\beta$ then $\Psi=\Phi_2$, with size $\size{\Phi_1}+\size{\Phi_2}-\size{\beta}$;
 
- \item if $\Phi_2=\beta$ then $\Psi=\Phi_1$;
+ \item if $\Phi_2=\beta$ then $\Psi=\Phi_1$, with size $\size{\Phi_1}+\size{\Phi_2}-\size{\beta}$;
 
- \item if $\Phi_1\;=\;\vlder{\vlinf{\rho}{}{\Phi_1''}{\Phi_1'}}{}{\beta}{\alpha}$, then $\Phi_1'';\Phi_2$ can be constructed by the inductive hypothesis and we can build $\Psi\;=\;\vlder{\vlinf{\rho}{}{\Phi_1'';\Phi_2}{\Phi_1'}}{}{\gamma}{\alpha}$;
+ \item if
+  \[
+   \Phi_1\;=\;
+   \vlinf{\rho}{}{\vlder{\Phi''_1}{}{\beta}{\alpha'}}{\vlder{\Phi'_1}{}{\beta'}{\alpha}}\quad,
+  \]
+  then, by the inductive hypothesis, we can construct $\vlder{\Psi'}{}{\gamma}{\alpha'}$, with size $\size{\Phi''_1}+\size{\Phi_2}-\size{\beta}$, we can then build
+  \[
+   \Psi\;=\;
+   \vlinf{\rho}{}{\vlder{\Psi'}{}{\gamma}{\alpha'}}{\vlder{\Phi'_1}{}{\beta'}{\alpha}}\quad,
+  \]
+  with size $\size{\Phi'_1}+\size{\Psi'}=\size{\Phi'_1}+\size{\Phi''_1}+\size{\Phi_2}-\size{\beta}=\size{\Phi_1}+\size{\Phi_2}-\size{\beta}$;
 
- \item if $\Phi_2\;=\;\vlder{\vlinf{\rho}{}{\Phi_2''}{\Phi_2'}}{}{\gamma}{\beta}$, then $\Phi_1;\Phi_2'$ can be constructed by the inductive hypothesis and we can build $\Psi\;=\;\vlder{\vlinf{\rho}{}{\Phi_2''}{\Phi_1;\Phi_2'}}{}{\gamma}{\alpha}$;
+ \item if
+  \[
+   \Phi_2\;=\;
+   \vlinf{\rho}{}{\vlder{\Phi''_2}{}{\gamma}{\beta'}}{\vlder{\Phi'_2}{}{\gamma'}{\beta}}\quad,
+  \]
+  then, by the inductive hypothesis, we can construct $\vlder{\Psi'}{}{\gamma'}{\alpha}$, with size $\size{\Phi_1}+\size{\Phi'_2}-\size{\beta}$, we can then build
+  \[
+   \Psi\;=\;
+   \vlinf{\rho}{}{\vlder{\Phi''_2}{}{\gamma}{\beta'}}{\vlder{\Psi'}{}{\gamma'}{\alpha}}\quad,
+  \]
+  with size $\size{\Psi'}+\size{\Phi''_2}=\size{\Phi_1}+\size{\Phi'_2}+\size{\Phi''_2}-\size{\beta}=\size{\Phi_1}+\size{\Phi_2}-\size{\beta}$;
 
- \item if $\Phi_1=\circ(\Phi_{1,1},\dots,\Phi_{1,n})$ and $\Phi_2=\circ(\Phi_{2,1},\dots,\Phi_{2,n})$ then $\Phi_{1,1};\Phi_{2,1},\dots,\Phi_{1,n};\Phi_{2,n}$ can be constructed by the inductive hypothesis and we can build $\Phi_1;\Phi_2=\circ(\Phi_{1,1};\Phi_{2,1},\dots,\Phi_{1,n};\Phi_{2,n})$.
+ \item if 
+ \[
+  \Phi_1\;=\;
+  \circ\left(\vlder{\Phi_{1,1}}{}{\beta_1}{\alpha_1},\cdots,\vlder{\Phi_{1,n}}{}{\beta_n}{\alpha_n}\right)
+  \quad\mbox{and}\quad
+  \Phi_2\;=\;
+  \circ\left(\vlder{\Phi_{2,1}}{}{\gamma_1}{\beta_1},\cdots,\vlder{\Phi_{2,n}}{}{\gamma_n}{\beta_n}\right)
+  \quad,
+ \]
+then, by the inductive hypothesis, we can construct
+ \[
+  \vlder{\Psi_1}{}{\gamma_1}{\alpha_1}\quad,\cdots,\quad\vlder{\Psi_n}{}{\gamma_n}{\alpha_n}\quad,
+ \]
+with size $\size{\Phi_{1,1}}+\size{\Phi_{2,1}}-\size{\beta_1},\dots,\size{\Phi_{1,n}}+\size{\Phi_{2,n}}-\size{\beta_n}$, respectively, we can then build $\Psi=\circ(\Psi_1,\dots,\Psi_n)$, with size $\size{\Psi_1}+\cdots+\size{\Psi_n}=\size{\Phi_{1,1}}+\cdots+\size{\Phi_{1,n}}+\size{\Phi_{2,1}}+\cdots+\size{\Phi_{2,n}}-(\size{\beta_1}+\cdots+\size{\beta_n})=\size{\Phi_1}+\size{\Phi_2}-\size{\beta}$.
 
 \end{enumerate}
 \end{proof}
 
 \begin{definition}\label{definition:DerComposition}
-Given $\Phi_1$ and $\Phi_2$ as in the premiss of Lemma~\vref{lemma:DerComposition}, the derivation $\Phi_1;\Phi_2$ constructed in the proof of the lemma is denoted
+Given derivations $\vlder{\Phi_1}{}{\beta}{\alpha}$ and $\vlder{\Phi_2}{}{\gamma}{\beta}$, the derivation $\vlder{\Psi}{}{\gamma}{\alpha}$ constructed in the proof of Lemma~\vref{lemma:DerComposition} is denoted:
 \[
 \vlderivation
 {
@@ -230,11 +280,11 @@ Given $\Phi_1$ and $\Phi_2$ as in the premiss of Lemma~\vref{lemma:DerCompositio
 
 
 \begin{definition}\label{definition:CoS}
-For some context $\xi\vlhole$, a \emph{calculus of structures inference step, generated by} rule $\vlinf{\rho}{}{\beta}{\alpha}$ \emph{via} its instance $\vlinf{\rho}{}{\delta}{\gamma}$, is the expression $\vlinf{\rho}{}{\xi\{\delta\}}{\xi\{\gamma\}}$. A \emph{calculus of structures derivation} $\vlder{\Psi}{}{\beta}{\alpha}$ from (the formula) $\alpha$ to (the formula) $\beta$, is defined to be
+A \emph{calculus of structures derivation} $\vlder{\Psi}{}{\beta}{\alpha}$ from (the formula) $\alpha$ to (the formula) $\beta$, is defined to be
 \begin{enumerate}
- \item a formula, $\Psi=\alpha=\beta$,
+ \item\label{definition:CoS:item:Formula} a formula: $\Psi=\alpha=\beta$; and
 
- \item a vertical composition
+ \item\label{definition:CoS:item:Vertical} the result of a vertical composition:
  \[
  \Psi\;=\;
  \vlinf{\rho}{}
@@ -244,13 +294,13 @@ For some context $\xi\vlhole$, a \emph{calculus of structures inference step, ge
    \beta_2
   }
   {
-   \alpha_2
+   \xi\{\alpha_2\}
   }
  }
  {
   \vlder{\Phi_1}{}
   {
-   \beta_1
+   \xi\{\beta_1\}
   }
   {
    \alpha_1
@@ -258,20 +308,45 @@ For some context $\xi\vlhole$, a \emph{calculus of structures inference step, ge
  }
  \quad,
  \]
- where $\vlinf{\rho}{}{\beta_2}{\alpha_1}$ is an inference step, and $\vlder{\Phi_1}{}{\beta_1}{\alpha_1}$ and $\vlder{\Phi_2}{}{\beta_2}{\alpha_1}$ are calculus of structures derivations.
+ where $\vlinf{\rho}{}{\beta_2}{\alpha_1}$ is an inference rule instance, and $\vlder{\Phi_1}{}{\xi\{\beta_1\}}{\alpha_1}$ and $\vlder{\Phi_2}{}{\beta_2}{\xi\{\alpha_2\}}$ are calculus of structures derivations; we define $\size{\Psi}$ to be $\size{\Phi_1}+\size{\Phi_2}$.
 \end{enumerate}
 \end{definition}
 
 \begin{theorem}
-A calculus of structures derivation can be transformed into a functorial calculus derivation in polynomial time.
+A calculus of structures derivation $\vlder{\Phi}{}{\beta}{\alpha}$ can be transformed into a functorial calculus derivation $\vlder{\Psi}{}{\beta}{\alpha}$ such that $\size{\Psi}\le\size{\Phi}$.
 \end{theorem}
 
 \begin{proof}
-Given a calculus of structures inference step $\vlinf{\rho}{}{\xi\{\beta\}}{\{\alpha\}}$ we can construct a functorial calculus derivation $\xi\left\{\vlinf{\rho}{}{\beta}{\alpha}\right\}$ by structural induction on $\xi\vlhole$.
+We argue by structural induction on $\Phi$. The base case is trivial; $\Phi=\alpha\equiv\beta=\Psi$. For the inductive case, consider the following calculus of structures derivation:
+\[
+\Phi\;=\;
+ \vlinf{\rho}{}
+ {
+  \vlder{\Phi_2}{}
+  {
+   \beta
+  }
+  {
+   \xi\{\alpha'\}
+  }
+ }
+ {
+  \vlder{\Phi_1}{}
+  {
+   \xi\{\beta'\}
+  }
+  {
+   \alpha
+  }
+ }
+\quad.
+\]
+By the inductive hypothesis, there are functorial calculus derivations $\vlder{\Psi_1}{}{\xi\{\beta'\}}{\alpha}$ and $\vlder{\Psi_2}{}{\beta}{\xi\{\alpha'\}}$, such that $\size{\Psi_1}\le\size{\Phi_1}$ and $\size{\Psi_2}\le\size{\Phi_2}$. By Lemma~\vref{lemma:DerInContext}, there is a functorial calculus derivation $\xi\left\{\vlinf{\rho}{}{\alpha'}{\beta'}\right\}$, with size $\size{\xi\vlhole}+\size{\alpha'}+\size{\beta'}$. By Lemma~\vref{lemma:DerComposition}, we can combine the three functorial calculus derivations to create $\vlder{\Psi}{}{\beta}{\alpha}$, with size $\size{\Psi_1}+\size{\Psi_2}-\size{\xi\vlhole}\le\size{\Phi_1}+\size{\Phi_2}=\size{\Phi}$.
 \end{proof}
+
+\TODO{Compare with the paper by Stephane and Kai.}
+\TODO{Considre if it is worth expanding this:}
 
 \begin{theorem}
 A functorial calculus derivation corresponds to an equivalence class of calculus of structures derivations modulo bureaucracy of type A.
 \end{theorem}
-
-\TODO{Compare with the paper by Stephane and Kai.}
