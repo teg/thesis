@@ -10,8 +10,6 @@ We define (\emph{propositional}) \emph{formulae} to be formulae built from the u
 Negation is only defined for atoms, which is not a limitation thanks to De Morgan laws.
 \end{remark}
 
-\TODO{Define how the inference rules we are about to define are used to generate the inference rule instances.}
-
 \newcommand{\ai   }{\mathsf{ai}}
 \newcommand{\aw   }{\mathsf{aw}}
 \newcommand{\ac   }{\mathsf{ac}}
@@ -35,7 +33,7 @@ Negation is only defined for atoms, which is not a limitation thanks to De Morga
 \newcommand{\SKS}{\mathsf{SKS}}
 
 \begin{definition}\label{definition:SKS}
-System $\SKS$ is defined by the following \emph{structural} rules:
+System $\SKS$ is defined by the following \emph{structural} inference rules:
 \[
 \vlinf{\aid}{}{\vls[a.\bar a]}{\ttt}\qquad
 \vlinf{\awd}{}{a}{\fff}\qquad
@@ -46,21 +44,21 @@ System $\SKS$ is defined by the following \emph{structural} rules:
 \vlinf{\awu}{}{\ttt}{a}\qquad
 \vlinf{\acu}{}{\vls(a.a)}{a}\quad,
 \]
-the two \emph{logical} rules
+the two \emph{logical} inference rules
 \[
-\vlinf{\swi}{}{\vls[(\alpha.\beta).\gamma]}{\vls(\alpha.[\beta.\gamma])}\qquad
-\vlinf{\med}{}{\vls([\alpha.\delta].[\beta.\gamma])}{\vls[(\alpha.\beta).(\gamma.\delta)]}
+\vlinf{\swi}{}{\vls[(A.B).C]}{\vls(A.[B.C])}\qquad
+\vlinf{\med}{}{\vls([A.D].[B.C])}{\vls[(A.B).(C.D)]}
 \]
-and, for each $\rho\in\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}$, the \emph{invertible} rule $\vlinf{\rho}{}{\delta}{\gamma}$, such that $\gamma$ and $\delta$ are opposite sides of
+and, for each $\rho\in\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}$, the \emph{invertible} rule $\vlinf{\rho}{}{\beta}{\alpha}$, such that $\alpha$ and $\beta$ are opposite sides of
 \vlstore{
-\vls[\alpha.\beta]         &\coor\vls[\beta.\alpha]         \quad,&
-\vls[\alpha.\fff]          &\unor\vls[\alpha]               \quad,\\
-\vls(\alpha.\beta)         &\coand\vls(\beta.\alpha)         \quad,&
-\vls(\alpha.\ttt)          &\unand\vls(\alpha)               \quad,\\
-\vls[[\alpha.\beta].\gamma]&\asor\vls[\alpha.[\beta.\gamma]]\quad,&
-\vls[\ttt.\ttt]            &\idor\vls[\ttt]                 \quad,\\
-\vls((\alpha.\beta).\gamma)&\asand\vls(\alpha.(\beta.\gamma))\quad,&
-\vls(\fff.\fff)            &\idand\vls(\fff)                 \quad,}
+\vls[A.B]       &\coor\vls[B.A]      \quad,&
+\vls[A.\fff]    &\unor\vls[A]        \quad,\\
+\vls(A.B)       &\coand\vls(B.A)     \quad,&
+\vls(A.\ttt)    &\unand\vls(A)       \quad,\\
+\vls[[A.B].C]   &\asor\vls[A.[B.C]]  \quad,&
+\vls[\ttt.\ttt] &\idor\vls[\ttt]     \quad,\\
+\vls((A.B).C)   &\asand\vls(A.(B.C)) \quad,&
+\vls(\fff.\fff) &\idand\vls(\fff)    \quad,}
 \begin{align*}
 \vlread
 \end{align*}
@@ -188,11 +186,8 @@ for some $\xi'\vlhole$ and $\beta$ where $\beta$ is not a unit and $\Psi$ and $\
 \newcommand{\ssu}{\supers\uparrow}
 \newcommand{\ssd}{\supers\downarrow}
 
-\TODO{Point out that `only containing switches' or $\{\swi\}$ allows the use of equations.}
-\TODO{Define `macro rules'}
-
 \begin{remark}\label{remark:SuperSwitch}
-To ease legibility we introduce three macro rules for some derivations built up of switches. Instead of the derivations $\vlder{}{\{\swi\}}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlder{}{\{\swi\}}{\vls[\xi\{\fff\}.\alpha]}{\xi\{\alpha\}}$, as defined in the proof of Lemma~\vref{lemma:SuperSwitch}, we write $\vlinf{\ssu}{}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlinf{\ssd}{}{\vls[\xi\{\ttt\}.\alpha]}{\xi\{\alpha\}}$, respectively. Instead of the derivation
+We often write $\vlinf{\ssu}{}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlinf{\ssd}{}{\vls[\xi\{\ttt\}.\alpha]}{\xi\{\alpha\}}$, instead of, respectively, the derivations $\vlder{}{\{\swi\}}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlder{}{\{\swi\}}{\vls[\xi\{\fff\}.\alpha]}{\xi\{\alpha\}}$, as defined in the proof of Lemma~\vref{lemma:SuperSwitch}. Instead of the derivation
 \[
 \vlinf{\swi}{}
 {
