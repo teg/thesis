@@ -1,7 +1,5 @@
 \chapter{Normal Forms}
 
-\TODO{Justify the following definitions in terms of `super-paths'. Redefine weak streamlining.}
-
 %---------------------------------------
 \begin{definition}\label{definition:FlowWeaklyStreamlined}
 An atomic flow is \emph{weakly streamlined} if it can be represented as
@@ -246,8 +244,6 @@ respectively.
 
 \TODO{Maybe think of a different name than `simple form' (it doesn't look very simple...).}
 
-\TODO{Define the polarity assignment used here.}
-
 %---------------------------------------
 \begin{definition}\label{definition:FlowSimpleForm}
 An atomic flow is \emph{on simple form with respect to the polarity assignment $\pi$} if it can be represented as
@@ -452,10 +448,10 @@ An atomic flow is \emph{weakly streamlined with respect to the polarity assignme
 \]
 \end{definition}
 
-\TODO{Define the inverse of a polarity assignment (and change the notation!).}
+\TODO{Define the inverse of a polarity assignment.}
 
 \begin{proposition}\label{proposition:FlowWeaklyStreamlinedPolarity}
-Given a polarity assignment $\pi$, an atomic flow which is weakly streamlined with respect to both $\pi$ and $\pi^{-1}$ is weakly streamlined. 
+Given a polarity assignment $\pi$, an atomic flow that is weakly streamlined with respect to both $\pi$ and $\bar\pi$ is weakly streamlined. 
 \end{proposition}
 
 \begin{proposition}\label{proposition:FlowWeaklyCutFreePolarity}
@@ -615,8 +611,6 @@ where, for $1\le i\le n$, the subflows $\phi'_i$ and $\phi''_i$ contain no ident
 For every $1\le i\le n$, the \emph{new upper edge of} $\phi'_i$ (resp., $\phi''_i$) \emph{in $\Core{\phi}$} is $\lambda'_i$ (resp., $\lambda''_i$), the \emph{new lower edge of} $\phi'_i$ (resp., $\phi''_i$) \emph{in $\Core{\phi}$} is $\mu'_i$ (resp., $\mu''_i$) and the \emph{new upper} (resp., \emph{lower}) \emph{edges of $\phi_i$ in $\Core{\phi}$} are $\lambda'_i$ and $\lambda''_i$ (resp., $\mu'_i$ and $\mu''_i$).
 We say that $\phi_1$, $\dots$, $\phi_n$ is an \emph{ordered choice of components from $\phi$}.
 \end{definition}
-
-\TODO{Once the definition of Core has been fixed in the paper, adapt the same style for Exp.}
 
 \newcommand{\Exp}{\mathsf{Exp}}
 
