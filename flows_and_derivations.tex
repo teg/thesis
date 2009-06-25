@@ -4,8 +4,6 @@
 
 \TODO{Note: removed "modulo isomorphism" since this is already taken care of in the definitions earlier on.}
 
-\TODO{Rephrase item 2 (first decide finally on Functorial calculus definition.}
-
 %---------------------------------------
 \begin{proposition}\label{proposition:FlowUnique}
 Given an\/ $\SKS$ derivation\/ $\Phi$, there is a unique atomic flow $\phi$ such that:
@@ -13,7 +11,7 @@ Given an\/ $\SKS$ derivation\/ $\Phi$, there is a unique atomic flow $\phi$ such
 %-------------------
 \item there is a surjective map between the set of atom occurrences of\/ $\Phi$ and the set of edges of $\phi$;
 %-------------------
-\item for each vertical composition $\vlsmash{\vlinf{\rho}{}{\Phi_2}{\Phi_1}}$ of\/ $\Phi$, where $\rho\in\{\aid,\aiu,\awd,\awu,\acd,\acu\}$ and $\vlinf{\rho}{}{\beta}{\alpha}$ is a rule instance, the atom occurrences in $\vlinf{\rho}{}{\beta}{\alpha}$ are mapped to edges of $\phi$ such that the edges are related with vertices as indicated below, for each possible case of the inference rules:
+\item for each inference rule instance $\vlsmash{\vlinf{\rho}{}{\beta}{\alpha}}$ of\/ $\Phi$, where $\rho\in\{\aid,\aiu,\awd,\awu,\acd,\acu\}$, the atom occurrences in $\vlinf{\rho}{}{\beta}{\alpha}$ are mapped to edges of $\phi$ such that the edges are related with vertices as indicated below, for each possible case of the inference rules:
 \[
 \begin{array}{@{}ccc@{}ccc@{}}
 \vlinf{}{}{\vls[a^\one.{\bar a^\two}]}{\ttt}&\mbox{to\/}&
@@ -40,7 +38,7 @@ Given an\/ $\SKS$ derivation\/ $\Phi$, there is a unique atomic flow $\phi$ such
 \]
 where the mapping is indicated by small numerals.
 %-------------------
-\item for each vertical composition of\/ $\Phi$ of kind
+\item for each inference rule instance of\/ $\Phi$ of kind
 \[\hss
 \begin{array}{@{}r@{}l@{}}
 \vlinf{\swi}{}{\vls[(\alpha.\beta).\gamma]}
@@ -88,15 +86,25 @@ Every atomic flow is associated with some derivation.
 
 %---------------------------------------
 \begin{proof}
-First, we construct a derivation scheme $\Psi$ that `glues together' any two atomic flows without introducing any vertices. For every $\alpha$, $\beta$, the atomic flow of the following derivation consists only of edges (there are no vertices):
+First, we show that, for any atom $a$ and formula contexts $\xi\vlhole$ and $\zeta\vlhole$, there exists a derivation
+$
+\vlder{}{\{\swi,\med\}}
+{
+ \vls[(\xi\{\{a\}.\zeta\{\fff\}).\ttt]
+}
+{
+ \vls[(\xi\{\{\ttt\}.\zeta\{a\}).\ttt]
+}
+$
+, in other words we can `move' the atom $a$ from the context $\xi\vlhole$ to the context $\zeta\vlhole$ by using a derivation whose atomic flow contains no vertices:
 \[
 \vlderivation
 {
- \vlin{=}{}{\vls[(\alpha.\beta).\ttt]}
+ \vlin{=}{}{\vls[(\xi\{a\}.\zeta\{\fff\}).\ttt]}
  {
   \vlin{=}{}
   {
-   \vlsbr[\vlinf{\swi}{}{\vls[(\beta.\alpha).\ttt]}{\vls(\beta.[\alpha.\ttt])}\;.\;\ttt]
+   \vlsbr[\vlinf{\swi}{}{\vls[(\zeta\{\fff\}.\xi\{a\}).\ttt]}{\vls(\zeta\{\fff\}.[\xi\{a\}.\ttt])}\;.\;\ttt]
   }
   {
    \vlhy
@@ -104,36 +112,37 @@ First, we construct a derivation scheme $\Psi$ that `glues together' any two ato
     \vlsbr[
     \vlderivation
     {
-     \vlin{\swi}{}{\vls[([\alpha.\ttt].\beta).\ttt]}
+     \vlin{\swi}{}{\vls[([\xi\{a\}.\ttt].\zeta\{\fff\}).\ttt]}
      {
-      \vlin{=}{}{\vls([\alpha.\ttt].[\beta.\ttt])}
+      \vlin{=}{}{\vls([\xi\{a\}.\ttt].[\zeta\{\fff\}.\ttt])}
       {
-       \vlin{\med}{}{\vls([\alpha.\ttt].[\ttt.\beta])}
+       \vlin{\med}{}{\vls([\xi\{a\}.\ttt].[\ttt.\zeta\{\fff\}])}
        {
-        \vlin{=}{}{\vls[(\alpha.\ttt).(\ttt.\beta)]}
+        \vlin{=}{}{\vls[(\xi\{a\}.\ttt).(\ttt.\zeta\{\fff\})]}
         {
-         \vlhy{\vls[\alpha.\beta]}
+         \vlin{\supers}{}
+         {
+          \vls[\xi\{a\}.\zeta\{\fff\}]
+         }
+         {
+          \vlhy
+          {
+           \vls(\xi\{\ttt\}.\zeta\{a\})
+          }
+         }
         }
        }
       }
      }
     }
-    \;\;\;\;.\;\;\;\;\ttt]
+    \;\;\;\;\;.\;\;\;\;\;\ttt]
    }
   }
  }
 }
 \quad.
 \]
-We use the above derivation and $\supers$ (see Remark~\vref{remark:SuperSwitch}) to `move' an atom $a$ from one context $\zeta\vlhole$ to another context $\xi\vlhole$, again with an associated atomic flow that is free of vertices:
-\[
-\vlder{}{\{\swi,\med\}}{\vls[(\xi\{a\}.\zeta\{\fff\}).\ttt]}
-{
- \vlsbr[\vlinf{\supers}{}{\vls[\xi\{a\}.\zeta\{\fff\}]}{\vls(\xi\{\ttt\}.\zeta\{a\})}\;.\;\ttt]
-}
-\quad.
-\]
-This construction can be used repeatedly to get the desired derivation $\Psi$, for $h\ge0$:
+This construction can be used repeatedly to build the derivation $\Psi$, for $h\ge0$:
 \[
 \vlderivation                                                             {
 \vlde{\Psi}{\{\swi,\med\}}
@@ -141,51 +150,27 @@ This construction can be used repeatedly to get the desired derivation $\Psi$, f
 \vlhy{\vls[(\xi\{\ttt\}\cdots\{\ttt\}.\zeta\{a_1 \}\cdots\{a_h \}).\ttt]}}}
 \quad.
 \]
-We can now prove the theorem by induction on the number of vertices of a given atomic flow $\phi$. The cases where $\phi$ only has zero or one vertex are trivial. Let us then suppose that $\phi$ has more than one vertex; then $\phi$ can be considered as composed of two flows $\phi_1$ and $\phi_2$, each with less vertices than $\phi$, as follows:
+We can now prove the theorem by induction on the number of vertices of a given atomic flow $\phi$. The cases where $\phi$ only has zero or one vertex are trivial. Let us then suppose that $\phi$ has more than one vertex; then $\phi$ can be considered as composed of two flows $\phi_1$ and $\phi_2$, each with fewer vertices than $\phi$, as follows:
 \[
-\atomicflow{
-( 0  ,10)*{\afvjd4{\hat\epsilon_1}{}};
-( 2  ,10)*{\cdots};
-( 4  ,10)*{\afvjd4{}{\hat\epsilon_k}};
-(12  ,10)*{\afvjd4{\tilde\epsilon_1}{}};
-(14  ,10)*{\cdots};
-(16  ,10)*{\afvjd4{}{\tilde\epsilon_m}};
-(17  , 6)*{\aflabelleft \phi};
-( 8  , 5)*{\affr{18}6};
-( 0  , 0)*{\afvju4{\hat\epsilon'_1}{}};
-( 2  , 0)*{\cdots};
-( 4  , 0)*{\afvju4{}{\hat\epsilon'_l}};
-(12  , 0)*{\afvju4{\tilde\epsilon'_1}{}};
-(14  , 0)*{\cdots};
-(16  , 0)*{\afvju4{}{\tilde\epsilon'_n}};
-(-2  , 0)*{\invisiblemark};
-(18.5, 0)*{\invisiblemark}}
-=
-\atomicflow{
-(  6  ,20)*{\afvjd4{}{\tilde\epsilon_m}};
-(  4  ,20)*{\cdots};
-(  2  ,20)*{\afvjd4{\tilde\epsilon_1}{}};
-(-11  ,20)*{\cdots};
-( 12  ,16)*{\aflabelleft{\phi_1}};
-(  4  ,15)*{\affr{16}6};
-( -9  ,15)*{\afvjd{14}{}{\hat\epsilon_k}};
-(-13  ,15)*{\afvjd{14}{\hat\epsilon_1}{}};
-(  1  ,10)*{\afvju4{}{\epsilon_h}};
-( -1  ,10)*{\cdots};
-( -3  ,10)*{\afvju4{\epsilon_1}{}};
-(  2  , 6)*{\aflabelleft{\phi_2}};
-( 11  , 5)*{\afvju{14}{}{\tilde\epsilon'_n}};
-(  7  , 5)*{\afvju{14}{\tilde\epsilon'_1}{}};
-( -6  , 5)*{\affr{16}6};
-(  9  , 0)*{\cdots};
-( -4  , 0)*{\afvju4{}{\hat\epsilon'_l}};
-( -6  , 0)*{\cdots};
-( -8  , 0)*{\afvju4{\hat\epsilon'_1}{}};
-( 13  , 0)*{\invisiblemark};
-(-15.5, 0)*{\invisiblemark}}
-\quad,
+\phi\;=\;
+\atomicflow
+{
+( 2, 12)*{\afvjm4};
+( 2,  6)*{\affr{10}8};
+( 4,  8)*{\aflabelright{\phi_1}};
+( 6, -6)*{\afvjm{16}};
+%---
+(-2,  0)*{\afvjd4{\epsilon_1}{}};
+( 0,  0)*{\cdots};
+( 2,  0)*{\afvjd4{}{\epsilon_h}};
+%---
+(-6,  6)*{\afvjm{16}};
+(-2, -6)*{\affr{10}8};
+( 0, -4)*{\aflabelright{\phi_2}};
+(-2,-12)*{\afvjm4};
+}\quad,
 \]
-where $h,k,l,m,n\ge0$ (this can possibly be done in many different ways). By the inductive hypothesis, there exist derivations $\vlder{\Phi_1}{}{\zeta\{a_1^{\epsilon_1}\}\cdots\{a_h^{\epsilon_h}\}}{\gamma}$ and $\vlder{\Phi_2}{}{\delta}{\xi\{a_1^{\epsilon_1}\}\cdots\{a_h^{\epsilon_h}\}}$ whose flows are, respectively, $\phi_1$ and $\phi_2$. Using these, we can build
+where $h\ge0$ (this can possibly be done in many different ways). By the inductive hypothesis, there exist derivations $\vlder{\Phi_1}{}{\zeta\{a_1^{\epsilon_1}\}\cdots\{a_h^{\epsilon_h}\}}{\gamma}$ and $\vlder{\Phi_2}{}{\delta}{\xi\{a_1^{\epsilon_1}\}\cdots\{a_h^{\epsilon_h}\}}$ whose flows are, respectively, $\phi_1$ and $\phi_2$. Using these, we can build
 \[
 \vlder{\Psi}{}
 {
