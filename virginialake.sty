@@ -4,7 +4,7 @@
 % to \vlupdate
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{virginialake}[2009/04/28 v1.17]
+\ProvidesPackage{virginialake}[2009/06/25 v1.18]
 \newif\ifvirginialakeusesxy\virginialakeusesxytrue
 \DeclareOption{noxy}{\virginialakeusesxyfalse}
 \newif\ifvirginialakepdftex\virginialakepdftexfalse
@@ -210,13 +210,7 @@
 \gdef\vlscn{\catcode`[=\active\let[\vlparopencn
             \catcode`(=\active\let(\vlcopopencn}
 
-\gdef\vlupdate #1{
-   \expandafter\let\csname\expandafter\vlgobble\string #1vltemp\endcsname #1
-   \def #1{\bgroup\vlprepstructures
-     \csname\expandafter\vlgobble\string #1vlaux\endcsname}
-   \expandafter\def\csname\expandafter\vlgobble\string #1vlaux\endcsname ##1{
-      \csname\expandafter\vlgobble\string #1vltemp\endcsname{##1}\egroup}}
-}%--------------------------------------
+\gdef\vlupdate #1{   \expandafter\let\csname\expandafter\vlgobble\string #1vltemp\endcsname #1   \def #1{\bgroup\vlprepstructures     \csname\expandafter\vlgobble\string #1vlaux\endcsname}   \expandafter\def\csname\expandafter\vlgobble\string #1vlaux\endcsname ##1{%      \csname\expandafter\vlgobble\string #1vltemp\endcsname{##1}\egroup}}}%--------------------------------------
 
 \newcommand{\vlparclose  }{\egroup\vlrightparbracket  }
 
@@ -621,6 +615,7 @@
 \newdimen\atflowthickfour
 \newdimen\atflowthickfive
 \newdimen\atflowlabeldistance
+\newdimen\atflowmaux
 
 \newcommand\afsetunits{
 \atflowelwidth        =425\atflowunit
@@ -693,12 +688,11 @@
 (4,1);(4,-3)**[|<\atflowthickone>][#2]@{-}}}
 
 \newcommand\afaidmexcolaux[4]{
-\newdimen\dimenmaux
-\dimenmaux=\atflowelwidth\multiply\dimenmaux by#4
-                         \divide  \dimenmaux by#3
-                         \divide  \dimenmaux by100
+\atflowmaux=\atflowelwidth\multiply\atflowmaux by#4
+                          \divide  \atflowmaux by#3
+                          \divide  \atflowmaux by100
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
-<15\dimenmaux,0\dimenmaux>="A";
+<15\atflowmaux,0\atflowmaux>="A";
 (0,1)-"A";(0,-3)-"A"**[|<\atflowthickfive>][#1]@{-};
 (0,1)+"A";(0,-3)+"A"**[|<\atflowthickfive>][#1]@{-};
 (4,1)-"A";(4,-3)-"A"**[|<\atflowthickfive>][#2]@{-};
@@ -769,12 +763,11 @@
 (4,-1);(4,3)**[|<\atflowthickone>][#2]@{-}}}
 
 \newcommand\afaiumexcolaux[4]{
-\newdimen\dimenmaux
-\dimenmaux=\atflowelwidth\multiply\dimenmaux by#4
-                         \divide  \dimenmaux by#3
-                         \divide  \dimenmaux by100
+\atflowmaux=\atflowelwidth\multiply\atflowmaux by#4
+                          \divide  \atflowmaux by#3
+                          \divide  \atflowmaux by100
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
-<15\dimenmaux,0\dimenmaux>="A";
+<15\atflowmaux,0\atflowmaux>="A";
 (0,-1)-"A";(0,3)-"A"**[|<\atflowthickfive>][#1]@{-};
 (0,-1)+"A";(0,3)+"A"**[|<\atflowthickfive>][#1]@{-};
 (4,-1)-"A";(4,3)-"A"**[|<\atflowthickfive>][#2]@{-};
@@ -873,22 +866,21 @@
 ( 0,-2);(0,-1  )**[|<\atflowthickone>][#3]@{-}}}
 
 \newcommand\afacdmexsqcolaux[5]{
-\newdimen\dimenmaux
-\dimenmaux=\atflowelwidth\multiply\dimenmaux by#5
-                         \divide  \dimenmaux by#4
-                         \divide  \dimenmaux by100
+\atflowmaux=\atflowelwidth\multiply\atflowmaux by#5
+                          \divide  \atflowmaux by#4
+                          \divide  \atflowmaux by100
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
-< 15\dimenmaux, 0\dimenmaux>="A";
-< 10\dimenmaux,13\dimenmaux>="B";
-<-10\dimenmaux,13\dimenmaux>="C";
-< 15\dimenmaux, 6\dimenmaux>="D";
-<-15\dimenmaux, 6\dimenmaux>="E";
-< 40\dimenmaux,-5\dimenmaux>="F";
-<-40\dimenmaux,-5\dimenmaux>="G";
-<  5\dimenmaux,18\dimenmaux>="H";
-< -5\dimenmaux,18\dimenmaux>="I";
-<-15\dimenmaux,30\dimenmaux>="J";
-< 15\dimenmaux,30\dimenmaux>="K";
+< 15\atflowmaux, 0\atflowmaux>="A";
+< 10\atflowmaux,13\atflowmaux>="B";
+<-10\atflowmaux,13\atflowmaux>="C";
+< 15\atflowmaux, 6\atflowmaux>="D";
+<-15\atflowmaux, 6\atflowmaux>="E";
+< 40\atflowmaux,-5\atflowmaux>="F";
+<-40\atflowmaux,-5\atflowmaux>="G";
+<  5\atflowmaux,18\atflowmaux>="H";
+< -5\atflowmaux,18\atflowmaux>="I";
+<-15\atflowmaux,30\atflowmaux>="J";
+< 15\atflowmaux,30\atflowmaux>="K";
 (-2, 8)-"A";
 (0, 0.5)-"B"-<1.3\atflowelwidthtriangle,0pt>**[|<\atflowthickfive>][#1]
                        \crv{(-2,2)-"D"&(0,2)-"D"-<5\atflowelwidthtriangle,0pt>};
@@ -905,22 +897,21 @@
 ( 0,-4)+"A";(0,-1  )+"K"**[|<\atflowthickfive>][#3]@{-}}}
 
 \newcommand\afacdmexsncolaux[5]{
-\newdimen\dimenmaux
-\dimenmaux=\atflowelwidth\multiply\dimenmaux by#5
-                         \divide  \dimenmaux by#4
-                         \divide  \dimenmaux by100
+\atflowmaux=\atflowelwidth\multiply\atflowmaux by#5
+                          \divide  \atflowmaux by#4
+                          \divide  \atflowmaux by100
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
-< 15\dimenmaux,  0\dimenmaux>="A";
-< 10\dimenmaux, 18\dimenmaux>="B";
-<-10\dimenmaux, 18\dimenmaux>="C";
-< 15\dimenmaux, 11\dimenmaux>="D";
-<-15\dimenmaux, 11\dimenmaux>="E";
-< 40\dimenmaux,-10\dimenmaux>="F";
-<-40\dimenmaux,-10\dimenmaux>="G";
-<  5\dimenmaux, 23\dimenmaux>="H";
-< -5\dimenmaux, 23\dimenmaux>="I";
-<-15\dimenmaux, 30\dimenmaux>="J";
-< 15\dimenmaux, 30\dimenmaux>="K";
+< 15\atflowmaux,  0\atflowmaux>="A";
+< 10\atflowmaux, 18\atflowmaux>="B";
+<-10\atflowmaux, 18\atflowmaux>="C";
+< 15\atflowmaux, 11\atflowmaux>="D";
+<-15\atflowmaux, 11\atflowmaux>="E";
+< 40\atflowmaux,-10\atflowmaux>="F";
+<-40\atflowmaux,-10\atflowmaux>="G";
+<  5\atflowmaux, 23\atflowmaux>="H";
+< -5\atflowmaux, 23\atflowmaux>="I";
+<-15\atflowmaux, 30\atflowmaux>="J";
+< 15\atflowmaux, 30\atflowmaux>="K";
 (-2, 4)-"A";
 ( 0, 0.5)-"B"-<1.3\atflowelwidthtriangle,0pt>**[|<\atflowthickfive>][#1]
                    \crv{(-2,1.5)-"D"&(0,1.75)-"D"-<5\atflowelwidthtriangle,0pt>};
@@ -1094,20 +1085,19 @@
                           \crv{( 2,1.5)&(0,1.75)+<5\atflowelwidthtriangle,0pt>}}}
 
 \newcommand\afacdmnwexsqcolaux[4]{
-\newdimen\dimenmaux
-\dimenmaux=\atflowelwidth\multiply\dimenmaux by#4
-                         \divide  \dimenmaux by#3
-                         \divide  \dimenmaux by100
+\atflowmaux=\atflowelwidth\multiply\atflowmaux by#4
+                          \divide  \atflowmaux by#3
+                          \divide  \atflowmaux by100
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
-< 15\dimenmaux, 0\dimenmaux>="A";
-< 10\dimenmaux,13\dimenmaux>="B";
-<-10\dimenmaux,13\dimenmaux>="C";
-< 15\dimenmaux, 6\dimenmaux>="D";
-<-15\dimenmaux, 6\dimenmaux>="E";
-< 40\dimenmaux,-5\dimenmaux>="F";
-<-40\dimenmaux,-5\dimenmaux>="G";
-<  5\dimenmaux,18\dimenmaux>="H";
-< -5\dimenmaux,18\dimenmaux>="I";
+< 15\atflowmaux, 0\atflowmaux>="A";
+< 10\atflowmaux,13\atflowmaux>="B";
+<-10\atflowmaux,13\atflowmaux>="C";
+< 15\atflowmaux, 6\atflowmaux>="D";
+<-15\atflowmaux, 6\atflowmaux>="E";
+< 40\atflowmaux,-5\atflowmaux>="F";
+<-40\atflowmaux,-5\atflowmaux>="G";
+<  5\atflowmaux,18\atflowmaux>="H";
+< -5\atflowmaux,18\atflowmaux>="I";
 (-2, 8)-"A";
 (0, 0.5)-"B"-<1.3\atflowelwidthtriangle,0pt>**[|<\atflowthickfive>][#1]
                        \crv{(-2,2)-"D"&(0,2)-"D"-<5\atflowelwidthtriangle,0pt>};
@@ -1122,20 +1112,19 @@
                        \crv{( 2,2)+"E"&(0,2)+"I"+<5\atflowelwidthtriangle,0pt>}}}
 
 \newcommand\afacdmnwexsncolaux[4]{
-\newdimen\dimenmaux
-\dimenmaux=\atflowelwidth\multiply\dimenmaux by#4
-                         \divide  \dimenmaux by#3
-                         \divide  \dimenmaux by100
+\atflowmaux=\atflowelwidth\multiply\atflowmaux by#4
+                          \divide  \atflowmaux by#3
+                          \divide  \atflowmaux by100
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
-< 15\dimenmaux,  0\dimenmaux>="A";
-< 10\dimenmaux, 18\dimenmaux>="B";
-<-10\dimenmaux, 18\dimenmaux>="C";
-< 15\dimenmaux, 11\dimenmaux>="D";
-<-15\dimenmaux, 11\dimenmaux>="E";
-< 40\dimenmaux,-10\dimenmaux>="F";
-<-40\dimenmaux,-10\dimenmaux>="G";
-<  5\dimenmaux, 23\dimenmaux>="H";
-< -5\dimenmaux, 23\dimenmaux>="I";
+< 15\atflowmaux,  0\atflowmaux>="A";
+< 10\atflowmaux, 18\atflowmaux>="B";
+<-10\atflowmaux, 18\atflowmaux>="C";
+< 15\atflowmaux, 11\atflowmaux>="D";
+<-15\atflowmaux, 11\atflowmaux>="E";
+< 40\atflowmaux,-10\atflowmaux>="F";
+<-40\atflowmaux,-10\atflowmaux>="G";
+<  5\atflowmaux, 23\atflowmaux>="H";
+< -5\atflowmaux, 23\atflowmaux>="I";
 (-2, 4)-"A";
 ( 0, 0.5)-"B"-<1.3\atflowelwidthtriangle,0pt>**[|<\atflowthickfive>][#1]
                   \crv{(-2,1.5)-"D"&(0,1.75)-"D"-<5\atflowelwidthtriangle,0pt>};
@@ -1275,22 +1264,21 @@
 ( 0, 2);(0, 1  )**[|<\atflowthickone>][#3]@{-}}}
 
 \newcommand\afacumexsqcolaux[5]{
-\newdimen\dimenmaux
-\dimenmaux=\atflowelwidth\multiply\dimenmaux by#5
-                         \divide  \dimenmaux by#4
-                         \divide  \dimenmaux by100
+\atflowmaux=\atflowelwidth\multiply\atflowmaux by#5
+                          \divide  \atflowmaux by#4
+                          \divide  \atflowmaux by100
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
-< 15\dimenmaux,  0\dimenmaux>="A";
-< 10\dimenmaux,-13\dimenmaux>="B";
-<-10\dimenmaux,-13\dimenmaux>="C";
-< 15\dimenmaux, -6\dimenmaux>="D";
-<-15\dimenmaux, -6\dimenmaux>="E";
-< 40\dimenmaux,  5\dimenmaux>="F";
-<-40\dimenmaux,  5\dimenmaux>="G";
-<  5\dimenmaux,-18\dimenmaux>="H";
-< -5\dimenmaux,-18\dimenmaux>="I";
-<-15\dimenmaux,-30\dimenmaux>="J";
-< 15\dimenmaux,-30\dimenmaux>="K";
+< 15\atflowmaux,  0\atflowmaux>="A";
+< 10\atflowmaux,-13\atflowmaux>="B";
+<-10\atflowmaux,-13\atflowmaux>="C";
+< 15\atflowmaux, -6\atflowmaux>="D";
+<-15\atflowmaux, -6\atflowmaux>="E";
+< 40\atflowmaux,  5\atflowmaux>="F";
+<-40\atflowmaux,  5\atflowmaux>="G";
+<  5\atflowmaux,-18\atflowmaux>="H";
+< -5\atflowmaux,-18\atflowmaux>="I";
+<-15\atflowmaux,-30\atflowmaux>="J";
+< 15\atflowmaux,-30\atflowmaux>="K";
 (-2,-8)-"A";
 (0,-0.5)-"B"-<1.3\atflowelwidthtriangle,0pt>**[|<\atflowthickfive>][#1]
                       \crv{(-2,-2)-"D"&(0,-2)-"D"-<5\atflowelwidthtriangle,0pt>};
@@ -1307,22 +1295,21 @@
 ( 0, 4)+"A";(0,1)+"K"**[|<\atflowthickfive>][#3]@{-}}}
 
 \newcommand\afacumexsncolaux[5]{
-\newdimen\dimenmaux
-\dimenmaux=\atflowelwidth\multiply\dimenmaux by#5
-                         \divide  \dimenmaux by#4
-                         \divide  \dimenmaux by100
+\atflowmaux=\atflowelwidth\multiply\atflowmaux by#5
+                          \divide  \atflowmaux by#4
+                          \divide  \atflowmaux by100
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
-< 15\dimenmaux,  0\dimenmaux>="A";
-< 10\dimenmaux,-18\dimenmaux>="B";
-<-10\dimenmaux,-18\dimenmaux>="C";
-< 15\dimenmaux,-11\dimenmaux>="D";
-<-15\dimenmaux,-11\dimenmaux>="E";
-< 40\dimenmaux, 10\dimenmaux>="F";
-<-40\dimenmaux, 10\dimenmaux>="G";
-<  5\dimenmaux,-23\dimenmaux>="H";
-< -5\dimenmaux,-23\dimenmaux>="I";
-<-15\dimenmaux,-30\dimenmaux>="J";
-< 15\dimenmaux,-30\dimenmaux>="K";
+< 15\atflowmaux,  0\atflowmaux>="A";
+< 10\atflowmaux,-18\atflowmaux>="B";
+<-10\atflowmaux,-18\atflowmaux>="C";
+< 15\atflowmaux,-11\atflowmaux>="D";
+<-15\atflowmaux,-11\atflowmaux>="E";
+< 40\atflowmaux, 10\atflowmaux>="F";
+<-40\atflowmaux, 10\atflowmaux>="G";
+<  5\atflowmaux,-23\atflowmaux>="H";
+< -5\atflowmaux,-23\atflowmaux>="I";
+<-15\atflowmaux,-30\atflowmaux>="J";
+< 15\atflowmaux,-30\atflowmaux>="K";
 (-2,-4)-"A";
 (0,-0.5)-"B"-<1.3\atflowelwidthtriangle,0pt>**[|<\atflowthickfive>][#1]
                  \crv{(-2,-1.5)-"D"&(0,-1.75)-"D"-<5\atflowelwidthtriangle,0pt>};
@@ -1496,20 +1483,19 @@
                         \crv{( 2,-1.5)&(0,-1.75)+<5\atflowelwidthtriangle,0pt>}}}
 
 \newcommand\afacumnwexsqcolaux[4] {
-\newdimen\dimenmaux
-\dimenmaux=\atflowelwidth\multiply\dimenmaux by#4
-                         \divide  \dimenmaux by#3
-                         \divide  \dimenmaux by100
+\atflowmaux=\atflowelwidth\multiply\atflowmaux by#4
+                          \divide  \atflowmaux by#3
+                          \divide  \atflowmaux by100
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
-< 15\dimenmaux,  0\dimenmaux>="A";
-< 10\dimenmaux,-13\dimenmaux>="B";
-<-10\dimenmaux,-13\dimenmaux>="C";
-< 15\dimenmaux, -6\dimenmaux>="D";
-<-15\dimenmaux, -6\dimenmaux>="E";
-< 40\dimenmaux,  5\dimenmaux>="F";
-<-40\dimenmaux,  5\dimenmaux>="G";
-<  5\dimenmaux,-18\dimenmaux>="H";
-< -5\dimenmaux,-18\dimenmaux>="I";
+< 15\atflowmaux,  0\atflowmaux>="A";
+< 10\atflowmaux,-13\atflowmaux>="B";
+<-10\atflowmaux,-13\atflowmaux>="C";
+< 15\atflowmaux, -6\atflowmaux>="D";
+<-15\atflowmaux, -6\atflowmaux>="E";
+< 40\atflowmaux,  5\atflowmaux>="F";
+<-40\atflowmaux,  5\atflowmaux>="G";
+<  5\atflowmaux,-18\atflowmaux>="H";
+< -5\atflowmaux,-18\atflowmaux>="I";
 (-2,-8)-"A";
 (0,-0.5)-"B"-<1.3\atflowelwidthtriangle,0pt>**[|<\atflowthickfive>][#1]
                      \crv{(-2,-2)-"D"&(0,-2)-"D"-<5\atflowelwidthtriangle,0pt>};
@@ -1524,20 +1510,19 @@
                      \crv{( 2,-2)+"E"&(0,-2)+"I"+<5\atflowelwidthtriangle,0pt>}}}
 
 \newcommand\afacumnwexsncolaux[4] {
-\newdimen\dimenmaux
-\dimenmaux=\atflowelwidth\multiply\dimenmaux by#4
-                         \divide  \dimenmaux by#3
-                         \divide  \dimenmaux by100
+\atflowmaux=\atflowelwidth\multiply\atflowmaux by#4
+                          \divide  \atflowmaux by#3
+                          \divide  \atflowmaux by100
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
-< 15\dimenmaux,  0\dimenmaux>="A";
-< 10\dimenmaux,-18\dimenmaux>="B";
-<-10\dimenmaux,-18\dimenmaux>="C";
-< 15\dimenmaux,-11\dimenmaux>="D";
-<-15\dimenmaux,-11\dimenmaux>="E";
-< 40\dimenmaux, 10\dimenmaux>="F";
-<-40\dimenmaux, 10\dimenmaux>="G";
-<  5\dimenmaux,-23\dimenmaux>="H";
-< -5\dimenmaux,-23\dimenmaux>="I";
+< 15\atflowmaux,  0\atflowmaux>="A";
+< 10\atflowmaux,-18\atflowmaux>="B";
+<-10\atflowmaux,-18\atflowmaux>="C";
+< 15\atflowmaux,-11\atflowmaux>="D";
+<-15\atflowmaux,-11\atflowmaux>="E";
+< 40\atflowmaux, 10\atflowmaux>="F";
+<-40\atflowmaux, 10\atflowmaux>="G";
+<  5\atflowmaux,-23\atflowmaux>="H";
+< -5\atflowmaux,-23\atflowmaux>="I";
 (-2,-4)-"A";
 (0,-0.5)-"B"-<1.3\atflowelwidthtriangle,0pt>**[|<\atflowthickfive>][#1]
                 \crv{(-2,-1.5)-"D"&(0,-1.75)-"D"-<5\atflowelwidthtriangle,0pt>};
