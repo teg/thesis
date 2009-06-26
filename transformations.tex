@@ -18,8 +18,6 @@ In Figure~\vref{figure:ReductionRules}, we define graphical expressions of the k
 \newcommand{\rcdcu}{{{\mathsf c}{\downarrow}{\hbox{-}}{\mathsf c}{\uparrow  }}}
 \newcommand{\ridwu}{{{\mathsf i}{\downarrow}{\hbox{-}}{\mathsf w}{\uparrow  }}}
 \newcommand{\ridcu}{{{\mathsf i}{\downarrow}{\hbox{-}}{\mathsf c}{\uparrow  }}}
-\newcommand{\rcd}{{\mathsf c}{\downarrow  }}
-\newcommand{\rcu}{{\mathsf c}{\uparrow  }}
 %---------------------------------------
 \begin{figure}[tbp]
 \[
@@ -153,38 +151,38 @@ $\hfil}\\
 ( 8,6)*{\afvj4};
 ( 3,6)*{\afex24}}
 $\hfil}\\
-%-------------------
-\rcd\colon\quad\aflower{\atomicflow{
-(   0, 4)*{\afacd\one{}{}\two{}\three};
-(-3.5, 0)*{\invisiblemark};
-( 3.5, 0)*{\invisiblemark}
-}}
-\quad\to\quad
-\aflower{\atomicflow{
-(13,12)*{\afaidex{}{}{}{}{}{}32};
-(16, 4)*{\afvju8{}\three};
-(10, 6)*{\afacunw{}{}{}{}};
-( 0, 8)*{\afvjd8\one{}};
-( 4, 8)*{\afvjd8{}\two};
-( 6, 2)*{\afaiunw{}{}};
-( 6, 0)*{\afaiuex{}{}{}{}{}{}31}}}
-&\qquad
-%-------------------
-\rcu\colon\quad\afraise{\atomicflowinv{
-(   0,-4)*{\afacu\one{}{}\two{}\three};
-(-3.5, 0)*{\invisiblemark};
-( 3.5, 0)*{\invisiblemark}
-}}
-\quad\to\quad
-\aflower{\atomicflow{
-(13,-12)*{\afaiuex{}{}{}{}{}{}32};
-(16, -4)*{\afvjd8{}\three};
-(10,-8.25)*{\afacdnw{}{}{}{}};
-( 0, -8)*{\afvju8\one{}};
-( 4, -8)*{\afvju8{}\two};
-( 6, -4)*{\afaidnw{}{}};
-( 6,  0)*{\afaidex{}{}{}{}{}{}31}}}
-\\
+%%-------------------
+%\rcd\colon\quad\aflower{\atomicflow{
+%(   0, 4)*{\afacd\one{}{}\two{}\three};
+%(-3.5, 0)*{\invisiblemark};
+%( 3.5, 0)*{\invisiblemark}
+%}}
+%\quad\to\quad
+%\aflower{\atomicflow{
+%(13,12)*{\afaidex{}{}{}{}{}{}32};
+%(16, 4)*{\afvju8{}\three};
+%(10, 6)*{\afacunw{}{}{}{}};
+%( 0, 8)*{\afvjd8\one{}};
+%( 4, 8)*{\afvjd8{}\two};
+%( 6, 2)*{\afaiunw{}{}};
+%( 6, 0)*{\afaiuex{}{}{}{}{}{}31}}}
+%&\qquad
+%%-------------------
+%\rcu\colon\quad\afraise{\atomicflowinv{
+%(   0,-4)*{\afacu\one{}{}\two{}\three};
+%(-3.5, 0)*{\invisiblemark};
+%( 3.5, 0)*{\invisiblemark}
+%}}
+%\quad\to\quad
+%\aflower{\atomicflow{
+%(13,-12)*{\afaiuex{}{}{}{}{}{}32};
+%(16, -4)*{\afvjd8{}\three};
+%(10,-8.25)*{\afacdnw{}{}{}{}};
+%( 0, -8)*{\afvju8\one{}};
+%( 4, -8)*{\afvju8{}\two};
+%( 6, -4)*{\afaidnw{}{}};
+%( 6,  0)*{\afaidex{}{}{}{}{}{}31}}}
+%\\
 \end{array}
 \]
 \caption{Atomic-flow reduction rules.}
@@ -309,26 +307,6 @@ The following flow rewriting system is called $\frc$:
 \]
 \end{definition}
 
-\TODO{Change the definition of reduction rule so they can apply under a given polarity assignment.}
-
-\TODO{Rethink how these reduction rules are defined. It might not be the best way.}
-
-\TODO{Remove all the rules with polarities:}
-
-%---------------------------------------
-\begin{definition}
-The reduction rules $\rcdiu^\ppl$, $\ridcu^\ppl$, $\rcdcu^\ppl$, $\rcd^\ppl$ and $\rcu^\ppl$ are the rules $\rcdiu$, $\ridcu$, $\rcdcu$, $\rcd$ and $\rcu$, respectively, where the (co)contraction vertex in the redex is positive under a given polarity assignment.
-\end{definition}
-
-\newcommand{\frcp}{{\frc^\ppl}}
-%---------------------------------------
-\begin{definition}
-The following flow rewriting system is called $\frcp$:
-\[
-\{\;\rcdiu^\ppl\;,\;\ridcu^\ppl\;,\;\rcdcu^\ppl\;\}\quad.
-\]
-\end{definition}
-
 %=======================================
 \subsection{Soundness}\label{subsection:soundness}
 
@@ -338,9 +316,6 @@ A reduction $R$ is \emph{sound} if, for every $\phi$ and $\psi$ such that $\phi\
 \end{definition}
 
 The proof of the following theorem is essentially contained in Figures~\vref{figure:ReductionRulesWeakening} and \vref{figure:ReductionRulesContraction}.
-
-\TODO{Use slash for substitution.}
-\newcommand{\ot}{\mathbin\leftarrow}
 
 %---------------------------------------
 \begin{figure}[tbp]
@@ -362,7 +337,7 @@ The proof of the following theorem is essentially contained in Figures~\vref{fig
 \vlder{\Phi}{}{\zeta\left\{\vlinf{}{}{a^\two}{\vls[a^\three.a^\one]}\right\}}
               {\xi\left\{\vlinf{}{}{a^\three}{\fff}\right\}}
 \quad\to_\rwdcd\quad
-\vlder{\Phi\{a^\three\ot\fff\}}{}{\zeta\left\{\vlinf{=}{}{a^{\one,\two}}{\vls[\fff.a^{\one,\two}]}\right\}}
+\vlder{\Phi\{a^\three/\fff\}}{}{\zeta\left\{\vlinf{=}{}{a^{\one,\two}}{\vls[\fff.a^{\one,\two}]}\right\}}
               {\xi\{\fff\}}
 \\
 \noalign{\bigskip}
@@ -381,7 +356,7 @@ The proof of the following theorem is essentially contained in Figures~\vref{fig
 \vlder{\Phi}{}{\zeta\left\{\vlinf{}{}{\fff}{\vls(a^\two.\bar a^\one)}\right\}}
               {\xi\left\{\vlinf{}{}{a^\two}{\fff}\right\}}
 \quad\to_\rwdiu\quad
-\vlder{\Phi\{a^\two\ot\fff\}}{}{\zeta\left\{\vlinf{=}{}{\fff}{\vls(\fff\;.\;\vlinf{}{}{\ttt}{\bar a^\one})}\right\}}
+\vlder{\Phi\{a^\two/\fff\}}{}{\zeta\left\{\vlinf{=}{}{\fff}{\vls(\fff\;.\;\vlinf{}{}{\ttt}{\bar a^\one})}\right\}}
               {\xi\{\fff\}}
 \\
 \noalign{\bigskip}
@@ -397,7 +372,7 @@ The proof of the following theorem is essentially contained in Figures~\vref{fig
 \vlder{\Phi}{}{\zeta\left\{\vlinf{}{}{\ttt}{a^\one}\right\}}
               {\xi\left\{\vlinf{}{}{a^\one}{\fff}\right\}}
 \quad\to_\rwdwu\quad
-\vlder{\Phi\{a^\one\ot\fff\}}{}{\zeta\left\{\vlderivation
+\vlder{\Phi\{a^\one/\fff\}}{}{\zeta\left\{\vlderivation
                            {
                             \vlin{=}{}{\ttt}
                             {
@@ -429,7 +404,7 @@ The proof of the following theorem is essentially contained in Figures~\vref{fig
 \vlder{\Phi}{}{\zeta\left\{\vlinf{}{}{\vls(a^\one.a^\two)}{a^\three}\right\}}
               {\xi\left\{\vlinf{}{}{a^\three}{\fff}\right\}}
 \quad\to_\rwdcu\quad
-\vlder{\Phi\{a^\three\ot\fff\}}{}{\zeta\left\{\vlinf{=}{}{\vls(\vlinf{}{}{a^\one}{\fff}\;.\;\vlinf{}{}{a^\two}{\fff})}{\fff}\right\}}
+\vlder{\Phi\{a^\three/\fff\}}{}{\zeta\left\{\vlinf{=}{}{\vls(\vlinf{}{}{a^\one}{\fff}\;.\;\vlinf{}{}{a^\two}{\fff})}{\fff}\right\}}
               {\xi\{\fff\}}
 \\
 %---------------------------------------
@@ -528,7 +503,7 @@ $}
 \vlder{\Phi}{}{\zeta\left\{\vlinf{}{}{\fff}{\vls(a^\four.\bar a^\three)}\right\}}
               {\xi\left\{\vlinf{}{}{a^\four}{\vls[a^\one.a^\two]}\right\}}
 \quad\to_\rcdiu\quad
-\vlder{\Phi\{a^\four\ot\vls[a^\one.a^\two]\}}{}{\zeta\left\{\box\ContDownIntUp\right\}}
+\vlder{\Phi\{a^\four/\vlsmallbrackets\vlsbr[a^\one.a^\two]\}}{}{\zeta\left\{\box\ContDownIntUp\right\}}
                                      {\xi\left\{\vls[a^\one.a^\two]\right\}}
 \\
 \noalign{\bigskip}
@@ -551,27 +526,8 @@ $}
 \vlder{\Phi}{}{\zeta\left\{\vlinf{}{}{\vls(a^\three.a^\four)}{a^\five}\right\}}
               {\xi\left\{\vlinf{}{}{a^\five}{\vls[a^\one.a^\two]}\right\}}
 \quad\to_\rcdcu\quad
-\vlder{\Phi\{a^\five\ot\vls[a^\one.a^\two]\}}{}{\zeta\left\{\box\ContDownContUp\right\}}
+\vlder{\Phi\{a^\five/\vlsmallbrackets\vlsbr[a^\one.a^\two]\}}{}{\zeta\left\{\box\ContDownContUp\right\}}
                                      {\xi\left\{\vls[a^\one.a^\two]\right\}}
-\\
-%---------------------------------------
-\rcd\colon\hfil\atomicflow{
-(   0, 4)*{\afacd\one{}{}\two{}\three};
-(-3.5, 0)*{\invisiblemark};
-( 3.5, 0)*{\invisiblemark}}
-\quad\to\quad
-\atomicflow{
-(13,12)*{\afaidex{}{}{}{}{}{}32};
-(16, 4)*{\afvju8{}\three};
-(10, 6)*{\afacunw{}{}{}{}};
-( 0, 8)*{\afvjd8\one{}};
-( 4, 8)*{\afvjd8{}\two};
-( 6, 2)*{\afaiunw{}{}};
-( 6, 0)*{\afaiuex{}{}{}{}{}{}31}}
-&\qquad
-\xi\left\{\vlinf{}{}{a^\three}{\vls[a^\one.a^\two]}\right\}
-\quad\to_\rcd\quad
-\xi\left\{\box\ContDown\right\}
 \\
 %---------------------------------------
 \end{array}
@@ -582,11 +538,11 @@ $}
 
 %---------------------------------------
 \begin{theorem}\label{theorem:ReductionRulesSound}
-The reduction rules\/ $\rwdcd$, $\rwdiu$, $\rwdwu $, $\rwdcu$, $\rcdiu$, $\rcdcu$, $\rcuwu$, $\ridwu$, $\rcdwu$, $\ridcu$, $\rcd$ and\/ $\rcu$ are sound.
+The reduction rules\/ $\rwdcd$, $\rwdiu$, $\rwdwu $, $\rwdcu$, $\rcdiu$, $\rcdcu$, $\rcuwu$, $\ridwu$, $\rcdwu$ and $\ridcu$ are sound.
 \end{theorem}
 
 \begin{proof}
-For $r\in\{\rwdcd,\rwdiu,\rwdwu,\rwdcu,\rcdiu,\rcdcu,\rcd\}$ and $r\colon\phi'\to\psi'$ as in the left columns of Figures~\vref{figure:ReductionRulesWeakening} and \vref{figure:ReductionRulesContraction}, for every $\phi$ and $\psi$ such that $\phi\to_r\psi$ and for every $\Phi$ with flow $\phi$, the right columns of the tables provide reductions $\Phi\to_r\Psi$, where $\Psi$ has flow $\psi$, as follows. If $\Phi'\to_r\Psi'$ is the reduction provided by the table, then
+For $r\in\{\rwdcd,\rwdiu,\rwdwu,\rwdcu,\rcdiu,\rcdcu\}$ and $r\colon\phi'\to\psi'$ as in the left columns of Figures~\vref{figure:ReductionRulesWeakening} and \vref{figure:ReductionRulesContraction}, for every $\phi$ and $\psi$ such that $\phi\to_r\psi$ and for every $\Phi$ with flow $\phi$, the right columns of the tables provide reductions $\Phi\to_r\Psi$, where $\Psi$ has flow $\psi$, as follows. If $\Phi'\to_r\Psi'$ is the reduction provided by the table, then
 \[
 \Phi=
 \vlderivation              {
@@ -679,7 +635,7 @@ Flow rewriting system\/ $\frw\cup\frc$ is confluent.
 %=======================================
 \subsection{Conservation of Paths}\label{subsection:FlowRewritePathConservation}
 
-\TODO{Show that the number and length of `super paths' are conserved by all reduction rules except $\rcd^\ppl$ and $\rcu^\ppl$.}
+\TODO{Show that the number and length of `super paths' are conserved by all reduction rules.}
 
 %========================================
 \subsection{Complexity}\label{subsection:FlowRewriteComplexity}
