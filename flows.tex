@@ -212,12 +212,20 @@ Given an atomic flow $\phi$ and a polarity assignment $\pi$, we write
 ( 0,-6)*{\afvjdm4{}{}};
 }\quad,
 \]
-respectively, if all the edges in $\phi$ have polarity assignment $\ppl$ (resp., $\pmi$).
-
-If we label an atomic flow with a polarity assignment it can not contain any interaction or cut vertices duo to property~\ref{definition:AtomicFlow:item:PolarityAssignment} of Definition~\vref{definition:AtomicFlow}.
+respectively, if all the edges in $\phi$ have polarity assignment $\ppl$ (resp., $\pmi$). If we label an atomic flow with a polarity assignment it can not contain any interaction or cut vertices duo to property~\ref{definition:AtomicFlow:item:PolarityAssignment} of Definition~\vref{definition:AtomicFlow}.
 \end{remark}
 
-\TODO{Make sure we define atomic flows modulo associativity of contraction and graph isomorphism.}
+\begin{definition}
+Given an atomic flow $\phi$ with polarity assignment $\pi$, the polarity assignment $\bar\pi$ is defined to be, for every $\epsilon$ in $\phi$:
+\[
+\bar\pi(\epsilon)=
+\begin{cases}
+\pmi & \mbox{if $\pi(\epsilon)=\ppl$,}
+\\
+\ppl & \mbox{otherwise.}
+\end{cases}
+\]
+\end{definition}
 
 \TODO{Define connected component.}
 
