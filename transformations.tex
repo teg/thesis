@@ -233,6 +233,8 @@ An (\emph{atomic-flow}) \emph{reduction rule $r$ from flow $\phi'$ to flow $\psi
 we define reduction rules with graphical expressions $r\colon\phi'\to\psi'$, where $f$ and $g$ are indicated by labelling edges. A binary relation $R$ on the set of atomic flows is called an (\emph{atomic-flow}) \emph{reduction} if, whenever $\phi\mathrel{R}\psi$, there is a one-to-one map from the upper edges of $\phi$ to the upper edges of $\psi$ and a one-to-one map from the lower edges of $\phi$ to the lower edges of $\psi$. For every reduction rule $r\colon\phi'\to\psi'$, the reduction ${\to_r}$ is defined, such that $\phi\to_r\psi$ if and only if $\phi'$ appears as a subgraph in $\phi$ and we obtain $\psi$ by replacing $\phi'$ with $\psi'$ in $\phi$, while respecting the correspondence of edges; we call this operation a \emph{reduction by $r$}.
 \end{definition}
 
+\TODO{Consider making a remark about conserving polarity assignments.}
+
 \begin{remark}\label{remark:FlowReductionRuleProperFlow}
 The condition on polarity assignments for a reduction rule $r$ guarantees that the $\psi$ in $\phi\to_r\psi$ is a proper atomic flow, if $\phi$ is one.
 \end{remark}

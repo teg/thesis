@@ -1,7 +1,7 @@
 \newcommand{\frmis}{{\mathsf{mis}}}
 %---------------------------------------
 \begin{definition}\label{definition:MultipleIsolatedSubflowsRemoval}
-Given atomic flows $\gamma_0$, $\dots$, $\gamma_l$, $\delta_1$, $\dots$, $\delta_l$ that do not contain interaction or cut vertices, we define the reduction $\to_\frmis$ (where $\frmis$ stands for \emph{multiple isolated subflows}) as follows, for any atomic flow $\phi$ and any connected atomic flows $\psi_1$, $\dots$, $\psi_n$ that do not contain interaction or cut vertices:
+Given an $n\ge0$, and atomic flows $\eta_0$, $\dots$, $\eta_l$, $\mu_1$, $\dots$, $\mu_l$ that do not contain interaction or cut vertices, and such that the below is a valid atomic flow, we define the reduction $\to_\frmis$ (where $\frmis$ stands for \emph{multiple isolated subflows}) as follows, for any atomic flow $\phi$ and any connected atomic flows $\psi_1$, $\dots$, $\psi_n$ that do not contain interaction or cut vertices:
 \[
 \atomicflow{
 (-12,  8)*{\afvjdm8{}{\boldsymbol\epsilon}};
@@ -42,7 +42,7 @@ Given atomic flows $\gamma_0$, $\dots$, $\gamma_l$, $\delta_1$, $\dots$, $\delta
 ( 3, 40)*{\aflabelright{\phi}};
 ( 5, 33)*{\afvjm2};
 ( 9, 28)*{\affr{10}{8}};
-(11, 30)*{\aflabelright{\gamma_0}};
+(11, 30)*{\aflabelright{\eta_0}};
 ( 5, 23)*{\afvjm2};
 (11, 23)*{\afvjm2};
 ( 0, 18)*{\affr{12}{8}};
@@ -50,9 +50,9 @@ Given atomic flows $\gamma_0$, $\dots$, $\gamma_l$, $\delta_1$, $\dots$, $\delta
 ( 5, 13)*{\afvjm2};
 (11, 13)*{\afvjm2};
 (11, 18)*{\affr{6}{8}};
-(11, 20)*{\aflabelright{\delta_1}};
+(11, 20)*{\aflabelright{\mu_1}};
 ( 9,  8)*{\affr{10}{8}};
-(11, 10)*{\aflabelright{\gamma_1}};
+(11, 10)*{\aflabelright{\eta_1}};
 ( 5,  3)*{\afvjm2};
 (11,  3)*{\afvjm2};
 %-
@@ -61,17 +61,17 @@ Given atomic flows $\gamma_0$, $\dots$, $\gamma_l$, $\delta_1$, $\dots$, $\delta
 ( 5, -3)*{\afvjm2};
 (11, -3)*{\afvjm2};
 ( 9, -8)*{\affr{10}{8}};
-(10, -6)*{\aflabelright{\gamma_{n-1}}};
+(10, -6)*{\aflabelright{\eta_{n-1}}};
 ( 5,-13)*{\afvjm2};
 (11,-13)*{\afvjm2};
 ( 0,-18)*{\affr{12}{8}};
 ( 3,-16)*{\aflabelright{\phi}};
 (11,-18)*{\affr{6}{8}};
-(11,-16)*{\aflabelright{\delta_n}};
+(11,-16)*{\aflabelright{\mu_n}};
 ( 5,-23)*{\afvjm2};
 (11,-23)*{\afvjm2};
 ( 9,-28)*{\affr{10}{8}};
-(11,-26)*{\aflabelright{\gamma_n}};
+(11,-26)*{\aflabelright{\eta_n}};
 ( 5,-33)*{\afvjm2};
 ( 0,-38)*{\affr{12}{8}};
 ( 3,-36)*{\aflabelright{\phi}};
@@ -116,8 +116,8 @@ Given $n>0$ distinct atoms $a_1$, $\dots$, $a_n$, an $N>0$, and, for $0\le k\le 
 \end{itemize}
 Let
 \begin{itemize}
- \item $\gamma_k$ be the atomic flow of\/ $\Gamma_k$, and 
- \item $\delta_k$ be the atomic flow consisting of, for $1\le i\le n$, one copy of $\psi_i$ for every atom occurrence in $\gamma_{i,k}$,
+ \item $\eta_k$ be the atomic flow of\/ $\Gamma_k$, and 
+ \item $\mu_k$ be the atomic flow consisting of, for $1\le i\le n$, one copy of $\psi_i$ for every atom occurrence in $\gamma_{i,k}$,
 \end{itemize}
 then
 \begin{itemize}
@@ -164,7 +164,7 @@ Since each of $\psi_1$, $\dots$, $\psi_n$ is connected and contains no interacti
 ( 0, 0)*{\affr{12}{8}};
 ( 3, 2)*{\aflabelright{\phi}};
 (11, 0)*{\affr{6}{8}};
-(11, 2)*{\aflabelright{\delta_k}};
+(11, 2)*{\aflabelright{\mu_k}};
 (-5,-6)*{\afvjm4};
 ( 1,-6)*{\afvj4};
 ( 3,-6)*{\cdots};

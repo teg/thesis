@@ -176,37 +176,51 @@ $}
 \Psi\quad=\quad
 \vlderivation
 {
- \vlin{2\cdot\cod}{}{\beta}
+ \vlin{\cod}{}{\beta}
  {
-  \vlin{\swi}{}{\vls[\beta\;\;\;\;.\;\;\;\;\beta\;\;\;\;.\;\;\;\;\box\DeltaBotK]}
+  \vlin{\swi}{}
   {
-   \vlin{2\cdot\cou}{}
+   \vls
+   [
+    \vlinf{\cod}{}{\beta}{\vls[\beta.\beta]}
+   \;\;\;\;.\;\;\;\;
+    \box\DeltaBotK
+   ]
+  }
+  {
+   \vlin{\swi}{}
    {
     \vls
     (
-     \vlinf{\swi}{}
-     {
-      \vls
+%     \vlinf{\swi}{}
+%     {
+%      \vls
       [
        \beta
       \;\;\;\;.\;\;\;\;
        \box\DeltaK
       ]
-     }
-     {
-      \vls
-      (
-       \box\DeltaTopK
-      \;\;\;\;.\;\;\;\;
-       \alpha
-      )
-     }
-    \;\;\;\;\;\;\;\;.\;\;\;\;\;\;\;\;
+%     }
+%     {
+%      \vls(\vlsmallbrackets[\beta.\bar a^\psi].\alpha)
+%     }
+    \;\;\;\;\;.\;\;\;\;\;
      \alpha
-    )
+    )   
    }
    {
-    \vlhy{\alpha}
+    \vlin{\cod}{}
+    {
+     \vls
+     (
+      \box\DeltaTopK
+     \;\;\;\;.\;\;\;\;
+      \vlinf{\cou}{}{\vls(\alpha.\alpha)}{\alpha}
+     )
+    }
+    {
+     \vlhy{\alpha}
+    }
    }
   }
  } 
