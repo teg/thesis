@@ -73,28 +73,28 @@ Reduction\/ $\to_\frfb$ is sound.
 
 %---------------------------------------
 \begin{proof}
-Let $\Phi$ be a derivation with flow $\phi'$, such that $\phi'\to_\frfb\psi'$. We show that there exists a derivation $\Psi$ with flow $\psi'$ and with the same premiss and conclusion as $\Phi$. In the following, we refer to the figure in Definition~\vref{definition:FourBoxes}.
+Let $\Phi$ be a derivation with flow $\phi'$, such that $\phi'\to_\frfb\psi'$. We show that there exists a derivation $\Psi$ with flow $\psi'$ and with the same premiss and conclusion as $\Phi$. In the following, we refer to the figure in Definition~\vref{definition:FourBoxes}. To ease legibility, we label the four subflows of $\psi'$ that are isomorphic to $\phi$ by $\phi_1$ (left-most), $\phi_2$ (top-most), $\phi_3$ (bottom-most) and $\phi_4$ (right-most).
 
-We obtain $\Psi$ from $\Phi$ by, for every atom occurrence $a$ in $\Phi$ that maps to an edge in $\phi$;
+We obtain $\Psi$, with atomic flow $\psi'$, from $\Phi$ by, for every atom occurrence $a^\phi$ in $\Phi$:
 \begin{enumerate}
-	\item If $a$ is not in the premiss or conclusion of $\Phi$, substitute it with the formula $\vls([a_1.a_2].[a_3.a_4])$, where $a=a_1=a_2=a_3=a_4$.
-	\item If $a$ is in the premiss or conclusion of $\Phi$, substitute it with the derivation
+	\item If $a^\phi$ is not in the premiss or conclusion of $\Phi$, substitute it with the formula $\vls([a^{\phi_1}.a^{\phi_2}].[a^{\phi_3}.a^{\phi_4}])$.
+	\item If $a^\phi$ is in the premiss or conclusion of $\Phi$, substitute it with the derivation
 \[
 \vlinf{}{}
 {
  \vls(
   [
-   a_1
+   a^{\phi_1}
   \;.\;
-   \vlinf{}{}{a_2}{\fff}
+   \vlinf{}{}{a^{\phi_2}}{\fff}
   ]
  \;.\;
   [
-   a_3
+   a^{\phi_3}
   \;.\;
-   \vlinf{}{}{a_4}{\fff}
+   \vlinf{}{}{a^{\phi_4}}{\fff}
   ]
- )
+ )  
 }
 {a}
 \quad\mbox{or}\quad
@@ -103,46 +103,45 @@ We obtain $\Psi$ from $\Phi$ by, for every atom occurrence $a$ in $\Phi$ that ma
 {
  \vls
  (
-  [a_1.a_2]
+  [a^{\phi_1}.a^{\phi_2}]
  \;.\;
   [
-   \vlinf{}{}{\ttt}{a_3}
+   \vlinf{}{}{\ttt}{a^{\phi_3}}
   \;.\;
-   \vlinf{}{}{\ttt}{a_4}
+   \vlinf{}{}{\ttt}{a^{\phi_4}}
   ]
  )
 }
 \quad,
 \]
 respectively.
-	\item Substitute rule instances $\vlinf{}{}{\vls[a.\bar a]}{\ttt}$ and $\vlinf{}{}{\fff}{\vls(a.\bar a)}$ with the derivations
+	\item Substitute rule instances $\vlinf{}{}{\vls[a^\phi.\bar a^\psi]}{\ttt}$ and $\vlinf{}{}{\fff}{\vls(a^\phi.\bar a^\psi)}$ with the derivations
 \[
 \vlderivation
 {
- \vlin{=}{}{\vls[([\vlinf{}{}{a_1}{\fff}\;.\;a_2]\;.\;[\vlinf{}{}{a_3}{\fff}\;.\;a_4])\;.\;\vlinf{}{}{\bar a}{\vls[\bar a.\bar a]}]}
+ \vlin{=}{}{\vls[([\vlinf{}{}{a^{\phi_1}}{\fff}\;.\;a^{\phi_2}]\;.\;[\vlinf{}{}{a^{\phi_3}}{\fff}\;.\;a^{\phi_4}])\;.\;\vlinf{}{}{\bar a^\psi}{\vls[\bar a.\bar a]}]}
  {
-  \vlin{\swi}{}{\vls[\vlinf{\swi}{}{\vls[(a_2.a_4).\bar a]}{\vls(a_2.[a_4.\bar a])}\;.\;\bar a]}
+  \vlin{\swi}{}{\vls[\vlinf{\swi}{}{\vls\vlsmallbrackets[(a^{\phi_2}.a^{\phi_4}).\bar a]}{\vls\vlsmallbrackets(a^{\phi_2}.[a^{\phi_4}.\bar a])}\;.\;\bar a]}
   {
-   \vlhy{\vls(\vlinf{}{}{\vls[a_2.\bar a]}{\ttt}\;.\;\vlinf{}{}{\vls[a_4.\bar a]}{\ttt})}
+   \vlhy{\vls(\vlinf{}{}{\vls[a^{\phi_2}.\bar a]}{\ttt}\;.\;\vlinf{}{}{\vls[a^{\phi_4}.\bar a]}{\ttt})}
   }
  }
 }
 \quad\mbox{and}\quad
 \vlderivation
 {
- \vlin{\swi}{}{\vls[\vlinf{}{}{\fff}{\vls(a_3.\bar a)}\;.\;\vlinf{}{}{\fff}{\vls(a_4.\bar a)}]}
+ \vlin{\swi}{}{\vls[\vlinf{}{}{\fff}{\vls(a^{\phi_3}.\bar a)}\;.\;\vlinf{}{}{\fff}{\vls(a^{\phi_4}.\bar a)}]}
  {
-  \vlin{=}{}{\vls(\vlinf{\swi}{}{\vls[a_3.(a_4.\bar a)]}{\vls([a_3.a_4].\bar a)}\;.\;\bar a)}
+  \vlin{=}{}{\vls(\vlinf{\swi}{}{\vls[a^{\phi_3}.(a^{\phi_4}.\bar a)]}{\vls([a^{\phi_3}.a^{\phi_4}].\bar a)}\;.\;\bar a)}
   {
-   \vlhy{\vls(([\vlinf{}{}{\ttt}{a_1}\;.\;\vlinf{}{}{\ttt}{a_2}]\;.\;[a_3.a_4])\;.\;\vlinf{}{}{\vls(\bar a.\bar a)}{\bar a})}
+   \vlhy{\vls(([\vlinf{}{}{\ttt}{a^{\phi_1}}\;.\;\vlinf{}{}{\ttt}{a^{\phi_2}}]\;.\;\vlsmallbrackets[a^{\phi_3}.a^{\phi_4}])\;.\;\vlinf{}{}{\vls(\bar a.\bar a)}{\bar a^\psi})}
   }
  }
 }\quad,
 \]
 respectively.
-	\item Substitute rule instances $\acd,\acu,\awd,\awu$ which apply to $a$ with their generic counterparts applied to $\vls([a_1.a_2].[a_3.a_4])$.
+	\item Substitute rule instances $\acd,\acu,\awd,\awu$ which apply to $a$ with their generic counterparts applied to $\vls\vlsmallbrackets([a^{\phi_1}.a^{\phi_2}].[a^{\phi_3}.a^{\phi_4}])$.
 \end{enumerate}
-$\Psi$ then has atomic flow $\psi'$ where $a_1$, $a_2$, $a_3$ and $a_4$ map to, respectively, the leftmost, top, bottom and rightmost copies of $\phi$ in $\psi'$.
 \end{proof}
 
 \TODO{Make a proposition? Rephrase?}
