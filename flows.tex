@@ -243,8 +243,7 @@ Given an atomic flow $\phi$ with polarity assignment $\pi$, the polarity assignm
 \TODO{Define subflow}.
 
 \begin{definition}\label{definition:LabelsIsomorphicFlows}
-By giving two atomic flows the same label we indicated that there is a bijection between them.
-Given two atomic flows $\phi$ and $\psi$, a bijection $f$ between them and the edge $\epsilon$ in $\phi$, by labeling an edge in $\psi$ by $\hat\epsilon$ (resp., $\tilde\epsilon$ or $\epsilon^1$, $\epsilon^2$, $\dots$) we indicate that $f(\epsilon)=\hat\epsilon$ (resp., $f(\epsilon)=\tilde\epsilon$ or $f(\epsilon)=\epsilon^1$, $f(\epsilon)=\epsilon^2$, $\dots$).
+Given two atomic flows $\phi$ and $\psi$, we write $\psi=f(\phi)$ if $\phi$ and $\psi$ are isomorphic and $f$ is a bijection from the edges of $\phi$ to the edges of $\psi$. More generally, given atomic flows $\phi_1$, $\dots$, $\phi_n$, $\psi_1$, $\dots$, $\psi_n$, we write $\psi_1=f(\phi_1)$, $\dots$, $\psi_n=f(\phi_n)$ if, for every $1\le i\le n$, $\phi_i$ and $\psi_i$ are isomorphic, and $f$ is a bijection from the edges in $\phi_1$, $\dots$, $\phi_n$ to the edges in $\psi_1$, $\dots$, $\psi_n$.
 \end{definition}
 
 \begin{example}\label{example:LabelsIsomorphicFlows}
