@@ -13,33 +13,38 @@
 \newcommand{\size}[1]{{\left\vert #1\right\vert}}\vlupdate\size
 
 \begin{definition}\label{definition:Formula}
-\emph{Formulae} of the \emph{functorial calculus} are denoted by $\alpha$, $\beta$, $\gamma$, $\delta$ and are freely built from:
+Given a set of \emph{units}, $\mathcal U$, and a set of \emph{logical relations}, $\mathcal R$, we define a set of \emph{formulae}, $\mathcal F$, of the \emph{functorial calculus}, denoted by $\alpha$, $\beta$, $\gamma$, $\delta$ to be:
 \begin{itemize}
- \item \emph{units}, like $\fff$ (false) and $\ttt$ (true),
- \item \emph{atoms} $a$, $b$, $c$, $d$ and $\bar a$, $\bar b$, $\bar c$, $\bar d$,
- \item \emph{formula variables} $A$, $B$, $C$, $D$, and
- \item \emph{logical relations}, like \emph{disjunction} $\vlsbr[\alpha.\beta]$ and \emph{conjunction} $\vlsbr(\alpha.\beta)$.
+ \item \emph{atoms} $a$, $b$, $c$, $d$ and $\bar a$, $\bar b$, $\bar c$, $\bar d$;
+ \item \emph{formula variables} $A$, $B$, $C$, $D$;
+ \item a unit from $\mathcal U$, like $\fff$ (false) and $\ttt$ (true); and
+ \item the composition of $n$ formulae by an $n$-ary logical relation from $\mathcal R$, like \emph{disjunction} $\vlsbr[\alpha.\beta]$ and \emph{conjunction} $\vlsbr(\alpha.\beta)$.
 \end{itemize}
 A formula is \emph{ground} if it contains no variables. We usually omit external brackets of formulae, and sometimes we omit dispensable brackets under associativity. We use $\equiv$ to denote literal equality of formulae. The \emph{size} $\size\alpha$ of a formula $\alpha$ is the number of unit, atom and variable occurrences appearing in it. On the set of atoms there is an involution $\bar\cdot$, called \emph{negation} (\emph{i.e.}, $\bar\cdot$ is a bijection from the set of atoms to itself such that $\bar{\bar a}\equiv a$); we require that $\bar a\not\equiv a$ for every $a$; when both $a$ and $\bar a$ appear in a formula, we mean that atom $a$ is mapped to by $\bar a$ by $\bar\cdot$. A \emph{context} is a formula where one \emph{hole} $\vlhole$ appears in the place of a subformula; for example, $\vls[a.(b.\vlhole)]$ is a context; the generic context is denoted by $\xi\vlhole$. The hole can be filled with formulae; for example, if $\xi\vlhole\equiv\vls(b.[\vlhole.c])$, then $\xi\{a\}\equiv\vls(b.[a.c])$, $\xi\{b\}\equiv\vls(b.[b.c])$ and $\xi\{\vls(a.b)\}\equiv\vls(b.[(a.b).c])$. The \emph{size} of $\xi\vlhole$ is defined as $\size{\xi\vlhole}=\size{\xi\{a\}}-1$.
 \end{definition}
 
 \TODO{Note: I removed mention of $\rho$ and $\sigma$ as well as DeMorgan duals. I changed the example.}
 
+\TODO{Negated variables?}
+
 \begin{definition}\label{definition:RenamingSubstitution}
-A \emph{renaming} is a map from the set of atoms to itself, and it is denoted by $\{a_1/b_1,a_2/b_2,\dots\}$. A renaming of $\alpha$ by $\{a_1/b_1,a_2/b_2,\dots\}$ is indicated by $\alpha\{a_1/b_1,a_2/b_2,\dots\}$ and is obtained by simultaneously substituting every occurrence of $a_i$ in $\alpha$ by $b_i$ and every occurrence of $\bar a_i$ by $\bar b_i$; for example, if $\alpha\equiv\vls(a.[b.(a.[\bar a.c])])$ then $\alpha\{a/\bar b,\bar b/c\}\equiv\vls(\bar b.[\bar c.(\bar b.[b.c])])$. A \emph{substitution} is a map from the set of formula variables to formulae, denoted by $\{A_1/\beta_1,A_2/\beta_2,\dots\}$. An \emph{instance} of $\alpha$ by $\{A_1/\beta_1,A_2/\beta_2,\dots\}$ is indicated by $\alpha\{A_1/\beta_1,A_2/\beta_2,\dots\}$ and is obtained by simultaneously substituting every occurrence of variable $A_i$ in $\alpha$ by formula $\beta_i$; for example if $\alpha\equiv\vls[A.(b.c)]$ then $\alpha\{A/\vls(c.\bar b)\}\equiv\vls[(c.\bar b).(b.c)]$.
+A \emph{renaming} is a map from the set of atoms to itself, and it is denoted by $\{a_1/b_1,a_2/b_2,\dots\}$. A renaming of $\alpha$ by $\{a_1/b_1,a_2/b_2,\dots\}$ is indicated by $\alpha\{a_1/b_1,a_2/b_2,\dots\}$ and is obtained by simultaneously substituting every occurrence of $a_i$ in $\alpha$ by $b_i$ and every occurrence of $\bar a_i$ by $\bar b_i$; for example, if $\alpha\equiv\vls(a.[b.(a.[\bar a.c])])$ then $\alpha\{a/\bar b,\bar b/c\}\equiv\vls(\bar b.[\bar c.(\bar b.[b.c])])$. Given a set of formulae, $\mathcal F$, a \emph{substitution} is a map from the set of formula variables to $\mathcal F$, denoted by $\{A_1/\beta_1,A_2/\beta_2,\dots\}$. An \emph{instance} of $\alpha$ by $\{A_1/\beta_1,A_2/\beta_2,\dots\}$ is indicated by $\alpha\{A_1/\beta_1,A_2/\beta_2,\dots\}$ and is obtained by simultaneously substituting every occurrence of variable $A_i$ in $\alpha$ by formula $\beta_i$; for example if $\alpha\equiv\vls[A.(b.c)]$ then $\alpha\{A/\vlsbr(c.\bar b)\}\equiv\vls[(c.\bar b).(b.c)]$.
 \end{definition}
 
+\TODO{Note: forced all derivations to only contain ground formulae.}
+
 \begin{definition}\label{definition:InferenceRuleInstance}
-An \emph{inference rule} $\rho$ is an expression $\vlinf{\rho}{}{\beta}{\alpha}$, where formulae $\alpha$ and $\beta$ are called \emph{premiss} and \emph{conclusion}, respectively. A \emph{proof system} is a finite set of inference rules. An \emph{inference rule instance} $\vlinf{\rho}{}{\delta}{\gamma}$ of $\vlinf{\rho}{}{\beta}{\alpha}$ is such that $\gamma\equiv\alpha\{a_1/b_1,a_2/b_2,\dots\}\{A_1/\beta_1,A_2/\beta_2,\dots\}$ and $\delta\equiv\beta\{a_1/b_1,a_2/b_2,\dots\}\{A_1/\beta_1,A_2/\beta_2,\dots\}$, for some renaming $\{a_1/b_1,a_2/b_2,\dots\}$ and substiution $\{A_1/\beta_1,A_2/\beta_2,\dots\}$.
+Given a set of formulae, $\mathcal F$, an \emph{inference rule} $\rho$ is an expression $\vlinf{\rho}{}{\beta}{\alpha}$, where $\alpha$ and $\beta$ from $\mathcal F$ are called \emph{premiss} and \emph{conclusion}, respectively. A (\emph{deductive}) \emph{system} is a finite set of inference rules. An \emph{inference rule instance} $\vlinf{\rho}{}{\delta}{\gamma}$ of $\vlinf{\rho}{}{\beta}{\alpha}$ is such that $\gamma$ and $\delta$ are ground, and $\gamma\equiv\alpha\{a_1/b_1,a_2/b_2,\dots\}\{A_1/\beta_1,A_2/\beta_2,\dots\}$ and $\delta\equiv\beta\{a_1/b_1,a_2/b_2,\dots\}\{A_1/\beta_1,A_2/\beta_2,\dots\}$, for some renaming $\{a_1/b_1,a_2/b_2,\dots\}$ and substiution $\{A_1/\beta_1,A_2/\beta_2,\dots\}$.
 \end{definition}
 
 \begin{definition}\label{definition:Derivation}
-Given a set of formulae built from the logical relations $\mathcal{R}$, and a proof system $\mathcal{S}$, then a (\emph{functorial calculus}) \emph{derivation $\vlder{\Psi}{\mathcal{S}}{\beta}{\alpha}$ from the formula $\alpha$ to the formula $\beta$}, is defined to be
+Given a deductive system $\mathcal S$, a set of formulae, $\mathcal F$, built from the logical relations $\mathcal R$, and $\alpha$ and $\beta$ from $\mathcal F$; a (\emph{functorial calculus}) \emph{derivation $\Psi$ in $\mathcal S$ from $\alpha$ to $\beta$}, denoted $\vlder{\Psi}{\mathcal{S}}{\beta}{\alpha}$, is defined to be
 \begin{enumerate}
- \item\label{definition:Derivation:item:Formula} a formula: $\alpha\equiv\beta$;
+ \item\label{definition:Derivation:item:Formula} a formula: $\Psi\;=\;\alpha\equiv\beta$;
 
- \item\label{definition:Derivation:item:Vertical} the result of a vertical composition:
+ \item\label{definition:Derivation:item:Vertical} a \emph{vertical composition}:
  \[
+ \Psi\;=\;
  \vlderivation
  {
   \vlde{\Phi_2}{}
@@ -67,21 +72,21 @@ Given a set of formulae built from the logical relations $\mathcal{R}$, and a pr
  }
  \quad,
  \]
- where $\vlinf{\rho}{}{\alpha'}{\beta'}$ is an instance of an inference rule from $\mathcal{S}$, and $\vlder{\Phi_1}{}{\beta'}{\alpha}$ and $\vlder{\Phi_2}{}{\beta}{\alpha'}$ are derivations; or
+ where $\vlinf{\rho}{}{\alpha'}{\beta'}$ is an instance of an inference rule from $\mathcal{S}$, and $\vlder{\Phi_1}{\mathcal S}{\beta'}{\alpha}$ and $\vlder{\Phi_2}{\mathcal S}{\beta}{\alpha'}$ are derivations; or
 
- \item\label{definition:Derivation:item:Horizontal} the result of a horizontal composition:
+ \item\label{definition:Derivation:item:Horizontal} a \emph{horizontal composition}:
  \[
- \circ
+ \Psi\;=\;r
  \left(
   \vlder{\Phi_1}{}{\beta_1}{\alpha_1}
-  \;,\;\cdots\;,\;
+  \;,\;\dots\;,\;
   \vlder{\Phi_n}{}{\beta_n}{\alpha_n}
  \right)
  \quad,
  \]
- where $\circ$ is an $n$-ary logical relation from $\mathcal{R}$, $\alpha\equiv\circ(\alpha_1,\dots,\alpha_n)$, $\beta\equiv\circ(\beta_1,\dots,\beta_n)$, and $\vlder{\Phi_1}{}{\beta_1}{\alpha_1}$, $\dots$, $\vlder{\Phi_n}{}{\beta_n}{\alpha_n}$ are derivations.
+ where $r$ is an $n$-ary logical relation from $\mathcal{R}$, $\alpha\equiv r(\alpha_1,\dots,\alpha_n)$, $\beta\equiv r(\beta_1,\dots,\beta_n)$, and $\vlder{\Phi_1}{}{\beta_1}{\alpha_1}$, $\dots$, $\vlder{\Phi_n}{}{\beta_n}{\alpha_n}$ are derivations.
 \end{enumerate}
-The size of a derivation $\Psi$, denoted $\size{\Psi}$, is defined to be the sum of the size of the formulae occurring in $\Psi$.
+The size of a derivation $\Psi$, denoted $\size{\Psi}$, is defined to be the sum of the size of the formulae appearing in $\Psi$.
 \end{definition}
 
 \begin{remark}\label{remark:DerAssociativeComposition}
@@ -154,9 +159,8 @@ Given derivations $\vlder{\Phi_1}{}{\beta_1}{\alpha_1}$, $\vlder{\Phi_2}{}{\beta
   \alpha_1
  }
 }
-\quad,
 \]
-to be equal, and we denote them both by:
+to be equal, and we denote them both by
 \[
 \vlderivation
 {
@@ -200,18 +204,21 @@ to be equal, and we denote them both by:
 \end{remark}
 
 \begin{lemma}\label{lemma:DerInContext}
-Given a derivation $\vlder{\Phi}{}{\beta}{\alpha}$ and a context $\xi\vlhole$, a derivation $\vlder{\xi\{\Phi\}}{}{\xi\{\beta\}}{\xi\{\alpha\}}$, with size $\size{\Phi}+\size{\xi\vlhole}$, can be constructed.
+Given a derivation $\vlder{\Phi}{}{\beta}{\alpha}$ and a context $\xi\vlhole$, a derivation $\vlder{\Psi}{}{\xi\{\beta\}}{\xi\{\alpha\}}$, with size $\size{\Phi}+\size{\xi\vlhole}$, can be constructed.
 \end{lemma}
 
 \begin{proof}
 We proceed by structural induction on $\xi\vlhole$. The base case, $\xi\vlhole\equiv\vlhole$, is trivial.
 For the inductive case, let
 \[
- \xi\vlhole\equiv\circ(\gamma_1,\dots,\gamma_{i-1},\xi'\vlhole,\gamma_{i+1},\dots,\gamma_n)
+ \xi\vlhole\equiv r(\gamma_1,\dots,\gamma_{i-1},\xi'\vlhole,\gamma_{i+1},\dots,\gamma_n)
 \]
-for some $n$-ary logical relation $\circ$, some formulae $\gamma_1$, $\dots$, $\gamma_{i-1}$, $\gamma_{i+1}$, $\dots$, $\gamma_n$ and a context $\xi'\vlhole$. By the inductive hypothesis we can construct the derivation $\xi'\{\Phi\}$, so the result follows by item \ref{definition:Derivation:item:Horizontal} of Definition~\vref{definition:Derivation}.
+for some $n$-ary logical relation $r$, some formulae $\gamma_1$, $\dots$, $\gamma_{i-1}$, $\gamma_{i+1}$, $\dots$, $\gamma_n$ and a context $\xi'\vlhole$. By the inductive hypothesis we can construct the derivation $\vlder{\Psi'}{}{\xi'\{\beta\}}{\xi'\{\alpha\}}$, so the result follows by case \ref{definition:Derivation:item:Horizontal} of Definition~\vref{definition:Derivation}.
 \end{proof}
 
+\begin{definition}\label{definition:DerInContext}
+Given a derivation $\vlder{\Phi}{}{\beta}{\alpha}$ and a context $\xi\vlhole$, the derivation $\vlder{}{}{\xi\{\beta\}}{\xi\{\alpha\}}$ constructed in the proof of Lemma~\vref{lemma:DerInContext} is denoted $\xi\{\Phi\}$.
+\end{definition}
 
 \begin{lemma}\label{lemma:DerComposition}
 Given two derivations $\vlder{\Phi_1}{}{\beta}{\alpha}$ and $\vlder{\Phi_2}{}{\gamma}{\beta}$, a derivation $\vlder{\Psi}{}{\gamma}{\alpha}$, with size $\size{\Phi_1}+\size{\Phi_2}-\size{\beta}$, can be constructed.
@@ -348,20 +355,20 @@ We argue by structural induction on $\Phi_1$ and $\Phi_2$
  \item if 
  \[
   \Phi_1\;=\;
-  \circ\left(\vlder{\Phi_{1,1}}{}{\beta_1}{\alpha_1},\cdots,\vlder{\Phi_{1,n}}{}{\beta_n}{\alpha_n}\right)
+  r\left(\vlder{\Phi_{1,1}}{}{\beta_1}{\alpha_1},\dots,\vlder{\Phi_{1,n}}{}{\beta_n}{\alpha_n}\right)
   \quad\mbox{and}\quad
   \Phi_2\;=\;
-  \circ\left(\vlder{\Phi_{2,1}}{}{\gamma_1}{\beta_1},\cdots,\vlder{\Phi_{2,n}}{}{\gamma_n}{\beta_n}\right)
+  r\left(\vlder{\Phi_{2,1}}{}{\gamma_1}{\beta_1},\dots,\vlder{\Phi_{2,n}}{}{\gamma_n}{\beta_n}\right)
   \quad,
  \]
 then, by the inductive hypothesis, we can construct
  \[
-  \vlder{\Psi_1}{}{\gamma_1}{\alpha_1}\quad,\cdots,\quad\vlder{\Psi_n}{}{\gamma_n}{\alpha_n}\quad,
+  \vlder{\Psi_1}{}{\gamma_1}{\alpha_1}\quad,\dots,\quad\vlder{\Psi_n}{}{\gamma_n}{\alpha_n}\quad,
  \]
 with size $\size{\Phi_{1,1}}+\size{\Phi_{2,1}}-\size{\beta_1},\dots,\size{\Phi_{1,n}}+\size{\Phi_{2,n}}-\size{\beta_n}$, respectively, we can then build
 \[
 \Psi\;=\;
-\circ
+r
 \left(
  \vlder{\Psi_1}{}{\gamma_1}{\alpha_1}
  \;,\;\dots\;,\;
@@ -392,38 +399,44 @@ Given derivations $\vlder{\Phi_1}{}{\beta}{\alpha}$ and $\vlder{\Phi_2}{}{\gamma
 
 \section{Comparison with the Calculus of Structures}\label{section:CalculusOfStructures}
 
-
 \begin{definition}\label{definition:CoS}
-Given a set of formulae and a proof system $\mathcal{S}$, then a \emph{calculus of structures derivation} $\vlder{\Psi}{}{\beta}{\alpha}$ from the formula $\alpha$ to the formula $\beta$, is defined to be
+Given a deductive system $\mathcal S$, a set of formulae, $\mathcal F$, and $\alpha$ and $\beta$ from $\mathcal F$; a \emph{calculus of structures derivation $\Psi$ in $\mathcal S$ from $\alpha$ to $\beta$}, denoted $\vlder{\Psi}{\mathcal{S}}{\beta}{\alpha}$, is defined to be
 \begin{enumerate}
- \item\label{definition:CoS:item:Formula} a formula: $\alpha\equiv\beta$; or
+ \item\label{definition:CoS:item:Formula} a formula: $\Psi\;=\;\alpha\equiv\beta$; or
 
- \item\label{definition:CoS:item:Vertical} the result of a vertical composition:
+ \item\label{definition:CoS:item:Vertical} a \emph{vertical composition}:
  \[
- \vlinf{\rho}{}
+ \Psi\;=\;
+ \vlderivation
  {
-  \vlder{\Phi_2}{}
+  \vlde{\Phi_2}{}
   {
    \beta
   }
   {
-   \xi\{\alpha'\}
-  }
- }
- {
-  \vlder{\Phi_1}{}
-  {
-   \xi\{\beta'\}
-  }
-  {
-   \alpha
+   \vlin{\rho}{}
+   {
+    \xi\{\alpha'\}
+   }
+   {
+    \vlde{\Phi_1}{}
+    {
+     \xi\{\beta'\}
+    }
+    {
+     \vlhy
+     {
+      \alpha
+     }
+    }
+   }
   }
  }
  \quad,
  \]
- where $\vlinf{\rho}{}{\beta'}{\alpha'}$ is an instance of an inference rule from $\mathcal{S}$, and $\vlder{\Phi_1}{}{\xi\{\beta'\}}{\alpha}$ and $\vlder{\Phi_2}{}{\beta}{\xi\{\alpha'\}}$ are calculus of structures derivations.
+ where $\vlinf{\rho}{}{\alpha'}{\beta'}$ is an instance of an inference rule from $\mathcal{S}$, and $\vlder{\Phi_1}{\mathcal S}{\xi\{\beta'\}}{\alpha}$ and $\vlder{\Phi_2}{\mathcal S}{\beta}{\xi\{\alpha'\}}$ are calculus of structures derivations.
 \end{enumerate}
-The size of a calculus of structures derivation $\Psi$, denoted $\size{\Psi}$, is defined to be the sum of the size of the formulae occurring in $\Psi$.
+The size of a calculus of structures derivation $\Psi$, denoted $\size{\Psi}$, is defined to be the sum of the size of the formulae appearing in $\Psi$.
 \end{definition}
 
 \begin{theorem}
@@ -455,7 +468,7 @@ We argue by structural induction on $\Phi$. The base case is trivial; $\Phi=\alp
  }
 \quad.
 \]
-By the inductive hypothesis, there are functorial calculus derivations $\vlder{\Psi_1}{}{\xi\{\beta'\}}{\alpha}$ and $\vlder{\Psi_2}{}{\beta}{\xi\{\alpha'\}}$, such that $\size{\Psi_1}\le\size{\Phi_1}$ and $\size{\Psi_2}\le\size{\Phi_2}$. By Lemma~\vref{lemma:DerInContext}, there is a functorial calculus derivation $\xi\left\{\vlinf{\rho}{}{\alpha'}{\beta'}\right\}$, with size $\size{\xi\vlhole}+\size{\alpha'}+\size{\beta'}$. By Lemma~\vref{lemma:DerComposition}, we can combine the three functorial calculus derivations to create $\vlder{\Psi}{}{\beta}{\alpha}$, with size $\size{\Psi_1}+\size{\Psi_2}-\size{\xi\vlhole}\le\size{\Phi_1}+\size{\Phi_2}=\size{\Phi}$.
+By the inductive hypothesis, there are functorial calculus derivations $\vlder{\Psi_1}{}{\xi\{\beta'\}}{\alpha}$ and $\vlder{\Psi_2}{}{\beta}{\xi\{\alpha'\}}$, such that $\size{\Psi_1}\le\size{\Phi_1}$ and $\size{\Psi_2}\le\size{\Phi_2}$. By Lemma~\vref{lemma:DerInContext}, there is a functorial calculus derivation $\xi\left\{\vlinf{\rho}{}{\alpha'}{\beta'}\right\}$, with size $\size{\xi\vlhole}+\size{\alpha'}+\size{\beta'}$. By Lemma~\vref{lemma:DerComposition}, we can combine the three functorial calculus derivations to create $\vlder{\Psi}{}{\beta}{\alpha}$, with size $\size{\Psi_1}+\size{\Psi_2}+\size{\xi\vlhole}+\size{\beta'}+\size{\alpha'}-\size{\xi\vlhole}-\size{\beta'}-\size{\xi\vlhole}-\size{\alpha'}=\size{\Psi_1}+\size{\Psi_2}-\size{\xi\vlhole}\le\size{\Phi_1}+\size{\Phi_2}=\size{\Phi}$.
 \end{proof}
 
 \TODO{Compare with the paper by Stephane and Kai.}
