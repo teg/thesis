@@ -302,7 +302,28 @@ Consider a tautology $\alpha$. We show by induction on the number of atoms in $\
 \vlinf{=}{}{\alpha}{\ttt}\quad.
 \]
 
-For the inductive case, let $\alpha$ be a tautology containing instances of the atom $a$ or the atom $\bar a$. By the inductive hypothesis, there exists a proof of, $\vls(\alpha\{a/\ttt,\bar a/\fff\}.\alpha\{a/\fff,\bar a/\ttt\})$ in $\SKS$. Hence, the following proof exists
+For the inductive case, let $\alpha$ be a tautology containing instances of the atom $a$. We consider two cases:
+\begin{itemize}
+\item if $\alpha$ does not contain an instance of $\bar a$, then $\alpha\{a/\fff\}$ is a tautology, so by the inductive hypothesis we can build
+\[
+\vlderivation
+{
+ \vlde{}{\{\awd\}}
+ {
+  \alpha
+ }
+ {
+  \vlde{}{}
+  {
+   \alpha\{a/\fff\}
+  }
+  {
+   \vlhy{\ttt}
+  }
+ }
+}\quad;
+\]
+\item otherwise, both $\alpha\{a/\ttt,\bar a/\fff\}$ and $\alpha\{a/\fff,\bar a/\ttt\}$ are tautologies, so by the inductive hypothesis we can build
 \[
 \vlderivation
 {
@@ -322,14 +343,20 @@ For the inductive case, let $\alpha$ be a tautology containing instances of the 
     {
      \vlsbr
      (
-      \vlder{}{\{\acu,\awu\}}
+      \vlder{}{\{\acu\}}
       {
        \vls(a.\cdots.a)
       }
       {
-       a
+       \vlinf{=}{}
+       {
+        a
+       }
+       {
+        \vls[a.\fff]
+       }
       }
-     \;\;.\;\;
+     \;\;\;.\;\;\;
       \vlder{}{\{\awd\}}
       {
        \alpha\{a/\ttt\}
@@ -339,7 +366,7 @@ For the inductive case, let $\alpha$ be a tautology containing instances of the 
       }
      )
     }
-   \;\;\;\;.\;\;\;\;
+   \;\;\;\;\;.\;\;\;\;\;
     \vlder{}{\{\ssu\}}
     {
      \alpha
@@ -347,7 +374,7 @@ For the inductive case, let $\alpha$ be a tautology containing instances of the 
     {
      \vlsbr
      (
-      \vlder{}{\{\acu,\awu\}}
+      \vlder{}{\{\acu\}}
       {
        \vls(\bar a.\cdots.\bar a)
       }
@@ -371,22 +398,28 @@ For the inductive case, let $\alpha$ be a tautology containing instances of the 
    {
     \vls
     (
+     \vlinf{}{}
+     {
+      \vls[a.\bar a]
+     }
+     {
+      \ttt
+     }
+    \;\;\;.\;\;\;
      \vlder{}{}
      {
       \vls
       (
        \alpha\{a/\ttt,\bar a/\fff\}
-      .
-       \alpha\{a/\fff,\bar a/\ttt\}
+      \;.\;
+       \vlinf{=}{}
+       {
+        \vls(\ttt.\alpha\{a/\fff,\bar a/\ttt\})
+       }
+       {
+        \alpha\{a/\fff,\bar a/\ttt\}
+       }
       )
-     }
-     {
-      \ttt
-     }
-    \;\;.\;\;
-     \vlinf{}{}
-     {
-      \vls[a.\bar a]
      }
      {
       \ttt
@@ -403,4 +436,5 @@ For the inductive case, let $\alpha$ be a tautology containing instances of the 
  }
 }\quad.
 \]
+\end{itemize}
 \end{proof}
