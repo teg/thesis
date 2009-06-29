@@ -162,8 +162,19 @@ We consider atomic flows to be equal modulo graph isomorphisms and modulo the eq
    \atomicflow{(0,0)*{\afawu{}{}{}{}{}{}}}$}
 
 \begin{remark}\label{remark:LabelsOnBoxes}
-Let $\phi$ be an atomic flow with upper edges $\boldsymbol\epsilon$ and lower edges $\boldsymbol\iota$, we then represent it as
+Let $\phi$ be an atomic flow with upper edges $\boldsymbol\epsilon=\{\epsilon_1,\dots,\epsilon_n\}$ and lower edges $\boldsymbol\iota=\{\iota_1,\dots,\iota_m\}$, we then represent it as
 \[
+\atomicflow{
+(-3, 6)*{\afvju4{\epsilon_1}{}};
+( 0, 6)*{\cdots};
+( 3, 6)*{\afvju4{}{\epsilon_n}};
+( 0, 0)*{\affr88};
+( 1, 2)*{\aflabelright\phi};
+(-3,-6)*{\afvju4{\iota_1}{}};
+( 0,-6)*{\cdots};
+( 3,-6)*{\afvju4{}{\iota_m}};
+}
+\qquad\mbox{or}\qquad
 \atomicflow{
 ( 0,6)*{\afvjum4{\boldsymbol\epsilon}{}};
 ( 0,0)*{\affr88};
