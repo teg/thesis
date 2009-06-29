@@ -25,10 +25,15 @@ Negation is only defined for atoms, which is not a limitation thanks to De Morga
 \newcommand{\asand}{=_{\wedge\mathsf{a}}}
 \newcommand{\coor }{=_{\vee\mathsf{c}}}
 \newcommand{\coand}{=_{\wedge\mathsf{c}}}
-\newcommand{\unor }{=_{\vee\mathsf{u}}}
-\newcommand{\unand}{=_{\wedge\mathsf{u}}}
-\newcommand{\idor }{=_{\vee\mathsf{i}}}
-\newcommand{\idand}{=_{\wedge\mathsf{i}}}
+\newcommand{\fffd }{=_{\fff}{\downarrow}}
+\newcommand{\fffu }{=_{\fff}{\uparrow}}
+\newcommand{\tttd }{=_{\ttt}{\downarrow}}
+\newcommand{\tttu }{=_{\ttt}{\uparrow}}
+\newcommand{\tttord }{=_{\ttt\vee}{\downarrow}}
+\newcommand{\fffandd }{=_{\fff\wedge}{\downarrow}}
+\newcommand{\tttoru }{=_{\ttt\vee}{\uparrow}}
+\newcommand{\fffandu }{=_{\fff\wedge}{\uparrow}}
+
 
 \newcommand{\SKS}{\mathsf{SKS}}
 
@@ -40,39 +45,49 @@ System $\SKS$ is defined by the following \emph{structural} inference rules:
 \vlinf{\acd}{}{a}{\vls[a.a]}
 \]
 \[
-\vlinf{\aiu}{}{\fff}{\vls[a.\bar a]}\qquad
+\vlinf{\aiu}{}{\fff}{\vls(a.\bar a)}\qquad
 \vlinf{\awu}{}{\ttt}{a}\qquad
 \vlinf{\acu}{}{\vls(a.a)}{a}\quad,
 \]
-the two \emph{logical} inference rules
+the \emph{logical} inference rules:
 \[
 \vlinf{\swi}{}{\vls[(A.B).C]}{\vls(A.[B.C])}\qquad
-\vlinf{\med}{}{\vls([A.D].[B.C])}{\vls[(A.B).(C.D)]}
+\vlinf{\med}{}{\vls([A.C].[B.D])}{\vls[(A.B).(C.D)]}
+\quad,
 \]
-and, for each $\rho\in\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}$, the \emph{invertible} rule $\vlinf{\rho}{}{\beta}{\alpha}$, such that $\alpha$ and $\beta$ are opposite sides of
-\vlstore{
-\vls[A.B]       &\coor\vls[B.A]      \quad,&
-\vls[A.\fff]    &\unor\vls[A]        \quad,\\
-\vls(A.B)       &\coand\vls(B.A)     \quad,&
-\vls(A.\ttt)    &\unand\vls(A)       \quad,\\
-\vls[[A.B].C]   &\asor\vls[A.[B.C]]  \quad,&
-\vls[\ttt.\ttt] &\idor\vls[\ttt]     \quad,\\
-\vls((A.B).C)   &\asand\vls(A.(B.C)) \quad,&
-\vls(\fff.\fff) &\idand\vls(\fff)    \quad,}
-\begin{align*}
-\vlread
-\end{align*}
-respectively.
+and the \emph{invertible} rules:
+\[
+\vlinf{\coor}{}{\vls[B.A]}{\vls[A.B]}\qquad
+\vlinf{\coand}{}{\vls(B.A)}{\vls(A.B)}\qquad
+\vlinf{\asor}{}{\vls[[A.B].C]}{\vls[A.[B.C]]}\qquad
+\vlinf{\asand}{}{\vls((A.B).C)}{\vls(A.(B.C))}
+\]
+\[
+\vlinf{\fffd}{}{\vls[A.\fff]}{A}\qquad
+\vlinf{\tttd}{}{\vls(A.\ttt)}{A}\qquad
+\vlinf{\fffu}{}{A}{\vls(A.\ttt)}\qquad
+\vlinf{\tttu}{}{A}{\vls[A.\fff]}
+\]
+\[
+\vlinf{\fffandd}{}{\vls(\fff.\fff)}{\fff}\qquad
+\vlinf{\tttord}{}{\vls[\ttt.\ttt]}{\ttt}\qquad
+\vlinf{\fffandu}{}{\ttt}{\vls[\ttt.\ttt]}\qquad
+\vlinf{\tttoru}{}{\fff}{\vls(\fff.\fff)}\quad.
+\]
 \end{definition}
 
 \TODO{Reference Complexity paper by Alessio and Paola:}
 
-\begin{remark}\label{remark:EquationsShorthand}
-If there is a derivation $\vlder{\Phi}{\{\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}}{\beta}{\alpha}$, we say that $\alpha=\beta$ and we often write $\vlinf{=}{}{\beta}{\alpha}$ instead $\Phi$. Using this shorthand only compresses derivations by a polynomial.
+\begin{definition}\label{definition:EquationsShorthand}
+If there is a derivation $\vlder{\Phi}{\{\coor,\coand,\asor,\asand,\fffd,\tttd,\fffu,\tttu,\fffandd,\tttord,\fffandu,\tttoru\}}{\beta}{\alpha}$, we say that $\alpha=\beta$ and we often write $\vlinf{=}{}{\beta}{\alpha}$ instead of\/ $\Phi$.
+\end{definition}
+
+\begin{remark}\label{remark:ContextClosure}
+By Definition~\vref{definition:EquationsShorthand} and Lemma~\vref{lemma:DerInContext}, for any formulae $\alpha$ and $\beta$ and context $\xi\vlhole$ we have that $\alpha=\beta$ implies $\xi\{\alpha\}=\xi\{\beta\}$.
 \end{remark}
 
 \begin{remark}\label{remark:ImplicitEquations}
-When we work in (subsystems of) $\SKS$, we often omit mentioning the invertible rules $\coor$, $\coand$, $\asor$, $\asand$, $\unor$, $\unand$, $\idor$ and $\idand$. \emph{E.g.}, when we refer to the system $\{\swi\}$ we mean the system $\{\swi,\coor,\coand,\asor,\asand,\unor,\unand,\idor,\idand\}$, and we write
+When we work in (subsystems of) $\SKS$, we often omit mentioning the invertible rules $\coor$, $\coand$, $\asor$, $\asand$, $\fffd$, $\tttd$, $\fffu$, $\tttu$, $\fffandd$, $\tttord$, $\fffandu$ and $\tttoru$. \emph{E.g.}, when we refer to the system $\{\swi\}$ we mean the system $\{\swi,\coor,\coand,\asor,\asand,\fffd,\tttd,\fffu,\tttu,\fffandd,\tttord,\fffandu,\tttoru\}$, and we write derivations like
 \[
 \vlinf{\swi}{}{\vls[\alpha.(\beta.\gamma)]}{\vls([\alpha.\beta].\gamma)}\quad,
 \]
@@ -220,7 +235,7 @@ System $\SKS$ is complete for propositional classical logic.
 \end{theorem}
 
 \begin{proof}
-Consider a tautology $\alpha$. We show by induction on the number of atoms in $\alpha$ that there exists a proof of $\alpha$ in $\SKS$. For the base case, consider an $\alpha$ consisting only of units. Since $\alpha$ is a tautology, there exists a derivation
+Consider a tautology $\alpha$. We show by induction on the number of atoms in $\alpha$ that there exists a proof of $\alpha$ in $\SKS$. For the base case, consider an $\alpha$ consisting only of units. Using the inference rules $\{\fffd,\tttd,\fffandd,\tttord\}$ we can reduce a formula built from units to either $\fff$ or $\ttt$. Since $\alpha$ is a tautology, and since the invertible inference rules preserve the validity of a formula there must exist a derivation
 \[
 \vlinf{=}{}{\alpha}{\ttt}\quad.
 \]
