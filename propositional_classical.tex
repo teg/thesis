@@ -297,9 +297,9 @@ System $\SKS$ is complete for propositional classical logic.
 \end{theorem}
 
 \begin{proof}
-Consider a tautology $\alpha$. We show by induction on the number of atoms in $\alpha$ that there exists a proof of $\alpha$ in $\SKS$. For the base case, consider an $\alpha$ consisting only of units. Using the inference rules $\{\fffd,\tttd,\fffandd,\tttord\}$ we can reduce a formula built from units to either $\fff$ or $\ttt$. Since $\alpha$ is a tautology, and since the invertible inference rules preserve the validity of a formula there must exist a derivation
+Consider a tautology $\alpha$. We show by induction on the number of atoms in $\alpha$ that there exists a proof of $\alpha$ in $\SKS$. For the base case, let $\alpha$ consist only of units. Then, since $\alpha$ is a tautology, we can build
 \[
-\vlinf{=}{}{\alpha}{\ttt}\quad.
+\vlder{}{\{\fffd,\tttd,\fffandd,\tttord\}}{\alpha}{\ttt}\quad.
 \]
 
 For the inductive case, let $\alpha$ be a tautology containing instances of the atom $a$. We consider two cases:
@@ -332,7 +332,7 @@ For the inductive case, let $\alpha$ be a tautology containing instances of the 
   \alpha
  }
  {
-  \vlin{\supers}{}
+  \vlin{\swi}{}
   {
    \vls
    [
@@ -348,15 +348,9 @@ For the inductive case, let $\alpha$ be a tautology containing instances of the 
        \vls(a.\cdots.a)
       }
       {
-       \vlinf{=}{}
-       {
-        a
-       }
-       {
-        \vls[a.\fff]
-       }
+       a
       }
-     \;\;\;.\;\;\;
+     \;\;.\;\;
       \vlder{}{\{\awd\}}
       {
        \alpha\{a/\ttt\}
@@ -366,7 +360,7 @@ For the inductive case, let $\alpha$ be a tautology containing instances of the 
       }
      )
     }
-   \;\;\;\;\;.\;\;\;\;\;
+   \;\;\;\;.\;\;\;\;
     \vlder{}{\{\ssu\}}
     {
      \alpha
@@ -394,36 +388,24 @@ For the inductive case, let $\alpha$ be a tautology containing instances of the 
    ]
   }
   {
-   \vlin{=}{}
+   \vlde{}{}
    {
-    \vls
+    \vlsbr
     (
-     \vlinf{}{}
+     \vlinf{\swi}{}
      {
-      \vls[a.\bar a]
+      \vls[(a.\alpha\{a/\ttt,\bar a/\fff\}).\bar a]
      }
-     {
-      \ttt
-     }
-    \;\;\;.\;\;\;
-     \vlder{}{}
      {
       \vls
       (
-       \alpha\{a/\ttt,\bar a/\fff\}
+       \vlinf{}{}{\vls[a.\bar a]}{\ttt}
       \;.\;
-       \vlinf{=}{}
-       {
-        \vls(\ttt.\alpha\{a/\fff,\bar a/\ttt\})
-       }
-       {
-        \alpha\{a/\fff,\bar a/\ttt\}
-       }
+       \alpha\{a/\ttt,\bar a/\fff\}
       )
      }
-     {
-      \ttt
-     }
+    \;\;.\;\;
+     \alpha\{a/\fff,\bar a/\ttt\}
     )
    }
    {
