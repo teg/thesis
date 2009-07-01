@@ -24,7 +24,7 @@ We define the reduction $\to_\frfb$ (where $\frfb$ stands for \emph{four boxes})
 (-19,16)*{\afvjdm8{\boldsymbol{\epsilon}}{}};
 (-19, 8)*{\afacum{}{}{}{}{}{}};
 (-24, 0)*{\affr88};
-(-20, 2)*{\aflabelleft{\phi}};
+(-20, 2)*{\aflabelleft{f_1(\phi)}};
 (-27,-8)*{\afawum{}{}{}{}};
 (-19,-8)*{\afacdm{}{}{}{}{}{}};
 (-19,-16)*{\afvjum8{\boldsymbol{\iota}}{}};
@@ -34,14 +34,14 @@ We define the reduction $\to_\frfb$ (where $\frfb$ stands for \emph{four boxes})
 ( -9,16)*{\afvjm4};
 ( -2,15)*{\afcjlm66};
 (-12,10)*{\affr88};
-( -8,12)*{\aflabelleft{\phi}};
+( -8,12)*{\aflabelleft{f_2(\phi)}};
 (-16, 1)*{\afcjrm2{10}};
 ( -9, 2)*{\afawum{}{}{}{}};
 %bot
 (-16,-1)*{\afcjlm2{10}};
 ( -9,-2)*{\afawdm{}{}{}{}};
 (-12,-10)*{\affr88};
-( -8, -8)*{\aflabelleft{\phi}};
+( -8, -8)*{\aflabelleft{f_3(\phi)}};
 ( -9,-16)*{\afvjm4};
 ( -2,-15)*{\afcjrm66};
 ( -7,-20)*{\afaiunw{}{}};
@@ -51,7 +51,7 @@ We define the reduction $\to_\frfb$ (where $\frfb$ stands for \emph{four boxes})
 ( 3,  8)*{\afacdm{}{}{}{}{}{}};
 ( 7, 12)*{\afaidnw{}{}};
 ( 0,  0)*{\affr88};
-( 4,  2)*{\aflabelleft\psi};
+( 4,  2)*{\aflabelleft{g(\psi)}};
 ( 7,-14)*{\afaiunw{}{}};
 ( 3, -8)*{\afacum{}{}{}{}{}{}};
 (-3,-12)*{\afvjum{16}{}{\boldsymbol{\iota'}}};
@@ -59,7 +59,7 @@ We define the reduction $\to_\frfb$ (where $\frfb$ stands for \emph{four boxes})
 (15, 8)*{\afawdm{}{}{}{\boldsymbol{\hat\epsilon}}};
 ( 9, 8)*{\afvjm8};
 (12, 0)*{\affr88};
-(16, 2)*{\aflabelleft{\phi}};
+(16, 2)*{\aflabelleft{f_4(\phi)}};
 ( 9,-8)*{\afvjm8};
 (15,-8)*{\afawum{}{}{}{\boldsymbol{\hat\iota}}};
 }\quad.
@@ -73,26 +73,29 @@ Reduction\/ $\to_\frfb$ is sound.
 
 %---------------------------------------
 \begin{proof}
-Let $\Phi$ be a derivation with flow $\phi'$, such that $\phi'\to_\frfb\psi'$. We show that there exists a derivation $\Psi$ with flow $\psi'$ and with the same premiss and conclusion as $\Phi$. In the following, we refer to the figure in Definition~\vref{definition:FourBoxes}. To ease legibility, we label the four subflows of $\psi'$ that are isomorphic to $\phi$ by $\phi_1$ (left-most), $\phi_2$ (top-most), $\phi_3$ (bottom-most) and $\phi_4$ (right-most).
+Let $\Phi$ be a derivation with flow $\phi'$, such that $\phi'\to_\frfb\psi'$. We show that there exists a derivation $\Psi$ with flow $\psi'$ and with the same premiss and conclusion as $\Phi$. In the following, we refer to the figure in Definition~\vref{definition:FourBoxes}.
 
 We obtain $\Psi$, with atomic flow $\psi'$, from $\Phi$ by, for every atom occurrence $a^\phi$ in $\Phi$:
 \begin{enumerate}
-	\item If $a^\phi$ is not in the premiss or conclusion of $\Phi$, substitute it with the formula $\vls([a^{\phi_1}.a^{\phi_2}].[a^{\phi_3}.a^{\phi_4}])$.
+	\item If $a^\phi$ is not in the premiss or conclusion of $\Phi$, substitute it with the formula
+	\[
+	 \vls([a^{f_1(\phi)}.a^{f_2(\phi)}].[a^{f_3(\phi)}.a^{f_4(\phi)}])\quad.
+	\]
 	\item If $a^\phi$ is in the premiss or conclusion of $\Phi$, substitute it with the derivation
 \[
 \vlinf{}{}
 {
  \vls(
   [
-   a^{\phi_1}
+   a^{f_1(\phi)}
   \;.\;
-   \vlinf{}{}{a^{\phi_2}}{\fff}
+   \vlinf{}{}{a^{f_2(\phi)}}{\fff}
   ]
  \;.\;
   [
-   a^{\phi_3}
+   a^{f_3(\phi)}
   \;.\;
-   \vlinf{}{}{a^{\phi_4}}{\fff}
+   \vlinf{}{}{a^{f_4(\phi)}}{\fff}
   ]
  )  
 }
@@ -103,12 +106,12 @@ We obtain $\Psi$, with atomic flow $\psi'$, from $\Phi$ by, for every atom occur
 {
  \vls
  (
-  [a^{\phi_1}.a^{\phi_2}]
+  [a^{f_1(\phi)}.a^{f_2(\phi)}]
  \;.\;
   [
-   \vlinf{}{}{\ttt}{a^{\phi_3}}
+   \vlinf{}{}{\ttt}{a^{f_3(\phi)}}
   \;.\;
-   \vlinf{}{}{\ttt}{a^{\phi_4}}
+   \vlinf{}{}{\ttt}{a^{f_4(\phi)}}
   ]
  )
 }
@@ -119,28 +122,29 @@ respectively.
 \[
 \vlderivation
 {
- \vlin{=}{}{\vls[([\vlinf{}{}{a^{\phi_1}}{\fff}\;.\;a^{\phi_2}]\;.\;[\vlinf{}{}{a^{\phi_3}}{\fff}\;.\;a^{\phi_4}])\;.\;\vlinf{}{}{\bar a^\psi}{\vls[\bar a.\bar a]}]}
+ \vlin{=}{}{\vls[([\vlinf{}{}{a^{f_1(\phi)}}{\fff}\;.\;a^{f_2(\phi)}]\;.\;[\vlinf{}{}{a^{f_3(\phi)}}{\fff}\;.\;a^{f_4(\phi)}])\;.\;\vlinf{}{}{\bar a^\psi}{\vls[\bar a.\bar a]}]}
  {
-  \vlin{\swi}{}{\vls[\vlinf{\swi}{}{\vls\vlsmallbrackets[(a^{\phi_2}.a^{\phi_4}).\bar a]}{\vls\vlsmallbrackets(a^{\phi_2}.[a^{\phi_4}.\bar a])}\;.\;\bar a]}
+  \vlin{\swi}{}{\vls[\vlinf{\swi}{}{\vls\vlsmallbrackets[(a^{f_2(\phi)}.a^{f_4(\phi)}).\bar a]}{\vls\vlsmallbrackets(a^{f_2(\phi)}.[a^{f_4(\phi)}.\bar a])}\;.\;\bar a]}
   {
-   \vlhy{\vls(\vlinf{}{}{\vls[a^{\phi_2}.\bar a]}{\ttt}\;.\;\vlinf{}{}{\vls[a^{\phi_4}.\bar a]}{\ttt})}
+   \vlhy{\vls(\vlinf{}{}{\vls[a^{f_2(\phi)}.\bar a]}{\ttt}\;.\;\vlinf{}{}{\vls[a^{f_4(\phi)}.\bar a]}{\ttt})}
   }
  }
-}
-\quad\mbox{and}\quad
+}\qquad\mbox{and}
+\]
+\[
 \vlderivation
 {
- \vlin{\swi}{}{\vls[\vlinf{}{}{\fff}{\vls(a^{\phi_3}.\bar a)}\;.\;\vlinf{}{}{\fff}{\vls(a^{\phi_4}.\bar a)}]}
+ \vlin{\swi}{}{\vls[\vlinf{}{}{\fff}{\vls(a^{f_3(\phi)}.\bar a)}\;.\;\vlinf{}{}{\fff}{\vls(a^{f_4(\phi)}.\bar a)}]}
  {
-  \vlin{=}{}{\vls(\vlinf{\swi}{}{\vls[a^{\phi_3}.(a^{\phi_4}.\bar a)]}{\vls([a^{\phi_3}.a^{\phi_4}].\bar a)}\;.\;\bar a)}
+  \vlin{=}{}{\vls(\vlinf{\swi}{}{\vls[a^{f_3(\phi)}.(a^{f_4(\phi)}.\bar a)]}{\vls([a^{f_3(\phi)}.a^{f_4(\phi)}].\bar a)}\;.\;\bar a)}
   {
-   \vlhy{\vls(([\vlinf{}{}{\ttt}{a^{\phi_1}}\;.\;\vlinf{}{}{\ttt}{a^{\phi_2}}]\;.\;\vlsmallbrackets[a^{\phi_3}.a^{\phi_4}])\;.\;\vlinf{}{}{\vls(\bar a.\bar a)}{\bar a^\psi})}
+   \vlhy{\vls(([\vlinf{}{}{\ttt}{a^{f_1(\phi)}}\;.\;\vlinf{}{}{\ttt}{a^{f_2(\phi)}}]\;.\;\vlsmallbrackets[a^{f_3(\phi)}.a^{f_4(\phi)}])\;.\;\vlinf{}{}{\vls(\bar a.\bar a)}{\bar a^\psi})}
   }
  }
 }\quad,
 \]
 respectively.
-	\item Substitute rule instances $\acd,\acu,\awd,\awu$ which apply to $a$ with their generic counterparts applied to $\vls\vlsmallbrackets([a^{\phi_1}.a^{\phi_2}].[a^{\phi_3}.a^{\phi_4}])$.
+	\item Substitute rule instances $\acd$, $\acu$, $\awd$, $\awu$ which apply to $a^\phi$ with $\cod$, $\cou$, $\wed$, $\weu$, respectively, applied to $\vls\vlsmallbrackets([a^{f_1(\phi)}.a^{\phi_2}].[a^{f_3(\phi)}.a^{f_4(\phi)}])$.
 \end{enumerate}
 \end{proof}
 
