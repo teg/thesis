@@ -1,202 +1,12 @@
 \chapter{Normal Forms}
 
 %---------------------------------------
-\begin{definition}\label{definition:FlowWeaklyStreamlined}
-An atomic flow is \emph{weakly streamlined} if it can be represented as
-\[
-\atomicflow{
-(-10, 11.5)*{\afvjm4};
-(  0, 13.5)*{\afawdm{}{}{}{}{}{}};
+\begin{definition}\label{definition:FlowNormalForms}
+An atomic flow is
+\begin{enumerate}
 %---
-( -8, 5.5)*{\copy\contrup};
-( -5, 5.5)*{\affr{18}8};
-( -2, 5.5)*{\copy\contrdown};
-%---
-(-10,-2.5)*{\afaium{}{}{}{}{}{}};
-(  0,   0)*{\afvjm3};
-( 10, 2.5)*{\afaidm{}{}{}{}{}{}};
-%---
-(  2,-5.5)*{\copy\contrup};
-(  5,-5.5)*{\affr{18}8};
-(  8,-5.5)*{\copy\contrdown};
-%---
-(  0,-13.5)*{\afawum{}{}{}{}{}{}};
-( 10,-11.5)*{\afvjm4};
-}\quad.
-\]
-\end{definition}
-
-\begin{definition}\label{definition:FlowWeaklyCutFree}
-A weakly streamlined atomic flow with no upper (resp., lower) edges is called \emph{weakly cut-free} (reps., \emph{weakly interaction-free}).
-\end{definition}
-
-%---------------------------------------
-\begin{definition}\label{definition:FlowStreamlined}
-An atomic flow is \emph{streamlined} if it can be represented as
-\[
-\atomicflow{
-(-10,11)*{\afvjm3};
-%---
-(-15, 5.5)*{\copy\contrup};
-(-10, 5.5)*{\affr{28}8};
-( -5, 5.5)*{\copy\contrdown};
-%---
-(-20,-2.5)*{\afawum{}{}{}{}{}{}};
-(-10,-2.5)*{\afaium{}{}{}{}{}{}};
-(  0,   0)*{\afvjm3};
-( 10, 2.5)*{\afaidm{}{}{}{}{}{}};
-( 20, 2.5)*{\afawdm{}{}{}{}{}{}};
-%---
-(  5,-5.5)*{\copy\contrup};
-( 10,-5.5)*{\affr{28}8};
-( 15,-5.5)*{\copy\contrdown};
-%---
-(  10,-11)*{\afvjm3};
-}\quad.
-\]
-\end{definition}
-
-\TODO{A streamlined atomic flow with no pair of upper (resp., lower) edges with an $ai$-path between them is cut (resp., axiom) free.}
-
-%---------------------------------------
-\begin{proposition}\label{proposition:FlowStreamlinedNoUpper}
-A streamlined atomic flow with no upper (resp., lower) edges can be represented as
-\[
-\atomicflow{
-( 10,2.5)*{\afaidm{}{}{}{}{}{}};
-( 20,2.5)*{\afawdm{}{}{}{}{}{}};
-%---
-( 12,-5.5)*{\copy\contrup};
-( 15,-5.5)*{\affr{18}8};
-( 18,-5.5)*{\copy\contrdown};
-%---
-(  15,-11)*{\afvjm3};
-}\quad\mbox{and}\quad
-\atomicflow{
-(-15,11)*{\afvjm3};
-%---
-(-18, 5.5)*{\copy\contrup};
-(-15, 5.5)*{\affr{18}8};
-(-12, 5.5)*{\copy\contrdown};
-%---
-(-20,-2.5)*{\afawum{}{}{}{}{}{}};
-(-10,-2.5)*{\afaium{}{}{}{}{}{}};
-}\quad,
-\]
-respectively.
-\end{proposition}
-
-%---------------------------------------
-\begin{definition}\label{definition:FlowSuperStreamlined}
-An atomic flow is \emph{super streamlined} if it can be represented as
-\[
-\atomicflow{
-(-18,8.5)*{\afawum{}{}{}{}};
-( -5, 11)*{\afvjm3};
-%---
-( -8, 5.5)*{\copy\contrup};
-( -5, 5.5)*{\affr{18}8};
-( -2, 5.5)*{\copy\contrdown};
-%---
-(-10,-2.5)*{\afaium{}{}{}{}{}{}};
-(  0,   0)*{\afvjm3};
-( 10, 2.5)*{\afaidm{}{}{}{}{}{}};
-%---
-(  2,-5.5)*{\copy\contrup};
-(  5,-5.5)*{\affr{18}8};
-(  8,-5.5)*{\copy\contrdown};
-%---
-( 5, -11)*{\afvjm3};
-(18,-8.5)*{\afawdm{}{}{}{}};
-}\quad.
-\]
-\end{definition}
-
-%---------------------------------------
-\begin{proposition}\label{proposition:FlowSuperStreamlinedNoUpper}
-A super streamlined atomic flow with no upper (resp., lower) edges can be represented as
-\[
-\atomicflow{
-( 0,2.5)*{\afaidm{}{}{}{}{}{}};
-%---
-(-2,-5.5)*{\copy\contrup};
-( 0,-5.5)*{\affr88};
-( 2,-5.5)*{\copy\contrdown};
-%---
-( 0,-11)*{\afvjm3};
-( 8,-8.5)*{\afawdm{}{}{}{}};
-}
-\quad\mbox{and}\quad
-\atomicflow{
-(-8,8.5)*{\afawum{}{}{}{}};
-( 0,11)*{\afvjm3};
-%---
-(-2, 5.5)*{\copy\contrup};
-( 0, 5.5)*{\affr88};
-( 2, 5.5)*{\copy\contrdown};
-%---
-( 0,-2.5)*{\afaium{}{}{}{}{}{}};
-}\quad,
-\]
-respectively.
-\end{proposition}
-
-%---------------------------------------
-\begin{definition}\label{definition:FlowHyperStreamlined}
-An atomic flow is \emph{hyper streamlined} if it can be represented as
-\[
-\atomicflow{
-(-18,8.5)*{\afawum{}{}{}{}};
-( -5, 11)*{\afvjm3};
-%---
-( -5, 5.5)*{\copy\contrup};
-( -5, 5.5)*{\affr{18}8};
-%---
-(-10,-2.5)*{\afaium{}{}{}{}{}{}};
-(  0,   0)*{\afvjm3};
-( 10, 2.5)*{\afaidm{}{}{}{}{}{}};
-%---
-(  5,-5.5)*{\affr{18}8};
-(  5,-5.5)*{\copy\contrdown};
-%---
-( 5, -11)*{\afvjm3};
-(18,-8.5)*{\afawdm{}{}{}{}};
-}\quad.
-\]
-\end{definition}
-
-%---------------------------------------
-\begin{proposition}\label{proposition:FlowHyperStreamlinedNoUpper}
-A hyper streamlined atomic flow with no upper (resp., lower) edges can be represented as
-\[
-\atomicflow{
-( 0,2.5)*{\afaidm{}{}{}{}{}{}};
-%---
-( 0,-5.5)*{\affr88};
-( 0,-5.5)*{\copy\contrdown};
-%---
-( 0,-11)*{\afvjm3};
-( 8,-8.5)*{\afawdm{}{}{}{}};
-}
-\quad\mbox{and}\quad
-\atomicflow{
-(-8,8.5)*{\afawum{}{}{}{}};
-( 0,11)*{\afvjm3};
-%---
-( 0, 5.5)*{\copy\contrup};
-( 0, 5.5)*{\affr88};
-%---
-( 0,-2.5)*{\afaium{}{}{}{}{}{}};
-}\quad,
-\]
-respectively.
-\end{proposition}
-
-\TODO{Maybe think of a different name than `simple form' (it doesn't look very simple...).}
-
-%---------------------------------------
-\begin{definition}\label{definition:FlowSimpleForm}
-An atomic flow is \emph{on simple form with respect to the polarity assignment $\pi$} if it can be represented as
+\item\label{definition:FlowNormalForms:item:SimpleForm}
+\emph{on simple form with respect to the polarity assignment $\pi$} if it can be represented as
 \[
 \atomicflow{
 (-21, 14)*{\afvjm4};
@@ -250,7 +60,246 @@ An atomic flow is \emph{on simple form with respect to the polarity assignment $
 ( 10,-11.5)*{\afvjm4};
 }\quad.
 \]
+%---
+\item\label{definition:FlowNormalForms:item:WeaklyStreamlinedPolarity}
+\emph{weakly streamlined with respect to the polarity assignment $\pi$} if it can be represented as
+\[
+\atomicflow{
+(-21, 14)*{\afvjm4};
+(-21,  8)*{\affr88};
+(-22, 10)*{\aflabelleft{\ppl}};
+%-
+(-24,  0)*{\afvjm8};
+%-
+(-21, -8)*{\affr88};
+(-22, -6)*{\aflabelleft{\ppl}};
+(-21,-14)*{\afvjm4};
+%-
+( -6, 16)*{\afaidm{}{}{}{}{}{}};
+( -4,  8)*{\afvjm8};
+(-11,  8)*{\affr88};
+(-12, 10)*{\aflabelleft{\ppl}};
+(-16,  0)*{\afcjrm48};
+%-
+(-16,  0)*{\afcjlm48};
+(-11, -8)*{\affr88};
+(-12, -6)*{\aflabelleft{\ppl}};
+( -4, -8)*{\afvjm8};
+( -6,-16)*{\afaium{}{}{}{}{}{}};
+%--
+(  2, 10)*{\afvjm{12}};
+( -1,  0)*{\affr88};
+( -2,  2)*{\aflabelleft{\pmi}};
+(  2,-10)*{\afvjm{12}};
+}\qquad
+\atomicflow{
+(-10, 11.5)*{\afvjm4};
+(  0, 13.5)*{\afawdm{}{}{}{}{}{}};
+%---
+( -8, 5.5)*{\copy\contrup};
+( -5, 5.5)*{\affr{18}8};
+( -2, 5.5)*{\copy\contrdown};
+%---
+(-10,-2.5)*{\afaium{}{}{}{}{}{}};
+(  0,   0)*{\afvjm3};
+( 10, 2.5)*{\afaidm{}{}{}{}{}{}};
+%---
+(  2,-5.5)*{\copy\contrup};
+(  5,-5.5)*{\affr{18}8};
+(  8,-5.5)*{\copy\contrdown};
+%---
+(  0,-13.5)*{\afawum{}{}{}{}{}{}};
+( 10,-11.5)*{\afvjm4};
+}\quad;
+\]
+%---
+\item\label{definition:FlowNormalForms:item:WeaklyStreamlined}
+\emph{weakly streamlined} if it can be represented as
+\[
+\atomicflow{
+(-10, 11.5)*{\afvjm4};
+(  0, 13.5)*{\afawdm{}{}{}{}{}{}};
+%---
+( -8, 5.5)*{\copy\contrup};
+( -5, 5.5)*{\affr{18}8};
+( -2, 5.5)*{\copy\contrdown};
+%---
+(-10,-2.5)*{\afaium{}{}{}{}{}{}};
+(  0,   0)*{\afvjm3};
+( 10, 2.5)*{\afaidm{}{}{}{}{}{}};
+%---
+(  2,-5.5)*{\copy\contrup};
+(  5,-5.5)*{\affr{18}8};
+(  8,-5.5)*{\copy\contrdown};
+%---
+(  0,-13.5)*{\afawum{}{}{}{}{}{}};
+( 10,-11.5)*{\afvjm4};
+}\quad;
+\]
+%---
+\item\label{definition:FlowNormalForms:item:Streamlined}
+\emph{streamlined} if it can be represented as
+\[
+\atomicflow{
+(-10,11)*{\afvjm3};
+%---
+(-15, 5.5)*{\copy\contrup};
+(-10, 5.5)*{\affr{28}8};
+( -5, 5.5)*{\copy\contrdown};
+%---
+(-20,-2.5)*{\afawum{}{}{}{}{}{}};
+(-10,-2.5)*{\afaium{}{}{}{}{}{}};
+(  0,   0)*{\afvjm3};
+( 10, 2.5)*{\afaidm{}{}{}{}{}{}};
+( 20, 2.5)*{\afawdm{}{}{}{}{}{}};
+%---
+(  5,-5.5)*{\copy\contrup};
+( 10,-5.5)*{\affr{28}8};
+( 15,-5.5)*{\copy\contrdown};
+%---
+(  10,-11)*{\afvjm3};
+}\quad;
+\]
+%---
+\item\label{definition:FlowNormalForms:item:SuperStreamlined}
+\emph{super streamlined} if it can be represented as
+\[
+\atomicflow{
+(-18,8.5)*{\afawum{}{}{}{}};
+( -5, 11)*{\afvjm3};
+%---
+( -8, 5.5)*{\copy\contrup};
+( -5, 5.5)*{\affr{18}8};
+( -2, 5.5)*{\copy\contrdown};
+%---
+(-10,-2.5)*{\afaium{}{}{}{}{}{}};
+(  0,   0)*{\afvjm3};
+( 10, 2.5)*{\afaidm{}{}{}{}{}{}};
+%---
+(  2,-5.5)*{\copy\contrup};
+(  5,-5.5)*{\affr{18}8};
+(  8,-5.5)*{\copy\contrdown};
+%---
+( 5, -11)*{\afvjm3};
+(18,-8.5)*{\afawdm{}{}{}{}};
+}\quad;\quad\mbox{and}
+\]
+%---
+\item\label{definition:FlowNormalForms:item:HyperStreamlined}
+\emph{hyper streamlined} if it can be represented as
+\[
+\atomicflow{
+(-18,8.5)*{\afawum{}{}{}{}};
+( -5, 11)*{\afvjm3};
+%---
+( -5, 5.5)*{\copy\contrup};
+( -5, 5.5)*{\affr{18}8};
+%---
+(-10,-2.5)*{\afaium{}{}{}{}{}{}};
+(  0,   0)*{\afvjm3};
+( 10, 2.5)*{\afaidm{}{}{}{}{}{}};
+%---
+(  5,-5.5)*{\affr{18}8};
+(  5,-5.5)*{\copy\contrdown};
+%---
+( 5, -11)*{\afvjm3};
+(18,-8.5)*{\afawdm{}{}{}{}};
+}\quad.
+\]
+\end{enumerate}
 \end{definition}
+
+\begin{definition}\label{definition:FlowWeaklyCutFree}
+A weakly streamlined atomic flow with no upper (resp., lower) edges is called \emph{weakly cut-free} (reps., \emph{weakly interaction-free}).
+\end{definition}
+
+\TODO{A streamlined atomic flow with no pair of upper (resp., lower) edges with an $ai$-path between them is cut (resp., axiom) free.}
+
+%---------------------------------------
+\begin{proposition}\label{proposition:FlowStreamlinedNoUpper}
+A streamlined atomic flow with no upper (resp., lower) edges can be represented as
+\[
+\atomicflow{
+( 10,2.5)*{\afaidm{}{}{}{}{}{}};
+( 20,2.5)*{\afawdm{}{}{}{}{}{}};
+%---
+( 12,-5.5)*{\copy\contrup};
+( 15,-5.5)*{\affr{18}8};
+( 18,-5.5)*{\copy\contrdown};
+%---
+(  15,-11)*{\afvjm3};
+}\quad\mbox{and}\quad
+\atomicflow{
+(-15,11)*{\afvjm3};
+%---
+(-18, 5.5)*{\copy\contrup};
+(-15, 5.5)*{\affr{18}8};
+(-12, 5.5)*{\copy\contrdown};
+%---
+(-20,-2.5)*{\afawum{}{}{}{}{}{}};
+(-10,-2.5)*{\afaium{}{}{}{}{}{}};
+}\quad,
+\]
+respectively.
+\end{proposition}
+
+%---------------------------------------
+\begin{proposition}\label{proposition:FlowSuperStreamlinedNoUpper}
+A super streamlined atomic flow with no upper (resp., lower) edges can be represented as
+\[
+\atomicflow{
+( 0,2.5)*{\afaidm{}{}{}{}{}{}};
+%---
+(-2,-5.5)*{\copy\contrup};
+( 0,-5.5)*{\affr88};
+( 2,-5.5)*{\copy\contrdown};
+%---
+( 0,-11)*{\afvjm3};
+( 8,-8.5)*{\afawdm{}{}{}{}};
+}
+\quad\mbox{and}\quad
+\atomicflow{
+(-8,8.5)*{\afawum{}{}{}{}};
+( 0,11)*{\afvjm3};
+%---
+(-2, 5.5)*{\copy\contrup};
+( 0, 5.5)*{\affr88};
+( 2, 5.5)*{\copy\contrdown};
+%---
+( 0,-2.5)*{\afaium{}{}{}{}{}{}};
+}\quad,
+\]
+respectively.
+\end{proposition}
+
+%---------------------------------------
+\begin{proposition}\label{proposition:FlowHyperStreamlinedNoUpper}
+A hyper streamlined atomic flow with no upper (resp., lower) edges can be represented as
+\[
+\atomicflow{
+( 0,2.5)*{\afaidm{}{}{}{}{}{}};
+%---
+( 0,-5.5)*{\affr88};
+( 0,-5.5)*{\copy\contrdown};
+%---
+( 0,-11)*{\afvjm3};
+( 8,-8.5)*{\afawdm{}{}{}{}};
+}
+\quad\mbox{and}\quad
+\atomicflow{
+(-8,8.5)*{\afawum{}{}{}{}};
+( 0,11)*{\afvjm3};
+%---
+( 0, 5.5)*{\copy\contrup};
+( 0, 5.5)*{\affr88};
+%---
+( 0,-2.5)*{\afaium{}{}{}{}{}{}};
+}\quad,
+\]
+respectively.
+\end{proposition}
+
+\TODO{Maybe think of a different name than `simple form' (it doesn't look very simple...).}
 
 %---------------------------------------
 \begin{proposition}\label{proposition:FlowSimpleNoUpper}
@@ -325,60 +374,6 @@ Given a polarity assignment $\pi$, an atomic flow on simple form with respect to
 \]
 respectively.
 \end{proposition}
-
-%---------------------------------------
-\begin{definition}\label{definition:FlowWeaklyStreamlinedPolarity}
-An atomic flow is \emph{weakly streamlined with respect to the polarity assignment $\pi$} if it can be represented as
-\[
-\atomicflow{
-(-21, 14)*{\afvjm4};
-(-21,  8)*{\affr88};
-(-22, 10)*{\aflabelleft{\ppl}};
-%-
-(-24,  0)*{\afvjm8};
-%-
-(-21, -8)*{\affr88};
-(-22, -6)*{\aflabelleft{\ppl}};
-(-21,-14)*{\afvjm4};
-%-
-( -6, 16)*{\afaidm{}{}{}{}{}{}};
-( -4,  8)*{\afvjm8};
-(-11,  8)*{\affr88};
-(-12, 10)*{\aflabelleft{\ppl}};
-(-16,  0)*{\afcjrm48};
-%-
-(-16,  0)*{\afcjlm48};
-(-11, -8)*{\affr88};
-(-12, -6)*{\aflabelleft{\ppl}};
-( -4, -8)*{\afvjm8};
-( -6,-16)*{\afaium{}{}{}{}{}{}};
-%--
-(  2, 10)*{\afvjm{12}};
-( -1,  0)*{\affr88};
-( -2,  2)*{\aflabelleft{\pmi}};
-(  2,-10)*{\afvjm{12}};
-}\qquad
-\atomicflow{
-(-10, 11.5)*{\afvjm4};
-(  0, 13.5)*{\afawdm{}{}{}{}{}{}};
-%---
-( -8, 5.5)*{\copy\contrup};
-( -5, 5.5)*{\affr{18}8};
-( -2, 5.5)*{\copy\contrdown};
-%---
-(-10,-2.5)*{\afaium{}{}{}{}{}{}};
-(  0,   0)*{\afvjm3};
-( 10, 2.5)*{\afaidm{}{}{}{}{}{}};
-%---
-(  2,-5.5)*{\copy\contrup};
-(  5,-5.5)*{\affr{18}8};
-(  8,-5.5)*{\copy\contrdown};
-%---
-(  0,-13.5)*{\afawum{}{}{}{}{}{}};
-( 10,-11.5)*{\afvjm4};
-}\quad.
-\]
-\end{definition}
 
 \TODO{Define the inverse of a polarity assignment.}
 
