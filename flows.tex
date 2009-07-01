@@ -243,128 +243,140 @@ Given an atomic flow $\phi$ with polarity assignment $\pi$, the polarity assignm
 \TODO{Define subflow}.
 
 \begin{definition}\label{definition:LabelsIsomorphicFlows}
-Given two atomic flows $\phi$ and $\psi$, we write $\psi=f(\phi)$ if $\phi$ and $\psi$ are isomorphic and $f$ is a bijection from the edges of $\phi$ to the edges of $\psi$. More generally, given atomic flows $\phi_1$, $\dots$, $\phi_n$, $\psi_1$, $\dots$, $\psi_n$, we write $\psi_1=f(\phi_1)$, $\dots$, $\psi_n=f(\phi_n)$ if, for every $1\le i\le n$, $\phi_i$ and $\psi_i$ are isomorphic, and $f$ is a bijection from the edges in $\phi_1$, $\dots$, $\phi_n$ to the edges in $\psi_1$, $\dots$, $\psi_n$.
-\end{definition}
-
-\begin{example}\label{example:LabelsIsomorphicFlows}
-Consider the following atomic flows:
+Given atomic flows $\phi$ and $\psi$, we write
 \[
-\phi\;=\;
+\psi\;=\;
 \atomicflow
 {
-(0,0)="A";
-"A"+(-2, 6)*{\afvju4{\epsilon_1}{}};
-"A"+( 0, 6)*{\cdots};
-"A"+( 2, 6)*{\afvju4{}{\epsilon_n}};
-"A"+( 0, 0)*{\affr88};
-"A"+( 1, 2)*{\aflabelright{\phi}};
-"A"+(-2,-6)*{\afvjd4{\iota_1}{}};
-"A"+( 0,-6)*{\cdots};
-"A"+( 2,-6)*{\afvjd4{}{\iota_m}};
+( 0, 6)*{\afvjm4};
+( 0, 0)*{\affr88};
+(-1, 2)*{\aflabelright{f(\phi)}};
+( 0,-6)*{\afvjm4};
 }
-\quad\mbox{and}\quad
-\psi\;=\;
-\atomicflow
-{
-(-2,12)*{\afacuex{}{}{}{}{}{}52};
-( 0,14)*{\cdots};
-( 2,12)*{\afacuex{}{}{}{}{}{}52};
-%
-(-5,0)="A";
-"A"+(-2, 6)*{\afvju4{\hat\epsilon_1}{}};
-"A"+( 0, 6)*{\cdots};
-"A"+( 2, 6)*{\afvju4{}{\hat\epsilon_n}};
-"A"+( 0, 0)*{\affr88};
-"A"+( 1, 2)*{\aflabelright{\phi}};
-"A"+(-2,-6)*{\afvjd4{\hat\iota_1}{}};
-"A"+( 0,-6)*{\cdots};
-"A"+( 2,-6)*{\afvjd4{}{\hat\iota_m}};
-%
-(5,0)="A";
-"A"+(-2, 6)*{\afvju4{\tilde\epsilon_1}{}};
-"A"+( 0, 6)*{\cdots};
-"A"+( 2, 6)*{\afvju4{}{\tilde\epsilon_n}};
-"A"+( 0, 0)*{\affr88};
-"A"+( 1, 2)*{\aflabelright{\phi}};
-"A"+(-2,-6)*{\afvjd4{\tilde\iota_1}{}};
-"A"+( 0,-6)*{\cdots};
-"A"+( 2,-6)*{\afvjd4{}{\tilde\iota_m}};
-%
-(-2,-12)*{\afacdex{}{}{}{}{}{}52};
-( 0,-14)*{\cdots};
-( 2,-12)*{\afacdex{}{}{}{}{}{}52};
-}\quad.
+\quad,
 \]
-By Defintion~\vref{definition:LabelsIsomorphicFlows} this means that there are bijections $f_1$ and $f_2$ between $\phi$ and each of the subflows labelled $\phi$ in $\psi$, such that, for every $1\le i\le n$ (resp., $1\le i\le m$), we have $f_1(\epsilon_i)=\hat\epsilon_i$ and $f_2(\epsilon_i)=\tilde\epsilon_i$ (resp., $f_1(\iota_i)=\hat\iota_i$ and $f_2(\iota_i)=\tilde\iota_i$).
-
-This way of creating atomic flows by joining together (by use of (co) contractions) copies of an existing flow will be crucial for the global transformations we present later on. We note that in the construction above, and also in all the constructions we will present, we always respect the bijections between the sublfows when we join together edges with (co)contractions. In other words, we only connect two edges $\hat\epsilon_i$ and $\tilde\epsilon_j$ (resp., $\hat\iota_i$ and $\tilde\iota_j$) by a cocontraction (resp., contraction) if $i=j$.
-
-Since we know that we will always respect this restriction, the labeling of both $\hat\epsilon_i$ and $\tilde\epsilon_i$ is redundant. One can be deduced from the other.
-
-To reduce the amount of redundant information in the representation of our flows we wish to use the following notation to represent the above atomic flow:
-\[
-\psi\;=\;
-\atomicflow
-{
-(-2,12)*{\afacuex{}{}{}{}{\epsilon_1}{}52};
-( 0,14)*{\cdots};
-( 2,12)*{\afacuex{}{}{}{}{}{\epsilon_n}52};
-%
-(-5,0)="A";
-"A"+(-2, 6)*{\afvju4{}{}};
-"A"+( 0, 6)*{\cdots};
-"A"+( 2, 6)*{\afvju4{}{}};
-"A"+( 0, 0)*{\affr88};
-"A"+( 1, 2)*{\aflabelright{\phi}};
-"A"+(-2,-6)*{\afvjd4{}{}};
-"A"+( 0,-6)*{\cdots};
-"A"+( 2,-6)*{\afvjd4{}{}};
-%
-(5,0)="A";
-"A"+(-2, 6)*{\afvju4{}{}};
-"A"+( 0, 6)*{\cdots};
-"A"+( 2, 6)*{\afvju4{}{}};
-"A"+( 0, 0)*{\affr88};
-"A"+( 1, 2)*{\aflabelright{\phi}};
-"A"+(-2,-6)*{\afvjd4{}{}};
-"A"+( 0,-6)*{\cdots};
-"A"+( 2,-6)*{\afvjd4{}{}};
-%
-(-2,-12)*{\afacdex{}{}{}{}{\iota_1}{}52};
-( 0,-14)*{\cdots};
-( 2,-12)*{\afacdex{}{}{}{}{}{\iota_n}52};
-}\quad.
-\]
-\end{example}
-
-
-\TODO{We don't specify that we are talking about a specific bijection. Does it matter?}
-
-\TODO{There might be more isomorphic subflows than the ones we mentioned, that would be bad. We need a way of saying which ones we care about. This was the use of the term `copy' and it is accomplished by giving them the same name.}
-
-\begin{definition}\label{definition:CorrespondingEdges}
-Given two atomic flows $\phi$ and $\psi$, such that
-\begin{itemize}
-  \item $\psi$ contains the subflows $\phi_1$, $\dots$, $\phi_n$, each of which is isomorphic to $\phi$,
-  \item $f_1$, $\dots$, $f_n$ are bijections from $\phi$ to $\phi_1$, $\dots$, $\phi_n$, respectively,
-  \item $\epsilon$, $\epsilon_1$, $\dots$, $\epsilon_m$ are the upper (resp., lower) edges of $\phi$, and
-  \item $\epsilon'$ is an upper (resp., lower) edge of $\psi$,
-\end{itemize}
-then we say that \emph{$\epsilon$ corresponds to $\epsilon'$} if
-\begin{itemize}
-  \item for some $1\le i\le n$, there is a path from $\epsilon'$ to $f_i(\epsilon)$, and
-  \item for every $1\le i\le n$ and every $1\le j \le m$, there is no path form $\epsilon'$ to $f_i(\epsilon_j)$.
-\end{itemize}
-Whenever we give the same name, $\epsilon$, to two edges in different atomic flows, $\phi$ and $\psi$ we mean that $\epsilon$ in $\psi$ corresponds to $\epsilon$ in $\phi$.
+if $f$ is an isomorphism between $\phi$ and $\psi$.
 \end{definition}
 
-\TODO{As is now, $\epsilon$ can correspond to more than one edge. Remove comment or change def.}
+%\begin{example}\label{example:LabelsIsomorphicFlows}
+%Consider the following atomic flows:
+%\[
+%\phi\;=\;
+%\atomicflow
+%{
+%(0,0)="A";
+%"A"+(-2, 6)*{\afvju4{\epsilon_1}{}};
+%"A"+( 0, 6)*{\cdots};
+%"A"+( 2, 6)*{\afvju4{}{\epsilon_n}};
+%"A"+( 0, 0)*{\affr88};
+%"A"+( 1, 2)*{\aflabelright{\phi}};
+%"A"+(-2,-6)*{\afvjd4{\iota_1}{}};
+%"A"+( 0,-6)*{\cdots};
+%"A"+( 2,-6)*{\afvjd4{}{\iota_m}};
+%}
+%\quad\mbox{and}\quad
+%\psi\;=\;
+%\atomicflow
+%{
+%(-2,12)*{\afacuex{}{}{}{}{}{}52};
+%( 0,14)*{\cdots};
+%( 2,12)*{\afacuex{}{}{}{}{}{}52};
+%%
+%(-5,0)="A";
+%"A"+(-2, 6)*{\afvju4{\hat\epsilon_1}{}};
+%"A"+( 0, 6)*{\cdots};
+%"A"+( 2, 6)*{\afvju4{}{\hat\epsilon_n}};
+%"A"+( 0, 0)*{\affr88};
+%"A"+( 1, 2)*{\aflabelright{\phi}};
+%"A"+(-2,-6)*{\afvjd4{\hat\iota_1}{}};
+%"A"+( 0,-6)*{\cdots};
+%"A"+( 2,-6)*{\afvjd4{}{\hat\iota_m}};
+%%
+%(5,0)="A";
+%"A"+(-2, 6)*{\afvju4{\tilde\epsilon_1}{}};
+%"A"+( 0, 6)*{\cdots};
+%"A"+( 2, 6)*{\afvju4{}{\tilde\epsilon_n}};
+%"A"+( 0, 0)*{\affr88};
+%"A"+( 1, 2)*{\aflabelright{\phi}};
+%"A"+(-2,-6)*{\afvjd4{\tilde\iota_1}{}};
+%"A"+( 0,-6)*{\cdots};
+%"A"+( 2,-6)*{\afvjd4{}{\tilde\iota_m}};
+%%
+%(-2,-12)*{\afacdex{}{}{}{}{}{}52};
+%( 0,-14)*{\cdots};
+%( 2,-12)*{\afacdex{}{}{}{}{}{}52};
+%}\quad.
+%\]
+%By Defintion~\vref{definition:LabelsIsomorphicFlows} this means that there are bijections $f_1$ and $f_2$ between $\phi$ and each of the subflows labelled $\phi$ in $\psi$, such that, for every $1\le i\le n$ (resp., $1\le i\le m$), we have $f_1(\epsilon_i)=\hat\epsilon_i$ and $f_2(\epsilon_i)=\tilde\epsilon_i$ (resp., $f_1(\iota_i)=\hat\iota_i$ and $f_2(\iota_i)=\tilde\iota_i$).
 
-\begin{remark}
-If $\epsilon$ in $\phi$ corresponds to $\epsilon'$ in $\psi$ it is not a problem to refer to them by the same name since they belong to different atomic flows and since $\epsilon$ can at most correspond to one edge in $\psi$.
-\end{remark}
+%This way of creating atomic flows by joining together (by use of (co) contractions) copies of an existing flow will be crucial for the global transformations we present later on. We note that in the construction above, and also in all the constructions we will present, we always respect the bijections between the sublfows when we join together edges with (co)contractions. In other words, we only connect two edges $\hat\epsilon_i$ and $\tilde\epsilon_j$ (resp., $\hat\iota_i$ and $\tilde\iota_j$) by a cocontraction (resp., contraction) if $i=j$.
 
-\TODO{Remark with references to (all) the uses of this notation.}
+%Since we know that we will always respect this restriction, the labeling of both $\hat\epsilon_i$ and $\tilde\epsilon_i$ is redundant. One can be deduced from the other.
+
+%To reduce the amount of redundant information in the representation of our flows we wish to use the following notation to represent the above atomic flow:
+%\[
+%\psi\;=\;
+%\atomicflow
+%{
+%(-2,12)*{\afacuex{}{}{}{}{\epsilon_1}{}52};
+%( 0,14)*{\cdots};
+%( 2,12)*{\afacuex{}{}{}{}{}{\epsilon_n}52};
+%%
+%(-5,0)="A";
+%"A"+(-2, 6)*{\afvju4{}{}};
+%"A"+( 0, 6)*{\cdots};
+%"A"+( 2, 6)*{\afvju4{}{}};
+%"A"+( 0, 0)*{\affr88};
+%"A"+( 1, 2)*{\aflabelright{\phi}};
+%"A"+(-2,-6)*{\afvjd4{}{}};
+%"A"+( 0,-6)*{\cdots};
+%"A"+( 2,-6)*{\afvjd4{}{}};
+%%
+%(5,0)="A";
+%"A"+(-2, 6)*{\afvju4{}{}};
+%"A"+( 0, 6)*{\cdots};
+%"A"+( 2, 6)*{\afvju4{}{}};
+%"A"+( 0, 0)*{\affr88};
+%"A"+( 1, 2)*{\aflabelright{\phi}};
+%"A"+(-2,-6)*{\afvjd4{}{}};
+%"A"+( 0,-6)*{\cdots};
+%"A"+( 2,-6)*{\afvjd4{}{}};
+%%
+%(-2,-12)*{\afacdex{}{}{}{}{\iota_1}{}52};
+%( 0,-14)*{\cdots};
+%( 2,-12)*{\afacdex{}{}{}{}{}{\iota_n}52};
+%}\quad.
+%\]
+%\end{example}
+
+%
+%\TODO{We don't specify that we are talking about a specific bijection. Does it matter?}
+
+%\TODO{There might be more isomorphic subflows than the ones we mentioned, that would be bad. We need a way of saying which ones we care about. This was the use of the term `copy' and it is accomplished by giving them the same name.}
+
+%\begin{definition}\label{definition:CorrespondingEdges}
+%Given two atomic flows $\phi$ and $\psi$, such that
+%\begin{itemize}
+%  \item $\psi$ contains the subflows $\phi_1$, $\dots$, $\phi_n$, each of which is isomorphic to $\phi$,
+%  \item $f_1$, $\dots$, $f_n$ are bijections from $\phi$ to $\phi_1$, $\dots$, $\phi_n$, respectively,
+%  \item $\epsilon$, $\epsilon_1$, $\dots$, $\epsilon_m$ are the upper (resp., lower) edges of $\phi$, and
+%  \item $\epsilon'$ is an upper (resp., lower) edge of $\psi$,
+%\end{itemize}
+%then we say that \emph{$\epsilon$ corresponds to $\epsilon'$} if
+%\begin{itemize}
+%  \item for some $1\le i\le n$, there is a path from $\epsilon'$ to $f_i(\epsilon)$, and
+%  \item for every $1\le i\le n$ and every $1\le j \le m$, there is no path form $\epsilon'$ to $f_i(\epsilon_j)$.
+%\end{itemize}
+%Whenever we give the same name, $\epsilon$, to two edges in different atomic flows, $\phi$ and $\psi$ we mean that $\epsilon$ in $\psi$ corresponds to $\epsilon$ in $\phi$.
+%\end{definition}
+
+%\TODO{As is now, $\epsilon$ can correspond to more than one edge. Remove comment or change def.}
+
+%\begin{remark}
+%If $\epsilon$ in $\phi$ corresponds to $\epsilon'$ in $\psi$ it is not a problem to refer to them by the same name since they belong to different atomic flows and since $\epsilon$ can at most correspond to one edge in $\psi$.
+%\end{remark}
+
+%\TODO{Remark with references to (all) the uses of this notation.}
 
 %=======================================
 \section{Paths and Cycles}\label{section:PathsAndCycles}
