@@ -15,10 +15,10 @@
 \begin{definition}\label{definition:Formula}
 We define a set of \emph{formulae}, denoted by $\alpha$, $\beta$, $\gamma$, $\delta$ to be:
 \begin{itemize}
- \item \emph{atoms} $a$, $b$, $c$, $d$ and $\bar a$, $\bar b$, $\bar c$, $\bar d$;
- \item \emph{formula variables} $A$, $B$, $C$, $D$;
+ \item \emph{atoms}, denoted by $a$, $b$, $c$, $d$ and $\bar a$, $\bar b$, $\bar c$, $\bar d$;
+ \item \emph{formula variables}, denoted by $A$, $B$, $C$, $D$;
  \item \emph{units} $\fff$ (false) and $\ttt$ (true); and
- \item the \emph{disjunction} and \emph{conjunction} of formulae $\alpha$ and $\beta$, denoted $\vlsbr[\alpha.\beta]$ and  $\vlsbr(\alpha.\beta)$, respectively.
+ \item the \emph{disjunction} and \emph{conjunction} of formulae $\alpha$ and $\beta$, denoted by $\vlsbr[\alpha.\beta]$ and  $\vlsbr(\alpha.\beta)$, respectively.
 \end{itemize}
 A formula is \emph{ground} if it contains no variables. We usually omit external brackets of formulae, and sometimes we omit dispensable brackets under associativity. We use $\equiv$ to denote literal equality of formulae. The \emph{size} $\size\alpha$ of a formula $\alpha$ is the number of unit, atom and variable occurrences appearing in it. On the set of atoms there is an involution $\bar\cdot$, called \emph{negation} (\emph{i.e.}, $\bar\cdot$ is a bijection from the set of atoms to itself such that $\bar{\bar a}\equiv a$); we require that $\bar a\not\equiv a$ for every $a$; when both $a$ and $\bar a$ appear in a formula, we mean that atom $a$ is mapped to by $\bar a$ by $\bar\cdot$. A \emph{context} is a formula where one \emph{hole} $\vlhole$ appears in the place of a subformula; for example, $\vls[a.(b.\vlhole)]$ is a context; the generic context is denoted by $\xi\vlhole$. The hole can be filled with formulae; for example, if $\xi\vlhole\equiv\vls(b.[\vlhole.c])$, then $\xi\{a\}\equiv\vls(b.[a.c])$, $\xi\{b\}\equiv\vls(b.[b.c])$ and $\xi\{\vls(a.b)\}\equiv\vls(b.[(a.b).c])$. The \emph{size} of $\xi\vlhole$ is defined as $\size{\xi\vlhole}=\size{\xi\{a\}}-1$.
 \end{definition}
