@@ -165,6 +165,56 @@ We often write $\vlinf{\ssu}{}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\v
 we write $\vlinf{\supers}{}{\vls[\zeta\{\fff\}.\xi\{\alpha\}]}{\vls(\zeta\{\alpha\}.\xi\{\ttt\})}$.
 \end{remark}
 
+\begin{lemma}\label{lemma:GenericWeakening}
+Given a formula $\alpha$, there exist derivations $\vlupsmash{\vlder{}{\{\awd,\swi\}}{\alpha}{\fff}}$ and $\vlupsmash{\vlder{}{\{\awu,\swi\}}{\ttt}{\alpha}}$.
+\end{lemma}
+
+\begin{proof}
+We show how to construct the first derivation, the second one can be done symmetrically.
+Let $a_1$, $\dots$, $a_n$ be the atoms appearing in $\alpha$, then there exists a derivation
+\[
+\vlder{}{\{\awd\}}{\alpha}{\alpha\{a_1/\fff,\dots,a_n/\fff\}}
+\quad.
+\]
+Since $\alpha\{a_1/\fff,\dots,a_n/\fff\}$ contains no atoms, there exists a derivation
+\[
+\vlder{}{\{\fffd,\tttd,\fffandd,\tttord\}}{\alpha\{a_1/\fff,\dots,a_n/\fff\}}{\fff}
+\qquad\mbox{or}\qquad
+\vlderivation
+{
+ \vlde{}{\{\fffd,\tttd,\fffandd,\tttord\}}
+ {
+  \alpha\{a_1/\fff,\dots,a_n/\fff\}
+ }
+ {
+  \vlin{=}{}
+  {
+   \ttt
+  }
+  {
+   \vlin{\swi}{}
+   {
+    \vls[(\fff.\ttt).\ttt]
+   }
+   {
+    \vlin{=}{}
+    {
+     \vls(\fff.[\ttt.\fff])
+    }
+    {
+     \vlhy
+     {
+      \fff
+     }
+    }
+   }
+  }
+ }
+}
+\quad.
+\]
+\end{proof}
+
 \begin{lemma}\label{lemma:GenericContraction}
 Given a formula $\alpha$, there exist derivations $\vlupsmash{\vlder{}{\{\acd,\med\}}{\alpha}{\vls[\alpha.\alpha]}}$ and $\vlupsmash{\vlder{}{\{\acu,\med\}}{\vls(\alpha.\alpha)}{\alpha}}$.
 \end{lemma}
@@ -275,11 +325,12 @@ We show how to construct the first derivation, the second one can be done symmet
 \newcommand{\contr}{\mathsf{c}}
 \newcommand{\cod}{{\contr{\downarrow}}}
 \newcommand{\cou}{{\contr{\uparrow}}}
-
-\TODO{Define $\star$ notation}
+\newcommand{\weakn}{\mathsf{w}}
+\newcommand{\wed}{{\weakn{\downarrow}}}
+\newcommand{\weu}{{\weakn{\uparrow}}}
 
 \begin{remark}\label{remark:GenericContraction}
-In the non-atomic version of system $\SKS$ the derivations shown in Lemma~\vref{lemma:GenericContraction} correspond to (co)contractions. For this reason we sometimes write the inference rules $\vlinf{\cod}{}{\alpha}{\vls[\alpha.\alpha]}$ and $\vlinf{\cou}{}{\vls(\alpha.\alpha)}{\alpha}$ instead of the derivations $\vlder{}{\{\acd,\med\}}{\alpha}{\vls[\alpha.\alpha]}$ and $\vlupsmash{\vlder{}{\{\acu,\med\}}{\vls(\alpha.\alpha)}{\alpha}}$, respectively.
+In the non-atomic version of system $\SKS$ the derivations shown in the proofs of Lemma~\ref{lemma:GenericWeakening} and Lemma~\vref{lemma:GenericContraction} correspond to (co)weakening and (co)contractions, respectively. For this reason we sometimes write the inference rules $\vlinf{\wed}{}{\alpha}{\fff}$, $\vlinf{\weu}{}{\ttt}{\alpha}$, $\vlinf{\cod}{}{\alpha}{\vls[\alpha.\alpha]}$ and $\vlinf{\cou}{}{\vls(\alpha.\alpha)}{\alpha}$ instead of the derivations $\vlder{}{\{\awd,\swi\}}{\alpha}{\fff}$, $\vlder{}{\{\awu,\swi\}}{\ttt}{\alpha}$, $\vlder{}{\{\acd,\med\}}{\alpha}{\vls[\alpha.\alpha]}$ and $\vlupsmash{\vlder{}{\{\acu,\med\}}{\vls(\alpha.\alpha)}{\alpha}}$, respectively.
 \end{remark}
 
 \begin{theorem}\label{theorem:SKSComplete}
