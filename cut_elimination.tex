@@ -1,6 +1,170 @@
 \chapter{Cut Elimination}
 
-\TODO{Redo this so that it is in line with how $\Core$ is defined.}
+\newcommand{\Exp}{\mathsf{Exp}}
+
+\begin{definition}\label{definition:FlowExperiment}
+Given a polarity assignment $\pi$ and an atomic flow
+\[
+\phi\;\;=\;\;\atomicflow
+{
+(0,17.5)*{\invisiblemark};
+%---
+(-13,0)*{\affr{22}{20}};
+(-5,8)*{\aflabelright{\phi_1}};
+%
+(-13, 8)*{\afaidm{}{}{}{}{}{}};
+(-18, 0)*{\affr{8}{8}};
+(-19, 2)*{\aflabelleft\ppl};
+(-17, 2)*{\aflabelright{\phi'_1}};
+( -8, 0)*{\affr{8}{8}};
+( -9, 2)*{\aflabelleft\pmi};
+( -7, 2)*{\aflabelright{\phi''_1}};
+( -6,-11)*{\afvjum{14}{}{\boldsymbol\iota''_1}};
+(-13,-8)*{\afaium{}{}{}{}{}{}};
+(-20,-11)*{\afvjum{14}{\boldsymbol\iota'_1}{}};
+%------------
+(0,0)*{\cdots};
+%------------
+(13,0)*{\affr{22}{20}};
+(21,8)*{\aflabelright{\phi_n}};
+%
+(13, 8)*{\afaidm{}{}{}{}{}{}};
+( 8, 0)*{\affr{8}{8}};
+( 7, 2)*{\aflabelleft\ppl};
+( 9, 2)*{\aflabelright{\phi'_n}};
+(18, 0)*{\affr{8}{8}};
+(17, 2)*{\aflabelleft\pmi};
+(19, 2)*{\aflabelright{\phi''_n}};
+( 6,-11)*{\afvjum{14}{\boldsymbol\iota'_n}{}};
+(13,-8)*{\afaium{}{}{}{}{}{}};
+(20,-11)*{\afvjum{14}{}{\boldsymbol\iota''_n}};
+}\qquad
+\atomicflow{
+( -5, 13.5)*{\afawdm{}{}{}{}{}{}};
+%---
+( -8, 5.5)*{\copy\contrup};
+( -5, 5.5)*{\affr{18}8};
+( -2, 5.5)*{\copy\contrdown};
+%---
+(-10,-2.5)*{\afaium{}{}{}{}{}{}};
+(  0,   0)*{\afvjm3};
+( 10, 2.5)*{\afaidm{}{}{}{}{}{}};
+%---
+(  2,-5.5)*{\copy\contrup};
+(  5,-5.5)*{\affr{18}8};
+(  8,-5.5)*{\copy\contrdown};
+%---
+(  0,-13.5)*{\afawum{}{}{}{}{}{}};
+( 10,-13.5)*{\afvjm8};
+%---------
+( 0, 0)*{\affr{30}{32}};
+(12,14)*{\aflabelright{\psi}};
+}\quad,
+\]
+where, for $1\le i\le n$, $\phi_i$ is a connected, non-weakly-cut-free subflow, we define the \emph{experiment on $\phi$ with respect to $\pi$}, denoted $\Exp(\phi,\pi)$, to be
+\[
+\atomicflow
+{
+(0,17.5)*{\invisiblemark};
+%-----
+(-18, 6)*{\afvjdm4{}{\boldsymbol{\lambda'_1}}};
+( -8, 8)*{\afawdm{}{}{}{}{}{}};
+(-18, 0)*{\affr{8}{8}};
+(-19, 2)*{\aflabelleft\ppl};
+(-17, 2)*{\aflabelright{\phi'_1}};
+( -8, 0)*{\affr{8}{8}};
+( -9, 2)*{\aflabelleft\pmi};
+( -7, 2)*{\aflabelright{\phi''_1}};
+( -6,-11)*{\afvjum{14}{}{\boldsymbol\iota''_1}};
+(-13,-8)*{\afaium{}{}{}{}{}{}};
+(-20,-11)*{\afvjum{14}{\boldsymbol\iota'_1}{}};
+%------------
+(0,0)*{\cdots};
+%------------
+( 8, 6)*{\afvjdm4{}{\boldsymbol{\lambda'_n}}};
+(18, 8)*{\afawdm{}{}{}{}{}{}};
+( 8, 0)*{\affr{8}{8}};
+( 7, 2)*{\aflabelleft\ppl};
+( 9, 2)*{\aflabelright{\phi'_n}};
+(18, 0)*{\affr{8}{8}};
+(17, 2)*{\aflabelleft\pmi};
+(19, 2)*{\aflabelright{\phi''_n}};
+( 6,-11)*{\afvjum{14}{\boldsymbol\iota'_n}{}};
+(13,-8)*{\afaium{}{}{}{}{}{}};
+(20,-11)*{\afvjum{14}{}{\boldsymbol\iota''_n}};
+}\qquad
+\atomicflow{
+( -5, 13.5)*{\afawdm{}{}{}{}{}{}};
+%---
+( -8, 5.5)*{\copy\contrup};
+( -5, 5.5)*{\affr{18}8};
+( -2, 5.5)*{\copy\contrdown};
+%---
+(-10,-2.5)*{\afaium{}{}{}{}{}{}};
+(  0,   0)*{\afvjm3};
+( 10, 2.5)*{\afaidm{}{}{}{}{}{}};
+%---
+(  2,-5.5)*{\copy\contrup};
+(  5,-5.5)*{\affr{18}8};
+(  8,-5.5)*{\copy\contrdown};
+%---
+(  0,-13.5)*{\afawum{}{}{}{}{}{}};
+( 10,-13.5)*{\afvjm8};
+%---------
+( 0, 0)*{\affr{30}{32}};
+(12,14)*{\aflabelright{\psi}};
+}\quad.
+\]
+For every $1\le i\le n$, the \emph{new upper edges of} $\phi_i$ are $\boldsymbol{\lambda'_i}$.
+\end{definition}
+
+
+\begin{definition}\label{definition:DerExperiment}
+Given a proof $\vlproof{\Pi}{}{\alpha}$ with associated atomic flow $\phi$ and a polarity assignment, $\pi$, to $\phi$, such that $\phi_1$, $\dots$, $\phi_n$ are all the non-weakly-cut-free, connected subflows of $\phi$, an \emph{experiment on\/ $\Pi$ with respect to $\pi$} is defined to be a derivation
+\[
+\vlder{}{}{\alpha}{\vlsmallbrackets\vls((a^{\lambda'_{1,1}}_1.\cdots.a^{\lambda'_{1,k_1}}_1).\cdots.(a^{\lambda'_{n,1}}_n.\cdots.a^{\lambda'_{n,k_n}}_n))}
+\]
+with associated atomic flow $\Exp(\phi,\pi)$, such that, for every $1\le i\le n$, $\lambda'_{i,1}$, $\dots$, $\lambda'_{i,k_i}$ are the new upper edges of $\phi_i$.
+\end{definition}
+
+\TODO{Update definition of `new upper edges of $\phi_i$' to also mention $\Exp$}
+
+\TODO{We are glossing over some associativity/commutativity...}
+
+\begin{theorem}\label{theorem:DerExperiment}
+Given a proof\/ $\vlproof{\Pi}{}{\alpha}$ with associated atomic flow $\phi$, and a polarity assignment, $\pi$, to $\phi$, an experiment on $\Pi$ with respect to $\pi$ can be constructed.
+\end{theorem}
+
+\begin{proof}
+Let $\phi_1$, $\dots$, $\phi_n$ be all the non-weakly-cut-free, connected subflows of $\phi$ and, for every $1\le i\le n$, let $\lambda'_{i,1}$, $\dots$, $\lambda'_{i,k_i}$ be the new upper edges of $\phi_i$ in $\Exp(\phi,\pi)$.
+
+For every $1\le i\le n$ and every $1\le j\le k_i$, substitute $\vlinf{}{}{\vls[a_i^{\lambda'_{i,j}}.\bar a_i]}{\ttt}$ with $\vlsbr[a_i^{\lambda'_{i,j}}.\vlinf{}{}{\bar a_i}{\fff}]$ in the $\ai$-decomposed form of $\Pi$ to obtain a derivation with atomic flow $\Exp(\phi,\pi)$:
+\[
+\vlder{}{}{\alpha}
+{
+ \vlsbr
+ (
+  (
+   [a_1^{\lambda'_{1,1}}.\vlinf{}{}{\bar a_1}{\fff}]
+  \;.\;\cdots\;.\;
+   [a_1^{\lambda'_{1,k_1}}.\vlinf{}{}{\bar a_1}{\fff}]
+  )
+ \;.\;\cdots\;.\;
+  (
+   [a_n^{\lambda'_{n,1}}.\vlinf{}{}{\bar a_n}{\fff}]
+  \;.\;\cdots\;.\;
+   [a_n^{\lambda'_{n,k_n}}.\vlinf{}{}{\bar a_n}{\fff}]
+  )
+ )
+}\quad.
+\]
+\end{proof}
+
+\begin{definition}\label{definition:DerTheExperiment}
+Given a proof $\Pi$ and a polarity assignment to its atomic flow $\pi$, the experiment on $\Phi$ with respect to $\pi$ obtained as described in the proof of Theorem~\vref{theorem:DerExperiment} is called \emph{the experiment on\/ $\Pi$ with respect to $\pi$}, denoted $\Exp(\Pi,\pi)$.
+\end{definition}
+
+\TODO{In what sense is this unique?}
 
 \TODO{Integrate this section with the rest of the thesis. In particular do it in terms of weak cut-elimination, which will make it much more elegant.}
 

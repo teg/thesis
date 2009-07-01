@@ -1,5 +1,386 @@
 \chapter{Streamlining}\label{chapter:Streamlining}
 
+\TODO{Consider defining `ordered choice of components' somewhere else.}
+
+\TODO{This might be more suitable somewhere else.}
+
+\newcommand{\Core}{\mathsf{Core}}
+\begin{definition}\label{definition:FlowCore}
+Given an atomic flow
+\[
+\phi\;\;=\;\;\atomicflow
+{
+(-13,0)*{\affr{22}{20}};
+(-5,8)*{\aflabelright{\phi_1}};
+%
+(-20,10)*{\afvjdm{12}{\boldsymbol\epsilon'_1}{}};
+(-13, 8)*{\afaidm{}{}{}{}{}{}};
+( -6,10)*{\afvjdm{12}{}{\boldsymbol\epsilon''_1}};
+(-18, 0)*{\affr{8}{8}};
+(-17, 2)*{\aflabelright{\phi'_1}};
+( -8, 0)*{\affr{8}{8}};
+( -7, 2)*{\aflabelright{\phi''_1}};
+( -6,-10)*{\afvjum{12}{}{\boldsymbol\iota''_1}};
+(-13,-8)*{\afaium{}{}{}{}{}{}};
+(-20,-10)*{\afvjum{12}{\boldsymbol\iota'_1}{}};
+%------------
+(0,0)*{\cdots};
+%------------
+(13,0)*{\affr{22}{20}};
+(21,8)*{\aflabelright{\phi_n}};
+%
+(20, 11)*{\afvjdm{14}{}{\boldsymbol\epsilon''_n}};
+(13,  8)*{\afaidm{}{}{}{}{}{}};
+( 6, 11)*{\afvjdm{14}{\boldsymbol\epsilon'_n}{}};
+( 8,  0)*{\affr{8}{8}};
+( 9,  2)*{\aflabelright{\phi'_n}};
+(18,  0)*{\affr{8}{8}};
+(19,  2)*{\aflabelright{\phi''_n}};
+( 6,-11)*{\afvjum{14}{\boldsymbol\iota'_n}{}};
+(13,-8)*{\afaium{}{}{}{}{}{}};
+(20,-11)*{\afvjum{14}{}{\boldsymbol\iota''_n}};
+}\qquad
+\atomicflow{
+(-10, 13.5)*{\afvjm8};
+(  0, 13.5)*{\afawdm{}{}{}{}{}{}};
+%---
+( -8, 5.5)*{\copy\contrup};
+( -5, 5.5)*{\affr{18}8};
+( -2, 5.5)*{\copy\contrdown};
+%---
+(-10,-2.5)*{\afaium{}{}{}{}{}{}};
+(  0,   0)*{\afvjm3};
+( 10, 2.5)*{\afaidm{}{}{}{}{}{}};
+%---
+(  2,-5.5)*{\copy\contrup};
+(  5,-5.5)*{\affr{18}8};
+(  8,-5.5)*{\copy\contrdown};
+%---
+(  0,-13.5)*{\afawum{}{}{}{}{}{}};
+( 10,-13.5)*{\afvjm8};
+%---------
+( 0, 0)*{\affr{30}{32}};
+(12,14)*{\aflabelright{\psi}};
+}\quad,
+\]
+where, for $1\le i\le n$, the subflows $\phi'_i$ and $\phi''_i$ contain no identity and no cut vertices and $\phi_i$ is a connected, non-weakly-streamlined subflow, we define the \emph{core of $\phi$}, denoted $\Core(\phi)$, to be
+\[
+\atomicflow
+{
+(-21,11)*{\afvjdm{14}{\boldsymbol\epsilon'_1}{}};
+(-17,16)*{\afvjd4{}{\lambda'_1}};
+(-17,10)*{\affr{6}{8}};
+(-17,10)*{\copy\contrup};
+(-17, 5)*{\afvjm{2}};
+(-18, 0)*{\affr{8}{8}};
+(-17, 2)*{\aflabelright{\phi'_1}};
+(-21,-11)*{\afvjum{14}{\boldsymbol\iota'_1}{}};
+(-17,-16)*{\afvju4{}{\mu'_1}};
+(-17,-10)*{\affr{6}{8}};
+(-17,-10)*{\copy\contrdown};
+(-17, -5)*{\afvjm{2}};
+%
+( -9,16)*{\afvjd4{}{\lambda''_1}};
+( -9,10)*{\affr{6}{8}};
+( -9,10)*{\copy\contrup};
+( -9, 5)*{\afvjm{2}};
+( -5,11)*{\afvjdm{14}{}{\boldsymbol\epsilon''_1}};
+( -8, 0)*{\affr{8}{8}};
+( -7, 2)*{\aflabelright{\phi''_1}};
+( -9,-16)*{\afvju4{}{\mu''_1}};
+( -9,-10)*{\affr{6}{8}};
+( -9,-10)*{\copy\contrdown};
+( -9, -5)*{\afvjm{2}};
+( -5,-11)*{\afvjum{14}{}{\boldsymbol\iota''_1}};
+( -8, 0)*{\affr{8}{8}};
+%------------
+(0,0)*{\cdots};
+%------------
+( 9,16)*{\afvjd4{}{\lambda'_n}};
+( 9,10)*{\affr{6}{8}};
+( 9,10)*{\copy\contrup};
+( 9, 5)*{\afvjm{2}};
+( 5,11)*{\afvjdm{14}{\boldsymbol\epsilon'_n}{}};
+( 8, 0)*{\affr{8}{8}};
+( 9, 2)*{\aflabelright{\phi'_n}};
+( 9,-16)*{\afvju4{}{\mu'_n}};
+( 9,-10)*{\affr{6}{8}};
+( 9,-10)*{\copy\contrdown};
+( 9, -5)*{\afvjm{2}};
+( 5,-11)*{\afvjum{14}{\boldsymbol\iota'_n}{}};
+( 8, 0)*{\affr{8}{8}};
+%
+(21,11)*{\afvjdm{14}{}{\boldsymbol\epsilon''_n}};
+(17,16)*{\afvjd4{}{\lambda''_n}};
+(17,10)*{\affr{6}{8}};
+(17,10)*{\copy\contrup};
+(17, 5)*{\afvjm{2}};
+(18, 0)*{\affr{8}{8}};
+(19, 2)*{\aflabelright{\phi''_n}};
+(21,-11)*{\afvjum{14}{}{\boldsymbol\iota''_n}};
+(17,-16)*{\afvju4{}{\mu''_n}};
+(17,-10)*{\affr{6}{8}};
+(17,-10)*{\copy\contrdown};
+(17, -5)*{\afvjm{2}};
+}\qquad
+\atomicflow{
+(-10, 13.5)*{\afvjm8};
+(  0, 13.5)*{\afawdm{}{}{}{}{}{}};
+%---
+( -8, 5.5)*{\copy\contrup};
+( -5, 5.5)*{\affr{18}8};
+( -2, 5.5)*{\copy\contrdown};
+%---
+(-10,-2.5)*{\afaium{}{}{}{}{}{}};
+(  0,   0)*{\afvjm3};
+( 10, 2.5)*{\afaidm{}{}{}{}{}{}};
+%---
+(  2,-5.5)*{\copy\contrup};
+(  5,-5.5)*{\affr{18}8};
+(  8,-5.5)*{\copy\contrdown};
+%---
+(  0,-13.5)*{\afawum{}{}{}{}{}{}};
+( 10,-13.5)*{\afvjm8};
+%---------
+( 0, 0)*{\affr{30}{32}};
+(12,14)*{\aflabelright{\psi}};
+}\quad.
+\]
+For every $1\le i\le n$, the \emph{new upper edge of} $\phi'_i$ (resp., $\phi''_i$) \emph{in $\Core(\phi)$} is $\lambda'_i$ (resp., $\lambda''_i$), the \emph{new lower edge of} $\phi'_i$ (resp., $\phi''_i$) \emph{in $\Core{\phi}$} is $\mu'_i$ (resp., $\mu''_i$) and the \emph{new upper} (resp., \emph{lower}) \emph{edges of $\phi_i$ in $\Core{\phi}$} are $\lambda'_i$ and $\lambda''_i$ (resp., $\mu'_i$ and $\mu''_i$).
+We say that $\phi_1$, $\dots$, $\phi_n$ is an \emph{ordered choice of components from $\phi$}.
+\end{definition}
+
+
+\begin{definition}\label{definition:DerCore}
+Given a derivation $\vlder{\Phi}{}{\beta}{\alpha}$ with associated atomic flow $\phi$, such that $\phi_1$, $\dots$, $\phi_n$ are all the non-weakly-streamlined, connected subflows of $\phi$, a \emph{core of\/ $\Phi$} is defined to be a derivation
+\[
+\vlder{}{}{\vlsmallbrackets\vls[\beta.(a^{\mu'_n}_n.{\bar a^{\mu''_n}_n}).\cdots.(a^{\mu'_1}_1.{\bar a^{\mu'_1}_1})]}{\vlsmallbrackets\vls([a^{\lambda'_1}_1.{\bar a^{\lambda''_1}_1}].\cdots.[a^{\lambda'_n}_n.{\bar a^{\lambda'_n}_n}].\alpha)}
+\]
+with associated atomic flow $\Core(\phi)$, such that, for every $1\le i\le n$, $\lambda'_i$ and $\lambda''_i$ (resp., $\mu'_i$ and $\mu''_i$) are the new upper (resp., lower) edges of $\phi_i$ in $\Core(\phi)$.
+\end{definition}
+
+\begin{theorem}\label{therome:DerCore}
+Given a derivation $\Phi$, a core of\/ $\Phi$ can be constructed.
+\end{theorem}
+
+\TODO{Rephrase in terms of $\ai$-decomposed form instead of $\ai$-free form.}
+
+\TODO{Double check references.}
+
+\TODO{There are some missing equations...}
+
+\TODO{define $\star$ notation.}
+
+\begin{proof}
+Let $\phi$ be the atomic flow of $\Phi$, let $\phi_1$, $\dots$, $\phi_n$ be the connected, non-weakly-streamlined sublfows of $\phi$, and, for $1\le i\le n$, let $\lambda'_i$ and $\lambda''_i$ (resp., $\mu'_i$ and $\mu''_i$) be the new upper (resp., lower) edges of $\phi_i$ in $\Core(\phi)$. Furthermore, for some atoms $a_1$, $\dots$, $a_n$, $b_1$, $\dots$, $b_k$, $c_1$, $\dots$ $c_l$, such that, for $1\le i\le n$, occurrences of $a_i$ maps to edges in $\phi_i$, and all the occurrences of $b_1$, $\dots$, $b_k$, $c_1$, $\dots$ $c_l$ map to edges in a weakly-stremlined subflow of $\phi$, let the $\ai$-free form of $\Phi$ be $\Psi$. Then we build a core of $\Phi$ as follows:
+\[
+\vlder{\Psi}{\SKS\setminus\{\aid,\aiu\}}
+{
+ \vlsbr
+ [
+  \beta
+ \;.\;
+  \vlinf{}{}{\fff}{\vls(c_l.\bar c_l)}
+ \;.\;\cdots\;.\;
+  \vlinf{}{}{\fff}{\vls(c_1.\bar c_1)}
+ \;.\;
+  \vlinf{\cod^\star}{}{\vls(a^{\mu'_n}_n.\bar a^{\mu''_n}_n)}{\vls[(a_n.\bar a_n).\cdots.(a_n.\bar a_n)]}
+ \;.\;\cdots\;.\;
+ \vlinf{\cod^\star}{}{\vls(a^{\mu'_1}_1.\bar a^{\mu''_1}_1)}{\vls[(a_1.\bar a_1).\cdots.(a_1.\bar a_1)]}
+ ]
+}
+{
+ \vlsbr
+ (
+  \vlinf{\cou^\star}{}{\vls([a_1.\bar a_1].\cdots.[a_1.\bar a_1])}{\vls[a^{\lambda'_1}_1.\bar a^{\lambda''_1}_1]}
+ \;.\;\cdots\;.\;
+  \vlinf{\cou^\star}{}{\vls([a_n.\bar a_n].\cdots.[a_n.\bar a_n])}{\vls[a^{\lambda'_n}_n.\bar a^{\lambda''_n}_n]}
+ \;.\;
+  \vlinf{}{}{\vls[b_1.\bar b_1]}{\ttt}
+ \;.\;\cdots\;.\;
+  \vlinf{}{}{\vls[b_k.\bar b_k]}{\ttt}
+ \;.\;
+  \alpha
+ )
+}\quad.
+\]
+By studying Definitions~\vref{definition:FlowCore} and \vref{definition:aiDecomposedForm}, and the proof of Lemma~\vref{lemma:GenericContraction}, we can observe that the derivation has atomic flow $\Core(\phi)$.
+\end{proof}
+
+\TODO{In what sense is this unique?}
+
+\begin{definition}\label{definition:DerTheCore}
+Given a derivation $\Phi$, the core of $\Phi$ obtained as described in the proof of Theorem~\vref{theorem:DerCore} is called \emph{the core of\/ $\Phi$}, denoted $\Core(\Phi)$.
+\end{definition}
+
+
+\begin{definition}\label{definition:FlowCorePolarity}
+Given an atomic flow $\phi$ and a polarity assignment $\pi$, such that
+\[
+\phi\;=\;
+\atomicflow{
+(-21, 14)*{\afvjm4};
+(-21,  8)*{\affr88};
+(-22, 10)*{\aflabelleft{\ppl}};
+%-
+(-24,  0)*{\afvjm8};
+%-
+(-21, -8)*{\affr88};
+(-22, -6)*{\aflabelleft{\ppl}};
+(-21,-14)*{\afvjm4};
+%-
+( -6, 16)*{\afaidm{}{}{}{}{}{}};
+( -4,  8)*{\afvjm8};
+(-11,  8)*{\affr88};
+(-12, 10)*{\aflabelleft{\ppl}};
+(-16,  0)*{\afcjrm48};
+%-
+(-16,  0)*{\afcjlm48};
+(-11, -8)*{\affr88};
+(-12, -6)*{\aflabelleft{\ppl}};
+( -4, -8)*{\afvjm8};
+( -6,-16)*{\afaium{}{}{}{}{}{}};
+%--
+( 12, 10)*{\afaidmex{}{}{}{}{}{}{20}{4}};
+(  2,  5)*{\afvjm2};
+(  4,  6)*{\cdots};
+( 22,  5)*{\afvjm2};
+(  9,  8)*{\afaidmex{}{}{}{}{}{}{6}{4}};
+(  1,  0)*{\affr{12}{8}};
+( -2,  2)*{\aflabelleft{\pmi}};
+( 12,  0)*{\affr{6}{8}};
+( 12,  2)*{\aflabelright{\phi_1}};
+( 12,  2)*{\aflabelleft{\ppl}};
+( 17,  0)*{\cdots};
+( 22,  0)*{\affr{6}{8}};
+( 22,  2)*{\aflabelright{\phi_n}};
+( 22,  2)*{\aflabelleft{\ppl}};
+(  9, -8)*{\afaiumex{}{}{}{}{}{}{6}{4}};
+(  2, -5)*{\afvjm2};
+(  4, -6)*{\cdots};
+( 22, -5)*{\afvjm2};
+( 12,-10)*{\afaiumex{}{}{}{}{}{}{20}{4}};
+}\qquad
+\atomicflow{
+(-10, 13.5)*{\afvjm8};
+(  0, 13.5)*{\afawdm{}{}{}{}{}{}};
+%---
+( -8, 5.5)*{\copy\contrup};
+( -5, 5.5)*{\affr{18}8};
+( -2, 5.5)*{\copy\contrdown};
+%---
+(-10,-2.5)*{\afaium{}{}{}{}{}{}};
+(  0,   0)*{\afvjm3};
+( 10, 2.5)*{\afaidm{}{}{}{}{}{}};
+%---
+(  2,-5.5)*{\copy\contrup};
+(  5,-5.5)*{\affr{18}8};
+(  8,-5.5)*{\copy\contrdown};
+%---
+(  0,-13.5)*{\afawum{}{}{}{}{}{}};
+( 10,-13.5)*{\afvjm8};
+%---------
+( 0, 0)*{\affr{30}{32}};
+(12,14)*{\aflabelright{\psi}};
+}\quad,
+\]
+where, for $1\le i\le n$, the subflow $\phi_i$ is a connected subflow, we define the \emph{core of $\phi$ with respect to $\pi$}, denoted $\Core(\phi,\pi)$, to be
+\[
+\atomicflow{
+(-21, 14)*{\afvjm4};
+(-21,  8)*{\affr88};
+(-22, 10)*{\aflabelleft{\ppl}};
+%-
+(-24,  0)*{\afvjm8};
+%-
+(-21, -8)*{\affr88};
+(-22, -6)*{\aflabelleft{\ppl}};
+(-21,-14)*{\afvjm4};
+%-
+( -6, 16)*{\afaidm{}{}{}{}{}{}};
+( -4,  8)*{\afvjm8};
+(-11,  8)*{\affr88};
+(-12, 10)*{\aflabelleft{\ppl}};
+(-16,  0)*{\afcjrm48};
+%-
+(-16,  0)*{\afcjlm48};
+(-11, -8)*{\affr88};
+(-12, -6)*{\aflabelleft{\ppl}};
+( -4, -8)*{\afvjm8};
+( -6,-16)*{\afaium{}{}{}{}{}{}};
+%--
+( 10, 10)*{\affr{6}{8}};
+( 10, 10)*{\copy\contrup};
+( 10,-10)*{\affr{6}{8}};
+( 10,-10)*{\copy\contrdown};
+(  2, 10)*{\affr{6}{8}};
+(  2, 10)*{\copy\contrup};
+(  2,-10)*{\affr{6}{8}};
+(  2,-10)*{\copy\contrdown};
+(  2, 16)*{\afvj4};
+(  2,  5)*{\afvjm2};
+(  6,5.5)*{\cdots};
+( 10, 16)*{\afvj4};
+( 10,  5)*{\afvjm2};
+( 18, 16)*{\afvjd4{}{\lambda_1}};
+( 28, 16)*{\afvjd4{}{\lambda_n}};
+( 18,  5)*{\afvjm2};
+( 28,  5)*{\afvjm2};
+(  4,  0)*{\affr{18}{8}};
+( -2,  2)*{\aflabelleft{\pmi}};
+( 18, 10)*{\affr{6}{8}};
+( 18, 10)*{\copy\contrup};
+( 18,  0)*{\affr{6}{8}};
+( 18,-10)*{\affr{6}{8}};
+( 18,-10)*{\copy\contrdown};
+( 18,  2)*{\aflabelright{\phi_1}};
+( 18,  2)*{\aflabelleft{\ppl}};
+( 23,  0)*{\cdots};
+( 28, 10)*{\affr{6}{8}};
+( 28, 10)*{\copy\contrup};
+( 28,  0)*{\affr{6}{8}};
+( 28,-10)*{\affr{6}{8}};
+( 28,-10)*{\copy\contrdown};
+( 28,  2)*{\aflabelright{\phi_n}};
+( 28,  2)*{\aflabelleft{\ppl}};
+(  2, -5)*{\afvjm2};
+(  2,-16)*{\afvj4};
+(  6, -5)*{\cdots};
+( 10,-16)*{\afvj4};
+( 10, -5)*{\afvjm2};
+( 18, -5)*{\afvjm2};
+( 28, -5)*{\afvjm2};
+( 18,-16)*{\afvju4{}{\mu_1}};
+( 28,-16)*{\afvju4{}{\mu_n}};
+}\qquad
+\atomicflow{
+(-10, 13.5)*{\afvjm8};
+(  0, 13.5)*{\afawdm{}{}{}{}{}{}};
+%---
+( -8, 5.5)*{\copy\contrup};
+( -5, 5.5)*{\affr{18}8};
+( -2, 5.5)*{\copy\contrdown};
+%---
+(-10,-2.5)*{\afaium{}{}{}{}{}{}};
+(  0,   0)*{\afvjm3};
+( 10, 2.5)*{\afaidm{}{}{}{}{}{}};
+%---
+(  2,-5.5)*{\copy\contrup};
+(  5,-5.5)*{\affr{18}8};
+(  8,-5.5)*{\copy\contrdown};
+%---
+(  0,-13.5)*{\afawum{}{}{}{}{}{}};
+( 10,-13.5)*{\afvjm8};
+%---------
+( 0, 0)*{\affr{30}{32}};
+(12,14)*{\aflabelright{\psi}};
+}\quad.
+\]
+For every $1\le i\le n$, the \emph{new upper} (resp., \emph{lower}) \emph{edge of $\phi_i$ in $\Core{\phi,\pi}$} is $\lambda_i$ (resp., $\mu_i$). We say that $\phi_1$, $\dots$, $\phi_n$ is an \emph{ordered choice of components from $\phi$ with respect to $\pi$}.
+\end{definition}
+
+
+
 %--------------
 
 \TODO{Define polarity assignments such that it makes sense to talk about the same polarity assignment for two flows where one flow has been transformed into the other.}
