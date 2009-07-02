@@ -15,21 +15,21 @@ We define the reduction $\to_\frfb$ (where $\frfb$ stands for \emph{four boxes})
 ( 4, 2)*{\aflabelleft\pmi};
 ( 6, 2)*{\aflabelright\psi};
 %-
-(-8,-6)*{\afvjum4{\boldsymbol{\iota}}{}};
+(-8,-6)*{\afvjum4{\boldsymbol{\iota}}{}};   
 ( 0,-8)*{\afaium{}{}{}{}{}{}};
 ( 8,-6)*{\afvjum4{}{\boldsymbol{\iota'}}};
 }
 \quad\to_\frfb\quad
 \atomicflow{
 %one
-(-27, 8)*{\afawdm{}{}{\boldsymbol{\epsilon_1}}{}};
-(-19,16)*{\afvjdm8{\boldsymbol{\epsilon}}{}};
-(-19, 8)*{\afacum{}{}{}{}{}{}};
+(-22,18)*{\afvjdm4{\boldsymbol{\epsilon}}{}};
+(-22,10.25)*{\afacumexsq{}{}{}{}{}{}52};
+(-21, 8)*{\afawdm{}{}{}{}};
 (-24, 0)*{\affr88};
 (-20, 2)*{\aflabelleft{f_1(\phi)}};
-(-27,-8)*{\afawum{}{}{\boldsymbol{\iota_1}}{}};
-(-19,-8)*{\afacdm{}{}{}{}{}{}};
-(-19,-16)*{\afvjum8{\boldsymbol{\iota}}{}};
+(-22,-10)*{\afacdmexsq{}{}{}{}{}{}52};
+(-22,-18)*{\afvjum4{\boldsymbol{\iota}}{}};
+(-21,-8)*{\afawum{}{}{}{}};
 %two
 (-15,18)*{\afawdm{}{}{\boldsymbol{\epsilon_2}}{}};
 (  0,18)*{\afaidmex{}{}{}{}{}{}92};
@@ -52,7 +52,7 @@ We define the reduction $\to_\frfb$ (where $\frfb$ stands for \emph{four boxes})
 ( 1,-8)*{\afvjm8};
 (-5,-8)*{\afawum{}{}{\boldsymbol{\iota_4}}{}};
 %psi
-(13, 12)*{\afvjdm{16}{}{g(\boldsymbol{\epsilon'})}};
+(13, 12)*{\afvjdm{16}{}{\boldsymbol{\epsilon'}}};
 ( 9, 13)*{\afvjm2};
 ( 7,  8)*{\afacdm{}{}{}{}{}{}};
 ( 3, 12)*{\afaidnw{}{}};
@@ -61,10 +61,10 @@ We define the reduction $\to_\frfb$ (where $\frfb$ stands for \emph{four boxes})
 ( 3,-14)*{\afaiunw{}{}};
 ( 7, -8)*{\afacum{}{}{}{}{}{}};
 ( 9,-13)*{\afvjm2};
-(13,-12)*{\afvjum{16}{}{g(\boldsymbol{\iota'})}};
+(13,-12)*{\afvjum{16}{}{\boldsymbol{\iota'}}};
 }\quad,
 \]
-where $\boldsymbol{\epsilon_1}=f_1(\boldsymbol\epsilon)$, $\boldsymbol{\iota_1}=f_1(\boldsymbol\iota)$, $\boldsymbol{\epsilon_2}=f_2(\boldsymbol\epsilon)$, $\boldsymbol{\iota_3}=f_3(\boldsymbol\iota)$, $\boldsymbol{\epsilon_4}=f_4(\boldsymbol\epsilon)$ and $\boldsymbol{\iota_4}=f_4(\boldsymbol\iota)$, and for every $\epsilon$ in $\boldsymbol\epsilon$ (resp., $\iota$ in $\boldsymbol\iota$) there is a path from $\epsilon$ (resp., $\iota$) to $f_1(\epsilon)$ and $f_3(\epsilon)$ (resp., $f_1(\iota)$ and $f_2(\iota)$).
+where $\boldsymbol{\epsilon_2}=f_2(\boldsymbol\epsilon)$, $\boldsymbol{\iota_3}=f_3(\boldsymbol\iota)$, $\boldsymbol{\epsilon_4}=f_4(\boldsymbol\epsilon)$ and $\boldsymbol{\iota_4}=f_4(\boldsymbol\iota)$, $\boldsymbol{\epsilon'}=g(\boldsymbol{\epsilon'})$, $\boldsymbol{\iota'}=g(\boldsymbol{\iota'})$, and for every $\epsilon$ in $\boldsymbol\epsilon$ (resp., $\iota$ in $\boldsymbol\iota$) there are paths from $\epsilon$ (resp., $\iota$) to $f_1(\epsilon)$ and $f_3(\epsilon)$ (resp., $f_1(\iota)$ and $f_2(\iota)$).
 \end{definition}
 
 %---------------------------------------
@@ -76,77 +76,212 @@ Reduction\/ $\to_\frfb$ is sound.
 \begin{proof}
 Let $\Phi$ be a derivation with flow $\phi'$, such that $\phi'\to_\frfb\psi'$. We show that there exists a derivation $\Psi$ with flow $\psi'$ and with the same premiss and conclusion as $\Phi$. In the following, we refer to the figure in Definition~\vref{definition:FourBoxes}.
 
-We obtain $\Psi$, with atomic flow $\psi'$, from $\Phi$ by, for every atom occurrence $a^\phi$ in $\Phi$:
-\begin{enumerate}
-\item If $a^\phi$ is not in the premiss or conclusion of $\Phi$, substitute it with the formula
+Let $a_1^{\phi}$, $\dots$, $a_n^{\phi}$ be all the atoms whose occurrences map to $\phi$, and let
 \[
- \vls([a^{f_1(\phi)}.a^{f_2(\phi)}].[a^{f_3(\phi)}.a^{f_4(\phi)}])\quad.
+\vlder{\Phi'}{\{\aid,\aiu\}}
+{
+ \vlsbr[\beta\;.\;\vlinf{}{}{\fff}{\vlsmallbrackets\vls(a_n^\phi.\bar a_n^\psi)}\;.\;\cdots\;.\;\vlinf{}{}{\fff}{\vlsmallbrackets\vls(a_1^\phi.\bar a_1^\psi)}]
+}
+{
+ \vlsbr(\vlinf{}{}{\vlsmallbrackets\vls[a_1^\phi.\bar a_1^\psi]}{\ttt}\;.\;\cdots\;.\;\vlinf{}{}{\vlsmallbrackets\vls[a_n^\phi.\bar a_n^\psi]}{\ttt}\;.\;\alpha)
+}\quad,
 \]
-\item If $a^\phi$ is in the premiss or conclusion of $\Phi$, substitute it with the derivation
+be the $\ai$-decomposed form of $\Phi$.
+
+Consider the substitution
+\[
+\sigma\equiv\{a_1^\phi/\vlsmallbrackets\vlsbr([a_1^{f_1(\phi)}.a_1^{f_2(\phi)}].[a_1^{f_3(\phi)}.a_1^{f_4(\phi)}]),\dots,a_n^\phi/\vlsmallbrackets\vlsbr([a_n^{f_1(\phi)}.a_n^{f_2(\phi)}].[a_n^{f_3(\phi)}.a_n^{f_4(\phi)}])\}\;.
+\]
+We can then obtain, by Definition~\vref{TODO}, the derivation $\Phi'\sigma$ with atomic flow
+\[
+\atomicflow
+{
+(0,0)="A";
+"A"+(-3, 6)*{\afvjdm4{f_1(\boldsymbol\epsilon)}{}};
+"A"+( 3, 6)*{\afvjm4};
+"A"+( 0, 0)*{\affr88};
+"A"+(-1, 2)*{\aflabelright{f_1(\phi)}};
+"A"+(-3,-6)*{\afvjum4{f_1(\boldsymbol\iota)}{}};
+"A"+( 3,-6)*{\afvjm4};
+%---
+"A"+(14, 0)="A";
+"A"+(-3, 6)*{\afvjdm4{f_2(\boldsymbol\epsilon)}{}};
+"A"+( 3, 6)*{\afvjm4};
+"A"+( 0, 0)*{\affr88};
+"A"+(-1, 2)*{\aflabelright{f_2(\phi)}};
+"A"+(-3,-6)*{\afvjum4{f_2(\boldsymbol\iota)}{}};
+"A"+( 3,-6)*{\afvjm4};
+%---
+"A"+(14, 0)="A";
+"A"+(-3, 6)*{\afvjdm4{f_3(\boldsymbol\epsilon)}{}};
+"A"+( 3, 6)*{\afvjm4};
+"A"+( 0, 0)*{\affr88};
+"A"+(-1, 2)*{\aflabelright{f_3(\phi)}};
+"A"+(-3,-6)*{\afvjum4{f_3(\boldsymbol\iota)}{}};
+"A"+( 3,-6)*{\afvjm4};
+%---
+"A"+(14, 0)="A";
+"A"+(-3, 6)*{\afvjdm4{f_4(\boldsymbol\epsilon)}{}};
+"A"+( 3, 6)*{\afvjm4};
+"A"+( 0, 0)*{\affr88};
+"A"+(-1, 2)*{\aflabelright{f_4(\phi)}};
+"A"+(-3,-6)*{\afvjum4{f_4(\boldsymbol\iota)}{}};
+"A"+( 3,-6)*{\afvjm4};
+%---
+"A"+(14, 0)="A";
+"A"+(-3, 6)*{\afvjm4};
+"A"+( 3, 6)*{\afvjdm4{}{g(\boldsymbol\epsilon)}};
+"A"+( 0, 0)*{\affr88};
+"A"+(-1, 2)*{\aflabelright{g(\phi)}};
+"A"+(-3,-6)*{\afvjm4};
+"A"+( 3,-6)*{\afvjum4{}{g(\boldsymbol\iota)}};
+%---
+}
+\quad.
+\]
+For every $1\le i\le n$, there exist derivations
 \[
 \vlinf{}{}
 {
  \vls(
   [
-   a^{f_1(\phi)}
+   a_i^{f_1(\phi)}
   \;.\;
-   \vlinf{}{}{a^{f_2(\phi)}}{\fff}
+   \vlinf{}{}{a_i^{f_2(\phi)}}{\fff}
   ]
  \;.\;
   [
-   a^{f_3(\phi)}
+   a_i^{f_3(\phi)}
   \;.\;
-   \vlinf{}{}{a^{f_4(\phi)}}{\fff}
+   \vlinf{}{}{a_i^{f_4(\phi)}}{\fff}
   ]
  )  
 }
-{a}
-\quad\mbox{or}\quad
+{a_i}
+\quad\mbox{and}\quad
 \vlinf{}{}
-{a}
+{a_i}
 {
  \vls
  (
-  [a^{f_1(\phi)}.a^{f_2(\phi)}]
+  [a_i^{f_1(\phi)}.a_i^{f_2(\phi)}]
  \;.\;
   [
-   \vlinf{}{}{\ttt}{a^{f_3(\phi)}}
+   \vlinf{}{}{\ttt}{a_i^{f_3(\phi)}}
   \;.\;
-   \vlinf{}{}{\ttt}{a^{f_4(\phi)}}
+   \vlinf{}{}{\ttt}{a_i^{f_4(\phi)}}
   ]
  )
 }
 \quad,
 \]
+which allow us to build
+\[
+\vlder{}{}{\alpha\sigma}{\alpha}
+\quad\mbox{and}\quad
+\vlder{}{}{\beta}{\beta\sigma}
+\quad,
+\]
+with atomic flows
+\[
+\atomicflow
+{
+( 0, 0)*{\afacumexsq{f_1(\boldsymbol\epsilon)}{}{f_3(\boldsymbol\epsilon)}{}{}{}52};
+(12,-2)*{\afawdm{}{}{f_2(\boldsymbol\epsilon)}{}};
+(20,-2)*{\afawdm{}{}{f_4(\boldsymbol\epsilon)}{}};
+(24, 0)*{\afvjum{12}{}{g(\boldsymbol\epsilon)}};
+}
+\qquad\mbox{and}\qquad
+\atomicflow
+{
+( 0,0)*{\afacdmexsq{f_1(\boldsymbol\iota)}{}{f_2(\boldsymbol\iota)}{}{}{}52};
+(12,2)*{\afawum{}{}{f_3(\boldsymbol\iota)}{}};
+(20,2)*{\afawum{}{}{f_4(\boldsymbol\iota)}{}};
+(24,0)*{\afvjdm{12}{}{g(\boldsymbol\iota)}};
+}
+\qquad,
+\]
 respectively.
-\item Substitute rule instances $\vlinf{}{}{\vls[a^\phi.\bar a^\psi]}{\ttt}$ and $\vlinf{}{}{\fff}{\vls(a^\phi.\bar a^\psi)}$ with the derivations
+Furthermore, for every $1\le i\le n$, there exist derivations
 \[
 \vlderivation
 {
- \vlin{=}{}{\vls[([\vlinf{}{}{a^{f_1(\phi)}}{\fff}\;.\;a^{f_2(\phi)}]\;.\;[\vlinf{}{}{a^{f_3(\phi)}}{\fff}\;.\;a^{f_4(\phi)}])\;.\;\vlinf{}{}{\bar a^\psi}{\vls[\bar a.\bar a]}]}
+ \vlin{=}{}{\vls[([\vlinf{}{}{a_i^{f_1(\phi)}}{\fff}\;.\;a_i^{f_2(\phi)}]\;.\;[\vlinf{}{}{a_i^{f_3(\phi)}}{\fff}\;.\;a_i^{f_4(\phi)}])\;.\;\vlinf{}{}{\bar a_i^\psi}{\vls[\bar a_i.\bar a_i]}]}
  {
-  \vlin{\swi}{}{\vls[\vlinf{\swi}{}{\vls\vlsmallbrackets[(a^{f_2(\phi)}.a^{f_4(\phi)}).\bar a]}{\vls\vlsmallbrackets(a^{f_2(\phi)}.[a^{f_4(\phi)}.\bar a])}\;.\;\bar a]}
+  \vlin{\swi}{}{\vls[\vlinf{\swi}{}{\vls\vlsmallbrackets[(a_i^{f_2(\phi)}.a_i^{f_4(\phi)}).\bar a_i]}{\vls\vlsmallbrackets(a_i^{f_2(\phi)}.[a_i^{f_4(\phi)}.\bar a_i])}\;.\;\bar a_i]}
   {
-   \vlhy{\vls(\vlinf{}{}{\vls[a^{f_2(\phi)}.\bar a]}{\ttt}\;.\;\vlinf{}{}{\vls[a^{f_4(\phi)}.\bar a]}{\ttt})}
+   \vlhy{\vls(\vlinf{}{}{\vls[a_i^{f_2(\phi)}.\bar a_i]}{\ttt}\;.\;\vlinf{}{}{\vls[a_i^{f_4(\phi)}.\bar a_i]}{\ttt})}
   }
  }
-}\qquad\mbox{and}
+}
 \]
+and
 \[
 \vlderivation
 {
- \vlin{\swi}{}{\vls[\vlinf{}{}{\fff}{\vls(a^{f_3(\phi)}.\bar a)}\;.\;\vlinf{}{}{\fff}{\vls(a^{f_4(\phi)}.\bar a)}]}
+ \vlin{\swi}{}{\vls[\vlinf{}{}{\fff}{\vls(a_i^{f_3(\phi)}.\bar a_i)}\;.\;\vlinf{}{}{\fff}{\vls(a_i^{f_4(\phi)}.\bar a_i)}]}
  {
-  \vlin{=}{}{\vls(\vlinf{\swi}{}{\vls[a^{f_3(\phi)}.(a^{f_4(\phi)}.\bar a)]}{\vls([a^{f_3(\phi)}.a^{f_4(\phi)}].\bar a)}\;.\;\bar a)}
+  \vlin{=}{}{\vls(\vlinf{\swi}{}{\vls[a_i^{f_3(\phi)}.(a_i^{f_4(\phi)}.\bar a_i)]}{\vls([a_i^{f_3(\phi)}.a_i^{f_4(\phi)}].\bar a_i)}\;.\;\bar a_i)}
   {
-   \vlhy{\vls(([\vlinf{}{}{\ttt}{a^{f_1(\phi)}}\;.\;\vlinf{}{}{\ttt}{a^{f_2(\phi)}}]\;.\;\vlsmallbrackets[a^{f_3(\phi)}.a^{f_4(\phi)}])\;.\;\vlinf{}{}{\vls(\bar a.\bar a)}{\bar a^\psi})}
+   \vlhy{\vls(([\vlinf{}{}{\ttt}{a_i^{f_1(\phi)}}\;.\;\vlinf{}{}{\ttt}{a_i^{f_2(\phi)}}]\;.\;\vlsmallbrackets[a_i^{f_3(\phi)}.a_i^{f_4(\phi)}])\;.\;\vlinf{}{}{\vls(\bar a_i.\bar a_i)}{\bar a_i^\psi})}
   }
  }
 }\quad,
 \]
+which allows us to build
+\[
+\vlder{}{}
+{
+ \vlsmallbrackets\vlsbr([a^\phi_1.\bar a^\psi_1].\cdots.[a^\phi_n.\bar a^\psi_n])\sigma
+}
+{
+ \ttt
+}
+\quad\mbox{and}\quad
+\vlder{}{}
+{
+ \fff
+}
+{
+ \vlsmallbrackets\vlsbr([a^\phi_n.\bar a^\psi_n].\cdots.[a^\phi_1.\bar a^\psi_1])\sigma
+}
+\quad,
+\]
+with atomic flows
+\[
+\quad,
+\]
 respectively.
-\item Substitute rule instances $\acd$, $\acu$, $\awd$, $\awu$ which apply to $a^\phi$ with $\cod$, $\cou$, $\wed$, $\weu$, respectively, applied to $\vls\vlsmallbrackets([a^{f_1(\phi)}.a^{\phi_2}].[a^{f_3(\phi)}.a^{f_4(\phi)}])$.
-\end{enumerate}
+
+Combining these derivations we can build
+\[
+\vlderivation
+{
+ \vlde{}{}
+ {
+  \beta
+ }
+ {
+  \vlde{\Phi'\sigma}{}
+  {
+   \vlsbr[\beta.(a^\phi_n.\bar a^\psi_n).\cdots.(a^\phi_1.\bar a^\psi_1)]\sigma
+  }
+  {
+   \vlde{}{}
+   {
+    \vlsbr([a^\phi_1.\bar a^\phi_1].\cdots.[a^\phi_n.\bar a^\phi_n].\alpha)\sigma
+   }
+   {
+    \vlhy
+    {
+     \alpha
+    }
+   }
+  }
+ }
+}\quad,
+\]
+with the desired atomic flow.
 \end{proof}
 
 \begin{lemma}\label{lemma:FourBoxesSimpleForm}
