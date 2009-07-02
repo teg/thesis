@@ -1,5 +1,9 @@
 \chapter{Normal Forms}
 
+\TODO{Informal explanation of the different normal forms.}
+
+\TODO{`in' simple form vs.\ `on' simple form.}
+
 %---------------------------------------
 \begin{definition}\label{definition:FlowNormalForms}
 An atomic flow is
@@ -9,15 +13,15 @@ An atomic flow is
 \emph{on simple form with respect to the polarity assignment $\pi$} if it can be represented as
 \[
 \atomicflow{
-(-21, 14)*{\afvjm4};
-(-21,  8)*{\affr88};
-(-22, 10)*{\aflabelleft{\ppl}};
+(-20, 14)*{\afvjm4};
+(-20,  8)*{\affr68};
+(-20, 10)*{\aflabelleft{\ppl}};
 %-
-(-24,  0)*{\afvjm8};
+(-22,  0)*{\afvjm8};
 %-
-(-21, -8)*{\affr88};
-(-22, -6)*{\aflabelleft{\ppl}};
-(-21,-14)*{\afvjm4};
+(-20, -8)*{\affr68};
+(-20, -6)*{\aflabelleft{\ppl}};
+(-20,-14)*{\afvjm4};
 %-
 ( -3, 16)*{\afaidmex{}{}{}{}{}{}92};
 (-12,  8)*{\affr68};
@@ -35,7 +39,7 @@ An atomic flow is
 (  6,  8)*{\afvjm8};
 ( 10, 10)*{\afvjm{12}};
 (  6,  0)*{\affr{10}8};
-(  5,  2)*{\aflabelleft{\pmi}};
+(  4,  2)*{\aflabelleft{\pmi}};
 (  6, -8)*{\afvjm8};
 ( 10,-10)*{\afvjm{12}};
 ( -1, -8)*{\afaiumex{}{}{}{}{}{}32};
@@ -58,22 +62,22 @@ An atomic flow is
 %---
 (  0,-13.5)*{\afawum{}{}{}{}{}{}};
 (  8,-12.75)*{\afvjm{6.5}};
-}\quad.
+}\quad;
 \]
 %---
 \item\label{definition:FlowNormalForms:item:WeaklyStreamlinedPolarity}
 \emph{weakly streamlined with respect to the polarity assignment $\pi$} if it can be represented as
 \[
 \atomicflow{
-(-21, 14)*{\afvjm4};
-(-21,  8)*{\affr88};
-(-22, 10)*{\aflabelleft{\ppl}};
+(-20, 14)*{\afvjm4};
+(-20,  8)*{\affr68};
+(-20, 10)*{\aflabelleft{\ppl}};
 %-
-(-24,  0)*{\afvjm8};
+(-22,  0)*{\afvjm8};
 %-
-(-21, -8)*{\affr88};
-(-22, -6)*{\aflabelleft{\ppl}};
-(-21,-14)*{\afvjm4};
+(-20, -8)*{\affr68};
+(-20, -6)*{\aflabelleft{\ppl}};
+(-20,-14)*{\afvjm4};
 %-
 ( -9, 16)*{\afaidmex{}{}{}{}{}{}32};
 (-12,  8)*{\affr68};
@@ -88,7 +92,7 @@ An atomic flow is
 ( -6,  8)*{\afvjm8};
 (  0, 10)*{\afvjm{12}};
 ( -3,  0)*{\affr88};
-( -3,  2)*{\aflabelleft{\pmi}};
+( -4,  2)*{\aflabelleft{\pmi}};
 ( -6, -8)*{\afvjm8};
 (  0,-10)*{\afvjm{12}};
 }\qquad
@@ -110,7 +114,7 @@ An atomic flow is
 %---
 (  0,-13.5)*{\afawum{}{}{}{}{}{}};
 (  8,-12.75)*{\afvjm{6.5}};
-}\quad.
+}\quad;
 \]
 %---
 \item\label{definition:FlowNormalForms:item:WeaklyStreamlined}
@@ -221,8 +225,6 @@ Given a polarity assignment $\pi$, an atomic flow that is weakly streamlined wit
 A streamlined atomic flow with no pair of upper (resp., lower) edges such that there is an $\ai$-path between them, contains no cut (resp., axiom) vertices.
 \end{proposition}
 
-\TODO{Figure out how to stop the flows from looking lopsided (invisiblemark?).}
-
 %---------------------------------------
 \begin{proposition}\label{proposition:FlowNormalFormsNoUpper}
 Given an atomic flow with no upper (resp., lower) edges, it can be represented as
@@ -238,10 +240,12 @@ Given an atomic flow with no upper (resp., lower) edges, it can be represented a
 (8,-5.5)*{\copy\contrdown};
 %---
 (6,-11.5)*{\afvjm4};
+(0,-18)*{\invisiblemark};
 }
 \qquad
 \left(\mbox{resp.,}\quad
 \atomicflow{
+( 0,18)*{\invisiblemark};
 (-6,11.5)*{\afvjm4};
 %---
 (-8, 5.5)*{\copy\contrup};
@@ -268,10 +272,12 @@ if it is streamlined;
 (  4,-11.5)*{\afvjm4};
 %---
 ( 11, -9.5)*{\afawdm{}{}{}{}{}{}};
+(0,-18)*{\invisiblemark};
 }
 \qquad
 \left(\mbox{resp.,}\quad
 \atomicflow{
+( 0,18)*{\invisiblemark};
 (-11,  9.5)*{\afawum{}{}{}{}{}{}};
 %---
 ( -4, 11.5)*{\afvjm4};
@@ -298,10 +304,12 @@ if it is super streamlined; and
 (  4,-11.5)*{\afvjm4};
 %---
 ( 11, -9.5)*{\afawdm{}{}{}{}{}{}};
+(0,-18)*{\invisiblemark};
 }
 \qquad
 \left(\mbox{resp.,}\quad
 \atomicflow{
+( 0,18)*{\invisiblemark};
 (-11,  9.5)*{\afawum{}{}{}{}{}{}};
 %---
 ( -4, 11.5)*{\afvjm4};
