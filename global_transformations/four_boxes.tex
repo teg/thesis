@@ -1,70 +1,103 @@
 \newcommand{\frfb}{{\mathsf{fb}}}
 %---------------------------------------
 \begin{definition}\label{definition:FourBoxes}
-We define the reduction $\to_\frfb$ (where $\frfb$ stands for \emph{four boxes}) as follows, for any atomic flows $\phi$ and $\psi$ with a polarity assignment $\pi$:
+We define the reduction $\to_\frfb$ (where $\frfb$ stands for \emph{four boxes}) as follows, for any atomic flows $\phi$ and $\psi$:
 \[
 \atomicflow{
-(-8, 6)*{\afvjdm4{\boldsymbol{\epsilon}}{}};
-( 0, 8)*{\afaidm{}{}{}{}{}{}};
-( 8, 6)*{\afvjdm4{}{\boldsymbol{\epsilon'}}};
+(-8, 6)*{\afvjdm4{\boldsymbol{\epsilon_1}}{}};
+( 0, 8)*{\afaidm{\boldsymbol{\epsilon_2}}{}{}{\boldsymbol{\epsilon_3}}{}{}};
+( 8, 6)*{\afvjdm4{}{\boldsymbol{\epsilon_4}}};
 %-
 (-5, 0)*{\affr88};
-(-6, 2)*{\aflabelleft\ppl};
-(-4, 2)*{\aflabelright\phi};
+(-1, 2)*{\aflabelleft\phi};
 ( 5, 0)*{\affr88};
-( 4, 2)*{\aflabelleft\pmi};
-( 6, 2)*{\aflabelright\psi};
+( 9, 2)*{\aflabelleft\psi};
 %-
-(-8,-6)*{\afvjum4{\boldsymbol{\iota}}{}};   
-( 0,-8)*{\afaium{}{}{}{}{}{}};
-( 8,-6)*{\afvjum4{}{\boldsymbol{\iota'}}};
+(-8,-6)*{\afvjum4{\boldsymbol{\iota_1}}{}};
+( 0,-8)*{\afaium{\boldsymbol{\iota_2}}{}{}{\boldsymbol{\iota_3}}{}{}};
+( 8,-6)*{\afvjum4{}{\boldsymbol{\iota_4}}};
 }
 \quad\to_\frfb\quad
 \atomicflow{
 %one
-(-22,18)*{\afvjdm4{\boldsymbol{\epsilon}}{}};
-(-22,10.25)*{\afacumexsq{}{}{}{}{}{}52};
-(-21, 8)*{\afawdm{}{}{}{}};
-(-24, 0)*{\affr88};
-(-20, 2)*{\aflabelleft{f_1(\phi)}};
-(-22,-10)*{\afacdmexsq{}{}{}{}{}{}52};
-(-22,-18)*{\afvjum4{\boldsymbol{\iota}}{}};
-(-21,-8)*{\afawum{}{}{}{}};
+(-32,0)="A";
+"A"+(-8,0)*{\invisiblemark};
+"A"+( 1,19)*{\afvjm2};
+"A"+( 1,12.25)*{\afacumexsq{}{}{}{}{}{}84};
+"A"+(-3, 5)*{\afvjm2};
+"A"+( 3, 8)*{\afawdm{}{}{}{}};
+%
+"A"+(-3, 6.5)*{\aflabelleft{f_1(\boldsymbol{\epsilon_1})}};
+"A"+( 3, 6.5)*{\aflabelleft{f_1(\boldsymbol{\epsilon_2})}};
+"A"+( 0, 0)*{\affr88};
+"A"+( 4, 2)*{\aflabelleft{f_1(\phi)}};
+"A"+(-3,-5.5)*{\aflabelleft{f_1(\boldsymbol{\iota_1})}};
+"A"+( 3,-5.5)*{\aflabelleft{f_1(\boldsymbol{\iota_2})}};
+%
+"A"+(-3, -5)*{\afvjm2};
+"A"+( 1,-12)*{\afacdmexsq{}{}{}{}{}{}84};
+"A"+( 1,-19)*{\afvjm2};
+"A"+( 3, -8)*{\afawum{}{}{}{}};
 %two
-(-15,18)*{\afawdm{}{}{\boldsymbol{\epsilon_2}}{}};
-(  0,18)*{\afaidmex{}{}{}{}{}{}92};
-(-12,10)*{\affr88};
-( -8,12)*{\aflabelleft{f_2(\phi)}};
-(-16, 1)*{\afcjrm2{10}};
-( -9, 2)*{\afawum{}{}{}{}};
+(-16,10)="A";
+"A"+(-3,8)*{\afawdm{}{}{}{}};
+"A"+(14,8)*{\afaidmex{}{}{}{}{}{}{11}2};
+%
+"A"+(-3, 6.5)*{\aflabelleft{f_2(\boldsymbol{\epsilon_1})}};
+"A"+( 3, 6.5)*{\aflabelleft{f_2(\boldsymbol{\epsilon_2})}};
+"A"+( 0, 0)*{\affr88};
+"A"+( 4, 2)*{\aflabelleft{f_2(\phi)}};
+"A"+(-4,-5.5)*{\aflabelleft{f_2(\boldsymbol{\iota_1})}};
+"A"+( 3,-5.5)*{\aflabelleft{f_2(\boldsymbol{\iota_2})}};
+%
+"A"+(-7,-10)*{\afcjrm8{12}};
+"A"+( 3,-8)*{\afawum{}{}{}{}};
 %three
-(-16,-1)*{\afcjlm2{10}};
-( -9,-2)*{\afawdm{}{}{}{}};
-(-12,-10)*{\affr88};
-( -8, -8)*{\aflabelleft{f_3(\phi)}};
-(  0,-18)*{\afaiumex{}{}{}{}{}{}92};
-(-15,-18)*{\afawum{}{}{\boldsymbol{\iota_3}}{}};
+(-16,-10)="A";
+"A"+( -7,10)*{\afcjlm8{12}};
+"A"+(  3, 8)*{\afawdm{}{}{}{}};
+%
+"A"+(-4, 6.5)*{\aflabelleft{f_3(\boldsymbol{\epsilon_1})}};
+"A"+( 3, 6.5)*{\aflabelleft{f_3(\boldsymbol{\epsilon_2})}};
+"A"+( 0, 0)*{\affr88};
+"A"+( 4, 2)*{\aflabelleft{f_3(\phi)}};
+"A"+(-3,-5.5)*{\aflabelleft{f_3(\boldsymbol{\iota_1})}};
+"A"+( 3,-5.5)*{\aflabelleft{f_3(\boldsymbol{\iota_2})}};
+%
+"A"+( 14,-8)*{\afaiumex{}{}{}{}{}{}{11}2};
+"A"+(-3,-8)*{\afawum{}{}{}{}};
 %four
-(-5, 8)*{\afawdm{}{}{\boldsymbol{\epsilon_4}}{}};
+(-2, 0)="A";
+(-5, 8)*{\afawdm{}{}{}{}};
 ( 1, 8)*{\afvjm8};
-(-2, 0)*{\affr88};
-( 2, 2)*{\aflabelleft{f_4(\phi)}};
+%
+"A"+(-3, 6.5)*{\aflabelleft{f_4(\boldsymbol{\epsilon_1})}};
+"A"+( 3, 6.5)*{\aflabelleft{f_4(\boldsymbol{\epsilon_2})}};
+"A"+( 0, 0)*{\affr88};
+"A"+( 4, 2)*{\aflabelleft{f_4(\phi)}};
+"A"+(-3,-5.5)*{\aflabelleft{f_4(\boldsymbol{\iota_1})}};
+"A"+( 3,-5.5)*{\aflabelleft{f_4(\boldsymbol{\iota_2})}};
+%
 ( 1,-8)*{\afvjm8};
-(-5,-8)*{\afawum{}{}{\boldsymbol{\iota_4}}{}};
+(-5,-8)*{\afawum{}{}{}{}};
 %psi
-(13, 12)*{\afvjdm{16}{}{\boldsymbol{\epsilon'}}};
+(13, 12)*{\afvjdm{16}{}{g(\boldsymbol{\epsilon_4})}};
 ( 9, 13)*{\afvjm2};
 ( 7,  8)*{\afacdm{}{}{}{}{}{}};
 ( 3, 12)*{\afaidnw{}{}};
-(10,  0)*{\affr88};
-(14,  2)*{\aflabelleft{g(\psi)}};
+%
+(10,0)="A";
+"A"+(-3, 6.5)*{\aflabelright{g(\boldsymbol{\epsilon_3})}};
+"A"+( 0, 0)*{\affr88};
+"A"+( 4, 2)*{\aflabelleft{g(\psi)}};
+"A"+(-3,-5.5)*{\aflabelright{g(\boldsymbol{\iota_3})}};
+%
 ( 3,-14)*{\afaiunw{}{}};
 ( 7, -8)*{\afacum{}{}{}{}{}{}};
 ( 9,-13)*{\afvjm2};
-(13,-12)*{\afvjum{16}{}{\boldsymbol{\iota'}}};
-}\quad,
+(13,-12)*{\afvjum{16}{}{g(\boldsymbol{\iota_4})}};
+}\quad.
 \]
-where $\boldsymbol{\epsilon_2}=f_2(\boldsymbol\epsilon)$, $\boldsymbol{\iota_3}=f_3(\boldsymbol\iota)$, $\boldsymbol{\epsilon_4}=f_4(\boldsymbol\epsilon)$ and $\boldsymbol{\iota_4}=f_4(\boldsymbol\iota)$, $\boldsymbol{\epsilon'}=g(\boldsymbol{\epsilon'})$, $\boldsymbol{\iota'}=g(\boldsymbol{\iota'})$, and for every $\epsilon$ in $\boldsymbol\epsilon$ (resp., $\iota$ in $\boldsymbol\iota$) there are paths from $\epsilon$ (resp., $\iota$) to $f_1(\epsilon)$ and $f_3(\epsilon)$ (resp., $f_1(\iota)$ and $f_2(\iota)$).
 \end{definition}
 
 %---------------------------------------
@@ -90,54 +123,54 @@ be the $\ai$-decomposed form of $\Phi$.
 
 Consider the substitution
 \[
-\sigma\equiv\{a_1^\phi/\vlsmallbrackets\vlsbr([a_1^{f_1(\phi)}.a_1^{f_2(\phi)}].[a_1^{f_3(\phi)}.a_1^{f_4(\phi)}]),\dots,a_n^\phi/\vlsmallbrackets\vlsbr([a_n^{f_1(\phi)}.a_n^{f_2(\phi)}].[a_n^{f_3(\phi)}.a_n^{f_4(\phi)}])\}\;.
+\sigma=\{a_1^\phi/\vlsmallbrackets\vlsbr([a_1^{f_1(\phi)}.a_1^{f_2(\phi)}].[a_1^{f_3(\phi)}.a_1^{f_4(\phi)}]),\dots,a_n^\phi/\vlsmallbrackets\vlsbr([a_n^{f_1(\phi)}.a_n^{f_2(\phi)}].[a_n^{f_3(\phi)}.a_n^{f_4(\phi)}])\}\;.
 \]
 We can then obtain, by Definition~\vref{TODO}, the derivation $\Phi'\sigma$ with atomic flow
 \[
 \atomicflow
 {
 (0,0)="A";
-"A"+(-3, 6)*{\afvjdm4{f_1(\boldsymbol\epsilon)}{}};
-"A"+( 3, 6)*{\afvjm4};
+"A"+(-3, 6)*{\afvjdm4{f_1(\boldsymbol{\epsilon_1})}{}};
+"A"+( 3, 6)*{\afvjdm4{f_1(\boldsymbol{\epsilon_2})}{}};
 "A"+( 0, 0)*{\affr88};
-"A"+(-1, 2)*{\aflabelright{f_1(\phi)}};
-"A"+(-3,-6)*{\afvjum4{f_1(\boldsymbol\iota)}{}};
-"A"+( 3,-6)*{\afvjm4};
+"A"+( 4, 2)*{\aflabelleft{f_1(\phi)}};
+"A"+(-3,-6)*{\afvjum4{f_1(\boldsymbol{\iota_1})}{}};
+"A"+( 3,-6)*{\afvjum4{f_1(\boldsymbol{\iota_2})}{}};
 %---
 "A"+(14, 0)="A";
-"A"+(-3, 6)*{\afvjdm4{f_2(\boldsymbol\epsilon)}{}};
-"A"+( 3, 6)*{\afvjm4};
+"A"+(-3, 6)*{\afvjdm4{f_2(\boldsymbol{\epsilon_1})}{}};
+"A"+( 3, 6)*{\afvjdm4{f_2(\boldsymbol{\epsilon_2})}{}};
 "A"+( 0, 0)*{\affr88};
-"A"+(-1, 2)*{\aflabelright{f_2(\phi)}};
-"A"+(-3,-6)*{\afvjum4{f_2(\boldsymbol\iota)}{}};
-"A"+( 3,-6)*{\afvjm4};
+"A"+( 4, 2)*{\aflabelleft{f_2(\phi)}};
+"A"+(-3,-6)*{\afvjum4{f_2(\boldsymbol{\iota_1})}{}};
+"A"+( 3,-6)*{\afvjum4{f_2(\boldsymbol{\iota_2})}{}};
 %---
 "A"+(14, 0)="A";
-"A"+(-3, 6)*{\afvjdm4{f_3(\boldsymbol\epsilon)}{}};
-"A"+( 3, 6)*{\afvjm4};
+"A"+(-3, 6)*{\afvjdm4{f_3(\boldsymbol{\epsilon_1})}{}};
+"A"+( 3, 6)*{\afvjdm4{f_3(\boldsymbol{\epsilon_2})}{}};
 "A"+( 0, 0)*{\affr88};
-"A"+(-1, 2)*{\aflabelright{f_3(\phi)}};
-"A"+(-3,-6)*{\afvjum4{f_3(\boldsymbol\iota)}{}};
-"A"+( 3,-6)*{\afvjm4};
+"A"+( 4, 2)*{\aflabelleft{f_3(\phi)}};
+"A"+(-3,-6)*{\afvjum4{f_3(\boldsymbol{\iota_1})}{}};
+"A"+( 3,-6)*{\afvjum4{f_3(\boldsymbol{\iota_2})}{}};
 %---
 "A"+(14, 0)="A";
-"A"+(-3, 6)*{\afvjdm4{f_4(\boldsymbol\epsilon)}{}};
-"A"+( 3, 6)*{\afvjm4};
+"A"+(-3, 6)*{\afvjdm4{f_4(\boldsymbol{\epsilon_1})}{}};
+"A"+( 3, 6)*{\afvjdm4{f_4(\boldsymbol{\epsilon_2})}{}};
 "A"+( 0, 0)*{\affr88};
-"A"+(-1, 2)*{\aflabelright{f_4(\phi)}};
-"A"+(-3,-6)*{\afvjum4{f_4(\boldsymbol\iota)}{}};
-"A"+( 3,-6)*{\afvjm4};
+"A"+( 4, 2)*{\aflabelleft{f_4(\phi)}};
+"A"+(-3,-6)*{\afvjum4{f_4(\boldsymbol{\iota_1})}{}};
+"A"+( 3,-6)*{\afvjum4{f_4(\boldsymbol{\iota_2})}{}};
 %---
 "A"+(14, 0)="A";
-"A"+(-3, 6)*{\afvjm4};
-"A"+( 3, 6)*{\afvjdm4{}{g(\boldsymbol\epsilon)}};
+"A"+(-3, 6)*{\afvjdm4{}{g(\boldsymbol{\epsilon_3})}{}};
+"A"+( 3, 6)*{\afvjdm4{}{g(\boldsymbol{\epsilon_4})}{}};
 "A"+( 0, 0)*{\affr88};
-"A"+(-1, 2)*{\aflabelright{g(\phi)}};
-"A"+(-3,-6)*{\afvjm4};
-"A"+( 3,-6)*{\afvjum4{}{g(\boldsymbol\iota)}};
+"A"+( 4, 2)*{\aflabelleft{g(\phi)}};
+"A"+(-3,-6)*{\afvjum4{}{g(\boldsymbol{\iota_3})}{}};
+"A"+( 3,-6)*{\afvjum4{}{g(\boldsymbol{\iota_4})}{}};
 %---
 }
-\quad.
+\qquad.
 \]
 For every $1\le i\le n$, there exist derivations
 \[
@@ -159,20 +192,20 @@ For every $1\le i\le n$, there exist derivations
 }
 {a_i}
 \quad\mbox{and}\quad
-\vlinf{}{}
-{a_i}
-{
- \vls
- (
-  [a_i^{f_1(\phi)}.a_i^{f_2(\phi)}]
+\vls
+(
+ \vlinf{}{}
+ {a_i}
+ {
+  \vlsmallbrackets\vls[a_i^{f_1(\phi)}.a_i^{f_2(\phi)}]
+ }
+\;.\;
+ [
+  \vlinf{}{}{\ttt}{a_i^{f_3(\phi)}}
  \;.\;
-  [
-   \vlinf{}{}{\ttt}{a_i^{f_3(\phi)}}
-  \;.\;
-   \vlinf{}{}{\ttt}{a_i^{f_4(\phi)}}
-  ]
- )
-}
+  \vlinf{}{}{\ttt}{a_i^{f_4(\phi)}}
+ ]
+)
 \quad,
 \]
 which allow us to build
@@ -228,7 +261,7 @@ and
  }
 }\quad,
 \]
-which allows us to build
+which allow us to build
 \[
 \vlder{}{}
 {
@@ -249,10 +282,30 @@ which allows us to build
 \]
 with atomic flows
 \[
-\quad,
+\atomicflow
+{
+(-10,0)*{\afawdm{}{}{}{}};
+(-6,0)*{\afvjm8};
+(-4,4)*{\afaidnw{}{}};
+( 0,0)*{\afacdm{}{}{}{}{}{}};
+( 4,4)*{\afaidnw{}{}};
+( 6,0)*{\afvjm8};
+(10,0)*{\afawdm{}{}{}{}};
+}
+\qquad\mbox{and}\qquad
+\atomicflow
+{
+(10, 0)*{\afawum{}{}{}{}};
+(6, 0)*{\afvjm8};
+(4,-6)*{\afaiunw{}{}};
+(-0, 0)*{\afacum{}{}{}{}{}{}};
+(-4,-6)*{\afaiunw{}{}};
+(-6, 0)*{\afvjm8};
+(-10, 0)*{\afawum{}{}{}{}};
+}
+\qquad,
 \]
 respectively.
-
 Combining these derivations we can build
 \[
 \vlderivation
