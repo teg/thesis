@@ -1,5 +1,45 @@
 \chapter{Transformations}
 
+%---------------------------------------
+\begin{definition}\label{definition:FlowReduction}
+An (\emph{atomic-flow}) \emph{reduction $R$} is a binary relation on the set of atomic flows, such that $\phi\mathrel{R}\psi$ if
+\begin{enumerate}
+\item there is a one-to-one map, $f$, from the upper edges of $\phi'$ to the upper edges of $\psi'$;
+\item there is a one-to-one map, $g$, from the lower edges of $\phi'$ to the lower edges of $\psi'$; and
+\item for every polarity assignment $\pi$ for $\phi'$, there is a polarity assignment $\pi'$ for $\psi'$ such that $\pi'(f(\epsilon))=\pi(\epsilon)$ and $\pi'(g(\epsilon'))=\pi(\epsilon')$, for any upper edge $\epsilon$ and any lower edge $\epsilon'$ of $\phi'$;
+\end{enumerate}
+\end{definition}
+
+%---------------------------------------
+\begin{definition}\label{definition:SoundRedcution}
+A reduction $R$ is \emph{sound} if, for every $\phi$ and $\psi$ such that $\phi\mathrel{R}\psi$ and for every derivation $\Phi$ with atomic flow $\phi$, there is a derivation $\Psi$ with atomic flow $\psi$ such that $\Phi$ and $\Psi$ have the same premiss and conclusion; in this case we write $\Phi\mathrel{R}\Psi$.
+\end{definition}
+
+
+%======================================
+\section{Global Transformations}\label{section:GlobalTransformations}
+
+%======================================
+\subsection{Four Boxes}\label{subsection:FourBoxes}
+
+\input{global_transformations/four_boxes}
+
+%======================================
+\subsection{Isolated Subflow Removal}\label{subsection:IsolatedSubflowRemoval}
+
+\input{global_transformations/isolated_subflow.tex}
+
+%======================================
+\subsection{Path Breaker}\label{subsection:PathBreaker}
+
+\input{global_transformations/path_breaker.tex}
+
+%======================================
+\subsection{Multiple Isolated Subflows Removal}\label{subsection:MultipleIsolatedSubflowsRemoval}
+
+\input{global_transformations/multiple_isolated_subflow.tex}
+
+%======================================
 \section{Local Transformations}
 
 \begin{definition}\label{definition:FlowGraphicalExpressions}
@@ -220,7 +260,7 @@ The `reduction' on the left, when used inside a larger atomic flow, might create
 where the graph at the right is not an atomic flow, for lack of a polarity assignment.
 \end{example}
 
-This prompts us to define reduction rules and reductions for atomic flows as follows.
+This prompts us to define reduction rules for atomic flows as follows.
 
 %---------------------------------------
 \begin{definition}\label{definition:FlowReductionRule}
@@ -230,7 +270,7 @@ An (\emph{atomic-flow}) \emph{reduction rule $r$ from flow $\phi'$ to flow $\psi
 \item $g$ is a one-to-one map from the lower edges of $\phi'$ to the lower edges of $\psi'$,
 \item for every polarity assignment $\pi$ for $\phi'$, there is a polarity assignment $\pi'$ for $\psi'$ such that $\pi'(f(\epsilon))=\pi(\epsilon)$ and $\pi'(g(\epsilon'))=\pi(\epsilon')$, for any upper edge $\epsilon$ and any lower edge $\epsilon'$ of $\phi'$;
 \end{enumerate}
-we define reduction rules with graphical expressions $r\colon\phi'\to\psi'$, where $f$ and $g$ are indicated by labelling edges. A binary relation $R$ on the set of atomic flows is called an (\emph{atomic-flow}) \emph{reduction} if, whenever $\phi\mathrel{R}\psi$, there is a one-to-one map from the upper edges of $\phi$ to the upper edges of $\psi$ and a one-to-one map from the lower edges of $\phi$ to the lower edges of $\psi$. For every reduction rule $r\colon\phi'\to\psi'$, the reduction ${\to_r}$ is defined, such that $\phi\to_r\psi$ if and only if $\phi'$ appears as a subgraph in $\phi$ and we obtain $\psi$ by replacing $\phi'$ with $\psi'$ in $\phi$, while respecting the correspondence of edges; we call this operation a \emph{reduction by $r$}.
+we define reduction rules with graphical expressions $r\colon\phi'\to\psi'$, where $f$ and $g$ are indicated by labelling edges. For every reduction rule $r\colon\phi'\to\psi'$, the reduction ${\to_r}$ is defined, such that $\phi\to_r\psi$ if and only if $\phi'$ appears as a subgraph in $\phi$ and we obtain $\psi$ by replacing $\phi'$ with $\psi'$ in $\phi$, while respecting the correspondence of edges; we call this operation a \emph{reduction by $r$}.
 \end{definition}
 
 \TODO{Consider making a remark about conserving polarity assignments.}
@@ -313,8 +353,8 @@ The following flow rewriting system is called $\frc$:
 \subsection{Soundness}\label{subsection:soundness}
 
 %---------------------------------------
-\begin{definition}\label{definition:SoundRedcution}
-A reduction $R$ is \emph{sound} if, for every $\phi$ and $\psi$ such that $\phi\mathrel{R}\psi$ and for every derivation $\Phi$ with atomic flow $\phi$, there is a derivation $\Psi$ with atomic flow $\psi$ such that $\Phi$ and $\Psi$ have the same premiss and conclusion; in this case we write $\Phi\mathrel{R}\Psi$. A reduction rule $r$ is \emph{sound} if $\to_r$ is sound.
+\begin{definition}\label{definition:SoundRedcutionRule}
+A reduction rule $r$ is \emph{sound} if $\to_r$ is sound.
 \end{definition}
 
 The proof of the following theorem is essentially contained in Figures~\vref{figure:ReductionRulesWeakening} and \vref{figure:ReductionRulesContraction}.
@@ -670,44 +710,3 @@ In fact, if there are $n$ couples cocontraction/contraction like the two shown a
 \end{remark}
 
 \TODO{Lemma about complexity of weakening reductions.}
-
-%======================================
-\section{Global Transformations}\label{section:GlobalTransformations}
-
-\TODO{Clarify the consequences of this: it means that the flow of generic contractions have the shape we require in the following theorems...}
-
-\begin{remark}\label{remark:FlowGenericContraction}
-For some formula $\alpha$ and some natural number $n$, let the atomic flow of $\vlinf{n\cdot\cou}{}{\bigwedge_{i=1}^n\alpha}{\alpha}$ be
-\[
-\atomicflow
-{
-( 0, 6)*{\afvjdm4{\boldsymbol\epsilon}{}};
-( 0, 0)*{\affr88};
-( 0, 0)*{\copy\contrup};
-(-3,-6)*{\afvjum4{\boldsymbol\epsilon_1}{}};
-( 0,-6)*{\cdots};
-( 3,-6)*{\afvjum4{}{\boldsymbol\epsilon_n}};
-}\quad,
-\]
-where, for every $1\le i\le n$, there is exactly one instance of $\alpha$ in the conclusion of the derivation such that the atom occurrences in $\alpha$ map to the edges $\boldsymbol\epsilon_i$. By studying the proof of Lemma~\vref{lemma:GenericContraction} we see that there is a path from every edge in $\boldsymbol\epsilon$ to exactly one edge in every set of edges $\boldsymbol\epsilon_1$, $\dots$, $\boldsymbol\epsilon_n$.
-\end{remark}
-
-%======================================
-\subsection{Path Breaker}\label{subsection:PathBreaker}
-
-\input{global_transformations/path_breaker.tex}
-
-%======================================
-\subsection{Four Boxes}\label{subsection:FourBoxes}
-
-\input{global_transformations/four_boxes}
-
-%======================================
-\subsection{Isolated Subflow Removal}\label{subsection:IsolatedSubflowRemoval}
-
-\input{global_transformations/isolated_subflow.tex}
-
-%======================================
-\subsection{Multiple Isolated Subflows Removal}\label{subsection:MultipleIsolatedSubflowsRemoval}
-
-\input{global_transformations/multiple_isolated_subflow.tex}
