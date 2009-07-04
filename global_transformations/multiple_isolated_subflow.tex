@@ -26,27 +26,27 @@ Given an $n\ge0$, and atomic flows $\eta_0$, $\dots$, $\eta_l$, $\mu_1$, $\dots$
 }
 \quad\to_\frmis\quad
 \atomicflow{
-(-12, 54)*{\afvjdm4{}{\boldsymbol\epsilon}};
-(-12, 48)*{\copy\contrup};
-(-12, 48)*{\affr{16}{8}};
-( -5, 43)*{\afvjm2};
-( -7, 33)*{\afcjlm{4}{22}};
+(-12, 56)*{\afvjm4};
+(-12, 50)*{\copy\contrup};
+(-12, 50)*{\affr{16}{8}};
+( -5, 44)*{\afvjdm4{}{f_0(\boldsymbol\epsilon)}};
+( -7, 34)*{\afcjlm{4}{24}};
 (-12, 42)*{\cdots};
 (-10,  2)*{\afcjlm{10}{32}};
-(-15, 31)*{\afvjm{26}};
+(-15, 32)*{\afvjm{28}};
 (-12,-13)*{\afcjlm{14}{42}};
-(-19, 26)*{\afvjm{36}};
+(-19, 27)*{\afvjm{38}};
 %--
 ( 5, 46)*{\afawdm{}{}{}{}};
 ( 0, 38)*{\affr{12}{8}};
-( 3, 40)*{\aflabelright{\phi}};
+( 1, 40)*{\aflabelright{f_0(\phi)}};
 ( 5, 33)*{\afvjm2};
 ( 9, 28)*{\affr{10}{8}};
 (11, 30)*{\aflabelright{\eta_0}};
 ( 5, 23)*{\afvjm2};
 (11, 23)*{\afvjm2};
 ( 0, 18)*{\affr{12}{8}};
-( 3, 20)*{\aflabelright{\phi}};
+( 1, 20)*{\aflabelright{f_1(\phi)}};
 ( 5, 13)*{\afvjm2};
 (11, 13)*{\afvjm2};
 (11, 18)*{\affr{6}{8}};
@@ -56,16 +56,16 @@ Given an $n\ge0$, and atomic flows $\eta_0$, $\dots$, $\eta_l$, $\mu_1$, $\dots$
 ( 5,  3)*{\afvjm2};
 (11,  3)*{\afvjm2};
 %-
-( 9,  1)*{\vdots};
+( 0,  1)*{\vdots};
 %-
 ( 5, -3)*{\afvjm2};
 (11, -3)*{\afvjm2};
 ( 9, -8)*{\affr{10}{8}};
-(10, -6)*{\aflabelright{\eta_{n-1}}};
+( 9, -6)*{\aflabelright{\eta_{n-1}}};
 ( 5,-13)*{\afvjm2};
 (11,-13)*{\afvjm2};
 ( 0,-18)*{\affr{12}{8}};
-( 3,-16)*{\aflabelright{\phi}};
+( 1,-16)*{\aflabelright{f_n(\phi)}};
 (11,-18)*{\affr{6}{8}};
 (11,-16)*{\aflabelright{\mu_n}};
 ( 5,-23)*{\afvjm2};
@@ -74,21 +74,22 @@ Given an $n\ge0$, and atomic flows $\eta_0$, $\dots$, $\eta_l$, $\mu_1$, $\dots$
 (11,-26)*{\aflabelright{\eta_n}};
 ( 5,-33)*{\afvjm2};
 ( 0,-38)*{\affr{12}{8}};
-( 3,-36)*{\aflabelright{\phi}};
+(-1,-36)*{\aflabelright{f_{n+1}(\phi)}};
 ( 5,-46)*{\afawum{}{}{}{}};
 %--
 (-12, 13)*{\afcjrm{14}{42}};
-(-19,-26)*{\afvjm{36}};
+(-19,-27)*{\afvjm{38}};
 (-10, -2)*{\afcjrm{10}{32}};
-(-15,-31)*{\afvjm{26}};
+(-15,-32)*{\afvjm{28}};
 (-12,-42)*{\cdots};
-( -7,-33)*{\afcjrm{4}{22}};
-( -5,-43)*{\afvjm2};
-(-12,-48)*{\affr{16}{8}};
-(-12,-48)*{\copy\contrdown};
-(-12,-54)*{\afvjum4{}{\boldsymbol\iota}};
-}\quad.
+( -7,-34)*{\afcjrm{4}{24}};
+( -5,-44)*{\afvjum4{}{f_{n+1}(\boldsymbol\iota)}};
+(-12,-50)*{\affr{16}{8}};
+(-12,-50)*{\copy\contrdown};
+(-12,-56)*{\afvjm4};
+}\quad,
 \]
+such that, for every upper (resp., lower) edge $\epsilon'$ (resp., $\iota'$) of the contractum, there is an $\epsilon$ in $\boldsymbol\epsilon$ (reps., $\iota$ in $\boldsymbol\iota$), such that there are paths from $\epsilon'$ (resp., from $\iota'$) to $f_0(\epsilon)$, $\dots$, $f_{n+1}(\epsilon)$ (resp., to $f_0(\iota)$, $\dots$, $f_{n+1}(\iota)$).
 \end{definition}
 
 \TODO{This reduction differs from the other ones, since the atomic flows in the contractum are not yet defined.}

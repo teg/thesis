@@ -17,19 +17,20 @@ We define the reduction $\to_\fris$ (where $\fris$ stands for \emph{isolated sub
 }
 \quad\to_\fris\quad
 \atomicflow{
-( 0, 16.5)*{\afacumexsq{}{}{}{}{}{\boldsymbol\epsilon}{12}{4}};
+( 0, 16.5)*{\afacumexsq{f_2(\boldsymbol\epsilon)}{}{}{f_1(\boldsymbol\epsilon)}{}{}{12}{4}};
 (-6,  4  )*{\afvjm{12}};
 ( 0, 14  )*{\afawd{}{}{}{}};
 ( 3,  6  )*{\affr{8}{8}};
-( 4,  8  )*{\aflabelright{\phi}};
+( 2,  8  )*{\aflabelright{f_1(\phi)}};
 ( 0,  0  )*{\afvj4};
 (-3, -6  )*{\affr{8}{8}};
-(-2, -4  )*{\aflabelright{\phi}};
+(-4, -4  )*{\aflabelright{f_2(\phi)}};
 ( 0,-14  )*{\afawu{}{}{}{}};
 ( 6, -4  )*{\afvjm{12}};
-( 0,-16  )*{\afacdmexsq{}{}{}{}{}{\boldsymbol\iota}{12}{4}};
-}\quad.
+( 0,-16  )*{\afacdmexsq{f_2(\boldsymbol\iota)}{}{}{f_1(\boldsymbol\iota)}{}{}{12}{4}};
+}\quad,
 \]
+where, for every $\epsilon$ in $\boldsymbol\epsilon$ (reps., $\iota$ in $\boldsymbol\iota$) the edges $f_1(\epsilon)$ and $f_2(\epsilon)$ (resp., $f_1(\iota)$ and $f_2(\iota)$) are joined by a cocontraction (resp., contraction) vertex.
 \end{definition}
 
 %---------------------------------------
@@ -75,7 +76,7 @@ We obtain the two derivations $\Phi_\ttt$ and $\Phi_\fff$ from $\Phi'$ as follow
  \vls(a.\alpha)
 }\quad.
 \]
-Since $\psi$ is connected, the mapping from occurrences of $a^\psi$ and $\bar a^\psi$ to edges of $\psi$ is surjective. Hence, we know that both derivation $\Phi_\ttt$  and $\Phi_\fff$ have flow $\phi$. We combine $\Phi_\ttt$ and $\Phi_\fff$ to get the desired derivation $\Psi$ with flow $\psi'$ and the same premiss and conclusion as $\Phi$:
+Since $\psi$ is connected, the mapping from occurrences of $a^\psi$ and $\bar a^\psi$ to edges of $\psi$ is surjective. Hence, we know that both derivation $\Phi_\ttt$ and $\Phi_\fff$ have flow $\phi$. We combine $\Phi_\ttt$ and $\Phi_\fff$ to get the desired derivation $\Psi$ with flow $\psi'$ and the same premiss and conclusion as $\Phi$:
 \[
 \Psi\;=\;
 \vlderivation
