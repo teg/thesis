@@ -118,17 +118,33 @@ Given a context $\xi\vlhole$ and a formula $\alpha$ there exist derivations $\vl
 
 \begin{proof}
 We show how to construct the first derivation, the second one can be done symmetrically. We argue by induction on the number of atoms in $\xi\vlhole$. The base case, $\xi\vlhole=\vlhole$, is trivial and the inductive cases are:
-
 \[
 \vlderivation
 {
- \vlin{=}{}{\xi\{\alpha\}}
+ \vlin{=}{}
  {
-  \vlin{\swi}{}{\vlsbr[\vlder{\Psi}{\{\swi\}}{\xi'\{\alpha\}}{\vls(\alpha.\xi'\{\ttt\})}\;\;.\;\;\beta]}
+  \xi\{\alpha\}
+ }
+ {
+  \vlin{\swi}{}
   {
-   \vlin{=}{}{\vls(\alpha.[\xi'\{\ttt\}.\beta])}
+   \vlsbr[\vlder{\Psi}{\{\swi\}}{\xi'\{\alpha\}}{\vls(\alpha.\xi'\{\ttt\})}\;\;.\;\;\beta]
+  }
+  {
+   \vlhy
    {
-    \vlhy{\vls(\alpha.\xi\{\ttt\})}
+    \vls
+    (
+     \alpha
+    \;.\;
+     \vlinf{=}{}
+     {
+      \vls[\xi'\{\ttt\}.\beta]
+     }
+     {
+      \xi\{\ttt\}
+     }
+    )
    }
   }
  }
