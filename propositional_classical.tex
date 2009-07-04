@@ -13,8 +13,8 @@
 \newcommand{\acu  }{\ac{\uparrow}}
 \newcommand{\swi  }{\mathsf{s}}
 \newcommand{\med  }{\mathsf{m}}
-\newcommand{\asor }{=_{\vee\mathsf{a}}}
-\newcommand{\asand}{=_{\wedge\mathsf{a}}}
+\newcommand{\asor }{=_\mathsf{a}{\downarrow}}
+\newcommand{\asand}{=_\mathsf{a}{\uparrow}}
 \newcommand{\coor }{=_{\vee\mathsf{c}}}
 \newcommand{\coand}{=_{\wedge\mathsf{c}}}
 \newcommand{\fffd }{{=_{\fff}}{\downarrow}}
@@ -50,13 +50,13 @@ and the \emph{invertible} rules:
 \vlinf{\coor}{}{\vls[B.A]}{\vls[A.B]}\qquad
 \vlinf{\coand}{}{\vls(B.A)}{\vls(A.B)}\qquad
 \vlinf{\asor}{}{\vls[[A.B].C]}{\vls[A.[B.C]]}\qquad
-\vlinf{\asand}{}{\vls((A.B).C)}{\vls(A.(B.C))}
+\vlinf{\asand}{}{\vls(A.(B.C))}{\vls((A.B).C)}
 \]
 \[
 \vlinf{\fffd}{}{\vls[A.\fff]}{A}\qquad
 \vlinf{\tttd}{}{\vls(A.\ttt)}{A}\qquad
-\vlinf{\fffu}{}{A}{\vls(A.\ttt)}\qquad
-\vlinf{\tttu}{}{A}{\vls[A.\fff]}
+\vlinf{\fffu}{}{A}{\vls(\ttt.A)}\qquad
+\vlinf{\tttu}{}{A}{\vls[\fff.A]}
 \]
 \[
 \vlinf{\fffandd}{}{\vls(\fff.\fff)}{\fff}\qquad
