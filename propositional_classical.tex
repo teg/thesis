@@ -382,6 +382,77 @@ For the inductive case, let $\alpha$ be a tautology containing instances of the 
 \]
 \item otherwise, both $\alpha\{a/\ttt,\bar a/\fff\}$ and $\alpha\{a/\fff,\bar a/\ttt\}$ are tautologies, so by the inductive hypothesis we can build
 \[
+\Phi\;=\;
+\vlderivation
+{
+ \vlde{}{\{\ssd\}}
+ {
+  \vlsbr[\alpha\;\;.\;\;\vlder{}{\{\acd\}}{\bar a}{\vls[\bar a.\cdots.\bar a]}]
+ }
+ {
+  \vlde{}{\{\aid,\awd\}}
+  {
+   \alpha\{a/\vlsbr[a.\bar a]\}
+  }
+  {
+   \vlde{}{}
+   {
+    \alpha\{a/\ttt,\bar a/\fff\}
+   }
+   {
+    \vlhy{\ttt}
+   }
+  }
+ }
+}\quad.
+\]
+Using $\Phi$ and the inductive hypothesis we can build the desired derivation:
+\[
+\vlderivation
+{
+ \vlde{}{\cod}
+ {
+  \alpha
+ }
+ {
+  \vlde{}{\{\ssd\}}
+  {
+   \vls[\alpha.\cdots.\alpha]
+  }
+  {
+   \vlde{}{}
+   {
+    \alpha\{\bar a/\vlsbr[\alpha.\bar a]\}
+   }
+   {
+    \vlde{}{\{\awd\}}
+    {
+     \alpha\{\bar a/\ttt\}
+    }
+    {
+     \vlde{}{}
+     {
+      \alpha\{a/\fff,\bar a/\ttt\}
+     }
+     {
+      \vlhy{\ttt}
+     }
+    }
+   }
+  }
+ }
+}\quad.
+\]
+\end{itemize}
+\end{proof}
+
+\begin{remark}
+By a construction similar to the proof of Lemma~\vref{lemma:SuperSwitch}, we can build a derivation $\vlder{}{\{\swi,\coor,\coand,\asor\}}{\vls[\xi\{\alpha\}.\beta]}{\xi\{\vls[\alpha.\beta]\}}$. If we use this derivation instead of the rule $\ssd$ in the proof of Theorem~\ref{theorem:SKSComplete}, it follows that the system $\{\aid,\acd,\awd,\swi,\med,\coor,\coand,\asor,\fffd,\tttd,\fffandd,\tttord\}$ is complete for classical logic.
+\end{remark}
+
+\begin{remark}
+The construction shown in the proof of Theorem~\ref{theorem:SKSComplete} is very inefficient. Given a tautology $\alpha$ containing $n$ unique, non-dual atoms, the size of the proof obtained is $O(\size{\alpha}^n)$. By allowing the use of all the rules of $\SKS$ we can use the following construction for the inductive case:
+\[
 \vlderivation
 {
  \vlin{\cod}{}
@@ -475,5 +546,13 @@ For the inductive case, let $\alpha$ be a tautology containing instances of the 
  }
 }\quad.
 \]
-\end{itemize}
-\end{proof}
+The size of the proof obtained in this way is $O(\size{\alpha}\cdot2^n)$.
+\end{remark}
+
+%\begin{corollary}\label{corollary:SKSImplicationallyComplete}
+%System $\SKS$ is implicationally complete for propositional classical logic.
+%\end{theorem}
+
+%\begin{proof}
+%Given formulae $\alhpa$ and $\beta$, such that $\alpha$ implies $\beta$
+%\end{proof}
