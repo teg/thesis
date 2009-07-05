@@ -1,14 +1,23 @@
 \chapter{Transformations}
 
+\TODO{Polarity assignment: `to' -> `for'}
+
 %---------------------------------------
 \begin{definition}\label{definition:FlowReduction}
 An (\emph{atomic-flow}) \emph{reduction $R$} is a binary relation on the set of atomic flows, such that $\phi\mathrel{R}\psi$ if
 \begin{enumerate}
-\item there is a one-to-one map, $f$, from the upper edges of $\phi'$ to the upper edges of $\psi'$;
-\item there is a one-to-one map, $g$, from the lower edges of $\phi'$ to the lower edges of $\psi'$; and
-\item for every polarity assignment $\pi$ for $\phi'$, there is a polarity assignment $\pi'$ for $\psi'$ such that $\pi'(f(\epsilon))=\pi(\epsilon)$ and $\pi'(g(\epsilon'))=\pi(\epsilon')$, for any upper edge $\epsilon$ and any lower edge $\epsilon'$ of $\phi'$;
+\item
+there is a one-to-one map, $f$, from the upper edges of $\phi$ to the upper edges of $\psi$;
+\item
+there is a one-to-one map, $g$, from the lower edges of $\phi$ to the lower edges of $\psi$; and
+\item\label{definition:FlowReduction:item:Polarity}
+for every polarity assignment $\pi$ for $\phi$, there is a polarity assignment $\pi'$ for $\psi$ such that $\pi'(f(\epsilon))=\pi(\epsilon)$ and $\pi'(g(\iota))=\pi(\iota)$, for any upper edge $\epsilon$ and any lower edge $\epsilon'$ of $\phi'$.
 \end{enumerate}
 \end{definition}
+
+\begin{remark}\label{remark:LabelBijectionEdges}
+Given a reduction $R$ and two atomic flows $\phi$ and $\psi$ such that $\phi\mathrel{R}\psi$, we indicate the bijections $f$ and $g$ by, for every upper (resp., lower) edge $\epsilon$ of $\phi$, labeling the upper (resp., lower) edge $f(\epsilon)$ (resp., $g(\epsilon)$) of $\psi$ by $\epsilon$.
+\end{remark}
 
 %---------------------------------------
 \begin{definition}\label{definition:SoundRedcution}
