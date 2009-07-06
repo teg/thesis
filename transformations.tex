@@ -24,6 +24,74 @@ Given a reduction $R$ and two atomic flows $\phi$ and $\psi$ such that $\phi\mat
 A reduction $R$ is \emph{sound} if, for every $\phi$ and $\psi$ such that $\phi\mathrel{R}\psi$ and for every derivation $\Phi$ with atomic flow $\phi$, there is a derivation $\Psi$ with atomic flow $\psi$ such that $\Phi$ and $\Psi$ have the same premiss and conclusion; in this case we write $\Phi\mathrel{R}\Psi$.
 \end{definition}
 
+%-------------------------------------------------------------------------------
+\begin{proposition}\label{proposition:DerivationSubstitution}
+Given a derivation\/ $\vlder\Phi\SKS{\beta}\alpha$, let its associated flow have shape
+\[
+\atomicflow{
+(-5, 6)*{\afvjdm4{}{}};
+( 5, 6)*{\afvjdm4{}{}};
+(-1, 2)*{\aflabelleft\phi};
+( 9, 2)*{\aflabelleft\psi};
+(-5, 0)*{\affr88};
+( 5, 0)*{\affr88};
+(-5,-6)*{\afvjum4{}{}};
+( 5,-6)*{\afvjum4{}{}}
+}
+\quad,
+\]
+such that $\phi$ is a connected component whose edges are each associated with atom $a$; then, for any formula $\gamma$, there exists a derivation
+\[
+\vlder\Psi\SKS{\beta \{a^\phi/\gamma\}}
+              {\alpha\{a^\phi/\gamma\}}
+\]
+whose associated flow is
+\[
+\atomicflow{
+(-17, 6)*{\afvjdm4{}{}};
+( -5, 6)*{\afvjdm4{}{}};
+(  5, 6)*{\afvjdm4{}{}};
+(-13, 2)*{\aflabelleft{f_1(\phi)}};
+( -1, 2)*{\aflabelleft{f_m(\phi)}};
+(  9, 2)*{\aflabelleft\psi};
+(-17, 0)*{\affr88};
+(-11, 0)*{\cdots};
+( -5, 0)*{\affr88};
+(  5, 0)*{\affr88};
+(-17,-6)*{\afvjum4{}{}};
+( -5,-6)*{\afvjum4{}{}};
+(  5,-6)*{\afvjum4{}{}};
+}
+\quad,
+\]
+where $m$ is the number of atom occurrences in $\beta$; moreover, the size of\/ $\Psi$ depends at most linearly on the size of\/ $\Phi$ and quadratically on the size of $\beta$.
+\end{proposition}
+
+%-------------------------------------------------------------------------------
+\begin{proof}
+We can proceed by structural induction on $\gamma$ and then on $\phi$. For the two cases of $\gamma\equiv\vls[\gamma'.\gamma'']$ and $\gamma\equiv\vls(\gamma'.\gamma'')$ we have to consider, for each vertex of $\phi$, one of the following situations:
+\[%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% We shrank space: \qquad -> \quad
+\vls[\vlinf{}{}\gamma\fff.\vlinf{}{}\delta\fff]
+\quad,\quad
+\vls(\vlinf{}{}\gamma\fff.\vlinf{}{}\delta\fff)
+\quad,\quad
+\vls[\vlinf{}{}\gamma{\vls[\gamma.\gamma]}.\vlinf{}{}\delta{\vls[\delta.\delta]}]
+\quad,\quad
+\vlinf\med
+      {}
+      {\vls(\vlinf{}{}\gamma{\vls[\gamma.\gamma]}
+           .\vlinf{}{}\delta{\vls[\delta.\delta]})}
+      {\vls[(\gamma.\delta).(\gamma.\delta)]}
+\quad,
+\]
+and their dual ones.
+\end{proof}
+
+\TODO{Put reference.}
+
+\begin{remark}
+The derivation $\Psi$ obtained in the proof of Propostion~\vref{proposition:DerivationSubstitution} is denoted $\Phi\{a^\phi/\gamma\}$. The notion of substitution can be extended to allow $\phi$ to contain interaction and cut vertices, but we shall not need that in this thesis.
+\end{remark}
 
 %======================================
 \section{Global Transformations}\label{section:GlobalTransformations}
