@@ -1,7 +1,44 @@
+\newcommand{\Gammasf}{\mathsf\Gamma}
+
 \newcommand{\frmis}{{\mathsf{mis}}}
 %---------------------------------------
 \begin{definition}\label{definition:MultipleIsolatedSubflowsRemoval}
-Given an $n\ge0$, and atomic flows $\eta_0$, $\dots$, $\eta_l$, $\mu_1$, $\dots$, $\mu_l$ that do not contain interaction or cut vertices, and such that the below is a valid atomic flow, we define the reduction $\to_\frmis$ (where $\frmis$ stands for \emph{multiple isolated subflows}) as follows, for any atomic flow $\phi$ and any connected atomic flows $\psi_1$, $\dots$, $\psi_n$ that do not contain interaction or cut vertices:
+Given $n>0$ distinct atoms $a_1$, $\dots$, $a_n$, an $N>0$, for $0\le k\le N$, a derivation $\Gamma_k$, and, for $0\le k\le N$, formulae $\gamma_{k,1}$, $\dots$, $\gamma_{k,n}$, such that
+\begin{itemize}
+ \item $\gamma_{0,1}=\cdots=\gamma_{0,n}=\ttt$;
+ \item $\gamma_{N,1}=\cdots=\gamma_{N,n}=\fff$; and
+ \item 
+\[
+\Gammasf_k\quad=\quad
+\vlder{}{\SKS\setminus\{\aid,\aiu\}}
+{
+ \vls([a_1.\gamma_{k,1}].\cdots.[a_n.\gamma_{k,n}])
+}
+{
+ \vls[(a_1.\gamma_{k-1,1}).\cdots.(a_n.\gamma_{k-1,n})]
+}\quad.
+\]
+\end{itemize}
+Let $\eta_k$ be the atomic flow of\/ $\Gammasf_k$, and let
+\[
+\mu_k\;=\;
+\atomicflow
+{
+(  4,  0)*{\affr{8}{8}};
+(  8,  2)*{\aflabelleft{f_{1,1}(\psi_1)}};
+( 10,  0)*{\cdots};
+( 16,  0)*{\affr{8}{8}};
+( 20,  2)*{\aflabelleft{f_{1,l_1}(\psi_1)}};
+( 22,  0)*{\cdots};
+( 28,  0)*{\affr{8}{8}};
+( 32,  2)*{\aflabelleft{f_{n,1}(\psi_n)}};
+( 34,  0)*{\cdots};
+( 40,  0)*{\affr{8}{8}};
+( 44,  2)*{\aflabelleft{f_{n,l_n}(\psi_n)}};
+}
+\quad,
+\]
+where $l_i$ is the number of atom occurrences in $\gamma_{k,i}$, we define the reduction $\to_\frmis$ (where $\frmis$ stands for \emph{multiple isolated subflows}) as follows, for any atomic flow $\phi$ and any connected atomic flows $\psi_1$, $\dots$, $\psi_n$ that do not contain interaction or cut vertices:
 \[
 \atomicflow{
 (-12,  8)*{\afvjdm8{}{\boldsymbol\epsilon}};
@@ -96,35 +133,8 @@ such that, for every upper (resp., lower) edge $\epsilon'$ (resp., $\iota'$) of 
 
 \TODO{Redo this theorem:}
 
-\newcommand{\Gammasf}{\mathsf\Gamma}
-
-\begin{theorem}\label{theorem:MultipleIsolatedSubflowsRemovalMaybeSound}
-Given $n>0$ distinct atoms $a_1$, $\dots$, $a_n$, an $N>0$, and, for $0\le k\le N$, formulae $\gamma_{k,1}$, $\dots$, $\gamma_{k,n}$, such that
-\begin{itemize}
- \item $\gamma_{0,1}=\cdots=\gamma_{0,n}=\ttt$,
- \item $\gamma_{N,1}=\cdots=\gamma_{N,n}=\fff$, and
- \item for $1\le k\le N$, there exists a derivation
-\[
-\Gammasf_k\quad=\quad
-\vlder{}{\SKS\setminus\{\aid,\aiu\}}
-{
- \vls([a_1.\gamma_{k,1}].\cdots.[a_n.\gamma_{k,n}])
-}
-{
- \vls[(a_1.\gamma_{k-1,1}).\cdots.(a_n.\gamma_{k-1,n})]
-}\quad.
-\]
-\end{itemize}
-Let
-\begin{itemize}
- \item $\eta_k$ be the atomic flow of\/ $\Gamma_k$, and 
- \item $\mu_k$ be the atomic flow consisting of, for $1\le i\le n$, one copy of $\psi_i$ for every atom occurrence in $\gamma_{i,k}$,
-\end{itemize}
-then
-\begin{itemize}
- \item $\to_\frmis$ is sound, and
- \item if $\phi'\to_\frmis\psi'$, then $|\psi'|/|\phi'|$ is $\Ord {N\cdot\max(|\gamma_j|)}$.
-\end{itemize}
+\begin{theorem}\label{theorem:SoundMultipleIsolatedSubflowsRemoval}
+Reduction\/ $\to_\frmis$ is sound.
 \end{theorem}
 
 %-------------------------------------------------------------------------------
