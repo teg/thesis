@@ -139,7 +139,7 @@ Reduction\/ $\to_\frmis$ is sound.
 
 %-------------------------------------------------------------------------------
 \begin{proof}
-Let $\Phi$ be a derivation with flow $\phi'$, such that $\phi'\to_\frmis$. We show that there exists a derivation $\Psi$ with flow $\psi'$ and with the same premiss and conclusion as $\Phi$. In the following, we refer to the figure in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}.
+Let $\Phi$ be a derivation with flow $\phi'$, such that $\phi'\to_\frmis\psi'$. We show that there exists a derivation $\Psi$ with flow $\psi'$ and with the same premiss and conclusion as $\Phi$. In the following, we refer to the figures in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}.
 
 Since each of $\psi_1$, $\dots$, $\psi_n$ is connected, we can assume that the $\ai$-decomposed form of $\Phi$ is
 \[
@@ -164,7 +164,7 @@ For every $0\le k\le N$, we obtain the derivation $\Phi_k$ from $\Phi'$ as follo
  \vls([a_1.\gamma_{k,1}].\cdots.[a_n.\gamma_{k,n}].\alpha)
 }
 \]
-Since each of $\psi_1$, $\dots$, $\psi_n$ is connected and contains no interaction or cut vertices, the mapping from occurrences of $\bar a^\psi$ to edges of $\psi$ is surjective. Hence, we know that $\Phi_k$ has atomic flow
+Since each of $\psi_1$, $\dots$, $\psi_n$ is connected and contains no interaction or cut vertices, the mapping from occurrences of $\bar a_i^{\psi_i}$ to edges of $\psi_i$ is surjective. Hence, we know that $\Phi_k$ has atomic flow
 \[
 \atomicflow{
 (-5, 6)*{\afvjm4};
@@ -183,7 +183,7 @@ Since each of $\psi_1$, $\dots$, $\psi_n$ is connected and contains no interacti
 (11,-6)*{\afvjm4};
 }\quad.
 \]
-We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gamma_1$, $\dots$, $\Gamma_N$ to get the desired derivation $\Psi$ with atomic flow $\psi'$ and the same premiss and conclusion as $\Phi$:
+We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gammasf_1$, $\dots$, $\Gammasf_N$ to get the desired derivation $\Psi$ with atomic flow $\psi'$ and the same premiss and conclusion as $\Phi$:
 \[
 \vlderivation
 {
@@ -221,7 +221,7 @@ We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gamma_1$, $\dots$, $\Gamma_N$ to get t
        [
         \beta
        \;\;.\;\;
-        \vlder{\Gamma_N}{}
+        \vlder{\Gammasf_N}{}
         {
          \vls([a_1.\gamma_{N,1}].\cdots.[a_n.\gamma_{N,n}])
         }
@@ -257,7 +257,7 @@ We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gamma_1$, $\dots$, $\Gamma_N$ to get t
          [
           \beta
          \;\;.\;\;
-          \vlder{\Gamma_2}{}
+          \vlder{\Gammasf_2}{}
           {
            \vls([a_1.\gamma_{2,1}].\cdots.[a_n.\gamma_{2,n}])
           }
@@ -285,7 +285,7 @@ We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gamma_1$, $\dots$, $\Gamma_N$ to get t
          [
           \beta
          \;\;.\;\;
-          \vlder{\Gamma_1}{}
+          \vlder{\Gammasf_1}{}
           {
            \vls([a_1.\gamma_{1,1}].\cdots.[a_n.\gamma_{1,n}])
           }
