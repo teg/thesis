@@ -341,11 +341,31 @@ with the desired atomic flow.
 \end{proof}
 
 \begin{lemma}\label{lemma:FourBoxesSimpleForm}
-Given two atomic flows $\phi$ and $\psi$ and a polarity assignment $\pi$, such that $\phi\to_\frfb\psi$, then $\psi$ is on simple form with respect to $\pi$.
+Given an atomic flow $\phi'$ with polarity assignment $\pi$, there exists an atomic flow $\psi'$, such that $\phi'\to_\frfb\psi'$ and $\psi'$ is on simple form with respect to $\pi$.
 \end{lemma}
 
 \begin{proof}
-By Definition~\vref{definition:FlowNormalForms} and Definition~\vref{definition:FourBoxes}.
+In the following, we refer to the figure in Definition~\vref{definition:FourBoxes}.
+Let the atomic flow of $\phi'$ be
+\[
+\atomicflow{
+(-8, 6)*{\afvjdm4{}{}};
+( 0, 8)*{\afaidm{}{}{}{}{}{}};
+( 8, 6)*{\afvjdm4{}{}};
+%-
+(-9, 2)*{\aflabelright\ppl};
+(-5, 0)*{\affr88};
+(-1, 2)*{\aflabelleft\phi};
+( 1, 2)*{\aflabelright\pmi};
+( 5, 0)*{\affr88};
+( 9, 2)*{\aflabelleft\psi};
+%-
+(-8,-6)*{\afvjum4{}{}};
+( 0,-8)*{\afaium{}{}{}{}{}{}};
+( 8,-6)*{\afvjum4{}{}};
+}
+\]
+Then $\psi'$ is on simple form with respect to $\pi$ by Definition~\vref{definition:FlowNormalForms}.
 \end{proof}
 
 \newcommand{\Simpl}{\mathsf{Simpl}}
