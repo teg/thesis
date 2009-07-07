@@ -127,7 +127,7 @@ Consider the substitution
 \[
 \sigma=\{a_1^\phi/\vlsmallbrackets\vlsbr([a_1^{f_1(\phi)}.a_1^{f_2(\phi)}].[a_1^{f_3(\phi)}.a_1^{f_4(\phi)}]),\dots,a_n^\phi/\vlsmallbrackets\vlsbr([a_n^{f_1(\phi)}.a_n^{f_2(\phi)}].[a_n^{f_3(\phi)}.a_n^{f_4(\phi)}])\}\;.
 \]
-We can then obtain, by Definition~\vref{TODO}, the derivation $\Phi'\sigma$ with atomic flow
+We can then obtain, by Proposition~\vref{proposition:DerivationSubstitution}, the derivation $\Phi'\sigma$ with atomic flow
 \[
 \atomicflow
 {
@@ -353,6 +353,14 @@ By Definition~\vref{definition:FlowNormalForms} and Definition~\vref{definition:
 Given a derivation $\Phi$ with atomic flow $\phi$ and a polarity assignment $\pi$, let $\Psi$ with atomic flow $\psi$ be the derivation obtained in the proof of Theorem~\ref{theorem:SoundFourBoxes}, such that $\phi\to_\frfb\psi$, then we say that $\Psi$ is \emph{the simple form of $\Phi$ with respect to $\pi$}, denoted $\Simpl(\Phi,\pi)$.
 \end{definition}
 
+\begin{lemma}\label{lemma:SizeFourBoxes}
+Given a derivation $\Phi$ and a polarity assignment for its atomic flow $\pi$, $\Simpl(\Phi,\pi)$ depends at most linearly on $\Phi$.
+\end{lemma}
+
+\begin{proof}
+The result follows by Proposition~\vref{proposition:DerivationSubstitution} and the proof of Theorem~\vref{theorem:SoundFourBoxes}.
+\end{proof}
+
 \begin{lemma}\label{lemma:FourBoxesStreamlining}
 Given two atomic flows $\phi$ and $\psi$ with polarity assignment $\pi$, such that $\phi\to_\frfb\psi$ and $\phi$ is weakly streamlined with respect to $\bar\pi$ then $\psi$ is weakly streamlined with respect to $\bar\pi$.
 \end{lemma}
@@ -361,14 +369,8 @@ Given two atomic flows $\phi$ and $\psi$ with polarity assignment $\pi$, such th
 By studying the atomic flows in Definition~\vref{definition:FourBoxes} we can observe that for every path from an interaction vertex to a cut vertex in $\psi$ there is a path from an interaction vertex to a cut vertex in $\phi$ with the same polarity assignment.
 \end{proof}
 
-\TODO{Check:}
+%\TODO{Check:}
 
-\begin{remark}\label{remark:FourBoxesDestroySimpleForm}
-Given an atomic flow $\phi$ and a polarity assignment $\pi$, such that $\phi$ is not weakly streamlined with respect to $\bar\pi$, then $\Simpl(\phi,\pi)$ is not on simple form with respect to $\bar\pi$.
-\end{remark}
-
-\TODO{Rephrase:}
-
-\begin{lemma}\label{lemma:FourBoxesSize}
-For any two atomic flows $\phi$ and $\psi$ such that $\phi\to_\frfb\psi$ the size of $\psi$ is at most four times the size of $\phi$.
-\end{lemma}
+%\begin{remark}\label{remark:FourBoxesDestroySimpleForm}
+%Given an atomic flow $\phi$ and a polarity assignment $\pi$, such that $\phi$ is not weakly streamlined with respect to $\bar\pi$, then $\Simpl(\phi,\pi)$ is not on simple form with respect to $\bar\pi$.
+%\end{remark}
