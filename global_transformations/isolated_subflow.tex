@@ -129,3 +129,230 @@ Since $\psi$ is connected, the mapping from occurrences of $a^\psi$ and $\bar a^
 \begin{lemma}\label{lemma:IsolatedSubflowRemovalStreamlining}
 Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such that $\phi\to_\fris\psi$ and $\phi$ is weakly streamlined with respect to $\pi$ then $\psi$ is weakly streamlined with respect to $\pi$.
 \end{lemma}
+
+\newcommand{\ISR}{\mathsf{ISR}}
+\begin{definition}
+The \emph{streamliner}, $\ISR$, is an operator whose arguments are an atom $a$, and a derivation of shape
+\[
+\Phi\;=\;
+\vlder{\Phi'}{}
+{
+ \vlsbr
+ [
+  \beta
+ \;.\;
+  \vlinf{}{}
+  {
+   \fff
+  }
+  {
+   \vls(a^\psi.\bar a)
+  }
+ \;.\;\cdots\;.\;
+  \vlinf{}{}
+  {
+   \fff
+  }
+  {
+   \vls(a^\psi.\bar a)
+  }
+ ]
+}
+{
+ \vlsbr
+ (
+  \vlinf{}{}
+  {
+   \vls[a^\psi.\bar a]
+  }
+  {
+   \ttt
+  }
+ \;.\;\cdots\;.\;
+  \vlinf{}{}
+  {
+   \vls[a^\psi.\bar a]
+  }
+  {
+   \ttt
+  }
+ \;.\;
+  \alpha
+ )
+}\quad,
+\]
+with atomic flow
+\[
+\atomicflow{
+(-8, 6)*{\afvjdm4{}{\boldsymbol\epsilon}};
+( 1, 8)*{\afaidmex{}{}{}{}{}{}{6}{4}};
+(-5, 0)*{\affr{8}{8}};
+(-1, 2)*{\aflabelleft{\phi}};
+( 4, 0)*{\affr{6}{8}};
+( 7, 2)*{\aflabelleft{\psi}};
+( 1,-8)*{\afaiumex{}{}{}{}{}{}{6}{4}};
+(-8,-6)*{\afvjum4{}{\boldsymbol\iota}};
+}
+\quad,
+\]
+such that all the edges in $\psi$ are mapped to from $a$. Consider the derivation
+\[
+\Psi'\;=\;
+\vlder{\Phi'}{}
+{
+ \vlsbr
+ [
+  \beta
+ \;\;\;.\;\;\;
+  \vlderivation
+  {
+   \vlin{}{}
+   {
+    \fff
+   }
+   {
+    \vlde{}{\{\cod\}}
+    {
+     \vls(a.\bar a)
+    }
+    {
+     \vlhy
+     {
+      \vls[(a.\bar a).\cdots.(a.\bar a)]
+     }
+    }
+   }
+  }
+ ]
+}
+{
+ \vlsbr
+ (
+  \vlderivation
+  {
+   \vlde{}{\{\cou\}}
+   {
+    \vls([a.\bar a].\cdots.[a.\bar a])
+   }
+   {
+    \vlin{}{}
+    {
+     \vls[a.\bar a]
+    }
+    {
+     \vlhy
+     {
+      \ttt
+     }
+    }
+   }
+  }
+ \;\;\;.\;\;\;
+  \alpha
+ )
+}\quad,
+\]
+with atomic flow
+\[
+\psi'\;=\;
+\atomicflow{
+(-8, 11)*{\afvjdm{14}{\boldsymbol\epsilon}{}};
+( 2, 18)*{\afaidex{}{}{}{}{}{}{8}{4}};
+%-
+(-2, 10)*{\affr68};
+(-2, 10)*{\copy\contrup};
+(-2,  5)*{\afvjm2};
+(-5,  0)*{\affr{8}{8}};
+(-1,  2)*{\aflabelleft{\phi}};
+(-2, -5)*{\afvjm2};
+(-2,-10)*{\affr68};
+(-2,-10)*{\copy\contrdown};
+%-
+( 6, 10)*{\affr68};
+( 6, 10)*{\copy\contrup};
+( 6,  5)*{\afvjm2};
+( 6,  0)*{\affr{6}{8}};
+( 9,  2)*{\aflabelleft{\psi}};
+( 6, -5)*{\afvjm2};
+( 6,-10)*{\affr68};
+( 6,-10)*{\copy\contrdown};
+%-
+( 2,-18)*{\afaiuex{}{}{}{}{}{}{8}{4}};
+(-8,-11)*{\afvjum{14}{\boldsymbol\iota}{}};
+}\quad.
+\]
+We then define $\ISR(\Phi,a)$ to be such that $\Psi'\to_\fris\ISR(\Phi,a)$.
+\end{definition}
+
+\begin{proposition}
+Given an atom $a$, and a derivation
+\[
+\Phi\;=\;
+\vlder{}{}
+{
+ \vlsbr
+ [
+  \beta
+ \;.\;
+  \vlinf{}{}
+  {
+   \fff
+  }
+  {
+   \vls(a^\psi.\bar a)
+  }
+ \;.\;\cdots\;.\;
+  \vlinf{}{}
+  {
+   \fff
+  }
+  {
+   \vls(a^\psi.\bar a)
+  }
+ ]
+}
+{
+ \vlsbr
+ (
+  \vlinf{}{}
+  {
+   \vls[a^\psi.\bar a]
+  }
+  {
+   \ttt
+  }
+ \;.\;\cdots\;.\;
+  \vlinf{}{}
+  {
+   \vls[a^\psi.\bar a]
+  }
+  {
+   \ttt
+  }
+ \;.\;
+  \alpha
+ )
+}\quad,
+\]
+with atomic flow
+\[
+\atomicflow{
+(-8, 6)*{\afvjdm4{}{\boldsymbol\epsilon}};
+( 1, 8)*{\afaidmex{}{}{}{}{}{}{6}{4}};
+(-5, 0)*{\affr{8}{8}};
+(-1, 2)*{\aflabelleft{\phi}};
+( 4, 0)*{\affr{6}{8}};
+( 7, 2)*{\aflabelleft{\psi}};
+( 1,-8)*{\afaiumex{}{}{}{}{}{}{6}{4}};
+(-8,-6)*{\afvjum4{}{\boldsymbol\iota}};
+}
+\quad,
+\]
+such that all the edges in $\psi$ are mapped to from $a$.
+\begin{itemize}
+\item $\ISR(\Phi,a)$ is weakly streamlined with respect to $a$;
+\item for any atom $b$, if $\Phi$ is weakly streamlined with respect to $b$, then $\ISR(\Phi,a)$ is weakly streamlined with respect to $b$;
+\item if $\Phi$ is on simple form with respect to $\pi$ then $\ISR(\Phi,a)$ is on simple form with respect to $\pi$; and
+\item $\ISR(\Phi,a)$ depends at most linearly on the size of $\Phi$.
+\end{itemize}
+\end{proposition}
