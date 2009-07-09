@@ -345,36 +345,16 @@ Given an atomic flow $\phi'$ with polarity assignment $\pi$, there exists an ato
 \end{lemma}
 
 \begin{proof}
-In the following, we refer to the figure in Definition~\vref{definition:FourBoxes}.
-Let the atomic flow of $\phi'$ be
-\[
-\atomicflow{
-(-8, 6)*{\afvjdm4{}{}};
-( 0, 8)*{\afaidm{}{}{}{}{}{}};
-( 8, 6)*{\afvjdm4{}{}};
-%-
-(-9, 2)*{\aflabelright\ppl};
-(-5, 0)*{\affr88};
-(-1, 2)*{\aflabelleft\phi};
-( 1, 2)*{\aflabelright\pmi};
-( 5, 0)*{\affr88};
-( 9, 2)*{\aflabelleft\psi};
-%-
-(-8,-6)*{\afvjum4{}{}};
-( 0,-8)*{\afaium{}{}{}{}{}{}};
-( 8,-6)*{\afvjum4{}{}};
-}
-\]
-Then $\psi'$ is on simple form with respect to $\pi$ by Definition~\vref{definition:FlowNormalForms}.
+We refer to the figure in Definition~\vref{definition:FourBoxes}. Let the subflow $\phi$ contain all the positive edges, and let the subflow $\psi$ contain all the negative edges, then $\psi'$ is on simple form with respect to $\pi$ by Definition~\vref{definition:FlowNormalForms}.
 \end{proof}
 
 \newcommand{\Simpl}{\mathsf{Simpl}}
 \begin{definition}\label{definition:DerSimpleForm}
-Given a derivation $\Phi$ with atomic flow $\phi$ and a polarity assignment $\pi$, let $\Psi$ with atomic flow $\psi$ be the derivation obtained in the proof of Theorem~\ref{theorem:SoundFourBoxes}, such that $\phi\to_\frfb\psi$, then we say that $\Psi$ is \emph{the simple form of $\Phi$ with respect to $\pi$}, denoted $\Simpl(\Phi,\pi)$.
+Given a derivation $\Phi$ with atomic flow $\phi$ and a polarity assignment $\pi$, let $\Psi$ with atomic flow $\psi$ be the derivation obtained in the proof of Theorem~\ref{theorem:SoundFourBoxes}, such that $\phi\to_\frfb\psi$, then we say that $\Psi$ is \emph{the} (\emph{canonica}) \emph{simple form of\/ $\Phi$ with respect to $\pi$}, denoted $\Simpl(\Phi,\pi)$.
 \end{definition}
 
 \begin{lemma}\label{lemma:SizeFourBoxes}
-Given a derivation $\Phi$ and a polarity assignment for its atomic flow $\pi$, $\Simpl(\Phi,\pi)$ depends at most linearly on $\Phi$.
+Given a derivation $\Phi$ and a polarity assignment for its atomic flow $\pi$, the size of $\Simpl(\Phi,\pi)$ depends at most linearly on the size of $\Phi$.
 \end{lemma}
 
 \begin{proof}

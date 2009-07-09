@@ -6,18 +6,18 @@
 We define the reduction $\to_\fris$ (where $\fris$ stands for \emph{isolated subflow}) as follows, for any atomic flow $\phi$ and any connected atomic flow $\psi$:
 \[
 \atomicflow{
-(-8, 6)*{\afvjdm4{}{\boldsymbol\epsilon}};
+(-8, 6)*{\afvjdm4{\boldsymbol\epsilon}{}};
 ( 1, 8)*{\afaidex{}{}{}{}{}{}{6}{4}};
 (-5, 0)*{\affr{8}{8}};
 (-4, 2)*{\aflabelright{\phi}};
 ( 4, 0)*{\affr{6}{8}};
 ( 4, 2)*{\aflabelright{\psi}};
 ( 1,-8)*{\afaiuex{}{}{}{}{}{}{6}{4}};
-(-8,-6)*{\afvjum4{}{\boldsymbol\iota}};
+(-8,-6)*{\afvjum4{\boldsymbol\iota}{}};
 }
 \quad\to_\fris\quad
 \atomicflow{
-( 0, 16.5)*{\afacumexsq{f_2(\boldsymbol\epsilon)}{}{}{f_1(\boldsymbol\epsilon)}{}{}{12}{4}};
+( 0, 16.5)*{\afacumexsq{f_2(\boldsymbol\epsilon)}{}{}{f_1(\boldsymbol\epsilon)}{\boldsymbol\epsilon}{}{12}{4}};
 (-6,  4  )*{\afvjm{12}};
 ( 0, 14  )*{\afawd{}{}{}{}};
 ( 3,  6  )*{\affr{8}{8}};
@@ -27,7 +27,7 @@ We define the reduction $\to_\fris$ (where $\fris$ stands for \emph{isolated sub
 (-4, -4  )*{\aflabelright{f_2(\phi)}};
 ( 0,-14  )*{\afawu{}{}{}{}};
 ( 6, -4  )*{\afvjm{12}};
-( 0,-16  )*{\afacdmexsq{f_2(\boldsymbol\iota)}{}{}{f_1(\boldsymbol\iota)}{}{}{12}{4}};
+( 0,-16  )*{\afacdmexsq{f_2(\boldsymbol\iota)}{}{}{f_1(\boldsymbol\iota)}{\boldsymbol\iota}{}{12}{4}};
 }\quad,
 \]
 where, for every $\epsilon$ in $\boldsymbol\epsilon$ (reps., $\iota$ in $\boldsymbol\iota$) the edges $f_1(\epsilon)$ and $f_2(\epsilon)$ (resp., $f_1(\iota)$ and $f_2(\iota)$) are joined by a cocontraction (resp., contraction) vertex.
@@ -195,7 +195,7 @@ with atomic flow
 }
 \quad,
 \]
-such that all the edges in $\psi$ are mapped to from $a$. Consider the derivation
+such $\psi$ is the juxtraposition of all the isolated subflows mapped to from $a$. Consider the derivation
 \[
 \Psi'\;=\;
 \vlder{\Phi'}{}
