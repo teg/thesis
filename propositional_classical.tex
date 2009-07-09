@@ -113,7 +113,7 @@ See the proofs of Theorems~\vrefrange{theorem:PathBreakerSound}{theorem:Multiple
 \end{remark}
 
 \begin{lemma}\label{lemma:SuperSwitch}
-Given a context $\xi\vlhole$ and a formula $\alpha$ there exist derivations $\vlder{}{\{\swi\}}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlder{}{\{\swi\}}{\vls[\xi\{\fff\}.\alpha]}{\xi\{\alpha\}}$.
+Given a context $\xi\vlhole$ and a formula $\alpha$ there exist derivations $\vlder{}{\{\swi\}}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlder{}{\{\swi\}}{\vls[\xi\{\fff\}.\alpha]}{\xi\{\alpha\}}$; both of whose size depend at most quadratically on the size of $\xi\{\alpha\}$.
 \end{lemma}
 
 \begin{proof}
@@ -182,7 +182,7 @@ we write $\vlinf{\supers}{}{\vls[\zeta\{\fff\}.\xi\{\alpha\}]}{\vls(\zeta\{\alph
 \end{remark}
 
 \begin{lemma}\label{lemma:GenericWeakening}
-Given a formula $\alpha$, there exist derivations $\vlupsmash{\vlder{}{\{\awd,\swi\}}{\alpha}{\fff}}$ and $\vlupsmash{\vlder{}{\{\awu,\swi\}}{\ttt}{\alpha}}$.
+Given a formula $\alpha$, there exist derivations $\vlupsmash{\vlder{}{\{\awd,\swi\}}{\alpha}{\fff}}$ and $\vlupsmash{\vlder{}{\{\awu,\swi\}}{\ttt}{\alpha}}$; both of whose size depend at most quadratically on the size of $\alpha$.
 \end{lemma}
 
 \begin{proof}
@@ -232,7 +232,7 @@ Since $\alpha\{a_1/\fff,\dots,a_n/\fff\}$ contains no atoms, there exists a deri
 \end{proof}
 
 \begin{lemma}\label{lemma:GenericContraction}
-Given a formula $\alpha$, there exist derivations $\vlupsmash{\vlder{}{\{\acd,\med\}}{\alpha}{\vls[\alpha.\alpha]}}$ and $\vlupsmash{\vlder{}{\{\acu,\med\}}{\vls(\alpha.\alpha)}{\alpha}}$.
+Given a formula $\alpha$, there exist derivations $\vlupsmash{\vlder{}{\{\acd,\med\}}{\alpha}{\vls[\alpha.\alpha]}}$ and $\vlupsmash{\vlder{}{\{\acu,\med\}}{\vls(\alpha.\alpha)}{\alpha}}$; both of whose size depend at most quadratically on the size of $\alpha$.
 \end{lemma}
 
 \begin{proof}
@@ -451,7 +451,7 @@ By a construction similar to the proof of Lemma~\vref{lemma:SuperSwitch}, we can
 \end{remark}
 
 \begin{remark}
-The construction shown in the proof of Theorem~\ref{theorem:SKSComplete} is very inefficient. Given a tautology $\alpha$ containing $n$ unique, non-dual atoms, the size of the proof obtained is $O(\size{\alpha}^n)$. By allowing the use of all the rules of $\SKS$ we can use the following construction for the inductive case:
+If we allow the use of all the rules of $\SKS$, and not only the down fragment, we can build a smaller proof than what we do in Theorem~\ref{theorem:SKSComplete}. Given a tautology $\alpha$ containing $n$ unique, non-dual atoms, the size of the proof obtained is $O(\size{\alpha}^n)$. If we use the following inductive case instead:
 \[
 \vlderivation
 {
@@ -544,9 +544,9 @@ The construction shown in the proof of Theorem~\ref{theorem:SKSComplete} is very
    }
   }
  }
-}\quad.
+}\quad,
 \]
-The size of the proof obtained in this way is $O(\size{\alpha}\cdot2^n)$.
+the size of the proof obtained is $O(\size{\alpha}\cdot2^n)$.
 \end{remark}
 
 %\begin{corollary}\label{corollary:SKSImplicationallyComplete}
