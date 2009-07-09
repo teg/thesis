@@ -69,22 +69,8 @@ where $m$ is the number of atom occurrences in $\beta$; moreover, the size of\/ 
 
 %-------------------------------------------------------------------------------
 \begin{proof}
-We can proceed by structural induction on $\gamma$ and then on $\phi$. For the two cases of $\gamma\equiv\vls[\gamma'.\gamma'']$ and $\gamma\equiv\vls(\gamma'.\gamma'')$ we have to consider, for each vertex of $\phi$, one of the following situations:
-\[%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% We shrank space: \qquad -> \quad
-\vls[\vlinf{}{}\gamma\fff.\vlinf{}{}\delta\fff]
-\quad,\quad
-\vls(\vlinf{}{}\gamma\fff.\vlinf{}{}\delta\fff)
-\quad,\quad
-\vls[\vlinf{}{}\gamma{\vls[\gamma.\gamma]}.\vlinf{}{}\delta{\vls[\delta.\delta]}]
-\quad,\quad
-\vlinf\med
-      {}
-      {\vls(\vlinf{}{}\gamma{\vls[\gamma.\gamma]}
-           .\vlinf{}{}\delta{\vls[\delta.\delta]})}
-      {\vls[(\gamma.\delta).(\gamma.\delta)]}
-\quad,
-\]
-and their dual ones.
+
+We can proceed by structural induction $\Phi$. We replace every occurrence of $a^\phi$ by $\gamma$, and every inference rule instance of $\acd$, $\acu$, $\awd$ and $\awu$, where $a^\phi$ appears, by their generic counterparts with $\gamma$ in the place of $a^\phi$. The result then follows by Lemma~\vref{lemma:GenericWeakening} and Lemma~\vref{lemma:GenericContraction}.
 \end{proof}
 
 \TODO{Put reference.}
