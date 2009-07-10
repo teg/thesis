@@ -1,9 +1,20 @@
 \TODO{Throughout: use `isolated subflow' and define it somewhere else.}
 
+\TODO{Changes:
+\begin{itemize}
+\item changed $\bar a$ into $a$ in the proof of Theorem~\vref{theorem:SoundIsolatedSubflowRemoval};
+\item added restriction to $\psi$ in Definition~\ref{definition:IsolatedSubflowRemoval} and explained it (and why we don't need it) in Remark~\ref{remark:IsolatedSubflowRemovalRestriction};
+\item required $\Phi$ to be in simple form with respect to $a$ in Definition~\vref{definition:IsolatedSublfowRemover}, in order for case 1 of Proposition~\vref{proposition:IsolatedSubflowRemover} to be true.
+\item take advantage of not having $\bar a$ mapped to $\psi$ to simplify the substitutions in soundness proof;
+\item made Lemma~\vref{lemma:IsolatedSubflowRemovalPaths} more generic; and
+\item proved Proposition~\ref{proposition:IsolatedSubflowRemover}.
+\end{itemize}
+}
+
 \newcommand{\fris}{{\mathsf{is}}}
 %---------------------------------------
 \begin{definition}\label{definition:IsolatedSubflowRemoval}
-We define the reduction $\to_\fris$ (where $\fris$ stands for \emph{isolated subflow}) as follows, for any atomic flow $\phi$ and any connected atomic flow $\psi$:
+We define the reduction $\to_\fris$ (where $\fris$ stands for \emph{isolated subflow}) as follows, for any atomic flow $\phi$ and any connected atomic flow $\psi$ that does not contain identity or cut vertices:
 \[
 \atomicflow{
 (-8, 6)*{\afvjdm4{\boldsymbol\epsilon}{}};
@@ -32,6 +43,10 @@ We define the reduction $\to_\fris$ (where $\fris$ stands for \emph{isolated sub
 \]
 \end{definition}
 
+\begin{remark}\label{remark:IsolatedSubflowRemovalRestriction}
+The condition on the atomic flow $\psi$ in Definition~\ref{definition:IsolatedSubflowRemoval} ensures that all the edges in $\psi$ are mapped to from occurrences of the same atom. However, the reduction would still be sound if, at the expense of a slightly more verbose soundness proof, we relaxed the condition to say that the upper and lower edge of $\psi$ belong to the same connected component.
+\end{remark}
+
 %---------------------------------------
 \begin{theorem}\label{theorem:SoundIsolatedSubflowRemoval}
 Reduction\/ $\to_\fris$ is sound.
@@ -56,7 +71,7 @@ for some atom $a$ and formulae $\alpha$ and $\beta$.
 We obtain the two derivations $\Phi_\ttt$ and $\Phi_\fff$ from $\Phi'$ as follows:
 \[
 \Phi_\ttt\;=\;
-\vlder{\Phi'\{a^\psi/\fff, \bar a^\psi/\ttt\}}{}
+\vlder{\Phi'\{a^\psi/\ttt\}}{}
 {
  \vls[\beta.\bar a]
 }
@@ -65,7 +80,7 @@ We obtain the two derivations $\Phi_\ttt$ and $\Phi_\fff$ from $\Phi'$ as follow
 }
 \qquad\mbox{and}\qquad
 \Phi_\fff\;=\;
-\vlder{\Phi'\{a^\psi/\ttt, \bar a^\psi/\fff\}}{}
+\vlder{\Phi'\{a^\psi/\fff\}}{}
 {
  \vls[\beta.(\fff.\bar a)]
 }
@@ -73,7 +88,7 @@ We obtain the two derivations $\Phi_\ttt$ and $\Phi_\fff$ from $\Phi'$ as follow
  \vls(\bar a.\alpha)
 }\quad.
 \]
-Since $\psi$ is connected, the mapping from all the occurrences $a^\psi$ and $\bar a^\psi$ to edges of $\psi$ is surjective. Hence, we know that both derivation $\Phi_\ttt$ and $\Phi_\fff$ have a flow isomorphic to $\phi$. We combine $\Phi_\ttt$ and $\Phi_\fff$ to get the desired derivation $\Psi$ with flow $\psi'$ and the same premiss and conclusion as $\Phi$:
+Since $\psi$ is connected and contains no identity or cut vertices, the mapping from all the occurrences $a^\psi$ to edges of $\psi$ is surjective. Hence, we know that both derivation $\Phi_\ttt$ and $\Phi_\fff$ have a flow isomorphic to $\phi$. We combine $\Phi_\ttt$ and $\Phi_\fff$ to get the desired derivation $\Psi$ with flow $\psi'$ and the same premiss and conclusion as $\Phi$:
 \[
 \Psi\;=\;
 \vlderivation
@@ -123,16 +138,20 @@ Since $\psi$ is connected, the mapping from all the occurrences $a^\psi$ and $\b
 \]
 \end{proof}
 
-\begin{lemma}\label{lemma:IsolatedSubflowRemovalStreamlining}
-Given a polarity assignment $\pi$ and two atomic flows $\phi$ and $\psi$, such that $\phi\to_\fris\psi$ and $\phi$ is weakly streamlined with respect to $\pi$, then $\psi$ is weakly streamlined with respect to $\pi$.
+\begin{lemma}\label{lemma:IsolatedSubflowRemovalPaths}
+Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\fris\psi$, and given an interaction (resp., cut) vertex $\nu$ in $\psi$, then there is an interaction (resp., cut) vertex $\nu'$ in $\phi$ such that $\nu=f_1(\nu')$ or $\nu=f_2(\nu')$, and
+\begin{itemize}
+\item if there is a path from $\nu$ to $\bot$ (resp., $\top$) in $\psi$, then there is a path from $\nu'$ to $\bot$ (resp., $\top$) in $\phi$; and
+\item if there is a cut (resp., interaction) vertex $\hat\nu$ in $\psi$, such that there is a path from $\nu$ to $\hat\nu$ in $\psi$, then there is a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$, such that $\hat\nu=f_1(\hat\nu')$ or $\hat\nu=f_2(\hat\nu')$ and there is a path from $\nu'$ to $\hat\nu'$ in $\phi$.
+\end{itemize}
 \end{lemma}
 
 \begin{proof}
-
+By a case analysis on the atomic flows in Definition~\vref{definition:IsolatedSubflowRemoval}.
 \end{proof}
 
 \newcommand{\ISR}{\mathsf{ISR}}
-\begin{definition}
+\begin{definition}\label{definition:IsolatedSubflowRemover}
 The \emph{isolated subflow remover}, $\ISR$, is an operator whose arguments are an atom $a$, and a derivation $\Phi$ that is on simple form with respect to $a$, such that
 \[
 \Phi\;=\;
@@ -287,7 +306,7 @@ We then define $\ISR(\Phi,a)$ to be such that $\Psi'\to_\fris\ISR(\Phi,a)$.
 
 \TODO{Unique?}
 
-\begin{proposition}
+\begin{proposition}\label{proposition:IsolatedSubflowRemover}
 Given an atom $a$, and a derivation
 \[
 \Phi\;=\;
@@ -352,10 +371,20 @@ with atomic flow
 \quad,
 \]
 such that all the edges in $\psi$ are mapped to from $a$, then
-\begin{itemize}
+\begin{enumerate}
 \item $\ISR(\Phi,a)$ is weakly streamlined with respect to $a$;
 \item for any atom $b$, if $\Phi$ is weakly streamlined with respect to $b$, then $\ISR(\Phi,a)$ is weakly streamlined with respect to $b$;
 \item if $\Phi$ is on simple form with respect to $\pi$ then $\ISR(\Phi,a)$ is on simple form with respect to $\pi$; and
 \item the size of $\ISR(\Phi,a)$ depends linearly on the size of\/ $\Phi$.
-\end{itemize}
+\end{enumerate}
 \end{proposition}
+
+\begin{proof}
+The statements follow by Definition~\ref{definition:IsolatedSubflowRemover} and
+\begin{enumerate}
+\item contradiction on Definition~\vref{definition:DerStreamlined} and Lemma~\vref{lemma:IsolatedSubflowRemovalPaths};
+\item Definition~\ref{definition:DerStreamlined} and Lemma~\ref{lemma:IsolatedSubflowRemovalPaths};
+\item Definition~\vref{definition:DerSimpleForm} and Lemma~\ref{lemma:IsolatedSubflowRemovalPaths};
+\item Proposition~\vref{proposition:DerivationSubstitution}.
+\end{enumerate}
+\end{proof}
