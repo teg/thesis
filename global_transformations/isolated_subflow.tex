@@ -124,12 +124,16 @@ Since $\psi$ is connected, the mapping from all the occurrences $a^\psi$ and $\b
 \end{proof}
 
 \begin{lemma}\label{lemma:IsolatedSubflowRemovalStreamlining}
-Given a polarity assignment $\pi$, and two atomic flows $\phi$ and $\psi$ such that $\phi\to_\fris\psi$ and $\phi$ is weakly streamlined with respect to $\pi$ then $\psi$ is weakly streamlined with respect to $\pi$.
+Given a polarity assignment $\pi$ and two atomic flows $\phi$ and $\psi$, such that $\phi\to_\fris\psi$ and $\phi$ is weakly streamlined with respect to $\pi$, then $\psi$ is weakly streamlined with respect to $\pi$.
 \end{lemma}
+
+\begin{proof}
+
+\end{proof}
 
 \newcommand{\ISR}{\mathsf{ISR}}
 \begin{definition}
-The \emph{isolated subflow remover}, $\ISR$, is an operator whose arguments are an atom $a$, and a derivation of shape
+The \emph{isolated subflow remover}, $\ISR$, is an operator whose arguments are an atom $a$, and a derivation $\Phi$ that is on simple form with respect to $a$, such that
 \[
 \Phi\;=\;
 \vlder{\Phi'}{}
@@ -192,7 +196,7 @@ with atomic flow
 }
 \quad,
 \]
-such $\psi$ is the juxtraposition of all the isolated subflows mapped to from $a$. Consider the derivation
+where $\psi$ is the juxtaposition of all the isolated subflows mapped to from occurrences of $a$ in $\Phi$. Consider the derivation
 \[
 \Psi'\;=\;
 \vlder{\Phi'}{}
@@ -281,6 +285,8 @@ with atomic flow
 We then define $\ISR(\Phi,a)$ to be such that $\Psi'\to_\fris\ISR(\Phi,a)$.
 \end{definition}
 
+\TODO{Unique?}
+
 \begin{proposition}
 Given an atom $a$, and a derivation
 \[
@@ -345,11 +351,11 @@ with atomic flow
 }
 \quad,
 \]
-such that all the edges in $\psi$ are mapped to from $a$.
+such that all the edges in $\psi$ are mapped to from $a$, then
 \begin{itemize}
 \item $\ISR(\Phi,a)$ is weakly streamlined with respect to $a$;
 \item for any atom $b$, if $\Phi$ is weakly streamlined with respect to $b$, then $\ISR(\Phi,a)$ is weakly streamlined with respect to $b$;
 \item if $\Phi$ is on simple form with respect to $\pi$ then $\ISR(\Phi,a)$ is on simple form with respect to $\pi$; and
-\item $\ISR(\Phi,a)$ depends at most linearly on the size of $\Phi$.
+\item the size of $\ISR(\Phi,a)$ depends linearly on the size of\/ $\Phi$.
 \end{itemize}
 \end{proposition}
