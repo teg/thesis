@@ -82,6 +82,153 @@ The derivation $\Psi$ obtained in the proof of Propostion~\vref{proposition:Deri
 %======================================
 \section{Global Transformations}\label{section:GlobalTransformations}
 
+\begin{remark}
+To avoid ambiguity in Definitions~\vref{definition:FourBoxes}, \vref{definition:IsolatedSubflowRemoval}, \vref{definition:PathBreaker} and \vref{definition:MultipleIsolatedSubflowsRemoval} we have establish the following convention:
+Let $\boldsymbol\epsilon=\{\epsilon_1,\dots,\epsilon_n\}$, $\boldsymbol\iota=\{\iota_1,\dots,\iota_m\}$, $\boldsymbol{\epsilon'}=\{\epsilon'_1,\dots,\epsilon'_n\}$ and $\boldsymbol{\iota'}=\{\iota_1,\dots,\iota_m\}$. Then, when we write
+\[
+\atomicflow
+{
+(-10, 0)*{\invisiblemark};
+(  0, 6)*{\afvjdm4{\boldsymbol\epsilon}{}};
+(  0, 0)*{\affr{14}8};
+(  0, 0)*{\copy\contrup};
+( -6,-6)*{\afvjdm4{f_1(\boldsymbol\epsilon)}{}};
+(  0,-6)*{\cdots};
+(  6,-6)*{\afvjdm4{}{f_k(\boldsymbol\epsilon)}};
+( 10, 0)*{\invisiblemark};
+}
+\quad\mbox{or}\quad
+\atomicflow
+{
+(-10, 0)*{\invisiblemark};
+(  0,-6)*{\afvjum4{\boldsymbol\iota}{}};
+(  0, 0)*{\affr{14}8};
+(  0, 0)*{\copy\contrdown};
+( -6, 6)*{\afvjum4{f_1(\boldsymbol\iota)}{}};
+(  0, 6)*{\cdots};
+(  6, 6)*{\afvjum4{}{f_k(\boldsymbol\iota)}};
+( 10, 0)*{\invisiblemark};
+}
+\]
+we mean
+\[
+\atomicflow
+{
+(-10, 0)*{\invisiblemark};
+(  0,6)*{\afvjd4{\epsilon_1}{}};
+(  0,0)*{\affr{14}8};
+(  0,0)*{\copy\contrup};
+( -6,-6)*{\afvjd4{f_1(\epsilon_1)}{}};
+(  0,-6)*{\cdots};
+(  6,-6)*{\afvjd4{}{f_k(\epsilon_1)}};
+( 10, 0)*{\invisiblemark};
+}
+\quad\cdots\quad
+\atomicflow
+{
+(-10, 0)*{\invisiblemark};
+(  0,6)*{\afvjd4{\epsilon_n}{}};
+(  0,0)*{\affr{14}8};
+(  0,0)*{\copy\contrup};
+( -6,-6)*{\afvjd4{f_1(\epsilon_n)}{}};
+(  0,-6)*{\cdots};
+(  6,-6)*{\afvjd4{}{f_k(\epsilon_n)}};
+( 10, 0)*{\invisiblemark};
+}
+\quad\mbox{or}\quad
+\atomicflow
+{
+(-10, 0)*{\invisiblemark};
+(  0,-6)*{\afvjd4{\iota_1}{}};
+(  0, 0)*{\affr{14}8};
+(  0, 0)*{\copy\contrdown};
+( -6, 6)*{\afvjd4{f_1(\iota_1)}{}};
+(  0, 6)*{\cdots};
+(  6, 6)*{\afvjd4{}{f_k(\iota_1)}};
+( 10, 0)*{\invisiblemark};
+}
+\quad\cdots\quad
+\atomicflow
+{
+(-10, 0)*{\invisiblemark};
+(  0,-6)*{\afvjd4{\iota_m}{}};
+(  0, 0)*{\affr{14}8};
+(  0, 0)*{\copy\contrdown};
+( -6, 6)*{\afvjd4{f_1(\iota_m)}{}};
+(  0, 6)*{\cdots};
+(  6, 6)*{\afvjd4{}{f_k(\iota_m)}};
+( 10, 0)*{\invisiblemark};
+}
+\quad,
+\]
+respectively. Furthermore, in Definition~\ref{definition:FourBoxes}, when we write
+\[
+\atomicflow
+{
+(-9,0)*{\invisiblemark};
+(-6,0)*{\afvjum8{f_2(\boldsymbol{\epsilon})}{}};
+(-4,4)*{\afaidnw{}{}};
+( 0,0)*{\afacdm{}{}{}{}{g(\boldsymbol{\epsilon'})}{}};
+( 4,4)*{\afaidnw{}{}};
+( 6,0)*{\afvjum8{f_4(\boldsymbol{\epsilon})}{}};
+}
+\quad\mbox{and}\quad
+\atomicflow
+{
+(-9, 0)*{\invisiblemark};
+(-6, 0)*{\afvjdm8{f_3(\boldsymbol{\iota})}{}};
+(-4,-6)*{\afaiunw{}{}};
+( 0, 0)*{\afacum{}{}{}{}{g(\boldsymbol{\iota'})}{}};
+( 4,-6)*{\afaiunw{}{}};
+( 6, 0)*{\afvjdm8{f_4(\boldsymbol{\iota})}{}};
+}\quad,
+\]
+we mean
+\[
+\atomicflow
+{
+(-9,0)*{\invisiblemark};
+(-6,0)*{\afvju8{f_2(\epsilon_1)}{}};
+(-4,4)*{\afaidnw{}{}};
+( 0,0)*{\afacd{}{}{}{}{g(\epsilon_1')}{}};
+( 4,4)*{\afaidnw{}{}};
+( 6,0)*{\afvju8{f_4(\epsilon_1)}{}};
+}
+\quad\cdots\quad
+\atomicflow
+{
+(-9,0)*{\invisiblemark};
+(-6,0)*{\afvju8{f_2(\epsilon_n)}{}};
+(-4,4)*{\afaidnw{}{}};
+( 0,0)*{\afacd{}{}{}{}{g(\epsilon_n')}{}};
+( 4,4)*{\afaidnw{}{}};
+( 6,0)*{\afvju8{f_4(\epsilon_n)}{}};
+}
+\quad\mbox{and}\quad
+\atomicflow
+{
+(-9, 0)*{\invisiblemark};
+(-6, 0)*{\afvjd8{f_3(\iota_1)}{}};
+(-4,-6)*{\afaiunw{}{}};
+( 0, 0)*{\afacu{}{}{}{}{g(\iota_1')}{}};
+( 4,-6)*{\afaiunw{}{}};
+( 6, 0)*{\afvjd8{f_4(\iota_1)}{}};
+}
+\quad\cdots\quad
+\atomicflow
+{
+(-9, 0)*{\invisiblemark};
+(-6, 0)*{\afvjd8{f_3(\iota_m)}{}};
+(-4,-6)*{\afaiunw{}{}};
+( 0, 0)*{\afacu{}{}{}{}{g(\iota_m')}{}};
+( 4,-6)*{\afaiunw{}{}};
+( 6, 0)*{\afvjd8{f_4(\iota_m)}{}};
+}\quad,
+\]
+respectively.
+\end{remark}
+
+
 %======================================
 \subsection{Four Boxes}\label{subsection:FourBoxes}
 
