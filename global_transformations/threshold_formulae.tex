@@ -6,15 +6,9 @@
 
 We present here the main construction of this paper, \emph{i.e.}, a class of derivations $\Gammasf$ that only depend on a given set of atoms and that allow us to normalise any proof containing those atoms. The complexity of the $\Gammasf$ derivations dominates the complexity of the normal proof, and is due to the complexity of certain `threshold formulae', on which the $\Gammasf$ derivations are based. The $\Gammasf$ derivations are constructed in Definition~\vref{definition:ThresholdDerivations}; this directly leads to Theorem~\vref{theorem:ThresholdDerivations}, which states a crucial property of the $\Gammasf$ derivations and which is the main result of this section.
 
-\TODO{Define $\lfloor x\rfloor$.}
-
-\TODO{Define $a^\phi$.}
-
-%In the following, $\lfloor x\rfloor$ denotes the maximum integer $n$ such that $n\le x$.
+In the following, $\lfloor x\rfloor$ denotes the maximum integer $n$ such that $n\le x$.
 
 There are several ways of encoding threshold functions into formulae, and the problem is to find, among them, an encoding that allows us to obtain Theorem~\vref{theorem:ThresholdDerivations}. Efficiently obtaining the property stated in Theorem~\vref{theorem:ThresholdDerivations} crucially depends also on the proof system we adopt.
-
-\TODO{Lemma on substituting into isolated subflows}
 
 Threshold formulae realise boolean threshold functions, which are defined as boolean functions that are true if and only if at least $k$ of $n$ inputs are true (see \cite{Wege:87:The-Comp:vn} for a thorough reference on threshold functions). 
 
@@ -209,12 +203,6 @@ For any $k\ge0$ the size of\/ $\th kn\avec1n$ is $n^{\Ord{\log n}}$.
 \begin{proof}
 It immediately follows from Proposition~\vref{proposition:LargestThresholdFormula} and Lemma~\vref{lemma:SizeThresholdMax}.
 \end{proof}
-
-\subsubsection{Glue derivations}
-
-\TODO{Rename or remove subsubsectoin}
-
-\TODO{Define generic weakening.}
 
 %-------------------------------------------------------------------------------
 \begin{remark}\label{remark:UpsideDownCoweakening}
@@ -653,21 +641,30 @@ The shape of $\Gth kln\avec1n$ can be verified by inspecting Definition~\vref{de
 and $\th0p\avec1p\equiv\ttt$.) General (co)weak\-en\-ing rule instances can be replaced by atomic ones because of Proposition~\vref{TODO}. The size bound on $\Gth kln\avec1n$ follows from Proposition~\vref{TODO} and Theorem~\vref{theorem:SizeThreshold}.
 \end{proof}
 
-\TODO{Define operator for the following definition}
-
 \begin{definition}\label{definition:ThresholdDerivations}
-Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the derivations $\vlsmash{\Gth k{}n\avec1n}$ as follows:
+Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the derivations $\vlsmash{\Gammasf^n_k\avec1n}$ as follows:
 \[
-\Gth k{}n\avec1n\quad=\quad
+\Gammasf^n_k\avec1n\quad=\quad
 \vlderivation
 {
- \vlin{n\cdot\cou}{}
+ \vlde{}{\{\cou\}}
  {
-  \vls
+  \vlsbr
   (
-   \vlder{}{}
+   \vlder{}{\{\ssd\}}
    {
-    \vls[a_1.(\th {k+1}n\avec1n)\{a_1/\fff\}]
+    \vlsbr
+    [
+     \vlder{}{\{\acd\}}
+     {
+      a_1
+     }
+     {
+      \vls[a_1.\cdots.a_1]
+     }
+    \;\;.\;\;
+     (\th {k+1}n\avec1n)\{a_1/\fff\}
+    ]
    }
    {
     \th {k+1}n\avec1n
