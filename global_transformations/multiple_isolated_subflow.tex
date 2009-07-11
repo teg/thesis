@@ -125,18 +125,8 @@ where $l_i$ is the number of atom occurrences in $\gamma_{k,i}$, we define the r
 (-12,-50)*{\copy\contrdown};
 (-12,-56)*{\afvjm4};
 }\quad.
-\].
+\]
 \end{definition}
-
-%------------------------------------------------------
-\begin{remark}\label{remark:FromGammasToThresholds}
-Given the atoms $a_1$, $\dots$, $a_n$ and, for every $0\le k\le N$, the formulae $\gamma_{k,1}$, $\dots$, $\gamma_{k,n}$, with the properties described in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}. It follows from an argument by induction on $k$ that, for every $1\le i\le n$ and every $0\le k\le N$, the formula $\gamma_{k,i}$
-\begin{itemize}
- \item is true if at least $k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true; and
- \item is false if at least $N-k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are false.
-\end{itemize}
-It follows by contradiction that $N\ge n$. Furthermore, if $N=n$, we know that $\gamma_{k,i}$ is true if and only if at least $k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true. This would make $\gamma_{k,i}$ a \emph{threshold formula}, as we will se in Section~\vref{subsubsection:ThresholdFormulae}.
-\end{remark}
 
 \begin{theorem}\label{theorem:SoundMultipleIsolatedSubflowsRemoval}
 Reduction\/ $\to_\frmis$ is sound.
@@ -427,7 +417,7 @@ with atomic flow
 }
 \quad,
 \]
-such that all the edges in $\psi_i$ are mapped to from $a_i$. Consider the derivation
+where, for $1\le i\le n$, $\psi_i$ is the juxtaposition of all the isolated subflows mapped to from occurrences of $a_i$ in $\Phi$. Consider the derivation
 \[
 \Psi'\;=\;
 \vlder{\Phi'}{}
@@ -574,124 +564,43 @@ with atomic flow
 (  2,-18)*{\afaiuex{}{}{}{}{}{}{8}{4}};
 }\quad.
 \]
-We then define $\MISR_n(\Phi,a_1,\dots,a_n)$ to be such that $\Psi'\to_\fris\MISR(\Phi,a_1,\dots,a_n)$, where $\psi_i$ in $\psi'$ is a sublfow of $\psi_i$ in the redex of Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}.
+We then define $\MISR_n(\Phi,a_1,\dots,a_n)$ to be such that $\Psi'\to_\fris\MISR(\Phi,a_1,\dots,a_n)$, where, for $1\le i\le n$, $\psi_i$ in $\psi'$ is a sublfow of $\psi_i$ in the redex of Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}.
 \end{definition}
 
-\begin{proposition}
-Given atoms $a_1$, $\dots$, $a_n$, an $N\ge0$, formulae $\gamma_{i,k}$ and derivations $\Gammasf_k$ as described in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}, and a derivation
-\[
-\Phi\;=\;
-\vlder{\Phi'}{}
-{
- \vlsbr
- [
-  \beta
- \;.\;
-  \vlinf{}{}
-  {
-   \fff
-  }
-  {
-   \vls(a_n^{\psi_n}.\bar a_n)
-  }
- \;.\;\cdots\;.\;
-  \vlinf{}{}
-  {
-   \fff
-  }
-  {
-   \vls(a_n^{\psi_n}.\bar a_n)
-  }
- \;.\;\cdots\;.\;
-  \vlinf{}{}
-  {
-   \fff
-  }
-  {
-   \vls(a_1^{\psi_1}.\bar a_1)
-  }
- \;.\;\cdots\;.\;
-  \vlinf{}{}
-  {
-   \fff
-  }
-  {
-   \vls(a_1^{\psi_1}.\bar a_1)
-  }
- ]
-}
-{
- \vlsbr
- (
-  \vlinf{}{}
-  {
-   \vls[a_1^{\psi_1}.\bar a_1]
-  }
-  {
-   \ttt
-  }
- \;.\;\cdots\;.\;
-  \vlinf{}{}
-  {
-   \vls[a_1^{\psi_1}.\bar a_1]
-  }
-  {
-   \ttt
-  }
- \;.\;
-  \vlinf{}{}
-  {
-   \vls[a_n^{\psi_n}.\bar a_n]
-  }
-  {
-   \ttt
-  }
- \;.\;\cdots\;.\;
-  \vlinf{}{}
-  {
-   \vls[a_n^{\psi_n}.\bar a_n]
-  }
-  {
-   \ttt
-  }
- \;.\;
-  \alpha
- )
-}\quad,
-\]
-with atomic flow
-\[
-\atomicflow{
-(-12,  8)*{\afvjdm8{}{\boldsymbol\epsilon}};
-(  4, 10)*{\afaidmex{}{}{}{}{}{}{20}{4}};
-( -6,  5)*{\afvjm2};
-( -4,  6)*{\cdots};
-( 14,  5)*{\afvjm2};
-(  1,  8)*{\afaidmex{}{}{}{}{}{}{6}{4}};
-( -7,  0)*{\affr{12}{8}};
-( -4,  2)*{\aflabelright{\phi}};
-(  4,  0)*{\affr{6}{8}};
-(  4,  2)*{\aflabelright{\psi_1}};
-(  9,  0)*{\cdots};
-( 14,  0)*{\affr{6}{8}};
-( 14,  2)*{\aflabelright{\psi_n}};
-(  1, -8)*{\afaiumex{}{}{}{}{}{}{6}{4}};
-( -6, -5)*{\afvjm2};
-( -4, -6)*{\cdots};
-( 14, -5)*{\afvjm2};
-(  4,-10)*{\afaiumex{}{}{}{}{}{}{20}{4}};
-(-12, -8)*{\afvjum8{}{\boldsymbol\iota}};
-}
-\quad,
-\]
-such that all the edges in $\psi_i$ are mapped to from $a_i$.
+%------------------------------------------------------------
+\begin{proposition}\label{proposition:MultipleIsolatedSubflowRemover}
+Given the atoms, formulae and derivations described in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}, and the atoms $a_1$, $\dots$, $a_n$, and derivation $\Phi$ described in Definition~\ref{definition:MultipleIsolatedSubflowsRemover},
+\begin{enumerate}
+\item $\MISR_n(\Phi,a_1,\dots,a_n)$ is weakly streamlined with respect to $a$, $\dots$, $a_n$;
+\item for any atom $b$,
 \begin{itemize}
-\item $\MISR(\Phi,a_1,\dots,a_n)$ is weakly streamlined with respect to $a$, $\dots$, $a_n$;
-\item for any atom $b$, if $\Phi$ is weakly streamlined with respect to $b$, then $\MISR(\Phi,a_1,\dots,a_n)$ is weakly streamlined with respect to $b$;
-\item if $\Phi$ is on simple form with respect to $\pi$, then $\MISR(\Phi,a_1,\dots,a_n)$ is on simple form with respect to $\pi$; and
-\item the size of $\MISR(\Phi,a_1,\dots,a_n)$ depends at most linearly on the size of $\Phi$ and quadratically on the size of the largest $\Gammasf_k$.
+\item if $\Phi$ is weakly streamlined with respect to $b$, then $\MISR_n(\Phi,a_1,\dots,a_n)$ is weakly streamlined with respect to $b$, and
+\item if $\Phi$ is on simple form with respect to $b$, then $\MISR_n(\Phi,a_1,\dots,a_n)$ is on simple form with respect to $b$; and
 \end{itemize}
+\item the size of $\MISR_n(\Phi,a_1,\dots,a_n)$ depends linearly on the size of\/ $\Phi$, and at most quadratically on $\max\{\size{\Gammasf_1},\dots,\size{\Gammasf_N}\}$.
+\end{enumerate}
 \end{proposition}
+
+\begin{proof}
+The statements follow by
+\begin{enumerate}
+\item Definition~\vref{definition:DerStreamlined} and Lemma~\vref{lemma:MultipleIsolatedSubflowsRemovalPaths};
+\item Definitions~\ref{definition:DerStreamlined} and \ref{definition:DerSimpleForm}, and Lemma~\ref{lemma:MultipleIsolatedSubflowsRemovalPaths};
+\item Proposition~\vref{proposition:DerivationSubstitution}, since $\max\{\size{\gamma_{0,1}},\dots,\size{\gamma_{N,n}}\}$ is less than or equal to $\max\{\size{\Gammasf_1},\dots,\size{\Gammasf_N}\}$.
+\end{enumerate}
+\end{proof}
+%----------
+
+%------------------------------------------------------
+\begin{remark}\label{remark:FromGammasToThresholds}
+Given the atoms, formulae and derivations described in Definition~\ref{definition:MultipleIsolatedSubflowsRemoval}, it follows from an argument by induction on $k$, that, for every $1\le i\le n$ and every $0\le k\le N$, the formula $\gamma_{k,i}$
+\begin{itemize}
+ \item is true if at least $k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true; and
+ \item is false if at least $N-k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are false.
+\end{itemize}
+It follows by contradiction that $N\ge n$. Furthermore, if $N=n$, we know that $\gamma_{k,i}$ is true if and only if at least $k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true. This would make $\gamma_{k,i}$ a \emph{threshold formula}, as we will se in the next section.
+\end{remark}
+%-----------
 
 %=============================
 \input{global_transformations/threshold_formulae.tex}

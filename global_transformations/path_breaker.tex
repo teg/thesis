@@ -316,7 +316,7 @@ with atomic flow
 }
 \quad,
 \]
-such that $a$ does not appear in an interaction or cut instance in $\Phi'$. Consider the derivation
+such that occurrences of $a$ does not appear in an interaction or cut instance in $\Phi'$. Consider the derivation
 \[
 \Psi'\;=\;
 \vlder{\Phi'}{}
@@ -407,82 +407,25 @@ with atomic flow
 We then define $\PB(\Phi,a)$ to be such that $\Psi'\to_\frpb\PB(\Phi,a)$.
 \end{definition}
 
-\begin{proposition}
-Given an atom $a$, and a derivation
-\[
-\Phi\;=\;
-\vlder{}{}
-{
- \vlsbr
- [
-  \beta
- \;.\;
-  \vlinf{}{}
-  {
-   \fff
-  }
-  {
-   \vls(a^\psi.\bar a)
-  }
- \;.\;\cdots\;.\;
-  \vlinf{}{}
-  {
-   \fff
-  }
-  {
-   \vls(a^\psi.\bar a)
-  }
- ]
-}
-{
- \vlsbr
- (
-  \vlinf{}{}
-  {
-   \vls[a^\psi.\bar a]
-  }
-  {
-   \ttt
-  }
- \;.\;\cdots\;.\;
-  \vlinf{}{}
-  {
-   \vls[a^\psi.\bar a]
-  }
-  {
-   \ttt
-  }
- \;.\;
-  \alpha
- )
-}\quad,
-\]
-with atomic flow
-\[
-\atomicflow
-{
-(-8, 7)*{\afvjdm{6}{\boldsymbol\epsilon}{}};
-( 0, 8)*{\afaidm{}{}{}{}{}{}};
-( 8, 7)*{\afvjdm{6}{}{\boldsymbol{\epsilon'}}};
-(-5, 0)*{\affr{8}{8}};
-(-4, 2)*{\aflabelright\phi};
-%---
-( 5, 0)*{\affr{8}{8}};
-( 6, 2)*{\aflabelright{\psi}};
-( 8,-7)*{\afvjum{6}{}{\boldsymbol{\iota'}}};
-( 0,-8)*{\afaium{}{}{}{}{}{}};
-(-8,-7)*{\afvjum{6}{\boldsymbol\iota}{}};
-}
-\quad,
-\]
-such that $a$ does not appear in an interaction or cut instance in $\Phi'$.
-\begin{itemize}
-\item $\PB(\Phi,a)$ is weakly streamlined with respect to $a$ and with respect to $\bar a$;
-\item for any atom $b$, if $\Phi$ is weakly streamlined with respect to $b$, then $\PB(\Phi,a)$ is weakly streamlined with respect to $b$;
-\item if $\Phi$ is on simple form with respect to $\pi$ then $\PB(\Phi,a)$ is on simple form with respect to $\pi$; and
-\item $\PB(\Phi,a)$ depends at most linearly on the size of $\Phi$.
-\end{itemize}
+%------------------------------------------------------------
+\begin{proposition}\label{proposition:IsolatedSubflowRemover}
+Given an atom $a$, and a derivation $\Phi$ as described in Definition~\ref{definition:DerPathBreaker},
+\begin{enumerate}
+\item $\PB(\Phi,a)$ is weakly streamlined with respect to $a$ and $\bar a$;
+\item for any atom $b$, if $\Phi$ is weakly streamlined with respect to $b$, then $\PB(\Phi,a)$ is weakly streamlined with respect to $b$; and
+\item the size of $\PB(\Phi,a)$ depends linearly on the size of\/ $\Phi$.
+\end{enumerate}
 \end{proposition}
+
+\begin{proof}
+The statements follow by
+\begin{enumerate}
+\item Definition~\vref{definition:DerStreamlined} and Lemma~\vref{lemma:PathBreaker};
+\item Definitions~\ref{definition:DerStreamlined} and Lemma~\ref{lemma:PathBreaker};
+\item Proposition~\vref{proposition:DerivationSubstitution}.
+\end{enumerate}
+\end{proof}
+%--------------
 
 \begin{example}\label{example:PathBreaker}
 Given a derivation $\Phi$ with atomic flow

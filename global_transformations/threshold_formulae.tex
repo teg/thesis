@@ -767,11 +767,25 @@ $\to_\frqmis$ is sound.
 \end{theorem}
 
 \begin{proof}
-
+The result follows by Theorem~\vref{theorem:SoundMultipleIsolatedSubflowsRemoval}, Definition~\vref{definition:ThresholdFormulae} and Theorem~\ref{theorem:ThresholdDerivations}.
 \end{proof}
+%----------
 
-\TODO{Rephrase:}
+%------------------------------------------------------------
+\begin{proposition}\label{proposition:QuasipolynomialMultipleIsolatedSubflowRemover}
+Given the atoms $a_1$, $\dots$, $a_n$, and derivation $\Phi$ described in Definition~\ref{definition:MultipleIsolatedSubflowsRemover},
+\begin{enumerate}
+\item $\QMISR_n(\Phi,a_1,\dots,a_n)$ is weakly streamlined with respect to $a$, $\dots$, $a_n$;
+\item for any atom $b$,
+\begin{itemize}
+\item if $\Phi$ is weakly streamlined with respect to $b$, then $\QMISR_n(\Phi,a_1,\dots,a_n)$ is weakly streamlined with respect to $b$, and
+\item if $\Phi$ is on simple form with respect to $b$, then $\QMISR_n(\Phi,a_1,\dots,a_n)$ is on simple form with respect to $b$; and
+\end{itemize}
+\item the size of $\QMISR_n(\Phi,a_1,\dots,a_n)$ depends linearly on the size of\/ $\Phi$, and quasipolynomially on $n$.
+\end{enumerate}
+\end{proposition}
 
-\begin{theorem}\label{theorem:SizeQuasipolynomialMultipleSubflowRemoval}
-$\to_\frqmis$ is quasipolynomial.
-\end{theorem}
+\begin{proof}
+The statements follow by Proposition~\vref{proposition:MultipleIsolatedSubflowRemover} and Theorem~\vref{theorem:ThresholdDerivations}.
+\end{proof}
+%----------

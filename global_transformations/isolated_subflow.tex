@@ -138,6 +138,7 @@ Since $\psi$ is connected and contains no identity or cut vertices, the mapping 
 \]
 \end{proof}
 
+%-----------------------------------------------------
 \begin{lemma}\label{lemma:IsolatedSubflowRemovalPaths}
 Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\fris\psi$, and given an interaction (resp., cut) vertex $\nu$ in $\psi$, then there is an interaction (resp., cut) vertex $\nu'$ in $\phi$ such that $\nu=f_1(\nu')$ or $\nu=f_2(\nu')$, and
 \begin{itemize}
@@ -301,90 +302,31 @@ with atomic flow
 (-8,-11)*{\afvjum{14}{\boldsymbol\iota}{}};
 }\quad.
 \]
-We then define $\ISR(\Phi,a)$ to be such that $\Psi'\to_\fris\ISR(\Phi,a)$.
+We then define $\ISR(\Phi,a)$ to be such that $\Psi'\to_\fris\ISR(\Phi,a)$, where $\psi$ in $\psi'$ is a sublfow of $\psi$ in the redex of Definition~\vref{definition:IsolatedSubflowRemoval}.
 \end{definition}
 
 \TODO{Unique?}
 
+%------------------------------------------------------------
 \begin{proposition}\label{proposition:IsolatedSubflowRemover}
-Given an atom $a$, and a derivation
-\[
-\Phi\;=\;
-\vlder{}{}
-{
- \vlsbr
- [
-  \beta
- \;.\;
-  \vlinf{}{}
-  {
-   \fff
-  }
-  {
-   \vls(a^\psi.\bar a)
-  }
- \;.\;\cdots\;.\;
-  \vlinf{}{}
-  {
-   \fff
-  }
-  {
-   \vls(a^\psi.\bar a)
-  }
- ]
-}
-{
- \vlsbr
- (
-  \vlinf{}{}
-  {
-   \vls[a^\psi.\bar a]
-  }
-  {
-   \ttt
-  }
- \;.\;\cdots\;.\;
-  \vlinf{}{}
-  {
-   \vls[a^\psi.\bar a]
-  }
-  {
-   \ttt
-  }
- \;.\;
-  \alpha
- )
-}\quad,
-\]
-with atomic flow
-\[
-\atomicflow{
-(-8, 6)*{\afvjdm4{}{\boldsymbol\epsilon}};
-( 1, 8)*{\afaidmex{}{}{}{}{}{}{6}{4}};
-(-5, 0)*{\affr{8}{8}};
-(-1, 2)*{\aflabelleft{\phi}};
-( 4, 0)*{\affr{6}{8}};
-( 7, 2)*{\aflabelleft{\psi}};
-( 1,-8)*{\afaiumex{}{}{}{}{}{}{6}{4}};
-(-8,-6)*{\afvjum4{}{\boldsymbol\iota}};
-}
-\quad,
-\]
-such that all the edges in $\psi$ are mapped to from $a$, then
+Given an atom $a$, and a derivation $\Phi$ as described in Definition~\ref{definition:IsolatedSubflowRemover},
 \begin{enumerate}
 \item $\ISR(\Phi,a)$ is weakly streamlined with respect to $a$;
-\item for any atom $b$, if $\Phi$ is weakly streamlined with respect to $b$, then $\ISR(\Phi,a)$ is weakly streamlined with respect to $b$;
-\item if $\Phi$ is on simple form with respect to $\pi$ then $\ISR(\Phi,a)$ is on simple form with respect to $\pi$; and
+\item for any atom $b$,
+\begin{itemize}
+\item if $\Phi$ is weakly streamlined with respect to $b$, then $\ISR(\Phi,a)$ is weakly streamlined with respect to $b$, and
+\item if $\Phi$ is on simple form with respect to $b$, then $\ISR(\Phi,a)$ is on simple form with respect to $b$; and
+\end{itemize}
 \item the size of $\ISR(\Phi,a)$ depends linearly on the size of\/ $\Phi$.
 \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-The statements follow by Definition~\ref{definition:IsolatedSubflowRemover} and
+The statements follow by
 \begin{enumerate}
-\item contradiction on Definition~\vref{definition:DerStreamlined} and Lemma~\vref{lemma:IsolatedSubflowRemovalPaths};
-\item Definition~\ref{definition:DerStreamlined} and Lemma~\ref{lemma:IsolatedSubflowRemovalPaths};
-\item Definition~\vref{definition:DerSimpleForm} and Lemma~\ref{lemma:IsolatedSubflowRemovalPaths};
+\item Definition~\vref{definition:DerStreamlined} and Lemma~\vref{lemma:IsolatedSubflowRemovalPaths};
+\item Definitions~\ref{definition:DerStreamlined} and \ref{definition:DerSimpleForm}, and Lemma~\ref{lemma:IsolatedSubflowRemovalPaths};
 \item Proposition~\vref{proposition:DerivationSubstitution}.
 \end{enumerate}
 \end{proof}
+%----------
