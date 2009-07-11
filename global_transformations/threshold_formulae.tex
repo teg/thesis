@@ -669,10 +669,21 @@ Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the d
    {
     \th {k+1}n\avec1n
    }
-  \;\;.\;\;
-   \vlder{}{}
+  \;\;.\;\;\cdots\;\;.\;\;
+   \vlder{}{\{\ssd\}}
    {
-    \vls[a_n.(\th {k+1}n\avec1n)\{a_n/\fff\}]
+    \vlsbr
+    [
+     \vlder{}{\{\acd\}}
+     {
+      a_n
+     }
+     {
+      \vls[a_n.\cdots.a_n]
+     }
+    \;\;.\;\;
+     (\th {k+1}n\avec1n)\{a_n/\fff\}
+    ]
    }
    {
     \th {k+1}n\avec1n
@@ -680,24 +691,30 @@ Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the d
   )
  }
  {
-  \vlin{n\cdot\cod}{}
+  \vlde{}{\{\cod\}}
   {
    \th {k+1}n\avec1n
   }
   {
    \vlhy
    {
-    \vls
+    \vlsbr
     [
-     \vlder{}{}
+     \vlder{}{\{\ssu\}}
      {
       \th {k+1}n\avec1n
      }
      {
       \vlsbr
       (
-       a_1
-      .
+       \vlder{}{\acu}
+       {
+        \vls(a_1.\cdots.a_1)
+       }
+       {
+        a_1
+       }
+      \;\;.\;\;
        \vlder{\Gth kin\avec1n}{}
        {
         (\th {k+1}n\avec1n)\{a_1/\ttt\}
@@ -707,16 +724,22 @@ Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the d
        }
       )
      }
-    \;.\;
-     \vlder{}{}
+    \;\;.\;\;\cdots\;\;.\;\;
+     \vlder{}{\{\ssu\}}
      {
       \th {k+1}n\avec1n
      }
      {
       \vlsbr
       (
-       a_n
-      .
+       \vlder{}{\acu}
+       {
+        \vls(a_n.\cdots.a_n)
+       }
+       {
+        a_n
+       }
+      \;\;.\;\;
        \vlder{\Gth knn\avec1n}{}
        {
         (\th {k+1}n\avec1n)\{a_n/\ttt\}
@@ -730,7 +753,7 @@ Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the d
    }
   }
  }
-}
+}\quad.
 \]
 \end{definition}
 
