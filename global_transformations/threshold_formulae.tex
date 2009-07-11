@@ -776,17 +776,25 @@ and\/ $\size{\Gammasf^n_k\avec1n}$ is $n^{\Ord{\log n}}$.
 
 
 \newcommand{\frqmis}{{\mathsf{qmis}}}
+\newcommand{\QMISR}{\mathsf{QMISR}}
 %---------------------------------------
 \begin{definition}\label{definition:QuasipolynomialMultipleSubflowRemoval}
-We define the reduction $\to_\frqmis$ (where $\frqmis$ stands for \emph{quasipolynomial multiple isolated subflows}) as follows,
-Let $\avec 1n$ be any atoms, then, for $1\le k\le n$, instantiate $\to_\frmis$ with
+For every $n\ge0$, we define
 \begin{itemize}
-\item the atomic flow of $\Gamma_k\avec 1n$ for $\gamma_k$, and
-\item one copy of $\psi_i$ for every atom occurrence of $\th kn\avec 1n\{a_i/\fff\}$.
+\item the reduction $\to_\frqmis$ (where $\frqmis$ stands for \emph{quasipolynomial multiple isolated subflows}); and
+\item the \emph{quasipolynomial multiple isolated subflow remover}, $\QMISR_n$,
+\end{itemize}
+as follows: Given atoms $\avec 1n$, instantiate $\to_\frmis$ and $\MISR$ with
+\begin{itemize}
+\item $N=n$;
+\item for $0\le k\le n$ and $1\le i\le n$, $\gamma_{k,i}=(\th kn\avec1n)\{a_i/\fff\}$; and
+\item for $1\le k\le n$, $\Gammasf_k=\Gammasf^n_k\avec1n$.
 \end{itemize}
 \end{definition}
+%---------------
 
-\begin{theorem}\label{theorem:SoundQuasipolynomialMultipleSubflowRemoval}
+%-------------------------------------------------------------------------
+\begin{theorem}\label{theorem:SoundQuasipolynomialMultipleSubflowsRemoval}
 $\to_\frqmis$ is sound.
 \end{theorem}
 
