@@ -228,25 +228,20 @@ $}
 \]
 \end{proof}
 
-\TODO{Find a way to define `evidenced' so this makes sense...}
-
-\begin{proposition}\label{proposition:PathBreak}
-Given atomic flows $\phi$ and $\psi$, such that $\phi\to_\frpb\psi$, then, referring to the atomic flows in Definition~\vref{definition:PathBreaker},
+%-----------------------------------------------------
+\begin{lemma}\label{lemma:PathBreaker}
+Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\frpb\psi$, and given an interaction (resp., cut) vertex $\nu$ in $\psi$, then there is an interaction (resp., cut) vertex $\nu'$ in $\phi$ such that $\nu=f_1(\nu')$, $\nu=f_2(\nu')$ or $\nu=f_3(\nu')$, and
 \begin{itemize}
- \item there is no path from the evidenced interaction vertex to the evidenced cut vertex in $\psi$, and
- \item let $\epsilon$ (resp., $\iota$) refer to a pair of corresponding upper (resp., lower) edges in $\phi$ and in $\psi$, then there is a path from $\epsilon$ to $\iota$ in $\psi$ if and only if there is a path from $\epsilon$ to $\iota$ in $\phi$.
+\item if there is a path from $\nu$ to $\bot$ (resp., $\top$) in $\psi$, then there is a path from $\nu'$ to $\bot$ (resp., $\top$) in $\phi$; and
+\item if there is a cut (resp., interaction) vertex $\hat\nu$ in $\psi$, such that there is a path from $\nu$ to $\hat\nu$ in $\psi$, then there is a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$, such that $\hat\nu=f_1(\hat\nu')$, $\hat\nu=f_2(\hat\nu')$ or $\hat\nu=f_3(\hat\nu')$, and there is a path from $\nu'$ to $\hat\nu'$ in $\phi$.
 \end{itemize}
-\end{proposition}
-
-\TODO{Redo proof.}
+\end{lemma}
 
 \begin{proof}
-\begin{itemize}
-	\item In the atomic flow $\psi$, we have colored all the edges that might be in paths from the evidenced interaction vertex in red, and all the edges that might be in paths to the evidenced cut vertex in green. Since the red and the green paths never overlap, we know there is no path from the interaction to the cut vertex.
-	\item By Proposition~\vref{TODO}, we know that for every path from $\epsilon$ to $\iota$ in $\phi'$ there are three paths from $\epsilon$ to $\iota$ in $\psi'$, and if there is a path from $\epsilon$ to $\iota$ in $\psi'$, it must pass through one of the three subflows isomorphic to $\phi$ (resp., $\psi$) so there is a path from $\epsilon$ to $\iota$ in $\phi$.
-\end{itemize}
+By a case analysis on the atomic flows in Definition~\vref{definition:PathBreaker}.
 \end{proof}
 
+%----------------------------
 \newcommand{\PB}{\mathsf{PB}}
 \begin{definition}\label{definition:DerPathBreaker}
 The \emph{Path Breaker}, $\PB$, is an operator whose arguments are an atom $a$, and a derivation of shape
