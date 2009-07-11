@@ -3,11 +3,16 @@
 \newcommand{\frmis}{{\mathsf{mis}}}
 %---------------------------------------
 \begin{definition}\label{definition:MultipleIsolatedSubflowsRemoval}
-Given $n>0$ distinct atoms $a_1$, $\dots$, $a_n$, an $N>0$, for $0\le k\le N$, a derivation $\Gammasf_k$, and, for $0\le k\le N$, formulae $\gamma_{k,1}$, $\dots$, $\gamma_{k,n}$, such that
+For every $n>0$, given
 \begin{itemize}
- \item $\gamma_{0,1}=\cdots=\gamma_{0,n}=\ttt$;
+\item atoms $a_1$, $\dots$, $a_n$;
+\item an $N>0$;
+\item for $0\le k\le N$, formulae $\gamma_{k,1}$, $\dots$, $\gamma_{k,n}$, such that
+\begin{itemize}
+ \item $\gamma_{0,1}=\cdots=\gamma_{0,n}=\ttt$, and
  \item $\gamma_{N,1}=\cdots=\gamma_{N,n}=\fff$; and
- \item 
+\end{itemize}
+\item for $1\le k\le N$, a derivation
 \[
 \Gammasf_k\quad=\quad
 \vlder{}{\SKS\setminus\{\aid,\aiu\}}
@@ -16,10 +21,10 @@ Given $n>0$ distinct atoms $a_1$, $\dots$, $a_n$, an $N>0$, for $0\le k\le N$, a
 }
 {
  \vls[(a_1.\gamma_{k-1,1}).\cdots.(a_n.\gamma_{k-1,n})]
-}\quad.
+}\quad,
 \]
 \end{itemize}
-Let $\eta_k$ be the atomic flow of\/ $\Gammasf_k$, and let
+let, for $1\le k\le N$, $\eta_k$ be the atomic flow of\/ $\Gammasf_k$, and let
 \[
 \mu_k\;=\;
 \atomicflow
@@ -38,7 +43,7 @@ Let $\eta_k$ be the atomic flow of\/ $\Gammasf_k$, and let
 }
 \quad,
 \]
-where $l_i$ is the number of atom occurrences in $\gamma_{k,i}$, we define the reduction $\to_\frmis$ (where $\frmis$ stands for \emph{multiple isolated subflows}) as follows, for any atomic flow $\phi$ and any connected atomic flows $\psi_1$, $\dots$, $\psi_n$ that do not contain interaction or cut vertices:
+where, for $1\le i\le n$, $l_i$ is the number of atom occurrences in $\gamma_{k,i}$, we define the reduction $\to_\frmis$ (where $\frmis$ stands for \emph{multiple isolated subflows}) as follows, for any atomic flow $\phi$ and any connected atomic flows $\psi_1$, $\dots$, $\psi_n$ that do not contain interaction or cut vertices:
 \[
 \atomicflow{
 (-12,  8)*{\afvjdm8{}{\boldsymbol\epsilon}};
@@ -146,7 +151,7 @@ Since each of $\psi_1$, $\dots$, $\psi_n$ is connected, we can assume that the $
  \vls(\vlinf{}{}{\vls[a_1.\bar a_1^{\psi_1}]}{\ttt}\;.\;\vlinf{}{}{\vls[a_n.\bar a_n^{\psi_n}]}{\ttt}\;.\;\alpha)
 }\quad,
 \]
-for some atoms $a_1$, $\dots$, $a_n$ and formulae $\alpha$ and $\beta$.
+for some atoms $a_1$, $\dots$, $a_n$ (that, without loss of generality, we assume coincide with the atoms given in Definition~\ref{definition:MultipleIsolatedSubflowsRemoval}) and formulae $\alpha$ and $\beta$.
 
 For every $0\le k\le N$, we obtain the derivation $\Phi_k$ from $\Phi'$ as follows:
 \[
