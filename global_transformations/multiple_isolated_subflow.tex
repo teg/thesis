@@ -44,6 +44,9 @@ let, for $1\le k\le N$, $\eta_k$ be the atomic flow of\/ $\Gammasf_k$, and let
 \quad,
 \]
 where, for $1\le i\le n$, $l_i$ is the number of atom occurrences in $\gamma_{k,i}$, we define the reduction $\to_\frmis$ (where $\frmis$ stands for \emph{multiple isolated subflows}) as follows, for any atomic flow $\phi$ and any connected atomic flows $\psi_1$, $\dots$, $\psi_n$ that do not contain interaction or cut vertices:
+
+\TODO{Decide on the direction of the dots}
+
 \[
 \atomicflow{
 (-12,  8)*{\afvjdm8{}{\boldsymbol\epsilon}};
@@ -141,7 +144,7 @@ Reduction\/ $\to_\frmis$ is sound.
 \begin{proof}
 Let $\Phi$ be a derivation with flow $\phi'$, such that $\phi'\to_\frmis\psi'$. We show that there exists a derivation $\Psi$ with flow $\psi'$ and with the same premiss and conclusion as $\Phi$. In the following, we refer to the figures in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}.
 
-Since each of $\psi_1$, $\dots$, $\psi_n$ is connected, we can assume that the $\ai$-decomposed form of $\Phi$ is
+Since each of $\psi_1$, $\dots$, $\psi_n$ is connected, we assume, by Remark~\vref{remark:AlternativeAiDecomposedForm}, that the following derivation is an $\ai$-decomposed form of $\Phi$:
 \[
 \vlder{\Phi'}{}
 {
@@ -315,8 +318,8 @@ We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gammasf_1$, $\dots$, $\Gammasf_N$ to g
 \end{proof}
 
 %-----------------------------------------------------
-\begin{lemma}\label{lemma:IsolatedSubflowsRemovalPaths}
-Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\frmis\psi$, and given an interaction (resp., cut) vertex $\nu$ in $\psi$, then there is an interaction (resp., cut) vertex $\nu'$ in $\phi$ such that, for some $0\le i\le N$, $\nu=f_i(\nu')$, and
+\begin{lemma}\label{lemma:MultipleIsolatedSubflowsRemovalPaths}
+Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\frmis\psi$, and given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$ such that, for some $0\le i\le N$, $\nu=f_i(\nu')$, and
 \begin{itemize}
 \item if there is a path from $\nu$ to $\bot$ (resp., $\top$) in $\psi$, then there is a path from $\nu'$ to $\bot$ (resp., $\top$) in $\phi$; and
 \item if there is a cut (resp., interaction) vertex $\hat\nu$ in $\psi$, such that there is a path from $\nu$ to $\hat\nu$ in $\psi$, then there is a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$, such that, for some $0\le i\le N$, $\hat\nu=f_i(\hat\nu')$ and there is a path from $\nu'$ to $\hat\nu'$ in $\phi$.
@@ -330,7 +333,7 @@ By a case analysis on the atomic flows in Definition~\vref{definition:MultipleIs
 %--------------------------------
 \newcommand{\MISR}{\mathsf{MISR}}
 \begin{definition}\label{definition:MultipleIsolatedSubflowsRemover}
-For every $n\ge0$, given the atoms, formulae and derivations described in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}, the \emph{multiple isolated subflow remover}, $\MISR_n$, is an operator whose arguments are distinct and mutually non-dual atoms $a_1$, $\dots$, $a_n$ (that, without loss of generality, we assume coincide with the atoms given in Definition~\ref{definition:MultipleIsolatedSubflowsRemoval}), and a derivation $\Phi$ that is on simple form with respect to $a_1$, $\dots$, $a_n$, such that
+For every $n\ge0$, given the atoms, formulae and derivations described in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}, the \emph{Multiple Isolated Subflow Remover}, $\MISR_n$, is an operator whose arguments are atoms $a_1$, $\dots$, $a_n$ (that, without loss of generality, we assume coincide with the atoms given in Definition~\ref{definition:MultipleIsolatedSubflowsRemoval}), and a derivation that is on simple form with respect to $a_1$, $\dots$, $a_n$, with $\ai$-decomposed form
 \[
 \Phi\;=\;
 \vlder{\Phi'}{}
@@ -411,7 +414,7 @@ For every $n\ge0$, given the atoms, formulae and derivations described in Defini
  )
 }\quad,
 \]
-with atomic flow
+and atomic flow
 \[
 \atomicflow{
 (-12,  8)*{\afvjdm8{}{\boldsymbol\epsilon}};
@@ -586,11 +589,11 @@ with atomic flow
 We then define $\MISR_n(\Phi,a_1,\dots,a_n)$ to be such that $\Psi'\to_\fris\MISR(\Phi,a_1,\dots,a_n)$, where, for $1\le i\le n$, $\psi_i$ in $\psi'$ is a sublfow of $\psi_i$ in the redex of Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}.
 \end{definition}
 
-%------------------------------------------------------------
+%--------------------------------------------------------------------
 \begin{proposition}\label{proposition:MultipleIsolatedSubflowRemover}
-Given the atoms, formulae and derivations described in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}, and the atoms $a_1$, $\dots$, $a_n$, and derivation $\Phi$ described in Definition~\ref{definition:MultipleIsolatedSubflowsRemover},
+Given the atoms, formulae and derivations described in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}, and atoms $a_1$, $\dots$, $a_n$ and a derivation $\Phi$ as described in Definition~\ref{definition:MultipleIsolatedSubflowsRemover},
 \begin{enumerate}
-\item $\MISR_n(\Phi,a_1,\dots,a_n)$ is weakly streamlined with respect to $a$, $\dots$, $a_n$;
+\item $\MISR_n(\Phi,a_1,\dots,a_n)$ is weakly streamlined with respect to $a_1$, $\dots$, $a_n$;
 \item for any atom $b$,
 \begin{itemize}
 \item if $\Phi$ is weakly streamlined with respect to $b$, then $\MISR_n(\Phi,a_1,\dots,a_n)$ is weakly streamlined with respect to $b$, and
@@ -612,10 +615,10 @@ The statements follow by
 
 %------------------------------------------------------
 \begin{remark}\label{remark:FromGammasToThresholds}
-Given the atoms, formulae and derivations described in Definition~\ref{definition:MultipleIsolatedSubflowsRemoval}, it follows from an argument by induction on $k$, that, for every $1\le i\le n$ and every $0\le k\le N$, the formula $\gamma_{k,i}$
+Given the atoms, formulae and derivations described in Definition~\ref{definition:MultipleIsolatedSubflowsRemoval}, it follows from an argument by induction on $k$, that, for every $1\le i\le n$ and every $0\le k\le N$, the formula $\gamma_{k,i}$ is
 \begin{itemize}
- \item is true if at least $k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true; and
- \item is false if at least $N-k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are false.
+ \item true if at least $k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true; and
+ \item false if at least $N-k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are false.
 \end{itemize}
 It follows by contradiction that $N\ge n$. Furthermore, if $N=n$, we know that $\gamma_{k,i}$ is true if and only if at least $k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true. This would make $\gamma_{k,i}$ a \emph{threshold formula}, as we will se in the next section.
 \end{remark}

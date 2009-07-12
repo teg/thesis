@@ -1,7 +1,6 @@
-\TODO{Throughout: use `isolated subflow' and define it somewhere else.}
-
-\TODO{Changes:
+\TODO{Alessio: I made the following changes based on your comments
 \begin{itemize}
+\item mirrored the subflows in the contractum of Definition~\ref{definition:IsolatedSublfowRemoval} (now the numbering reads left-to-right, top-to-bottom);
 \item changed $\bar a$ into $a$ in the proof of Theorem~\vref{theorem:SoundIsolatedSubflowRemoval};
 \item added restriction to $\psi$ in Definition~\ref{definition:IsolatedSubflowRemoval} and explained it (and why we don't need it) in Remark~\ref{remark:IsolatedSubflowRemovalRestriction};
 \item required $\Phi$ to be in simple form with respect to $a$ in Definition~\vref{definition:IsolatedSublfowRemover}, in order for case 1 of Proposition~\vref{proposition:IsolatedSubflowRemover} to be true.
@@ -29,15 +28,15 @@ We define the reduction $\to_\fris$ (where $\fris$ stands for \emph{isolated sub
 \quad\to_\fris\quad
 \atomicflow{
 ( 0, 16.5)*{\afacumexsq{f_2(\boldsymbol\epsilon)}{}{}{f_1(\boldsymbol\epsilon)}{\boldsymbol\epsilon}{}{12}{4}};
-(-6,  4  )*{\afvjm{12}};
+( 6,  4  )*{\afvjm{12}};
 ( 0, 14  )*{\afawd{}{}{}{}};
-( 3,  6  )*{\affr{8}{8}};
-( 2,  8  )*{\aflabelright{f_1(\phi)}};
+(-3,  6  )*{\affr{8}{8}};
+( 1,  8  )*{\aflabelleft{f_1(\phi)}};
 ( 0,  0  )*{\afvj4};
-(-3, -6  )*{\affr{8}{8}};
-(-4, -4  )*{\aflabelright{f_2(\phi)}};
+( 3, -6  )*{\affr{8}{8}};
+( 7, -4  )*{\aflabelleft{f_2(\phi)}};
 ( 0,-14  )*{\afawu{}{}{}{}};
-( 6, -4  )*{\afvjm{12}};
+(-6, -4  )*{\afvjm{12}};
 ( 0,-16  )*{\afacdmexsq{f_2(\boldsymbol\iota)}{}{}{f_1(\boldsymbol\iota)}{\boldsymbol\iota}{}{12}{4}};
 }\quad.
 \]
@@ -140,7 +139,7 @@ Since $\psi$ is connected and contains no identity or cut vertices, the mapping 
 
 %-----------------------------------------------------
 \begin{lemma}\label{lemma:IsolatedSubflowRemovalPaths}
-Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\fris\psi$, and given an interaction (resp., cut) vertex $\nu$ in $\psi$, then there is an interaction (resp., cut) vertex $\nu'$ in $\phi$ such that $\nu=f_1(\nu')$ or $\nu=f_2(\nu')$, and
+Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\fris\psi$, and given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$ such that $\nu=f_1(\nu')$ or $\nu=f_2(\nu')$, and
 \begin{itemize}
 \item if there is a path from $\nu$ to $\bot$ (resp., $\top$) in $\psi$, then there is a path from $\nu'$ to $\bot$ (resp., $\top$) in $\phi$; and
 \item if there is a cut (resp., interaction) vertex $\hat\nu$ in $\psi$, such that there is a path from $\nu$ to $\hat\nu$ in $\psi$, then there is a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$, such that $\hat\nu=f_1(\hat\nu')$ or $\hat\nu=f_2(\hat\nu')$ and there is a path from $\nu'$ to $\hat\nu'$ in $\phi$.
@@ -153,7 +152,7 @@ By a case analysis on the atomic flows in Definition~\vref{definition:IsolatedSu
 
 \newcommand{\ISR}{\mathsf{ISR}}
 \begin{definition}\label{definition:IsolatedSubflowRemover}
-The \emph{isolated subflow remover}, $\ISR$, is an operator whose arguments are an atom $a$, and a derivation $\Phi$ that is on simple form with respect to $a$, such that
+The \emph{Isolated Subflow Remover}, $\ISR$, is an operator whose arguments are an atom $a$, and a derivation that is on simple form with respect to $a$, with $\ai$ decomposed form
 \[
 \Phi\;=\;
 \vlder{\Phi'}{}
@@ -202,7 +201,7 @@ The \emph{isolated subflow remover}, $\ISR$, is an operator whose arguments are 
  )
 }\quad,
 \]
-with atomic flow
+and atomic flow
 \[
 \atomicflow{
 (-8, 6)*{\afvjdm4{\boldsymbol\epsilon}{}};
@@ -317,7 +316,7 @@ Given an atom $a$, and a derivation $\Phi$ as described in Definition~\ref{defin
 \item if $\Phi$ is weakly streamlined with respect to $b$, then $\ISR(\Phi,a)$ is weakly streamlined with respect to $b$, and
 \item if $\Phi$ is on simple form with respect to $b$, then $\ISR(\Phi,a)$ is on simple form with respect to $b$; and
 \end{itemize}
-\item the size of $\ISR(\Phi,a)$ depends linearly on the size of\/ $\Phi$.
+\item the size of\/ $\ISR(\Phi,a)$ depends linearly on the size of\/ $\Phi$.
 \end{enumerate}
 \end{proposition}
 
@@ -326,7 +325,9 @@ The statements follow by
 \begin{enumerate}
 \item Definition~\vref{definition:DerStreamlined} and Lemma~\vref{lemma:IsolatedSubflowRemovalPaths};
 \item Definitions~\ref{definition:DerStreamlined} and \ref{definition:DerSimpleForm}, and Lemma~\ref{lemma:IsolatedSubflowRemovalPaths};
-\item Proposition~\vref{proposition:DerivationSubstitution}.
+\item Proposition~\vref{proposition:DerivationSubstitution}, since the formulae we substitute with in the proof of Theorem~\vref{theorem:SoundIsolatedSubflowRemoval} have size 1.
 \end{enumerate}
 \end{proof}
 %----------
+
+\TODO{Copy example from AF1.}

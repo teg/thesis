@@ -1,5 +1,3 @@
-
-
 \subsubsection{Threshold Formulae}\label{subsubsection:ThresholdFormulae}
 
 \TODO{Change this introduction}
@@ -38,9 +36,7 @@ $\th kn\avec1n\equiv\bigvee_{\begin{subarray}{l}i+j=k      \\
 
 See, in Figure~\vref{figure:ThresholdFormulae}, some examples of threshold formulae.
 
-\TODO{Check if this still holds, if it does, find a new explanation:}
-
-The only reason why we require atoms to be distinct in threshold formulae is to avoid certain technical problems with substitutions in the definition of cut-free form, later on. However, there is no substantial difficulty in relaxing this definition to any set of atoms.
+The only reason why we require atoms to be distinct in threshold formulae is to avoid certain technical problems with substitutions in Definitions~\vref{definition:AuxillaryThresholdDerivation} and \vref{definition:ThresholdDerivations}. However, there is no substantial difficulty in relaxing this definition to any set of atoms.
 
 %-------------------------------------------------------------------------------
 \begin{figure}
@@ -135,19 +131,19 @@ The only reason why we require atoms to be distinct in threshold formulae is to 
 
 The formulae for threshold functions adopted in \cite{AtseGalePudl:02:Monotone:yu} correspond, for each choice of $k$ and $n$, to $\bigvee_{i\ge k}\th in\avec1n$. We presume that \cite{AtseGalePudl:02:Monotone:yu} employs these more complicated formulae because the formalism adopted there, the sequent calculus, is less flexible than deep inference, requiring more information in threshold formulae in order to construct suitable derivations.
 
-\TODO{Remove?}
-
-%-------------------------------------------------------------------------------
-\begin{remark}
-For $n>0$, we have $\th1n\avec1n=\vls[a_1.\vldots.a_n]$ and $\th nn\avec1n=\vls(a_1.\vldots.a_n)$.
-\end{remark}
-
-
-\TODO{Read again:}
-%-------------------------------------------------------------------------------
-\begin{remark}\label{remark:ThersholdSubstitution}
-Given a threshold formula $\th kn\avec1n$ and an atom $a_i$, both $\th kn\avec1n\{a_i/\fff\}$ and $\th kn\avec 1n\{a_i/\ttt\}$ are threshold formula as well. In particular, $\th kn\avec1n\{a_i/\fff\}$ (resp., $\th kn\avec 1n\{a_i/\ttt\}$) is true if and only if at least $k$ (resp., $k-1$) of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true.
-\end{remark}
+% \TODO{Remove?}
+% 
+% %-------------------------------------------------------------------------------
+% \begin{remark}
+% For $n>0$, we have $\th1n\avec1n=\vls[a_1.\vldots.a_n]$ and $\th nn\avec1n=\vls(a_1.\vldots.a_n)$.
+% \end{remark}
+% 
+% 
+% \TODO{Read again:}
+% %-------------------------------------------------------------------------------
+% \begin{remark}\label{remark:ThersholdSubstitution}
+% Given a threshold formula $\th kn\avec1n$ and an atom $a_i$, both $\th kn\avec1n\{a_i/\fff\}$ and $\th kn\avec 1n\{a_i/\ttt\}$ are threshold formula as well. In particular, $\th kn\avec1n\{a_i/\fff\}$ (resp., $\th kn\avec 1n\{a_i/\ttt\}$) is true if and only if at least $k$ (resp., $k-1$) of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true.
+% \end{remark}
 
 The size of the threshold formulae dominates the cost of the normalisation procedure, so, we evaluate their size. We leave as an exercise the proof of the following proposition.
 
@@ -638,7 +634,7 @@ The shape of $\Gth kln\avec1n$ can be verified by inspecting Definition~\vref{de
                             \end{subarray}}
                    \vlsbr(\th ip\avec1p.\th jq\avec{p+1}n)
 \]
-and $\th0p\avec1p\equiv\ttt$.) General (co)weak\-en\-ing rule instances can be replaced by atomic ones because of Proposition~\vref{TODO}. The size bound on $\Gth kln\avec1n$ follows from Proposition~\vref{TODO} and Theorem~\vref{theorem:SizeThreshold}.
+and $\th0p\avec1p\equiv\ttt$.) General (co)weak\-en\-ing rule instances can be replaced by atomic ones because of Lemma~\vref{lemma:GenericWeakening}. The size bound on $\Gth kln\avec1n$ follows from Proposition~\vref{proposition:DerivationSubstitution} and Theorem~\vref{theorem:SizeThreshold}.
 \end{proof}
 
 \begin{definition}\label{definition:ThresholdDerivations}
@@ -805,7 +801,7 @@ The result follows by Theorem~\vref{theorem:SoundMultipleIsolatedSubflowsRemoval
 
 %------------------------------------------------------------
 \begin{proposition}\label{proposition:QuasipolynomialMultipleIsolatedSubflowRemover}
-Given the atoms $a_1$, $\dots$, $a_n$, and derivation $\Phi$ described in Definition~\ref{definition:MultipleIsolatedSubflowsRemover},
+Given atoms $a_1$, $\dots$, $a_n$, and a derivation $\Phi$ as described in Definition~\ref{definition:MultipleIsolatedSubflowsRemover},
 \begin{enumerate}
 \item $\QMISR_n(\Phi,a_1,\dots,a_n)$ is weakly streamlined with respect to $a$, $\dots$, $a_n$;
 \item for any atom $b$,

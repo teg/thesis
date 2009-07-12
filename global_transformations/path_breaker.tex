@@ -123,7 +123,7 @@ Reduction $\to_\frpb$ is sound.
 \begin{proof}
 Let $\Phi$ be a derivation with flow $\phi'$, such that $\phi'\to_\frpb\psi'$. We show that there exists a derivation $\Psi$ with flow $\psi'$ and with the same premiss and conclusion as $\Phi$. In the following, we refer to the figure in Definition~\vref{definition:PathBreaker}.
 
-Since the evidenced interaction and cut vertices belong to the same connected component, we assume, using Remark~\vref{remark:AlternativeAiDecomposedForm}, that the following derivation is an $\ai$-decomposed form of $\Phi$:
+Since the evidenced interaction and cut vertices belong to the same connected component, we assume, by Remark~\vref{remark:AlternativeAiDecomposedForm}, that the following derivation is an $\ai$-decomposed form of $\Phi$:
 \[
 \vlder{\Phi'}{}
 {
@@ -230,7 +230,7 @@ $}
 
 %-----------------------------------------------------
 \begin{lemma}\label{lemma:PathBreaker}
-Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\frpb\psi$, and given an interaction (resp., cut) vertex $\nu$ in $\psi$, then there is an interaction (resp., cut) vertex $\nu'$ in $\phi$ such that $\nu=f_1(\nu')$, $\nu=f_2(\nu')$ or $\nu=f_3(\nu')$, and
+Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\frpb\psi$, and given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$ such that $\nu=f_1(\nu')$, $\nu=f_2(\nu')$ or $\nu=f_3(\nu')$, and
 \begin{itemize}
 \item if there is a path from $\nu$ to $\bot$ (resp., $\top$) in $\psi$, then there is a path from $\nu'$ to $\bot$ (resp., $\top$) in $\phi$; and
 \item if there is a cut (resp., interaction) vertex $\hat\nu$ in $\psi$, such that there is a path from $\nu$ to $\hat\nu$ in $\psi$, then there is a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$, such that $\hat\nu=f_1(\hat\nu')$, $\hat\nu=f_2(\hat\nu')$ or $\hat\nu=f_3(\hat\nu')$, and there is a path from $\nu'$ to $\hat\nu'$ in $\phi$.
@@ -244,7 +244,7 @@ By a case analysis on the atomic flows in Definition~\vref{definition:PathBreake
 %----------------------------
 \newcommand{\PB}{\mathsf{PB}}
 \begin{definition}\label{definition:DerPathBreaker}
-The \emph{Path Breaker}, $\PB$, is an operator whose arguments are an atom $a$, and a derivation of shape
+The \emph{Path Breaker}, $\PB$, is an operator whose arguments are an atom $a$, and a derivation with $\ai$-decomposed form 
 \[
 \Phi\;=\;
 \vlder{\Phi'}{}
@@ -293,7 +293,7 @@ The \emph{Path Breaker}, $\PB$, is an operator whose arguments are an atom $a$, 
  )
 }\quad,
 \]
-with atomic flow
+and atomic flow
 \[
 \atomicflow
 {
@@ -311,7 +311,7 @@ with atomic flow
 }
 \quad,
 \]
-such that occurrences of $a$ does not appear in an interaction or cut instance in $\Phi'$. Consider the derivation
+such that occurrences of $a$ does not appear in an interaction or cut instance in $\Phi'$. Consider the derivationF
 \[
 \Psi'\;=\;
 \vlder{\Phi'}{}
@@ -399,7 +399,7 @@ with atomic flow
 (11,-11)*{\afvjum{14}{}{\boldsymbol{\iota'}}};
 }\quad.
 \]
-We then define $\PB(\Phi,a)$ to be such that $\Psi'\to_\frpb\PB(\Phi,a)$.
+We then define $\PB(\Phi,a)$ to be such that $\Psi'\to_\frpb\PB(\Phi,a)$, where $\phi$ (resp., $\psi$) in $\psi'$ is a subflow of $\psi$ (resp., $\phi$) in the redex of Definition~\vref{definition:PathBreaker}.
 \end{definition}
 
 %------------------------------------------------------------
@@ -423,98 +423,73 @@ The statements follow by
 %--------------
 
 \begin{example}\label{example:PathBreaker}
-Given a derivation $\Phi$ with atomic flow
+Given a derivation $\Phi$ where the atoms $a_1$ and $a_2$ occur, such that the atomic flow associated with $\Phi$ is
 \[
-\phi\;\;=\;\;\atomicflow
+\atomicflow
 {
-(-13,0)*{\affr{22}{20}};
-(-5,8)*{\aflabelright{\phi_1}};
-%
-(-20, 9)*{\afvjm{10}};
-(-13, 8)*{\afaid{}{}{}{}{}{}};
-( -6, 9)*{\afvjm{10}};
-(-18, 0)*{\affr{8}{8}};
-(-17, 2)*{\aflabelright{\phi'_1}};
-( -8, 0)*{\affr{8}{8}};
-( -7, 2)*{\aflabelright{\phi''_1}};
-( -6,-9)*{\afvjm{10}};
-(-13,-8)*{\afaiu{}{}{}{}{}{}};
-(-20,-9)*{\afvjm{10}};
-%------------
-(13,0)*{\affr{22}{20}};
-(21,8)*{\aflabelright{\phi_2}};
-%
-(20, 9)*{\afvjm{10}};
-(13, 8)*{\afaid{}{}{}{}{}{}};
-( 6, 9)*{\afvjm{10}};
-( 8, 0)*{\affr{8}{8}};
-( 9, 2)*{\aflabelright{\phi'_2}};
-(18, 0)*{\affr{8}{8}};
-(19, 2)*{\aflabelright{\phi''_2}};
-( 6,-9)*{\afvjm{10}};
-(13,-8)*{\afaiu{}{}{}{}{}{}};
-(20,-9)*{\afvjm{10}};
+(-2,8)*{\afaid{}{}{}{}{}{}};
+(4,6)*{\afvjm4};
+(0,0)*{\affr{10}8};
+(2,2)*{\aflabelright{\phi_1}};
+(-4,-6)*{\afvjm4};
+(2,-8)*{\afaiu{}{}{}{}{}{}};
 }\qquad
 \atomicflow
 {
-(0,9)*{\afvjm{10}};
+(-2,8)*{\afaid{}{}{}{}{}{}};
+(4,6)*{\afvjm4};
+(0,0)*{\affr{10}8};
+(2,2)*{\aflabelright{\phi_2}};
+(-4,-6)*{\afvjm4};
+(2,-8)*{\afaiu{}{}{}{}{}{}};
+}\qquad
+\atomicflow
+{
+(0,6)*{\afvjm4};
 (0,0)*{\affr88};
 (2,2)*{\aflabelright{\psi}};
-(0,-9)*{\afvjm{10}};
+(0,-6)*{\afvjm4};
 }\quad,
 \]
-where occurrences of $a_1$ are mapped to all the edges in $\phi'_1$, occurrences of $\bar a_1$ are mapped to all the edges in $\phi''_1$, occurrences of $a_2$ are mapped to all the edges in $\phi'_2$, and occurrences of $\bar a_2$ are mapped to all the edges in $\phi''_2$; the atomic flow of $\PB(\PB(\Phi,a_1),a_2)$ is
+where all the edges in $\phi_1$ are mapped to from $a_1$ and all the edges in $\phi_2$ are mapped to from $a_2$, and there are no edges in $\psi$ that are mapped to from $a_1$ or $a_2$, then the atomic flow associated with $\PB(\Phi,a_1),a_2))$ is
 \[
 \atomicflow
 {
 %cocontraction - top
-(12,43.5)*{\afvjm{3}};
-(12,38)*{\affr{34}8};
-(12,38)*{\copy\contrup};
-(-18,46)*{\afaidex{}{}{}{}{}{}31};
-(-24,38)*{\affr{10}8};
-(-24,38)*{\copy\contrup};
-(-12,38)*{\affr{10}8};
-(-12,38)*{\copy\contrup};
+(4,37.5)*{\afvjm{3}};
+(4,32)*{\affr{50}8};
+(4,32)*{\copy\contrup};
 %contraction - bot
-(-12,-43.5)*{\afvjm{3}};
-(-12,-38)*{\affr{34}8};
-(-12,-38)*{\copy\contrdown};
-(18,-46)*{\afaiuex{}{}{}{}{}{}31};
-(24,-38)*{\affr{10}8};
-(24,-38)*{\copy\contrdown};
-(12,-38)*{\affr{10}8};
-(12,-38)*{\copy\contrdown};
+(-4,-32)*{\affr{50}8};
+(-4,-32)*{\copy\contrdown};
+(-4,-37.5)*{\afvjm{3}};
 %---------------------
-(4,-20)="D";
-(0,-10)="Dhalf";
+(4,-18)="D";
+(0,-9)="Dhalf";
 %----------------
 %%first
 (-20,0)="B";
 % cocontractions
 "B"-"D"-"D"-(-12,7)="A";
-"A"+(4,-4)*{\afcjrm{16}{10}};
-"A"+(8,-4)*{\afcjrm{16}{10}};
-"A"+(12,-4)*{\afcjrm{16}{10}};
-"A"+"Dhalf"+"Dhalf"+(4,-9)*{\afvjm{40}};
-"A"+"Dhalf"+(0,-9)*{\afvjm{20}};
-"A"+(-12,-4)*{\afvj{10}};
-"A"+(-4,-4)*{\afcjr{8}{10}};
+%left
+"A"+"Dhalf"+"Dhalf"+(4,-4)*{\afvjm{42}};
+"A"+"Dhalf"+(0,-4)*{\afvjm{24}};
+"A"+(-4,-4)*{\afvjm6};
 % contractions
 "B"+"D"+"D"+(-12,7)="A";
-"A"+(4,4)*{\afvjm{10}};
-"A"+(0,4)-"Dhalf"*{\afvjm{30}};
-"A"+(-4,4)-"Dhalf"-"Dhalf"*{\afvjm{50}};
-"A"-(-20,-4)*{\afcjl{24}{10}};
-"A"-(-28,-4)*{\afcjl{32}{10}};
+%right
+"A"+(4,4)*{\afvjm6};
+"A"+(0,4)-"Dhalf"*{\afvjm{24}};
+"A"+(-4,4)-"Dhalf"-"Dhalf"*{\afvjm{42}};
 %---
 % top boxes
 "B"-"D"="A";
+"A"+(-2, 8)*{\afaid{}{}{}{}{}{}};
 "A"+( 0,-8)*{\afawu{}{}{}{}{}};
 "A"+( 0, 0)*{\affr{10}{8}};
 "A"+( 2, 2)*{\aflabelright{\phi_1}};
 % join one
-"A"+(4,-10)*{\afvjcol{12}{Red}};
+"A"+(4,-9)*{\afvjcol{10}{Red}};
 % middle boxes
 "B"="A";
 "A"+(-4, 8)*{\afawd{}{}{}{}{}};
@@ -522,9 +497,10 @@ where occurrences of $a_1$ are mapped to all the edges in $\phi'_1$, occurrences
 "A"+( 0, 0)*{\affr{10}{8}};
 "A"+( 2, 2)*{\aflabelright{\phi_1}};
 % join two
-"A"+(0,-10)*{\afvjcol{12}{Red}};
+"A"+(0,-9)*{\afvjcol{10}{Red}};
 % bottom boxes
 "B"+"D"="A";
+"A"+(2,-8)*{\afaiu{}{}{}{}{}{}};
 "A"+(0, 8)*{\afawd{}{}{}{}{}};
 "A"+(0, 0)*{\affr{10}{8}};
 "A"+( 2, 2)*{\aflabelright{\phi_1}};
@@ -533,30 +509,25 @@ where occurrences of $a_1$ are mapped to all the edges in $\phi'_1$, occurrences
 (0,0)="B";
 % cocontractions
 "B"-"D"-"D"-(-12,7)="A";
-"A"+(0,-4)*{\afcjrm8{10}};
-"A"+(4,-4)*{\afcjrm8{10}};
-"A"+(8,-4)*{\afcjrm8{10}};
-"A"+"Dhalf"+"Dhalf"+(4,-9)*{\afvjm{40}};
-"A"+"Dhalf"+(0,-9)*{\afvjm{20}};
-"A"+(-20,-4)*{\afcjl{16}{10}};
-"A"+(-12,-4)*{\afcjl{8}{10}};
+%left
+"A"+"Dhalf"+"Dhalf"+(4,-4)*{\afvjm{42}};
+"A"+"Dhalf"+(0,-4)*{\afvjm{24}};
+"A"+(-4,-4)*{\afvjm6};
 % contractions
 "B"+"D"+"D"+(-12,7)="A";
-"A"-(0,-4)*{\afcjrm8{10}};
-"A"-(4,-4)*{\afcjrm8{10}};
-"A"-(8,-4)*{\afcjrm8{10}};
-"A"-"Dhalf"-"Dhalf"-(4,-9)*{\afvjm{40}};
-"A"-"Dhalf"-(0,-9)*{\afvjm{20}};
-"A"-(-20,-4)*{\afcjl{16}{10}};
-"A"-(-12,-4)*{\afcjl{8}{10}};
+%right
+"A"+(4,4)*{\afvjm6};
+"A"+(0,4)-"Dhalf"*{\afvjm{24}};
+"A"+(-4,4)-"Dhalf"-"Dhalf"*{\afvjm{42}};
 %---
 % top boxes
 "B"-"D"="A";
+"A"+(-2, 8)*{\afaid{}{}{}{}{}{}};
 "A"+( 0,-8)*{\afawu{}{}{}{}{}};
 "A"+( 0, 0)*{\affr{10}{8}};
 "A"+( 2, 2)*{\aflabelright{\phi_1}};
 % join one
-"A"+(4,-10)*{\afvjcol{12}{Red}};
+"A"+(4,-9)*{\afvjcol{10}{Red}};
 % middle boxes
 "B"="A";
 "A"+(-4, 8)*{\afawd{}{}{}{}{}};
@@ -564,9 +535,10 @@ where occurrences of $a_1$ are mapped to all the edges in $\phi'_1$, occurrences
 "A"+( 0, 0)*{\affr{10}{8}};
 "A"+( 2, 2)*{\aflabelright{\phi_1}};
 % join two
-"A"+(0,-10)*{\afvjcol{12}{Red}};
+"A"+(0,-9)*{\afvjcol{10}{Red}};
 % bottom boxes
 "B"+"D"="A";
+"A"+(2,-8)*{\afaiu{}{}{}{}{}{}};
 "A"+(0, 8)*{\afawd{}{}{}{}{}};
 "A"+(0, 0)*{\affr{10}{8}};
 "A"+( 2, 2)*{\aflabelright{\phi_1}};
@@ -575,28 +547,25 @@ where occurrences of $a_1$ are mapped to all the edges in $\phi'_1$, occurrences
 (20,0)="B";
 % cocontractions
 "B"-"D"-"D"-(-12,7)="A";
-"A"+"Dhalf"+"Dhalf"+(4,-4)*{\afvjm{50}};
-"A"+"Dhalf"+(0,-4)*{\afvjm{30}};
-"A"+(-4,-4)*{\afvjm{10}};
-"A"+(-20,-4)*{\afcjl{24}{10}};
-"A"+(-28,-4)*{\afcjl{32}{10}};
+%left
+"A"+"Dhalf"+"Dhalf"+(4,-4)*{\afvjm{42}};
+"A"+"Dhalf"+(0,-4)*{\afvjm{24}};
+"A"+(-4,-4)*{\afvjm6};
 % contractions
 "B"+"D"+"D"+(-12,7)="A";
-"A"-(4,-4)*{\afcjrm{16}{10}};
-"A"-(8,-4)*{\afcjrm{16}{10}};
-"A"-(12,-4)*{\afcjrm{16}{10}};
-"A"-"Dhalf"-"Dhalf"-(4,-9)*{\afvjm{40}};
-"A"-"Dhalf"-(0,-9)*{\afvjm{20}};
-"A"-(-12,-4)*{\afvj{10}};
-"A"-(-4,-4)*{\afcjr{8}{10}};
+%right
+"A"+(4,4)*{\afvjm6};
+"A"+(0,4)-"Dhalf"*{\afvjm{24}};
+"A"+(-4,4)-"Dhalf"-"Dhalf"*{\afvjm{42}};
 %---
 % top boxes
 "B"-"D"="A";
+"A"+(-2, 8)*{\afaid{}{}{}{}{}{}};
 "A"+( 0,-8)*{\afawu{}{}{}{}{}};
 "A"+( 0, 0)*{\affr{10}{8}};
 "A"+( 2, 2)*{\aflabelright{\phi_1}};
 % join one
-"A"+(4,-10)*{\afvjcol{12}{Red}};
+"A"+(4,-9)*{\afvjcol{10}{Red}};
 % middle boxes
 "B"="A";
 "A"+(-4, 8)*{\afawd{}{}{}{}{}};
@@ -604,9 +573,10 @@ where occurrences of $a_1$ are mapped to all the edges in $\phi'_1$, occurrences
 "A"+( 0, 0)*{\affr{10}{8}};
 "A"+( 2, 2)*{\aflabelright{\phi_1}};
 % join two
-"A"+(0,-10)*{\afvjcol{12}{Red}};
+"A"+(0,-9)*{\afvjcol{10}{Red}};
 % bottom boxes
 "B"+"D"="A";
+"A"+(2,-8)*{\afaiu{}{}{}{}{}{}};
 "A"+(0, 8)*{\afawd{}{}{}{}{}};
 "A"+(0, 0)*{\affr{10}{8}};
 "A"+( 2, 2)*{\aflabelright{\phi_1}};
@@ -615,19 +585,19 @@ where occurrences of $a_1$ are mapped to all the edges in $\phi'_1$, occurrences
 \[
 \atomicflow
 {
-(12,-52)="D";
+(12,-50)="D";
 % cocontractions
 (18,-11)="A";
 %
 "A"+(6,5.5)*{\afvjm3};
 "A"+(6,0)*{\affr{34}8};
 "A"+(6,0)*{\copy\contrup};
-"A"+(2,-30)*{\afvjm{52}};
-"A"+(6,-30)*{\afvjm{52}};
-"A"+(10,-34)*{\afvjm{60}};
-"A"+(14,-56)*{\afvjm{104}};
-"A"+(18,-56)*{\afvjm{104}};
-"A"+(22,-60)*{\afvjm{112}};
+"A"+(2,-29)*{\afvjm{50}};
+"A"+(6,-29)*{\afvjm{50}};
+"A"+(10,-33)*{\afvjm{58}};
+"A"+(14,-54)*{\afvjm{100}};
+"A"+(18,-54)*{\afvjm{100}};
+"A"+(22,-58)*{\afvjm{108}};
 % === BOX ONE ===
 (0,-27)="A";
 %-
@@ -674,7 +644,7 @@ where occurrences of $a_1$ are mapped to all the edges in $\phi'_1$, occurrences
 "A"+( 12,-16)*{\copy\contrdown};
 %---
 "A"+(0,-24)*{\afawu{}{}{}{}};
-"A"+(12,-26)*{\afvjcol{12}{Red}};
+"A"+(12,-25)*{\afvjcol{10}{Red}};
 % === BOX TWO ===
 "A"+"D"="A";
 %-
@@ -720,7 +690,7 @@ where occurrences of $a_1$ are mapped to all the edges in $\phi'_1$, occurrences
 "A"+( 12,-16)*{\copy\contrdown};
 %---
 "A"+(12,-24)*{\afawu{}{}{}{}};
-"A"+(0,-26)*{\afvjcol{12}{Red}};
+"A"+(0,-25)*{\afvjcol{10}{Red}};
 % === BOX THREE ===
 "A"+"D"="A";
 %-
@@ -767,14 +737,14 @@ where occurrences of $a_1$ are mapped to all the edges in $\phi'_1$, occurrences
 "A"+( 12,-16)*{\copy\contrdown};
 %-
 "A"+(  6,-24)*{\afaiuex{}{}{}{}{}{}31};
-% contractions
+%---
 "A"+(-20,-16)="A";
-"A"+(-20,60)*{\afvjm{112}};
-"A"+(-16,56)*{\afvjm{104}};
-"A"+(-12,56)*{\afvjm{104}};
-"A"+(-8,34)*{\afvjm{60}};
-"A"+(-4,30)*{\afvjm{52}};
-"A"+( 0,30)*{\afvjm{52}};
+"A"+(-20,58)*{\afvjm{108}};
+"A"+(-16,54)*{\afvjm{100}};
+"A"+(-12,54)*{\afvjm{100}};
+"A"+(-8,33)*{\afvjm{58}};
+"A"+(-4,29)*{\afvjm{50}};
+"A"+( 0,29)*{\afvjm{50}};
 "A"+(-4,0)*{\affr{34}8};
 "A"+(-4,0)*{\copy\contrdown};
 "A"+(-4,-5.5)*{\afvjm3};
@@ -843,5 +813,5 @@ where occurrences of $a_1$ are mapped to all the edges in $\phi'_1$, occurrences
 "A"+(10,-14.5)*{\afvjm{21}};
 }\quad.
 \]
-By comparing the copies of $\phi_1$ with the copies of $\phi_2$ in $\PB(\PB(\Phi,a_1),a_2)$ we can see why the procedure is non-confluent. We could trivially change our procedure to make the subflows more similar by permuting the weakening (resp., coweakening) vertices down (resp., up) in the second subflow. However, the subflows marked in red will still differ.
+By comparing the subflow containing $\phi_1$ with the subflow containing $\phi_2$ above, we can see why the procedure is non-confluent: We could modify our procedure in several ways to make the two subflows more similar. However, we can see no way of avoiding the fact that there are more paths passing through the edges marked in red in the latter than in the former subflow.
 \end{example}
