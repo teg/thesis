@@ -18,15 +18,23 @@ for every polarity assignment $\pi$ for $\phi$, there is a polarity assignment $
 
 %-----------------------------------------------
 \begin{remark}\label{remark:LabelBijectionEdges}
-Given a reduction $R$ and two atomic flows $\phi$ and $\psi$, such that $\phi\mathrel{R}\psi$, we indicate the bijections $f$ and $g$ by, for every upper (resp., lower) edge $\epsilon$ of $\phi$, labeling the upper (resp., lower) edge $f(\epsilon)$ (resp., $g(\epsilon)$) of $\psi$ by $\epsilon$.
+Given a reduction $R$ and two atomic flows $\phi$ and $\psi$, such that $\phi\mathrel{R}\psi$, we indicate the bijections $f$ and $g$ by labeling the upper (resp., lower) edge $f(\epsilon)$ (resp., $g(\epsilon)$) of $\psi$ by $\epsilon$, for every upper (resp., lower) edge $\epsilon$ of $\phi$.
 \end{remark}
 %-----------
+
+\TODO{Add example.}
 
 %--------------------------------------------------
 \begin{definition}\label{definition:SoundRedcution}
 A reduction $R$ is \emph{sound} if, for every $\phi$ and $\psi$, such that $\phi\mathrel{R}\psi$, and for every derivation $\Phi$ with atomic flow $\phi$, there is a derivation $\Psi$ with atomic flow $\psi$ such that $\Phi$ and $\Psi$ have the same premiss and conclusion; in this case we write $\Phi\mathrel{R}\Psi$.
 \end{definition}
 %---------------
+
+\TODO{Alessio said: `\emph{How can you give the same polarity assignment to two flows? Also, importantly, note that if you have reductions between flows with no upper and lower edges, the polarity assignments can flip at will. The notion you're trying to convey here needs much more careful definition.}'.}
+
+\TODO{Alessio: I want to allow identity and cuts as long as they do not map to vertices in $\phi$. Since $\phi$ only contains $a$ and not $\bar a$, it can not contain any identity or cut vertices. I added a sentence to the proof to make this clear.}
+
+\TODO{Make sure that it is always clear that $f_i$ is a flow isomorphism.}
 
 %------------------------------------------------------------
 \begin{proposition}\label{proposition:DerivationSubstitution}
@@ -68,17 +76,19 @@ whose associated flow is
 }
 \quad,
 \]
-where $n$ is the number of atom occurrences in $\gamma$; moreover, the size of\/ $\Psi$ depends at most linearly on the size of\/ $\Phi$ and quadratically on the size of $\gamma$.
+where $n$ is the number of atom occurrences in $\gamma$; moreover, the size of\/ $\Psi$ depends linearly on the size of\/ $\Phi$ and quadratically on the size of $\gamma$.
 \end{proposition}
 %----------------
 
 %-------------------------------------------------------------------------------
 \begin{proof}
-We can proceed by structural induction $\Phi$. We replace every occurrence of $a^\phi$ by $\gamma$, and every inference rule instance of $\acd$, $\acu$, $\awd$ and $\awu$, where $a^\phi$ appears, by their generic counterparts with $\gamma$ in the place of $a^\phi$. The result then follows by Lemma~\vref{lemma:GenericWeakening} and Lemma~\vref{lemma:GenericContraction}.
+We can proceed by structural induction on $\Phi$. For every formula in $\Phi$ we substitute $a^\phi$ with $\gamma$. Since all the edges in $\phi$ are mapped to from $a$ (and not $\bar a$), we know that all the vertices in $\phi$ are mapped to from instances of $\acd$, $\acu$, $\awd$ and $\awu$. We substitute every instance of $\acd$, $\acu$, $\awd$ and $\awu$ where $a^\phi$ appears, by $\cod$, $\cou$, $\wed$, $\weu$, respectively, with $\gamma$ in the place of $a^\phi$. The result then follows by Lemma~\vref{lemma:GenericWeakening} and Lemma~\vref{lemma:GenericContraction}.
 \end{proof}
 %----------
 
 \TODO{Put reference.}
+
+\TODO{Take notation out of remark.}
 
 %-------------
 \begin{remark}
@@ -89,10 +99,16 @@ The derivation $\Psi$ obtained in the proof of Propostion~\vref{proposition:Deri
 %====================================================================
 \section{Global Transformations}\label{section:GlobalTransformations}
 
+\TODO{Alessio: $\boldsymbol\epsilon$ is used to denote the upper edges of a flow. The definition of upper edges is given as a set (from AF1). Why should they be sequences? Wouldn't that give the impression that they are not commutative?}
+
+\TODO{Take notation out of remark.}
+
+\TODO{The labels on upper/lower edges do not fit with the labels used in the definition of four boxes.}
+
 %-------------
 \begin{remark}
 To avoid ambiguity in Definitions~\vref{definition:FourBoxes}, \vref{definition:IsolatedSubflowRemoval}, \vref{definition:PathBreaker} and \vref{definition:MultipleIsolatedSubflowsRemoval} we have establish the following convention:
-Let $\boldsymbol\epsilon=\{\epsilon_1,\dots,\epsilon_n\}$, $\boldsymbol\iota=\{\iota_1,\dots,\iota_m\}$, $\boldsymbol{\epsilon'}=\{\epsilon'_1,\dots,\epsilon'_n\}$ and $\boldsymbol{\iota'}=\{\iota_1,\dots,\iota_m\}$, then, when we write
+Let $\boldsymbol\epsilon=\{\epsilon_1,\dots,\epsilon_n\}$, $\boldsymbol\iota=\{\iota_1,\dots,\iota_m\}$, $\boldsymbol{\epsilon'}=\{\epsilon'_1,\dots,\epsilon'_n\}$ and $\boldsymbol{\iota'}=\{\iota'_1,\dots,\iota'_m\}$, then, when we write
 \[
 \atomicflow
 {
@@ -105,7 +121,7 @@ Let $\boldsymbol\epsilon=\{\epsilon_1,\dots,\epsilon_n\}$, $\boldsymbol\iota=\{\
 (  6,-6)*{\afvjdm4{}{f_k(\boldsymbol\epsilon)}};
 ( 10, 0)*{\invisiblemark};
 }
-\quad\mbox{or}\quad
+\qquad\mbox{and}\qquad
 \atomicflow
 {
 (-10, 0)*{\invisiblemark};
@@ -143,7 +159,7 @@ we mean
 (  6,-6)*{\afvjd4{}{f_k(\epsilon_n)}};
 ( 10, 0)*{\invisiblemark};
 }
-\quad\mbox{or}\quad
+\qquad\mbox{and}\qquad
 \atomicflow
 {
 (-10, 0)*{\invisiblemark};
@@ -178,7 +194,8 @@ respectively. Furthermore, in Definition~\ref{definition:FourBoxes}, when we wri
 (-4,4)*{\afaidnw{}{}};
 ( 0,0)*{\afacdm{}{}{}{}{g(\boldsymbol{\epsilon'})}{}};
 ( 4,4)*{\afaidnw{}{}};
-( 6,0)*{\afvjum8{f_4(\boldsymbol{\epsilon})}{}};
+( 6,0)*{\afvjum8{}{f_4(\boldsymbol{\epsilon})}};
+( 9,0)*{\invisiblemark};
 }
 \quad\mbox{and}\quad
 \atomicflow
@@ -188,7 +205,8 @@ respectively. Furthermore, in Definition~\ref{definition:FourBoxes}, when we wri
 (-4,-6)*{\afaiunw{}{}};
 ( 0, 0)*{\afacum{}{}{}{}{g(\boldsymbol{\iota'})}{}};
 ( 4,-6)*{\afaiunw{}{}};
-( 6, 0)*{\afvjdm8{f_4(\boldsymbol{\iota})}{}};
+( 6, 0)*{\afvjdm8{}{f_4(\boldsymbol{\iota})}};
+( 9,0)*{\invisiblemark};
 }\quad,
 \]
 we mean
@@ -200,7 +218,8 @@ we mean
 (-4,4)*{\afaidnw{}{}};
 ( 0,0)*{\afacd{}{}{}{}{g(\epsilon_1')}{}};
 ( 4,4)*{\afaidnw{}{}};
-( 6,0)*{\afvju8{f_4(\epsilon_1)}{}};
+( 6,0)*{\afvju8{}{f_4(\epsilon_1)}};
+( 9,0)*{\invisiblemark};
 }
 \quad\cdots\quad
 \atomicflow
@@ -210,7 +229,8 @@ we mean
 (-4,4)*{\afaidnw{}{}};
 ( 0,0)*{\afacd{}{}{}{}{g(\epsilon_n')}{}};
 ( 4,4)*{\afaidnw{}{}};
-( 6,0)*{\afvju8{f_4(\epsilon_n)}{}};
+( 6,0)*{\afvju8{}{f_4(\epsilon_n)}};
+( 9,0)*{\invisiblemark};
 }
 \quad\mbox{and}\quad
 \atomicflow
@@ -220,7 +240,8 @@ we mean
 (-4,-6)*{\afaiunw{}{}};
 ( 0, 0)*{\afacu{}{}{}{}{g(\iota_1')}{}};
 ( 4,-6)*{\afaiunw{}{}};
-( 6, 0)*{\afvjd8{f_4(\iota_1)}{}};
+( 6, 0)*{\afvjd8{}{f_4(\iota_1)}};
+( 9,0)*{\invisiblemark};
 }
 \quad\cdots\quad
 \atomicflow
@@ -230,10 +251,11 @@ we mean
 (-4,-6)*{\afaiunw{}{}};
 ( 0, 0)*{\afacu{}{}{}{}{g(\iota_m')}{}};
 ( 4,-6)*{\afaiunw{}{}};
-( 6, 0)*{\afvjd8{f_4(\iota_m)}{}};
+( 6, 0)*{\afvjd8{}{f_4(\iota_m)}};
+( 9,0)*{\invisiblemark};
 }\quad,
 \]
-respectively. In other words, edges are not crossed in unexpected ways.
+respectively. In other words, edges are not connected in unexpected ways.
 \end{remark}
 %-----------
 

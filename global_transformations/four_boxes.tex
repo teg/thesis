@@ -1,7 +1,9 @@
+\TODO{Alessio: You were right about the mistake in the following definition. I added a remark.}
+
+%--------------------------------
 \newcommand{\frfb}{{\mathsf{fb}}}
-%---------------------------------------
 \begin{definition}\label{definition:FourBoxes}
-We define the reduction $\to_\frfb$ (where $\frfb$ stands for \emph{four boxes}) as follows, for any atomic flows $\phi$ and $\psi$:
+We define the reduction $\to_\frfb$ (where $\frfb$ stands for \emph{four boxes}) as follows, for any atomic flows $\phi$ and $\psi$ that do not contain any interaction or cut vertices:
 \[
 \atomicflow{
 (-8, 6)*{\afvjdm4{\boldsymbol{\epsilon_1}}{}};
@@ -100,20 +102,32 @@ We define the reduction $\to_\frfb$ (where $\frfb$ stands for \emph{four boxes})
 ( 9,-13)*{\afvjm2};
 (13, -8)*{\afvjdm{8}{}{g(\boldsymbol{\iota_4})}};
 (13,-16)*{\afvjum{8}{}{\boldsymbol{\iota_4}}};
+(18,  0)*{\invisiblemark};
 }\quad.
 \]
 \end{definition}
+%---------------
 
-%---------------------------------------
+%------------------------------------------------
+\begin{remark}\label{remark:RestrictionFourBoxes}
+The reduction $\to_\frfb$ would still be sound if we removed the restriction on the flows $\phi$ and $\psi$ in Definition~\ref{definition:FourBoxes}. However, such a reduction would no longer correspond to the intuition described above.
+
+\TODO{Give intuition.}
+
+\end{remark}
+%-----------
+
+%--------------------------------------------
 \begin{theorem}\label{theorem:SoundFourBoxes}
 Reduction\/ $\to_\frfb$ is sound.
 \end{theorem}
 
-%---------------------------------------
 \begin{proof}
 Let $\Phi$ be a derivation with flow $\phi'$, such that $\phi'\to_\frfb\psi'$. We show that there exists a derivation $\Psi$ with flow $\psi'$ and with the same premiss and conclusion as $\Phi$. In the following, we refer to the figure in Definition~\vref{definition:FourBoxes}.
 
-Let $a_1^{\phi}$, $\dots$, $a_n^{\phi}$ be all the atoms whose occurrences map to $\phi$, and let
+\TODO{Copy this phrase to the other proofs:}
+
+Assume all the edges in $\phi$ are mapped to from occurrences of the atoms $a_1$, $\dots$, $a_n$, and let
 \[
 \vlder{\Phi'}{\{\aid,\aiu\}}
 {
@@ -125,7 +139,9 @@ Let $a_1^{\phi}$, $\dots$, $a_n^{\phi}$ be all the atoms whose occurrences map t
 \]
 be the $\ai$-decomposed form of $\Phi$.
 
-We show several intermediate derivations which will be used to build $\Psi$. To make it easier to verify the atomic flow of $\Psi$, we will, through a slight missuse of notation, label the atom occurrences of the intermediate derivations to indicate what atomic flow each atom occurrence will map to, once the derivations are combined to create $\Psi$.
+\TODO{Consider using $\epsilon$'s instead of $\phi$'s above.}
+
+We show several intermediate derivations which will be used to build $\Psi$. To make it easier to verify the atomic flow of $\Psi$, we will, through a slight misuse of notation, label the atom occurrences of the intermediate derivations to indicate what atomic flow each atom occurrence will map to, once the derivations are combined to create $\Psi$.
 
 Consider the substitution
 \[
@@ -171,7 +187,7 @@ We can then obtain, by Proposition~\vref{proposition:DerivationSubstitution}, th
 "A"+(-3, 6)*{\afvjdm4{}{g(\boldsymbol{\epsilon_3})}{}};
 "A"+( 3, 6)*{\afvjdm4{}{g(\boldsymbol{\epsilon_4})}{}};
 "A"+( 0, 0)*{\affr88};
-"A"+( 4, 2)*{\aflabelleft{g(\phi)}};
+"A"+( 4, 2)*{\aflabelleft{g(\psi)}};
 "A"+(-3,-6)*{\afvjum4{}{g(\boldsymbol{\iota_3})}{}};
 "A"+( 3,-6)*{\afvjum4{}{g(\boldsymbol{\iota_4})}{}};
 %---
@@ -197,7 +213,7 @@ For every $1\le i\le n$, there exist derivations
  )  
 }
 {a_i}
-\quad\mbox{and}\quad
+\qquad\mbox{and}\qquad
 \vls
 (
  \vlinf{}{}
@@ -214,10 +230,13 @@ For every $1\le i\le n$, there exist derivations
 )
 \quad,
 \]
+
+\TODO{`build' is too vague}
+
 which allow us to build
 \[
 \vlder{\Psi_\top}{}{\alpha\sigma}{\alpha}
-\quad\mbox{and}\quad
+\qquad\mbox{and}\qquad
 \vlder{\Psi_\bot}{}{\beta}{\beta\sigma}
 \quad,
 \]
@@ -231,10 +250,12 @@ with atomic flows
 (12,-2)*{\afawdm{}{}{f_2(\boldsymbol{\epsilon_1})}{}};
 (20,-2)*{\afawdm{}{}{f_4(\boldsymbol{\epsilon_1})}{}};
 (24, 0)*{\afvjum{12}{}{g(\boldsymbol{\epsilon_4})}};
+(28, 0)*{\invisiblemark};
 }
 \qquad\mbox{and}\qquad
 \atomicflow
 {
+(-9,0)*{\invisiblemark};
 ( 0,0)*{\afacdmexsq{}{}{}{}{}{}52};
 (-5,4.25)*{\aflabelleft{f_1(\boldsymbol{\iota_1})}};
 ( 5,4.25)*{\aflabelleft{f_2(\boldsymbol{\iota_1})}};
@@ -247,6 +268,7 @@ with atomic flows
 respectively.
 Furthermore, for every $1\le i\le n$, there exist derivations
 \[
+\Psi_{\ttt,i}\;=\;
 \vlderivation
 {
  \vlin{=}{}{\vls[([\vlinf{}{}{a_i^{f_1(\phi)}}{\fff}\;.\;a_i^{f_2(\phi)}]\;.\;[\vlinf{}{}{a_i^{f_3(\phi)}}{\fff}\;.\;a_i^{f_4(\phi)}])\;.\;\vlinf{}{}{\bar a_i^{g(\psi)}}{\vls[\bar a_i.\bar a_i]}]}
@@ -260,6 +282,7 @@ Furthermore, for every $1\le i\le n$, there exist derivations
 \]
 and
 \[
+\Psi_{\fff,i}\;=\;
 \vlderivation
 {
  \vlin{\swi}{}{\vls[\vlinf{}{}{\fff}{\vls(a_i^{f_3(\phi)}.\bar a_i)}\;.\;\vlinf{}{}{\fff}{\vls(a_i^{f_4(\phi)}.\bar a_i)}]}
@@ -273,21 +296,45 @@ and
 \]
 which allow us to build
 \[
-\vlder{\Psi_\ttt}{}
-{
- \vlsmallbrackets\vlsbr([a^\phi_1.\bar a^\psi_1].\cdots.[a^\phi_n.\bar a^\psi_n])\sigma
-}
-{
- \ttt
-}
-\quad\mbox{and}\quad
-\vlder{\Psi_\fff}{}
-{
- \fff
-}
-{
- \vlsmallbrackets\vlsbr([a^\phi_n.\bar a^\psi_n].\cdots.[a^\phi_1.\bar a^\psi_1])\sigma
-}
+\Psi_\ttt\;=\;
+\vlsbr
+(
+ \vlder{\Psi_{\ttt,1}}{}
+ {
+  \vlsmallbrackets\vlsbr[a^\phi_1.\bar a^\psi_1]\sigma
+ }
+ {
+  \ttt
+ }
+\;\;.\;\;\cdots\;\;.\;\;
+ \vlder{\Psi_{\ttt,n}}{}
+ {
+  \vlsmallbrackets\vlsbr[a^\phi_n.\bar a^\psi_n]\sigma
+ }
+ {
+  \ttt
+ }
+)
+\qquad\mbox{and}\qquad
+\Psi_\fff\;=\;
+\vlsbr
+[
+ \vlder{\Psi_{\fff,n}}{}
+ {
+  \fff
+ }
+ {
+  \vlsmallbrackets\vlsbr(a^\phi_n.\bar a^\psi_n)\sigma
+ }
+\;\;.\;\;\cdots\;\;.\;\;
+ \vlder{\Psi_{\fff,1}}{}
+ {
+  \fff
+ }
+ {
+  \vlsmallbrackets\vlsbr(a^\phi_1.\bar a^\psi_1)\sigma
+ }
+]
 \quad,
 \]
 with atomic flows
@@ -305,6 +352,7 @@ with atomic flows
 \qquad\mbox{and}\qquad
 \atomicflow
 {
+(-22, 0)*{\invisiblemark};
 (-18, 0)*{\afawum{}{}{f_1(\boldsymbol{\iota_2})}{}};
 (-12, 0)*{\afawum{}{}{f_2(\boldsymbol{\iota_2})}{}};
 (  6, 0)*{\afvjdm8{f_4(\boldsymbol{\iota_2})}{}};
@@ -347,7 +395,9 @@ Combining these derivations we can build
 \]
 with the desired atomic flow.
 \end{proof}
+%----------
 
+%---------------------------------------------
 \begin{lemma}\label{lemma:FourBoxesSimpleForm}
 Given an atomic flow $\phi'$ with polarity assignment $\pi$, there exists an atomic flow $\psi'$, such that $\phi'\to_\frfb\psi'$ and $\psi'$ is on simple form with respect to $\pi$.
 \end{lemma}
@@ -355,22 +405,30 @@ Given an atomic flow $\phi'$ with polarity assignment $\pi$, there exists an ato
 \begin{proof}
 We refer to the figure in Definition~\vref{definition:FourBoxes}. Let the subflow $\phi$ contain all the positive edges, and let the subflow $\psi$ contain all the negative edges, then $\psi'$ is on simple form with respect to $\pi$ by Definition~\vref{definition:FlowNormalForms}.
 \end{proof}
+%----------
 
-\TODO{Think hard about the next definition and decide if it makes more sense to define with respect to atoms instead of with respect to polariyt.}
+\TODO{Think hard about the next definition and decide if it makes more sense to define with respect to atoms instead of with respect to polarity.}
 
+%----------------------------------
 \newcommand{\Simpl}{\mathsf{Simpl}}
 \begin{definition}\label{definition:DerSimpleForm}
 Given a derivation $\Phi$ with atomic flow $\phi$ and a polarity assignment $\pi$, let $\Psi$ with atomic flow $\psi$ be the derivation obtained in the proof of Theorem~\ref{theorem:SoundFourBoxes}, such that $\phi\to_\frfb\psi$, then we say that $\Psi$ is \emph{the} (\emph{canonical}) \emph{simple form of\/ $\Phi$ with respect to $\pi$}, denoted $\Simpl(\Phi,\pi)$.
 \end{definition}
+%---------------
 
+\TODO{What is the role of $\pi$? Answer: the lemma holds for any $\Psi$, such that $\Phi\to_\frfb\Psi$, we just happen to be interested in $\Simpl(\Phi,\pi)$. Decide on how to phrase it.}
+
+%---------------------------------------
 \begin{lemma}\label{lemma:SizeFourBoxes}
-Given a derivation $\Phi$ and a polarity assignment for its atomic flow $\pi$, the size of $\Simpl(\Phi,\pi)$ depends at most linearly on the size of $\Phi$.
+Given a derivation $\Phi$ and a polarity assignment for its atomic flow $\pi$, the size of $\Simpl(\Phi,\pi)$ depends linearly on the size of $\Phi$.
 \end{lemma}
 
 \begin{proof}
 Since the formulae we substitute with in the proof of Theorem~\vref{theorem:SoundFourBoxes} have size 4, the result follows by Proposition~\vref{proposition:DerivationSubstitution}.
 \end{proof}
+%----------
 
+%-----------------------------------------------
 \begin{lemma}\label{lemma:FourBoxesStreamlining}
 Given two atomic flows $\phi$ and $\psi$ with polarity assignment $\pi$, such that $\phi\to_\frfb\psi$ and $\phi$ is weakly streamlined with respect to $\bar\pi$ then $\psi$ is weakly streamlined with respect to $\bar\pi$.
 \end{lemma}
@@ -378,6 +436,7 @@ Given two atomic flows $\phi$ and $\psi$ with polarity assignment $\pi$, such th
 \begin{proof}
 By studying the atomic flows in Definition~\vref{definition:FourBoxes} we can observe that for every path from an interaction vertex to a cut vertex in $\psi$ there is a path from an interaction vertex to a cut vertex in $\phi$ with the same polarity assignment.
 \end{proof}
+%----------
 
 %\TODO{Check:}
 

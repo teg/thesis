@@ -1,7 +1,7 @@
 \newcommand{\Gammasf}{\mathsf\Gamma}
 
+%----------------------------------
 \newcommand{\frmis}{{\mathsf{mis}}}
-%---------------------------------------
 \begin{definition}\label{definition:MultipleIsolatedSubflowsRemoval}
 For every $n>0$, given
 \begin{itemize}
@@ -135,12 +135,13 @@ where, for $1\le i\le n$, $l_i$ is the number of atom occurrences in $\gamma_{k,
 }\quad.
 \]
 \end{definition}
+%---------------
 
+%------------------------------------------------------------------
 \begin{theorem}\label{theorem:SoundMultipleIsolatedSubflowsRemoval}
 Reduction\/ $\to_\frmis$ is sound.
 \end{theorem}
 
-%-------------------------------------------------------------------------------
 \begin{proof}
 Let $\Phi$ be a derivation with flow $\phi'$, such that $\phi'\to_\frmis\psi'$. We show that there exists a derivation $\Psi$ with flow $\psi'$ and with the same premiss and conclusion as $\Phi$. In the following, we refer to the figures in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}.
 
@@ -316,8 +317,9 @@ We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gammasf_1$, $\dots$, $\Gammasf_N$ to g
 \qquad.
 \]
 \end{proof}
+%----------
 
-%-----------------------------------------------------
+%--------------------------------------------------------------
 \begin{lemma}\label{lemma:MultipleIsolatedSubflowsRemovalPaths}
 Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\frmis\psi$, and given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$ such that, for some $0\le i\le N$, $\nu=f_i(\nu')$, and
 \begin{itemize}
@@ -329,6 +331,7 @@ Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\frmis\psi$, and gi
 \begin{proof}
 By a case analysis on the atomic flows in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}.
 \end{proof}
+%----------
 
 %--------------------------------
 \newcommand{\MISR}{\mathsf{MISR}}
@@ -588,6 +591,7 @@ with atomic flow
 \]
 We then define $\MISR_n(\Phi,a_1,\dots,a_n)$ to be such that $\Psi'\to_\fris\MISR(\Phi,a_1,\dots,a_n)$, where, for $1\le i\le n$, $\psi_i$ in $\psi'$ is a sublfow of $\psi_i$ in the redex of Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}.
 \end{definition}
+%---------------
 
 %--------------------------------------------------------------------
 \begin{proposition}\label{proposition:MultipleIsolatedSubflowRemover}
@@ -613,7 +617,7 @@ The statements follow by
 \end{proof}
 %----------
 
-%------------------------------------------------------
+%--------------------------------------------------
 \begin{remark}\label{remark:FromGammasToThresholds}
 Given the atoms, formulae and derivations described in Definition~\ref{definition:MultipleIsolatedSubflowsRemoval}, it follows from an argument by induction on $k$, that, for every $1\le i\le n$ and every $0\le k\le N$, the formula $\gamma_{k,i}$ is
 \begin{itemize}

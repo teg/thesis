@@ -1,7 +1,9 @@
 \TODO{Add labels to edges}
 
+\TODO{Use colors.}
+
+%--------------------------------
 \newcommand{\frpb}{{\mathsf{pb}}}
-%---------------------------------------
 \begin{definition}\label{definition:PathBreaker}
 We define the reduction $\to_\frpb$ (where $\frpb$ stands for \emph{path breaker}) as follows, for any atomic flows $\phi$ and $\psi$:
 \[
@@ -115,7 +117,11 @@ We define the reduction $\to_\frpb$ (where $\frpb$ stands for \emph{path breaker
 \]
 where the evidenced interaction and cut vertices belong to the same connected component.
 \end{definition}
+%---------------
 
+\TODO{Alessio: We cannot identify edges if they do not belong to the same connected component (they might be mapped to from occurrences of different atoms. I will remark somewhere...}
+
+%----------------------------------------------
 \begin{theorem}\label{theorem:PathBreakerSound}
 Reduction $\to_\frpb$ is sound.
 \end{theorem}
@@ -144,10 +150,10 @@ We combine three copies of $\Phi'$ to obtain the desired derivation $\Psi$ with 
 \hbox{$
 \vlder{\Phi'}{}
 {
- \vlsbr[\beta\;.\;(\vlinf{}{}{\ttt}{a^\phi}\;.\;\bar a^\psi)]
+ \vlsbr[\beta\;.\;(\vlinf{}{}{\ttt}{a^{f_1(\phi)}}\;.\;\bar a^{g_1(\psi)})]
 }
 {
- \vlsbr(\vlinf{}{}{\vls[a^\phi.\bar a^\psi]}{\ttt}\;.\;\alpha)
+ \vlsbr(\vlinf{}{}{\vls[a^{f_1(\phi)}.\bar a^{g_1(\psi)}]}{\ttt}\;.\;\alpha)
 }
 $}
 \newbox\DeltaK
@@ -155,10 +161,10 @@ $}
 \hbox{$
 \vlder{\Phi'}{}
 {
- \vlsbr[\beta\;.\;(a^\phi\;.\;\vlinf{}{}{\ttt}{\bar a^\psi})]
+ \vlsbr[\beta\;.\;(a^{f_2(\phi)}\;.\;\vlinf{}{}{\ttt}{\bar a^{g_2(\psi)}})]
 }
 {
- \vlsbr([\vlinf{}{}{a^\phi}{\fff}\;.\;\bar a^\psi]\;.\;\alpha)
+ \vlsbr([\vlinf{}{}{a^{f_2(\phi)}}{\fff}\;.\;\bar a^{g_2(\psi)}]\;.\;\alpha)
 }
 $}
 \newbox\DeltaBotK
@@ -166,10 +172,10 @@ $}
 \hbox{$
 \vlder{\Phi'}{}
 {
- \vlsbr[\beta\;.\;\vlinf{}{}{\fff}{\vls(a^\phi.\bar a^\psi)}]
+ \vlsbr[\beta\;.\;\vlinf{}{}{\fff}{\vls(a^{f_3(\phi)}.\bar a^{g_3(\psi)})}]
 }
 {
- \vlsbr([a^\phi\;.\;\vlinf{}{}{\bar a^\psi}{\fff}]\;.\;\alpha)
+ \vlsbr([a^{f_3(\phi)}\;.\;\vlinf{}{}{\bar a^{g_3(\psi)}}{\fff}]\;.\;\alpha)
 }
 $}
 \[
@@ -227,19 +233,23 @@ $}
 }\qquad.
 \]
 \end{proof}
+%----------
 
-%-----------------------------------------------------
+\TODO{Alessio: Fixed like the previous Lemma and added reference to $g_1$, $g_2$ and $g_3$.}
+
+%-------------------------------------
 \begin{lemma}\label{lemma:PathBreaker}
-Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\frpb\psi$, and given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$ such that $\nu=f_1(\nu')$, $\nu=f_2(\nu')$ or $\nu=f_3(\nu')$, and
+Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\frpb\psi$, and given an interaction (resp., cut) vertex $\nu$ in $\psi$, let $f_1$, $f_2$, $f_3$, $g_1$, $g_2$ and $g_3$ be the isomorphisms described in Definition~\ref{definition:PathBreaker}, then there is an interaction (resp., cut) vertex $\nu'$ in $\phi$ such that, for some $1\le i\le 3$, $\nu=f_i(\nu')$ or $\nu=g_i(\nu')$; and
 \begin{itemize}
 \item if there is a path from $\nu$ to $\bot$ (resp., $\top$) in $\psi$, then there is a path from $\nu'$ to $\bot$ (resp., $\top$) in $\phi$; and
-\item if there is a cut (resp., interaction) vertex $\hat\nu$ in $\psi$, such that there is a path from $\nu$ to $\hat\nu$ in $\psi$, then there is a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$, such that $\hat\nu=f_1(\hat\nu')$, $\hat\nu=f_2(\hat\nu')$ or $\hat\nu=f_3(\hat\nu')$, and there is a path from $\nu'$ to $\hat\nu'$ in $\phi$.
+\item if there is a cut (resp., interaction) vertex $\hat\nu$ in $\psi$, such that there is a path from $\nu$ to $\hat\nu$ in $\psi$, then there is a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$, such that, for some $1\le i\le 3$, $\hat\nu=f_i(\nu')$ or $\hat\nu=g_i(\nu')$, or $\hat\nu'$ is the evidenced cut (resp., identity) vertex in Definition~\ref{definition:IsolatedSubflowRemoval}, and there is a path from $\nu'$ to $\hat\nu'$ in $\phi$.
 \end{itemize}
 \end{lemma}
 
 \begin{proof}
 By a case analysis on the atomic flows in Definition~\vref{definition:PathBreaker}.
 \end{proof}
+%----------
 
 %----------------------------
 \newcommand{\PB}{\mathsf{PB}}
@@ -311,7 +321,7 @@ and atomic flow
 }
 \quad,
 \]
-such that occurrences of $a$ does not appear in an interaction or cut instance in $\Phi'$. Consider the derivationF
+such that occurrences of $a$ do not appear in an interaction or cut instance in $\Phi'$. Consider the derivation
 \[
 \Psi'\;=\;
 \vlder{\Phi'}{}
@@ -399,8 +409,12 @@ with atomic flow
 (11,-11)*{\afvjum{14}{}{\boldsymbol{\iota'}}};
 }\quad.
 \]
+
+\TODO{Incomprihensible:}
+
 We then define $\PB(\Phi,a)$ to be such that $\Psi'\to_\frpb\PB(\Phi,a)$, where $\phi$ (resp., $\psi$) in $\psi'$ is a subflow of $\psi$ (resp., $\phi$) in the redex of Definition~\vref{definition:PathBreaker}.
 \end{definition}
+%---------------
 
 %------------------------------------------------------------
 \begin{proposition}\label{proposition:IsolatedSubflowRemover}
@@ -420,8 +434,9 @@ The statements follow by
 \item Proposition~\vref{proposition:DerivationSubstitution}.
 \end{enumerate}
 \end{proof}
-%--------------
+%----------
 
+%-----------------------------------------
 \begin{example}\label{example:PathBreaker}
 Given a derivation $\Phi$ where the atoms $a_1$ and $a_2$ occur, such that the atomic flow associated with $\Phi$ is
 \[
@@ -430,28 +445,38 @@ Given a derivation $\Phi$ where the atoms $a_1$ and $a_2$ occur, such that the a
 (-2,8)*{\afaid{}{}{}{}{}{}};
 (4,6)*{\afvjm4};
 (0,0)*{\affr{10}8};
-(2,2)*{\aflabelright{\phi_1}};
+(5,2)*{\aflabelleft{\phi_1}};
 (-4,-6)*{\afvjm4};
 (2,-8)*{\afaiu{}{}{}{}{}{}};
-}\qquad
+}\quad
 \atomicflow
 {
 (-2,8)*{\afaid{}{}{}{}{}{}};
 (4,6)*{\afvjm4};
 (0,0)*{\affr{10}8};
-(2,2)*{\aflabelright{\phi_2}};
+(5,2)*{\aflabelleft{\phi_2}};
 (-4,-6)*{\afvjm4};
 (2,-8)*{\afaiu{}{}{}{}{}{}};
-}\qquad
+}\quad
 \atomicflow
 {
 (0,6)*{\afvjm4};
 (0,0)*{\affr88};
-(2,2)*{\aflabelright{\psi}};
+(4,2)*{\aflabelleft{\psi}};
 (0,-6)*{\afvjm4};
 }\quad,
 \]
-where all the edges in $\phi_1$ are mapped to from $a_1$ and all the edges in $\phi_2$ are mapped to from $a_2$, and there are no edges in $\psi$ that are mapped to from $a_1$ or $a_2$, then the atomic flow associated with $\PB(\Phi,a_1),a_2))$ is
+
+\TODO{Alessio said: `\emph{This is a long shot. Perhaps you can argue a bit more and more clearly about the red edges. Not clear what the latter and former subflows are.}'.}
+
+where all the edges in $\phi_1$ are mapped to from $a_1$ and all the edges in $\phi_2$ are mapped to from $a_2$, and there are no edges in $\psi$ that are mapped to from $a_1$ or $a_2$, then the atomic flow associated with $\PB((\Phi,a_1),a_2)$ is
+
+\TODO{adjust labels}
+
+\TODO{state that we ignore isomorphisms}
+
+\TODO{put flows on one page (how?)}
+
 \[
 \atomicflow
 {
@@ -815,3 +840,4 @@ where all the edges in $\phi_1$ are mapped to from $a_1$ and all the edges in $\
 \]
 By comparing the subflow containing $\phi_1$ with the subflow containing $\phi_2$ above, we can see why the procedure is non-confluent: We could modify our procedure in several ways to make the two subflows more similar. However, we can see no way of avoiding the fact that there are more paths passing through the edges marked in red in the latter than in the former subflow.
 \end{example}
+%------------
