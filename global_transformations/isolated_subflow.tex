@@ -343,7 +343,7 @@ Given an atom $a$, and a derivation $\Phi$ that is on simple form with respect t
 \begin{proof}
 The statements follow by
 \begin{enumerate}
-\item Definition~\vref{definition:DerStreamlined} and Lemma~\vref{lemma:IsolatedSubflowRemovalPaths};
+\item Let $\phi$ and $\psi$ be the atomic flows given in Definition~\ref{definition:IsolatedSubflowRemover}, it follows that there is no path in $\phi$ from an interaction to a cut vertex whose edges are mapped to from $a$. By Lemma~\vref{lemma:IsolatedSubflowRemovalPaths}, we know that if there is a path from an interaction to a cut vertex in the atomic flow of $\ISR(\Phi,a)$ whose edges are mapped to from $a$, then there must be a path from an interaction to a cut vertex in $\phi$ whose edges are mapped to from $a$. Hence, the statement follows by contradiction;
 \item Definitions~\ref{definition:DerStreamlined} and \ref{definition:DerSimpleForm}, and Lemma~\ref{lemma:IsolatedSubflowRemovalPaths};
 \item Theorem~\vref{theorem:SoundIsolatedSubflowRemoval}.
 \end{enumerate}
