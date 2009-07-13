@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1 beta1
-lastDocument=flows.tex
+lastDocument=global_transformations/isolated_subflow.tex
 masterDocument=thesis.tex
 name=thesis
 pkg_extIsRegExp=false
@@ -49,15 +49,15 @@ column=32
 encoding=UTF-8
 highlight=LaTeX
 line=305
-open=true
+open=false
 order=1
 
 [item:flows_and_derivations.tex]
 archive=true
-column=66
+column=97
 encoding=UTF-8
 highlight=LaTeX
-line=0
+line=271
 open=false
 order=-1
 
@@ -81,11 +81,11 @@ order=0
 
 [item:global_transformations/isolated_subflow.tex]
 archive=true
-column=0
+column=1
 encoding=UTF-8
 highlight=LaTeX
-line=0
-open=true
+line=33
+open=false
 order=0
 
 [item:global_transformations/multiple_isolated_subflow.tex]
