@@ -141,10 +141,12 @@ Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\fris\psi$, and giv
 \end{itemize}
 \end{lemma}
 
-\TODO{More detailed proof.}
-
 \begin{proof}
-By a case analysis on the atomic flows in Definition~\vref{definition:IsolatedSubflowRemoval}.
+In the following we refer to the figure in Definition~\ref{definition:IsolatedSubflowRemoval}:
+\begin{itemize}
+ \item the statement is true since there is a path from each of the upper (resp., lower) edges of $f_1(\phi)$ and $f_2(\phi)$ to $\top$ (resp., $\bot$);
+ \item let $\nu=f_i(\nu')$ and $\hat\nu=f_j(\hat\nu')$, when $i=j$ there is a path from $\nu'$ to $\hat\nu'$ in $\phi$; and when $i=1$ and $j=2$ there is a path from $\nu'$ to the evidenced cut (resp., identity) vertex in $\phi$.
+\end{itemize}
 \end{proof}
 %----------
 
