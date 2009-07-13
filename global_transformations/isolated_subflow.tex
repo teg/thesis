@@ -38,6 +38,8 @@ We define the reduction $\to_\fris$ (where $\fris$ stands for \emph{isolated sub
 The condition on the atomic flow $\psi$ in Definition~\ref{definition:IsolatedSubflowRemoval} ensures that all the edges in $\psi$ are mapped to from occurrences of the same atom. However, the reduction would still be sound if, at the expense of a slightly more verbose soundness proof, we relaxed the condition to say that the upper and lower edge of $\psi$ belong to the same connected component.
 \end{remark}
 
+\TODO{Alessio: Added stamement about size to theorem to make the proof of the final proposition nicer.}
+
 %---------------------------------------------------------
 \begin{theorem}\label{theorem:SoundIsolatedSubflowRemoval}
 Reduction\/ $\to_\fris$ is sound; moreover, if $\Phi\to_\fris\Psi$, then the size of $\Psi$ depends at most cubically on the size of $\Phi$.
@@ -319,10 +321,6 @@ We then define $\ISR(\Phi,a)$ to be such that $\Psi'\to_\fris\ISR(\Phi,a)$, wher
 \TODO{Unique?}
 
 \TODO{Alessio: Regarding 1. below: All we need in order to prove the statement is in the flows of Definition~\ref{definition:IsolatedSubflowRemover} (the $\ai$-decomposed form is only about derivations, so not relevant). Any `new' paths would be mapped to from $\bar a$ and not $a$ (these are taken care of by item 2.). Anyway, I will try to clarify. I suspect the misunderstanding is related to the comment about isolated subflows above.}
-
-\TODO{Put size issues into the soundness theorem.}
-
-\TODO{Clarify proof of weakly streamlining.}
 
 %------------------------------------------------------------
 \begin{proposition}\label{proposition:IsolatedSubflowRemover}
