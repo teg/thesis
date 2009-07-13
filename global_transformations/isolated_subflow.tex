@@ -167,7 +167,7 @@ The \emph{Isolated Subflow Remover}, $\ISR$, is an operator whose arguments are 
    \fff
   }
   {
-   \vls(a^\psi.\bar a)
+   \vls(a^{\psi'}.\bar a)
   }
  \;.\;\cdots\;.\;
   \vlinf{}{}
@@ -175,7 +175,7 @@ The \emph{Isolated Subflow Remover}, $\ISR$, is an operator whose arguments are 
    \fff
   }
   {
-   \vls(a^\psi.\bar a)
+   \vls(a^{\psi'}.\bar a)
   }
  ]
 }
@@ -184,7 +184,7 @@ The \emph{Isolated Subflow Remover}, $\ISR$, is an operator whose arguments are 
  (
   \vlinf{}{}
   {
-   \vls[a^\psi.\bar a]
+   \vls[a^{\psi'}.\bar a]
   }
   {
    \ttt
@@ -192,7 +192,7 @@ The \emph{Isolated Subflow Remover}, $\ISR$, is an operator whose arguments are 
  \;.\;\cdots\;.\;
   \vlinf{}{}
   {
-   \vls[a^\psi.\bar a]
+   \vls[a^{\psi'}.\bar a]
   }
   {
    \ttt
@@ -208,9 +208,9 @@ and atomic flow
 (-8, 6)*{\afvjdm4{\boldsymbol\epsilon}{}};
 ( 1, 8)*{\afaidmex{}{}{}{}{}{}{6}{4}};
 (-5, 0)*{\affr{8}{8}};
-(-1, 2)*{\aflabelleft{\phi}};
+(-1, 2)*{\aflabelleft{\phi'}};
 ( 4, 0)*{\affr{6}{8}};
-( 7, 2)*{\aflabelleft{\psi}};
+( 7, 2)*{\aflabelleft{\psi'}};
 ( 1,-8)*{\afaiumex{}{}{}{}{}{}{6}{4}};
 (-8,-6)*{\afvjum4{\boldsymbol\iota}{}};
 }
@@ -219,9 +219,9 @@ and atomic flow
 
 \TODO{Alessio said: `\emph{Which occurrences of a, all of them?}'. I didn't understand. Maybe we have a different idea of what isolated subflow should be. See Definition~\vref{definition:IsolatedSubflow}.}
 
-where $\psi$ is the juxtaposition of all the isolated subflows mapped to from occurrences of $a$ in $\Phi$. Consider the derivation
+where $\psi'$ is the juxtaposition of all the isolated subflows mapped to from occurrences of $a$ in $\Phi$. Consider the derivation
 \[
-\Psi'\;=\;
+\Psi\;=\;
 \vlder{\Phi'}{}
 {
  \vlsbr
@@ -278,37 +278,41 @@ where $\psi$ is the juxtaposition of all the isolated subflows mapped to from oc
 \]
 with atomic flow
 \[
-\psi'\;=\;
+%\psi'\;=\;
 \atomicflow{
 (-8, 11)*{\afvjdm{14}{\boldsymbol\epsilon}{}};
-( 2, 18)*{\afaidex{}{}{}{}{}{}{8}{4}};
+( 4, 18)*{\afaidex{}{}{}{}{}{}{12}{4}};
 %-
 (-2, 10)*{\affr68};
 (-2, 10)*{\copy\contrup};
 (-2,  5)*{\afvjm2};
+(-3,  0)*{\affr{14}{30}};
+( 4, 13)*{\aflabelleft{\phi}};
 (-5,  0)*{\affr{8}{8}};
-(-1,  2)*{\aflabelleft{\phi}};
+(-1,  2)*{\aflabelleft{\phi'}};
 (-2, -5)*{\afvjm2};
 (-2,-10)*{\affr68};
 (-2,-10)*{\copy\contrdown};
 %-
-( 6, 10)*{\affr68};
-( 6, 10)*{\copy\contrup};
-( 6,  5)*{\afvjm2};
-( 6,  0)*{\affr{6}{8}};
-( 9,  2)*{\aflabelleft{\psi}};
-( 6, -5)*{\afvjm2};
-( 6,-10)*{\affr68};
-( 6,-10)*{\copy\contrdown};
+(10, 10)*{\affr68};
+(10, 10)*{\copy\contrup};
+(10,  5)*{\afvjm2};
+(11,  0)*{\affr{10}{30}};
+(16, 13)*{\aflabelleft{\psi}};
+(10,  0)*{\affr{6}{8}};
+(13,  2)*{\aflabelleft{\psi'}};
+(10, -5)*{\afvjm2};
+(10,-10)*{\affr68};
+(10,-10)*{\copy\contrdown};
 %-
-( 2,-18)*{\afaiuex{}{}{}{}{}{}{8}{4}};
+( 4,-18)*{\afaiuex{}{}{}{}{}{}{12}{4}};
 (-8,-11)*{\afvjum{14}{\boldsymbol\iota}{}};
 }\quad.
 \]
 
-\TODO{Unclear sentence:}
+\TODO{Alessio: is this clearer?}
 
-We then define $\ISR(\Phi,a)$ to be such that $\Psi'\to_\fris\ISR(\Phi,a)$, where $\psi$ in $\psi'$ is a subflow of $\psi$ in the redex of Definition~\vref{definition:IsolatedSubflowRemoval}.
+We then define $\ISR(\Phi,a)$ to be such that $\Psi'\to_\fris\ISR(\Phi,a)$, where $\phi$ in $\psi$ are the flows shown in Definition~\vref{definition:IsolatedSubflowRemoval}.
 \end{definition}
 %---------------
 
