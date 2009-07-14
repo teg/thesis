@@ -319,17 +319,25 @@ We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gammasf_1$, $\dots$, $\Gammasf_N$ to g
 \end{proof}
 %----------
 
-%--------------------------------------------------------------
+%-------------------------------------
 \begin{lemma}\label{lemma:MultipleIsolatedSubflowsRemovalPaths}
-Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\frmis\psi$, and given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$ such that, for some $0\le i\le N$, $\nu=f_i(\nu')$, and
+Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\frmis\psi$; let $f_0$, $\dots$, $f_n$ be the isomorphisms and let $\nu_{\ai,1}$, $\dots$, $\nu_{\ai,n}$ be the evidenced cut (resp., interaction) vertices described in Definition~\ref{definition:MultipleIsolatedSubflowsRemoval}; then, given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$ such that, for some $0\le i\le n$, $\nu=f_i(\nu')$; and
 \begin{itemize}
 \item if there is a path from $\nu$ to $\bot$ (resp., $\top$) in $\psi$, then there is a path from $\nu'$ to $\bot$ (resp., $\top$) in $\phi$; and
-\item if there is a cut (resp., interaction) vertex $\hat\nu$ in $\psi$, such that there is a path from $\nu$ to $\hat\nu$ in $\psi$, then there is a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$, such that, for some $0\le i\le N$, $\hat\nu=f_i(\hat\nu')$ and there is a path from $\nu'$ to $\hat\nu'$ in $\phi$.
+\item if there is a cut (resp., interaction) vertex $\hat\nu$ in $\psi$, such that there is a path from $\nu$ to $\hat\nu$ in $\psi$, then there is a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$, such that, for some $0\le i\le n$, $\hat\nu=f_i(\nu')$, or, for some $1\le i\le n$, $\hat\nu'=\nu_{\ai,i}$; and there is a path from $\nu'$ to $\hat\nu'$ in $\phi$.
 \end{itemize}
 \end{lemma}
 
 \begin{proof}
-By a case analysis on the atomic flows in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}.
+In the following we refer to the figure in Definition~\ref{definition:MultipleIsolatedSubflowsRemoval}:
+\begin{itemize}
+ \item any path from $\nu$ to $\top$ (resp., $\bot$) in $\psi$ must contain an edge $\epsilon$, such that, for some upper (resp., lower) edge $\epsilon'$ of $\phi$ and some $0\le i\le n$, $f_i(\epsilon')=\epsilon$. Hence, there is a path from $\nu'$ to $\top$ (resp., $\bot$) in $\phi$; and
+ \item we have to consider two cases:
+ \begin{itemize}
+  \item for some $0\le i\le n$, $\nu=f_i(\nu')$ and $\hat\nu=f_i(\hat\nu')$, then there is a path from $\nu'$ to $\hat\nu'$ in $\phi$; or
+  \item for some $0\le i<j\le n$, $\nu=f_i(\nu')$ and $\hat\nu=f_j(\hat\nu')$ (resp., $\nu=f_j(\nu')$ and $\hat\nu=f_i(\hat\nu')$),then, for some $1\le i\le n$, there is a path from $\nu'$ to $\nu_{\ai,i}$ in $\phi$.
+ \end{itemize}
+\end{itemize}
 \end{proof}
 %----------
 

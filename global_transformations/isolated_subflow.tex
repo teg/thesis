@@ -134,20 +134,24 @@ We know that the size of $\Phi_\ttt$ and the size of $\Phi_\fff$ depend at most 
 
 \TODO{Alessio: You were right about the mistake. I added `or $\hat\nu'$ is the evidenced cut (resp., identity) vertex in Definition~\ref{definition:IsolatedSubflowRemoval}'.}
 
-%-----------------------------------------------------
+%-------------------------------------
 \begin{lemma}\label{lemma:IsolatedSubflowRemovalPaths}
-Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\fris\psi$, and given an interaction (resp., cut) vertex $\nu$ in $\psi$, let $f_1$ and $f_2$ be the isomorphisms described in Definition~\ref{definition:IsolatedSubflowRemoval}, then there is an interaction (resp., cut) vertex $\nu'$ in $\phi$ such that $\nu=f_1(\nu')$ or $\nu=f_2(\nu')$, and
+Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\fris\psi$; let $f_1$ and $f_2$ be the isomorphisms and let $\nu_\ai$ be the evidenced cut (resp., interaction) vertex described in Definition~\ref{definition:IsolatedSubflowRemoval}; then, given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$ such that $\nu=f_1(\nu')$ or $\nu=f_2(\nu')$; and
 \begin{itemize}
 \item if there is a path from $\nu$ to $\bot$ (resp., $\top$) in $\psi$, then there is a path from $\nu'$ to $\bot$ (resp., $\top$) in $\phi$; and
-\item if there is a cut (resp., interaction) vertex $\hat\nu$ in $\psi$, such that there is a path from $\nu$ to $\hat\nu$ in $\psi$, then there is a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$, such that $\hat\nu=f_1(\hat\nu')$, $\hat\nu=f_2(\hat\nu')$ or $\hat\nu'$ is the evidenced cut (resp., identity) vertex in Definition~\ref{definition:IsolatedSubflowRemoval}, and there is a path from $\nu'$ to $\hat\nu'$ in $\phi$.
+\item if there is a cut (resp., interaction) vertex $\hat\nu$ in $\psi$, such that there is a path from $\nu$ to $\hat\nu$ in $\psi$, then there is a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$, such that $\hat\nu=f_1(\nu')$ or $\hat\nu=f_2(\nu')$, or $\hat\nu'=\nu_\ai$; and there is a path from $\nu'$ to $\hat\nu'$ in $\phi$.
 \end{itemize}
 \end{lemma}
 
 \begin{proof}
 In the following we refer to the figure in Definition~\ref{definition:IsolatedSubflowRemoval}:
 \begin{itemize}
- \item the statement is true since there is a path from each of the upper (resp., lower) edges of $f_1(\phi)$ and $f_2(\phi)$ to $\top$ (resp., $\bot$);
- \item let $\nu=f_i(\nu')$ and $\hat\nu=f_j(\hat\nu')$, when $i=j$ there is a path from $\nu'$ to $\hat\nu'$ in $\phi$; and when $i=1$ and $j=2$ there is a path from $\nu'$ to the evidenced cut (resp., identity) vertex in $\phi$.
+ \item any path from $\nu$ to $\top$ (resp., $\bot$) in $\psi$ must contain an edge $\epsilon$, such that, for some upper (resp., lower) edge $\epsilon'$ of $\phi$, $f_1(\epsilon')=\epsilon$ or $f_2(\epsilon')=\epsilon$. Hence, there is a path from $\nu'$ to $\top$ (resp., $\bot$) in $\phi$; and
+ \item we have to consider two cases:
+ \begin{itemize}
+  \item $\nu=f_1(\nu')$ and $\hat\nu=f_1(\hat\nu')$, or $\nu=f_2(\nu')$ and $\hat\nu=f_2(\hat\nu')$, then there is a path from $\nu'$ to $\hat\nu'$ in $\phi$; or
+  \item $\nu=f_1(\nu')$ and $\hat\nu=f_2(\hat\nu')$ (resp., $\nu=f_2(\nu')$ and $\hat\nu=f_1(\hat\nu')$),then there is a path from $\nu'$ to $\nu_\ai$ in $\phi$.
+ \end{itemize}
 \end{itemize}
 \end{proof}
 %----------
