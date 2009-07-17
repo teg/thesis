@@ -139,7 +139,7 @@ where, for $1\le i\le n$, $l_i$ is the number of atom occurrences in $\gamma_{k,
 
 %------------------------------------------------------------------
 \begin{theorem}\label{theorem:SoundMultipleIsolatedSubflowsRemoval}
-Reduction\/ $\to_\frmis$ is sound.
+Reduction\/ $\to_\frmis$ is sound; moreover, if\/ $\Phi\to_\frmis\Psi$, then the size of $\Psi$ depends at most cubically on the size of $\Phi$ and at most quadratically on $\max\{\size{\Gammasf_1},\dots,\size{\Gammasf_N}\}$.
 \end{theorem}
 
 \begin{proof}
@@ -316,6 +316,7 @@ We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gammasf_1$, $\dots$, $\Gammasf_N$ to g
 }
 \qquad.
 \]
+Since $\max\{\size{\gamma_{0,1}},\dots,\size{\gamma_{N,n}}\}$ is less than or equal to $\max\{\size{\Gammasf_1},\dots,\size{\Gammasf_N}\}$, we know that the size of $\Phi_0$, $\dots$, $\Phi_N$ depend at most cubically on the size of $\Phi$ and at most quadratically on the size of $\max\{\size{\Gammasf_1},\dots,\size{\Gammasf_N}\}$ by Theorem~\vref{theorem:aiDecomposedForm} and Proposition~\vref{proposition:DerivationSubstitution}, and that the size of $\Psi$ depends at most cubically on the size of $\alpha$ and $\beta$ by Lemma~\vref{lemma:GenericContraction}, so $\Psi$ depends at most cubically on the size of $\Phi$ and at most quadratically on the size of $\max\{\size{\Gammasf_1},\dots,\size{\Gammasf_N}\}$.
 \end{proof}
 %----------
 
@@ -633,7 +634,7 @@ The statements follow by
 \begin{enumerate}
 \item Definition~\vref{definition:DerStreamlined} and Lemma~\vref{lemma:MultipleIsolatedSubflowsRemovalPaths};
 \item Definitions~\ref{definition:DerStreamlined} and \ref{definition:DerSimpleForm}, and Lemma~\ref{lemma:MultipleIsolatedSubflowsRemovalPaths};
-\item Proposition~\vref{proposition:DerivationSubstitution}, since $\max\{\size{\gamma_{0,1}},\dots,\size{\gamma_{N,n}}\}$ is less than or equal to $\max\{\size{\Gammasf_1},\dots,\size{\Gammasf_N}\}$.
+\item the statement follows by Theorem~\vref{theorem:SoundMultipleIsolatedSubflowsRemoval}.
 \end{enumerate}
 \end{proof}
 %----------

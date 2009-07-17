@@ -125,7 +125,7 @@ where the evidenced interaction and cut vertices belong to the same connected co
 
 %----------------------------------------------
 \begin{theorem}\label{theorem:PathBreakerSound}
-Reduction $\to_\frpb$ is sound.
+Reduction $\to_\frpb$ is sound; moreover, if\/ $\Phi\to_\frpb\Psi$, then the size of $\Psi$ depends at most cubically on the size of $\Phi$.
 \end{theorem}
 
 \begin{proof}
@@ -234,6 +234,7 @@ $}
  } 
 }\qquad.
 \]
+We know that the size of $\Phi'$ depends at most cubically on the size of $\Phi$ by Theorem~\vref{theorem:aiDecomposedForm}, and that the size of $\Psi$ depends at most quadratically on the size of $\alpha$ and $\beta$ by Lemma~\vref{lemma:GenericContraction}, so $\Psi$ depends at most cubically on the size of $\Phi$.
 \end{proof}
 %----------
 
@@ -448,7 +449,7 @@ The statements follow by
 \begin{enumerate}
 \item Definition~\vref{definition:DerStreamlined} and Lemma~\vref{lemma:PathBreaker};
 \item Definitions~\ref{definition:DerStreamlined} and Lemma~\ref{lemma:PathBreaker};
-\item Proposition~\vref{proposition:DerivationSubstitution}.
+\item the statement follows by Theorem~\vref{theorem:SoundPathBreaker}.
 \end{enumerate}
 \end{proof}
 %----------
