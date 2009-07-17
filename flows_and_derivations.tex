@@ -193,11 +193,11 @@ Given a derivation $\Phi$ with atomic flow $\phi$, and an atom $a$, the \emph{re
 \TODO{Ensure that all the normal forms of atomic flows have a corresponding definition for derivations.}
 
 \begin{definition}\label{definition:DerSimpleForm}
-A derivation with associated atomic flow $\phi$ is \emph{in simple form with respect to} (\emph{the atom}) $a$ if $\pi$ is a polarity assignment for $\phi$, such that the edges in $\phi$ mapped to from occurrences of $a$ have a positive polarity, and the subflow of $\phi$ whose edges are mapped to from occurrences of $a$ and $\bar a$ is in simple form with respect to $\pi$.
+A derivation with associated atomic flow $\phi$ is \emph{in simple form with respect to} (\emph{the atom}) $a$ if $\pi$ is a polarity assignment for $\phi$, such that the edges in $\phi$ mapped to from occurrences of $a$ have a positive polarity, and the restriction of $\phi$ to $a$ is in simple form with respect to $\pi$.
 \end{definition}
 
 \begin{definition}\label{definition:DerStreamlined}
-A derivation with associated atomic flow $\phi$ is \emph{weakly streamlined} (resp., \emph{streamlined}, \emph{super streamlined} and \emph{hyper streamlined}) if $\phi$ is \emph{weakly streamlined} (resp., \emph{streamlined}, \emph{super streamlined} and \emph{hyper streamlined}). The derivation is \emph{weakly streamlined with respect to} (\emph{the atom}) $a$, if $\pi$ is a polarity assignment for $\phi$, such that the edges in $\phi$ mapped to from occurrences of $a$ have a positive polarity, and the subflow of $\phi$ whose edges are mapped to from occurrences of $a$ and $\bar a$ is weakly streamlined with respect to $\pi$.
+A derivation with associated atomic flow $\phi$ is \emph{weakly streamlined} (resp., \emph{streamlined}, \emph{super streamlined} and \emph{hyper streamlined}) if $\phi$ is \emph{weakly streamlined} (resp., \emph{streamlined}, \emph{super streamlined} and \emph{hyper streamlined}). The derivation is \emph{weakly streamlined with respect to} (\emph{the atom}) $a$, if $\pi$ is a polarity assignment for $\phi$, such that the edges in $\phi$ mapped to from occurrences of $a$ have a positive polarity, and the restriction of $\phi$ to $a$ is weakly streamlined with respect to $\pi$.
 \end{definition}
 
 \TODO{Add references to Propositions.}
