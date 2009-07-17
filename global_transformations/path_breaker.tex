@@ -239,17 +239,19 @@ $}
 
 %-------------------------------------
 \begin{lemma}\label{lemma:PathBreaker}
-Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\frpb\psi$; let $f_1$, $f_2$, $f_3$, $g_1$, $g_2$ and $g_3$ be the isomorphisms, and let $\nu_\ai$ be the evidenced cut (resp., interaction) vertex described in Definition~\ref{definition:PathBreaker}; then, given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$ such that, for some $1\le i\le 3$, $\nu=f_i(\nu')$ or $\nu=g_i(\nu')$; and
+Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\frpb\psi$; let $f_1$, $f_2$, $f_3$, $g_1$, $g_2$ and $g_3$ be the isomorphisms, let $\nu_\ai$ be the evidenced cut (resp., interaction) vertex described in the contractum, and let $\nu'_\ai$ be the evidenced cut (resp., interaction) vertex described in the redex of Definition~\ref{definition:PathBreaker}; then, given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$, such that
 \begin{itemize}
+\item for some $1\le i\le 3$, $\nu=f_i(\nu')$ or $\nu=g_i(\nu')$, or $\nu=\nu_\ai$ and $\nu'=\nu'_\ai$;
 \item if there is a path from $\nu$ to $\bot$ (resp., $\top$) in $\psi$, then there is a path from $\nu'$ to $\bot$ (resp., $\top$) in $\phi$; and
-\item if there is a cut (resp., interaction) vertex $\hat\nu$ in $\psi$, such that there is a path from $\nu$ to $\hat\nu$ in $\psi$, then there is a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$, such that, for some $1\le i\le 3$, $\hat\nu=f_i(\nu')$ or $\hat\nu=g_i(\nu')$, or $\hat\nu'=\nu_\ai$; and there is a path from $\nu'$ to $\hat\nu'$ in $\phi$.
+\item if there is a cut (resp., interaction) vertex $\hat\nu$ in $\psi$, such that there is a path from $\nu$ to $\hat\nu$ in $\psi$, then there is a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$, such that, for some $1\le i\le 3$, $\hat\nu=f_i(\nu')$ or $\hat\nu=g_i(\nu')$, or $\hat\nu=\nu_\ai$ and $\hat\nu'=\nu'_\ai$; and there is a path from $\nu'$ to $\hat\nu'$ in $\phi$.
 \end{itemize}
 \end{lemma}
 
 \begin{proof}
 In the following we refer to the figure in Definition~\ref{definition:PathBreaker}:
 \begin{itemize}
- \item any path from $\nu$ to $\top$ (resp., $\bot$) in $\psi$ must contain an edge $\epsilon$, such that, for some upper (resp., lower) edge $\epsilon'$ of $\phi$ and some $1\le i\le 3$, $f_i(\epsilon')=\epsilon$ or $g_i(\epsilon')=\epsilon$. Hence, there is a path from $\nu'$ to $\top$ (resp., $\bot$) in $\phi$; and
+  \item by definition;
+  \item any path from $\nu$ to $\top$ (resp., $\bot$) in $\psi$ must contain an edge $\epsilon$, such that, for some upper (resp., lower) edge $\epsilon'$ of $\phi$ and some $1\le i\le 3$, $f_i(\epsilon')=\epsilon$ or $g_i(\epsilon')=\epsilon$. Hence, there is a path from $\nu'$ to $\top$ (resp., $\bot$) in $\phi$; and
  \item we have to consider two cases:
  \begin{itemize}
   \item for some $1\le i\le 3$, $\nu=f_i(\nu')$ and $\hat\nu=f_i(\hat\nu')$, or $\nu=g_i(\nu')$ and $\hat\nu=g_i(\hat\nu')$, then there is a path from $\nu'$ to $\hat\nu'$ in $\phi$; or
