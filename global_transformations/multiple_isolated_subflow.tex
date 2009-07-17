@@ -429,6 +429,7 @@ For every $n\ge0$, given the atoms, formulae and derivations described in Defini
 \]
 and atomic flow
 \[
+\phi''\;=\;
 \atomicflow{
 (-12,  8)*{\afvjdm8{}{\boldsymbol\epsilon}};
 (  4, 10)*{\afaidmex{}{}{}{}{}{}{20}{4}};
@@ -437,12 +438,12 @@ and atomic flow
 ( 14,  5)*{\afvjm2};
 (  1,  8)*{\afaidmex{}{}{}{}{}{}{6}{4}};
 ( -7,  0)*{\affr{12}{8}};
-( -4,  2)*{\aflabelright{\phi}};
+( -4,  2)*{\aflabelright{\phi'}};
 (  4,  0)*{\affr{6}{8}};
-(  4,  2)*{\aflabelright{\psi_1}};
+(  4,  2)*{\aflabelright{\psi'_1}};
 (  9,  0)*{\cdots};
 ( 14,  0)*{\affr{6}{8}};
-( 14,  2)*{\aflabelright{\psi_n}};
+( 14,  2)*{\aflabelright{\psi'_n}};
 (  1, -8)*{\afaiumex{}{}{}{}{}{}{6}{4}};
 ( -6, -5)*{\afvjm2};
 ( -4, -6)*{\cdots};
@@ -454,7 +455,7 @@ and atomic flow
 \]
 where, for $1\le i\le n$, $\psi_i$ is the juxtaposition of all the isolated subflows mapped to from occurrences of $a_i$ in $\Phi$. Consider the derivation
 \[
-\Psi'\;=\;
+\Psi\;=\;
 \vlder{\Phi'}{}
 {
  \vlsbr
@@ -551,55 +552,64 @@ where, for $1\le i\le n$, $\psi_i$ is the juxtaposition of all the isolated subf
 \]
 with atomic flow
 \[
-\psi'\;=\;
+\psi''\;=\;
 \atomicflow{
 (-16, 12)*{\afvjdm{16}{\boldsymbol\epsilon}{}};
-(  3, 20)*{\afaidex{}{}{}{}{}{}{26}{4}};
-(  2, 18)*{\afaidex{}{}{}{}{}{}{8}{4}};
+(  7, 20)*{\afaidex{}{}{}{}{}{}{34}{4}};
+(  4, 18)*{\afaidex{}{}{}{}{}{}{12}{4}};
 %-
 (-10, 15)*{\afvj2};
 (-10, 10)*{\affr68};
 (-10, 10)*{\copy\contrup};
 (-10,  5)*{\afvjm2};
+( -6,  5)*{\cdots};
 ( -2, 10)*{\affr68};
 ( -2, 10)*{\copy\contrup};
 ( -2,  5)*{\afvjm2};
 ( -9,  0)*{\affr{16}{8}};
-( -1,  2)*{\aflabelleft{\phi}};
+( -1,  2)*{\aflabelleft{\phi'}};
 (-10, -5)*{\afvjm2};
 (-10,-10)*{\affr68};
 (-10,-10)*{\copy\contrdown};
 (-10,-15)*{\afvj2};
+( -6, -5)*{\cdots};
 ( -2, -5)*{\afvjm2};
 ( -2,-10)*{\affr68};
 ( -2,-10)*{\copy\contrdown};
 %-
-( 6, 10)*{\affr68};
-( 6, 10)*{\copy\contrup};
-( 6,  5)*{\afvjm2};
-(16, 15)*{\afvj2};
-(16, 10)*{\affr68};
-(16, 10)*{\copy\contrup};
-(16,  5)*{\afvjm2};
-( 6,  0)*{\affr{6}{8}};
-( 9,  2)*{\aflabelleft{\psi_1}};
-(11,  0)*{\cdots};
-(16,  0)*{\affr{6}{8}};
-(19,  2)*{\aflabelleft{\psi_n}};
-( 6, -5)*{\afvjm2};
-( 6,-10)*{\affr68};
-( 6,-10)*{\copy\contrdown};
-(16, -5)*{\afvjm2};
-(16,-10)*{\affr68};
-(16,-10)*{\copy\contrdown};
-(16,-15)*{\afvj2};
+(10, 10)*{\affr68};
+(10, 10)*{\copy\contrup};
+(10,  5)*{\afvjm2};
+(24, 15)*{\afvj2};
+(24, 10)*{\affr68};
+(24, 10)*{\copy\contrup};
+(24,  5)*{\afvjm2};
+(10,  0)*{\affr{6}{8}};
+(11,  2)*{\aflabelleft{\psi'_1}};
+(18,  0)*{\cdots};
+(24,  0)*{\affr{6}{8}};
+(27,  2)*{\aflabelleft{\psi'_n}};
+(10, -5)*{\afvjm2};
+(10,-10)*{\affr68};
+(10,-10)*{\copy\contrdown};
+(24, -5)*{\afvjm2};
+(24,-10)*{\affr68};
+(24,-10)*{\copy\contrdown};
+(24,-15)*{\afvj2};
 %-
 (-16,-12)*{\afvjum{16}{\boldsymbol\iota}{}};
-(  3,-20)*{\afaiuex{}{}{}{}{}{}{26}{4}};
-(  2,-18)*{\afaiuex{}{}{}{}{}{}{8}{4}};
+(  4,-18)*{\afaiuex{}{}{}{}{}{}{12}{4}};
+(  7,-20)*{\afaiuex{}{}{}{}{}{}{34}{4}};
+%----
+(-7,  0)*{\affr{22}{30}};
+( 4, 13)*{\aflabelleft{\phi}};
+(11,  0)*{\affr{10}{30}};
+(16, 13)*{\aflabelleft{\psi_1}};
+(25,  0)*{\affr{10}{30}};
+(30, 13)*{\aflabelleft{\psi_n}};
 }\quad.
 \]
-We then define $\MISR_n(\Phi,a_1,\dots,a_n)$ to be such that $\Psi'\to_\fris\MISR(\Phi,a_1,\dots,a_n)$, where, for $1\le i\le n$, $\psi_i$ in $\psi'$ is a sublfow of $\psi_i$ in the redex of Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}.
+We then define $\MISR_n(\Phi,a_1,\dots,a_n)$ to be such that $\Psi\to_\fris\MISR(\Phi,a_1,\dots,a_n)$, where $\phi$, $\psi_1$, $\dots$, $\psi_n$ are the flows, by the same names, shown in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}.
 \end{definition}
 %---------------
 

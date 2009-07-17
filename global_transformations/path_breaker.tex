@@ -315,16 +315,17 @@ The \emph{Path Breaker}, $\PB$, is an operator whose arguments are an atom $a$, 
 \]
 and atomic flow
 \[
+\phi''\;=\;
 \atomicflow
 {
 (-8, 7)*{\afvjdm{6}{\boldsymbol\epsilon}{}};
 ( 0, 8)*{\afaidm{}{}{}{}{}{}};
 ( 8, 7)*{\afvjdm{6}{}{\boldsymbol{\epsilon'}}};
 (-5, 0)*{\affr{8}{8}};
-(-4, 2)*{\aflabelright\phi};
+(-4, 2)*{\aflabelright{\phi'}};
 %---
 ( 5, 0)*{\affr{8}{8}};
-( 6, 2)*{\aflabelright{\psi}};
+( 6, 2)*{\aflabelright{\psi'}};
 ( 8,-7)*{\afvjum{6}{}{\boldsymbol{\iota'}}};
 ( 0,-8)*{\afaium{}{}{}{}{}{}};
 (-8,-7)*{\afvjum{6}{\boldsymbol\iota}{}};
@@ -333,7 +334,7 @@ and atomic flow
 \]
 such that occurrences of $a$ do not appear in an interaction or cut instance in $\Phi'$. Consider the derivation
 \[
-\Psi'\;=\;
+\Psi\;=\;
 \vlder{\Phi'}{}
 {
  \vlsbr
@@ -390,39 +391,42 @@ such that occurrences of $a$ do not appear in an interaction or cut instance in 
 \]
 with atomic flow
 \[
-\psi'\;=\;
+\psi''\;=\;
 \atomicflow{
-(-8, 11)*{\afvjdm{14}{\boldsymbol\epsilon}{}};
-(11, 11)*{\afvjdm{14}{}{\boldsymbol{\epsilon'}}};
-( 2, 18)*{\afaidex{}{}{}{}{}{}{8}{4}};
+(-11, 11.5)*{\afvjdm{15}{\boldsymbol\epsilon}{}};
+( 13, 11.5)*{\afvjdm{15}{}{\boldsymbol{\epsilon'}}};
+(  1, 18)*{\afaidex{}{}{}{}{}{}{12}{4}};
 %-
-(-2, 10)*{\affr68};
-(-2, 10)*{\copy\contrup};
-(-2,  5)*{\afvjm2};
-(-5,  0)*{\affr{8}{8}};
-(-1,  2)*{\aflabelleft{\phi}};
-(-2, -5)*{\afvjm2};
-(-2,-10)*{\affr68};
-(-2,-10)*{\copy\contrdown};
+( -5, 10)*{\affr68};
+( -5, 10)*{\copy\contrup};
+( -5,  5)*{\afvjm2};
+( -8,  0)*{\affr{8}{8}};
+( -4,  2)*{\aflabelleft{\phi'}};
+( -5, -5)*{\afvjm2};
+( -5,-10)*{\affr68};
+( -5,-10)*{\copy\contrdown};
 %-
-( 6, 10)*{\affr68};
-( 6, 10)*{\copy\contrup};
-( 6,  5)*{\afvjm2};
-( 8,  0)*{\affr{8}{8}};
-(12,  2)*{\aflabelleft{\psi}};
-( 6, -5)*{\afvjm2};
-( 6,-10)*{\affr68};
-( 6,-10)*{\copy\contrdown};
+(  7, 10)*{\affr68};
+(  7, 10)*{\copy\contrup};
+(  7,  5)*{\afvjm2};
+( 10,  0)*{\affr{8}{8}};
+( 14,  2)*{\aflabelleft{\psi'}};
+(  7, -5)*{\afvjm2};
+(  7,-10)*{\affr68};
+(  7,-10)*{\copy\contrdown};
 %-
-( 2,-18)*{\afaiuex{}{}{}{}{}{}{8}{4}};
-(-8,-11)*{\afvjum{14}{\boldsymbol\iota}{}};
-(11,-11)*{\afvjum{14}{}{\boldsymbol{\iota'}}};
+(  1,-18)*{\afaiuex{}{}{}{}{}{}{12}{4}};
+(-11,-11.5)*{\afvjum{15}{\boldsymbol\iota}{}};
+( 13,-11.5)*{\afvjum{15}{}{\boldsymbol{\iota'}}};
+%----
+( -6,  0)*{\affr{14}{30}};
+(  1, 13)*{\aflabelleft{\phi}};
+(9.5,  0)*{\affr{13}{30}};
+( 16, 13)*{\aflabelleft{\psi}};
 }\quad.
 \]
 
-\TODO{Incomprihensible:}
-
-We then define $\PB(\Phi,a)$ to be such that $\Psi'\to_\frpb\PB(\Phi,a)$, where $\phi$ (resp., $\psi$) in $\psi'$ is a subflow of $\psi$ (resp., $\phi$) in the redex of Definition~\vref{definition:PathBreaker}.
+We then define $\PB(\Phi,a)$ to be such that $\Psi\to_\frpb\PB(\Phi,a)$, where $\phi$ and $\psi$ are the flows, by the same names, shown in Definition~\vref{definition:PathBreaker}.
 \end{definition}
 %---------------
 
