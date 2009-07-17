@@ -42,7 +42,7 @@ The condition on the atomic flow $\psi$ in Definition~\ref{definition:IsolatedSu
 
 %---------------------------------------------------------
 \begin{theorem}\label{theorem:SoundIsolatedSubflowRemoval}
-Reduction\/ $\to_\fris$ is sound; moreover, if $\Phi\to_\fris\Psi$, then the size of $\Psi$ depends at most cubically on the size of $\Phi$.
+Reduction\/ $\to_\fris$ is sound; moreover, if\/ $\Phi\to_\fris\Psi$, then the size of $\Psi$ depends at most cubically on the size of $\Phi$.
 \end{theorem}
 
 \begin{proof}
@@ -128,7 +128,7 @@ Since $\psi$ is connected and contains no identity or cut vertices, the mapping 
  }
 }\quad.
 \]
-We know that the size of $\Phi_\ttt$ and the size of $\Phi_\fff$ depend at most cubically on the size of $\Phi$ by Theorem~\vref{theorem:aiDecomposedForm} and Proposition~\vref{proposition:DerivationSubstitution}, and that the size of $\Psi$ depends at most quadratically on the size of $\alpha$ and $\beta$ by Lemma~\vref{lemma:GenericContraction}.
+We know that the size of $\Phi_\ttt$ and the size of $\Phi_\fff$ depend at most cubically on the size of $\Phi$ by Theorem~\vref{theorem:aiDecomposedForm} and Proposition~\vref{proposition:DerivationSubstitution}, and that the size of $\Psi$ depends at most quadratically on the size of $\alpha$ and $\beta$ by Lemma~\vref{lemma:GenericContraction}, so $\Psi$ depends at most cubically on the size of $\Phi$.
 \end{proof}
 %----------
 
@@ -336,9 +336,9 @@ Given an atom $a$, and a derivation $\Phi$ that is on simple form with respect t
 \item for any atom $b$,
 \begin{itemize}
 \item if $\Phi$ is weakly streamlined with respect to $b$, then $\ISR(\Phi,a)$ is weakly streamlined with respect to $b$, and
-\item if $\Phi$ is on simple form with respect to $b$, then $\ISR(\Phi,a)$ is on simple form with respect to $b$; and
+\item if $b$ is not the dual of $a$ and $\Phi$ is on simple form with respect to $b$, then $\ISR(\Phi,a)$ is on simple form with respect to $b$; and
 \end{itemize}
-\item the size of\/ $\ISR(\Phi,a)$ depends polynomially on the size of\/ $\Phi$.
+\item the size of\/ $\ISR(\Phi,a)$ depends cubically on the size of\/ $\Phi$.
 \end{enumerate}
 \end{proposition}
 
