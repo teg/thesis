@@ -2,6 +2,8 @@
 
 \TODO{Use colors.}
 
+\TODO{Size}
+
 %--------------------------------
 \newcommand{\frpb}{{\mathsf{pb}}}
 \begin{definition}\label{definition:PathBreaker}
@@ -433,11 +435,13 @@ We then define $\PB(\Phi,a)$ to be such that $\Psi\to_\frpb\PB(\Phi,a)$, where $
 \begin{proposition}\label{proposition:IsolatedSubflowRemover}
 Given an atom $a$, and a derivation $\Phi$ that is not weakly streamlined with respect to both $a$ and $\bar a$,
 \begin{enumerate}
-\item $\PB(\Phi,a)$ is weakly streamlined with respect to $a$ and $\bar a$;
+\item $\PB(\Phi,a)$ is weakly streamlined with respect to both $a$ and $\bar a$;
 \item for any atom $b$, if $\Phi$ is weakly streamlined with respect to $b$, then $\PB(\Phi,a)$ is weakly streamlined with respect to $b$; and
-\item the size of $\PB(\Phi,a)$ depends linearly on the size of\/ $\Phi$.
+\item the size of\/ $\PB(\Phi,a)$ depends at most cubically on the size of\/ $\Phi$.
 \end{enumerate}
 \end{proposition}
+
+\TODO{Prove:}
 
 \begin{proof}
 The statements follow by
