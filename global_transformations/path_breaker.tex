@@ -264,9 +264,8 @@ In the following we refer to the figure in Definition~\ref{definition:PathBreake
 %----------------------------
 \newcommand{\PB}{\mathsf{PB}}
 \begin{definition}\label{definition:DerPathBreaker}
-The \emph{Path Breaker}, $\PB$, is an operator whose arguments are an atom $a$, and a derivation with $\ai$-decomposed form 
+The \emph{Path Breaker}, $\PB$, is an operator whose arguments are an atom $a$, and a derivation $\Phi$ that is not weakly streamlined with respect to $a$ or with respect to $\bar a$, with $\ai$-decomposed form 
 \[
-\Phi\;=\;
 \vlder{\Phi'}{}
 {
  \vlsbr
@@ -432,7 +431,7 @@ We then define $\PB(\Phi,a)$ to be such that $\Psi\to_\frpb\PB(\Phi,a)$, where $
 
 %------------------------------------------------------------
 \begin{proposition}\label{proposition:IsolatedSubflowRemover}
-Given an atom $a$, and a derivation $\Phi$ as described in Definition~\ref{definition:DerPathBreaker},
+Given an atom $a$, and a derivation $\Phi$ that is not weakly streamlined with respect to both $a$ and $\bar a$,
 \begin{enumerate}
 \item $\PB(\Phi,a)$ is weakly streamlined with respect to $a$ and $\bar a$;
 \item for any atom $b$, if $\Phi$ is weakly streamlined with respect to $b$, then $\PB(\Phi,a)$ is weakly streamlined with respect to $b$; and
