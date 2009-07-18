@@ -24,7 +24,7 @@ For every $n>0$, given
 }\quad,
 \]
 \end{itemize}
-let, for $1\le k\le N$, $\eta_k$ be the atomic flow of\/ $\Gammasf_k$, and let
+let, for $1<k\le N$, $\eta_k$ be the atomic flow of\/ $\Gammasf_k$, and let
 \[
 \mu_k\;=\;
 \atomicflow
@@ -43,7 +43,7 @@ let, for $1\le k\le N$, $\eta_k$ be the atomic flow of\/ $\Gammasf_k$, and let
 }
 \quad,
 \]
-where, for $1\le i\le n$, $l_i$ is the number of atom occurrences in $\gamma_{k,i}$, we define the reduction $\to_\frmis$ (where $\frmis$ stands for \emph{multiple isolated subflows}) as follows, for any atomic flow $\phi$ and any connected atomic flows $\psi_1$, $\dots$, $\psi_n$ that do not contain interaction or cut vertices:
+where, for $1\le i\le n$, $l_i$ is the number of atom occurrences in $\gamma_{k,i}$, we define the reduction $\to_{\frmis_n}$ (where $\frmis$ stands for \emph{multiple isolated subflows}) as follows, for any atomic flow $\phi$ and any connected atomic flows $\psi_1$, $\dots$, $\psi_n$ that do not contain interaction or cut vertices:
 
 \TODO{Decide on the direction of the dots}
 
@@ -74,7 +74,7 @@ where, for $1\le i\le n$, $l_i$ is the number of atom occurrences in $\gamma_{k,
 (-12, 56)*{\afvjm4};
 (-12, 50)*{\copy\contrup};
 (-12, 50)*{\affr{16}{8}};
-( -5, 44)*{\afvjdm4{}{f_0(\boldsymbol\epsilon)}};
+( -5, 44)*{\afvjdm4{}{f_1(\boldsymbol\epsilon)}};
 ( -7, 34)*{\afcjlm{4}{24}};
 (-12, 42)*{\cdots};
 (-10,  2)*{\afcjlm{10}{32}};
@@ -84,20 +84,20 @@ where, for $1\le i\le n$, $l_i$ is the number of atom occurrences in $\gamma_{k,
 %--
 ( 5, 46)*{\afawdm{}{}{}{}};
 ( 0, 38)*{\affr{12}{8}};
-( 1, 40)*{\aflabelright{f_0(\phi)}};
+( 1, 40)*{\aflabelright{f_1(\phi)}};
 ( 5, 33)*{\afvjm2};
 ( 9, 28)*{\affr{10}{8}};
-(11, 30)*{\aflabelright{\eta_0}};
+(11, 30)*{\aflabelright{\eta_1}};
 ( 5, 23)*{\afvjm2};
 (11, 23)*{\afvjm2};
 ( 0, 18)*{\affr{12}{8}};
-( 1, 20)*{\aflabelright{f_1(\phi)}};
+( 1, 20)*{\aflabelright{f_2(\phi)}};
 ( 5, 13)*{\afvjm2};
 (11, 13)*{\afvjm2};
 (11, 18)*{\affr{6}{8}};
-(11, 20)*{\aflabelright{\mu_1}};
+(11, 20)*{\aflabelright{\mu_2}};
 ( 9,  8)*{\affr{10}{8}};
-(11, 10)*{\aflabelright{\eta_1}};
+(11, 10)*{\aflabelright{\eta_2}};
 ( 5,  3)*{\afvjm2};
 (11,  3)*{\afvjm2};
 %-
@@ -106,20 +106,20 @@ where, for $1\le i\le n$, $l_i$ is the number of atom occurrences in $\gamma_{k,
 ( 5, -3)*{\afvjm2};
 (11, -3)*{\afvjm2};
 ( 9, -8)*{\affr{10}{8}};
-( 9, -6)*{\aflabelright{\eta_{n-1}}};
+( 9, -6)*{\aflabelright{\eta_{N-1}}};
 ( 5,-13)*{\afvjm2};
 (11,-13)*{\afvjm2};
 ( 0,-18)*{\affr{12}{8}};
-( 1,-16)*{\aflabelright{f_n(\phi)}};
+( 1,-16)*{\aflabelright{f_N(\phi)}};
 (11,-18)*{\affr{6}{8}};
-(11,-16)*{\aflabelright{\mu_n}};
+(11,-16)*{\aflabelright{\mu_N}};
 ( 5,-23)*{\afvjm2};
 (11,-23)*{\afvjm2};
 ( 9,-28)*{\affr{10}{8}};
-(11,-26)*{\aflabelright{\eta_n}};
+(11,-26)*{\aflabelright{\eta_N}};
 ( 5,-33)*{\afvjm2};
 ( 0,-38)*{\affr{12}{8}};
-(-1,-36)*{\aflabelright{f_{n+1}(\phi)}};
+(-1,-36)*{\aflabelright{f_{N+1}(\phi)}};
 ( 5,-46)*{\afawum{}{}{}{}};
 %--
 (-12, 13)*{\afcjrm{14}{42}};
@@ -128,7 +128,7 @@ where, for $1\le i\le n$, $l_i$ is the number of atom occurrences in $\gamma_{k,
 (-15,-32)*{\afvjm{28}};
 (-12,-42)*{\cdots};
 ( -7,-34)*{\afcjrm{4}{24}};
-( -5,-44)*{\afvjum4{}{f_{n+1}(\boldsymbol\iota)}};
+( -5,-44)*{\afvjum4{}{f_{N+1}(\boldsymbol\iota)}};
 (-12,-50)*{\affr{16}{8}};
 (-12,-50)*{\copy\contrdown};
 (-12,-56)*{\afvjm4};
@@ -322,23 +322,23 @@ Since $\max\{\size{\gamma_{0,1}},\dots,\size{\gamma_{N,n}}\}$ is less than or eq
 
 %-------------------------------------
 \begin{lemma}\label{lemma:MultipleIsolatedSubflowsRemovalPaths}
-Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\frmis\psi$; let $f_0$, $\dots$, $f_n$ be the isomorphisms and let $\nu_{\ai,1}$, $\dots$, $\nu_{\ai,n}$ be the evidenced cut (resp., interaction) vertices described in Definition~\ref{definition:MultipleIsolatedSubflowsRemoval}; then, given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$, such that
+Given two atomic flows $\phi$ and $\psi$ and an $n>0$, such that $\phi\to_{\frmis_n}\psi$; let $f_1$, $\dots$, $f_{N+1}$ be the isomorphisms and let $\nu_{\ai,1}$, $\dots$, $\nu_{\ai,n}$ be the evidenced cut (resp., interaction) vertices described in Definition~\ref{definition:MultipleIsolatedSubflowsRemoval}; then, given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$, such that
 \begin{itemize}
-\item for some $0\le i\le n$, $\nu=f_i(\nu')$;
+\item for some $1\le i\le N+1$, $\nu=f_i(\nu')$;
 \item if there is a path from $\nu$ to $\bot$ (resp., $\top$) in $\psi$, then there is a path from $\nu'$ to $\bot$ (resp., $\top$) in $\phi$; and
-\item if there is a cut (resp., interaction) vertex $\hat\nu$ in $\psi$, such that there is a path from $\nu$ to $\hat\nu$ in $\psi$, then there is a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$, such that, for some $0\le i\le n$, $\hat\nu=f_i(\nu')$, or, for some $1\le i\le n$, $\hat\nu'=\nu_{\ai,i}$; and there is a path from $\nu'$ to $\hat\nu'$ in $\phi$.
+\item if there is a cut (resp., interaction) vertex $\hat\nu$ in $\psi$, such that there is a path from $\nu$ to $\hat\nu$ in $\psi$, then there is a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$, such that, for some $1\le i\le N+1$, $\hat\nu=f_i(\nu')$, or, for some $1\le i\le n$, $\hat\nu'=\nu_{\ai,i}$; and there is a path from $\nu'$ to $\hat\nu'$ in $\phi$.
 \end{itemize}
 \end{lemma}
 
 \begin{proof}
 In the following we refer to the figure in Definition~\ref{definition:MultipleIsolatedSubflowsRemoval}:
 \begin{itemize}
- \item by definition;
- \item any path from $\nu$ to $\top$ (resp., $\bot$) in $\psi$ must contain an edge $\epsilon$, such that, for some upper (resp., lower) edge $\epsilon'$ of $\phi$ and some $0\le i\le n$, $f_i(\epsilon')=\epsilon$. Hence, there is a path from $\nu'$ to $\top$ (resp., $\bot$) in $\phi$; and
+ \item the statement follows by definition;
+ \item any path from $\nu$ to $\top$ (resp., $\bot$) in $\psi$ must contain an edge $\epsilon$, such that, for some upper (resp., lower) edge $\epsilon'$ of $\phi$ and some $1\le i\le N+1$, $f_i(\epsilon')=\epsilon$. Hence, there is a path from $\nu'$ to $\top$ (resp., $\bot$) in $\phi$; and
  \item we have to consider two cases:
  \begin{itemize}
-  \item for some $0\le i\le n$, $\nu=f_i(\nu')$ and $\hat\nu=f_i(\hat\nu')$, then there is a path from $\nu'$ to $\hat\nu'$ in $\phi$; or
-  \item for some $0\le i<j\le n$, $\nu=f_i(\nu')$ and $\hat\nu=f_j(\hat\nu')$ (resp., $\nu=f_j(\nu')$ and $\hat\nu=f_i(\hat\nu')$),then, for some $1\le i\le n$, there is a path from $\nu'$ to $\nu_{\ai,i}$ in $\phi$.
+  \item for some $1\le i\le N+1$, $\nu=f_i(\nu')$ and $\hat\nu=f_i(\hat\nu')$, then there is a path from $\nu'$ to $\hat\nu'$ in $\phi$; or
+  \item for some $1\le i<j\le N+1$, $\nu=f_i(\nu')$ and $\hat\nu=f_j(\hat\nu')$ (resp., $\nu=f_j(\nu')$ and $\hat\nu=f_i(\hat\nu')$),then, for some $1\le i\le n$, there is a path from $\nu'$ to $\nu_{\ai,i}$ in $\phi$.
  \end{itemize}
 \end{itemize}
 \end{proof}
