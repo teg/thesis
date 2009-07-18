@@ -775,12 +775,12 @@ and\/ $\size{\Gammasf^n_k\avec1n}$ is $n^{\Ord{\log n}}$.
 \newcommand{\QMISR}{\mathsf{QMISR}}
 %---------------------------------------
 \begin{definition}\label{definition:QuasipolynomialMultipleSubflowRemoval}
-For every $n\ge0$, we define
+For every $n>0$, we define
 \begin{itemize}
-\item the reduction $\to_\frqmis$ (where $\frqmis$ stands for \emph{quasipolynomial multiple isolated subflows}); and
+\item the reduction $\to_{\frqmis_n}$ (where $\frqmis$ stands for \emph{quasipolynomial multiple isolated subflows}); and
 \item the \emph{quasipolynomial multiple isolated subflow remover}, $\QMISR_n$,
 \end{itemize}
-as follows: Given atoms $\avec 1n$, instantiate $\to_\frmis$ and $\MISR$ with
+as follows: Given atoms $\avec 1n$, instantiate $\to_{\frmis_n}$ and $\MISR_n$ with
 \begin{itemize}
 \item $N=n$;
 \item for $0\le k\le n$ and $1\le i\le n$, $\gamma_{k,i}=(\th kn\avec1n)\{a_i/\fff\}$; and
@@ -791,7 +791,7 @@ as follows: Given atoms $\avec 1n$, instantiate $\to_\frmis$ and $\MISR$ with
 
 %-------------------------------------------------------------------------
 \begin{theorem}\label{theorem:SoundQuasipolynomialMultipleSubflowsRemoval}
-$\to_\frqmis$ is sound.
+For every $n>0$, $\to_{\frqmis_n}$ is sound; moreover, if\/ $\Phi\to_{\frqmis_n}\Psi$, then the size of $\Psi$ depends at most cubically on the size of $\Phi$ and quasipolynomially on $n$.
 \end{theorem}
 
 \begin{proof}
