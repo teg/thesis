@@ -801,15 +801,15 @@ The result follows by Theorem~\vref{theorem:SoundMultipleIsolatedSubflowsRemoval
 
 %------------------------------------------------------------
 \begin{proposition}\label{proposition:QuasipolynomialMultipleIsolatedSubflowRemover}
-Given atoms $a_1$, $\dots$, $a_n$, and a derivation $\Phi$ as described in Definition~\ref{definition:MultipleIsolatedSubflowsRemover},
+Given atoms $a_1$, $\dots$, $a_n$ and a derivation $\Phi$ that is in simple form, but is not weakly streamlined, with respect to $a_1$, $\dots$, $a_n$,
 \begin{enumerate}
-\item $\QMISR_n(\Phi,a_1,\dots,a_n)$ is weakly streamlined with respect to $a$, $\dots$, $a_n$;
+\item $\QMISR_n(\Phi,a_1,\dots,a_n)$ is weakly streamlined with respect to $a_1$, $\dots$, $a_n$;
 \item for any atom $b$,
 \begin{itemize}
 \item if $\Phi$ is weakly streamlined with respect to $b$, then $\QMISR_n(\Phi,a_1,\dots,a_n)$ is weakly streamlined with respect to $b$, and
-\item if $\Phi$ is on simple form with respect to $b$, then $\QMISR_n(\Phi,a_1,\dots,a_n)$ is on simple form with respect to $b$; and
+\item if $b$ is not the dual of any of $a_1$, $\dots$, $a_n$ and $\Phi$ is on simple form with respect to $b$, then $\QMISR_n(\Phi,a_1,\dots,a_n)$ is on simple form with respect to $b$; and
 \end{itemize}
-\item the size of $\QMISR_n(\Phi,a_1,\dots,a_n)$ depends linearly on the size of\/ $\Phi$, and quasipolynomially on $n$.
+\item the size of\/ $\QMISR_n(\Phi,a_1,\dots,a_n)$ depends at most cubically on the size of\/ $\Phi$, and quasipolynomially on $n$.
 \end{enumerate}
 \end{proposition}
 
