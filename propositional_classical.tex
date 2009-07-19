@@ -98,7 +98,7 @@ If $\alpha=\beta$, then (as remarked in \cite{}) there exists a derivation $\vld
 \end{remark}
 %-----------
 
-\begin{remark}\label{remark:ImplicitEquations}
+\begin{notation}\label{notation:ImplicitEquations}
 When we work in (subsystems of) $\SKS$, we often omit mentioning the invertible rules. Let $\mathcal{S}$ be a subsystem of $\SKS$, then, unless specified otherwise, when we write $\mathcal{S}$ we mean $\mathcal{S}\cup\{\coor,\coand,\asor,\asand,\fffd,\tttd,\fffu,\tttu,\fffandd,\tttord,\fffandu,\tttoru\}$. Furthermore, if $\rho\in\SKS$, and there is a derivation
 \[
 \vlderivation
@@ -192,7 +192,7 @@ we write
 \vlinf{\swi}{}{\vls[\alpha.(\beta.\gamma)]}{\vls([\alpha.\beta].\gamma)}\quad.
 \]
 See the proofs of Theorems~\vrefrange{theorem:SoundPathBreaker}{theorem:SoundMultipleIsolatedSubflowsRemoval} for more examples of implicit equations.
-\end{remark}
+\end{notation}
 
 \begin{lemma}\label{lemma:SuperSwitch}
 Given a context $\xi\vlhole$ and a formula $\alpha$ there exist derivations $\vlder{}{\{\swi\}}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlder{}{\{\swi\}}{\vls[\xi\{\fff\}.\alpha]}{\xi\{\alpha\}}$; both of whose size depend at most quadratically on the size of $\xi\{\alpha\}$.
@@ -249,7 +249,7 @@ for some $\xi'\vlhole$ and $\beta$ where $\beta$ is not a unit and $\Psi$ and $\
 \newcommand{\ssu}{\supers\uparrow}
 \newcommand{\ssd}{\supers\downarrow}
 
-\begin{remark}\label{remark:SuperSwitch}
+\begin{notation}\label{notation:SuperSwitch}
 We often write $\vlinf{\ssu}{}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlinf{\ssd}{}{\vls[\xi\{\fff\}.\alpha]}{\xi\{\alpha\}}$, instead of, respectively, the derivations $\vlder{}{\{\swi\}}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlder{}{\{\swi\}}{\vls[\xi\{\fff\}.\alpha]}{\xi\{\alpha\}}$, as defined in the proof of Lemma~\vref{lemma:SuperSwitch}. Instead of the derivation
 \[
 \vlinf{\swi}{}
@@ -261,7 +261,7 @@ We often write $\vlinf{\ssu}{}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\v
 }
 \]
 we write $\vlinf{\supers}{}{\vls[\zeta\{\fff\}.\xi\{\alpha\}]}{\vls(\zeta\{\alpha\}.\xi\{\ttt\})}$.
-\end{remark}
+\end{notation}
 
 \begin{lemma}\label{lemma:GenericWeakening}
 Given a formula $\alpha$, there exist derivations $\vlupsmash{\vlder{}{\{\awd,\swi\}}{\alpha}{\fff}}$ and $\vlupsmash{\vlder{}{\{\awu,\swi\}}{\ttt}{\alpha}}$; both of whose size depend at most quadratically on the size of $\alpha$.
@@ -427,9 +427,11 @@ We show how to construct the first derivation, the second one can be done symmet
 \newcommand{\wed}{{\weakn{\downarrow}}}
 \newcommand{\weu}{{\weakn{\uparrow}}}
 
-\begin{remark}\label{remark:GenericContraction}
+\begin{notation}\label{notation:GenericWeakeningContraction}
 In the non-atomic version of system $\SKS$ the derivations shown in the proofs of Lemma~\ref{lemma:GenericWeakening} and Lemma~\vref{lemma:GenericContraction} correspond to (co)weakening and (co)contractions, respectively. For this reason we sometimes write the inference rules $\vlinf{\wed}{}{\alpha}{\fff}$, $\vlinf{\weu}{}{\ttt}{\alpha}$, $\vlinf{\cod}{}{\alpha}{\vls[\alpha.\alpha]}$ and $\vlinf{\cou}{}{\vls(\alpha.\alpha)}{\alpha}$ instead of the derivations $\vlder{}{\{\awd,\swi\}}{\alpha}{\fff}$, $\vlder{}{\{\awu,\swi\}}{\ttt}{\alpha}$, $\vlder{}{\{\acd,\med\}}{\alpha}{\vls[\alpha.\alpha]}$ and $\vlupsmash{\vlder{}{\{\acu,\med\}}{\vls(\alpha.\alpha)}{\alpha}}$, respectively.
-\end{remark}
+\end{notation}
+
+As an example of the concept we have just defined we now show two ways of proving $\SKS$ complete for propositional classical logic.
 
 \begin{theorem}\label{theorem:SKSComplete}
 System $\SKS$ is complete for propositional classical logic.

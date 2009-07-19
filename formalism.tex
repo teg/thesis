@@ -98,7 +98,7 @@ Given a deductive system $\mathcal S$, and formulae $\alpha$ and $\beta$; a (\em
 The size of a derivation $\Psi$, denoted $\size{\Psi}$, is defined to be the sum of the size of the formulae appearing in $\Psi$.
 \end{definition}
 
-\begin{remark}\label{remark:DerAssociativeComposition}
+\begin{convention}\label{convention:DerAssociativeComposition}
 Given derivations $\vlder{\Phi_1}{}{\beta_1}{\alpha_1}$, $\vlder{\Phi_2}{}{\beta_2}{\alpha_2}$ and $\vlder{\Phi_3}{}{\beta_3}{\alpha_3}$, and inference rule instances $\vlinf{\rho_1}{}{\alpha_2}{\beta_1}$ and $\vlinf{\rho_2}{}{\alpha_3}{\beta_2}$ we consider
 \[
 \vlinf{\rho_2}{}
@@ -210,7 +210,7 @@ to be equal, and we denote them both by
 }
 \quad.
 \]
-\end{remark}
+\end{convention}
 
 \begin{lemma}\label{lemma:DerInContext}
 Given a derivation $\vlder{\Phi}{}{\beta}{\alpha}$ and a context $\xi\vlhole$, a derivation $\vlder{\Psi}{}{\xi\{\beta\}}{\xi\{\alpha\}}$, with size $\size{\Phi}+\size{\xi\vlhole}$, can be constructed.
@@ -228,9 +228,9 @@ For the inductive case, let
 for some formula $\gamma$ and a context $\xi'\vlhole$. By the inductive hypothesis we can construct the derivation $\vlder{\Psi'}{}{\xi'\{\beta\}}{\xi'\{\alpha\}}$, so the result follows by case (\ref{definition:Derivation:item:Horizontal}) of Definition~\vref{definition:Derivation}.
 \end{proof}
 
-\begin{definition}\label{definition:DerInContext}
+\begin{notation}\label{notation:DerInContext}
 Given a derivation $\vlder{\Phi}{}{\beta}{\alpha}$ and a context $\xi\vlhole$, the derivation $\vlder{}{}{\xi\{\beta\}}{\xi\{\alpha\}}$ constructed in the proof of Lemma~\vref{lemma:DerInContext} is denoted $\xi\{\Phi\}$.
-\end{definition}
+\end{notation}
 
 \begin{lemma}\label{lemma:DerComposition}
 Given two derivations $\vlder{\Phi_1}{}{\beta}{\alpha}$ and $\vlder{\Phi_2}{}{\gamma}{\beta}$, a derivation $\vlder{\Psi}{}{\gamma}{\alpha}$, with size $\size{\Phi_1}+\size{\Phi_2}-\size{\beta}$, can be constructed.
@@ -400,7 +400,7 @@ We argue by structural induction on $\Phi_1$
 \end{enumerate}
 \end{proof}
 
-\begin{definition}\label{definition:DerComposition}
+\begin{notation}\label{notation:DerComposition}
 Given derivations $\vlder{\Phi_1}{}{\beta}{\alpha}$ and $\vlder{\Phi_2}{}{\gamma}{\beta}$, the derivation $\vlder{\Psi}{}{\gamma}{\alpha}$ constructed in the proof of Lemma~\vref{lemma:DerComposition} is denoted:
 \[
 \vlderivation
@@ -414,7 +414,7 @@ Given derivations $\vlder{\Phi_1}{}{\beta}{\alpha}$ and $\vlder{\Phi_2}{}{\gamma
  }
 }\quad.
 \]
-\end{definition}
+\end{notation}
 
 \section{The Calculus of Structures}\label{section:CalculusOfStructures}
 
