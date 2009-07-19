@@ -220,9 +220,12 @@ Given a derivation $\vlder{\Phi}{}{\beta}{\alpha}$ and a context $\xi\vlhole$, a
 We proceed by structural induction on $\xi\vlhole$. The base case, $\xi\vlhole\equiv\vlhole$, is trivial.
 For the inductive case, let
 \[
- \xi\vlhole\equiv r(\gamma_1,\dots,\gamma_{i-1},\xi'\vlhole,\gamma_{i+1},\dots,\gamma_n)
+ \xi\vlhole\equiv\vls(\xi'\vlhole.\gamma)\quad,\qquad\xi\vlhole\equiv\vls(\gamma.\xi'\vlhole)\quad,
 \]
-for some $n$-ary logical relation $r$, some formulae $\gamma_1$, $\dots$, $\gamma_{i-1}$, $\gamma_{i+1}$, $\dots$, $\gamma_n$ and a context $\xi'\vlhole$. By the inductive hypothesis we can construct the derivation $\vlder{\Psi'}{}{\xi'\{\beta\}}{\xi'\{\alpha\}}$, so the result follows by case \ref{definition:Derivation:item:Horizontal} of Definition~\vref{definition:Derivation}.
+\[
+ \xi\vlhole\equiv\vls[\xi'\vlhole.\gamma]\qquad\mbox{or}\qquad\xi\vlhole\equiv\vls[\gamma.\xi'\vlhole]\quad.
+\]
+for some formula $\gamma$ and a context $\xi'\vlhole$. By the inductive hypothesis we can construct the derivation $\vlder{\Psi'}{}{\xi'\{\beta\}}{\xi'\{\alpha\}}$, so the result follows by case (\ref{definition:Derivation:item:Horizontal}) of Definition~\vref{definition:Derivation}.
 \end{proof}
 
 \begin{definition}\label{definition:DerInContext}
