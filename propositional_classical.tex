@@ -74,25 +74,87 @@ The calculus of structures and system $\SKS$ were originally defined in terms of
 
 %------------------------------------------------------
 \begin{definition}\label{definition:EquationsShorthand}
-If there is a derivation $\vlder{\Phi}{\{\coor,\coand,\asor,\asand,\fffd,\tttd,\fffu,\tttu,\fffandd,\tttord,\fffandu,\tttoru\}}{\beta}{\alpha}$, we say that $\alpha=\beta$ and we often write $\vlinf{=}{}{\beta}{\alpha}$ instead of\/ $\Phi$.
+Given formulae $\alpha$ and $\beta$, if there is a derivation $\vlder{\Phi}{\{\coor,\coand,\asor,\asand,\fffd,\tttd,\fffu,\tttu,\fffandd,\tttord,\fffandu,\tttoru\}}{\beta}{\alpha}$, we say that $\alpha=\beta$ and we often write $\vlinf{=}{}{\beta}{\alpha}$ instead of\/ $\Phi$.
 \end{definition}
+%---------------
 
+%------------------------------------------
 \begin{remark}\label{remark:ContextClosure}
 By Definition~\vref{definition:EquationsShorthand} and Lemma~\vref{lemma:DerInContext}, for any formulae $\alpha$ and $\beta$ and context $\xi\vlhole$ we have that $\alpha=\beta$ implies $\xi\{\alpha\}=\xi\{\beta\}$.
 \end{remark}
+%-----------
+
+%---------------------------------------------------------
+\begin{proposition}\label{proposition:EquivalenceRelation}
+The relation $=$ defined in Definition~\ref{definition:EquationsShorthand} is an equivalence relation.
+\end{proposition}
+%----------------
+
+It turns out that the equivalence class induced by $=$ is the same as the structures defined in \cite{}.
+
+%----------------------------------------
+\begin{remark}\label{remark:EquationSize}
+If $\alpha=\beta$, then (as remarked in \cite{}) there exists a derivation $\vlder{\Phi}{\{\coor,\coand,\asor,\asand,\fffd,\tttd,\fffu,\tttu,\fffandd,\tttord,\fffandu,\tttoru\}}{\beta}{\alpha}$ whose size depends at most quadratically on the sum of the sizes of $\alpha$ and $\beta$.
+\end{remark}
+%-----------
 
 \begin{remark}\label{remark:ImplicitEquations}
-When we work in (subsystems of) $\SKS$, we often omit mentioning the invertible rules $\coor$, $\coand$, $\asor$, $\asand$, $\fffd$, $\tttd$, $\fffu$, $\tttu$, $\fffandd$, $\tttord$, $\fffandu$ and $\tttoru$. \emph{E.g.}, when we refer to the system $\{\swi\}$ we mean the system $\{\swi,\coor,\coand,\asor,\asand,\fffd,\tttd,\fffu,\tttu,\fffandd,\tttord,\fffandu,\tttoru\}$, and we write derivations like
-\[
-\vlinf{\swi}{}{\vls[\alpha.(\beta.\gamma)]}{\vls([\alpha.\beta].\gamma)}\quad,
-\]
-instead of
+When we work in (subsystems of) $\SKS$, we often omit mentioning the invertible rules. Let $\mathcal{S}$ be a subsystem of $\SKS$, then, unless specified otherwise, when we write $\mathcal{S}$ we mean $\mathcal{S}\cup\{\coor,\coand,\asor,\asand,\fffd,\tttd,\fffu,\tttu,\fffandd,\tttord,\fffandu,\tttoru\}$. Furthermore, if $\rho\in\SKS$, and there is a derivation
 \[
 \vlderivation
 {
  \vlin{=}{}
  {
-  \vls[\alpha.(\beta.\gamma)]
+  \beta
+ }
+ {
+  \vlin{\rho}{}
+  {
+   \beta'
+  }
+  {
+   \vlin{=}{}
+   {
+    \alpha'
+   }
+   {
+    \vlhy
+    {
+     \alpha
+    }
+   }
+  }
+ }
+}
+\]
+we sometimes write
+\[
+\vlinf{\rho}{}
+{
+ \beta
+}
+{
+ \alpha
+}\quad.
+\]
+\emph{E.g.}, instead of the derivation
+\[
+\vlderivation
+{
+ \vlin{\coor}{}
+ {
+  \vls
+  [
+   \alpha
+  \;.\;
+   \vlinf{\coand}{}
+   {
+    \vls(\beta.\gamma)
+   }
+   {
+    \vls(\gamma.\beta)
+   }
+  ]
  }
  {
   \vlin{\swi}{}
@@ -100,19 +162,34 @@ instead of
    \vls[(\gamma.\beta).\alpha]
   }
   {
-   \vlin{=}{}
+   \vlin{\coand}{}
    {
     \vls(\gamma.[\beta.\alpha])
    }
    {
     \vlhy
     {
-     \vls([\alpha.\beta].\gamma)
+     \vls
+     (
+      \vlinf{\coor}{}
+      {
+       \vls[\beta.\alpha]
+      }
+      {
+       \vls[\alpha.\beta]
+      }
+     \;.\;
+      \gamma
+     )
     }
    }
   }
  }
-}\quad.
+}
+\]
+we write
+\[
+\vlinf{\swi}{}{\vls[\alpha.(\beta.\gamma)]}{\vls([\alpha.\beta].\gamma)}\quad.
 \]
 See the proofs of Theorems~\vrefrange{theorem:SoundPathBreaker}{theorem:SoundMultipleIsolatedSubflowsRemoval} for more examples of implicit equations.
 \end{remark}
