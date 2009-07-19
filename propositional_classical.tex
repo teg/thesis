@@ -73,10 +73,16 @@ and the \emph{invertible}\index{inference rule!invertible} rules:
 The calculus of structures and system $\SKS$ were originally defined in terms of equivalence classes of formulae, called `structures', instead of formulae. However, we find it more convenient to use formulae and invertible rules when we trace atom occurrences. We now show that the two approaches are morally the same.
 
 %------------------------------------------------------
-\begin{definition}\label{definition:EquationsShorthand}
-Given formulae $\alpha$ and $\beta$, if there is a derivation $\vlder{\Phi}{\{\coor,\coand,\asor,\asand,\fffd,\tttd,\fffu,\tttu,\fffandd,\tttord,\fffandu,\tttoru\}}{\beta}{\alpha}$, we say that $\alpha=\beta$ and we often write $\vlinf{=}{}{\beta}{\alpha}$ instead of\/ $\Phi$.
+\begin{definition}\label{definition:EquivalenceRelation}
+We define the relation $=$ such that, given formulae $\alpha$ and $\beta$, $\alpha=\beta$ if there is a derivation $\vlder{\Phi}{\{\coor,\coand,\asor,\asand,\fffd,\tttd,\fffu,\tttu,\fffandd,\tttord,\fffandu,\tttoru\}}{\beta}{\alpha}$.
 \end{definition}
 %---------------
+
+%----------------------------------------
+\begin{notation}\label{notation:Equation}
+If $\alpha=\beta$, we often write $\vlinf{=}{}{\beta}{\alpha}$.
+\end{notation}
+%-------------
 
 %------------------------------------------
 \begin{remark}\label{remark:ContextClosure}
