@@ -2,7 +2,7 @@
 
 %---------------------------------------
 \begin{definition}\label{definition:FlowLabels}
-We call the following six diagrams (\emph{atomic-flow}) \emph{labels}:
+We call the following six diagrams (\emph{atomic-flow}) \emph{labels}\index{flow!labels}:
 \[
 \begin{array}{@{}c@{}c@{}c@{}}
       \vcenter{\afaid{}{}{}{}{}{}}&
@@ -39,14 +39,14 @@ We call the following six diagrams (\emph{atomic-flow}) \emph{labels}:
 \newcommand{\lo}{{\mathit lo}}
 %---------------------------------------
 \begin{definition}\label{definition:AtomicFlow}
-An (\emph{atomic}) \emph{flow} is a tuple $(V,E,\eta,\up,\lo)$, denoted $\phi$ or $\psi$, such that:
+An (\emph{atomic}) \emph{flow}\index{flow}\index{atomic flow|see{flow}} is a tuple $(V,E,\eta,\up,\lo)$, denoted $\phi$ or $\psi$, such that:
 \begin{enumerate}
 %-------------------
-\item $V$ is a finite set of \emph{vertices}, denoted by $\nu$;
+\item $V$ is a finite set of \emph{vertices}\index{flow!vertices}, denoted by $\nu$;
 %-------------------
-\item $E$ is a finite set of \emph{edges}, denoted by $\epsilon$ or $\iota$;
+\item $E$ is a finite set of \emph{edges}\index{flow!edges}, denoted by $\epsilon$ or $\iota$;
 %-------------------
-\item $\eta\colon V\to\{\aid,\aiu,\awd,\awu,\acd,\acu\}$ maps vertices to their \emph{labels};
+\item $\eta\colon V\to\{\aid,\aiu,\awd,\awu,\acd,\acu\}$ maps vertices to their \emph{labels}\index{flow!labels};
 %-------------------
 \item $\up\colon E\to V\cup\{\top\}$ and $\lo\colon E\to V\cup\{\bot\}$ are, respectively, the \emph{upper} and \emph{lower} maps, and $\top$ and $\bot$ are special vertices not belonging to $V$; we define, for every $\nu\in V\cup\{\top,\bot\}$, the set $L_\nu=\{\,\epsilon\mid\up(\epsilon)=\nu\,\}$ of \emph{lower edges of $\nu$}, the set $U_\nu=\{\,\epsilon\mid\lo(\epsilon)=\nu\,\}$ of \emph{upper edges of $\nu$}, and the set $E_\nu=L_\nu\cup U_\nu$ of \emph{edges of $\nu$};
 %-------------------
@@ -62,7 +62,7 @@ An (\emph{atomic}) \emph{flow} is a tuple $(V,E,\eta,\up,\lo)$, denoted $\phi$ o
 %-------------------
 \item\label{ItAcycl} there is no sequence $\epsilon_1,\dots,\epsilon_h$ of edges of $V$ such that $\up(\epsilon_i)=\lo(\epsilon_{i+1\pmod h})$, for $1\le i\le h$;
 %-------------------
-\item\label{definition:AtomicFlow:item:PolarityAssignment} there is a \emph{polarity assignment} $\pi\colon E\to\{\pmi,\ppl\}$ such that, for every $\nu\in V$,
+\item\label{definition:AtomicFlow:item:PolarityAssignment} there is a \emph{polarity assignment}\index{flow!polarity assignment} $\pi\colon E\to\{\pmi,\ppl\}$ such that, for every $\nu\in V$,
 \begin{enumerate}
 %---------
 \item if $\eta(\nu)\in\{\acd,\acu\}$ then $\pi(E_\nu)=\{\pmi\}$ or $\pi(E_\nu)=\{\ppl\}$;
@@ -70,7 +70,7 @@ An (\emph{atomic}) \emph{flow} is a tuple $(V,E,\eta,\up,\lo)$, denoted $\phi$ o
 \item if $\eta(\nu)\in\{\aid,\aiu\}$ then $\pi(E_\nu)=\{\pmi,\ppl\}$.
 \end{enumerate}
 \end{enumerate}
-Given an atomic flow $\phi$, we say that the sets $L_\top=\{\epsilon_1,\dots,\epsilon_h\}$ and $U_\bot=\{\epsilon'_1,\dots,\epsilon'_k\}$ contain, respectively, the \emph{upper} and \emph{lower edges of $\phi$}.
+Given an atomic flow $\phi$, we say that the sets $L_\top=\{\epsilon_1,\dots,\epsilon_h\}$ and $U_\bot=\{\epsilon'_1,\dots,\epsilon'_k\}$ contain, respectively, the \emph{upper}\index{flow!upper edges} and \emph{lower edges of $\phi$}\index{flow!lower edges}.
 \end{definition}
 
 \TODO{Explain the use of colors and small numerals.}
@@ -113,7 +113,7 @@ Given an atomic flow $\phi$, we say that the sets $L_\top=\{\epsilon_1,\dots,\ep
                                 {\scriptscriptstyle\mathbf9}}}
 
 \begin{definition}\label{definition:FlowIsomorphism}
-An (\emph{atomic}) \emph{flow isomorphism} between the atomic flows $\phi_1=(V_1,E_1,\eta_1,\up_1,\lo_1)$ and $\phi_2=(V_2,E_2,\eta_2,\up_2,\lo_2)$ is a pair $(f_V,f_E)$, such that
+An (\emph{atomic}) \emph{flow isomorphism}\index{flow!isomorphism} between the atomic flows $\phi_1=(V_1,E_1,\eta_1,\up_1,\lo_1)$ and $\phi_2=(V_2,E_2,\eta_2,\up_2,\lo_2)$ is a pair $(f_V,f_E)$, such that
 \begin{itemize}
 \item $f_V$ is a bijection from $V_1$ to $V_2$; and 
 \item $f_E$ is a bijection from $E_1$ to $E_2$,
@@ -436,7 +436,7 @@ We now define the notions of `$\ai$-path' and `$\ai$-cycle' in atomic flows. Pat
 
 %---------------------------------------
 \begin{definition}\label{definition:FlowPaths}
-Given an atomic flow $(V,E,\eta,\up,\lo)$ and $\epsilon_1,\dots,\epsilon_h\in E$ such that, for $1\le i<h$, we have $\lo(\epsilon_i)=\up(\epsilon_{i+1})$, $\up(\epsilon_1)=\nu$ and $\lo(\epsilon_h)=\nu'$, we say that $\epsilon_1,\dots,\epsilon_h$ is a \emph{path from $\nu$ to $\nu'$} and that $\epsilon_h,\dots,\epsilon_1$ is a \emph{path from $\nu'$ to $\nu$}; both paths have \emph{length} $h$. An \emph{$\ai$-path from $\nu$ to $\nu'$} of \emph{length} $h$ is either a path from $\nu$ to $\nu'$ of length $h$ or a sequence of edges $\epsilon_1,\dots,\epsilon_k,\epsilon_{k+1},\dots,\epsilon_h$ such that $\epsilon_k \ne \epsilon_{k+1}$ and, for some $\nu''\in V$ with $\eta(\nu'')\in\{\aid,\aiu\}$, we have that $\epsilon_1,\dots,\epsilon_k$ is an $\ai$-path from $\nu$ to $\nu''$ and $\epsilon_{k+1},\dots,\epsilon_h$ is an $\ai$-path from $\nu''$ to $\nu'$. An $\ai$-path of length $h$ is \emph{maximal} if no $\ai$-path containing its edges has length greater than $h$. An $\ai$-path from (resp., to) $\nu$ of length $h$ is a \emph{maximal\/ $\ai$-path from} (resp., \emph{to}) $\nu$ if no $\ai$-path from (resp., to) $\nu$ containing its edges has length greater than $h$. A path from an interaction to a cointeraction vertex or vice versa is called an \emph{$\ai$-connection}.
+Given an atomic flow $(V,E,\eta,\up,\lo)$ and $\epsilon_1,\dots,\epsilon_h\in E$ such that, for $1\le i<h$, we have $\lo(\epsilon_i)=\up(\epsilon_{i+1})$, $\up(\epsilon_1)=\nu$ and $\lo(\epsilon_h)=\nu'$, we say that $\epsilon_1,\dots,\epsilon_h$ is a \emph{path from $\nu$ to $\nu'$}\index{path} and that $\epsilon_h,\dots,\epsilon_1$ is a \emph{path from $\nu'$ to $\nu$}; both paths have \emph{length} $h$\index{path!length}. An \emph{$\ai$-path from $\nu$ to $\nu'$}\index{$\ai$-path} of \emph{length}\index{$\ai$-path!length} $h$ is either a path from $\nu$ to $\nu'$ of length $h$ or a sequence of edges $\epsilon_1,\dots,\epsilon_k,\epsilon_{k+1},\dots,\epsilon_h$ such that $\epsilon_k \ne \epsilon_{k+1}$ and, for some $\nu''\in V$ with $\eta(\nu'')\in\{\aid,\aiu\}$, we have that $\epsilon_1,\dots,\epsilon_k$ is an $\ai$-path from $\nu$ to $\nu''$ and $\epsilon_{k+1},\dots,\epsilon_h$ is an $\ai$-path from $\nu''$ to $\nu'$. An $\ai$-path of length $h$ is \emph{maximal}\index{$\ai$-path!maximal} if no $\ai$-path containing its edges has length greater than $h$. An $\ai$-path from (resp., to) $\nu$ of length $h$ is a \emph{maximal\/ $\ai$-path from} (resp., \emph{to}) $\nu$ if no $\ai$-path from (resp., to) $\nu$ containing its edges has length greater than $h$. A path from an interaction to a cointeraction vertex or vice versa is called an \emph{$\ai$-connection}.
 \end{definition}
 
 %---------------------------------------
