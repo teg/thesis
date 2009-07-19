@@ -2,6 +2,8 @@
 
 \section{System $\SKS$}
 
+We now define the standard deductive system for classical propositional logic in deep inference $\SKS$\index{$\SKS$} \cite{Brun:03:Atomic-C:oz,Brun:06:Cut-Elim:cq,Brun:06:Locality:zh,BrunTiu:01:A-Local-:mz}. Subsystems of $\SKS$ are used throughout this thesis.
+
 \newcommand{\ai   }{{\mathsf{ai}}}
 \newcommand{\aw   }{{\mathsf{aw}}}
 \newcommand{\ac   }{{\mathsf{ac}}}
@@ -68,6 +70,9 @@ and the \emph{invertible}\index{inference rule!invertible} rules:
 
 \TODO{Reference Complexity paper by Alessio and Paola:}
 
+The calculus of structures and system $\SKS$ were originally defined in terms of equivalence classes of formulae, called `structures', instead of formulae. However, we find it more convenient to use formulae and invertible rules when we trace atom occurrences. We now show that the two approaches are morally the same.
+
+%------------------------------------------------------
 \begin{definition}\label{definition:EquationsShorthand}
 If there is a derivation $\vlder{\Phi}{\{\coor,\coand,\asor,\asand,\fffd,\tttd,\fffu,\tttu,\fffandd,\tttord,\fffandu,\tttoru\}}{\beta}{\alpha}$, we say that $\alpha=\beta$ and we often write $\vlinf{=}{}{\beta}{\alpha}$ instead of\/ $\Phi$.
 \end{definition}

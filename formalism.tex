@@ -2,11 +2,13 @@
 
 \section{The Functorial Calculus}\label{section:FunctorialCalculus}
 
-\TODO{Give credit to Francois for the name.}
+In this section we present a deep inference formalism, which we call `the functorial calculus' (as suggested by Fran\c{c}ois Lamarche). The functorial calculus is a development of the traditional deep inference formalism, the calculus of structures \cite{}, which was motivated by the desire to remove bureaucracy of Type A \cite{} (for this reason the functorial calculus, or variations thereof, is often also referred to as `Formalism A').
 
-\TODO{Definitions~\vrefrange{definition:Formula}{definition:InferenceRuleInstance} and Definition~\vref{definition:CoS} is taken from \emph{On the Proof Complexity of Deep Inference}.}
+\TODO{Cite: \emph{On the Proof Complexity of Deep Inference}.}
 
-\TODO{Note: Removed negated formula variables; DeMorgan dual of formulae; formula variables from the examples.} 
+The Definitions~\vrefrange{definition:Formula}{definition:InferenceRuleInstance} and Definition~\vref{definition:CoS} are based on definitions given in \cite{}.
+
+\TODO{Explain that we can generalise.}
 
 \newcommand{\fff}{\mathsf f}
 \newcommand{\ttt}{\mathsf t}
@@ -23,10 +25,6 @@ We define a set of \emph{formulae}\index{formulae}, denoted by $\alpha$, $\beta$
 A formula is \emph{ground}\index{formula!ground} if it contains no variables. We usually omit external brackets of formulae, and sometimes we omit dispensable brackets under associativity. We use $\equiv$ to denote literal equality of formulae. The \emph{size}\index{formula!size} $\size\alpha$ of a formula $\alpha$ is the number of unit, atom and variable occurrences appearing in it. On the set of atoms there is an involution $\bar\cdot$, called \emph{negation}\index{atoms!negation} (\emph{i.e.}, $\bar\cdot$ is a bijection from the set of atoms to itself such that $\bar{\bar a}\equiv a$); we require that $\bar a\not\equiv a$ for every $a$; when both $a$ and $\bar a$ appear in a formula, we mean that atom $a$ is mapped to by $\bar a$ by $\bar\cdot$. A \emph{context}\index{formula!context} is a formula where one \emph{hole}\index{hole} $\vlhole$ appears in the place of a subformula; for example, $\vls[a.(b.\vlhole)]$ is a context; the generic context is denoted by $\xi\vlhole$. The hole can be filled with formulae; for example, if $\xi\vlhole\equiv\vls(b.[\vlhole.c])$, then $\xi\{a\}\equiv\vls(b.[a.c])$, $\xi\{b\}\equiv\vls(b.[b.c])$ and $\xi\{\vls(a.b)\}\equiv\vls(b.[(a.b).c])$. The \emph{size}\index{formula!context!size} of $\xi\vlhole$ is defined as $\size{\xi\vlhole}=\size{\xi\{a\}}-1$.
 \end{definition}
 
-\TODO{Note: I removed mention of $\rho$ and $\sigma$ as well as DeMorgan duals. I changed the example.}
-
-\TODO{Negated variables?}
-
 \begin{definition}\label{definition:RenamingSubstitution}
 A \emph{renaming}\index{atoms!renaming} is a map from the set of atoms to itself, and it is denoted by $\{a_1/b_1,a_2/b_2,\dots\}$. A renaming of $\alpha$ by $\{a_1/b_1,a_2/b_2,\dots\}$ is indicated by $\alpha\{a_1/b_1,a_2/b_2,\dots\}$ and is obtained by simultaneously substituting every occurrence of $a_i$ in $\alpha$ by $b_i$ and every occurrence of $\bar a_i$ by $\bar b_i$; for example, if $\alpha\equiv\vls(a.[b.(a.[\bar a.c])])$ then $\alpha\{a/\bar b,\bar b/c\}\equiv\vls(\bar b.[\bar c.(\bar b.[b.c])])$. A \emph{substitution}\index{substitution} is a map from the set of formula variables to the set of formulae, denoted by $\{A_1/\beta_1,A_2/\beta_2,\dots\}$. An \emph{instance}\index{formula!instance} of $\alpha$ by $\{A_1/\beta_1,A_2/\beta_2,\dots\}$ is indicated by $\alpha\{A_1/\beta_1,A_2/\beta_2,\dots\}$ and is obtained by simultaneously substituting every occurrence of variable $A_i$ in $\alpha$ by formula $\beta_i$; for example if $\alpha\equiv\vls[A.(b.c)]$ then $\alpha\{A/\vlsbr(c.\bar b)\}\equiv\vls[(c.\bar b).(b.c)]$.
 \end{definition}
@@ -36,6 +34,8 @@ A \emph{renaming}\index{atoms!renaming} is a map from the set of atoms to itself
 \begin{definition}\label{definition:InferenceRuleInstance}
 An \emph{inference rule}\index{inference rule} $\rho$ is an expression $\vlinf{\rho}{}{\beta}{\alpha}$, where the formulae $\alpha$ and $\beta$ are called \emph{premiss}\index{inference rule!premiss} and \emph{conclusion}\index{inference rule!conclusion}, respectively. A (\emph{deductive}) \emph{system}\index{system} is a finite set of inference rules. An \emph{inference rule instance}\index{inference rule!instance} $\vlinf{\rho}{}{\delta}{\gamma}$ of $\vlinf{\rho}{}{\beta}{\alpha}$ is such that $\gamma$ and $\delta$ are ground, and $\gamma\equiv\alpha\{a_1/b_1,a_2/b_2,\dots\}\{A_1/\beta_1,A_2/\beta_2,\dots\}$ and $\delta\equiv\beta\{a_1/b_1,a_2/b_2,\dots\}\{A_1/\beta_1,A_2/\beta_2,\dots\}$, for some renaming $\{a_1/b_1,a_2/b_2,\dots\}$ and substiution $\{A_1/\beta_1,A_2/\beta_2,\dots\}$.
 \end{definition}
+
+The intuition behind derivations in the functorial calculus is that we can compose derivations by the same connectives we can compose formulae.
 
 \begin{definition}\label{definition:Derivation}
 Given a deductive system $\mathcal S$, and formulae $\alpha$ and $\beta$; a (\emph{functorial calculus}) \emph{derivation $\Psi$ in $\mathcal S$ from $\alpha$ to $\beta$}\index{derivation!functorial calculus}, denoted $\vlder{\Psi}{\mathcal{S}}{\beta}{\alpha}$, is defined to be
@@ -418,6 +418,8 @@ Given derivations $\vlder{\Phi_1}{}{\beta}{\alpha}$ and $\vlder{\Phi_2}{}{\gamma
 
 \section{The Calculus of Structures}\label{section:CalculusOfStructures}
 
+We will now present the calculus of structures and compare it briefly with the functorial calculus. The intuition behind derivations in the calculus of structures is that we rewrite formulae by applying inference rules inside a context.
+
 \begin{definition}\label{definition:CoS}
 Given a deductive system $\mathcal S$, a set of formulae, $\mathcal F$, and $\alpha$ and $\beta$ from $\mathcal F$; a \emph{calculus of structures derivation $\Psi$ in $\mathcal S$ from $\alpha$ to $\beta$}\index{derivation!calculus of structures}, denoted $\vlder{\Psi}{\mathcal{S}}{\beta}{\alpha}$, is defined to be
 \begin{enumerate}
@@ -491,8 +493,3 @@ By the inductive hypothesis, there are functorial calculus derivations $\vlder{\
 \end{proof}
 
 \TODO{Compare with the paper by Stephane and Kai.}
-\TODO{Considre if it is worth expanding this:}
-
-\begin{theorem}
-A functorial calculus derivation corresponds to an equivalence class of calculus of structures derivations modulo bureaucracy of type A.
-\end{theorem}
