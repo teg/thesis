@@ -453,5 +453,55 @@ We argue by structural induction on $\Phi$. The base case is trivial; $\Phi=\alp
 \]
 By the inductive hypothesis, there are functorial calculus derivations $\vlder{\Psi_1}{}{\xi\{\beta'\}}{\alpha}$ and $\vlder{\Psi_2}{}{\beta}{\xi\{\alpha'\}}$, such that $\size{\Psi_1}\le\size{\Phi_1}$ and $\size{\Psi_2}\le\size{\Phi_2}$. By Lemma~\vref{lemma:DerInContext}, there is a functorial calculus derivation $\xi\left\{\vlinf{\rho}{}{\alpha'}{\beta'}\right\}$, with size $\size{\xi\vlhole}+\size{\alpha'}+\size{\beta'}$. By Lemma~\vref{lemma:DerComposition}, we can combine the three functorial calculus derivations to create $\vlder{\Psi}{}{\beta}{\alpha}$, with size $\size{\Psi_1}+\size{\Psi_2}+\size{\xi\vlhole}+\size{\beta'}+\size{\alpha'}-\size{\xi\vlhole}-\size{\beta'}-\size{\xi\vlhole}-\size{\alpha'}=\size{\Psi_1}+\size{\Psi_2}-\size{\xi\vlhole}\le\size{\Phi_1}+\size{\Phi_2}=\size{\Phi}$.
 \end{proof}
+%----------
+
+%--------------------------------------
+\begin{lemma}\label{lemma:CoSDerInContext}
+Given a calculus of structures derivation $\vlder{\Phi}{}{\beta}{\alpha}$ and a context $\xi\vlhole$, a calculus of structures derivation $\vlder{\Psi}{}{\xi\{\beta\}}{\xi\{\alpha\}}$ can be constructed, such that the number of inference rule instances in $\Psi$ is the same as the number of inference rule instances in $\Phi$, and the size of the largest formula in $\Psi$ is the sum of the largest formula in $\Phi$ and $\size{\xi\vlhole}$.
+\end{lemma}
+
+\begin{proof}
+The statements follows by structural induction on $\Phi$.
+\end{proof}
+%----------
+
+%----------------------------------------
+\begin{lemma}\label{lemma:CoSDerComposition}
+Given two calculus of structures derivations $\vlder{\Phi_1}{}{\beta}{\alpha}$ and $\vlder{\Phi_2}{}{\gamma}{\beta}$, a calculus of structures derivation $\vlupsmash{\vlder{\Psi}{}{\gamma}{\alpha}}$ can be constructed, such that the number of inference rule instances in $\Psi$ is the sum of the number of inference rule instances in $\Phi_1$ and $\Phi_2$ combined, and the largest formula in $\Psi$ is the largest formula of $\Phi_1$ or the largest formula of $\Phi_2$.
+\end{lemma}
+
+\begin{proof}
+The statement follows by structural induction on $\Phi_1$.
+\end{proof}
+%----------
+
+%---------------------------------------
+\begin{theorem}\label{theorem:FuncToCoS}
+A functorial calculus derivation $\vlder{\Phi}{}{\beta}{\alpha}$ can be transformed into a calculus of structures derivation $\vlder{\Psi}{}{\beta}{\alpha}$ such that the size of $\Psi$ depends at most quadratically on the size of $\Phi$.
+\end{theorem}
+
+\begin{proof}
+We first show how to construct $\Psi$: The base cases, when $\Phi$ is a formula or a vertical composition, are trivial. For the inductive case, consider a conjunction of functorial calculus derivations (the argument for the disjunction is similar):
+\[
+\Phi\;=\;
+\vls
+(
+ \vlder{\Phi_1}{}{\beta_1}{\alpha_1}
+\;\;.\;\;
+ \vlder{\Phi_2}{}{\beta_2}{\alpha_2}
+)\quad.
+\]
+By the inductive hypothesis and Lemma~\ref{lemma:CoSDerInContext} there are calculus of structures derivations
+\[
+\vlder{\Psi_1}{}{\vls(\beta_1.\alpha_1)}{\vls(\alpha_1.\alpha_1)}
+\qquad\mbox{and}\qquad
+\vlder{\Psi_2}{}{\vls(\beta_1.\beta_2)}{\vls(\beta_1.\alpha_2)}
+\quad,
+\]
+and by Lemma~\ref{lemma:CoSDerComposition} there exists a calculus of structures derivation $\vlder{\Psi}{}{\vls(\beta_1.\beta_2)}{\vls(\alpha_1.\alpha_2)}$.
+
+To find an upper bound on the size of $\Psi$, we observe that it depends at most linearly on the number of inference rule instances in $\Psi$ multiplied by the size of the largest formula in $\Psi$. Furthermore, by the above Lemmata, the number of inference rules in $\Psi$ is the same as the number of inference rules in $\Phi$ and the size of the largest inference rule depends at most linearly on the size of $\Phi$, so the size of $\Psi$ depends at most quadratically on the size of $\Phi$.
+\end{proof}
+%----------
 
 \TODO{Compare with the paper by Stephane and Kai.}
