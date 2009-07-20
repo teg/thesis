@@ -219,6 +219,33 @@ An atomic flow is
 \end{enumerate}
 \end{definition}
 
+%---------------------------------------
+\begin{example}\label{example:Streamlined}
+The first flow is weakly streamlined, the other two are hyper streamlined:
+\[
+\aflower{\atomicflow{
+(0,6)*{\afacd{}{}{}{}{}{}};
+(4,6)*{\afawd{}{}{}{}};
+(2,0)*{\afaiunw{}{}}}}
+\quad,\qquad
+\atomicflow{
+( 2,0)*{\afacd{}{}{}{}{}{}};
+( 0,4)*{\afawdnw{}{}};
+( 6,8)*{\afacu{}{}{}{}{}{}};
+(10,2)*{\afaiunw{}{}{}{}};
+(12,8)*{\afvj8}}
+\qquad\hbox{and}\qquad
+\atomicflow{
+(10,8)*{\afacu{}{}{}{}{}{}};
+(16,8)*{\afvj8};
+( 2,4)*{\afaidnw{}{}};
+( 0,0)*{\afvj8};
+(14,2)*{\afaiunw{}{}};
+( 6,0)*{\afacd{}{}{}{}{}{}}}
+\quad.
+\]
+\end{example}
+
 \begin{proposition}\label{proposition:FlowWeaklyStreamlinedPolarity}
 Given a polarity assignment $\pi$, an atomic flow that is weakly streamlined with respect to both $\pi$ and $\bar\pi$ is weakly streamlined. 
 \end{proposition}

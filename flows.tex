@@ -122,6 +122,97 @@ An atomic flow is a directed graph, whose edges are associated to atom occurrenc
 
 The polarity assignment condition (\ref{definition:AtomicFlow:item:PolarityAssignment}) ensures that atoms in (co)contractions have the same polarity, and those in interactions and cuts have dual polarities (as happens in derivations). Every atomic flow has $2^n$ polarity assignments, where $n$ is the number of connected components in the graph. We should not be worried about the apparent complexity of the polarity assignment condition: in fact, we could equivalently consider two sorts of (co)contraction and (co)weakening labels, the negative and the positive ones, and ask for vertices to be joined by respecting their polarities. This is clearly a locally checkable property, much simpler than, for example, some global correctness criterion for proof nets.
 
+
+%--------------
+\begin{example}
+Consider the atomic flow
+\begin{align*}
+A=(&\{\;\nu_1\;,\;\nu_2\;,\;\nu_3\;\},\\
+   &\{\;\one\;,\;\two\;,\;\three\;,\;\four\;,\;\five\;\},\\
+   &\{\;\nu_1\mapsto\aiu\;,\;\nu_2\mapsto\acu\;,\;\nu_3\mapsto\aiu\;\},\\
+   &\{\;\one\mapsto\top\;,\;\two\mapsto\top\;,\;\three\mapsto\nu_2\;,\;
+        \four\mapsto\nu_2\;,\;\five\mapsto\top\;\},\\
+   &\{\;\one\mapsto\nu_1\;,\;\two\mapsto\nu_2\;,\;\three\mapsto\nu_1\;,\;
+        \four\mapsto\nu_3\;,\;\five\mapsto\nu_3\;\})
+\quad;
+\end{align*}
+the following are three of its possible representations:
+\[
+\atomicflow{
+(10,8)*{\afacu\four{}{}{}{}\two};
+( 0,8)*{\afvjd8\one{}};
+( 4,8)*{\afvjd8{}\five};
+( 6,2)*{\afaiunw{}{}};
+( 6,0)*{\afaiuex{}{}{}\three{}{}31}}
+\quad,\qquad
+\aflower{\atomicflow{
+( 0  ,6)*{\afvjd{8}\one\ppl};
+( 6  ,6)*{\afacu\three{}{}\four\two\pmi};
+(12  ,6)*{\afvjd{8}\ppl\five};
+(10  ,0)*{\afaiunw{}{}};
+( 2  ,0)*{\afaiunw{}{}};
+(-1.5,0)*{\invisiblemark};
+(13.5,0)*{\invisiblemark}}}
+\qquad\hbox{and}\qquad
+\atomicflow{
+( 8  ,10)*{\afacu{}\three{}\four\two\ppl};
+( 0  , 8)*{\afvjd{12}\one\pmi};
+( 4  ,10)*{\afvjd{8}\five\pmi};
+( 5  , 4)*{\afex24};
+(10  , 4)*{\afvj4};
+( 2  , 0)*{\afaiunw{}{}};
+( 8  , 0)*{\afaiunw{}{}};
+(-1.5, 0)*{\invisiblemark};
+(11.5, 0)*{\invisiblemark}}
+\quad;
+\]
+in the last two diagrams, we also indicated each of the two possible polarity assignments. This flow has one cocontraction and two cointeraction vertices; it has three upper edges, $\one$, $\two$ and $\five$, and no lower edges.
+\end{example}
+%------------
+
+\begin{example}
+The flow
+\[
+\atomicflow{
+(17,12)*{\afaid{}{}{}{}{}{}};
+(-3, 8)*{\afvjd8{}{}};
+(-1, 8)*{\afvjd8{}{}};
+( 1, 8)*{\afvjd8{}{}};
+( 4, 8)*{\afvjd8{}{}};
+(10, 8)*{\afacu{}{}{}{}{}{}};
+(17, 4)*{\afaiu{}{}{}{}{}{}};
+( 6, 2)*{\afaiunw{}{}}}
+\]
+is obtained by juxtaposing (\emph{i.e.}, composing by identifying zero edges):
+\begin{itemize}
+\item three edges, 
+\item a flow obtained by composing a cut vertex with a cocontraction vertex, and
+\item a flow obtained by composing an identity vertex with a cut vertex.
+\end{itemize}
+Note that there are no cycles in the flow, and that we can find 32 different polarity assignments, \emph{i.e.}, two for each of the five connected components of the flow (this is a general rule).
+\end{example}
+
+%--------------
+\begin{example}
+The following two diagrams are not atomic flows:
+\[
+\atomicflow{
+(4,11.7)*{\afacu{}{}{}{}{}{}};
+(0, 3.7)*{\afacd{}{}{}{}{}{}};
+(8, 7.7)*{\afvj{16}};
+(4,16);(8,16)**[|<\atflowthickone>]\crv{(4,18)&(6,20)&(8,18)};
+(0,0);(8,0)**[|<\atflowthickone>]\crv{(0,-2)&(4,-4)&(8,-2)}
+}
+\qquad\mbox{and}\qquad
+\atomicflow{
+(0,4)*{\afaidnw{}{}};
+(0,0)*{\afacd{}{}{}{}{}{}}
+}\quad.
+\]
+The left one is not a flow because there is a cycle in it, and the right one because there is no possible polarity assignment.
+\end{example}
+%------------
+
 \begin{definition}\label{definition:FlowIsomorphism}
 An (\emph{atomic}) \emph{flow isomorphism}\index{flow!isomorphism} between the atomic flows $\phi_1=(V_1,E_1,\eta_1,\up_1,\lo_1)$ and $\phi_2=(V_2,E_2,\eta_2,\up_2,\lo_2)$ is a pair of functions $(f_V,f_E)$, such that
 \begin{itemize}
