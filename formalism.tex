@@ -1,19 +1,15 @@
 \chapter{Propositional Classical Logic}\label{chapter:PropositionalClassicalLogic}
 
-\section{The Functorial Calculus}\label{section:FunctorialCalculus}
-
-In this section we present a deep inference formalism, which we call `the functorial calculus' (as suggested by Fran\c{c}ois Lamarche). The functorial calculus is a development of the traditional deep inference formalism, the calculus of structures \cite{}, which was motivated by the desire to remove bureaucracy of Type A \cite{} (for this reason the functorial calculus, or variations thereof, is often also referred to as `Formalism A').
+In this chapter we present two deep inference formalisms; a new formalism, which we call (as suggested by Fran\c{c}ois Lamarche) `the functorial calculus', and the traditional deep inference formalism `the calculus of structures'. The functorial calculus is a development of the calculus of structures \cite{}, which was motivated by the desire to remove bureaucracy of Type A \cite{} (for this reason the functorial calculus, or variations thereof, is often also referred to as `Formalism A').
 
 \TODO{Cite: \emph{On the Proof Complexity of Deep Inference}.}
 
-The Definitions~\vrefrange{definition:Formula}{definition:InferenceRuleInstance} and Definition~\vref{definition:CoS} are based on definitions given in \cite{}.
+We now define `formulae' and `inference rules' which are in common between both the functorial calculus and the calculus of structures, Definitions~\vrefrange{definition:Formula}{definition:InferenceRuleInstance} are based on definitions given in \cite{}. The focus of this thesis is classical propositional logic, and the following definitions reflect this. However, it is worth noting that the definitions can be generalised to other units and connectives, if one wants to present other logics.
 
-\TODO{Explain that we can generalise.}
-
+%---------------------------
 \newcommand{\fff}{\mathsf f}
 \newcommand{\ttt}{\mathsf t}
 \newcommand{\size}[1]{{\left\vert #1\right\vert}}\vlupdate\size
-
 \begin{definition}\label{definition:Formula}
 We define a set of \emph{formulae}\index{formulae}, denoted by $\alpha$, $\beta$, $\gamma$, $\delta$ to be:
 \begin{itemize}
@@ -24,19 +20,28 @@ We define a set of \emph{formulae}\index{formulae}, denoted by $\alpha$, $\beta$
 \end{itemize}
 A formula is \emph{ground}\index{formula!ground} if it contains no variables. We usually omit external brackets of formulae, and sometimes we omit dispensable brackets under associativity. We use $\equiv$ to denote literal equality of formulae. The \emph{size}\index{formula!size} $\size\alpha$ of a formula $\alpha$ is the number of unit, atom and variable occurrences appearing in it. On the set of atoms there is an involution $\bar\cdot$, called \emph{negation}\index{atoms!negation} (\emph{i.e.}, $\bar\cdot$ is a bijection from the set of atoms to itself such that $\bar{\bar a}\equiv a$); we require that $\bar a\not\equiv a$ for every $a$; when both $a$ and $\bar a$ appear in a formula, we mean that atom $a$ is mapped to by $\bar a$ by $\bar\cdot$. A \emph{context}\index{formula!context} is a formula where one \emph{hole}\index{hole} $\vlhole$ appears in the place of a subformula; for example, $\vls[a.(b.\vlhole)]$ is a context; the generic context is denoted by $\xi\vlhole$. The hole can be filled with formulae; for example, if $\xi\vlhole\equiv\vls(b.[\vlhole.c])$, then $\xi\{a\}\equiv\vls(b.[a.c])$, $\xi\{b\}\equiv\vls(b.[b.c])$ and $\xi\{\vls(a.b)\}\equiv\vls(b.[(a.b).c])$. The \emph{size}\index{formula!context!size} of $\xi\vlhole$ is defined as $\size{\xi\vlhole}=\size{\xi\{a\}}-1$.
 \end{definition}
+%---------------
 
+%--------------------------------------------------------
 \begin{definition}\label{definition:RenamingSubstitution}
 A \emph{renaming}\index{atoms!renaming} is a map from the set of atoms to itself, and it is denoted by $\{a_1/b_1,a_2/b_2,\dots\}$. A renaming of $\alpha$ by $\{a_1/b_1,a_2/b_2,\dots\}$ is indicated by $\alpha\{a_1/b_1,a_2/b_2,\dots\}$ and is obtained by simultaneously substituting every occurrence of $a_i$ in $\alpha$ by $b_i$ and every occurrence of $\bar a_i$ by $\bar b_i$; for example, if $\alpha\equiv\vls(a.[b.(a.[\bar a.c])])$ then $\alpha\{a/\bar b,\bar b/c\}\equiv\vls(\bar b.[\bar c.(\bar b.[b.c])])$. A \emph{substitution}\index{substitution} is a map from the set of formula variables to the set of formulae, denoted by $\{A_1/\beta_1,A_2/\beta_2,\dots\}$. An \emph{instance}\index{formula!instance} of $\alpha$ by $\{A_1/\beta_1,A_2/\beta_2,\dots\}$ is indicated by $\alpha\{A_1/\beta_1,A_2/\beta_2,\dots\}$ and is obtained by simultaneously substituting every occurrence of variable $A_i$ in $\alpha$ by formula $\beta_i$; for example if $\alpha\equiv\vls[A.(b.c)]$ then $\alpha\{A/\vlsbr(c.\bar b)\}\equiv\vls[(c.\bar b).(b.c)]$.
 \end{definition}
+%---------------
 
 \TODO{Note: forced all derivations to only contain ground formulae.}
 
+%---------------------------------------------------------
 \begin{definition}\label{definition:InferenceRuleInstance}
 An \emph{inference rule}\index{inference rule} $\rho$ is an expression $\vlinf{\rho}{}{\beta}{\alpha}$, where the formulae $\alpha$ and $\beta$ are called \emph{premiss}\index{inference rule!premiss} and \emph{conclusion}\index{inference rule!conclusion}, respectively. A (\emph{deductive}) \emph{system}\index{system} is a finite set of inference rules. An \emph{inference rule instance}\index{inference rule!instance} $\vlinf{\rho}{}{\delta}{\gamma}$ of $\vlinf{\rho}{}{\beta}{\alpha}$ is such that $\gamma$ and $\delta$ are ground, and $\gamma\equiv\alpha\{a_1/b_1,a_2/b_2,\dots\}\{A_1/\beta_1,A_2/\beta_2,\dots\}$ and $\delta\equiv\beta\{a_1/b_1,a_2/b_2,\dots\}\{A_1/\beta_1,A_2/\beta_2,\dots\}$, for some renaming $\{a_1/b_1,a_2/b_2,\dots\}$ and substiution $\{A_1/\beta_1,A_2/\beta_2,\dots\}$.
 \end{definition}
+%---------------
+
+%==================================================================
+\section{The Functorial Calculus}\label{section:FunctorialCalculus}
 
 The intuition behind derivations in the functorial calculus is that we can compose derivations by the same connectives we can compose formulae.
 
+%----------------------------------------------
 \begin{definition}\label{definition:Derivation}
 Given a deductive system $\mathcal S$, and formulae $\alpha$ and $\beta$; a (\emph{functorial calculus}) \emph{derivation $\Psi$ in $\mathcal S$ from $\alpha$ to $\beta$}\index{derivation!functorial calculus}, denoted $\vlder{\Psi}{\mathcal{S}}{\beta}{\alpha}$, is defined to be
 \begin{enumerate}
@@ -97,7 +102,9 @@ Given a deductive system $\mathcal S$, and formulae $\alpha$ and $\beta$; a (\em
 \end{enumerate}
 The size of a derivation $\Psi$, denoted $\size{\Psi}$, is defined to be the sum of the size of the formulae appearing in $\Psi$.
 \end{definition}
+%---------------
 
+%-------------------------------------------------------------
 \begin{convention}\label{convention:DerAssociativeComposition}
 Given derivations $\vlder{\Phi_1}{}{\beta_1}{\alpha_1}$, $\vlder{\Phi_2}{}{\beta_2}{\alpha_2}$ and $\vlder{\Phi_3}{}{\beta_3}{\alpha_3}$, and inference rule instances $\vlinf{\rho_1}{}{\alpha_2}{\beta_1}$ and $\vlinf{\rho_2}{}{\alpha_3}{\beta_2}$ we consider
 \[
@@ -211,7 +218,9 @@ to be equal, and we denote them both by
 \quad.
 \]
 \end{convention}
+%---------------
 
+%--------------------------------------
 \begin{lemma}\label{lemma:DerInContext}
 Given a derivation $\vlder{\Phi}{}{\beta}{\alpha}$ and a context $\xi\vlhole$, a derivation $\vlder{\Psi}{}{\xi\{\beta\}}{\xi\{\alpha\}}$, with size $\size{\Phi}+\size{\xi\vlhole}$, can be constructed.
 \end{lemma}
@@ -227,11 +236,15 @@ For the inductive case, let
 \]
 for some formula $\gamma$ and a context $\xi'\vlhole$. By the inductive hypothesis we can construct the derivation $\vlder{\Psi'}{}{\xi'\{\beta\}}{\xi'\{\alpha\}}$, so the result follows by case (\ref{definition:Derivation:item:Horizontal}) of Definition~\vref{definition:Derivation}.
 \end{proof}
+%----------
 
+%--------------------------------------------
 \begin{notation}\label{notation:DerInContext}
 Given a derivation $\vlder{\Phi}{}{\beta}{\alpha}$ and a context $\xi\vlhole$, the derivation $\vlder{}{}{\xi\{\beta\}}{\xi\{\alpha\}}$ constructed in the proof of Lemma~\vref{lemma:DerInContext} is denoted $\xi\{\Phi\}$.
 \end{notation}
+%-------------
 
+%----------------------------------------
 \begin{lemma}\label{lemma:DerComposition}
 Given two derivations $\vlder{\Phi_1}{}{\beta}{\alpha}$ and $\vlder{\Phi_2}{}{\gamma}{\beta}$, a derivation $\vlder{\Psi}{}{\gamma}{\alpha}$, with size $\size{\Phi_1}+\size{\Phi_2}-\size{\beta}$, can be constructed.
 \end{lemma}
@@ -302,66 +315,6 @@ We argue by structural induction on $\Phi_1$
   \]
   with size $\size{\Phi'_1}+\size{\Psi'}=\size{\Phi'_1}+\size{\Phi''_1}+\size{\Phi_2}-\size{\beta}=\size{\Phi_1}+\size{\Phi_2}-\size{\beta}$;
 
-% \item if
-%  \[
-%   \Phi_2\;=\;
-%   \vlderivation
-%   {
-%    \vlde{\Phi''_2}{}
-%    {
-%     \gamma
-%    }
-%    {
-%     \vlin{\rho}{}
-%     {
-%      \beta'
-%     }
-%     {
-%      \vlde{\Phi'_2}{}
-%      {
-%       \gamma'
-%      }
-%      {
-%       \vlhy
-%       {
-%        \beta
-%       }
-%      }
-%     }
-%    }
-%   }\quad,
-%  \]
-%  then, by the inductive hypothesis, we can construct $\vlder{\Psi'}{}{\gamma'}{\alpha}$, with size $\size{\Phi_1}+\size{\Phi'_2}-\size{\beta}$, we can then build
-%  \[
-%   \Psi\;=\;
-%   \vlderivation
-%   {
-%    \vlde{\Phi''_2}{}
-%    {
-%     \gamma
-%    }
-%    {
-%     \vlin{\rho}{}
-%     {
-%      \beta'
-%     }
-%     {
-%      \vlde{\Psi'}{}
-%      {
-%       \gamma'
-%      }
-%      {
-%       \vlhy
-%       {
-%        \alpha
-%       }
-%      }
-%     }
-%    }
-%   }\quad,
-%  \]
-%  with size $\size{\Psi'}+\size{\Phi''_2}=\size{\Phi_1}+\size{\Phi'_2}+\size{\Phi''_2}-\size{\beta}=\size{\Phi_1}+\size{\Phi_2}-\size{\beta}$;
-
  \item if 
  \[
   \Phi_1\;=\;
@@ -399,7 +352,9 @@ We argue by structural induction on $\Phi_1$
  \end{enumerate}
 \end{enumerate}
 \end{proof}
+%----------
 
+%----------------------------------------------
 \begin{notation}\label{notation:DerComposition}
 Given derivations $\vlder{\Phi_1}{}{\beta}{\alpha}$ and $\vlder{\Phi_2}{}{\gamma}{\beta}$, the derivation $\vlder{\Psi}{}{\gamma}{\alpha}$ constructed in the proof of Lemma~\vref{lemma:DerComposition} is denoted:
 \[
@@ -415,11 +370,16 @@ Given derivations $\vlder{\Phi_1}{}{\beta}{\alpha}$ and $\vlder{\Phi_2}{}{\gamma
 }\quad.
 \]
 \end{notation}
+%-------------
 
+%=======================================================================
 \section{The Calculus of Structures}\label{section:CalculusOfStructures}
 
-We will now present the calculus of structures and compare it briefly with the functorial calculus. The intuition behind derivations in the calculus of structures is that we rewrite formulae by applying inference rules inside a context.
+We will now present the calculus of structures and compare it briefly with the functorial calculus. As the rest of this thesis will be in terms of the functorial calculus, whereas most previous work in deep inference has been done in terms of the calculus of structures, we show how we can translate between them (Theorems~\ref{theorem:CoSToFunc} and {theorem:FuncToCoS}).
 
+The intuition behind derivations in the calculus of structures is that we rewrite formulae by applying inference rules inside a context.
+
+%---------------------------------------
 \begin{definition}\label{definition:CoS}
 Given a deductive system $\mathcal S$, a set of formulae, $\mathcal F$, and $\alpha$ and $\beta$ from $\mathcal F$; a \emph{calculus of structures derivation $\Psi$ in $\mathcal S$ from $\alpha$ to $\beta$}\index{derivation!calculus of structures}, denoted $\vlder{\Psi}{\mathcal{S}}{\beta}{\alpha}$, is defined to be
 \begin{enumerate}
@@ -459,8 +419,10 @@ Given a deductive system $\mathcal S$, a set of formulae, $\mathcal F$, and $\al
 \end{enumerate}
 The size of a calculus of structures derivation $\Psi$, denoted $\size{\Psi}$, is defined to be the sum of the size of the formulae appearing in $\Psi$.
 \end{definition}
+%---------------
 
-\begin{theorem}
+%---------------------------------------
+\begin{theorem}\label{theorem:CoSToFunc}
 A calculus of structures derivation $\vlder{\Phi}{}{\beta}{\alpha}$ can be transformed into a functorial calculus derivation $\vlder{\Psi}{}{\beta}{\alpha}$ such that $\size{\Psi}\le\size{\Phi}$.
 \end{theorem}
 

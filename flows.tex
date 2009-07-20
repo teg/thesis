@@ -1,6 +1,14 @@
+
+%====================
 \chapter{Definitions}
 
-%---------------------------------------
+In this chapter we introduce the main contribution of this thesis, a geometric, bureaucracy-free formalism, called `atomic flows'. An atomic flow is a directed graph obtained from a derivation by only retaining information about the creation and destruction of atom occurrences. Atomic flows are, essentially, specialised Buss flow graphs \cite{Buss:91:The-Unde:uq}. Notably, the atomic flow of a derivation completely disregards all the logical relations and associated inference steps; so, an atomic flow is not a derivation, but only a very abstract representation of it.
+
+Atomic flows are somewhat similar to proof nets. However, we prove that, no matter how we freely build an atomic flow (as opposed to a proof net structure), the flow is associated with some derivation. So, atomic flows are always `sequentialisable', in proof-net parlance. In fact, atomic flows carry much less information than derivations do, because they do not keep track of the logical relations between the atoms they trace, only their structural information is retained (in the sense of structural rules, as opposed to logical ones).
+
+We can think of atomic flows as composite diagrams that are freely generated from a set of six elementary diagrams. Technically, atomic flows are special kinds of labelled directed acyclic graphs, and the properties of their vertices are dictated by their labels, which we define as follows.
+
+%----------------------------------------------
 \begin{definition}\label{definition:FlowLabels}
 We call the following six diagrams (\emph{atomic-flow}) \emph{labels}\index{flow!labels}:
 \[
@@ -23,57 +31,8 @@ We call the following six diagrams (\emph{atomic-flow}) \emph{labels}\index{flow
 \end{array}\quad.
 \]
 \end{definition}
+%---------------
 
-\TODO{Make sure the symbols we use later are all defined here. In particular we need $\iota$ to denote edges, maybe also more.}
-
-\newcommand{\ppl  }{{\mathchoice{\scriptstyle+}
-                                {\scriptstyle+}
-                                {\scriptstyle+}
-                                {\scriptscriptstyle+}}}
-\newcommand{\pmi  }{{\mathchoice{\scriptstyle-}
-                                {\scriptstyle-}
-                                {\scriptstyle-}
-                                {\scriptscriptstyle-}}}
-\newcommand{\card}[1]{\mathord\vert #1\mathord\vert}
-\newcommand{\up}{{\mathit up}}
-\newcommand{\lo}{{\mathit lo}}
-%---------------------------------------
-\begin{definition}\label{definition:AtomicFlow}
-An (\emph{atomic}) \emph{flow}\index{flow}\index{atomic flow|see{flow}} is a tuple $(V,E,\eta,\up,\lo)$, denoted $\phi$ or $\psi$, such that:
-\begin{enumerate}
-%-------------------
-\item $V$ is a finite set of \emph{vertices}\index{flow!vertices}, denoted by $\nu$;
-%-------------------
-\item $E$ is a finite set of \emph{edges}\index{flow!edges}, denoted by $\epsilon$ or $\iota$;
-%-------------------
-\item $\eta\colon V\to\{\aid,\aiu,\awd,\awu,\acd,\acu\}$ maps vertices to their \emph{labels}\index{flow!labels};
-%-------------------
-\item $\up\colon E\to V\cup\{\top\}$ and $\lo\colon E\to V\cup\{\bot\}$ are, respectively, the \emph{upper} and \emph{lower} maps, and $\top$ and $\bot$ are special vertices not belonging to $V$; we define, for every $\nu\in V\cup\{\top,\bot\}$, the set $L_\nu=\{\,\epsilon\mid\up(\epsilon)=\nu\,\}$ of \emph{lower edges of $\nu$}, the set $U_\nu=\{\,\epsilon\mid\lo(\epsilon)=\nu\,\}$ of \emph{upper edges of $\nu$}, and the set $E_\nu=L_\nu\cup U_\nu$ of \emph{edges of $\nu$};
-%-------------------
-\item if $\card S$ denotes the cardinality of set $S$, we have that
-\begin{align*}
-\mbox{if $\eta(\nu)=\aid$ then $\card{L_\nu}=2$ and $\card{U_\nu}=0$,}&\\
-\mbox{if $\eta(\nu)=\aiu$ then $\card{L_\nu}=0$ and $\card{U_\nu}=2$,}&\\
-\mbox{if $\eta(\nu)=\awd$ then $\card{L_\nu}=1$ and $\card{U_\nu}=0$,}&\\
-\mbox{if $\eta(\nu)=\awu$ then $\card{L_\nu}=0$ and $\card{U_\nu}=1$,}&\\
-\mbox{if $\eta(\nu)=\acd$ then $\card{L_\nu}=1$ and $\card{U_\nu}=2$,}&\\
-\mbox{if $\eta(\nu)=\acu$ then $\card{L_\nu}=2$ and $\card{U_\nu}=1$;}&
-\end{align*}
-%-------------------
-\item\label{ItAcycl} there is no sequence $\epsilon_1$, $\dots$, $\epsilon_h$ of edges of $V$ such that $\up(\epsilon_i)=\lo(\epsilon_{i+1\pmod h})$, for $1\le i\le h$;
-%-------------------
-\item\label{definition:AtomicFlow:item:PolarityAssignment} there is a \emph{polarity assignment}\index{flow!polarity assignment} $\pi\colon E\to\{\pmi,\ppl\}$ such that, for every $\nu\in V$,
-\begin{enumerate}
-%---------
-\item if $\eta(\nu)\in\{\acd,\acu\}$ then $\pi(E_\nu)=\{\pmi\}$ or $\pi(E_\nu)=\{\ppl\}$;
-%---------
-\item if $\eta(\nu)\in\{\aid,\aiu\}$ then $\pi(E_\nu)=\{\pmi,\ppl\}$.
-\end{enumerate}
-\end{enumerate}
-Given an atomic flow $\phi$, we say that the sets $L_\top=\{\epsilon_1,\dots,\epsilon_h\}$ and $U_\bot=\{\epsilon'_1,\dots,\epsilon'_k\}$ contain, respectively, the \emph{upper}\index{flow!upper edges} and \emph{lower edges of $\phi$}\index{flow!lower edges}.
-\end{definition}
-
-\TODO{Explain the use of colors and small numerals.}
 
 \newcommand{\one  }{{\mathchoice{\scriptstyle\mathbf1}
                                 {\scriptstyle\mathbf1}
@@ -111,9 +70,60 @@ Given an atomic flow $\phi$, we say that the sets $L_\top=\{\epsilon_1,\dots,\ep
                                 {\scriptstyle\mathbf9}
                                 {\scriptstyle\mathbf9}
                                 {\scriptscriptstyle\mathbf9}}}
+\newcommand{\ppl  }{{\mathchoice{\scriptstyle+}
+                                {\scriptstyle+}
+                                {\scriptstyle+}
+                                {\scriptscriptstyle+}}}
+\newcommand{\pmi  }{{\mathchoice{\scriptstyle-}
+                                {\scriptstyle-}
+                                {\scriptstyle-}
+                                {\scriptscriptstyle-}}}
+\newcommand{\card}[1]{\mathord\vert #1\mathord\vert}
+\newcommand{\up}{{\mathit up}}
+\newcommand{\lo}{{\mathit lo}}
+%---------------------------------------
+\begin{definition}\label{definition:AtomicFlow}
+An (\emph{atomic}) \emph{flow}\index{flow}\index{atomic flow|see{flow}} is a tuple $(V,E,\eta,\up,\lo)$, denoted $\phi$ or $\psi$, such that:
+\begin{enumerate}
+%-------------------
+\item $V$ is a finite set of \emph{vertices}\index{flow!vertices}, denoted by $\nu$;
+%-------------------
+\item $E$ is a finite set of \emph{edges}\index{flow!edges}, denoted by $\epsilon$, $\iota$ or small numerals $\one$, $\two$, $\dots$;
+%-------------------
+\item $\eta\colon V\to\{\aid,\aiu,\awd,\awu,\acd,\acu\}$ maps vertices to their \emph{labels}\index{flow!labels};
+%-------------------
+\item $\up\colon E\to V\cup\{\top\}$ and $\lo\colon E\to V\cup\{\bot\}$ are, respectively, the \emph{upper} and \emph{lower} maps, and $\top$ and $\bot$ are special vertices not belonging to $V$; we define, for every $\nu\in V\cup\{\top,\bot\}$, the set $L_\nu=\{\,\epsilon\mid\up(\epsilon)=\nu\,\}$ of \emph{lower edges of $\nu$}, the set $U_\nu=\{\,\epsilon\mid\lo(\epsilon)=\nu\,\}$ of \emph{upper edges of $\nu$}, and the set $E_\nu=L_\nu\cup U_\nu$ of \emph{edges of $\nu$};
+%-------------------
+\item if $\card S$ denotes the cardinality of set $S$, we have that
+\begin{align*}
+\mbox{if $\eta(\nu)=\aid$ then $\card{L_\nu}=2$ and $\card{U_\nu}=0$,}&\\
+\mbox{if $\eta(\nu)=\aiu$ then $\card{L_\nu}=0$ and $\card{U_\nu}=2$,}&\\
+\mbox{if $\eta(\nu)=\awd$ then $\card{L_\nu}=1$ and $\card{U_\nu}=0$,}&\\
+\mbox{if $\eta(\nu)=\awu$ then $\card{L_\nu}=0$ and $\card{U_\nu}=1$,}&\\
+\mbox{if $\eta(\nu)=\acd$ then $\card{L_\nu}=1$ and $\card{U_\nu}=2$,}&\\
+\mbox{if $\eta(\nu)=\acu$ then $\card{L_\nu}=2$ and $\card{U_\nu}=1$;}&
+\end{align*}
+%-------------------
+\item\label{definition:AtomicFlow:item:Acyclic} there is no sequence $\epsilon_1$, $\dots$, $\epsilon_h$ of edges of $V$ such that $\up(\epsilon_i)=\lo(\epsilon_{i+1\pmod h})$, for $1\le i\le h$;
+%-------------------
+\item\label{definition:AtomicFlow:item:PolarityAssignment} there is a \emph{polarity assignment}\index{flow!polarity assignment} $\pi\colon E\to\{\pmi,\ppl\}$ such that, for every $\nu\in V$,
+\begin{enumerate}
+%---------
+\item if $\eta(\nu)\in\{\acd,\acu\}$ then $\pi(E_\nu)=\{\pmi\}$ or $\pi(E_\nu)=\{\ppl\}$;
+%---------
+\item if $\eta(\nu)\in\{\aid,\aiu\}$ then $\pi(E_\nu)=\{\pmi,\ppl\}$.
+\end{enumerate}
+\end{enumerate}
+Given an atomic flow $\phi$, we say that the sets $L_\top=\{\epsilon_1,\dots,\epsilon_h\}$ and $U_\bot=\{\epsilon'_1,\dots,\epsilon'_k\}$ contain, respectively, the \emph{upper}\index{flow!upper edges} and \emph{lower edges of $\phi$}\index{flow!lower edges}.
+\end{definition}
+%---------------
+
+An atomic flow is a directed graph, whose edges are associated to atom occurrences in derivations, and the direction of the edges corresponds to the up-down direction in a derivation. Vertices are associated to points in the derivation where atom occurrences are created or destroyed, and the nature of each vertex is described by its label. Naturally, these graphs are acyclic (condition~\ref{definition:AtomicFlow:item:Acyclic}). The two special vertices $\top$ and $\bot$ represent the top and bottom of a derivation: we can consider $\top$ the vertex that creates all the atom occurrences in the premiss and $\bot$ the vertex that destroys all atom occurrences in the conclusion.
+
+The polarity assignment condition (\ref{definition:AtomicFlow:item:PolarityAssignment}) ensures that atoms in (co)contractions have the same polarity, and those in interactions and cuts have dual polarities (as happens in derivations). Every atomic flow has $2^n$ polarity assignments, where $n$ is the number of connected components in the graph. We should not be worried about the apparent complexity of the polarity assignment condition: in fact, we could equivalently consider two sorts of (co)contraction and (co)weakening labels, the negative and the positive ones, and ask for vertices to be joined by respecting their polarities. This is clearly a locally checkable property, much simpler than, for example, some global correctness criterion for proof nets.
 
 \begin{definition}\label{definition:FlowIsomorphism}
-An (\emph{atomic}) \emph{flow isomorphism}\index{flow!isomorphism} between the atomic flows $\phi_1=(V_1,E_1,\eta_1,\up_1,\lo_1)$ and $\phi_2=(V_2,E_2,\eta_2,\up_2,\lo_2)$ is a pair $(f_V,f_E)$, such that
+An (\emph{atomic}) \emph{flow isomorphism}\index{flow!isomorphism} between the atomic flows $\phi_1=(V_1,E_1,\eta_1,\up_1,\lo_1)$ and $\phi_2=(V_2,E_2,\eta_2,\up_2,\lo_2)$ is a pair of functions $(f_V,f_E)$, such that
 \begin{itemize}
 \item $f_V$ is a bijection from $V_1$ to $V_2$; and 
 \item $f_E$ is a bijection from $E_1$ to $E_2$,

@@ -70,7 +70,7 @@ and the \emph{invertible}\index{inference rule!invertible} rules:
 
 \TODO{Reference Complexity paper by Alessio and Paola:}
 
-The calculus of structures and system $\SKS$ were originally defined in terms of equivalence classes of formulae, called `structures', instead of formulae. However, we find it more convenient to use formulae and invertible rules when we trace atom occurrences. We now show that the two approaches are morally the same.
+The calculus of structures and system $\SKS$ were originally defined in terms of equivalence classes of formulae, called `structures', instead of formulae. However, we find it more convenient to use formulae and the above invertible rules, since it makes it simpler to `trace atom occurrences'. We now show that the two approaches are morally the same.
 
 %------------------------------------------------------
 \begin{definition}\label{definition:EquivalenceRelation}
@@ -86,13 +86,13 @@ If $\alpha=\beta$, we often write $\vlinf{=}{}{\beta}{\alpha}$.
 
 %------------------------------------------
 \begin{remark}\label{remark:ContextClosure}
-By Definition~\vref{definition:EquationsShorthand} and Lemma~\vref{lemma:DerInContext}, for any formulae $\alpha$ and $\beta$ and context $\xi\vlhole$ we have that $\alpha=\beta$ implies $\xi\{\alpha\}=\xi\{\beta\}$.
+By Notation~\vref{notation:Equation} and Lemma~\vref{lemma:DerInContext}, for any formulae $\alpha$ and $\beta$ and context $\xi\vlhole$ we have that $\alpha=\beta$ implies $\xi\{\alpha\}=\xi\{\beta\}$.
 \end{remark}
 %-----------
 
 %---------------------------------------------------------
 \begin{proposition}\label{proposition:EquivalenceRelation}
-The relation $=$ defined in Definition~\ref{definition:EquationsShorthand} is an equivalence relation.
+The relation $=$ defined in Definition~\ref{definition:EquivalenceRelation} is an equivalence relation.
 \end{proposition}
 %----------------
 
@@ -100,7 +100,11 @@ It turns out that the equivalence class induced by $=$ is the same as the struct
 
 %----------------------------------------
 \begin{remark}\label{remark:EquationSize}
-If $\alpha=\beta$, then (as remarked in \cite{}) there exists a derivation $\vlder{\Phi}{\{\coor,\coand,\asor,\asand,\fffd,\tttd,\fffu,\tttu,\fffandd,\tttord,\fffandu,\tttoru\}}{\beta}{\alpha}$ whose size depends at most quadratically on the sum of the sizes of $\alpha$ and $\beta$.
+If $\alpha=\beta$, then (as remarked in \cite{}) there exists a derivation
+\[
+\vlder{\Phi}{\{\coor,\coand,\asor,\asand,\fffd,\tttd,\fffu,\tttu,\fffandd,\tttord,\fffandu,\tttoru\}}{\beta}{\alpha}
+\]
+whose size depends at most quadratically on the sum of the sizes of $\alpha$ and $\beta$.
 \end{remark}
 %-----------
 
@@ -381,51 +385,6 @@ We show how to construct the first derivation, the second one can be done symmet
 \]
 \end{proof}
 
-%\begin{lemma}\label{lemma:RepeatedGenericContraction}
-%Given a formula $\alpha$ and a positive integer $n$, there exist derivations $\vlupsmash{\vlder{}{\{\acd,\med\}}{\alpha}{\bigvee_{i=1}^{n}\alpha}}$ and $\vlupsmash{\vlder{}{\{\acu,\med\}}{\bigwedge_{i=1}^{n}\alpha}{\alpha}}$.
-%\end{lemma}
-
-%\begin{proof}
-%We show how to construct the first derivation, the second one can be done symmetrically. We argue by induction on $n$. The first base case, $n=1$, is trivial and for the second base case, $n=2$, we argue by induction on the number of atom occurrences in $\alpha$. We have to consider the following base case and two inductive cases:
-%\[
-%\vlinf{\acd}{}{a}{\vls[a.a]}
-%\qquad\hbox{,}\qquad
-%\vlderivation
-%{
-% \vlin{=}{}{\vls(\alpha.\beta)}
-% {
-%  \vlin{\med}{}{\vlsbr(\vlder{}{\{\acd,\med\}}{\alpha}{\vls[\alpha.\alpha]}\;\;.\;\;\vlder{}{\{\acd,\med\}}{\beta}{\vls[\beta.\beta]})}
-%  {
-%   \vlhy{\vls[(\alpha.\beta).(\alpha.\beta)]}
-%  }
-% }
-%}\qquad\hbox{and}\qquad
-%\vlderivation
-%{
-% \vlin{=}{}{\vls[\alpha.\beta]}
-% {
-%  \vlin{=}{}{\vlsbr[\vlder{}{\{\acd,\med\}}{\alpha}{\vls[\alpha.\alpha]}\;\;.\;\;\vlder{}{\{\acd,\med\}}{\beta}{\vls[\beta.\beta]}]}
-%  {
-%   \vlhy{\vls[[\alpha.\beta].[\alpha.\beta]]}
-%  }
-% }
-%}\quad.
-%\]
-%Finally, we show the inductive case, $n>2$:
-%\[
-%\vlderivation
-%{
-% \vlde{}{\{\acd,\med\}}{\alpha}
-% {
-%  \vlin{=}{}{\vlsbr[\vlder{}{\{\acd,\med\}}{\alpha}{\bigvee_{i=1}^{n-\lfloor n/2\rfloor}\alpha}\;\;.\;\;\vlder{}{\{\acd,\med\}}{\alpha}{\bigvee_{i=1}^{\lfloor n/2\rfloor}\alpha}]}
-%  {
-%   \vlhy{\bigvee_{i=1}^{n}\alpha}
-%  }
-% }
-%}\quad.
-%\]
-%\end{proof}
-
 \newcommand{\contr}{\mathsf{c}}
 \newcommand{\cod}{{\contr{\downarrow}}}
 \newcommand{\cou}{{\contr{\uparrow}}}
@@ -437,7 +396,7 @@ We show how to construct the first derivation, the second one can be done symmet
 In the non-atomic version of system $\SKS$ the derivations shown in the proofs of Lemma~\ref{lemma:GenericWeakening} and Lemma~\vref{lemma:GenericContraction} correspond to (co)weakening and (co)contractions, respectively. For this reason we sometimes write the inference rules $\vlinf{\wed}{}{\alpha}{\fff}$, $\vlinf{\weu}{}{\ttt}{\alpha}$, $\vlinf{\cod}{}{\alpha}{\vls[\alpha.\alpha]}$ and $\vlinf{\cou}{}{\vls(\alpha.\alpha)}{\alpha}$ instead of the derivations $\vlder{}{\{\awd,\swi\}}{\alpha}{\fff}$, $\vlder{}{\{\awu,\swi\}}{\ttt}{\alpha}$, $\vlder{}{\{\acd,\med\}}{\alpha}{\vls[\alpha.\alpha]}$ and $\vlupsmash{\vlder{}{\{\acu,\med\}}{\vls(\alpha.\alpha)}{\alpha}}$, respectively.
 \end{notation}
 
-As an example of the concept we have just defined we now show two ways of proving $\SKS$ complete for propositional classical logic.
+To give an example of the notions defined so far, we now show a completeness proof of system $\SKS$.
 
 \begin{theorem}\label{theorem:SKSComplete}
 System $\SKS$ is complete for propositional classical logic.
@@ -541,7 +500,7 @@ By a construction similar to the proof of Lemma~\vref{lemma:SuperSwitch}, we can
 \end{remark}
 
 \begin{remark}
-If we allow the use of all the rules of $\SKS$, and not only the down fragment, we can build a smaller proof than what we do in Theorem~\ref{theorem:SKSComplete}. Given a tautology $\alpha$ containing $n$ unique, non-dual atoms, the size of the proof obtained is $O(\size{\alpha}^n)$. If we use the following inductive case instead:
+If we allow the use of all the rules of $\SKS$, and not only the down fragment, we can build a more compact proof than what we do in Theorem~\ref{theorem:SKSComplete}, by using the following as the inductive case:
 \[
 \vlderivation
 {
@@ -634,15 +593,6 @@ If we allow the use of all the rules of $\SKS$, and not only the down fragment, 
    }
   }
  }
-}\quad,
+}\quad.
 \]
-the size of the proof obtained is $O(\size{\alpha}\cdot2^n)$.
 \end{remark}
-
-%\begin{corollary}\label{corollary:SKSImplicationallyComplete}
-%System $\SKS$ is implicationally complete for propositional classical logic.
-%\end{theorem}
-
-%\begin{proof}
-%Given formulae $\alhpa$ and $\beta$, such that $\alpha$ implies $\beta$
-%\end{proof}
