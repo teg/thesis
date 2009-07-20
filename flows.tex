@@ -136,6 +136,18 @@ such that, for every $\epsilon$ in $E_1$,
 Given a polarity assignment $\pi$ to $\phi_1$, we define the polarity assignment $\pi$ to $\phi_2$, such that, for every $f_E(\epsilon)$ in $E_2$, $\pi(f_E(\epsilon))=\pi(\epsilon)$.
 \end{definition}
 
+%----------------------------------------------------
+\begin{definition}\label{definiton:InducedPolarity}
+Given
+\begin{itemize}
+ \item two atomic flows $\phi$ and $\psi$;
+ \item a polarity assignment $\pi$ for $\phi$; and
+ \item isomorphisms $f_1$, $\dots$, $f_n$ between subflows $\phi_1$, $\dots$, $\phi_n$ of $\phi$ and subflows $\psi_1$, $\dots$, $\psi_n$ of $\psi$,
+\end{itemize}
+let $\pi_i$ be $\pi$ restricted to $\phi_i$, and let $\pi'$ be a polarity assigment for $\psi$, such that $\pi'$ restricted to $\psi_i$ equals $\pi_i$ (which is a polarity assignment for $\psi_i$ by Definition~\ref{definition:FlowIsomorphism}), then if $\pi'$ is unique, we call it $\pi$.
+\end{definition}
+%---------------
+
 \newbox\contrup\setbox\contrup=\hbox{$
    \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
    \atomicflow{(0,0)*{\afacu{}{}{}{}{}{}}}$}

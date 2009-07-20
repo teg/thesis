@@ -34,26 +34,6 @@ A reduction $R$ is \emph{sound}\index{reduction!sound} if, for every $\phi$ and 
 
 \TODO{Alessio said: `\emph{How can you give the same polarity assignment to two flows? Also, importantly, note that if you have reductions between flows with no upper and lower edges, the polarity assignments can flip at will. The notion you're trying to convey here needs much more careful definition.}'.}
 
-\TODO{Alessio: I was uncertain of the wording of the following definition, but it should address the above concern:}
-
-%----------------------------------------------------
-\begin{definition}\label{definiton:ReductionPolarity}
-Given
-\begin{itemize}
- \item a reduction $R$;
- \item two atomic flows $\phi$ and $\psi$;
- \item a polarity assignment $\pi$ for $\phi$; and
- \item isomorphisms $f_1$, $\dots$, $f_n$ between subflows $\phi_1$, $\dots$, $\phi_n$ of $\phi$ and subflows $\psi_1$, $\dots$, $\psi_n$ of $\psi$,
-\end{itemize}
-let $\pi_i$ be $\pi$ restricted to $\phi_i$, and let $\pi'$ be a polarity assigment for $\psi$, such that
-\begin{itemize}
- \item $\pi'$ respects condition (\ref{definition:FlowReduction:item:Polarity}) of Definition~\ref{definition:FlowReduction}; and
- \item $\pi'$ restricted to $\psi_i$ equals $\pi_i$ (which is a polarity assignment for $\psi_i$ by Definition~\vref{definition:FlowIsomorphism}),
-\end{itemize}
-if $\pi'$ is unique, we call it $\pi$.
-\end{definition}
-%---------------
-
 %---------------------------------------------
 \begin{remark}\label{remark:ReductionPolarity}
 It is straightforward to verify that the $\pi'$ of Definition~\ref{definiton:ReductionPolarity} is unique for every reduction we define in this thesis. We will therefore refer to it as $\pi$ throughout, without further comment. 
