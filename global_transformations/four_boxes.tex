@@ -399,11 +399,11 @@ with the desired atomic flow.
 
 %---------------------------------------------
 \begin{lemma}\label{lemma:FourBoxesSimpleForm}
-Given an atomic flow $\phi'$ with polarity assignment $\pi$, there exists an atomic flow $\psi'$, such that $\phi'\to_\frfb\psi'$ and $\psi'$ is on simple form with respect to $\pi$.
+Given an atomic flow $\phi'$ with polarity assignment $\pi$, there exists an atomic flow $\psi'$, such that $\phi'\to_\frfb\psi'$ and $\psi'$ is in simple form with respect to $\pi$.
 \end{lemma}
 
 \begin{proof}
-We refer to the figure in Definition~\vref{definition:FourBoxes}. Let the subflow $\phi$ contain all the positive edges, and let the subflow $\psi$ contain all the negative edges, then $\psi'$ is on simple form with respect to $\pi$ by Definition~\vref{definition:FlowNormalForms}.
+We refer to the figure in Definition~\vref{definition:FourBoxes}. Let the subflow $\phi$ contain all the positive edges, and let the subflow $\psi$ contain all the negative edges, then $\psi'$ is in simple form with respect to $\pi$ by Definition~\vref{definition:FlowNormalForms}.
 \end{proof}
 %----------
 
@@ -437,9 +437,3 @@ Given two atomic flows $\phi$ and $\psi$ with polarity assignment $\pi$, such th
 By studying the atomic flows in Definition~\vref{definition:FourBoxes} we can observe that for every path from an interaction vertex to a cut vertex in $\psi$ there is a path from an interaction vertex to a cut vertex in $\phi$ with the same polarity assignment.
 \end{proof}
 %----------
-
-%\TODO{Check:}
-
-%\begin{remark}\label{remark:FourBoxesDestroySimpleForm}
-%Given an atomic flow $\phi$ and a polarity assignment $\pi$, such that $\phi$ is not weakly streamlined with respect to $\bar\pi$, then $\Simpl(\phi,\pi)$ is not on simple form with respect to $\bar\pi$.
-%\end{remark}
