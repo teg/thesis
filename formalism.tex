@@ -22,15 +22,15 @@ A formula is \emph{ground}\index{formula!ground} if it contains no variables. We
 \end{definition}
 %---------------
 
-\TODO{Define substitution on atom occurrences.}
-
 %--------------------------------------------------------
 \begin{definition}\label{definition:RenamingSubstitution}
 A \emph{renaming}\index{atoms!renaming} is a map from the set of atoms to itself, and it is denoted by $\{a_1/b_1,a_2/b_2,\dots\}$. A renaming of $\alpha$ by $\{a_1/b_1,a_2/b_2,\dots\}$ is indicated by $\alpha\{a_1/b_1,a_2/b_2,\dots\}$ and is obtained by simultaneously substituting every occurrence of $a_i$ in $\alpha$ by $b_i$ and every occurrence of $\bar a_i$ by $\bar b_i$; for example, if $\alpha\equiv\vls(a.[b.(a.[\bar a.c])])$ then $\alpha\{a/\bar b,\bar b/c\}\equiv\vls(\bar b.[\bar c.(\bar b.[b.c])])$. A \emph{substitution}\index{substitution} is a map from the set of formula variables to the set of formulae, denoted by $\{A_1/\beta_1,A_2/\beta_2,\dots\}$. An \emph{instance}\index{formula!instance} of $\alpha$ by $\{A_1/\beta_1,A_2/\beta_2,\dots\}$ is indicated by $\alpha\{A_1/\beta_1,A_2/\beta_2,\dots\}$ and is obtained by simultaneously substituting every occurrence of variable $A_i$ in $\alpha$ by formula $\beta_i$; for example if $\alpha\equiv\vls[A.(b.c)]$ then $\alpha\{A/\vlsbr(c.\bar b)\}\equiv\vls[(c.\bar b).(b.c)]$.
 \end{definition}
 %---------------
 
-\TODO{Note: forced all derivations to only contain ground formulae.}
+\begin{convention}
+By the above definition, formula variables will only be used to define inference rules, and will never appear in derivations. However, when we perform normalisation we will sometimes single out atom occurrences (by decorating them) and substitute on them as if they were formula variables.
+\end{convention}
 
 %---------------------------------------------------------
 \begin{definition}\label{definition:InferenceRuleInstance}
