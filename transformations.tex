@@ -33,11 +33,7 @@ A reduction $R$ is \emph{sound}\index{reduction!sound} if, for every $\phi$ and 
 
 \TODO{Explain that we force the contractum to be unique (by convention).}
 
-%---------------------------------------------
-\begin{remark}\label{remark:ReductionPolarity}
-It is straightforward to verify that the $\pi'$ of Definition~\ref{definiton:ReductionPolarity} is unique for every reduction we define in this thesis. We will therefore refer to it as $\pi$ throughout, without further comment. 
-\end{remark}
-%-----------
+\TODO{Alessio said: `\emph{How can you give the same polarity assignment to two flows? Also, importantly, note that if you have reductions between flows with no upper and lower edges, the polarity assignments can flip at will. The notion you're trying to convey here needs much more careful definition.}'.}
 
 \TODO{Alessio: I want to allow identity and cuts as long as they do not map to vertices in $\phi$. Since $\phi$ only contains $a$ and not $\bar a$, it can not contain any identity or cut vertices. I added a sentence to the proof to make this clear.}
 
@@ -113,6 +109,12 @@ The notion of substitution can be extended to allow $\phi$ to contain interactio
 \TODO{Alessio: $\boldsymbol\epsilon$ is used to denote the upper edges of a flow. The definition of upper edges is given as a set (from AF1). Why should they be sequences? Wouldn't that give the impression that they are not commutative?}
 
 \TODO{The labels on upper/lower edges do not fit with the labels used in the definition of four boxes.}
+
+%---------------------------------------------
+\begin{remark}\label{remark:ReductionPolarity}
+For any reduction $\mathrel R$ defined in this section, and any two atomic flows $\phi$ and $\psi$, such that $\phi\mathrel{R}\psi$, if $\pi$ is a polarity assignment for $\phi$, then by Definition~\vref{definiton:InducedPolarity}, $\pi$ is a polarity assignment for $\psi$.
+\end{remark}
+%-----------
 
 %-------------
 \begin{convention}
