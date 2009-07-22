@@ -2,8 +2,6 @@
 
 \TODO{Polarity assignment: `to' -> `for'}
 
-\TODO{Define `redex' and `contractum'.}
-
 %-------------------------------------------------
 \begin{definition}\label{definition:FlowReduction}
 An (\emph{atomic-flow}) \emph{reduction $R$}\index{reduction} is a binary relation on the set of atomic flows, such that $\phi\mathrel{R}\psi$ if
@@ -32,7 +30,7 @@ A reduction $R$ is \emph{sound}\index{reduction!sound} if, for every $\phi$ and 
 \end{definition}
 %---------------
 
-\TODO{Alessio said: `\emph{How can you give the same polarity assignment to two flows? Also, importantly, note that if you have reductions between flows with no upper and lower edges, the polarity assignments can flip at will. The notion you're trying to convey here needs much more careful definition.}'.}
+\TODO{Explain that we force the contractum to be unique (by convention).}
 
 %---------------------------------------------
 \begin{remark}\label{remark:ReductionPolarity}
@@ -96,8 +94,6 @@ We can proceed by structural induction on $\Phi$. For every formula in $\Phi$ we
 
 \TODO{Put reference.}
 
-\TODO{Take notation out of remark.}
-
 %---------------
 \begin{notation}
 The derivation $\Psi$ obtained in the proof of Propostion~\vref{proposition:DerivationSubstitution} is denoted $\Phi\{a^\phi/\gamma\}$.
@@ -114,8 +110,6 @@ The notion of substitution can be extended to allow $\phi$ to contain interactio
 \section{Global Transformations}\label{section:GlobalTransformations}
 
 \TODO{Alessio: $\boldsymbol\epsilon$ is used to denote the upper edges of a flow. The definition of upper edges is given as a set (from AF1). Why should they be sequences? Wouldn't that give the impression that they are not commutative?}
-
-\TODO{Take notation out of remark.}
 
 \TODO{The labels on upper/lower edges do not fit with the labels used in the definition of four boxes.}
 
