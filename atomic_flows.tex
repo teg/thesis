@@ -438,3 +438,52 @@ The atomic flow on the left has the $\ai$-paths on the right, and the paths are 
 \]
 In addition, the flow has the paths and $\ai$-paths obtained from the shown ones by inverting the order of edges, for example $\five,\four,\two,\one$ is an $\ai$-path. The $\ai$-paths from the interaction vertex are $\one$ and $\two$ and $\two,\four$ and $\two,\four,\five$; the $\ai$-paths to the contraction vertex are $\one,\two$ and $\two$ and $\three$ and $\four$ and $\five,\four$. The maximal $\ai$-paths are $\one,\two,\four,\five$ and $\three,\four,\five$ and their inverses. The maximal $\ai$-paths from the cointeraction vertex are $\four,\two,\one$ and $\four,\three$ and $\five$; the maximal $\ai$-paths to the contraction vertex are $\one,\two$ and $\three$ and $\five,\four$.
 \end{example}
+
+%=========================================
+\section{Subflows}\label{section:Subflows}
+
+\TODO{Define composition?}
+
+%------------------------------------------------------
+\begin{definition}\label{definition:ConnectedComponent}
+Given an atomic flow $\phi$ containing the edges $\epsilon$ and $\epsilon'$, we say that $\epsilon$ and $\epsilon'$ \emph{belong to the same connected component}\index{connected component} if, for any two polarity assignments $\pi$ and $\pi'$ for $\phi$, $\pi(\epsilon)=\pi(\epsilon')$ if and only if $\pi'(\epsilon)=\pi'(\epsilon')$.
+\end{definition}
+%---------------
+
+\TODO{Give examples.}
+
+%-------------------------------------------
+\begin{definition}\label{definition:Subflow}
+We say that the flow $\phi_1=(V_1,E_1,\eta_1,\up_1,\lo_1)$ is a \emph{subflow}\index{subflow} of $\phi_2=(V_2,E_2,\eta_2,\up_2,\lo_2)$, if
+\begin{itemize}
+\item $V_1\subset V_2$;
+\item $E_1\subset E_2$;
+\item $\eta_1=\eta_2|_{V_1}$;
+\item for every $\epsilon$ in $E_1$
+\[
+\up_1(\epsilon)=
+\begin{cases}
+\up_2(\epsilon) & \mbox{if $\up_2(\epsilon)\in V_1$,}
+\\
+\top & \mbox{otherwise.}
+\end{cases}
+\qquad\mbox{and}\qquad
+\lo_1(\epsilon)=
+\begin{cases}
+\lo_2(\epsilon) & \mbox{if $\lo_2(\epsilon)\in V_1$,}
+\\
+\bot & \mbox{otherwise.}
+\end{cases}\quad;
+\]
+\item if $\nu$ is a vertex in $\phi_1$ then $U_\nu$ and $L_\nu$ are subsets of $E_1$; and
+\item
+if $\nu_1$ and $\nu_2$ are vertices in $\phi_1$, and there is a vertex $\nu'$ in $\phi_2$, such that there are paths from $\nu_1$ to $\nu'$ and from $\nu'$ to $\nu_2$ in $\phi_2$, then $\nu'$ is a vertex in $\phi_1$.
+\end{itemize}
+\end{definition}
+%---------------
+
+%--------------------------------------------------
+\begin{definition}\label{defintion:IsolatedSubflow}
+Given two flows $\phi$ and $\psi$, such that $\phi$ is a subflow of $\psi$. We say that \emph{$\phi$ is an isolated subflow of $\psi$}\index{subflow!isolated} if there is no path in $\phi$ from a vertex in $\psi$ to $\top$ or $\bot$.
+\end{definition}
+%---------------
