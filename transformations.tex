@@ -1,4 +1,4 @@
-\chapter{Transformations}
+\chapter{Global Reductions}
 
 \TODO{Polarity assignment: `to' -> `for'}
 
@@ -102,9 +102,6 @@ The derivation $\Psi$ obtained in the proof of Propostion~\vref{proposition:Deri
 The notion of substitution can be extended to allow $\phi$ to contain interaction and cut vertices, but we shall not need that in this thesis.
 \end{remark}
 %-----------
-
-%====================================================================
-\section{Global Transformations}\label{section:GlobalTransformations}
 
 \TODO{Alessio: $\boldsymbol\epsilon$ is used to denote the upper edges of a flow. The definition of upper edges is given as a set (from AF1). Why should they be sequences? Wouldn't that give the impression that they are not commutative?}
 
@@ -271,27 +268,27 @@ respectively. In other words, edges are not connected in unexpected ways.
 %-----------
 
 %======================================
-\subsection{Four Boxes}\label{subsection:FourBoxes}
+\section{Four Boxes}\label{section:FourBoxes}
 
 \input{global_transformations/four_boxes}
 
 %======================================
-\subsection{Isolated Subflow Removal}\label{subsection:IsolatedSubflowRemoval}
+\section{Isolated Subflow Removal}\label{section:IsolatedSubflowRemoval}
 
 \input{global_transformations/isolated_subflow.tex}
 
 %======================================
-\subsection{Path Breaker}\label{subsection:PathBreaker}
+\section{Path Breaker}\label{section:PathBreaker}
 
 \input{global_transformations/path_breaker.tex}
 
 %======================================
-\subsection{Multiple Isolated Subflows Removal}\label{subsection:MultipleIsolatedSubflowsRemoval}
+\section{Multiple Isolated Subflows Removal}\label{section:MultipleIsolatedSubflowsRemoval}
 
 \input{global_transformations/multiple_isolated_subflow.tex}
 
 %======================================
-\section{Local Transformations}
+\chapter{Local Reductions}
 
 \begin{definition}\label{definition:FlowGraphicalExpressions}
 In Figure~\vref{figure:ReductionRules}, we define graphical expressions of the kind $r\colon\phi'\to\psi'$, where $r$ is a name and $\phi'$ and $\psi'$ are flows.
@@ -601,7 +598,7 @@ The following flow rewriting system is called $\frc$:
 \end{definition}
 
 %=======================================
-\subsection{Soundness}\label{subsection:soundness}
+\section{Soundness}\label{section:soundness}
 
 %---------------------------------------
 \begin{definition}\label{definition:SoundRedcutionRule}
@@ -863,7 +860,7 @@ The previous soundness theorem only depends on the switch and medial rules for t
 \end{remark}
 
 %=======================================
-\subsection{Termination and Confluence}\label{subsection:TerminationConfluence}
+\section{Termination and Confluence}\label{section:TerminationConfluence}
 
 %---------------------------------------
 \begin{remark}\label{RemCycle}
@@ -926,12 +923,12 @@ Flow rewriting system\/ $\frw\cup\frc$ is confluent.
 \end{theorem}
 
 %=======================================
-\subsection{Conservation of Paths}\label{subsection:FlowRewritePathConservation}
+\section{Conservation of Paths}\label{section:FlowRewritePathConservation}
 
 \TODO{Show that the number and length of `super paths' are conserved by all reduction rules.}
 
 %========================================
-\subsection{Complexity}\label{subsection:FlowRewriteComplexity}
+\section{Complexity}\label{section:FlowRewriteComplexity}
 
 %---------------------------------------
 \begin{remark}\label{remark:RewriteContractionExponential}

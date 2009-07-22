@@ -217,6 +217,16 @@ An atomic flow is
 \end{enumerate}
 \end{definition}
 
+\TODO{Ensure that all the normal forms of atomic flows have a corresponding definition for derivations.}
+
+\begin{definition}\label{definition:DerSimpleForm}
+A derivation with associated atomic flow $\phi$ is \emph{in simple form with respect to} (\emph{the atom}) $a$\index{simple form!derivation!with respect to atom}, if $\pi$ is a polarity assignment for $\phi$, such that the edges in $\phi$ mapped to from occurrences of $a$ have a positive polarity, and the restriction of $\phi$ to $a$ is in simple form with respect to $\pi$.
+\end{definition}
+
+\begin{definition}\label{definition:DerStreamlined}
+A derivation with associated atomic flow $\phi$ is \emph{weakly streamlined} (resp., \emph{streamlined}\index{streamlined!derivation}, \emph{super streamlined} and \emph{hyper streamlined}) if $\phi$ is \emph{weakly streamlined} (resp., \emph{streamlined}, \emph{super streamlined} and \emph{hyper streamlined}). The derivation is \emph{weakly streamlined with respect to} (\emph{the atom}) $a$\index{streamlined!weakly!with respect to atom}, if $\pi$ is a polarity assignment for $\phi$, such that the edges in $\phi$ mapped to from occurrences of $a$ have a positive polarity, and the restriction of $\phi$ to $a$ is weakly streamlined with respect to $\pi$.
+\end{definition}
+
 %---------------------------------------
 \begin{example}\label{example:Streamlined}
 The first flow is weakly streamlined, the other two are hyper streamlined:
@@ -352,3 +362,7 @@ if it is super streamlined; and
 if it is hyper streamlined.
 \end{enumerate}
 \end{proposition}
+
+\begin{remark}\label{remark:DerCutFree}
+A streamlined proof is cut-free, a super streamlined proof is analytic and a hyper streamlined proof is in system $\KS$.
+\end{remark}
