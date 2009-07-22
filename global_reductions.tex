@@ -1,0 +1,288 @@
+\chapter{Global Reductions}
+
+\TODO{Polarity assignment: `to' -> `for'}
+
+%-------------------------------------------------
+\begin{definition}\label{definition:FlowReduction}
+An (\emph{atomic-flow}) \emph{reduction $R$}\index{reduction} is a binary relation on the set of atomic flows, such that $\phi\mathrel{R}\psi$ if
+\begin{enumerate}
+\item
+there is a one-to-one map, $f$, from the upper edges of $\phi$ to the upper edges of $\psi$;
+\item
+there is a one-to-one map, $g$, from the lower edges of $\phi$ to the lower edges of $\psi$; and
+\item\label{definition:FlowReduction:item:Polarity}
+for every polarity assignment $\pi$ for $\phi$, there is a polarity assignment $\pi'$ for $\psi$ such that $\pi'(f(\epsilon))=\pi(\epsilon)$ and $\pi'(g(\iota))=\pi(\iota)$, for any upper edge $\epsilon$ and any lower edge $\iota$ of $\phi'$.
+\end{enumerate}
+We call $\phi$ a \emph{redex} and $\psi$ a \emph{contractum} of $\mathrel R$.
+\end{definition}
+%---------------
+
+%-----------------------------------------------
+\begin{remark}\label{remark:LabelBijectionEdges}
+Given a reduction $R$ and two atomic flows $\phi$ and $\psi$, such that $\phi\mathrel{R}\psi$, we indicate the bijections $f$ and $g$ by labeling the upper (resp., lower) edge $f(\epsilon)$ (resp., $g(\epsilon)$) of $\psi$ by $\epsilon$, for every upper (resp., lower) edge $\epsilon$ of $\phi$.
+\end{remark}
+%-----------
+
+\TODO{Add example.}
+
+%--------------------------------------------------
+\begin{definition}\label{definition:SoundRedcution}
+A reduction $R$ is \emph{sound}\index{reduction!sound} if, for every $\phi$ and $\psi$, such that $\phi\mathrel{R}\psi$, and for every derivation $\Phi$ with atomic flow $\phi$, there is a derivation $\Psi$ with atomic flow $\psi$ such that $\Phi$ and $\Psi$ have the same premiss and conclusion; in this case we write $\Phi\mathrel{R}\Psi$.
+\end{definition}
+%---------------
+
+\TODO{Explain that we force the contractum to be unique (by convention).}
+
+\TODO{Alessio said: `\emph{How can you give the same polarity assignment to two flows? Also, importantly, note that if you have reductions between flows with no upper and lower edges, the polarity assignments can flip at will. The notion you're trying to convey here needs much more careful definition.}'.}
+
+\TODO{Alessio: I want to allow identity and cuts as long as they do not map to vertices in $\phi$. Since $\phi$ only contains $a$ and not $\bar a$, it can not contain any identity or cut vertices. I added a sentence to the proof to make this clear.}
+
+\TODO{Make sure that it is always clear that $f_i$ is a flow isomorphism.}
+
+%------------------------------------------------------------
+\begin{proposition}\label{proposition:DerivationSubstitution}
+Given a derivation\/ $\vlder\Phi\SKS{\beta}\alpha$, let its associated flow have shape
+\[
+\atomicflow{
+(-5, 6)*{\afvjdm4{}{}};
+( 5, 6)*{\afvjdm4{}{}};
+(-1, 2)*{\aflabelleft\phi};
+( 9, 2)*{\aflabelleft\psi};
+(-5, 0)*{\affr88};
+( 5, 0)*{\affr88};
+(-5,-6)*{\afvjum4{}{}};
+( 5,-6)*{\afvjum4{}{}}
+}
+\quad,
+\]
+such that $\phi$ is a connected component whose edges are each associated with atom $a$; then, for any formula $\gamma$, there exists a derivation
+\[
+\vlder\Psi\SKS{\beta \{a^\phi/\gamma\}}
+              {\alpha\{a^\phi/\gamma\}}
+\]
+whose associated flow is
+\[
+\atomicflow{
+(-17, 6)*{\afvjdm4{}{}};
+( -5, 6)*{\afvjdm4{}{}};
+(  5, 6)*{\afvjdm4{}{}};
+(-13, 2)*{\aflabelleft{f_1(\phi)}};
+( -1, 2)*{\aflabelleft{f_n(\phi)}};
+(  9, 2)*{\aflabelleft\psi};
+(-17, 0)*{\affr88};
+(-11, 0)*{\cdots};
+( -5, 0)*{\affr88};
+(  5, 0)*{\affr88};
+(-17,-6)*{\afvjum4{}{}};
+( -5,-6)*{\afvjum4{}{}};
+(  5,-6)*{\afvjum4{}{}};
+}
+\quad,
+\]
+where $n$ is the number of atom occurrences in $\gamma$; moreover, the size of\/ $\Psi$ depends linearly on the size of\/ $\Phi$ and quadratically on the size of $\gamma$.
+\end{proposition}
+%----------------
+
+%-------------------------------------------------------------------------------
+\begin{proof}
+We can proceed by structural induction on $\Phi$. For every formula in $\Phi$ we substitute $a^\phi$ with $\gamma$. Since all the edges in $\phi$ are mapped to from $a$ (and not $\bar a$), we know that all the vertices in $\phi$ are mapped to from instances of $\acd$, $\acu$, $\awd$ and $\awu$. We substitute every instance of $\acd$, $\acu$, $\awd$ and $\awu$ where $a^\phi$ appears, by $\cod$, $\cou$, $\wed$, $\weu$, respectively, with $\gamma$ in the place of $a^\phi$. The result then follows by Lemma~\vref{lemma:GenericWeakening} and Lemma~\vref{lemma:GenericContraction}.
+\end{proof}
+%----------
+
+\TODO{Put reference.}
+
+%---------------
+\begin{notation}
+The derivation $\Psi$ obtained in the proof of Propostion~\vref{proposition:DerivationSubstitution} is denoted $\Phi\{a^\phi/\gamma\}$.
+\end{notation}
+%-------------
+
+%-------------
+\begin{remark}
+The notion of substitution can be extended to allow $\phi$ to contain interaction and cut vertices, but we shall not need that in this thesis.
+\end{remark}
+%-----------
+
+\TODO{Alessio: $\boldsymbol\epsilon$ is used to denote the upper edges of a flow. The definition of upper edges is given as a set (from AF1). Why should they be sequences? Wouldn't that give the impression that they are not commutative?}
+
+\TODO{The labels on upper/lower edges do not fit with the labels used in the definition of four boxes.}
+
+%---------------------------------------------
+\begin{remark}\label{remark:ReductionPolarity}
+For any reduction $\mathrel R$ defined in this section, and any two atomic flows $\phi$ and $\psi$, such that $\phi\mathrel{R}\psi$, if $\pi$ is a polarity assignment for $\phi$, then by Definition~\vref{definiton:InducedPolarity}, $\pi$ is a polarity assignment for $\psi$.
+\end{remark}
+%-----------
+
+%-------------
+\begin{convention}
+To avoid ambiguity in Definitions~\vref{definition:FourBoxes}, \vref{definition:IsolatedSubflowRemoval}, \vref{definition:PathBreaker} and \vref{definition:MultipleIsolatedSubflowsRemoval} we have establish the following convention:
+Let $\boldsymbol\epsilon=\{\epsilon_1,\dots,\epsilon_n\}$, $\boldsymbol\iota=\{\iota_1,\dots,\iota_m\}$, $\boldsymbol{\epsilon'}=\{\epsilon'_1,\dots,\epsilon'_n\}$ and $\boldsymbol{\iota'}=\{\iota'_1,\dots,\iota'_m\}$, then, when we write
+\[
+\atomicflow
+{
+(-10, 0)*{\invisiblemark};
+(  0, 6)*{\afvjdm4{\boldsymbol\epsilon}{}};
+(  0, 0)*{\affr{14}8};
+(  0, 0)*{\copy\contrup};
+( -6,-6)*{\afvjdm4{f_1(\boldsymbol\epsilon)}{}};
+(  0,-6)*{\cdots};
+(  6,-6)*{\afvjdm4{}{f_k(\boldsymbol\epsilon)}};
+( 10, 0)*{\invisiblemark};
+}
+\qquad\mbox{and}\qquad
+\atomicflow
+{
+(-10, 0)*{\invisiblemark};
+(  0,-6)*{\afvjum4{\boldsymbol\iota}{}};
+(  0, 0)*{\affr{14}8};
+(  0, 0)*{\copy\contrdown};
+( -6, 6)*{\afvjum4{f_1(\boldsymbol\iota)}{}};
+(  0, 6)*{\cdots};
+(  6, 6)*{\afvjum4{}{f_k(\boldsymbol\iota)}};
+( 10, 0)*{\invisiblemark};
+}
+\]
+we mean
+\[
+\atomicflow
+{
+(-10, 0)*{\invisiblemark};
+(  0,6)*{\afvjd4{\epsilon_1}{}};
+(  0,0)*{\affr{14}8};
+(  0,0)*{\copy\contrup};
+( -6,-6)*{\afvjd4{f_1(\epsilon_1)}{}};
+(  0,-6)*{\cdots};
+(  6,-6)*{\afvjd4{}{f_k(\epsilon_1)}};
+( 10, 0)*{\invisiblemark};
+}
+\quad\cdots\quad
+\atomicflow
+{
+(-10, 0)*{\invisiblemark};
+(  0,6)*{\afvjd4{\epsilon_n}{}};
+(  0,0)*{\affr{14}8};
+(  0,0)*{\copy\contrup};
+( -6,-6)*{\afvjd4{f_1(\epsilon_n)}{}};
+(  0,-6)*{\cdots};
+(  6,-6)*{\afvjd4{}{f_k(\epsilon_n)}};
+( 10, 0)*{\invisiblemark};
+}
+\qquad\mbox{and}\qquad
+\atomicflow
+{
+(-10, 0)*{\invisiblemark};
+(  0,-6)*{\afvjd4{\iota_1}{}};
+(  0, 0)*{\affr{14}8};
+(  0, 0)*{\copy\contrdown};
+( -6, 6)*{\afvjd4{f_1(\iota_1)}{}};
+(  0, 6)*{\cdots};
+(  6, 6)*{\afvjd4{}{f_k(\iota_1)}};
+( 10, 0)*{\invisiblemark};
+}
+\quad\cdots\quad
+\atomicflow
+{
+(-10, 0)*{\invisiblemark};
+(  0,-6)*{\afvjd4{\iota_m}{}};
+(  0, 0)*{\affr{14}8};
+(  0, 0)*{\copy\contrdown};
+( -6, 6)*{\afvjd4{f_1(\iota_m)}{}};
+(  0, 6)*{\cdots};
+(  6, 6)*{\afvjd4{}{f_k(\iota_m)}};
+( 10, 0)*{\invisiblemark};
+}
+\quad,
+\]
+respectively. Furthermore, in Definition~\ref{definition:FourBoxes}, when we write
+\[
+\atomicflow
+{
+(-9,0)*{\invisiblemark};
+(-6,0)*{\afvjum8{f_2(\boldsymbol{\epsilon})}{}};
+(-4,4)*{\afaidnw{}{}};
+( 0,0)*{\afacdm{}{}{}{}{g(\boldsymbol{\epsilon'})}{}};
+( 4,4)*{\afaidnw{}{}};
+( 6,0)*{\afvjum8{}{f_4(\boldsymbol{\epsilon})}};
+( 9,0)*{\invisiblemark};
+}
+\quad\mbox{and}\quad
+\atomicflow
+{
+(-9, 0)*{\invisiblemark};
+(-6, 0)*{\afvjdm8{f_3(\boldsymbol{\iota})}{}};
+(-4,-6)*{\afaiunw{}{}};
+( 0, 0)*{\afacum{}{}{}{}{g(\boldsymbol{\iota'})}{}};
+( 4,-6)*{\afaiunw{}{}};
+( 6, 0)*{\afvjdm8{}{f_4(\boldsymbol{\iota})}};
+( 9,0)*{\invisiblemark};
+}\quad,
+\]
+we mean
+\[
+\atomicflow
+{
+(-9,0)*{\invisiblemark};
+(-6,0)*{\afvju8{f_2(\epsilon_1)}{}};
+(-4,4)*{\afaidnw{}{}};
+( 0,0)*{\afacd{}{}{}{}{g(\epsilon_1')}{}};
+( 4,4)*{\afaidnw{}{}};
+( 6,0)*{\afvju8{}{f_4(\epsilon_1)}};
+( 9,0)*{\invisiblemark};
+}
+\quad\cdots\quad
+\atomicflow
+{
+(-9,0)*{\invisiblemark};
+(-6,0)*{\afvju8{f_2(\epsilon_n)}{}};
+(-4,4)*{\afaidnw{}{}};
+( 0,0)*{\afacd{}{}{}{}{g(\epsilon_n')}{}};
+( 4,4)*{\afaidnw{}{}};
+( 6,0)*{\afvju8{}{f_4(\epsilon_n)}};
+( 9,0)*{\invisiblemark};
+}
+\quad\mbox{and}\quad
+\atomicflow
+{
+(-9, 0)*{\invisiblemark};
+(-6, 0)*{\afvjd8{f_3(\iota_1)}{}};
+(-4,-6)*{\afaiunw{}{}};
+( 0, 0)*{\afacu{}{}{}{}{g(\iota_1')}{}};
+( 4,-6)*{\afaiunw{}{}};
+( 6, 0)*{\afvjd8{}{f_4(\iota_1)}};
+( 9,0)*{\invisiblemark};
+}
+\quad\cdots\quad
+\atomicflow
+{
+(-9, 0)*{\invisiblemark};
+(-6, 0)*{\afvjd8{f_3(\iota_m)}{}};
+(-4,-6)*{\afaiunw{}{}};
+( 0, 0)*{\afacu{}{}{}{}{g(\iota_m')}{}};
+( 4,-6)*{\afaiunw{}{}};
+( 6, 0)*{\afvjd8{}{f_4(\iota_m)}};
+( 9,0)*{\invisiblemark};
+}\quad,
+\]
+respectively. In other words, edges are not connected in unexpected ways.
+\end{convention}
+%-----------
+
+%======================================
+\section{Four Boxes}\label{section:FourBoxes}
+
+\input{global_reductions/four_boxes}
+
+%======================================
+\section{Isolated Subflow Removal}\label{section:IsolatedSubflowRemoval}
+
+\input{global_reductions/isolated_subflow.tex}
+
+%======================================
+\section{Path Breaker}\label{section:PathBreaker}
+
+\input{global_reductions/path_breaker.tex}
+
+%======================================
+\section{Multiple Isolated Subflows Removal}\label{section:MultipleIsolatedSubflowsRemoval}
+
+\input{global_reductions/multiple_isolated_subflow.tex}
