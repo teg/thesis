@@ -114,39 +114,13 @@ An (\emph{atomic}) \emph{flow}\index{flow}\index{atomic flow|see{flow}} is a tup
 \item if $\eta(\nu)\in\{\aid,\aiu\}$ then $\pi(E_\nu)=\{\pmi,\ppl\}$.
 \end{enumerate}
 \end{enumerate}
-Given an atomic flow $\phi$, we say that the sets $L_\top=\{\epsilon_1,\dots,\epsilon_h\}$ and $U_\bot=\{\epsilon'_1,\dots,\epsilon'_k\}$ contain, respectively, the \emph{upper}\index{flow!upper edges} and \emph{lower edges of $\phi$}\index{flow!lower edges}.
+Given an atomic flow $\phi$, we say that the sets $L_\top=\{\epsilon_1,\dots,\epsilon_h\}$ and $U_\bot=\{\iota_1,\dots,\iota_k\}$ contain, respectively, the \emph{upper}\index{flow!upper edges} and \emph{lower edges of $\phi$}\index{flow!lower edges}.
 \end{definition}
 %---------------
 
 An atomic flow is a directed graph, whose edges are associated to atom occurrences in derivations, and the direction of the edges corresponds to the up-down direction in a derivation. Vertices are associated to points in the derivation where atom occurrences are created or destroyed, and the nature of each vertex is described by its label. Naturally, these graphs are acyclic (condition~\ref{definition:AtomicFlow:item:Acyclic}). The two special vertices $\top$ and $\bot$ represent the top and bottom of a derivation: we can consider $\top$ the vertex that creates all the atom occurrences in the premiss and $\bot$ the vertex that destroys all atom occurrences in the conclusion.
 
 The polarity assignment condition (\ref{definition:AtomicFlow:item:PolarityAssignment}) ensures that atoms in (co)contractions have the same polarity, and those in interactions and cuts have dual polarities (as happens in derivations). Every atomic flow has $2^n$ polarity assignments, where $n$ is the number of connected components in the graph. We should not be worried about the apparent complexity of the polarity assignment condition: in fact, we could equivalently consider two sorts of (co)contraction and (co)weakening labels, the negative and the positive ones, and ask for vertices to be joined by respecting their polarities. This is clearly a locally checkable property, much simpler than, for example, some global correctness criterion for proof nets.
-
-\begin{definition}\label{definition:FlowIsomorphism}
-An (\emph{atomic}) \emph{flow isomorphism}\index{flow!isomorphism} between the atomic flows $\phi_1=(V_1,E_1,\eta_1,\up_1,\lo_1)$ and $\phi_2=(V_2,E_2,\eta_2,\up_2,\lo_2)$ is a pair of functions $(f_V,f_E)$, such that
-\begin{itemize}
-\item $f_V$ is a bijection from $V_1$ to $V_2$; and 
-\item $f_E$ is a bijection from $E_1$ to $E_2$,
-\end{itemize}
-such that, for every $\epsilon$ in $E_1$,
-\begin{itemize}
-\item for every $\nu$ in $V_1$, $\up_1(\epsilon)=\nu$ (resp., $\lo_1(\epsilon)=\nu$) if and only if $\up_2(f_E(\epsilon))=f_V(\nu)$ (resp., $\lo_2(f_E(\epsilon))=f_V(\nu)$); and
-\item $\up_1(\epsilon)=\top$ (resp., $\lo_1(\epsilon)=\bot$) if and only if $\up_2(f_E(\epsilon))=\top$ (resp., $\lo_2(f_E(\epsilon))=\bot$).
-\end{itemize}
-Given a polarity assignment $\pi$ to $\phi_1$, we define the polarity assignment $\pi$ to $\phi_2$, such that, for every $f_E(\epsilon)$ in $E_2$, $\pi(f_E(\epsilon))=\pi(\epsilon)$.
-\end{definition}
-
-%----------------------------------------------------
-\begin{definition}\label{definiton:InducedPolarity}
-Given
-\begin{itemize}
- \item two atomic flows $\phi$ and $\psi$;
- \item a polarity assignment $\pi$ for $\phi$; and
- \item isomorphisms $f_1$, $\dots$, $f_n$ between subflows $\phi_1$, $\dots$, $\phi_n$ of $\phi$ and subflows $\psi_1$, $\dots$, $\psi_n$ of $\psi$,
-\end{itemize}
-let $\pi_i$ be $\pi$ restricted to $\phi_i$, and let $\pi'$ be a polarity assigment for $\psi$, such that $\pi'$ restricted to $\psi_i$ equals $\pi_i$ (which is a polarity assignment for $\psi_i$ by Definition~\ref{definition:FlowIsomorphism}), then if $\pi'$ is unique, we call it $\pi$.
-\end{definition}
-%---------------
 
 \newbox\contrup\setbox\contrup=\hbox{$
    \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
@@ -299,28 +273,22 @@ The left one is not a flow because there is a cycle in it, and the right one bec
 \end{example}
 %------------
 
-\begin{remark}
-Given atomic flows $\phi_1=(V_1,E_1,\eta_1,\up_1,\lo_1)$ and $\phi_2=(V_2,E_2,\eta_2,\up_2,\lo_2)$, and a flow isomorphism $(f_V,f_E)$ between them, we observe that $f_V$ is a graph isomorphism between $(V_1,E_1)$ and $(V_2,E_2)$. We also note that we can not, in general, deduce $f_E$ from $f_V$. As an example, consider the flows
-\[
-\phi\;=\;
-\atomicflow
-{
-(-3, 0)*{\invisiblemark};
-( 0, 4)*{\afacu{\two}{}{}{\three}{\one}{}};
-( 0,-4)*{\afacd{}{}{}{}{\four}{}};
-}
-\qquad\mbox{and}\qquad
-\psi\;=\;
-\atomicflow
-{
-(-3, 0)*{\invisiblemark};
-(0, 4)*{\afacu{\six}{}{}{\seven}{\five}{}};
-(0,-4)*{\afacd{}{}{}{}{\eight}{}};
-}
-\]
-there are two flow isomorphisms between $\phi$ and $\psi$, but they both share the same underlying graph isomorphism. We usually refer to $(f_V,f_E)$ as $f$ and then write $f(\epsilon)$ and $f(\nu)$ instead of $f_E(\epsilon)$ and $f_V(\nu)$, respectively.
-\end{remark}
+%---------------------------------------------------
+\begin{definition}\label{definition:FlowIsomorphism}
+An (\emph{atomic}) \emph{flow isomorphism}\index{flow!isomorphism} between the atomic flows $\phi_1=(V_1,E_1,\eta_1,\up_1,\lo_1)$ and $\phi_2=(V_2,E_2,\eta_2,\up_2,\lo_2)$ is a pair of functions $(f_V,f_E)$, such that
+\begin{itemize}
+\item $f_V$ is a bijection from $V_1$ to $V_2$; and 
+\item $f_E$ is a bijection from $E_1$ to $E_2$,
+\end{itemize}
+such that, for every $\epsilon$ in $E_1$,
+\begin{itemize}
+\item for every $\nu$ in $V_1$, $\up_1(\epsilon)=\nu$ (resp., $\lo_1(\epsilon)=\nu$) if and only if $\up_2(f_E(\epsilon))=f_V(\nu)$ (resp., $\lo_2(f_E(\epsilon))=f_V(\nu)$); and
+\item $\up_1(\epsilon)=\top$ (resp., $\lo_1(\epsilon)=\bot$) if and only if $\up_2(f_E(\epsilon))=\top$ (resp., $\lo_2(f_E(\epsilon))=\bot$).
+\end{itemize}
+\end{definition}
+%---------------
 
+%-----------------------------------------------------
 \begin{notation}\label{notation:LabelsIsomorphicFlows}
 Given an atomic flow
 \[
@@ -333,7 +301,7 @@ Given an atomic flow
 }
 \quad,
 \]
-and a flow $\psi$ which is isomorphic to $\phi$, we write
+and a flow $\psi$ which is isomorphic to $\phi$, whenever we write
 \[
 \psi\;=\;
 \atomicflow
@@ -345,9 +313,11 @@ and a flow $\psi$ which is isomorphic to $\phi$, we write
 }
 \quad,
 \]
-if $f$ is a flow isomorphism between $\phi$ and $\psi$.
+we mean that $f$ is a given flow isomorphism between $\phi$ and $\psi$.
 \end{notation}
+%-------------
 
+%----------------------------------------------
 \begin{convention}\label{convention:EqualFlows}
 We consider atomic flows to be equal modulo flow isomorphisms and modulo the equivalence relation generated by the following graph rewriting system:
 \[
@@ -377,30 +347,34 @@ We consider atomic flows to be equal modulo flow isomorphisms and modulo the equ
 }\quad.
 \]
 \end{convention}
+%---------------
 
+%---------------
 \begin{notation}
-Given an atomic flow $\phi$ and a polarity assignment $\pi$, we write
+Given an atomic flow $\phi$ and a polarity assignment $\pi$ for $\phi$, whenever we write
 \[
 \atomicflow{
 ( 0,6)*{\afvjum4{}{}};
 ( 0,0)*{\affr88};
-(-1,2)*{\aflabelleft\ppl};
-( 1,2)*{\aflabelright\phi};
+(-4,2)*{\aflabelright\ppl};
+( 4,2)*{\aflabelleft\phi};
 ( 0,-6)*{\afvjdm4{}{}};
-}\quad\mbox{or}\quad
+}\qquad\mbox{or}\qquad
 \atomicflow{
 ( 0,6)*{\afvjum4{}{}};
 ( 0,0)*{\affr88};
-(-1,2)*{\aflabelleft\pmi};
-( 1,2)*{\aflabelright\phi};
+(-4,2)*{\aflabelright\pmi};
+( 4,2)*{\aflabelleft\phi};
 ( 0,-6)*{\afvjdm4{}{}};
 }\quad,
 \]
-respectively, if all the edges in $\phi$ have polarity assignment $\ppl$ (resp., $\pmi$). If we label an atomic flow with a polarity assignment it can not contain any interaction or cut vertices duo to property~\ref{definition:AtomicFlow:item:PolarityAssignment} of Definition~\vref{definition:AtomicFlow}.
+respectively, we mean that all the edges in $\phi$ have polarity assignment $\ppl$ or $\pmi$, respectively. If we label an atomic flow with a polarity assignment it can not contain any interaction or cut vertices duo to property~\ref{definition:AtomicFlow:item:PolarityAssignment} of Definition~\vref{definition:AtomicFlow}.
 \end{notation}
+%-------------
 
+%-----------------
 \begin{definition}
-Given an atomic flow $\phi$ with polarity assignment $\pi$, the polarity assignment $\bar\pi$ is defined to be, for every $\epsilon$ in $\phi$:
+Given an atomic flow $\phi$ and a polarity assignment $\pi$ for $\phi$, the polarity assignment $\bar\pi$ for $\phi$ is defined to be, for every $\epsilon$ in $\phi$:
 \[
 \bar\pi(\epsilon)=
 \begin{cases}
@@ -410,15 +384,21 @@ Given an atomic flow $\phi$ with polarity assignment $\pi$, the polarity assignm
 \end{cases}
 \]
 \end{definition}
+%---------------
 
-%=========================================
-\section{Subflows}\label{section:Subflows}
+\TODO{Make sure we use `compatible' correctly later on.}
 
-\TODO{Define connected component.}
-
-\TODO{Define `isolated subflow'.}
-
-\TODO{Define subflow}.
+%--------------------------------------------------
+\begin{definition}\label{definiton:InducedPolarity}
+Given
+\begin{itemize}
+ \item two atomic flows $\phi$ and $\psi$;
+ \item a polarity assignments $\pi$ for $\phi$ and $\pi'$ for $\psi$; and
+ \item isomorphisms $f_1$, $\dots$, $f_n$ between subflows $\phi_1$, $\dots$, $\phi_n$ of $\phi$ and subflows $\psi_1$, $\dots$, $\psi_n$ of $\psi$,
+\end{itemize}
+we say that $\pi'$ is \emph{compatible with $\pi$}\index{polarity assignment!compatible} (\emph{with respect to $f_1$, $\dots$, $f_n$}) if, for every $1\le i\le n$ and every edge $\epsilon$ in $\phi_i$, $\pi'(f_i(\epsilon))=\pi(\epsilon)$.
+\end{definition}
+%---------------
 
 %=======================================================
 \section{Paths and Cycles}\label{section:PathsAndCycles}
@@ -431,8 +411,6 @@ Given an atomic flow $(V,E,\eta,\up,\lo)$ and $\epsilon_1,\dots,\epsilon_h\in E$
 
 An \emph{$\ai$-path from $\nu$ to $\nu'$}\index{$\ai$-path} of \emph{length}\index{$\ai$-path!length} $h$ is either a path from $\nu$ to $\nu'$ of length $h$ or a sequence of edges $\epsilon_1,\dots,\epsilon_k,\epsilon_{k+1},\dots,\epsilon_h$ such that $\epsilon_k \ne \epsilon_{k+1}$ and, for some $\nu''\in V$ with $\eta(\nu'')\in\{\aid,\aiu\}$, we have that $\epsilon_1,\dots,\epsilon_k$ is an $\ai$-path from $\nu$ to $\nu''$ and $\epsilon_{k+1},\dots,\epsilon_h$ is an $\ai$-path from $\nu''$ to $\nu'$. An $\ai$-path of length $h$ is \emph{maximal}\index{$\ai$-path!maximal} if no $\ai$-path containing its edges has length greater than $h$. An $\ai$-path from (resp., to) $\nu$ of length $h$ is a \emph{maximal\/ $\ai$-path from} (resp., \emph{to}) $\nu$ if no $\ai$-path from (resp., to) $\nu$ containing its edges has length greater than $h$.
 \end{definition}
-
-\TODO{Correct AF1, the coweakening should be a weakening.}
 
 %---------------------------------------
 \begin{example}\label{example:Paths}
