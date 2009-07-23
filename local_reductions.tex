@@ -561,35 +561,36 @@ Flow rewriting system $\frc$ is not terminating:
 \atomicflow{
 ( 4  ,8)*{\afaidnw{}{}};
 ( 6  ,6)*{\afvj4};
-( 3  ,0)*{\afaiuex{\ppl}{}{}{\pmi}{}{}32};
-( 0  ,4)*{\afacd{\ppl}{}{}{}{}{}};
+( 3  ,0)*{\afaiuex{}{}{}{}{}{}32};
+( 0  ,4)*{\afacd{}{}{}{}{}{}};
 (-3.5,0)*{\invisiblemark};
 ( 7.5,0)*{\invisiblemark}}
 \quad\to_\frc\quad
 \atomicflow{
-( 9  ,12)*{\afaidex{\pmi}{}{}{\ppl}{}{}32};
+( 9  ,12)*{\afaidex{}{}{}{}{}{}32};
 ( 6  , 8)*{\afacu{}{}{}{}{}{}};
 (12  , 6)*{\afvj4};
-( 0  , 6)*{\afvjd4\ppl{}};
+( 0  , 8)*{\afvj8};
 ( 2  , 2)*{\afaiunw{}{}};
 (10  , 2)*{\afaiunw{}{}{}{}{}{}};
 (-1.5, 0)*{\invisiblemark};
 (13.5, 0)*{\invisiblemark}}
 \quad\to_\frc\quad
 \atomicflow{
-( 6  ,8)*{\afaidnw{}{}};
-(14  ,8)*{\afaidnw{}{}};
-( 4  ,6)*{\afvj4};
-(16  ,6)*{\afvj4};
-( 2  ,0)*{\afaiu{\ppl}{}{}{}{}{}};
-(13  ,0)*{\afaiuex{\ppl}{}{}{\pmi}{}{}32};
-(10  ,4)*{\afacd{}{}{}{}{}{}};
-(-1.5,0)*{\invisiblemark};
-(17.5,0)*{\invisiblemark}}
+( 6  , 8)*{\afaidnw{}{}};
+(14  , 8)*{\afaidnw{}{}};
+( 4  , 6)*{\afvj4};
+(16  , 6)*{\afvj4};
+( 0  , 6)*{\afvj4};
+( 2  , 0)*{\afaiu{}{}{}{}{}{}};
+(13  , 0)*{\afaiuex{}{}{}{}{}{}32};
+(10  , 4)*{\afacd{}{}{}{}{}{}};
+(-1.5, 0)*{\invisiblemark};
+(17.5, 0)*{\invisiblemark}}
 \quad\to_\frc\quad\cdots\quad.
 \]
 \afnegspace
-We see that if a contraction vertex belongs to an $\ai$-cycle, reductions by $\frc$ make it `bounce' in the $\ai$-cycle and create a trail; while bouncing, the vertex alternates between contraction and cocontraction; if we assign a polarity to the flow, the vertex alternates between being positive and negative.
+We see that if a contraction vertex belongs to an $\ai$-cycle, reductions by $\frc$ make it `bounce' in the $\ai$-cycle and create a trail; while bouncing, the vertex alternates between contraction and cocontraction.
 \end{remark}
 %-----------
 
