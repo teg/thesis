@@ -30,7 +30,7 @@ In Figure~\vref{figure:ReductionRules}, we define graphical expressions of the k
 \quad\to\quad
 \atomicflow{
 ( 0  ,3.3)*{\aflabelright{\one,\two}};
-( 0  ,3  )*{\afvj6};
+( 0  ,3  )*{\afvj8};
 (-1.5,0  )*{\invisiblemark};
 ( 3  ,0  )*{\invisiblemark}}
 &\qquad
@@ -41,7 +41,7 @@ In Figure~\vref{figure:ReductionRules}, we define graphical expressions of the k
 ( 3.5,0)*{\invisiblemark}}}
 \quad\to\quad
 \atomicflow{
-(0,3  )*{\afvj6};
+(0,3  )*{\afvj8};
 (0,3.3)*{\aflabelright{\one,\two}};
 (3,0  )*{\invisiblemark}}
 \\
@@ -105,9 +105,9 @@ $\hfil}\\
 \\
 %-------------------
 \rcdiu\colon\quad\aflower{\atomicflow{
-(   6, 6)*{\afvjd4{}\three{}{}};
+(   6, 8)*{\afvjd8{}\three{}{}};
 (   3, 0)*{\afaiuex{}{}{}{}{}{}32};
-(   0, 4)*{\afacdnw\one{}{}\two};
+(   0, 8)*{\afacd\one{}{}\two{}{}};
 (-3.5, 0)*{\invisiblemark};
 ( 7.5, 0)*{\invisiblemark}}}
 \quad\to\quad
@@ -120,9 +120,9 @@ $\hfil}\\
 &\qquad
 %-------------------
 \ridcu\colon\quad\afraise{\atomicflowinv{
-(   6,6)*{\afvju4{}\three{}{}};
+(   6,8)*{\afvju8{}\three{}{}};
 (   3,0)*{\afaidex {}{}{}{}{}{}32};
-(   0,6)*{\afacunw\one{}{}\two};
+(   0,8)*{\afacu\one{}{}\two{}{}};
 (-3.5,0)*{\invisiblemark};
 ( 7.5,0)*{\invisiblemark}}}
 \quad\to\quad
@@ -136,8 +136,8 @@ $\hfil}\\
 %-------------------
 \multispan2{\hfil$
 \rcdcu\colon\quad\atomicflow{
-( 0,6)*{\afacd\one{}{}\two{}{}};
-( 0,0)*{\afacunw\three{}{}\four};
+( 0,4)*{\afacd\one{}{}\two{}{}};
+( 0,-4)*{\afacu\three{}{}\four{}{}};
 (-4,0)*{\invisiblemark};
 ( 4,0)*{\invisiblemark}}
 \quad\to\quad
@@ -151,37 +151,6 @@ $\hfil}\\
 ( 3,6)*{\afex24}}
 $\hfil}\\
 %%-------------------
-%\rcd\colon\quad\aflower{\atomicflow{
-%(   0, 4)*{\afacd\one{}{}\two{}\three};
-%(-3.5, 0)*{\invisiblemark};
-%( 3.5, 0)*{\invisiblemark}
-%}}
-%\quad\to\quad
-%\aflower{\atomicflow{
-%(13,12)*{\afaidex{}{}{}{}{}{}32};
-%(16, 4)*{\afvju8{}\three};
-%(10, 6)*{\afacunw{}{}{}{}};
-%( 0, 8)*{\afvjd8\one{}};
-%( 4, 8)*{\afvjd8{}\two};
-%( 6, 2)*{\afaiunw{}{}};
-%( 6, 0)*{\afaiuex{}{}{}{}{}{}31}}}
-%&\qquad
-%%-------------------
-%\rcu\colon\quad\afraise{\atomicflowinv{
-%(   0,-4)*{\afacu\one{}{}\two{}\three};
-%(-3.5, 0)*{\invisiblemark};
-%( 3.5, 0)*{\invisiblemark}
-%}}
-%\quad\to\quad
-%\aflower{\atomicflow{
-%(13,-12)*{\afaiuex{}{}{}{}{}{}32};
-%(16, -4)*{\afvjd8{}\three};
-%(10,-8.25)*{\afacdnw{}{}{}{}};
-%( 0, -8)*{\afvju8\one{}};
-%( 4, -8)*{\afvju8{}\two};
-%( 6, -4)*{\afaidnw{}{}};
-%( 6,  0)*{\afaidex{}{}{}{}{}{}31}}}
-%\\
 \end{array}
 \]
 \caption{Atomic-flow reduction rules.}
@@ -198,6 +167,7 @@ The `reduction' on the left, when used inside a larger atomic flow, might create
 ( 0  ,4)*{\afawdnw{}{}}}
 \quad\to\quad
 \atomicflow{
+(0,8)*{\invisiblemark};
 ( 0  ,0)*{\afaid{}{}{}{}{}{}}}
 \qquad\qquad
 \atomicflow{
@@ -210,6 +180,7 @@ The `reduction' on the left, when used inside a larger atomic flow, might create
 ( 3.5, 0)*{\invisiblemark}}
 \quad\to\quad
 \atomicflow{
+(0,16)*{\invisiblemark};
 ( 0  ,4)*{\afaidnw{}{}};
 ( 0  ,0)*{\afacd\ppl{}{}{\scriptstyle?}\ppl{}};
 (-3.5,0)*{\invisiblemark};
@@ -331,7 +302,7 @@ The proof of the following theorem is essentially contained in Figures~\vref{fig
 \quad\to\quad
 \atomicflow{
 ( 0  ,3.3)*{\aflabelright{\one,\two}};
-( 0  ,3  )*{\afvj6};
+( 0  ,3  )*{\afvj8};
 (-1.5,0  )*{\invisiblemark};
 ( 3  ,0  )*{\invisiblemark}}
 &\qquad
@@ -488,9 +459,9 @@ $}
 \begin{array}{@{}l@{}c@{}}
 %---------------------------------------
 \rcdiu\colon\aflower{\atomicflow{
-(   6, 6)*{\afvjd4{}\three{}{}};
+(   6, 8)*{\afvjd8{}\three{}{}};
 (   3, 0)*{\afaiuex{}\four{}{}{}{}32};
-(   0, 4)*{\afacdnw\one{}{}\two};
+(   0, 8)*{\afacd\one{}{}\two{}{}};
 (-3.5, 0)*{\invisiblemark};
 ( 7.5, 0)*{\invisiblemark}}}
 \quad\to\quad
@@ -510,10 +481,11 @@ $}
 \noalign{\bigskip}
 %---------------------------------------
 \rcdcu\colon\hfil\atomicflow{
-( 0,6)*{\afacd\one{}{}\two{}\five};
-( 0,0)*{\afacunw\three{}{}\four};
-(-4,0)*{\invisiblemark};
-( 4,0)*{\invisiblemark}}
+( 0, 4)*{\afacd\one{}{}\two{}{}};
+( 0, 0)*{\aflabelright{\five}};
+( 0,-4)*{\afacu\three{}{}\four{}{}};
+(-4, 0)*{\invisiblemark};
+( 4, 0)*{\invisiblemark}}
 \quad\to\quad
 \atomicflow{
 ( 0,12)*{\afacu{}{}{}{}\one{}};
