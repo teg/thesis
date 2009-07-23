@@ -543,7 +543,17 @@ The previous soundness theorem only depends on the switch and medial rules for t
 %=======================================
 \section{Termination and Confluence}\label{section:TerminationConfluence}
 
-%---------------------------------------
+%-----------------------------------------------------------------
+\begin{theorem}\label{theorem:RewritingSystemWeakeningTerminating}
+Flow rewriting system\/ $\frw$ is terminating.
+\end{theorem}
+
+\begin{proof}
+At every reduction, the number of edges decreases.
+\end{proof}
+%----------
+
+%-----------------------------
 \begin{remark}\label{RemCycle}
 Flow rewriting system $\frc$ is not terminating:
 \nopagebreak[4]\medskip\afnegspace
@@ -581,26 +591,36 @@ Flow rewriting system $\frc$ is not terminating:
 \afnegspace
 We see that if a contraction vertex belongs to an $\ai$-cycle, reductions by $\frc$ make it `bounce' in the $\ai$-cycle and create a trail; while bouncing, the vertex alternates between contraction and cocontraction; if we assign a polarity to the flow, the vertex alternates between being positive and negative.
 \end{remark}
-
-%-----------------------------------------------------------------
-\begin{theorem}\label{theorem:RewritingSystemWeakeningTerminating}
-Flow rewriting system\/ $\frw$ is terminating.
-\end{theorem}
-
-\begin{proof}
-At every reduction, either the number of vertices decreases, or it stays the same but the number of contraction and cocontraction vertices decreases.
-\end{proof}
+%-----------
 
 %-------------------------------------------------------------------
 \begin{theorem}\label{theorem:RewritingSystemContractionTerminating}
 Flow rewriting system\/ $\frc$ is terminating on the set of cycle-free atomic flows.
 \end{theorem}
-%------------
 
-%---------------------------------------
+\newcommand{\rk}{{\mathsf r}}
+\begin{proof}
+Let $\phi$ be a cycle-free flow. We associate to each contraction (resp., cocontraction) vertex $\nu$ its \emph{rank} $\rk_\nu=\sum_{p_i\in I_\nu}h_i$, where $I_\nu$ is the set of all maximal $\ai$-paths $p_i=\epsilon^i_1,\dots,\epsilon^i_{h_i}$ from $\nu$, such that $\epsilon^i_1$ is the lower (resp., upper) edge of $\nu$ (so, the rank of a vertex is the sum of the lengths of certain maximal $\ai$-paths from it). Note that every (co)contraction vertex has non-zero rank. We prove that a reduction of $\phi$ by $\frc$ decreases the sum of the ranks of the (co)contraction vertices of $\phi$. First note that the rank of the vertices not involved in the reduction step stays the same (see Remark~\ref{RemRank}). We then need to show that the sum of the ranks decreases for the vertices involved. There are three cases, depending on the reduction rule:
+\begin{itemize}
+%
+\item[$\rcdiu$:]a contraction vertex $\nu$ is replaced by a cocontraction vertex $\nu'$, and $\rk_{\nu'}=\rk_\nu-n$, where $n>0$ is the number of maximal $\ai$-paths from $\nu$ whose first edge is the lower edge of $\nu$;
+%
+\item[$\ridcu$:]this is dual to the previous case;
+%
+\item[$\rcdcu$:]a contraction vertex $\nu$ and a cocontraction vertex $\nu'$ are replaced by two contraction vertices $\nu_1$ and $\nu_2$ and two cocontraction vertices $\nu'_1$ and $\nu'_2$; we have $\rk_{\nu_1}+\rk_{\nu_2}=\rk_\nu-n$, where $n>0$ is the number of maximal $\ai$-paths from $\nu$ whose first edge is the lower edge of $\nu$; analogously, we have $\rk_{\nu'_1}+\rk_{\nu'_2}=\rk_{\nu'}-n'$, where $n'>0$ is the number of maximal $\ai$-paths from $\nu'$ whose first edge is the upper edge of $\nu'$.
+\end{itemize}
+\end{proof}
+%----------
+
+%--------------------------------------------------------------------------
 \begin{theorem}\label{theorem:RewritingSystemContractionWeakeningConfluent}
 Flow rewriting system\/ $\frw\cup\frc$ is confluent.
 \end{theorem}
+
+\begin{proof}
+It is straightforward to verify the statement by checking each critical pair of $\frw\cup\frc$.
+\end{proof}
+%----------
 
 %=======================================
 \section{Conservation of Paths}\label{section:FlowRewritePathConservation}
@@ -634,7 +654,14 @@ Normalising by $\frc$ can blow the size of atomic flows exponentially, in partic
 ( 4,10  )*{\afacdnw{}{}{}{}{}{}}}
 \quad.
 \]
-In fact, if there are $n$ couples cocontraction/contraction like the two shown above on the left, then there are $2^n$ maximal $\ai$-paths, and their number (and length) is conserved by $\to_\frc^\star$ (see Remark~\vref{remark:TODO}). Exactly one $\ai$-path passes through each edge in the middle portion of the flow on the right.
+In fact, if there are $n$ couples of cocontraction/contraction vertices like the two shown above on the left, then there are $2^n$ maximal $\ai$-paths, and their number (and length) is conserved by $\to_\frc^\star$ (see Remark~\vref{remark:TODO}). Exactly one $\ai$-path passes through each edge in the middle portion of the flow on the right. It follows that normalising derivations by $\frc$ can also blow their size exponentially.
 \end{remark}
+%-----------
+
+%------------------
+\begin{proposition}
+Given two derivations $\Phi$ and $\Psi$, such that $\Phi\to_\frw^\star\Psi$, the size of $\Psi$ depends at most linearly on the size of $\Phi$.
+\end{proposition}
+%----------------
 
 \TODO{Lemma about complexity of weakening reductions.}
