@@ -117,9 +117,11 @@ The reduction $\to_\frfb$ would still be sound if we removed the restriction on 
 \end{remark}
 %-----------
 
+\TODO{Alessio: Added statement about size.}
+
 %--------------------------------------------
 \begin{theorem}\label{theorem:SoundFourBoxes}
-Reduction\/ $\to_\frfb$ is sound.
+Reduction\/ $\to_\frfb$ is sound; moreover if $\Phi\to_\frfb\Psi$, then the size of $\Psi$ depends at most polynomially on the size of $\Phi$.
 \end{theorem}
 
 \begin{proof}
@@ -392,16 +394,8 @@ Combining these derivations we can build
 }\quad,
 \]
 with the desired atomic flow.
-\end{proof}
-%----------
 
-%---------------------------------------------
-\begin{lemma}\label{lemma:FourBoxesSimpleForm}
-Given an atomic flow $\phi'$ with polarity assignment $\pi$, there exists an atomic flow $\psi'$, such that $\phi'\to_\frfb\psi'$ and $\psi'$ is in simple form with respect to $\pi$.
-\end{lemma}
-
-\begin{proof}
-We refer to the figure in Definition~\vref{definition:FourBoxes}. Let the subflow $\phi$ contain all the positive edges, and let the subflow $\psi$ contain all the negative edges, then $\psi'$ is in simple form with respect to $\pi$ by Definition~\vref{definition:FlowNormalForms}.
+We know that the size of $\Phi'\sigma$ depends at most polynomially on the size of $\Phi$ by Theorem~\vref{theorem:aiDecomposedForm} and Proposition~\vref{proposition:DerivationSubstitution}, and it is straightforward to observe that the sizes of $\Psi_\ttt$, $\Psi_\top$, $\Psi_\fff$ and $\Psi_\bot$ depend at most linearly on the size of $\Phi$, so the size of $\Psi$ depends at most polynomially on the size of $\Phi$.
 \end{proof}
 %----------
 
