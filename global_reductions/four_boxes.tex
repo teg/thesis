@@ -399,33 +399,49 @@ We know that the size of $\Phi'\sigma$ depends at most polynomially on the size 
 \end{proof}
 %----------
 
-\TODO{Think hard about the next definition and decide if it makes more sense to define with respect to atoms instead of with respect to polarity.}
+\TODO{Alessio: I simplified this section to not talk about polarities. Changed definition of operator and proved proposition. Does not affect the following subsections (only the final Main Result section (it makes it much simpler).}
 
 %----------------------------------
-\newcommand{\Simpl}{\mathsf{Simpl}}
-\begin{definition}\label{definition:DerSimpleForm}
-Given a derivation $\Phi$ with atomic flow $\phi$ and a polarity assignment $\pi$, let $\Psi$ with atomic flow $\psi$ be the derivation obtained in the proof of Theorem~\ref{theorem:SoundFourBoxes}, such that $\phi\to_\frfb\psi$, then we say that $\Psi$ is \emph{the} (\emph{canonical}) \emph{simple form of\/ $\Phi$ with respect to $\pi$}\index{simple form!derivation}, denoted $\Simpl(\Phi,\pi)$.
+\newcommand{\Simpl}{\mathsf{Si}}
+\begin{definition}\label{definition:Simplifier}
+The \emph{Simplifier}\index{Simplifier}, $\Simpl$, is an operator whose arguments are distinct and pairwise non-dual atoms $a_1$, $\dots$, $a_n$ and a derivation $\Phi$, with atomic flow
+\[
+\atomicflow{
+(-8, 6)*{\afvjdm4{}{}};
+( 0, 8)*{\afaidm{}{}{}{}{}{}};
+( 8, 6)*{\afvjdm4{}{}};
+%-
+(-5, 0)*{\affr88};
+(-1, 2)*{\aflabelleft\phi};
+( 5, 0)*{\affr88};
+( 9, 2)*{\aflabelleft\psi};
+%-
+(-8,-6)*{\afvjum4{}{}};
+( 0,-8)*{\afaium{}{}{}{}{}{}};
+( 8,-6)*{\afvjum4{}{}};
+}\quad,
+\]
+such that all the edges in $\phi$ are mapped to from occurrences of $a_1$, $\dots$, $a_n$ and no edges in $\psi$ are mapped to from occurrences of $a_1$, $\dots$, $a_n$.
+We then define $\Simpl(\Phi,a_1,\dots,a_n)$ to be such that $\Phi\to_\frfb\Simpl(\Phi,a_1,\dots,a_n)$, where $\phi$ and $\psi$ are the flows, by the same names, shown in Definition~\vref{definition:FourBoxes}.
 \end{definition}
 %---------------
 
-\TODO{What is the role of $\pi$? Answer: the lemma holds for any $\Psi$, such that $\Phi\to_\frfb\Psi$, we just happen to be interested in $\Simpl(\Phi,\pi)$. Decide on how to phrase it.}
-
-%---------------------------------------
-\begin{lemma}\label{lemma:SizeFourBoxes}
-Given a derivation $\Phi$ and a polarity assignment for its atomic flow $\pi$, the size of $\Simpl(\Phi,\pi)$ depends linearly on the size of $\Phi$.
-\end{lemma}
-
-\begin{proof}
-Since the formulae we substitute with in the proof of Theorem~\vref{theorem:SoundFourBoxes} have size 4, the result follows by Proposition~\vref{proposition:DerivationSubstitution}.
-\end{proof}
-%----------
-
-%-----------------------------------------------
-\begin{lemma}\label{lemma:FourBoxesStreamlining}
-Given two atomic flows $\phi$ and $\psi$ with polarity assignment $\pi$, such that $\phi\to_\frfb\psi$ and $\phi$ is weakly streamlined with respect to $\bar\pi$ then $\psi$ is weakly streamlined with respect to $\bar\pi$.
-\end{lemma}
+%------------------------------------------------------------
+\begin{proposition}\label{proposition:IsolatedSubflowRemover}
+Given distinct and pairwise non-dual atoms $a_1$, $\dots$, $a_n$, and a derivation $\Phi$,
+\begin{enumerate}
+\item $\Simpl(\Phi,a_1,\dots,a_n)$ is in simple form with respect to $a_1$, $\dots$, $a_n$;
+\item for any atom $b$, if\/ $\Phi$ is weakly streamlined with respect to $b$, then\/ $\Simpl(\Phi,a_1,\dots,a_n)$ is weakly streamlined with respect to $b$; and
+\item the size of\/ $\Simpl(\Phi,a_1,\dots,a_n)$ depends at most polynomially on the size of\/ $\Phi$.
+\end{enumerate}
+\end{proposition}
 
 \begin{proof}
-By studying the atomic flows in Definition~\vref{definition:FourBoxes} we can observe that for every path from an interaction vertex to a cut vertex in $\psi$ there is a path from an interaction vertex to a cut vertex in $\phi$ with the same polarity assignment.
+In the following we refer to the figure in Definition~\vref{definition:FourBoxes}:
+\begin{itemize}
+\item by case (\ref{definition:FlowNormalForms:item:SimpleForm}) of Definition~\vref{definition:FlowNormalForms};
+\item by studying the atomic flows in Definition~\ref{definition:FourBoxes} we can observe that for every path from an interaction vertex to a cut vertex in the atomic flow of $\Simpl(\Phi,a_1,\dots,a_n)$ whose edges are mapped to from occurrences of $b$, there is a path from an interaction vertex to a cut vertex in the atomic flow of $\Phi$ whose edges are mapped to from occurrences of $b$; and
+\item by Theorem~\vref{theorem:SoundFourBoxes}.
+\end{itemize}
 \end{proof}
 %----------
