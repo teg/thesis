@@ -5,8 +5,6 @@
 In Figure~\vref{figure:ReductionRules}, we define graphical expressions of the kind $r\colon\phi'\to\psi'$, where $r$ is a name and $\phi'$ and $\psi'$ are flows.
 \end{definition}
 
-\TODO{In Figures~\vref{figure:ReductionRules}, \vref{figure:ReductionRulesWeakening} and \vref{figure:ReductionRulesContraction} extend the edges so the atomic flows on either side of the arrow has equal height.}
-
 \newcommand{\rwdcd}{{{\mathsf w}{\downarrow}{\hbox{-}}{\mathsf c}{\downarrow}}}
 \newcommand{\rwdiu}{{{\mathsf w}{\downarrow}{\hbox{-}}{\mathsf i}{\uparrow  }}}
 \newcommand{\rwdwu}{{{\mathsf w}{\downarrow}{\hbox{-}}{\mathsf w}{\uparrow  }}}
@@ -278,6 +276,21 @@ The following flow rewriting system is called $\frc$:
 \{\;\rcdiu\;,\;\ridcu\;,\;\rcdcu\;\}\quad.
 \]
 \end{definition}
+
+\TODO{Alessio: do these things need proofs? Should I call them propositions?}
+
+%----------------------------------------------
+\begin{theorem}\label{theorem:SuperStreamlining}
+Given a weakly-streamlined atomic flow $\phi$, if $\phi\to_\frw^\star\psi$ and $\psi$ is normal for $\frw$, then $\psi$ is super streamlined.
+\end{theorem}
+%------------
+
+%----------------------------------------------
+\begin{theorem}\label{theorem:HyperStreamlining}
+Given a super-streamlined atomic flow $\phi$, if $\phi\to_\frc^\star\psi$ and $\psi$ is normal for $\frc$, then $\psi$ is hyper streamlined.
+\end{theorem}
+%------------
+
 
 %=======================================
 \section{Soundness}\label{section:soundness}
@@ -631,6 +644,16 @@ It is straightforward to verify the statement by checking each critical pair of 
 %========================================
 \section{Complexity}\label{section:FlowRewriteComplexity}
 
+%------------------------------------------------------------
+\begin{proposition}\label{proposition:SizeWeakeningReduction}
+Given a derivation $\Phi$, there exists a derivation $\Psi$, such that $\Phi\to_\frw^\star\Psi$, $\Psi$ is normal for $\frw$ and the size of $\Psi$ depends at most linearly on the size of $\Phi$.
+\end{proposition}
+
+\begin{proof}
+The number of reductions used to arrive at $\Psi$ is bound by the number of edges in the atomic flow of $\Phi$, so by the size of $\Phi$. Furthermore, each reductions shown in Figure~vref{figure:ReductionRulesWeakening} grow the derivation by at most a constant. Hence, the size of $\Psi$ depends at most linearly on the size of $\Phi$.
+\end{proof}
+%----------
+
 %---------------------------------------
 \begin{remark}\label{remark:RewriteContractionExponential}
 Normalising by $\frc$ can blow the size of atomic flows exponentially, in particular in a situation like the following (noted by Lutz Stra{\ss}burger):
@@ -658,11 +681,3 @@ Normalising by $\frc$ can blow the size of atomic flows exponentially, in partic
 In fact, if there are $n$ couples of cocontraction/contraction vertices like the two shown above on the left, then there are $2^n$ maximal $\ai$-paths, and their number (and length) is conserved by $\to_\frc^\star$ (see Remark~\vref{remark:TODO}). Exactly one $\ai$-path passes through each edge in the middle portion of the flow on the right. It follows that normalising derivations by $\frc$ can also blow their size exponentially.
 \end{remark}
 %-----------
-
-%------------------
-\begin{proposition}
-Given two derivations $\Phi$ and $\Psi$, such that $\Phi\to_\frw^\star\Psi$, the size of $\Psi$ depends at most linearly on the size of $\Phi$.
-\end{proposition}
-%----------------
-
-\TODO{Lemma about complexity of weakening reductions.}
