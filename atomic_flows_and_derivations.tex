@@ -2,14 +2,14 @@
 
 \section{Extracting Flows from Derivations}\label{section:ExtractingFlowsFromDerivations}
 
-%---------------------------------------
+%------------------------------------------------
 \begin{proposition}\label{proposition:FlowUnique}
 Given an\/ $\SKS$ derivation\/ $\Phi$, there is a unique atomic flow $\phi$ such that:
 \begin{enumerate}
-%-------------------
+%
 \item there is a surjective map between the set of atom occurrences of\/ $\Phi$ and the set of edges of $\phi$;
-%-------------------
-\item there is a bijective map between the set of structural inference rule instances of\/ $\Phi$ and the set of vertices of $\phi$, such that, for each inference rule $\rho$ that maps to a vertex $\nu$, the label of $\nu$, and the map between the atom occurrences in the premiss (resp., conclusion) of $\rho$ and the upper (resp., lower) edges of $\nu$ are given below, for each possible case of the inference rules:
+%
+\item there is a bijective map between the set of structural inference rule instances of\/ $\Phi$ and the set of vertices of $\phi$, such that, for each inference rule instance $\rho$ that maps to a vertex $\nu$, the label of $\nu$ are given below, for each possible case of the inference rules:
 \[
 \begin{array}{@{}ccc@{}ccc@{}}
 \vlinf{\aid}{}{\vls[a^\one.{\bar a^\two}]}{\ttt}&\mbox{to\/}&
@@ -34,8 +34,8 @@ Given an\/ $\SKS$ derivation\/ $\Phi$, there is a unique atomic flow $\phi$ such
 \quad,\\
 \end{array}
 \]
-where the mapping is indicated by small numerals.
-%-------------------
+and the map between the atom occurrences in the premiss (resp., conclusion) of $\rho$ and the upper (resp., lower) edges of $\nu$ is indicated by small numerals; and
+%
 \item for each inference rule instance of\/ $\Phi$ of kind
 \[\hss
 \begin{array}{@{}r@{}l@{}}
@@ -65,15 +65,15 @@ all the atom occurrences in $\alpha$, $\beta$, $\gamma$ and $\delta$ in the prem
 
 %---------------------------------------
 \begin{definition}\label{definition:AssociatedFlow}
-Given a derivation $\Phi$, we say that the unique atomic flow $\phi$ defined in Proposition~\vref{proposition:FlowUnique} is the atomic flow \emph{associated with}\index{flow!associated with derivation} the derivation $\Phi$. Sometimes, when an atom occurrence $a$ in $\Phi$ maps to an edge $\epsilon$ in $\phi$, we decorate $a$ with the label $\epsilon$ or the label $\phi$.
+Given a derivation $\Phi$, we say that the unique atomic flow $\phi$ defined in Proposition~\vref{proposition:FlowUnique} is the atomic flow \emph{associated with}\index{flow!associated with derivation} the derivation $\Phi$. Sometimes, when an atom occurrence $a$ in $\Phi$ is mapped to an edge $\epsilon$ in $\phi$, we decorate $a$ with the label $\epsilon$ or the label $\phi$.
 \end{definition}
 %---------------
 
+%-------------------------------------------------
 \begin{theorem}\label{theorem:SurjectiveDerToFlow}
 Every atomic flow is associated with some derivation.
 \end{theorem}
 
-%---------------------------------------
 \begin{proof}
 First, we show that, for any atom $a$ and formula contexts $\xi\vlhole$ and $\zeta\vlhole$, there exists a derivation
 $
@@ -182,10 +182,13 @@ where $h\ge0$ (this can possibly be done in many different ways). By the inducti
 \]
 whose flow is $\phi$.
 \end{proof}
+%----------
 
+%--------------------------------------------------
 \begin{definition}\label{definiton:FlowRestriction}
 Given a derivation $\Phi$ with atomic flow $\phi$, and an atom $a$, the \emph{restriction of $\phi$ to $a$}\index{flow!restriction to atom} is the largest subflow $\phi_a$ of $\phi$, such that every edge of $\phi_a$ is mapped to from $a$ or $\bar a$.
 \end{definition}
+%---------------
 
 %=================================================================
 \section{Normal Forms of Derivations}\label{section:DerNormalForm}

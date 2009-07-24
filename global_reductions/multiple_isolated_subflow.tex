@@ -56,12 +56,12 @@ where, for $1\le i\le n$, $l_i$ is the number of atom occurrences in $\gamma_{k,
 ( 14,  5)*{\afvj2};
 (  1,  8)*{\afaidex{}{}{}{}{}{}{6}{4}};
 ( -7,  0)*{\affr{12}{8}};
-( -4,  2)*{\aflabelright{\phi}};
+( -1,  2)*{\aflabelleft{\phi}};
 (  4,  0)*{\affr{6}{8}};
-(  4,  2)*{\aflabelright{\psi_1}};
+(  7,  2)*{\aflabelleft{\psi_1}};
 (  9,  0)*{\cdots};
 ( 14,  0)*{\affr{6}{8}};
-( 14,  2)*{\aflabelright{\psi_n}};
+( 17,  2)*{\aflabelleft{\psi_n}};
 (  1, -8)*{\afaiuex{}{}{}{}{}{}{6}{4}};
 ( -6, -5)*{\afvj2};
 ( -4, -6)*{\cdots};
@@ -84,20 +84,23 @@ where, for $1\le i\le n$, $l_i$ is the number of atom occurrences in $\gamma_{k,
 %--
 ( 5, 46)*{\afawdm{}{}{}{}};
 ( 0, 38)*{\affr{12}{8}};
-( 1, 40)*{\aflabelright{f_1(\phi)}};
+( 6, 40)*{\aflabelleft{f_1(\phi)}};
+(-5, 32.5)*{\aflabelright{f_1(\boldsymbol\iota)}};
 ( 5, 33)*{\afvjm2};
 ( 9, 28)*{\affr{10}{8}};
-(11, 30)*{\aflabelright{\eta_1}};
+(14, 30)*{\aflabelleft{\eta_1}};
 ( 5, 23)*{\afvjm2};
 (11, 23)*{\afvjm2};
+(-5, 24.5)*{\aflabelright{f_2(\boldsymbol\epsilon)}};
 ( 0, 18)*{\affr{12}{8}};
-( 1, 20)*{\aflabelright{f_2(\phi)}};
+( 6, 20)*{\aflabelleft{f_2(\phi)}};
+(-5, 12.5)*{\aflabelright{f_2(\boldsymbol\iota)}};
 ( 5, 13)*{\afvjm2};
 (11, 13)*{\afvjm2};
 (11, 18)*{\affr{6}{8}};
-(11, 20)*{\aflabelright{\mu_2}};
+(14, 20)*{\aflabelleft{\mu_2}};
 ( 9,  8)*{\affr{10}{8}};
-(11, 10)*{\aflabelright{\eta_2}};
+(14, 10)*{\aflabelleft{\eta_2}};
 ( 5,  3)*{\afvjm2};
 (11,  3)*{\afvjm2};
 %-
@@ -106,20 +109,23 @@ where, for $1\le i\le n$, $l_i$ is the number of atom occurrences in $\gamma_{k,
 ( 5, -3)*{\afvjm2};
 (11, -3)*{\afvjm2};
 ( 9, -8)*{\affr{10}{8}};
-( 9, -6)*{\aflabelright{\eta_{N-1}}};
+(14, -6)*{\aflabelleft{\eta_{N-1}}};
 ( 5,-13)*{\afvjm2};
 (11,-13)*{\afvjm2};
+(-5,-11.5)*{\aflabelright{f_N(\boldsymbol\epsilon)}};
 ( 0,-18)*{\affr{12}{8}};
-( 1,-16)*{\aflabelright{f_N(\phi)}};
+( 6,-16)*{\aflabelleft{f_N(\phi)}};
+(-5,-23.5)*{\aflabelright{f_N(\boldsymbol\iota)}};
 (11,-18)*{\affr{6}{8}};
-(11,-16)*{\aflabelright{\mu_N}};
+(14,-16)*{\aflabelleft{\mu_N}};
 ( 5,-23)*{\afvjm2};
 (11,-23)*{\afvjm2};
 ( 9,-28)*{\affr{10}{8}};
-(11,-26)*{\aflabelright{\eta_N}};
+(14,-26)*{\aflabelleft{\eta_N}};
 ( 5,-33)*{\afvjm2};
+(-5,-31.5)*{\aflabelright{f_{N+1}(\boldsymbol\epsilon)}};
 ( 0,-38)*{\affr{12}{8}};
-(-1,-36)*{\aflabelright{f_{N+1}(\phi)}};
+( 6,-36)*{\aflabelleft{f_{N+1}(\phi)}};
 ( 5,-46)*{\afawum{}{}{}{}};
 %--
 (-12, 13)*{\afcjrm{14}{42}};
@@ -139,18 +145,18 @@ where, for $1\le i\le n$, $l_i$ is the number of atom occurrences in $\gamma_{k,
 
 %--------------------------------------------------------------
 \begin{remark}\label{remark:BaseMultipleIsolatedSubflowRemoval}
-Let $N=1$ and
-\[
-\Gammasf_1\;=\;
+If $N=1$ and
+$
+\Gammasf_1=\;
 \vlinf{=}{}
 {
  \vls[a_1.\fff]
 }
 {
  \vls(a_1.\ttt)
-}\quad,
-\]
-then $\to_{\frmis_1}=\to_\fris$.
+}\;,
+$
+then ${\to_{\frmis_1}}={\to_\fris}$.
 \end{remark}
 %-----------
 
@@ -224,7 +230,7 @@ We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gammasf_1$, $\dots$, $\Gammasf_N$ to g
      \vlsbr[\beta\;.\;(\vlinf{}{}{\ttt}{a_1}\;.\;\fff)\;.\;\cdots\;.\;(\vlinf{}{}{\ttt}{a_n}\;.\;\fff)]
     }
     {
-     \vls([a_1.\gamma_{N,1}].\cdots.[a_n.\gamma_{N,n}].\alpha)
+     \vls([a_1.\fff].\cdots.[a_n.\fff].\alpha)
     }
    ]
   }
@@ -244,15 +250,15 @@ We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gammasf_1$, $\dots$, $\Gammasf_N$ to g
        \;\;.\;\;
         \vlder{\Gammasf_N}{}
         {
-         \vls([a_1.\gamma_{N,1}].\cdots.[a_n.\gamma_{N,n}])
+         \vlsmallbrackets\vls([a_1.\fff].\cdots.[a_n.\fff])
         }
         {
-         \vls[(a_1.\gamma_{N-1,1}).\cdots.(a_n.\gamma_{N-1,n})]
+         \vlsmallbrackets\vls[(a_1.\gamma_{N-1,1}).\cdots.(a_n.\gamma_{N-1,n})]
         }
        ]
       }
       {
-       \vls([(a_1.\gamma_{N-1,1}).\cdots.(a_n.\gamma_{N-1,n})].\alpha)
+       \vlsmallbrackets\vls([a_1.\gamma_{N-1,1}].\cdots.[a_n.\gamma_{N-1,n}].\alpha)
       }
      ]
     \;\;\;\;.\;\;\;\;
@@ -280,15 +286,15 @@ We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gammasf_1$, $\dots$, $\Gammasf_N$ to g
          \;\;.\;\;
           \vlder{\Gammasf_2}{}
           {
-           \vls([a_1.\gamma_{2,1}].\cdots.[a_n.\gamma_{2,n}])
+           \vlsmallbrackets\vls([a_1.\gamma_{2,1}].\cdots.[a_n.\gamma_{2,n}])
           }
           {
-           \vls[(a_1.\gamma_{1,1}).\cdots.(a_n.\gamma_{1,n})]
+           \vlsmallbrackets\vls[(a_1.\gamma_{1,1}).\cdots.(a_n.\gamma_{1,n})]
           }
          ]
         }
         {
-         \vls((a_1.\gamma_{0,1}).\cdots.(a_n.\gamma_{0,n}).\alpha)
+         \vlsmallbrackets\vls([a_1.\gamma_{1,1}].\cdots.[a_n.\gamma_{1,n}].\alpha)
         }
        ]
       \;\;\;\;.\;\;\;\;
@@ -308,10 +314,10 @@ We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gammasf_1$, $\dots$, $\Gammasf_N$ to g
          \;\;.\;\;
           \vlder{\Gammasf_1}{}
           {
-           \vls([a_1.\gamma_{1,1}].\cdots.[a_n.\gamma_{1,n}])
+           \vlsmallbrackets\vls([a_1.\gamma_{1,1}].\cdots.[a_n.\gamma_{1,n}])
           }
           {
-           \vls[(a_1.\gamma_{0,1}).\cdots.(a_n.\gamma_{0,n})]
+           \vlsmallbrackets\vls[(a_1.\ttt).\cdots.(a_n.\ttt)]
           }
          ]
         }

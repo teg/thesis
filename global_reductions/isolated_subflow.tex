@@ -31,18 +31,14 @@ We define the reduction $\to_\fris$ (where $\fris$ stands for \emph{isolated sub
 \end{definition}
 %---------------
 
-\TODO{Alessio: by requiring no identities and no cuts we make sure $\bar a$ does not map to any edges in $\psi$ and we also make sure that $\to_\fris$ coincide with the multiple isolated subflow removal when $n=1$.}
-
 %-------------------------------------------------------------
 \begin{remark}\label{remark:IsolatedSubflowRemovalRestriction}
 The condition on the atomic flow $\psi$ in Definition~\ref{definition:IsolatedSubflowRemoval} ensures that all the edges in $\psi$ are mapped to from occurrences of the same atom. However, the reduction would still be sound if, at the expense of a slightly more verbose soundness proof, we relaxed the condition to say that the upper and lower edge of $\psi$ belong to the same connected component.
 \end{remark}
 
-\TODO{Alessio: Added stamement about size to theorem to make the proof of the final proposition nicer.}
-
 %---------------------------------------------------------
 \begin{theorem}\label{theorem:SoundIsolatedSubflowRemoval}
-Reduction\/ $\to_\fris$ is sound; moreover, if\/ $\Phi\to_\fris\Psi$, then the size of $\Psi$ depends at most cubically on the size of $\Phi$.
+Reduction\/ $\to_\fris$ is sound; moreover, if\/ $\Phi\to_\fris\Psi$, then the size of\/ $\Psi$ depends  polynomially on the size of\/ $\Phi$.
 \end{theorem}
 
 \begin{proof}
@@ -131,8 +127,6 @@ Since $\psi$ is connected and contains no identity or cut vertices, the mapping 
 We know that the size of $\Phi_\ttt$ and the size of $\Phi_\fff$ depend at most cubically on the size of $\Phi$ by Theorem~\vref{theorem:aiDecomposedForm} and Proposition~\vref{proposition:DerivationSubstitution}, and that the size of $\Psi$ depends at most quadratically on the size of $\alpha$ and $\beta$ by Lemma~\vref{lemma:GenericContraction}, so the size $\Psi$ depends at most cubically on the size of $\Phi$.
 \end{proof}
 %----------
-
-\TODO{Alessio: You were right about the mistake. I added `or $\hat\nu'$ is the evidenced cut (resp., identity) vertex in Definition~\ref{definition:IsolatedSubflowRemoval}'.}
 
 %-------------------------------------
 \begin{lemma}\label{lemma:IsolatedSubflowRemovalPaths}
@@ -224,9 +218,6 @@ and atomic flow
 }
 \quad,
 \]
-
-\TODO{Alessio said: `\emph{Which occurrences of a, all of them?}'. I didn't understand. Maybe we have a different idea of what isolated subflow should be. See Definition~\vref{definition:IsolatedSubflow}.}
-
 where $\psi'$ is the juxtaposition of all the isolated subflows mapped to from occurrences of $a$ in $\Phi$. Consider the derivation
 \[
 \Psi\;=\;
