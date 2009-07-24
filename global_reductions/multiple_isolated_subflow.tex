@@ -162,7 +162,7 @@ then ${\to_{\frmis_1}}={\to_\fris}$.
 
 %------------------------------------------------------------------
 \begin{theorem}\label{theorem:SoundMultipleIsolatedSubflowsRemoval}
-For every $n>0$, reduction\/ $\to_{\frmis_n}$ is sound; moreover, if\/ $\Phi\to_{\frmis_n}\Psi$, then the size of $\Psi$ depends at most cubically on the size of $\Phi$ and at most quadratically on $\max\{\size{\Gammasf_1},\dots,\size{\Gammasf_N}\}$.
+For every $n>0$, reduction\/ ${\to_{\frmis_n}}$ is sound; moreover, if\/ $\Phi\to_{\frmis_n}\Psi$, then the size of\/ $\Psi$ depends linearly on $N$, polynomially on the size of\/ $\Phi$ and at most polynomially on\/ $\max\{\size{\Gammasf_1},\dots,\size{\Gammasf_N}\}$.
 \end{theorem}
 
 \begin{proof}
@@ -339,7 +339,7 @@ We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gammasf_1$, $\dots$, $\Gammasf_N$ to g
 }
 \qquad.
 \]
-Since $\max\{\size{\gamma_{0,1}},\dots,\size{\gamma_{N,n}}\}$ is less than or equal to $\max\{\size{\Gammasf_1},\dots,\size{\Gammasf_N}\}$, we know that the size of $\Phi_0$, $\dots$, $\Phi_N$ depend at most cubically on the size of $\Phi$ and at most quadratically on the size of $\max\{\size{\Gammasf_1},\dots,\size{\Gammasf_N}\}$ by Theorem~\vref{theorem:aiDecomposedForm} and Proposition~\vref{proposition:DerivationSubstitution}, and that the size of $\Psi$ depends at most cubically on the size of $\alpha$ and $\beta$ by Lemma~\vref{lemma:GenericContraction}, so $\Psi$ depends at most cubically on the size of $\Phi$ and at most quadratically on the size of $\max\{\size{\Gammasf_1},\dots,\size{\Gammasf_N}\}$.
+Since $\max\{\size{\gamma_{0,1}},\dots,\size{\gamma_{N,n}}\}$ is less than or equal to $\max\{\size{\Gammasf_1},\dots,\size{\Gammasf_N}\}$, we know that the size of $\Phi_0$, $\dots$, $\Phi_N$ depend at most cubically on the size of $\Phi$ and at most quadratically on the size of $\max\{\size{\Gammasf_1},\dots,\size{\Gammasf_N}\}$ by Theorem~\vref{theorem:aiDecomposedForm} and Proposition~\vref{proposition:DerivationSubstitution}, and that the size of $\Psi$ depends at most cubically on the size of $\alpha$ and $\beta$ by Lemma~\vref{lemma:GenericContraction}, so the size of $\Psi$ depends linearly on $N$, polynomially on the size of $\Phi$ and at most polynomially on the size of $\max\{\size{\Gammasf_1},\dots,\size{\Gammasf_N}\}$.
 \end{proof}
 %----------
 
@@ -646,7 +646,7 @@ Given the atoms, formulae and derivations described in Definition~\vref{definiti
 \item if $\Phi$ is weakly streamlined with respect to $b$, then $\MISR_n(\Phi,a_1,\dots,a_n)$ is weakly streamlined with respect to $b$, and
 \item if $b$ is not the dual of any of $a_1$, $\dots$, $a_n$ and $\Phi$ is in simple form with respect to $b$, then $\MISR_n(\Phi,a_1,\dots,a_n)$ is in simple form with respect to $b$; and
 \end{itemize}
-\item the size of\/ $\MISR_n(\Phi,a_1,\dots,a_n)$ depends at most cubically on the size of\/ $\Phi$, and at most quadratically on $\max\{\size{\Gammasf_1},\dots,\size{\Gammasf_N}\}$.
+\item the size of\/ $\MISR_n(\Phi,a_1,\dots,a_n)$ depends linearly on $N$, polynomially on the size of\/ $\Phi$, and at most polynomially on $\max\{\size{\Gammasf_1},\dots,\size{\Gammasf_N}\}$.
 \end{enumerate}
 \end{proposition}
 
