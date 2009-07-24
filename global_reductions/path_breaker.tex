@@ -263,7 +263,7 @@ In the following we refer to the figure in Definition~\ref{definition:PathBreake
 %----------------------------
 \newcommand{\PB}{\mathsf{PB}}
 \begin{definition}\label{definition:DerPathBreaker}
-The \emph{Path Breaker}\index{Path Breaker!operator}, $\PB$, is an operator whose arguments are an atom $a$, and a derivation $\Phi$ that is not weakly streamlined with respect to $a$ or with respect to $\bar a$, with $\ai$-decomposed form 
+The \emph{Path Breaker}\index{Path Breaker!operator}, $\PB$, is an operator whose arguments are an atom $a$ and a derivation $\Phi$. If $\Phi$ is weakly streamlined with respect to both $a$ and $\bar a$, then $\PB(\Phi,a)=\Phi$; otherwise, consider the following $\ai$-decomposed form of $\Phi$:
 \[
 \vlder{\Phi'}{}
 {
@@ -311,7 +311,7 @@ The \emph{Path Breaker}\index{Path Breaker!operator}, $\PB$, is an operator whos
  )
 }\quad,
 \]
-and atomic flow
+with atomic flow
 \[
 \phi''\;=\;
 \atomicflow
@@ -423,14 +423,13 @@ with atomic flow
 ( 16, 13)*{\aflabelleft{\psi}};
 }\quad.
 \]
-
 We then define $\PB(\Phi,a)$ to be such that $\Psi\to_\frpb\PB(\Phi,a)$, where $\phi$ and $\psi$ are the flows, by the same names, shown in Definition~\vref{definition:PathBreaker}.
 \end{definition}
 %---------------
 
 %------------------------------------------------------------
 \begin{proposition}\label{proposition:PathBreaker}
-Given an atom $a$, and a derivation $\Phi$ that is not weakly streamlined with respect to both $a$ and $\bar a$,
+Given an atom $a$ and a derivation $\Phi$,
 \begin{enumerate}
 \item $\PB(\Phi,a)$ is weakly streamlined with respect to both $a$ and $\bar a$;
 \item for any atom $b$, if $\Phi$ is weakly streamlined with respect to $b$, then $\PB(\Phi,a)$ is weakly streamlined with respect to $b$; and
@@ -439,7 +438,7 @@ Given an atom $a$, and a derivation $\Phi$ that is not weakly streamlined with r
 \end{proposition}
 
 \begin{proof}
-Let $\phi$, $\psi$, $\phi'$, $\psi'$, $\phi''$ and $\psi''$ be the atomic flows given in Definition~\ref{definition:DerPathBreaker} and let $\nu_\aid$ (resp., $\nu_\aiu$) be the evidenced interaction (resp., cut) vertex in $\psi''$, then
+If $\Phi$ is weakly streamlined with respect to both $a$ and $\bar a$, the result is trivial. Assume $\Phi$ is not weakly streamlined with respect to both $a$ and $\bar a$, and let $\phi$, $\psi$, $\phi'$, $\psi'$, $\phi''$ and $\psi''$ be the atomic flows given in Definition~\ref{definition:DerPathBreaker} and let $\nu_\aid$ (resp., $\nu_\aiu$) be the evidenced interaction (resp., cut) vertex in $\psi''$, then
 \begin{enumerate}
 \item by Definition~\ref{definition:DerPathBreaker} all the paths from an interaction (resp., cut) vertex whose edges are mapped to from instances of $a$ or $\bar a$ must start from $\nu_\aid$ (resp., $\nu_\aiu$). In Definition~\ref{definition:PathBreaker} we have colored these edges in red (resp., green). Since the red and the green edges never coincid, there are no paths from $\nu_\aid$ to $\nu_\aiu$;
 \item if there is a path from an interaction (resp., cut) vertex in the atomic flow of $\PB(\Phi,a)$ whose edges are mapped to from instances of $b$, then, by Lemma~\vref{lemma:PathBreaker}, there is a path from an interaction (resp., cut) vertex in $\phi$ or $\psi$, so also in $\phi'$ or $\psi'$, whose edges are mapped to from instances of $b$. Hence, the statement follows by contradiction; and

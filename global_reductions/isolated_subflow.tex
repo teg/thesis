@@ -155,7 +155,7 @@ In the following we refer to the figure in Definition~\ref{definition:IsolatedSu
 %------------------------------
 \newcommand{\ISR}{\mathsf{ISR}}
 \begin{definition}\label{definition:IsolatedSubflowRemover}
-The \emph{Isolated Subflow Remover}\index{Isolated Subflow Remover!operator}, $\ISR$, is an operator whose arguments are an atom $a$, and a derivation $\Phi$ that is in simple form, but is not weakly streamlined, with respect to $a$, with $\ai$-decomposed form
+The \emph{Isolated Subflow Remover}\index{Isolated Subflow Remover!operator}, $\ISR$, is an operator whose arguments are an atom $a$ and a derivation $\Phi$ that is in simple form with respect to $a$. If $\Phi$ is weakly streamlined with respect to $a$, then $\ISR(\Phi,a)=\Phi$; otherwise, consider the following  $\ai$-decomposed form of $\Phi$:
 \[
 \vlder{\Phi'}{}
 {
@@ -203,9 +203,8 @@ The \emph{Isolated Subflow Remover}\index{Isolated Subflow Remover!operator}, $\
  )
 }\quad,
 \]
-and atomic flow
+with atomic flow
 \[
-\phi''\;=\;
 \atomicflow{
 (-8, 6)*{\afvjdm4{\boldsymbol\epsilon}{}};
 ( 1, 8)*{\afaidmex{}{}{}{}{}{}{6}{4}};
@@ -308,20 +307,15 @@ with atomic flow
 (-8,-11.5)*{\afvjum{15}{\boldsymbol\iota}{}};
 }\quad.
 \]
-
-\TODO{Alessio: is this clearer?}
-
 We then define $\ISR(\Phi,a)$ to be such that $\Psi\to_\fris\ISR(\Phi,a)$, where $\phi$ and $\psi$ are the flows, by the same names, shown in Definition~\vref{definition:IsolatedSubflowRemoval}.
 \end{definition}
 %---------------
-
-\TODO{Unique?}
 
 \TODO{Alessio: Regarding 1. below: All we need in order to prove the statement is in the flows of Definition~\ref{definition:IsolatedSubflowRemover} (the $\ai$-decomposed form is only about derivations, so not relevant). Any `new' paths would be mapped to from $\bar a$ and not $a$ (these are taken care of by item 2.). Anyway, I will try to clarify. I suspect the misunderstanding is related to the comment about isolated subflows above.}
 
 %------------------------------------------------------------
 \begin{proposition}\label{proposition:IsolatedSubflowRemover}
-Given an atom $a$, and a derivation $\Phi$ that is in simple form, but is not weakly streamlined, with respect to $a$,
+Given an atom $a$ and a derivation $\Phi$ that is in simple form with respect to $a$,
 \begin{enumerate}
 \item $\ISR(\Phi,a)$ is weakly streamlined with respect to $a$;
 \item for any atom $b$,
@@ -336,7 +330,7 @@ Given an atom $a$, and a derivation $\Phi$ that is in simple form, but is not we
 \TODO{Alessio said: `\emph{This should be OK despite a possible mistake in 6.1.11. In fact, I think it would be better to justify point 2 by something else than (whatever becomes of) Lemma 6.1.11. The reason is that independent copies are made of the flows of b's, and then they are joined by (co)contractions. (Right?)}'.}
 
 \begin{proof}
-Let $\phi$, $\psi$, $\phi'$, $\psi'$, $\phi''$ and $\psi''$ be the atomic flows given in Definition~\ref{definition:IsolatedSubflowRemover}, then
+If $\Phi$ is weakly streamlined with respect to $a$, the result is trivial. Assume $\Phi$ is not weakly streamlined with respect to $a$, and let $\phi$, $\psi$, $\phi'$, $\psi'$ and $\psi''$ be the atomic flows given in Definition~\ref{definition:IsolatedSubflowRemover}, then
 \begin{enumerate}
 \item by definition there is no path in $\phi$ from an interaction to a cut vertex whose edges are mapped to from instances of $a$. By Lemma~\vref{lemma:IsolatedSubflowRemovalPaths}, we know that if there is a path from an interaction to a cut vertex in the atomic flow of $\ISR(\Phi,a)$ whose edges are mapped to from instances of $a$, then there must be a path from an interaction to a cut vertex in $\phi$ whose edges are mapped to from instances $a$. Hence, the statement follows by contradiction;
 \item
