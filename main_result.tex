@@ -1,9 +1,10 @@
 \chapter{Main Result}\label{chapter:MainResult}
 
-\begin{theorem}
-Given a derivation $\Phi$ and unique and pairwise non-dual atoms $a_1$, $\dots$, $a_n$, such that $a_1$, $\dots$, $a_n$ and their duals are all the atoms appearing in $\Phi$, then
+%----------------------------------------------
+\begin{theorem}\label{theorem:WeakStreamlining}
+Given a derivation $\Phi$ and unique and pairwise non-dual atoms $a_1$, $\dots$, $a_n$, such that $a_1$, $\dots$, $a_n$ and their duals are all the atoms appearing in $\Phi$,
 \begin{itemize}
-\item if
+\item let
 \begin{itemize}
 \item $\Phi'=\ISR(\dots\ISR(\Simpl(\Phi,a_1,\dots,a_n),a_1),\dots,a_n)$, and
 \item $\Phi''=\ISR(\dots\ISR(\Simpl(\Phi',\bar a_1,\dots,\bar a_n),\bar a_1),\dots,\bar a_n)$,
@@ -13,15 +14,15 @@ then
 \item $\Phi''$ is weakly streamlined, and
 \item the size of $\Phi''$ depends at most exponentially on the size of\/ $\Phi$;
 \end{itemize}
-\item if\/ $\Phi'=\PB(\dots\PB(\Phi,a_1),\dots,a_n)$, then
+\item let\/ $\Phi'=\PB(\dots\PB(\Phi,a_1),\dots,a_n)$, then
 \begin{itemize}
 \item $\Phi'$ is weakly streamlined, and
 \item the size of\/ $\Phi'$ depends at most exponentially on the size of\/ $\Phi$; and
 \end{itemize}
-\item if
+\item let
 \begin{itemize}
-\item $\Phi'=\MISR(\Simpl(\Phi,a_1,\dots,a_n),a_1,\dots,a_n)$, and
-\item $\Phi''=\MISR(\Simpl(\Phi',\bar a_1,\dots,\bar a_n),\bar a_1,\dots,\bar a_n)$,
+\item $\Phi'=\QMISR(\Simpl(\Phi,a_1,\dots,a_n),a_1,\dots,a_n)$, and
+\item $\Phi''=\QMISR(\Simpl(\Phi',\bar a_1,\dots,\bar a_n),\bar a_1,\dots,\bar a_n)$,
 \end{itemize}
 then
 \begin{itemize}
