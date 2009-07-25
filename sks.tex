@@ -47,7 +47,7 @@ the \emph{logical}\index{inference rule!logical} inference rules:
 \vlinf{\med}{}{\vls([A.C].[B.D])}{\vls[(A.B).(C.D)]}
 \quad,
 \]
-and the \emph{invertible}\index{inference rule!invertible} rules:
+and the \emph{invertible}\index{inference rule!invertible} (\emph{logical}) rules:
 \[
 \vlinf{\coor}{}{\vls[B.A]}{\vls[A.B]}\qquad
 \vlinf{\coand}{}{\vls(B.A)}{\vls(A.B)}\qquad
@@ -100,7 +100,7 @@ It turns out that the equivalence class induced by $=$ is the same as the struct
 
 %----------------------------------------
 \begin{remark}\label{remark:EquationSize}
-If $\alpha=\beta$, then (as remarked in \cite{}) there exists a derivation
+If $\alpha=\beta$, then (as remarked in \cite{BrusGugl:07:On-the-P:fk}) there exists a derivation
 \[
 \vlder{\Phi}{\{\coor,\coand,\asor,\asand,\fffd,\tttd,\fffu,\tttu,\fffandd,\tttord,\fffandu,\tttoru\}}{\beta}{\alpha}
 \]
@@ -195,7 +195,7 @@ we sometimes write
    }
   }
  }
-}
+}\quad,
 \]
 we write
 \[
@@ -395,7 +395,7 @@ We show how to construct the first derivation, the second one can be done symmet
 \newcommand{\weu}{{\weakn{\uparrow}}}
 
 \begin{notation}\label{notation:GenericWeakeningContraction}
-In the non-atomic version of system $\SKS$ the derivations shown in the proofs of Lemma~\ref{lemma:GenericWeakening} and Lemma~\vref{lemma:GenericContraction} correspond to (co)weakening and (co)contractions, respectively. For this reason we sometimes write the inference rules $\vlinf{\wed}{}{\alpha}{\fff}$, $\vlinf{\weu}{}{\ttt}{\alpha}$, $\vlinf{\cod}{}{\alpha}{\vls[\alpha.\alpha]}$ and $\vlinf{\cou}{}{\vls(\alpha.\alpha)}{\alpha}$ instead of the derivations $\vlder{}{\{\awd,\swi\}}{\alpha}{\fff}$, $\vlder{}{\{\awu,\swi\}}{\ttt}{\alpha}$, $\vlder{}{\{\acd,\med\}}{\alpha}{\vls[\alpha.\alpha]}$ and $\vlupsmash{\vlder{}{\{\acu,\med\}}{\vls(\alpha.\alpha)}{\alpha}}$, respectively.
+In the non-atomic version of system $\SKS$ the derivations shown in the proofs of Lemma~\ref{lemma:GenericWeakening} and Lemma~\vref{lemma:GenericContraction} correspond to (co)weakening and (co)contractions, respectively. For this reason we sometimes write the inference rules $\vlinf{\wed}{}{\alpha}{\fff}$, $\vlinf{\weu}{}{\ttt}{\alpha}$, $\vlinf{\cod}{}{\alpha}{\vls[\alpha.\alpha]}$ and $\vlinf{\cou}{}{\vls(\alpha.\alpha)}{\alpha}$ instead of the derivations $\vlder{}{\{\awd,\swi\}}{\alpha}{\fff}$, $\vlder{}{\{\awu,\swi\}}{\ttt}{\alpha}$, $\vlder{}{\{\acd,\med\}}{\alpha}{\vls[\alpha.\alpha]}$ and $\vlder{}{\{\acu,\med\}}{\vls(\alpha.\alpha)}{\alpha}$, respectively.
 \end{notation}
 
 To give an example of the notions defined so far, we now show a completeness proof of system $\SKS$.
@@ -498,11 +498,15 @@ Using $\Phi$ and the inductive hypothesis we can build the desired derivation:
 \end{proof}
 
 \begin{remark}
-By a construction similar to the proof of Lemma~\vref{lemma:SuperSwitch}, we can build a derivation $\vlder{}{\{\swi,\coor,\coand,\asor\}}{\vls[\xi\{\alpha\}.\beta]}{\xi\{\vls[\alpha.\beta]\}}$. If we use this derivation instead of the rule $\ssd$ in the proof of Theorem~\ref{theorem:SKSComplete}, it follows that the system $\{\aid,\acd,\awd,\swi,\med,\coor,\coand,\asor,\fffd,\tttd,\fffandd,\tttord\}$ is complete for classical logic.
+Given any formulae $\alpha$ and $\beta$ and any context $\xi\vlhole$, then, by a construction similar to the one in the proof of Lemma~\vref{lemma:SuperSwitch}, we can build a derivation $\vlder{}{\{\swi,\coor,\coand,\asor\}}{\vls[\xi\{\alpha\}.\beta]}{\xi\{\vls[\alpha.\beta]\}}$. If we use this derivation instead of the rule $\ssd$ in the proof of Theorem~\ref{theorem:SKSComplete}, it follows that the system
+\[
+\{\aid,\acd,\awd,\swi,\med,\coor,\coand,\asor,\fffd,\tttd,\fffandd,\tttord\}
+\]
+is complete for classical logic. This justifies the naming of the invertible rules, as the tradition is in deep inference to label admissible rules with an $\uparrow$.
 \end{remark}
 
 \begin{remark}
-If we allow the use of all the rules of $\SKS$, and not only the down fragment, we can build a more compact proof than what we do in Theorem~\ref{theorem:SKSComplete}, by using the following as the inductive case:
+If we allow the use of all the rules of $\SKS$, as opposed to only the down fragment, we can build a more compact proof than what we do in Theorem~\ref{theorem:SKSComplete}, by using the following as the inductive case:
 \[
 \vlderivation
 {
