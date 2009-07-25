@@ -61,13 +61,165 @@ all the atom occurrences in $\alpha$, $\beta$, $\gamma$ and $\delta$ in the prem
 \end{enumerate}
 \end{proposition}
 
-\TODO{Do we ever label $\epsilon$ with $a$?}
-
 %---------------------------------------
 \begin{definition}\label{definition:AssociatedFlow}
 Given a derivation $\Phi$, we say that the unique atomic flow $\phi$ defined in Proposition~\vref{proposition:FlowUnique} is the atomic flow \emph{associated with}\index{flow!associated with derivation} the derivation $\Phi$. Sometimes, when an atom occurrence $a$ in $\Phi$ is mapped to an edge $\epsilon$ in $\phi$, we decorate $a$ with the label $\epsilon$ or the label $\phi$.
 \end{definition}
 %---------------
+
+%--------------
+\begin{example}
+Figure~\vref{figure:ExampleAtomicFlows} has three examples of derivations and their associated atomic flows.
+\end{example}
+%------------
+
+\newcommand{\RD}[1]{{\color{Red}#1}}
+\newcommand{\GR}[1]{{\color{Green}#1}}
+\newcommand{\DO}[1]{{\color{DarkOrchid}#1}}
+\newcommand{\PR}[1]{{\color{ProcessBlue}#1}}
+\newcommand{\MG}[1]{{\color{Magenta}#1}}
+\newcommand{\SG}[1]{{\color{SpringGreen}#1}}
+\newcommand{\RS}[1]{{\color{RawSienna}#1}}
+\newcommand{\YO}[1]{{\color{YellowOrange}#1}}
+\newcommand{\PW}[1]{{\color{Periwinkle}#1}}
+%-------------------------------------------------------------------------------
+\begin{figure}
+\[
+%---------------------------------------
+\begin{array}{@{}c@{}c@{}c@{}}
+\vlderivation                                                {
+\vlin=   {}{\ttt                                  }         {
+\vlin\aiu{}{\vls[\fff.\ttt]                       }        {
+\vlin=   {}{\vls[(\GR{a}.\RD{\bar a}).\ttt]       }       {
+\vlin\swi{}{\vls[[(\RD{\bar a}.\GR{a}).\ttt].\ttt]}      {
+\vlin=   {}{\vls[(\RD{\bar a}.[\GR{a}.\ttt]).\ttt]}     {
+\vlin\swi{}{\vls[([\GR{a}.\ttt].\RD{\bar a}).\ttt]}    {
+\vlin=   {}{\vls([\GR{a}.\ttt].[\RD{\bar a}.\ttt])}   {
+\vlin\med{}{\vls([\GR{a}.\ttt].[\ttt.\RD{\bar a}])}  {
+\vlin=   {}{\vls[(\GR{a}.\ttt).(\ttt.\RD{\bar a})]} {
+\vlin\aid{}{\vls[\GR{a}.\RD{\bar a}]              }{
+\vlhy      {\ttt                                  }}}}}}}}}}}}
+\qquad&
+%-------------------
+\vlderivation                                                              {
+\vlin\aiu{}
+   {\vls(\DO{a}.\fff)                                            }        {
+\vlin=   {}
+   {\vls(\DO{a}.(\PR{a}.\MG{\bar a}))                            }       {
+\vlin\acu{}
+   {\vls((\DO{a}.\PR{a}).\MG{\bar a})                            }      {
+\vlin=   {}
+   {\vls(\SG{a}.\MG{\bar a})                                     }     {
+\vlin\aiu{}
+   {\vls([\fff.\SG{a}].\MG{\bar a})                              }    {
+\vlin\acd{}
+   {\vls([(\RD{a}.\RS{\bar a}).\SG{a}].\MG{\bar a})              }   {
+\vlin\swi{}
+   {\vls([(\RD{a}.[\GR{\bar a}.\YO{\bar a}]).\SG{a}].\MG{\bar a})}  {
+\vlin=   {}
+   {\vls((\RD{a}.[[\GR{\bar a}.\YO{\bar a}].\SG{a}]).\MG{\bar a})} {
+\vlin\aid{}
+   {\vls((\RD{a}.[\GR{\bar a}.[\YO{\bar a}.\SG{a}]]).\MG{\bar a})}{
+\vlhy        
+   {\vls((\RD{a}.[\GR{\bar a}.\ttt]).\MG{\bar a})                }}}}}}}}}}}
+\qquad&
+%-------------------
+\vlderivation                                                            {
+\vlin=   {}{\vls(([\RS{a}.\YO{b}].\PW{a}).([\GR{a}.\DO{b}].\SG{a}))}    {
+\vlin\med{}{\vls(([\RS{a}.\YO{b}].[\GR{a}.\DO{b}]).(\PW{a}.\SG{a}))}   {
+\vlin\acu{}{\vls([(\RS{a}.\GR{a}).(\YO{b}.\DO{b})].(\PW{a}.\SG{a}))}  {
+\vlin\acu{}{\vls([(\RS{a}.\GR{a}).(\YO{b}.\DO{b})].\MG{a})         } {
+\vlin\acu{}{\vls([(\RS{a}.\GR{a}).\PR{b}].\MG{a})                  }{
+\vlhy      {\vls([\RD{a}.\PR{b}].\MG{a})                           }}}}}}}
+\\
+\noalign{\bigskip}
+%---------------------------------------
+\vlderivation                                                      {
+\vlin\swi{}{\vlsbr[\vlinf{\swi}
+                         {}
+                         {\vls[\vlinf{}
+                                     {}
+                                     {\fff}
+                                     {\vls(\GR{a}.\RD{\bar a})}
+                              .
+                              \ttt]}
+                         {\vls([\GR{a}.\ttt].\RD{\bar a})}
+                  \;\;\;.
+                   \ttt
+                  ]                                            }  {
+\vlin\med{}{\vls([\GR{a}.\ttt].[\ttt.\RD{\bar a}])             } {
+\vlin{}  {}{\vls[\GR{a}.\RD{\bar a}]                           }{
+\vlhy      {\ttt                                               }}}}}
+\qquad&
+%-------------------
+\vlinf=
+      {}
+      {\vls(\DO{a}.\vlinf{}{}\fff{\vls(\PR{a}.\MG{\bar a})})}      
+      {\vlsbr(\vlinf\swi
+                    {}
+                    {\vls[\vlinf{}
+                                {}
+                                \fff
+                                {\vls(\RD{a}
+                                     .\vlinf{}
+                                            {}
+                                            {\RS{\bar a}}
+                                            {\vls[\GR{\bar a}.\YO{\bar a}]}
+                                     )}
+                         \;\;\;.
+                         \vlinf{}{}{\vls(\DO{a}.\PR{a})}{\SG{a}}
+                         ]}
+                    {\vls(\RD{a}
+                         .[\GR{\bar a}
+                          .\vlinf{}
+                                 {}
+                                 {\vls[\YO{\bar a}.\SG{a}]}
+                                 \ttt
+                          ]
+                         )}
+            \;\;\;.
+            \MG{\bar a}
+            )}
+\qquad&
+%-------------------
+\vls(\vlinf\med
+           {}
+           {\vls([\RS{a}.\YO{b}].[\GR{a}.\DO{b}])}
+           {\vls[\vlinf{}{}{\vls(\RS{a}.\GR{a})}{\RD{a}}
+                .{\vlinf{}{}{\vls(\YO{b}.\DO{b})}{\PR{b}}}
+                ]}
+    \;\;\;.
+     \vlinf{}{}{\vls(\PW{a}.\SG{a})}{\MG{a}}
+    )
+\\
+\noalign{\bigskip}
+%---------------------------------------
+\atomicflow{
+(0,0)*{\afaiucol{}{}{}{}{}{}{Green}{Red}{}};
+(0,4)*{\afaidnw{}{}}}
+\qquad&
+%-------------------
+\atomicflow{
+( 2,14)*{\afvjcol4{Green}};
+( 0,10)*{\afvjcol{12}{Red}};
+(16,10)*{\afvjcol{12}{Magenta}};
+( 4, 8)*{\afacdcol{}{}{}{}{}{}{Green}{YellowOrange}{RawSienna}};
+(10, 8)*{\afacucol{}{}{}{}{}{}{DarkOrchid}{ProcessBlue}{SpringGreen}};
+( 2, 2)*{\afaiunw{}{}};
+( 8, 2)*{\afvjcol4{DarkOrchid}};
+(14, 2)*{\afaiunw{}{}};
+( 8,12)*{\afaidnw{}{}}}
+\qquad&
+%-------------------
+\atomicflow{
+( 0,0)*{\afacucol{}{}{}{}{}{}{RawSienna}{Green}{Red}};
+( 6,0)*{\afacucol{}{}{}{}{}{}{YellowOrange}{DarkOrchid}{ProcessBlue}};
+(12,0)*{\afacucol{}{}{}{}{}{}{Periwinkle}{SpringGreen}{Magenta}}}
+\end{array}
+\]
+\caption{Examples of derivations in the calculus of structures, their translation into the functorial calculus, and the atomic flows associated with the latter.}
+\label{figure:ExampleAtomicFlows}
+\end{figure}
 
 %-------------------------------------------------
 \begin{theorem}\label{theorem:SurjectiveDerToFlow}
