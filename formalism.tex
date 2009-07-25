@@ -1,12 +1,16 @@
 \chapter{Propositional Classical Logic}\label{chapter:PropositionalClassicalLogic}
 
-\TODO{Few words of caution about Formalism A note by AG.}
+The traditional formalism in deep inference is \emph{the calculus of structures} \cite{Gugl:06:A-System:kl}, which is now well developed for classical \cite{Brun:03:Atomic-C:oz,Brun:06:Cut-Elim:cq,Brun:06:Locality:zh,BrunTiu:01:A-Local-:mz,Brun:06:Deep-Inf:qy}, intuitionistic \cite{Tiu:06:A-Local-:gf}, linear \cite{Stra:02:A-Local-:ul,Stra:03:MELL-in-:oy}, modal \cite{Brun::Deep-Seq:ay,GoreTiu:06:Classica:uq,Stou:06:A-Deep-I:rt} and commutative/non-commutative logics \cite{Gugl:06:A-System:kl,Tiu:06:A-System:ai,Stra:03:Linear-L:lp,Brus:02:A-Purely:wd,Di-G:04:Structur:wy,GuglStra:01:Non-comm:rp,GuglStra:02:A-Non-co:lq,GuglStra:02:A-Non-co:dq,Kahr:06:Reducing:hc,Kahr:07:System-B:fk}. The basic proof complexity properties of the calculus of structures are known \cite{BrusGugl:07:On-the-P:fk}. The calculus of structures promoted the discovery of a new class of proof nets for classical and linear logic \cite{LamaStra:05:Construc:qq,LamaStra:05:Naming-P:ov,LamaStra:06:From-Pro:et,StraLama:04:On-Proof:ec} (see also \cite{Guir:06:The-Thre:qt}). There exist implementations in Maude of deep-inference proof systems \cite{Kahr:07:Maude-as:lr}.
 
-In this chapter we present two deep inference formalisms; a new formalism, which we call (as suggested by Fran\c{c}ois Lamarche) `the functorial calculus', and the traditional deep inference formalism `the calculus of structures'. The functorial calculus is a development of the calculus of structures \cite{}, which was motivated by the desire to remove bureaucracy of Type A \cite{} (for this reason the functorial calculus, or variations thereof, is often also referred to as `Formalism A').
+\TODO{Few words of caution about Formalism A note.}
 
-\TODO{Cite: \emph{On the Proof Complexity of Deep Inference}.}
+The idea of a new formalism, named \emph{formalism A} based on the calculus of structures, but where derivations contain less redundant information, was proposed by Guglielmi in \cite{Gugl:04:Formalis:am}, and later Br\"{u}nnler and Lengrand developed a term calculus around these ideas \cite{BrunLeng:05:On-Two-F:jf}.
 
-We now define `formulae' and `inference rules' which are in common between both the functorial calculus and the calculus of structures, Definitions~\vrefrange{definition:Formula}{definition:InferenceRuleInstance} are based on definitions given in \cite{}. The focus of this thesis is classical propositional logic, and the following definitions reflect this. However, it is worth noting that the definitions can be generalised to other units and connectives, if one wants to present other logics.
+In this chapter I define a formalism based on the ideas of formalism A and call it (as suggested by Fran\c{c}ois Lamarche) \emph{the functorial calculus}. The reason to introduce a new formalism is that its lack of redundant information greatly simplifies the presentation of some of the more technical results in this thesis (in particular Section~\ref{subsection:ThresholdFormulae}).
+
+After presenting the functorial calculus we compare it briefly with the calculus of structures before we introduce the standard deductive system for classical logic in deep inference and show some preliminary results.
+
+We now define `formulae' and `inference rules', which are in common between both the functorial calculus and the calculus of structures. Definitions~\vrefrange{definition:Formula}{definition:InferenceRuleInstance} are based on definitions given in \cite{BrusGugl:07:On-the-P:fk}. The focus of this thesis is classical propositional logic, and the following definitions reflect this. However, it is worth noting that the definitions can be generalised to other units and connectives, if one wants to present other logics.
 
 %---------------------------
 \newcommand{\fff}{\mathsf f}
@@ -42,6 +46,8 @@ An \emph{inference rule}\index{inference rule} $\rho$ is an expression $\vlinf{\
 
 %==================================================================
 \section{The Functorial Calculus}\label{section:FunctorialCalculus}
+
+We now present the functorial calculus in the context of classical propositional logic and give some basic results.
 
 The intuition behind derivations in the functorial calculus is that we can compose derivations by the same connectives we can compose formulae.
 
@@ -379,7 +385,7 @@ Given derivations $\vlder{\Phi_1}{}{\beta}{\alpha}$ and $\vlder{\Phi_2}{}{\gamma
 %=======================================================================
 \section{The Calculus of Structures}\label{section:CalculusOfStructures}
 
-We will now present the calculus of structures and compare it briefly with the functorial calculus. As the rest of this thesis will be in terms of the functorial calculus, whereas most previous work in deep inference has been done in terms of the calculus of structures, we show how we can translate between them (Theorems~\ref{theorem:CoSToFunc} and {theorem:FuncToCoS}).
+We now present the calculus of structures and in Theorems~\ref{theorem:CoSToFunc} and \ref{theorem:FuncToCoS} we show that the functorial calculus and the calculus of structures polynomially simulate each other.
 
 The intuition behind derivations in the calculus of structures is that we rewrite formulae by applying inference rules inside a context.
 
