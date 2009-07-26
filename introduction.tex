@@ -1,7 +1,27 @@
 \chapter{Introduction}
 
+We have a more general view of normalisation because we can do
 \begin{itemize}
+\item more; with
+\item less
+\end{itemize}
+Atomic flows
+\begin{itemize}
+\item removes information, which is why we pay less; and
+\item are symmetric which is why we get more.
+\end{itemize}
 
+Atomic flows give us a huge advantage since it gives us a language to work in.
+
+\begin{itemize}
+\item we define normal forms in terms of structural information; and
+\item we perform normalisation using structural information.
+\end{itemize}
+
+In the past, in natural deduction and the sequent calculus, normalisation was considered a delicate property because the rules of a system had to be designed carefully to obtain the normalisation results.
+
+We find that normalisation is not a delicate property, on the contrary, we can take great liberties in designing our rules.
+\begin{itemize}
 %----
 \item
 In traditional proof theory, a proof is on normal form if it does not contain the cut rule. Normalisation is therefore the same as cut elimination.
@@ -19,3 +39,5 @@ A proof is a geometric object and a proof on normal form is a proof with a certa
 %----
 \item
 \end{itemize}
+
+In Figure~\vref{figure:ExampleAtomicFlows} we show some examples of extracting atomic flows from derivations. Once the relationship between derivations and their associated atomic flows are understood we use atomic flows in Definition~\vref{definition:FlowNormalForms} to describe normal forms of derivations. Finally in Definition~\vref{definition:Simplifier}, Definition~\vref{definition:IsolatedSubflowRemoval}, Definition~\vref{definition:PathBreaker}, Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}, and Figure~\vref{figure:ReductionRules} we show `atomic-flow reductions' which are the basic steps with which we can build normalisation procedures.

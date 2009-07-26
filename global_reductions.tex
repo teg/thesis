@@ -1,4 +1,19 @@
-\chapter{Global Reductions}
+\chapter{Global Reductions}\label{chapter:GlobalReductions}
+
+
+We control normalisation of derivations by manipulating atomic flows, in the sense of graph rewriting. There are two kinds of flow reductions: global and local ones. In global reductions, the entire flow is rewritten: normally, two or more slightly altered copies of a flow are connected together. In local reductions, a bounded subflow in a flow is substituted by another subflow that fits in the context.
+
+
+This chapter is dedicated to the most challenging part of normalisation, obtaining weakly streamlined derivations.
+
+\begin{itemize}
+\item difficult because we copy unbounded portions of our derivations
+\item which makes termination difficult
+\end{itemize}
+
+In addition to describing our normal forms, it turns out that the information contained in atomic flows are all that is needed in order to perform normalisation.
+
+We will define several `atomic flow reductions' which can be combined freely in order to normalise.
 
 \TODO{Polarity assignment: `to' -> `for'.}
 
