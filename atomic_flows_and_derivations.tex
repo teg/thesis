@@ -71,7 +71,7 @@ Given a derivation $\Phi$, we say that the unique atomic flow $\phi$ defined in 
 
 %--------------
 \begin{example}
-Figure~\vref{figure:ExampleAtomicFlows} has three examples of derivations and their associated atomic flows.
+Figure~\vref{figure:ExampleAtomicFlows} has three examples of derivations and their associated atomic flows, where colors are used to indicate the mapping from atom occurrences to edges.
 \end{example}
 %------------
 
@@ -223,6 +223,24 @@ Figure~\vref{figure:ExampleAtomicFlows} has three examples of derivations and th
 \label{figure:ExampleAtomicFlows}
 \end{figure}
 
+%--------------------------------------------------
+\begin{definition}\label{definiton:FlowRestriction}
+Given a derivation $\Phi$ with atomic flow $\phi$, and an atom $a$, the \emph{restriction of $\phi$ to $a$}\index{flow!restriction to atom} is the largest subflow $\phi_a$ of $\phi$, such that every edge of $\phi_a$ is mapped to from $a$ or $\bar a$.
+\end{definition}
+%---------------
+
+%--------------
+\begin{example}
+Consider the rightmost derivation and its associated atomic flow in Figure~\ref{figure:ExampleAtomicFlows}. The restriction of this flow to $a$ is:
+\[
+\atomicflow{
+(-3,0)*{\afacucol{}{}{}{}{}{}{RawSienna}{Green}{Red}};
+( 3,0)*{\afacucol{}{}{}{}{}{}{Periwinkle}{SpringGreen}{Magenta}}
+}
+\]
+\end{example}
+%------------
+
 %-------------------------------------------------
 \begin{theorem}\label{theorem:SurjectiveDerToFlow}
 Every atomic flow is associated with some derivation.
@@ -337,12 +355,6 @@ where $h\ge0$ (this can possibly be done in many different ways). By the inducti
 whose flow is $\phi$.
 \end{proof}
 %----------
-
-%--------------------------------------------------
-\begin{definition}\label{definiton:FlowRestriction}
-Given a derivation $\Phi$ with atomic flow $\phi$, and an atom $a$, the \emph{restriction of $\phi$ to $a$}\index{flow!restriction to atom} is the largest subflow $\phi_a$ of $\phi$, such that every edge of $\phi_a$ is mapped to from $a$ or $\bar a$.
-\end{definition}
-%---------------
 
 %=================================================================
 \section{Normal Forms of Derivations}\label{section:DerNormalForm}
