@@ -1,11 +1,14 @@
 \chapter{Introduction}
 
-We have a more general view of normalisation because we can do
-\begin{itemize}
-\item more; with
-\item less
-\end{itemize}
-Atomic flows
+This thesis introduces \emph{atomic flows}, a language for studying normalisation of derivations in classical propositional logic.
+
+
+
+Using atomic flows we both describe new and generalised normal forms of derivations as well as normalisation procedures with novel proprties.
+
+We claim that atomic flows give us a more general view of normalisation because we get more, in terms of normal forms, of which the traditional normal forms are special cases, and in terms of more normalisation procedures and more freedom in designing them; and we pay less, in the sense that we use less of the information available in the derivations in order to normalise.
+
+Atomic flows are designed by removing all non-essential information from derivations from the point of view of describing normal forms. It turns out that all we need in order to
 \begin{itemize}
 \item removes information, which is why we pay less; and
 \item are symmetric which is why we get more.
@@ -40,4 +43,6 @@ A proof is a geometric object and a proof on normal form is a proof with a certa
 \item
 \end{itemize}
 
-In Figure~\vref{figure:ExampleAtomicFlows} we show some examples of extracting atomic flows from derivations. Once the relationship between derivations and their associated atomic flows are understood we use atomic flows in Definition~\vref{definition:FlowNormalForms} to describe normal forms of derivations. Finally in Definition~\vref{definition:Simplifier}, Definition~\vref{definition:IsolatedSubflowRemoval}, Definition~\vref{definition:PathBreaker}, Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}, and Figure~\vref{figure:ReductionRules} we show `atomic-flow reductions' which are the basic steps with which we can build normalisation procedures.
+In the first part of the thesis I introduce derivations and summarise some standard results we will use later on. In the second part I define atomic flows and show their relationship with derivations (see Figure~\vref{figure:ExampleAtomicFlows}), and define normal forms of derivations in terms of atomic flows (see Definition~\vref{definition:FlowNormalForms}). In the third, and final, part of the thesis we define `atomic flow reductions', which 
+
+In  we show some examples of extracting atomic flows from derivations. Once the relationship between derivations and their associated atomic flows are understood we use atomic flows in  to describe normal forms of derivations. Finally in Definition~\vref{definition:Simplifier}, Definition~\vref{definition:IsolatedSubflowRemoval}, Definition~\vref{definition:PathBreaker}, Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}, and Figure~\vref{figure:ReductionRules} we show `atomic-flow reductions' which are the basic steps with which we can build normalisation procedures.
