@@ -24,29 +24,34 @@ For every $n>0$, given
 }\quad,
 \]
 \end{itemize}
-let, for $1<k\le N$, $\eta_k$ be the atomic flow of\/ $\Gammasf_k$, and let
+let, for $1\le k\le N$, $\eta_k$ be the atomic flow of\/ $\Gammasf_k$, and let
 \[
 \mu_k\;=\;
 \atomicflow
 {
+(  4,  6)*{\afvjm4};
 (  4,  0)*{\affr{8}{8}};
 (  8,  2)*{\aflabelleft{f_{1,1}(\psi_1)}};
+(  4, -6)*{\afvjm4};
 ( 10,  0)*{\cdots};
+( 16,  6)*{\afvjm4};
 ( 16,  0)*{\affr{8}{8}};
 ( 20,  2)*{\aflabelleft{f_{1,l_1}(\psi_1)}};
+( 16, -6)*{\afvjm4};
 ( 22,  0)*{\cdots};
+( 28,  6)*{\afvjm4};
 ( 28,  0)*{\affr{8}{8}};
 ( 32,  2)*{\aflabelleft{f_{n,1}(\psi_n)}};
+( 28, -6)*{\afvjm4};
 ( 34,  0)*{\cdots};
+( 40,  6)*{\afvjm4};
 ( 40,  0)*{\affr{8}{8}};
 ( 44,  2)*{\aflabelleft{f_{n,l_n}(\psi_n)}};
+( 40, -6)*{\afvjm4};
 }
 \quad,
 \]
 where, for $1\le i\le n$, $l_i$ is the number of atom occurrences in $\gamma_{k,i}$, we define the reduction $\to_{\frmis_n}$ (where $\frmis$ stands for \emph{multiple isolated subflows}\index{Multiple Isolated Subflows Remover!reduction}) as follows, for any atomic flow $\phi$ and any connected atomic flows $\psi_1$, $\dots$, $\psi_n$ that do not contain interaction or cut vertices:
-
-\TODO{Decide on the direction of the dots}
-
 \[
 \atomicflow{
 (-12,  8)*{\afvjdm8{}{\boldsymbol\epsilon}};
@@ -98,7 +103,7 @@ where, for $1\le i\le n$, $l_i$ is the number of atom occurrences in $\gamma_{k,
 ( 5, 13)*{\afvjm2};
 (11, 13)*{\afvjm2};
 (11, 18)*{\affr{6}{8}};
-(14, 20)*{\aflabelleft{\mu_2}};
+(14, 20)*{\aflabelleft{\mu_1}};
 ( 9,  8)*{\affr{10}{8}};
 (14, 10)*{\aflabelleft{\eta_2}};
 ( 5,  3)*{\afvjm2};
@@ -117,7 +122,7 @@ where, for $1\le i\le n$, $l_i$ is the number of atom occurrences in $\gamma_{k,
 ( 6,-16)*{\aflabelleft{f_N(\phi)}};
 (-5,-23.5)*{\aflabelright{f_N(\boldsymbol\iota)}};
 (11,-18)*{\affr{6}{8}};
-(14,-16)*{\aflabelleft{\mu_N}};
+(14,-16)*{\aflabelleft{\mu_{N-1}}};
 ( 5,-23)*{\afvjm2};
 (11,-23)*{\afvjm2};
 ( 9,-28)*{\affr{10}{8}};
@@ -142,6 +147,10 @@ where, for $1\le i\le n$, $l_i$ is the number of atom occurrences in $\gamma_{k,
 \]
 \end{definition}
 %---------------
+
+\begin{remark}
+TODO
+\end{remark}
 
 %--------------------------------------------------------------
 \begin{remark}\label{remark:BaseMultipleIsolatedSubflowRemoval}
@@ -200,9 +209,9 @@ Since each of $\psi_1$, $\dots$, $\psi_n$ is connected and contains no interacti
 ( 5, 6)*{\afvj4};
 (11, 6)*{\afvjm4};
 ( 0, 0)*{\affr{12}{8}};
-( 3, 2)*{\aflabelright{\phi}};
+( 6, 2)*{\aflabelleft{f_i(\phi)}};
 (11, 0)*{\affr{6}{8}};
-(11, 2)*{\aflabelright{\mu_k}};
+(14, 2)*{\aflabelleft{\mu_{k-1}}};
 (-5,-6)*{\afvjm4};
 ( 1,-6)*{\afvj4};
 ( 3,-6)*{\cdots};
