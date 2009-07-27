@@ -428,14 +428,6 @@ In addition, the flow has the paths and $\ai$-paths obtained from the shown ones
 %=========================================
 \section{Subflows}\label{section:Subflows}
 
-\TODO{Define composition?}
-
-%------------------------------------------------------
-\begin{definition}\label{definition:ConnectedComponent}
-Given an atomic flow $\phi$ containing the edges $\epsilon$ and $\epsilon'$, we say that $\epsilon$ and $\epsilon'$ \emph{belong to the same connected component}\index{connected component} if, for any two polarity assignments $\pi$ and $\pi'$ for $\phi$, $\pi(\epsilon)=\pi(\epsilon')$ if and only if $\pi'(\epsilon)=\pi'(\epsilon')$.
-\end{definition}
-%---------------
-
 \TODO{Give examples.}
 
 %-------------------------------------------
@@ -470,6 +462,12 @@ if $\nu_1$ and $\nu_2$ are vertices in $\phi_1$, and there is a vertex $\nu'$ in
 
 %--------------------------------------------------
 \begin{definition}\label{defintion:IsolatedSubflow}
-Given two flows $\phi$ and $\psi$, such that $\phi$ is a subflow of $\psi$. We say that \emph{$\phi$ is an isolated subflow of $\psi$}\index{subflow!isolated} if there is no path in $\phi$ from a vertex in $\psi$ to $\top$ or $\bot$.
+Given two flows $\phi$ and $\psi$, such that $\phi$ is a subflow of $\psi$, we say that \emph{$\phi$ is an isolated subflow of $\psi$}\index{subflow!isolated} if there is no path in $\phi$ from a vertex in $\psi$ to $\top$ or $\bot$.
+\end{definition}
+%---------------
+
+%------------------------------------------------------
+\begin{definition}\label{definition:ConnectedComponent}
+Given two flows $\phi$ and $\psi$, such that $\phi$ is a subflow of $\psi$, we say that \emph{$\phi$ is a connected component of $\psi$}\index{connected component} if, for any two polarity assignments $\pi$ and $\pi'$ for $\psi$ and for any two edges $\epsilon$ and $\epsilon'$ in $\phi$, $\pi(\epsilon)=\pi(\epsilon')$ if and only if $\pi'(\epsilon)=\pi'(\epsilon')$.
 \end{definition}
 %---------------
