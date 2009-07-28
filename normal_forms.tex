@@ -14,7 +14,11 @@ The minimal ammount of information needed to describe these things: Atomic Flows
 
 Not a big surprise that we can describe this with atomic flows (by design). Later we get the big surprise that we can obtain this using (only) atomic flows.
 
-\TODO{Informal explanation of the different normal forms, starting from `streamlinig'.}
+The central idea in this chapter is the notion of \emph{streamlining}, which we express in terms of atomic flows. If we consider identities and weakenings to be the `creators' of atoms, and cuts and coweakening as the `destroyers' of atoms, then an atomic flow is weakly streamlined if no atom is first created and then destroyed. Alternatively, an atomic flow is streamlined if every edge appears in a path to $\top$ or to $\bot$. The shape of a streamlined atomic flow is given in case (\ref{definition:FlowNormalForms:item:Streamlined}) of Definition~\ref{definition:FlowNormalForms}.
+
+The most challenging aspect of streamlining is the elimination of paths from interaction to cut vertices. For this reason, we define the notion of \emph{weakly streamlined} atomic flows, which are flows with no paths from interaction to cut vertices. Chapter~\vref{chapter:GlobalReductions} is dedicated obtain weakly streamlined derivations.
+
+
 
 \TODO{Alessio said: `\emph{I think it's a mistake to consider a derivation weakly streamlined with respect to a polarity. It would be better to say that it is weakly streamlined with the respect to the positive subflow, given a polarity, or something like this.}'}
 
