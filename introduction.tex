@@ -1,6 +1,32 @@
 \chapter{Introduction}
 
-This thesis introduces \emph{atomic flows}, a language for studying normalisation of derivations in classical propositional logic.
+\TODO{Sleep deprived, and high on caffeine, I threw your higher dimensional diagrams to the side and wrote the following masterpiece:}
+
+The following is still an open question:
+
+\begin{centre}
+\emph{When are two mathematical proofs the same?}
+\end{centre}
+
+One approach to solving this problem is summarised by the following slogan, which I will use to explain the context of this thesis:
+
+\[
+\mbox{Locality}\qquad\rightarrow\qquad\mbox{Geometry}\qquad\rightarrow\qquad\mbox{Semantics}
+\]
+
+Semantics of proofs are, broadly speaking, either \emph{abstract}, like categorical axiomatisations \cite{}; or \emph{concrete}, like proof nets \cite{}. The two approaches are often tightly connected, but in this thesis we shall focus on the latter.
+
+To obtain concrete semantics of proofs, a central idea (from proof nets) is that the essense of proofs can be represented by geometric shapes. Proofs are usually represented as lists, trees or directed acyclic graphs of strings. These syntactic objects contain a lot of \emph{bureaucracy} in the sense (due to Girard) that there are several representations of proofs that only differ for `inessential details'. Where `inessential details' are defined in terms of certain kinds of local permutations of inference rules. By considering proofs modulo this kind of bureaucracy, geometric shapes representing the essence of the proofs can be obtained. Analogously, we can consider permutations as continuous maps between proofs and the geometric shapes as topological invariants.
+
+It is clear that our geometric models depend on what is considered `inessential differences', which in terms depend on what permutations we are allowed to perform by the syntax in which we represent the proofs. In particular; the more flexible the language, the more inessential differences we can observe. Proof nets were born out of \emph{linear logic}, where the flexibility was provided by \emph{linear} inference rules, \emph{i.e.} inference rules which are restricted to only contain every subformula once in the premiss and once in the conclusion. Not every logic can be expressed in terms of linear inference rules alone, which motivates the generalisation of linearity to the concept of \emph{locality}. An inference rule is said to be local if it can be checked in constant time (assuming the number of atoms are fixed). Clearly, linear rules are local since there are no subformulae of unbounded size to compare. Furthermore, \emph{atomic} rules (\emph{i.e.}, rules that only operate on atoms) are local, since we can compare atoms in constant time. A consequence of limiting the complexity of checking rules is that it limits the `interdependency' of rules and, thus gives greater flexibility in manipulating proofs.
+
+It turns out that \emph{classical logic}, our topic of interest, can be expressed in terms of only local rules. However, to acheive this, we are forced \cite{} to leave the traditional realm of Gentzen's natural deduction and sequent calculus \cite{}, in favour of one of the more general formalisms using Guglielmi's deep-inference methodology \cite{}. In summary; deep inference gives locality, locality gives geometry, and geometry gives semantics.
+
+It should not be expected that a semantics of proofs will be able to answer the original question, \emph{When are two proofs the same?}, for all intents and purposes. Depending on the reason and context for asking the question proofs might be manipulated in different ways before they are compared. This process of maniuplation is called \emph{normalisation}. A successfull semantics of proofs should not only give a criterion for when two proofs are `essentially the same', but clearly, it is also expected that two proofs that are `essentially the same' should yield `essentially the same' result after any kind of normalisation. So, in order to find the semantics of proofs, one must keep an eye on all possible ways of normalining proofs. Admittedly, no simple task.
+
+The contribution of this thesis is a general view of normalisation through a geometric language we call \emph{atomic flows}.
+
+\TODO{Prepare to sleep:}
 
 As for natural deduction and the sequent calculus \cite{Gent:69:Investig:xi}, we intend normalisation as eliminating cuts, or, more in general, `detours', from derivations. However, contrary to natural deduction and the sequent calculus, we consider derivations to be top-down symmetric and `detours' to be more than just the existence of cuts.
 
