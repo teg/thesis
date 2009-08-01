@@ -1,35 +1,62 @@
 \chapter{Introduction}
 
+The mathematical proofs of journal articles and text books are usually informal arguments expressed in a natural language. In \emph{proof theory} we consider proofs to be well-defined mathematical objects expressed in some formal language, which we call a \emph{formalism}.
+
+Since proofs are mathematical objects, it is natural to ask the question:
+
 \emph{When are two mathematical proofs the same?}
 
-This fundamental question, sometimes known as \emph{Hilbert's $24^{th}$} problem \cite{Thie:03:Hilberts:yu}, is still open and it is the topic of active research. One approach to solving this problem is summarised by the following slogan, which I will use to explain the context of this thesis:
+This question was considered for inclusion in Hilbert's famous 1900 lecture \cite{Thie:03:Hilberts:yu}, and remains open today.
 
+Formal proofs, generally speaking, are dense and terse creations that completely obscure any ingenuity that might have existed in the mind of the mathematician. \emph{Semantics} is the discipline which studies the essence, or meaning of proofs. Finding a good semantics of proofs would solve Hilbert's problem.
+
+\emph{abstract}
+
+\emph{concrete}
+
+This thesis was written in the context of a program whose aim it is to find the semantics of proofs. The following slogan, which I will now explain, summarises our approach:
 \[
 \mbox{Locality}\qquad\rightarrow\qquad\mbox{Geometry}\qquad\rightarrow\qquad\mbox{Semantics}
 \]
+Given a formalism that allows \emph{locality}, we can find \emph{geometric} structures in our proofs, which we hope will lead to the discovery of a semantics.
 
-Semantics of proofs are, broadly speaking, either \emph{abstract}, like categorical axiomatisations \cite{}; or \emph{concrete}, like proof nets \cite{Gira:87:Linear-L:wm}. The two approaches are often tightly connected, but in this thesis we shall focus on the latter.
+The presence of `inessential details' in a proof, we call \emph{bureaucracy}. As an example of the kind of bureaucracy we are interested in, consider a proof that contains two independent arguments, \emph{i.e.}, the order of the arguments does not matter. The representation of the proof is considered bureaucratic, if one has to commit to an arbitrary order.
 
-Proofs are usually represented as lists, trees or directed graphs of strings. These syntactic objects contain a lot of \emph{bureaucracy}, in the sense (due to Girard) that there are several representations of proofs that only differ for `inessential details'. Where `inessential details' are defined in terms of certain kinds of local permutations of inference rules. By considering proofs modulo this kind of bureaucracy, geometric shapes representing the essence of the proofs can be obtained. Analogously, we can consider permutations as continuous maps between proofs and the geometric shapes as topological invariants.
+Girard's \emph{proof net} are geometric representations of \emph{linear logic} proofs, modulo bureaucracy \cite{Gira:87:Linear-L:wm}.
 
-It is clear that our geometric models depend on what we considered to be `inessential differences', which in terms depend on what permutations our syntax allows us. In particular; the more flexible the syntax, the more inessential differences we can observe. Proof nets were born out of \emph{linear logic}, where the flexibility was provided by \emph{linear} inference rules, \emph{i.e.} inference rules which are restricted to only contain every subformula once in the premiss and once in the conclusion. Not every logic can be expressed in terms of linear inference rules alone, which motivates the generalisation of linearity to the concept of \emph{locality}. An inference rule is said to be local if it can be checked in constant time (assuming the number of atoms are fixed). Clearly, linear rules are local since there are no subformulae of unbounded size to compare. Furthermore, \emph{atomic} rules (\emph{i.e.}, rules that only operate on atoms) are local, since we can compare atoms in constant time. A consequence of limiting the complexity of checking rules is that it limits the `interdependency' of rule instances and, thus gives greater flexibility in manipulating proofs.
+\TODO{proof system}
 
-It turns out that \emph{classical logic}, our topic of interest, can be expressed in terms of only local rules. However, to acheive this, we are forced \cite{Brun:03:Two-Rest:mn} to leave the traditional realm of Gentzen's natural deduction and sequent calculus \cite{Gent:69:Investig:xi}, in favour of a more general formalism employing Guglielmi's deep-inference methodology \cite{Gugl:06:A-System:kl}. In summary; deep inference gives locality, locality gives geometry, and geometry gives semantics.
+Motivated by the success of linear logic, we wish to use the same approach for classical logic, and indeed there are several notions of proof nets for classical logic. So far, none of them have been shown to constitute a proof system, but the results are promising.
 
-It should not be expected that a semantics of proofs will be able to answer the original question, \emph{When are two proofs the same?}, for all intents and purposes. Depending on the reason and context for asking the question, proofs might be `manipulated' in different ways before they are compared. This process of maniuplation is called \emph{normalisation}. A successfull semantics of proofs should not only give a criterion for when two proofs are `essentially the same', but clearly, it is also expected that two proofs that are `essentially the same' should yield `essentially the same' result after any kind of normalisation. So, in order to find the semantics of proofs, one must keep an eye on all possible ways of normalining proofs. Admittedly, no simple task.
+In order to remove bureaucracy, one first has to be able to observe it. In terms of the example given above, this means to observe when parts of a proof are independent. In linear logic this is possible due to the restriction to linear inference rules. However, not all logics can be expressed in terms of linear inference rules, which motivated the concept of \emph{locality}.
 
-The contribution of this thesis is a general view of normalisation through a geometric language we call \emph{atomic flows}.
+The amount of information needed to verify a local inference rule is bounded by a constant. Intuitively, this condition limits the interdependence of inference rules, and so makes it easier to observe when parts of a proof are independent.
 
-As for natural deduction and the sequent calculus, we intend normalisation as eliminating cuts, or, more in general, `detours', from derivations. However, unlike in natural deduction or in the sequent calculus, derivations in deep-inference formalisms are symmetric in the premiss-conclusion axis, and `detours' turn out to be more than just the existence of cuts.
+There are two known classes of local inference rules: linear and \emph{atomic}. An atomic inference rule is a rule which is restricted to only apply to atoms.  An example of a non-local rule is a rule which requires the comparison of two unbounded formulae, for instance a contraction.
 
-Atomic flows were motivated by wanting to generalise traditional normalisation, based on elimination of inference rules, to a new notion of normalisation based on elimination of dependencies between inference rules. In order to formalise the notion of `detours', atomic flows were defined by discarding from derivations all but the information about casual relations between creation and destruction of atoms (see Figure~\vref{figure:ExampleAtomicFlows}).
+\emph{Deep inference} \cite{Gugl:06:A-System:kl} is a methodology which allows for more general formalisms than the traditional Gentzen style. In particular, deep-inference formalisms can express classical logic using only local inference rules \cite{BrunTiu:01:A-Local-:mz}, something which is impossible in the traditional formalisms \cite{Brun:03:Two-Rest:mn}.
 
-We claim that atomic flows give us a more general view of normalisation because they gives us new normal forms, of which the traditional normal forms are special cases; at the same time they show that we need less of the information available to us in order to obtain normalisation.
+\TODO{logical system}
 
-Due to the top-down symmetry, and the generalisation of `detours', atomic flows allow us to describe a range of new normal forms. In the special cases where `cut elimination' makes sense, the new normal forms coincide with the traditional ones, as expected.
 
-Furthermore, it turned out that the information contained in atomic flows is sufficient to design normalisation procedures. This is surprising, since atomic flows throw away all information about logical connectives and logical inference rules, exactly the information we expected to be most crucial in order to obtain normalisation. The locality provided by deep inference is what makes this simplification possible.
 
-In fact, the principal advantage of atomic flows is that it allows us to use the graphical language of atomic flows to describe the gist of our results. Once the language is mastered, the technical details of most of our results can easily be reconstructed based on the illustrations alone. Illustrations describing our normalisation procedures are given in Definition~\vref{definition:IsolatedSubflowRemoval}, Definition~\vref{definition:PathBreaker}, Definition~\vref{definition:MultipleIsolatedSubflowsRemoval} and Figure~\vref{figure:ReductionRules}.
+\emph{geometry}
 
-The thesis is split in three parts. In the first part I introduce derivations in classical propositional logic and show some elementary results. In the second part I define atomic flows, show how flows are extracted from derivations and define normal forms of derivations in terms of their associated atomic flows. Finally, in the last part I define several normalisation procedures based on rewriting atomic flows.
+\emph{proof nets} 
+
+\emph{linearity}
+
+\emph{atomicity}
+
+\emph{locality}
+
+---
+
+\emph{classical logic}
+
+\emph{deep inference}  (forced: )
+
+\emph{normalisation}
+
+\emph{atomic flows} \cite{GuglGund:07:Normalis:lr}
+
