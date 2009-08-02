@@ -16,7 +16,11 @@ Not a big surprise that we can describe this with atomic flows (by design). Late
 
 The central idea in this chapter is the notion of \emph{streamlining}, which we express in terms of atomic flows. If we consider identities and weakenings to be the `creators' of atoms, and cuts and coweakening as the `destroyers' of atoms, then an atomic flow is weakly streamlined if no atom is first created and then destroyed. Alternatively, an atomic flow is streamlined if every edge appears in a path to $\top$ or to $\bot$. The shape of a streamlined atomic flow is given in case (\ref{definition:FlowNormalForms:item:Streamlined}) of Definition~\ref{definition:FlowNormalForms}.
 
-The most challenging aspect of streamlining is the elimination of paths from interaction to cut vertices. For this reason, we define the notion of \emph{weakly streamlined} atomic flows, which are flows with no paths from interaction to cut vertices. Chapter~\vref{chapter:GlobalReductions} is dedicated obtain weakly streamlined derivations.
+The most challenging aspect of streamlining is the elimination of paths from interaction to cut vertices. For this reason, we define the notion of \emph{weakly streamlined} atomic flows, in case (\ref{definition:FlowNormalForms:item:Streamlined}) of Definition~\ref{definition:FlowNormalForms}. An atomic flow is weakly streamlined if it contains no paths from interaction to cut vertices. This is the topic of Chapter~\vref{chapter:GlobalReductions}.
+
+The elimination of a path whose edges are mapped to from the atom $a$, might interfere with the elimination of paths whose edges are mapped to from the atom $\bar a$. In principle, this might cause procedures not to terminate. However, as we will see later termination is not a problem if we remove the paths in `two phases'. We first eliminate all the paths mapped to from $a$ and then all the paths mapped to from $\bar a$. This approach motivated the definition of an atomic flow being \emph{weakly streamlined with respect to the polarity assignment $\pi$}.
+
+A path can be eliminated by removing the edges that make up the path. However, we might imagine a situation where an edge belongs to two paths, one we want to eliminate and one we want to keep. For a given polarity assignment $\pi$, an atomic flow \emph{in simple form with respect to $\pi$} is a flow where every edge with polarity assignment $\ppl$ never belongs to one path we want to eliminate and one we want to keep.
 
 
 

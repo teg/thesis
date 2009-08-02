@@ -10,51 +10,45 @@ This question was considered for inclusion in Hilbert's famous 1900 lecture \cit
 
 Formal proofs, generally speaking, are dense and terse creations that completely obscure any ingenuity that might have existed in the mind of the mathematician. \emph{Semantics} is the discipline which studies the essence, or meaning of proofs. Finding a good semantics of proofs would solve Hilbert's problem.
 
-\emph{abstract}
+%\emph{abstract}
 
-\emph{concrete}
+%\emph{concrete}
 
-This thesis was written in the context of a program whose aim it is to find the semantics of proofs. The following slogan, which I will now explain, summarises our approach:
+This thesis is part of a program whose aim it is to find the semantics of proofs. The following slogan, which I will now explain, summarises our approach:
 \[
 \mbox{Locality}\qquad\rightarrow\qquad\mbox{Geometry}\qquad\rightarrow\qquad\mbox{Semantics}
 \]
-Given a formalism that allows \emph{locality}, we can find \emph{geometric} structures in our proofs, which we hope will lead to the discovery of a semantics.
 
-The presence of `inessential details' in a proof, we call \emph{bureaucracy}. As an example of the kind of bureaucracy we are interested in, consider a proof that contains two independent arguments, \emph{i.e.}, the order of the arguments does not matter. The representation of the proof is considered bureaucratic, if one has to commit to an arbitrary order.
+I will no argue why we believe locality will allow us to discover the geometric essence of proofs.
 
-Girard's \emph{proof net} are geometric representations of \emph{linear logic} proofs, modulo bureaucracy \cite{Gira:87:Linear-L:wm}.
+The presence of `inessential details' in a proof, we call \emph{bureaucracy}. We believe that bureaucracy in proofs is what obscures their meaning and eliminating bureaucracy is what will allow us to discover their geometric essence. As an example of the kind of bureaucracy we are interested in, consider a proof that contains two independent arguments, \emph{i.e.}, the order of the arguments does not matter. If the representation of the proof contains information of the order of the arguments, this is considered bureaucracy.
+
+% linear sequent calculus = sequent calculus without weakening and contraction
+
+We are influenced by the success of Girard's \emph{linear logic} and \emph{proof nets} \cite{Gira:87:Linear-L:wm}. Linear logic is roughly speaking a restriction of classical logic by only allowing \emph{linear} inference rules, \emph{i.e.}, rules that do not duplicate or destroy formulae. Proof nets are geometric representations of linear logic proofs, obtained by considering proofs modulo bureaucracy.
+
+In the same way that linearity gave proof nets in the case of linear logic, we want to find a geometric representation of proofs independent of the logic. However, not all logics can be represented with only linear rules. This motivated a generalisation of linearity to \emph{locality}. An inference rule is said to be local if the amount of information needed to verify an instance of the rule is bounded by a constant.
+
+We can show that linear rules are local. Furthermore, \emph{atomic} rules are a second class of local rules. A rule is atomic if it only applies to atoms. We can imagine rules which are not local: In order to verify an instance of a rule that duplicates a formula, the two copies of the formula must be compared. Since the size of a formula is unbounded, the rule is not local.
+
+Intuitively, since local rules can only depend on a limited amount of information, the `interdependence' of instances of local rules is limited. In terms of the example of bureaucracy given above, local rules allow us to recognise more independent parts of a proof.
+
+\emph{Deep inference} \cite{Gugl:06:A-System:kl} is a methodology which allows for more general formalisms than the traditional Gentzen style. In particular, deep-inference formalisms can express classical logic using only local inference rules \cite{BrunTiu:01:A-Local-:mz}, something which is impossible in the traditional formalisms \cite{Brun:03:Two-Rest:mn}.
+
+The slogan above then reads: Locality, made possible by deep inference, is a tool for finding the geometric essence of proofs.
+
+
+
 
 \TODO{proof system}
 
-Motivated by the success of linear logic, we wish to use the same approach for classical logic, and indeed there are several notions of proof nets for classical logic. So far, none of them have been shown to constitute a proof system, but the results are promising.
-
-In order to remove bureaucracy, one first has to be able to observe it. In terms of the example given above, this means to observe when parts of a proof are independent. In linear logic this is possible due to the restriction to linear inference rules. However, not all logics can be expressed in terms of linear inference rules, which motivated the concept of \emph{locality}.
-
-The amount of information needed to verify a local inference rule is bounded by a constant. Intuitively, this condition limits the interdependence of inference rules, and so makes it easier to observe when parts of a proof are independent.
-
-There are two known classes of local inference rules: linear and \emph{atomic}. An atomic inference rule is a rule which is restricted to only apply to atoms.  An example of a non-local rule is a rule which requires the comparison of two unbounded formulae, for instance a contraction.
-
-\emph{Deep inference} \cite{Gugl:06:A-System:kl} is a methodology which allows for more general formalisms than the traditional Gentzen style. In particular, deep-inference formalisms can express classical logic using only local inference rules \cite{BrunTiu:01:A-Local-:mz}, something which is impossible in the traditional formalisms \cite{Brun:03:Two-Rest:mn}.
 
 \TODO{logical system}
 
 
-
-\emph{geometry}
-
-\emph{proof nets} 
-
-\emph{linearity}
-
-\emph{atomicity}
-
-\emph{locality}
-
 ---
 
 \emph{classical logic}
-
-\emph{deep inference}  (forced: )
 
 \emph{normalisation}
 
