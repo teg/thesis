@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1 beta1
-lastDocument=global_transformations/multiple_isolated_subflow.tex
+lastDocument=thesis.tex
 masterDocument=thesis.tex
 name=thesis
 pkg_extIsRegExp=false
@@ -90,20 +90,20 @@ order=0
 
 [item:global_transformations/multiple_isolated_subflow.tex]
 archive=true
-column=183
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=333
-open=true
+line=0
+open=false
 order=1
 
 [item:global_transformations/path_breaker.tex]
 archive=true
-column=199
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=255
-open=true
+line=0
+open=false
 order=0
 
 [item:global_transformations/threshold_formulae.tex]
@@ -118,11 +118,11 @@ order=0
 [item:introduction.tex]
 archive=true
 column=0
-encoding=
-highlight=
+encoding=UTF-8
+highlight=LaTeX
 line=0
-open=false
-order=-1
+open=true
+order=1
 
 [item:normal_forms.tex]
 archive=true
@@ -166,8 +166,8 @@ column=0
 encoding=UTF-8
 highlight=LaTeX
 line=0
-open=false
-order=1
+open=true
+order=0
 
 [item:transformations.tex]
 archive=true

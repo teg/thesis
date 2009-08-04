@@ -26,7 +26,7 @@ We are influenced by the success of Girard's \emph{linear logic} and \emph{proof
 
 In the same way that linearity gave proof nets in the case of linear logic, we want to find a geometric representation of proofs independent of the logic. However, not all logics can be represented with only linear rules. This motivated a generalisation of linearity to \emph{locality}. An inference rule is said to be local if the amount of information needed to verify an instance of the rule is bounded by a constant.
 
-We can show that linear rules are local. Furthermore, \emph{atomic} rules are a second class of local rules. A rule is atomic if it only applies to atoms. We can imagine rules which are not local: In order to verify an instance of a rule that duplicates a formula, the two copies of the formula must be compared. Since the size of a formula is unbounded, the rule is not local.
+In adition to linear rules, a second class of local rules are the \emph{atomic} ones. Atomic rules are restricted to only apply to atoms. Unlike linear rules, atomic rules can duplicate or destroy information, but not an unbounded ammount. We can imagine rules which are not local: In order to verify an instance of a rule that duplicates a formula, the two copies of the formula must be compared. Since the size of a formula is unbounded, the rule is not local.
 
 Intuitively, since local rules can only depend on a limited amount of information, the `interdependence' of instances of local rules is limited. In terms of the example of bureaucracy given above, local rules allow us to recognise more independent parts of a proof.
 
