@@ -1,51 +1,79 @@
 \chapter{Introduction}
 
-Mathematical proofs found in text books and journal articles are usually informal arguments, expressed in a natural language, possibly with the aid of figures or diagrams, whose aim it is to convince mathematicians that a certain statement is true. Due to their informal nature, it is not possible to formally express what constitutes a mathematical proof, let alone study its properties.
+\emph{Proof theory} studies the formal representation of proofs. Formal representation of proofs are needed in order to automatically verify proofs, search for new proofs, prove consistency of theories, \emph{etc}.
 
-For this reason, \emph{proof theory} studies \emph{formal proofs}, which are precisely defined and automatically verifiable proofs. A formal proof is expressed in a formal language, called a \emph{formalism}, and the rules by which a proof is constructed are called \emph{inference rules}.   
+Furthermore, representation of proofs are interesting mathematical objects in their own right. In particular, they are related to longstanding open problems. The problem of $NP$ versus $co$-$NP$, from computational complexity theory, and the problem of \emph{identity of proofs}, can both be stated in terms of representations of proofs.
 
-Formal proofs are not very good at conveying the idea of an argument. In fact, they are usually extremely terse, almost unreadable. This begs the question: What is the `essence', or \emph{semantics} of a proof? An answer to this question would also solve a problem older than proof theory itself:
+The problem of identity of proofs was originally intended by Hilbert to be the 24th problem of his famous Paris lecture in 1900 \cite{Thie:03:Hilberts:yu}, and it amounts to answering the question: can be expressed as \emph{When are two proofs the same?} This thesis is part of a program which tries to solve the identity of proofs problem in the setting of propositional logic.
 
-\emph{When are two mathematical proofs the same?}
+A language for representing proofs is called a \emph{formalism}, and the rules by which a proof is constructed are called \emph{inference rules}.
 
-This question was considered for inclusion in Hilbert's famous 1900 lecture \cite{Thie:03:Hilberts:yu}, and is for this reason known as \emph{Hilbert's 24th problem}.
+Formal proofs are not very good at conveying the `essence', `meaning' or \emph{semantics} of a proof. In fact, they are usually extremely verbose. Finding the semantics of proofs is still an open problem, closely related to a question older than proof theory itself:
 
-It should not be expected that a semantics of proofs will be able to answer the above question for all intents and purposes. Depending on the reason and context for asking the question, proofs might be manipulated in different ways before they are compared. This process of manipulation is called \emph{normalisation}.
+It should not be expected that a semantics of proofs will be able to answer the above question for all intents and purposes. Depending on the reason and context for asking the question, proofs might be manipulated in different ways before their semantics are compared. This process of manipulation is called \emph{normalisation}.
 
 % 'semantics' used to be: 'bureaucracy-free essence'
 
-This thesis is part of a program whose aim it is to answer Hilbert's question. The main ideas of this program are: 1) proofs are essentially geometric objects; 2) their shape is their semantics; 3) normalisation manipulates the shape of proofs under geometric invariants. The following slogan, which I will now explain, summarises our approach:
-\[
-\mbox{Locality}\qquad\rightarrow\qquad\mbox{Geometry}\qquad\rightarrow\qquad\mbox{Semantics}\quad.
-\]
-The presence of `inessential details' in a proof, we call \emph{bureaucracy}. We believe that bureaucracy in proofs is what obscures their meaning and eliminating bureaucracy is what will allow us to discover their geometric essence. As an example of the kind of bureaucracy we are interested in, consider a proof that contains two independent arguments, \emph{i.e.}, the order of the arguments does not matter. If, in order to represent the proof, one has to arbitrarily choose an order, this is considered bureaucracy.
+This thesis is part of a program whose aim it is to answer Hilbert's question. The main ideas of this program are: 1) proofs are essentially geometric objects; 2) their shape is their semantics; 3) normalisation manipulates the shape of proofs under geometric invariants. I will now outline the project and where this thesis fits into it.
+
+\emph{Bureaucracy} is the name we give to `inessential details' in the representation of a proof. There is strong evidence that bureaucracy in proofs is what obscures their meaning and eliminating bureaucracy is what will allow us to discover their geometric essence. We have an instance of the kind of bureaucracy we are interested in, if independent parts of a proof are represented as if there is a dependency between them. A consequence of bureaucracy is that proofs that are essentially the same are given seemingly different representations.
 
 % linear sequent calculus = sequent calculus without weakening and contraction
 
-We are influenced by the success of Girard's \emph{linear logic} and \emph{proof nets} \cite{Gira:87:Linear-L:wm}. Linear logic is, roughly speaking, a restriction of classical logic by only allowing \emph{linear} inference rules, \emph{i.e.}, rules that do not duplicate or destroy formulae. Proof nets are geometric representations of linear logic proofs, which identify proofs modulo bureaucracy.
+We are influenced by Girard's \emph{linear logic} and \emph{proof nets} \cite{Gira:87:Linear-L:wm}. Linear logic is, roughly speaking, a restriction of classical logic by only allowing \emph{linear} inference rules, \emph{i.e.}, rules that do not duplicate or destroy formulae. Proof nets are geometric representations of linear logic proofs, which identify proofs modulo bureaucracy.
 
-In the same way that linearity gave proof nets in the case of linear logic, we want to find a geometric representation of proofs independent of the logic. However, not all logics can be represented with only linear rules. This motivated a generalisation of linearity to \emph{locality}. An inference rule is said to be local if the amount of information needed to verify an instance of the rule is bounded by a constant.
+In the same way that linearity gave proof nets in the case of linear logic, we want to find a geometric representation of proofs independent of the logic. However, not all logics can be represented with only linear rules. This motivated a generalisation of linearity to \emph{locality}. An inference rule is said to be local if the time needed to verify an instance of the rule is bounded by a constant (under certain mild hypothesis).
 
-In adition to linear rules, a second class of local rules are the \emph{atomic} ones. Atomic rules are restricted to only apply to atoms. Unlike linear rules, atomic rules can duplicate or destroy information, but not an unbounded ammount. We can imagine rules which are not local: In order to verify an instance of a rule that duplicates a formula, the two copies of the formula must be compared. Since the size of a formula is unbounded, the rule is not local.
+\TODO{Good place for deep inference.}
 
-Intuitively, since local rules can only depend on a limited amount of information, the `interdependence' of instances of local rules is limited. In terms of the example of bureaucracy given above, local rules allow us to recognise more independent parts of a proof.
+In addition to linear rules, a second class of local rules are the \emph{atomic} ones. Atomic rules are restricted to only apply to atoms. Unlike linear rules, atomic rules can duplicate or destroy formulae, but not of unbounded size. Not all rules are local: In order to verify an instance of a rule that duplicates a formula, the two copies of the formula must be compared. Since the size of a formula is unbounded, the rule is not local.
+
+Intuitively, since local rules can only depend on a limited amount of information, the `interdependence' of instances of local rules is limited. In terms of bureaucracy, local rules make it easier to recognise when sub-proofs are independent. \TODO{Why?}
 
 \emph{Deep inference} \cite{Gugl:06:A-System:kl} is a methodology which allows for more general formalisms than Gentzen's traditional \emph{natural deduction} and \emph{sequent calculus} \cite{Gent:69:Investig:xi}. In particular, deep-inference formalisms can express classical logic using only local inference rules \cite{BrunTiu:01:A-Local-:mz}, something which is impossible in the traditional formalisms \cite{Brun:03:Two-Rest:mn}.
 
-The slogan above then reads: Locality, made possible by deep inference, is a tool for finding the geometric essence of proofs.
 
-The contribution of this thesis is a general view of normalisation through a geometric language we call \emph{atomic flows} \cite{GuglGund:07:Normalis:lr}.
+\TODO{reveals?}
+In summary, deep inference makes locality possible; locality reveals bureaucracy; eliminating bureaucracy allows us to represent proofs as geometric objects; whose shape we conjecture will lead us to a nice semantics:
+\[
+\mbox{Locality}\qquad\rightarrow\qquad\mbox{Geometry}\qquad\rightarrow\qquad\mbox{Semantics}\quad.
+\]
 
-As for natural deduction and the sequent calculus, we intend normalisation as eliminating a certain kind of inference rule, called \emph{cut}, or, more in general, we eliminate `detours', from derivations. However, unlike in natural deduction or in the sequent calculus, derivations in deep-inference formalisms are symmetric in the premiss-conclusion axis, and `detours' turn out to be more than just the existence of cuts.
+As mentioned above, proofs sometimes need to be normalised in order to be compared. The contribution of this thesis is a geometric language we call \emph{atomic flows} \cite{GuglGund:07:Normalis:lr}, which provides a general view of normalisation.
 
-Atomic flows were motivated by wanting to generalise traditional normalisation, based on elimination of inference rules, to a new notion of normalisation based on elimination of dependencies between inference rule instances. In order to formalise the notion of `detours', atomic flows were defined by discarding from derivations all but the information about casual relations between creation and destruction of atoms.
+\TODO{Cut elimination}
 
-We claim that atomic flows give us a more general view of normalisation because they gives us new normal forms, of which the traditional normal forms are special cases; at the same time they show that we need less of the information available to us in order to obtain normalisation.
+As for natural deduction and the sequent calculus, we intend normalisation as eliminating \emph{cuts}, or more generally `detours', from proofs. However, unlike natural deduction and the sequent calculus, deep-inference formalisms allow a more general kind proofs, called \emph{derivations}. Unlike proofs, derivations are symmetric in the top-down axis. For this reason, `detours' turn out to be more than just the existence of cuts.
 
-Due to the top-down symmetry, and the generalisation of `detours', atomic flows allow us to describe a range of new normal forms. In the special cases where `cut elimination' makes sense, the new normal forms coincide with the traditional ones, as expected.
+\TODO{Geometry}
 
-Conventional wisdom teaches us that in order to achieve normalisation a certain \emph{harmony} between the logical inference rules is needed. Atomic flows discard all information about logical relations and logical rules, so we found it surprising that the information contained in atomic flows is sufficient to design normalisation procedures. The locality provided by deep inference is what makes this simplification possible.
+Atomic flows were motivated by wanting to generalise traditional normalisation, based on elimination of inference rules, to a new notion of normalisation based on elimination of dependencies between inference rule instances. In order to formalise the notion of `detours', atomic flows were defined by discarding from derivations all but the information about causal relations between creation and destruction of atoms, \emph{i.e.}, the information contained in the atomic inference rules.
 
-In fact, the principal advantage of atomic flows is that it allows us to use the graphical language of atomic flows to describe the gist of our results. Once the language is mastered, the technical details of most of our results can easily be reconstructed based on the illustrations alone.
+\TODO{First explain that logic goes into linear rules.}
 
-The thesis is split in three parts. In the first part I introduce the deep-inference formalism we will be using and classical propositional logic. In the second part I define atomic flows, show how flows are related to derivations and define normal forms of derivations in terms of their associated atomic flows. Finally, in the last part I define several normalisation procedures based on rewriting atomic flows.
+We claim that atomic flows give a more general view of normalisation because they provide new normal forms, of which the traditional normal forms are special cases; at the same time they show that less of the available information is needed in order to obtain normalisation. \TODO{And surprisingly: not the logical relations!}
+
+\TODO{No detours}
+
+Due to the top-down symmetry, and the generalisation of `detours', atomic flows allow us to describe a range of new normal forms. In the special cases where `cut elimination' makes sense, the new normal forms coincide with the traditional ones.
+
+Conventional wisdom teaches us that in order to achieve normalisation a certain \emph{harmony} between the linear inference rules is needed. Atomic flows discard all information about logical relations and linear rules, so we found it surprising that the information contained in atomic flows is sufficient to design normalisation procedures. The locality provided by deep inference is what makes this simplification possible.
+
+\TODO{What about harmony? Talk about robustness}
+
+Strictly speaking, our results could be expressed without the use of atomic flows. However, the principal advantage of atomic flows is that it allows us to use a graphical language to describe the gist of our results. Once the language is mastered, the technical details of most of our results can easily be reconstructed based on the illustrations alone. Furthermore, atomic flows provide an intuition for working with normalisation which greatly simplified the discovery of some of our results.
+
+\TODO{Proof identity and beyond.}
+
+\TODO{In these three years we could see that many people saw something in our atomic flows: }
+
+\TODO{Publications: 1+1+3}
+
+\TODO{Some words about conesquences of this work on proof identity and beyond. Computational interpretations, sharing , optimality, impl. comp. comple., modal logic, boxes}
+
+The thesis is split in three parts.
+\begin{itemize}
+\item In the first part I introduce the deep-inference formalism we will be using and classical propositional logic.
+\item In the second part I define atomic flows, show how flows are related to derivations and define normal forms of derivations in terms of their associated atomic flows.
+\item Finally, in the last part I define several normalisation procedures based on rewriting atomic flows.
+\end{itemize}
