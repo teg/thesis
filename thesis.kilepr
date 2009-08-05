@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1 beta1
-lastDocument=thesis.tex
+lastDocument=introduction.tex
 masterDocument=thesis.tex
 name=thesis
 pkg_extIsRegExp=false
@@ -117,12 +117,12 @@ order=0
 
 [item:introduction.tex]
 archive=true
-column=0
+column=380
 encoding=UTF-8
 highlight=LaTeX
-line=0
+line=24
 open=true
-order=1
+order=0
 
 [item:normal_forms.tex]
 archive=true
@@ -167,7 +167,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=0
 open=true
-order=0
+order=1
 
 [item:transformations.tex]
 archive=true
