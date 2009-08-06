@@ -2,7 +2,7 @@
 
 \section{Extracting Flows from Derivations}\label{section:ExtractingFlowsFromDerivations}
 
-We now define the mapping from derivations to atomic flows. As we said, the idea is that structural rule instances map to the respective atomic-flow vertices, and the edges trace the atoms between rule instances. We first state a fact, whose proof is immediate.
+We now define the mapping from derivations to atomic flows. As we said, the idea is that structural rule instances map to the respective atomic-flow vertices, and the edges trace the atom occurrences between rule instances. We first state a fact, whose proof is immediate.
 
 %------------------------------------------------
 \begin{proposition}\label{proposition:FlowUnique}
@@ -143,10 +143,10 @@ Figure~\vref{figure:ExampleAtomicFlows} has three examples of derivations and th
                                      {}
                                      {\fff}
                                      {\vls(\GR{a}.\RD{\bar a})}
-                              .
+                              \;.\;
                               \ttt]}
                          {\vls([\GR{a}.\ttt].\RD{\bar a})}
-                  \;\;\;.
+                  \;\;.\;\;
                    \ttt
                   ]                                            }  {
 \vlin\med{}{\vls([\GR{a}.\ttt].[\ttt.\RD{\bar a}])             } {
@@ -156,30 +156,30 @@ Figure~\vref{figure:ExampleAtomicFlows} has three examples of derivations and th
 %-------------------
 \vlinf=
       {}
-      {\vls(\DO{a}.\vlinf{}{}\fff{\vls(\PR{a}.\MG{\bar a})})}      
+      {\vls(\DO{a}\;.\;\vlinf{}{}\fff{\vls(\PR{a}.\MG{\bar a})})}      
       {\vlsbr(\vlinf\swi
                     {}
                     {\vls[\vlinf{}
                                 {}
                                 \fff
                                 {\vls(\RD{a}
-                                     .\vlinf{}
+                                     \;.\;\vlinf{}
                                             {}
                                             {\RS{\bar a}}
                                             {\vls[\GR{\bar a}.\YO{\bar a}]}
                                      )}
-                         \;\;\;.
+                         \;\;.\;\;
                          \vlinf{}{}{\vls(\DO{a}.\PR{a})}{\SG{a}}
                          ]}
                     {\vls(\RD{a}
-                         .[\GR{\bar a}
-                          .\vlinf{}
+                         \;.\;[\GR{\bar a}
+                          \;.\;\vlinf{}
                                  {}
                                  {\vls[\YO{\bar a}.\SG{a}]}
                                  \ttt
                           ]
                          )}
-            \;\;\;.
+            \;\;\;\;.\;\;\;\;
             \MG{\bar a}
             )}
 \qquad&
@@ -188,9 +188,9 @@ Figure~\vref{figure:ExampleAtomicFlows} has three examples of derivations and th
            {}
            {\vls([\RS{a}.\YO{b}].[\GR{a}.\DO{b}])}
            {\vls[\vlinf{}{}{\vls(\RS{a}.\GR{a})}{\RD{a}}
-                .{\vlinf{}{}{\vls(\YO{b}.\DO{b})}{\PR{b}}}
+                \;.\;{\vlinf{}{}{\vls(\YO{b}.\DO{b})}{\PR{b}}}
                 ]}
-    \;\;\;.
+    \;\;.\;\;
      \vlinf{}{}{\vls(\PW{a}.\SG{a})}{\MG{a}}
     )
 \\
@@ -219,7 +219,7 @@ Figure~\vref{figure:ExampleAtomicFlows} has three examples of derivations and th
 (12,0)*{\afacucol{}{}{}{}{}{}{Periwinkle}{SpringGreen}{Magenta}}}
 \end{array}
 \]
-\caption{Examples of derivations in the calculus of structures, their translation into the functorial calculus, and the atomic flows associated with the latter.}
+\caption{Examples of derivations in the calculus of structures (top row), their translation into the functorial calculus (middle row), and the atomic flows associated with the latter (bottom row).}
 \label{figure:ExampleAtomicFlows}
 \end{figure}
 

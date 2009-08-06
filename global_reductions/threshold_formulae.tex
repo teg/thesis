@@ -1,16 +1,36 @@
 \subsection{Threshold Formulae}\label{subsection:ThresholdFormulae}
 
-\TODO{Change this introduction}
+Recently, Je\v r\'abek showed that cut-free $\SKS$ proofs can be constructed in quasipolynomial time from $\SKS$ proofs with cut \cite{Jera::On-the-C:kx}. This is a very surprising result because received wisdom suggests that cut elimination requires exponential-time normalisation, as is the case in Gentzen proof systems. Je\v r\'abek obtained his result by relying on a construction over threshold functions by Atserias, Galesi and Pudl\'ak, in the monotone sequent calculus \cite{AtseGalePudl:02:Monotone:yu}. We note that the monotone sequent calculus specifies a weaker logic than propositional logic because negation is not freely applicable.
 
-We present here the main construction of this paper, \emph{i.e.}, a class of derivations $\Gammasf$ that only depend on a given set of atoms and that allow us to normalise any proof containing those atoms. The complexity of the $\Gammasf$ derivations dominates the complexity of the normal proof, and is due to the complexity of certain `threshold formulae', on which the $\Gammasf$ derivations are based. The $\Gammasf$ derivations are constructed in Definition~\vref{definition:ThresholdDerivations}; this directly leads to Theorem~\vref{theorem:ThresholdDerivations}, which states a crucial property of the $\Gammasf$ derivations and which is the main result of this section.
+The technique that Je\v r\'abek adopts is indirect because normalisation is performed over proofs in the sequent calculus, which are, in turn, related to deep-inference ones by polynomial simulations, originally studied in \cite{Brun:06:Deep-Inf:qy}.
 
-In the following, $\lfloor x\rfloor$ denotes the maximum integer $n$ such that $n\le x$.
+In \emph{Quasipolynomial Normalisation in Deep Inference via Atomic Flows and Threshold Formulae}, we demonstrated again Je\v r\'abek's result, still by adopting, essentially, the Atserias-Galesi-Pudl\'ak technique, and we improved on that as follows:
+\begin{enumerate}
+%---------------------------------------
+\item we significantly simplified the technicalities associated with the use of threshold functions, in particular the formulae and derivations that we adopted were simpler than those in \cite{AtseGalePudl:02:Monotone:yu};
+%---------------------------------------
+\item our cut-elimination procedure was direct, \emph{i.e.}, it is internal to system $\SKS$.
+%---------------------------------------
+\end{enumerate}
 
-\TODO{Define threshold function.}
+In this section I generalise those results in the following two ways:
+\begin{enumerate}
+%---------------------------------------
+\item they are extended from cut elimination to streamlining;
+%---------------------------------------
+\item we observe, in Remark~\vref{remark:FromGammasToThresholds}, a criterion on the kind of formulae we need to make the procedure work, which does not necessarily restrict us to threshold formulae.
+%---------------------------------------
+\end{enumerate}
+
+As Atserias, Galesi and Pudl\'ak argue, there is no apparent reason for this normalisation problem not to be polynomial. The difficulty in obtaining polynomiality resides in finding a suitable class of derivations as described in Remark~\ref{remark:FromGammasToThresholds}.
+
+We present here the main construction of this section, \emph{i.e.}, a class of derivations $\Gammasf$ that adhere to the condition of Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}. The complexity of the $\Gammasf$ derivations dominates the complexity of the streamlined proof, and is due to the complexity of certain threshold formulae, on which the $\Gammasf$ derivations are based. The $\Gammasf$ derivations are constructed in Definition~\vref{definition:ThresholdDerivations}; this directly leads to Theorem~\vref{theorem:ThresholdDerivations}, which states a crucial property of the $\Gammasf$ derivations and which is the main result of this section.
+
+Threshold formulae realise boolean threshold functions, which are defined as boolean functions that are true if and only if at least $k$ of $n$ inputs are true (see \cite{Wege:87:The-Comp:vn} for a thorough reference on threshold functions).
 
 There are several ways of encoding threshold functions into formulae, and the problem is to find, among them, an encoding that allows us to obtain Theorem~\vref{theorem:ThresholdDerivations}. Efficiently obtaining the property stated in Theorem~\vref{theorem:ThresholdDerivations} crucially depends also on the proof system we adopt.
 
-Threshold formulae realise boolean threshold functions, which are defined as boolean functions that are true if and only if at least $k$ of $n$ inputs are true (see \cite{Wege:87:The-Comp:vn} for a thorough reference on threshold functions). 
+In the following, $\lfloor x\rfloor$ denotes the maximum integer $n$ such that $n\le x$.
 
 The following class of threshold formulae, which we found to work for system $\SKS$, is a simplification of the one adopted in \cite{AtseGalePudl:02:Monotone:yu}.
 

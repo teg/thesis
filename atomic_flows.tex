@@ -2,7 +2,7 @@
 %====================
 \chapter{Atomic Flows}
 
-In this chapter we introduce the main contribution of this thesis, a geometric, bureaucracy-free formalism, called `atomic flows'. An atomic flow is a directed graph obtained from a derivation by only retaining information about the creation and destruction of atom occurrences. Atomic flows are, essentially, specialised Buss flow graphs \cite{Buss:91:The-Unde:uq,Carb:97:Interpol:fk}. Notably, the atomic flow of a derivation completely disregards all the logical relations and associated inference steps; so, an atomic flow is not a derivation, but only a very abstract representation of it.
+In this chapter we introduce the main contribution of this thesis, a geometric, bureaucracy-free formalism, called `atomic flows'. An atomic flow is a directed graph obtained from a derivation by only retaining information about the creation and destruction of atom occurrences. Atomic flows are, essentially, specialised Buss flow graphs \cite{Buss:91:The-Unde:uq,Carb:97:Interpol:fk}. Notably, the atomic flow of a derivation completely disregards all the logical relations and associated inference rule instances; so, an atomic flow is not a derivation, but only a very abstract representation of it.
 
 Atomic flows have much in common with proof nets \cite{Stra:05:From-Dee:yb}. However, we prove that, no matter how we freely build an atomic flow (as opposed to a proof net structure), the flow is associated with some derivation. So, atomic flows are always `sequentialisable', in proof-net parlance. In fact, atomic flows carry much less information than derivations do, because they do not keep track of the logical relations between the atoms they trace, only their structural information is retained (in the sense of structural rules, as opposed to logical ones).
 
@@ -142,7 +142,7 @@ The polarity assignment condition (\ref{definition:AtomicFlow:item:PolarityAssig
    \atomicflow{(0,0)*{\afawu{}{}{}{}{}{}}}$}
 
 \begin{notation}\label{notation:LabelsOnBoxes}
-Let $\phi$ be an atomic flow with upper edges $\boldsymbol\epsilon=\{\epsilon_1,\dots,\epsilon_n\}$ and lower edges $\boldsymbol\iota=\{\iota_1,\dots,\iota_m\}$, we then represent it as
+Let $\phi$ be an atomic flow with upper edges $\boldsymbol\epsilon=\epsilon_1,\dots,\epsilon_n$ and lower edges $\boldsymbol\iota=\iota_1,\dots,\iota_m$, we then represent it as
 \[
 \atomicflow{
 (-3, 6)*{\afvju4{\epsilon_1}{}};
@@ -182,6 +182,7 @@ do not contain $\aid$, $\aiu$, $\awd$, $\awu$ vertices, and the flow to the righ
 
 In general, we represent atomic flows as directed-graph diagrams, except that the special vertices $\top$ and $\bot$ are not shown, and the labels of the vertices are explicitly shown as graphical elements. When we refer to the vertices of an atomic flow, we do not include $\top$ and $\bot$. Sometimes we identify vertices with their labels. 
 \end{notation}
+%-------------
 
 %--------------
 \begin{example}
@@ -287,6 +288,47 @@ such that, for every $\epsilon$ in $E_1$,
 \end{itemize}
 \end{definition}
 %---------------
+
+%---------------
+\begin{notation}
+We extend the double-line notation to collections of isomorphic flows. For example, for $n\ge0$; $\boldsymbol{\epsilon}=\epsilon_1,\dots,\epsilon_n$; $\boldsymbol{\epsilon'}=\epsilon'_1,\dots,\epsilon'_n$; and $\boldsymbol{\epsilon''}=\epsilon''_1,\dots,\epsilon''_n$, the following diagrams represent the same flow:
+\[
+\atomicflow
+{
+(-9,0)*{\invisiblemark};
+(-6,0)*{\afvjum8{\boldsymbol{\epsilon}}{}};
+(-4,4)*{\afaidnw{}{}};
+( 0,0)*{\afacdm{}{}{}{}{\boldsymbol{\epsilon'}}{}};
+( 4,4)*{\afaidnw{}{}};
+( 6,0)*{\afvjum8{}{\boldsymbol{\epsilon''}}};
+( 9,0)*{\invisiblemark};
+}
+\quad\mbox{and}\quad
+\atomicflow
+{
+(-9,0)*{\invisiblemark};
+(-6,0)*{\afvju8{\epsilon_1}{}};
+(-4,4)*{\afaidnw{}{}};
+( 0,0)*{\afacd{}{}{}{}{\epsilon'_1}{}};
+( 4,4)*{\afaidnw{}{}};
+( 6,0)*{\afvju8{}{\epsilon''_1}};
+( 9,0)*{\invisiblemark};
+}
+\quad\cdots\quad
+\atomicflow
+{
+(-9,0)*{\invisiblemark};
+(-6,0)*{\afvju8{\epsilon_n}{}};
+(-4,4)*{\afaidnw{}{}};
+( 0,0)*{\afacd{}{}{}{}{\epsilon'_n}{}};
+( 4,4)*{\afaidnw{}{}};
+( 6,0)*{\afvju8{}{\epsilon''_n}};
+( 9,0)*{\invisiblemark};
+}\quad.
+\]
+\end{notation}
+%---------------
+
 
 %-----------------------------------------------------
 \begin{notation}\label{notation:LabelsIsomorphicFlows}
@@ -432,7 +474,7 @@ In addition, the flow has the paths and $\ai$-paths obtained from the shown ones
 
 %-------------------------------------------
 \begin{definition}\label{definition:Subflow}
-We say that the flow $\phi_1=(V_1,E_1,\eta_1,\up_1,\lo_1)$ is a \emph{subflow}\index{subflow} of $\phi_2=(V_2,E_2,\eta_2,\up_2,\lo_2)$, if
+We say that the flow $\phi_1=(V_1,E_1,\eta_1,\up_1,\lo_1)$ is a \emph{subflow}\index{subflow} of\newline $\phi_2=(V_2,E_2,\eta_2,\up_2,\lo_2)$, if
 \begin{itemize}
 \item $V_1\subset V_2$;
 \item $E_1\subset E_2$;

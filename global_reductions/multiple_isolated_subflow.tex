@@ -1,5 +1,14 @@
-\newcommand{\Gammasf}{\mathsf\Gamma}
+\newcommand{\MISR}{\mathsf{MISR}}
 
+With the operator $\ISR$ we can produce weakly streamilend derivations with respect to one atom at a time, with the operator $\PB$ we can produce weakly streamlined derivations with respect to two dual atoms in parallell. In this section we see an operator, $\MISR_n$, for every $n>0$, which is a generalisation of $\ISR$, that can produce a weakly streamlined derivation with respect to $n$ number of atoms in parallell, as long as they are pairwise non-dual.
+
+We will see later how a derivation containing $2n$ atoms can be weakly streamlined by two applications of $\Simpl$ and two applications of $\MISR_n$.
+
+The operator is defined in terms of the following flow reduction. Unlike the flow reductions of the preceeding sections, we here present a reductions which depends on several parameters.
+
+In Subsection~\vref{subsection:ThresholdFormulae}, we present one possible combination of valid parameters, which yeields quasipolynomial streamlining. We conjecture that by finding different parameters we will be able to obtain more efficient versions of this reduction. In particular, we hope to be able to obtain polynomial streamlining.
+
+\newcommand{\Gammasf}{\mathsf\Gamma}
 %----------------------------------
 \newcommand{\frmis}{{\mathsf{mis}}}
 \begin{definition}\label{definition:MultipleIsolatedSubflowsRemoval}
@@ -149,7 +158,7 @@ where, for $1\le i\le n$, $l_i$ is the number of atom occurrences in $\gamma_{k,
 %---------------
 
 \begin{remark}
-TODO
+The reduction ${\to_{\frmis_n}}$ denoted as if it only depends on $n$, this is a misuse of notation, and we will take it for granted that we also have the other parameters whenever we use ${\to_{\frmis_n}}$.
 \end{remark}
 
 %--------------------------------------------------------------
@@ -377,7 +386,6 @@ In the following we refer to the figure in Definition~\ref{definition:MultipleIs
 %----------
 
 %--------------------------------
-\newcommand{\MISR}{\mathsf{MISR}}
 \begin{definition}\label{definition:MultipleIsolatedSubflowsRemover}
 For every $n>0$, given the atoms, formulae and derivations described in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}, the \emph{Multiple Isolated Subflow Remover}\index{Multiple Isolated Subflows Remover!operator}, $\MISR_n$, is an operator whose arguments are atoms $a_1$, $\dots$, $a_n$ (that, without loss of generality, we assume coincide with the atoms given in Definition~\ref{definition:MultipleIsolatedSubflowsRemoval}), and a derivation $\Phi$ that is in simple form with respect to $a_1$, $\dots$, $a_n$. If $n=1$ and $\Phi$ is weakly streamlined with respect to $a_1$, then $\MISR_1(\Phi,a_1)=\Phi$; if $n>1$ and, for some $1\le i\le n$, $\Phi$ is weakly streamlined with respect to $a_i$, then $\MISR(\Phi,a_1,\dots,a_n)=\MISR_{n-1}=(\Phi,a_1,\dots,a_{i-1},a_{i+1},\dots,a_n)$; otherwise, consider the following $\ai$-decomposed form of $\Phi$:
 \[
@@ -674,12 +682,12 @@ If $\Phi$ is weakly streamlined to some atom from $a_1$, $\dots$, $a_n$, the res
 
 %--------------------------------------------------
 \begin{remark}\label{remark:FromGammasToThresholds}
-Given the atoms, formulae and derivations described in Definition~\ref{definition:MultipleIsolatedSubflowsRemoval}, it follows from an argument by induction on $k$, that, for every $1\le i\le n$ and every $0\le k\le N$, the formula $\gamma_{k,i}$ is
+Given the atoms, formulae and derivations described in Definition~\ref{definition:MultipleIsolatedSubflowsRemoval}, we can prove by induction on $k$, that, for every $1\le i\le n$ and every $0\le k\le N$, the formula $\gamma_{k,i}$ is
 \begin{itemize}
  \item true if at least $k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true; and
  \item false if at least $N-k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are false.
 \end{itemize}
-It follows by contradiction that $N\ge n$. Furthermore, if $N=n$, we know that $\gamma_{k,i}$ is true if and only if at least $k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true. This would make $\gamma_{k,i}$ a \emph{threshold formula}\index{threshold!formulae}, as we will se in the next section.
+It follows by contradiction that $N\ge n$. Furthermore, if $N=n$, we know that $\gamma_{k,i}$ is true if and only if at least $k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true. This makes $\gamma_{k,i}$ a \emph{threshold formula}\index{threshold!formulae}, as we will se in the next section.
 \end{remark}
 %-----------
 

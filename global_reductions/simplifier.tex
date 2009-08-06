@@ -1,3 +1,5 @@
+Consider an atomic flow $\phi'$ with polarity assignemnt $\pi$, such that $\phi$ is the subflow of $\phi'$ containing all the edges with a positive polarity assignment. We can observe that $\phi$ contains four types of paths: 1) paths from $\top$ to $\bot$; 2) paths from an interaction vertex to $\bot$; 3) paths from $\top$ to a cut vertex; and 4) paths from an interaction vertex to a cut vertex. We can turn $\phi'$ into simple form with respect to $\pi$ if we can make sure that no edge belongs to both a path of type 1) and a path of type 4). In the following reduction, we acheive this by making four copies of $\phi$ each of which only contains one of the above types of paths.
+
 %--------------------------------
 \newcommand{\frfb}{{\mathsf{sf}}}
 \begin{definition}\label{definition:FourBoxes}
@@ -109,13 +111,8 @@ We define the reduction $\to_\frfb$ (where $\frfb$ stands for \emph{simple form}
 %------------------------------------------------
 \begin{remark}\label{remark:RestrictionFourBoxes}
 The reduction $\to_\frfb$ would still be sound if we removed the restriction on the flows $\phi$ and $\psi$ in Definition~\ref{definition:FourBoxes}. However, such a reduction would no longer correspond to the intuition described above.
-
-\TODO{Give intuition.}
-
 \end{remark}
 %-----------
-
-\TODO{Alessio: Added statement about size.}
 
 %--------------------------------------------
 \begin{theorem}\label{theorem:SoundFourBoxes}

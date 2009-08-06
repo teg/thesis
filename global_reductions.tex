@@ -1,21 +1,13 @@
 \chapter{Global Reductions}\label{chapter:GlobalReductions}
 
 
-We control normalisation of derivations by manipulating atomic flows, in the sense of graph rewriting. There are two kinds of flow reductions: global and local ones. In global reductions, the entire flow is rewritten: normally, two or more slightly altered copies of a flow are connected together. In local reductions, a bounded subflow in a flow is substituted by another subflow that fits in the context.
+In this and the next chapter we see the second use of atomic flows: Controlling normalisation of derivations. Conventional wisdom teaches us that normalisation is a delicate property, and that a careful design of inference rules is necessary in order to obtain it. Atomic flows were designed to describe normal forms, by removing a lot of information about the inference rules, it is therefore surprising that they contain enough information to design normalisation procedures.
 
+There are two kinds of flow reductions: global and local ones. In global reductions, the entire flow is rewritten: normally, two or more slightly altered copies of a flow are connected together. In local reductions, a bounded subflow in a flow is substituted by another subflow that fits in the context.
 
-This chapter is dedicated to the most challenging part of normalisation, obtaining weakly streamlined derivations.
+This chapter is dedicated to the most challenging part of normalisation: obtaining weakly streamlined derivations through global reductions. The process is non-confluent, and at first glance it increases the size of derivations exponentially. However, a second surprise was the fact that we are able to design procedures for weakly streamlining which only grow derivations quasipolynomially.
 
-\begin{itemize}
-\item difficult because we copy unbounded portions of our derivations
-\item which makes termination difficult
-\end{itemize}
-
-In addition to describing our normal forms, it turns out that the information contained in atomic flows are all that is needed in order to perform normalisation.
-
-We will define several `atomic flow reductions' which can be combined freely in order to normalise.
-
-\TODO{Polarity assignment: `to' -> `for'.}
+We will define several `atomic flow reductions' which can be combined in different ways in order to obtain normalisation. Since we aim to produce derivations on normal forms, and not only their atomic flows, we find it convenient to define \emph{operators} on derivations in terms of the flow reductions. It is important to note that we could have performed all the procedures purely in terms of atomic flows. The final results about derivations would follow from the `soundness' of the flow reductions. We chose to be a bit more explicit and provide the derivations directly.
 
 %-------------------------------------------------
 \begin{definition}\label{definition:FlowReduction}
@@ -38,21 +30,17 @@ Given a reduction $R$ and two atomic flows $\phi$ and $\psi$, such that $\phi\ma
 \end{remark}
 %-----------
 
-\TODO{Read:}
-
-%-------------
-\begin{remark}
-Given derivations $\Phi$ and $\Psi$, with atomic flows $\phi$ and $\psi$, respectively; and a reduction ${\mathrel R}$, such that $\phi\mathrel{R}\psi$; then the definition of reduction ensures the atom occurrences in the premiss (resp., conclusion) of $\Phi$ and $\Psi$ coincide, and that the mapping from atom occurrences to edges is preserved by the reduction. In the next definition we require the premisses (resp., conclusions) to be equal.
-\end{remark}
-%-----------
-
 %--------------------------------------------------
 \begin{definition}\label{definition:SoundRedcution}
-A reduction $R$ is \emph{sound}\index{reduction!sound} if, for every $\phi$ and $\psi$, such that $\phi\mathrel{R}\psi$, and for every derivation $\Phi$ with atomic flow $\phi$, there is a derivation $\Psi$ with atomic flow $\psi$ such that $\Phi$ and $\Psi$ have the same premiss and conclusion; in this case we write $\Phi\mathrel{R}\Psi$.
+A reduction $\mathrel{R}$ is \emph{sound}\index{reduction!sound} if, for every $\phi$ and $\psi$, such that $\phi\mathrel{R}\psi$, and for every derivation $\Phi$ with atomic flow $\phi$, there is a derivation $\Psi$ with atomic flow $\psi$ such that $\Phi$ and $\Psi$ have the same premiss and conclusion; in this case we write $\Phi\mathrel{R}\Psi$.
 \end{definition}
 %---------------
 
-\TODO{Explain that we force the contractum to be unique (by convention).}
+%-----------------
+\begin{convention}
+We provide constructive soundness proofs for every reduction in this thesis, so from now on, for any reduction $\mathrel{R}$, when we write $\Phi\mathrel{R}\Psi$, we mean that $\Psi$ is the derivation obtained form $\Phi$ in the soundness proof of $\mathrel{R}$.
+\end{convention}
+%---------------
 
 %------------------------------------------------------------
 \begin{proposition}\label{proposition:DerivationSubstitution}
@@ -104,8 +92,6 @@ We can proceed by structural induction on $\Phi$. For every formula in $\Phi$ we
 \end{proof}
 %----------
 
-\TODO{Put reference.}
-
 %---------------
 \begin{notation}
 The derivation $\Psi$ obtained in the proof of Propostion~\vref{proposition:DerivationSubstitution} is denoted $\Phi\{a^\phi/\gamma\}$.
@@ -118,12 +104,10 @@ The notion of substitution can be extended to allow $\phi$ to contain interactio
 \end{remark}
 %-----------
 
-\TODO{Let $\boldsymbol\epsilon$ be a sequence, check if this makes our life easier, in particular we might not need the second part of the next convention:}
-
 %-----------------
 \begin{convention}
 To avoid ambiguity in Definitions~\vref{definition:FourBoxes}, \vref{definition:IsolatedSubflowRemoval}, \vref{definition:PathBreaker} and \vref{definition:MultipleIsolatedSubflowsRemoval} we have establish the following convention:
-Let $\boldsymbol\epsilon=\{\epsilon_1,\dots,\epsilon_n\}$, $\boldsymbol\iota=\{\iota_1,\dots,\iota_m\}$, $\boldsymbol{\epsilon'}=\{\epsilon'_1,\dots,\epsilon'_n\}$ and $\boldsymbol{\iota'}=\{\iota'_1,\dots,\iota'_m\}$, then, when we write
+Let $\boldsymbol\epsilon=\epsilon_1,\dots,\epsilon_n$, $\boldsymbol\iota=\iota_1,\dots,\iota_m$, $\boldsymbol{\epsilon'}=\epsilon'_1,\dots,\epsilon'_n$ and $\boldsymbol{\iota'}=\iota'_1,\dots,\iota'_m$, then, when we write
 \[
 \atomicflow
 {
@@ -199,76 +183,6 @@ we mean
 ( 10, 0)*{\invisiblemark};
 }
 \quad,
-\]
-respectively. Furthermore, in Definition~\ref{definition:FourBoxes}, when we write
-\[
-\atomicflow
-{
-(-9,0)*{\invisiblemark};
-(-6,0)*{\afvjum8{f_2(\boldsymbol{\epsilon})}{}};
-(-4,4)*{\afaidnw{}{}};
-( 0,0)*{\afacdm{}{}{}{}{g(\boldsymbol{\epsilon'})}{}};
-( 4,4)*{\afaidnw{}{}};
-( 6,0)*{\afvjum8{}{f_4(\boldsymbol{\epsilon})}};
-( 9,0)*{\invisiblemark};
-}
-\quad\mbox{and}\quad
-\atomicflow
-{
-(-9, 0)*{\invisiblemark};
-(-6, 0)*{\afvjdm8{f_3(\boldsymbol{\iota})}{}};
-(-4,-6)*{\afaiunw{}{}};
-( 0, 0)*{\afacum{}{}{}{}{g(\boldsymbol{\iota'})}{}};
-( 4,-6)*{\afaiunw{}{}};
-( 6, 0)*{\afvjdm8{}{f_4(\boldsymbol{\iota})}};
-( 9,0)*{\invisiblemark};
-}\quad,
-\]
-we mean
-\[
-\atomicflow
-{
-(-9,0)*{\invisiblemark};
-(-6,0)*{\afvju8{f_2(\epsilon_1)}{}};
-(-4,4)*{\afaidnw{}{}};
-( 0,0)*{\afacd{}{}{}{}{g(\epsilon_1')}{}};
-( 4,4)*{\afaidnw{}{}};
-( 6,0)*{\afvju8{}{f_4(\epsilon_1)}};
-( 9,0)*{\invisiblemark};
-}
-\quad\cdots\quad
-\atomicflow
-{
-(-9,0)*{\invisiblemark};
-(-6,0)*{\afvju8{f_2(\epsilon_n)}{}};
-(-4,4)*{\afaidnw{}{}};
-( 0,0)*{\afacd{}{}{}{}{g(\epsilon_n')}{}};
-( 4,4)*{\afaidnw{}{}};
-( 6,0)*{\afvju8{}{f_4(\epsilon_n)}};
-( 9,0)*{\invisiblemark};
-}
-\quad\mbox{and}\quad
-\atomicflow
-{
-(-9, 0)*{\invisiblemark};
-(-6, 0)*{\afvjd8{f_3(\iota_1)}{}};
-(-4,-6)*{\afaiunw{}{}};
-( 0, 0)*{\afacu{}{}{}{}{g(\iota_1')}{}};
-( 4,-6)*{\afaiunw{}{}};
-( 6, 0)*{\afvjd8{}{f_4(\iota_1)}};
-( 9,0)*{\invisiblemark};
-}
-\quad\cdots\quad
-\atomicflow
-{
-(-9, 0)*{\invisiblemark};
-(-6, 0)*{\afvjd8{f_3(\iota_m)}{}};
-(-4,-6)*{\afaiunw{}{}};
-( 0, 0)*{\afacu{}{}{}{}{g(\iota_m')}{}};
-( 4,-6)*{\afaiunw{}{}};
-( 6, 0)*{\afvjd8{}{f_4(\iota_m)}};
-( 9,0)*{\invisiblemark};
-}\quad,
 \]
 respectively. In other words, edges are not connected in unexpected ways.
 \end{convention}

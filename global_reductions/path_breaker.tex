@@ -1,6 +1,10 @@
-\TODO{Add labels to edges}
+\newcommand{\PB}{\mathsf{PB}}
 
 \TODO{Make sure we don't join $a$ with $\bar a$.}
+
+Given a derivation $\Phi$ and an atom $a$, the operator, $\PB$, defined in this section produces a derivation with the same premiss and conclusion as $\Phi$, which is weakly streamlined with respect to both $a$ and $\bar a$. This operator is a strict improvement over $\ISR$, since it does not require the input derivation to be in simple form, and it deals with the dual atoms in parallell. We will see later how a derivation containing $n$ atoms can be weakly streamlined by $n/2$ applications of $\PB$.
+
+The operator is defined in terms of the following flow reduction.
 
 %--------------------------------
 \newcommand{\frpb}{{\mathsf{pb}}}
@@ -95,24 +99,39 @@ We define the reduction $\to_\frpb$ (where $\frpb$ stands for \emph{path breaker
 "A"+(11,-11)*{\copy\contrdown};
 % top boxes
 (0,0)="A";
+"A"+(-8,5.9)*{\aflabelright{f_1(\boldsymbol\epsilon)}};
 "A"+(-5,  0)*{\affr{8}{8}};
 "A"+(-6,  2)*{\aflabelright{f_1(\phi)}};
+"A"+(-8,-5.3)*{\aflabelright{f_1(\boldsymbol\iota)}};
+%
+"A"+(8,5.9)*{\aflabelleft{g_1(\boldsymbol{\epsilon'})}};
 "A"+( 5,  0)*{\affr{8}{8}};
 "A"+( 4,  2)*{\aflabelright{g_1(\psi)}};
+"A"+(8,-5.3)*{\aflabelleft{g_1(\boldsymbol{\iota'})}};
 % middle boxes
 "A"+"D"="A";
 "A"+(9.5,10)*{\afcjrm{3}{12}};
 "A"+(-9.5,-10)*{\afcjrm{3}{12}};
+"A"+(-8,5.9)*{\aflabelright{f_2(\boldsymbol\epsilon)}};
 "A"+(-5, 0)*{\affr{8}{8}};
 "A"+(-6, 2)*{\aflabelright{f_2(\phi)}};
+"A"+(-8,-5.3)*{\aflabelright{f_2(\boldsymbol\iota)}};
+%
+"A"+(8,5.9)*{\aflabelleft{g_2(\boldsymbol{\epsilon'})}};
 "A"+( 5, 0)*{\affr{8}{8}};
 "A"+( 4, 2)*{\aflabelright{g_2(\psi)}};
+"A"+(8,-5.3)*{\aflabelleft{g_2(\boldsymbol{\iota'})}};
 % bottom boxes
 "A"+"D"="A";
+"A"+(-8,5.9)*{\aflabelright{f_3(\boldsymbol\epsilon)}};
 "A"+(-5, 0)*{\affr{8}{8}};
 "A"+(-6, 2)*{\aflabelright{f_3(\phi)}};
+"A"+(-8,-5.3)*{\aflabelright{f_3(\boldsymbol\iota)}};
+%
+"A"+(8,5.9)*{\aflabelleft{g_3(\boldsymbol{\epsilon'})}};
 "A"+( 5, 0)*{\affr{8}{8}};
 "A"+( 4, 2)*{\aflabelright{g_3(\psi)}};
+"A"+(8,-5.3)*{\aflabelleft{g_3(\boldsymbol{\iota'})}};
 }\quad,
 \]
 where the evidenced interaction and cut vertices belong to the same connected component.
@@ -228,7 +247,7 @@ $}
  } 
 }\qquad.
 \]
-We know that the size of $\Phi'$ depends at most cubically on the size of $\Phi$ by Theorem~\vref{theorem:aiDecomposedForm}, and that the size of $\Psi$ depends at most quadratically on the size of $\alpha$ and $\beta$ by Lemma~\vref{lemma:GenericContraction}, so $\Psi$ depends polynomially on the size of $\Phi$.
+We know that the size of $\Phi'$ depends at most cubically on the size of $\Phi$ by \newline Theorem~\vref{theorem:aiDecomposedForm}, and that the size of $\Psi$ depends at most quadratically on the size of $\alpha$ and $\beta$ by Lemma~\vref{lemma:GenericContraction}, so $\Psi$ depends polynomially on the size of $\Phi$.
 \end{proof}
 %----------
 
@@ -257,7 +276,6 @@ In the following we refer to the figure in Definition~\ref{definition:PathBreake
 %----------
 
 %----------------------------
-\newcommand{\PB}{\mathsf{PB}}
 \begin{definition}\label{definition:DerPathBreaker}
 The \emph{Path Breaker}\index{Path Breaker!operator}, $\PB$, is an operator whose arguments are an atom $a$ and a derivation $\Phi$. If $\Phi$ is weakly streamlined with respect to both $a$ and $\bar a$, then $\PB(\Phi,a)=\Phi$; otherwise, consider the following $\ai$-decomposed form of $\Phi$:
 \[
@@ -476,7 +494,7 @@ Given a derivation $\Phi$ where the atoms $a_1$ and $a_2$ occur, such that the a
 
 \TODO{Alessio said: `\emph{This is a long shot. Perhaps you can argue a bit more and more clearly about the red edges. Not clear what the latter and former subflows are.}'.}
 
-where all the edges in $\phi_1$ are mapped to from $a_1$ and all the edges in $\phi_2$ are mapped to from $a_2$, and there are no edges in $\psi$ that are mapped to from $a_1$ or $a_2$, then the atomic flow associated with $\PB((\Phi,a_1),a_2)$ is
+where all the edges in $\phi_1$ are mapped to from $a_1$ and all the edges in $\phi_2$ are mapped to from $a_2$, and there are no edges in $\psi$ that are mapped to from $a_1$ or $a_2$, then the atomic flow associated with $\PB((\Phi,a_1),a_2)$ is the juxtaposition of the following three flows (where indications of the different isomorphisms are left out):
 
 \TODO{adjust labels}
 
@@ -845,6 +863,6 @@ where all the edges in $\phi_1$ are mapped to from $a_1$ and all the edges in $\
 "A"+(10,-14.5)*{\afvjm{21}};
 }\quad.
 \]
-By comparing the subflow containing $\phi_1$ with the subflow containing $\phi_2$ above, we can see why the procedure is non-confluent: We could modify our procedure in several ways to make the two subflows more similar. However, we can see no way of avoiding the fact that there are more paths passing through the edges marked in red in the latter than in the former subflow.
+We marked some edges in red to point out the fundamental difference between the subflows containing $\phi_1$ and the subflows containing $\phi_2$
 \end{example}
 %------------

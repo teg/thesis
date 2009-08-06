@@ -1,20 +1,14 @@
 \chapter{Normal Forms}\label{chapter:NormalForms}
 
-Intro:
-\begin{itemize}
-\item Sequent Calculus: normal form means `cut free'. Not topological. Syntactic.
-\item To get syntax independence of proofs we need syntax independence of normalisation.
-\item in deep inference we have locality and top-down symmetry.
-\begin{itemize}
-\item locality gives topology; and
-\item symmetry gives generalisation of cut-elimination.
-\end{itemize}
-The minimal ammount of information needed to describe these things: Atomic Flows.
-\end{itemize}
+In this chapter we see the first use of atomic flows, namely to define normal forms of derivations. Traditionally, in Gentzen-style formalisms, a derivation in normal form is a cut-free derivation. The notion of cut-freeness is a syntactic notion, which does not translate nicely to the more general deep-inference formalisms.
 
-Not a big surprise that we can describe this with atomic flows (by design). Later we get the big surprise that we can obtain this using (only) atomic flows.
+In both Gentzen-style formalisms and deep-inference formalisms, the cut can be considered horizontal composition of two proofs. We make two observations: 1) deep-inference formalisms are symmetric in the vertical axis, whereas Gentzen-style formalisms are not; and 2) in order for the cut to be admissible from deep-inference derivations the symmetry must be broken, to correspond to the asymmetry of Gentzen-style formalisms. In particular, the cut is only admissible from proofs and not derivations.
 
-The central idea in this chapter is the notion of \emph{streamlining}, which we express in terms of atomic flows. If we consider identities and weakenings to be the `creators' of atoms, and cuts and coweakening as the `destroyers' of atoms, then an atomic flow is weakly streamlined if no atom is first created and then destroyed. Alternatively, an atomic flow is streamlined if every edge appears in a path to $\top$ or to $\bot$. The shape of a streamlined atomic flow is given in case (\ref{definition:FlowNormalForms:item:Streamlined}) of Definition~\ref{definition:FlowNormalForms}.
+These observations prompted us to look for a generalisation of cut elimination that work for all deep-inference derivations. Furthermore, since we are in the business of designing bureaucracy free formalisms, we wanted normal forms based on geometric notions which would be as syntax independent as possible.
+
+We defined normal forms based on the causal dependency between structural inference rule instances. Atomic flows contain (by design) exactly the information needed in order to define normal forms in this way.
+
+We call our generalisation of cut elimination \emph{streamlining} and we describe it in terms of atomic flows. Intuitively, if we consider identities and weakenings to be the `creators' of atom occurrences, and cuts and coweakening as the `destroyers' of atom occurrences, then an atomic flow is streamlined if no atom is first created and then destroyed. The shape of a streamlined atomic flow is given in case (\ref{definition:FlowNormalForms:item:Streamlined}) of Definition~\ref{definition:FlowNormalForms}.
 
 The most challenging aspect of streamlining is the elimination of paths from interaction to cut vertices. For this reason, we define the notion of \emph{weakly streamlined} atomic flows, in case (\ref{definition:FlowNormalForms:item:WeaklyStreamlined}) of Definition~\ref{definition:FlowNormalForms}. An atomic flow is weakly streamlined if it contains no paths from interaction to cut vertices. This is the topic of Chapter~\vref{chapter:GlobalReductions}.
 
@@ -24,9 +18,9 @@ Sometimes, the elimination of edges mapped to by an atom $a$ might interfere wit
 
 The intuition behind the other normal forms are:
 \begin{itemize}
-\item a weakly streamlined flow is streamlined if it contains no paths from interaction (resp., cut) to coweakening (resp., weakeinng) vertices, or from weakening to coweakening vertices;
+\item a weakly streamlined flow is streamlined if it contains no paths from interaction (resp., cut) to coweakening (resp., weakening) vertices, or from weakening to coweakening vertices;
 \item a streamlined flow is \emph{super streamlined} if it contains no paths from (co)weakening to (co)contraction vertices; and
-\item a super streamlined flow is streamlined if it contains no path whose first edge is an upper edge of a cocontraction vertex and last edge is the lower edge of a contraction vertex.
+\item a super streamlined flow is \emph{hyper streamlined} if it contains no path whose first edge is an upper edge of a cocontraction vertex and last edge is the lower edge of a contraction vertex.
 \end{itemize}
 
 
@@ -246,8 +240,6 @@ An atomic flow is
 \end{enumerate}
 \end{definition}
 
-\TODO{Ensure that all the normal forms of atomic flows have a corresponding definition for derivations.}
-
 \begin{definition}\label{definition:DerSimpleForm}
 A derivation with associated atomic flow $\phi$ is \emph{in simple form with respect to} (\emph{the atom}) $a$\index{simple form!derivation!with respect to atom}, if $\pi$ is a polarity assignment for $\phi$, such that the edges in $\phi$ mapped to from occurrences of $a$ have a positive polarity, and the restriction of $\phi$ to $a$ is in simple form with respect to $\pi$.
 \end{definition}
@@ -283,6 +275,8 @@ The first flow is weakly streamlined, the other two are hyper streamlined:
 \]
 \end{example}
 
+We now state some facts whose proofs are immediate from Definition~\vref{definition:FlowNormalForms}.
+
 \begin{proposition}\label{proposition:FlowWeaklyStreamlinedPolarity}
 Given a polarity assignment $\pi$, an atomic flow that is weakly streamlined with respect to both $\pi$ and $\bar\pi$ is weakly streamlined. 
 \end{proposition}
@@ -290,6 +284,8 @@ Given a polarity assignment $\pi$, an atomic flow that is weakly streamlined wit
 \begin{proposition}\label{proposition:FlowCutFree}
 A streamlined atomic flow with no pair of upper (resp., lower) edges such that there is an $\ai$-path between them, contains no cut (resp., axiom) vertices.
 \end{proposition}
+
+The following proposition makes the connection between cut elimination and streamlining. We consider the special case of atomic flows of proofs, \emph{i.e.}, atomic flows without upper edges, and observe that a streamlined proof is cut free and a hyper streamlined proof is a proof in system $\KS$.
 
 %---------------------------------------
 \begin{proposition}\label{proposition:FlowNormalFormsNoUpper}
@@ -391,7 +387,3 @@ if it is super streamlined; and
 if it is hyper streamlined.
 \end{enumerate}
 \end{proposition}
-
-\begin{remark}\label{remark:DerCutFree}
-A streamlined proof is cut-free, a super streamlined proof is analytic and a hyper streamlined proof is in system $\KS$.
-\end{remark}
