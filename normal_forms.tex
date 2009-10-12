@@ -1,5 +1,7 @@
 \section{Normal Forms}\label{section:NormalForms}
 
+\TODO{Redo introduction to avoid talking about anything beyond weakly streamlining.}
+
 In this chapter we see the first use of atomic flows, namely to define normal forms of derivations. Traditionally, in Gentzen-style formalisms, a derivation in normal form is a cut-free derivation. The notion of cut-freeness is a syntactic notion, which does not translate nicely to the more general deep-inference formalisms.
 
 In both Gentzen-style formalisms and deep-inference formalisms, the cut can be considered horizontal composition of two proofs. We make two observations: 1) deep-inference formalisms are symmetric in the vertical axis, whereas Gentzen-style formalisms are not; and 2) in order for the cut to be admissible from deep-inference derivations the symmetry must be broken, to correspond to the asymmetry of Gentzen-style formalisms. In particular, the cut is only admissible from proofs and not derivations.
@@ -163,80 +165,6 @@ An atomic flow is
 (  8,-11.5)*{\afvjm4};
 }\quad;
 \]
-%---
-\item\label{definition:FlowNormalForms:item:Streamlined}
-\emph{streamlined}\index{streamlined} if it can be represented as
-\[
-\atomicflow{
-( -5, 11.5)*{\afvjm4};
-%---
-(-7.5, 5.5)*{\copy\contrup};
-(  -5, 5.5)*{\affr{12}8};
-(-2.5, 5.5)*{\copy\contrdown};
-%---
-(-10,-2.5)*{\afawum{}{}{}{}{}{}};
-( -5,-2.5)*{\afaium{}{}{}{}{}{}};
-(  0,   0)*{\afvjm3};
-(  5, 2.5)*{\afaidm{}{}{}{}{}{}};
-( 10, 2.5)*{\afawdm{}{}{}{}{}{}};
-%---
-(2.5,-5.5)*{\copy\contrup};
-(  5,-5.5)*{\affr{12}8};
-(7.5,-5.5)*{\copy\contrdown};
-%---
-(  5,-11.5)*{\afvjm4};
-}\quad;
-\]
-%---
-\item\label{definition:FlowNormalForms:item:SuperStreamlined}
-\emph{super streamlined}\index{streamlined!super} if it can be represented as
-\[
-\atomicflow{
-(-12,  9.5)*{\afawum{}{}{}{}{}{}};
-%---
-( -4, 11.5)*{\afvjm4};
-%---
-( -6, 5.5)*{\copy\contrup};
-( -4, 5.5)*{\affr{10}8};
-( -2, 5.5)*{\copy\contrdown};
-%---
-( -5,-2.5)*{\afaium{}{}{}{}{}{}};
-(  0,   0)*{\afvjm3};
-(  5, 2.5)*{\afaidm{}{}{}{}{}{}};
-%---
-(  2,-5.5)*{\copy\contrup};
-(  4,-5.5)*{\affr{10}8};
-(  6,-5.5)*{\copy\contrdown};
-%---
-(  4,-11.5)*{\afvjm4};
-%---
-( 12, -9.5)*{\afawdm{}{}{}{}{}{}};
-}\quad;\quad\mbox{and}
-\]
-%---
-\item\label{definition:FlowNormalForms:item:HyperStreamlined}
-\emph{hyper streamlined}\index{streamlined!hyper} if it can be represented as
-\[
-\atomicflow{
-(-12,  9.5)*{\afawum{}{}{}{}{}{}};
-%---
-( -4, 11.5)*{\afvjm4};
-%---
-( -4, 5.5)*{\copy\contrup};
-( -4, 5.5)*{\affr{10}8};
-%---
-( -5,-2.5)*{\afaium{}{}{}{}{}{}};
-(  0,   0)*{\afvjm3};
-(  5, 2.5)*{\afaidm{}{}{}{}{}{}};
-%---
-(  4,-5.5)*{\affr{10}8};
-(  4,-5.5)*{\copy\contrdown};
-%---
-(  4,-11.5)*{\afvjm4};
-%---
-( 12, -9.5)*{\afawdm{}{}{}{}{}{}};
-}\quad.
-\]
 \end{enumerate}
 \end{definition}
 
@@ -245,12 +173,12 @@ A derivation with associated atomic flow $\phi$ is \emph{in simple form with res
 \end{definition}
 
 \begin{definition}\label{definition:DerStreamlined}
-A derivation with associated atomic flow $\phi$ is \emph{weakly streamlined} (resp., \emph{streamlined}\index{streamlined!derivation}, \emph{super streamlined} and \emph{hyper streamlined}) if $\phi$ is \emph{weakly streamlined} (resp., \emph{streamlined}, \emph{super streamlined} and \emph{hyper streamlined}). The derivation is \emph{weakly streamlined with respect to} (\emph{the atom}) $a$\index{streamlined!weakly!with respect to atom}, if $\pi$ is a polarity assignment for $\phi$, such that the edges in $\phi$ mapped to from occurrences of $a$ have a positive polarity, and the restriction of $\phi$ to $a$ is weakly streamlined with respect to $\pi$.
+A derivation with associated atomic flow $\phi$ is \emph{weakly streamlined} if $\phi$ is \emph{weakly streamlined}. The derivation is \emph{weakly streamlined with respect to} (\emph{the atom}) $a$\index{streamlined!weakly!with respect to atom}, if $\pi$ is a polarity assignment for $\phi$, such that the edges in $\phi$ mapped to from occurrences of $a$ have a positive polarity, and the restriction of $\phi$ to $a$ is weakly streamlined with respect to $\pi$.
 \end{definition}
 
 %---------------------------------------
 \begin{example}\label{example:Streamlined}
-The first flow is weakly streamlined, the other two are hyper streamlined:
+The following three flows are weakly streamlined:
 \[
 \aflower{\atomicflow{
 (0,6)*{\afacd{}{}{}{}{}{}};
@@ -279,111 +207,4 @@ We now state some facts whose proofs are immediate from Definition~\vref{definit
 
 \begin{proposition}\label{proposition:FlowWeaklyStreamlinedPolarity}
 Given a polarity assignment $\pi$, an atomic flow that is weakly streamlined with respect to both $\pi$ and $\bar\pi$ is weakly streamlined. 
-\end{proposition}
-
-\begin{proposition}\label{proposition:FlowCutFree}
-A streamlined atomic flow with no pair of upper (resp., lower) edges such that there is an $\ai$-path between them, contains no cut (resp., axiom) vertices.
-\end{proposition}
-
-The following proposition makes the connection between cut elimination and streamlining. We consider the special case of atomic flows of proofs, \emph{i.e.}, atomic flows without upper edges, and observe that a streamlined proof is cut free and a hyper streamlined proof is a proof in system $\KS$.
-
-%---------------------------------------
-\begin{proposition}\label{proposition:FlowNormalFormsNoUpper}
-Given an atomic flow with no upper (resp., lower) edges, it can be represented as
-\begin{enumerate}
-\item\label{proposition:FlowNormalFormsNoUpper:item:Streamlined}
-\[
-\atomicflow{
-(  5, 2.5)*{\afaidm{}{}{}{}{}{}};
-( 10, 2.5)*{\afawdm{}{}{}{}{}{}};
-%---
-(4,-5.5)*{\copy\contrup};
-(6,-5.5)*{\affr{10}8};
-(8,-5.5)*{\copy\contrdown};
-%---
-(6,-11.5)*{\afvjm4};
-(0,-18)*{\invisiblemark};
-}
-\qquad
-\left(\mbox{resp.,}\quad
-\atomicflow{
-( 0,18)*{\invisiblemark};
-(-6,11.5)*{\afvjm4};
-%---
-(-8, 5.5)*{\copy\contrup};
-(-6, 5.5)*{\affr{10}8};
-(-4, 5.5)*{\copy\contrdown};
-%---
-(-10,-2.5)*{\afawum{}{}{}{}{}{}};
-( -5,-2.5)*{\afaium{}{}{}{}{}{}};
-}
-\quad\right)
-\quad,
-\]
-if it is streamlined;
-%---
-\item\label{proposition:FlowNormalFormsNoUpper:item:SuperStreamlined}
-\[
-\atomicflow{
-(  4, 2.5)*{\afaidm{}{}{}{}{}{}};
-%---
-(  2,-5.5)*{\copy\contrup};
-(  4,-5.5)*{\affr88};
-(  6,-5.5)*{\copy\contrdown};
-%---
-(  4,-11.5)*{\afvjm4};
-%---
-( 11, -9.5)*{\afawdm{}{}{}{}{}{}};
-(0,-18)*{\invisiblemark};
-}
-\qquad
-\left(\mbox{resp.,}\quad
-\atomicflow{
-( 0,18)*{\invisiblemark};
-(-11,  9.5)*{\afawum{}{}{}{}{}{}};
-%---
-( -4, 11.5)*{\afvjm4};
-%---
-( -6, 5.5)*{\copy\contrup};
-( -4, 5.5)*{\affr88};
-( -2, 5.5)*{\copy\contrdown};
-%---
-( -4,-2.5)*{\afaium{}{}{}{}{}{}};
-}
-\quad\right)
-\quad,
-\]
-if it is super streamlined; and
-%---
-\item\label{proposition:FlowNormalFormsNoUpper:item:HyperStreamlined}
-\[
-\atomicflow{
-(  4, 2.5)*{\afaidm{}{}{}{}{}{}};
-%---
-(  4,-5.5)*{\affr88};
-(  4,-5.5)*{\copy\contrdown};
-%---
-(  4,-11.5)*{\afvjm4};
-%---
-( 11, -9.5)*{\afawdm{}{}{}{}{}{}};
-(0,-18)*{\invisiblemark};
-}
-\qquad
-\left(\mbox{resp.,}\quad
-\atomicflow{
-( 0,18)*{\invisiblemark};
-(-11,  9.5)*{\afawum{}{}{}{}{}{}};
-%---
-( -4, 11.5)*{\afvjm4};
-%---
-( -4, 5.5)*{\copy\contrup};
-( -4, 5.5)*{\affr88};
-%---
-( -4,-2.5)*{\afaium{}{}{}{}{}{}};
-}
-\quad\right)
-\quad,
-\]
-if it is hyper streamlined.
-\end{enumerate}
 \end{proposition}
