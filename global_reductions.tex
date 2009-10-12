@@ -1,4 +1,4 @@
-\chapter{Global Reductions}\label{chapter:GlobalReductions}
+\section{Global Reductions}\label{section:GlobalReductions}
 
 
 In this and the next chapter we see the second use of atomic flows: Controlling normalisation of derivations. Conventional wisdom teaches us that normalisation is a delicate property, and that a careful design of inference rules is necessary in order to obtain it. Atomic flows were designed to describe normal forms, by removing a lot of information about the inference rules, it is therefore surprising that they contain enough information to design normalisation procedures.
@@ -189,21 +189,21 @@ respectively. In other words, edges are not connected in unexpected ways.
 %-----------
 
 %======================================
-\section{Simplifier}\label{section:Simplifier}
+\subsection{Simplifier}\label{subsection:Simplifier}
 
 \input{global_reductions/simplifier.tex}
 
 %======================================
-\section{Isolated Subflow Removal}\label{section:IsolatedSubflowRemoval}
+\subsection{Isolated Subflow Removal}\label{subsection:IsolatedSubflowRemoval}
 
 \input{global_reductions/isolated_subflow.tex}
 
 %======================================
-\section{Path Breaker}\label{section:PathBreaker}
+\subsection{Path Breaker}\label{subsection:PathBreaker}
 
 \input{global_reductions/path_breaker.tex}
 
 %======================================
-\section{Multiple Isolated Subflows Removal}\label{section:MultipleIsolatedSubflowsRemoval}
+\subsection{Multiple Isolated Subflows Removal}\label{subsection:MultipleIsolatedSubflowsRemoval}
 
 \input{global_reductions/multiple_isolated_subflow.tex}

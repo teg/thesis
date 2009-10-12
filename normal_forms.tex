@@ -1,4 +1,4 @@
-\chapter{Normal Forms}\label{chapter:NormalForms}
+\section{Normal Forms}\label{section:NormalForms}
 
 In this chapter we see the first use of atomic flows, namely to define normal forms of derivations. Traditionally, in Gentzen-style formalisms, a derivation in normal form is a cut-free derivation. The notion of cut-freeness is a syntactic notion, which does not translate nicely to the more general deep-inference formalisms.
 
@@ -10,7 +10,7 @@ We defined normal forms based on the causal dependency between structural infere
 
 We call our generalisation of cut elimination \emph{streamlining} and we describe it in terms of atomic flows. Intuitively, if we consider identities and weakenings to be the `creators' of atom occurrences, and cuts and coweakening as the `destroyers' of atom occurrences, then an atomic flow is streamlined if no atom is first created and then destroyed. The shape of a streamlined atomic flow is given in case (\ref{definition:FlowNormalForms:item:Streamlined}) of Definition~\ref{definition:FlowNormalForms}.
 
-The most challenging aspect of streamlining is the elimination of paths from interaction to cut vertices. For this reason, we define the notion of \emph{weakly streamlined} atomic flows, in case (\ref{definition:FlowNormalForms:item:WeaklyStreamlined}) of Definition~\ref{definition:FlowNormalForms}. An atomic flow is weakly streamlined if it contains no paths from interaction to cut vertices. This is the topic of Chapter~\vref{chapter:GlobalReductions}.
+The most challenging aspect of streamlining is the elimination of paths from interaction to cut vertices. For this reason, we define the notion of \emph{weakly streamlined} atomic flows, in case (\ref{definition:FlowNormalForms:item:WeaklyStreamlined}) of Definition~\ref{definition:FlowNormalForms}. An atomic flow is weakly streamlined if it contains no paths from interaction to cut vertices. This is the topic of Chapter~\vref{section:GlobalReductions}.
 
 A path can be eliminated by removing the edges that make up the path. However, we might imagine a situation where an edge belongs to two paths, one we want to eliminate and one we want to keep. An atomic flow is in \emph{simple form}, if this situation does not occur. One approach to eliminating paths from a flow is to transform it into simple form and then eliminating the edges connecting interaction and cut vertices.
 

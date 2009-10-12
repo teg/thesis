@@ -1,7 +1,7 @@
 %======================================
-\chapter{Local Reductions}
+\section{Local Reductions}
 
-In this chapter, we see local transformations, which are based on reduction rules. It is convenient to classify reduction rules into those for weakening and those for contraction. After seeing flow reductions and tying them with derivations, in Section~\ref{section:Soundness}, we explore some of their basic properties, in the two short Sections~\ref{section:TerminationConfluence} and \ref{section:FlowRewriteComplexity}.
+In this chapter, we see local transformations, which are based on reduction rules. It is convenient to classify reduction rules into those for weakening and those for contraction. After seeing flow reductions and tying them with derivations, in Section~\ref{subsection:Soundness}, we explore some of their basic properties, in the two short Sections~\ref{subsection:TerminationConfluence} and \ref{subsection:FlowRewriteComplexity}.
 
 \begin{definition}\label{definition:FlowGraphicalExpressions}
 In Figure~\vref{figure:ReductionRules}, we define graphical expressions of the kind $r\colon\phi'\to\psi'$, where $r$ is a name and $\phi'$ and $\psi'$ are flows.
@@ -301,7 +301,7 @@ Given a super-streamlined atomic flow $\phi$, if $\phi\to_\frc^\star\psi$ and $\
 
 
 %===========================================
-\section{Soundness}\label{section:Soundness}
+\subsection{Soundness}\label{subsection:Soundness}
 
 %---------------------------------------
 \begin{definition}\label{definition:SoundRedcutionRule}
@@ -562,7 +562,7 @@ The previous soundness theorem only depends on the switch and medial rules for t
 \end{remark}
 
 %=======================================
-\section{Termination and Confluence}\label{section:TerminationConfluence}
+\subsection{Termination and Confluence}\label{subsection:TerminationConfluence}
 
 %-----------------------------------------------------------------
 \begin{theorem}\label{theorem:RewritingSystemWeakeningTerminating}
@@ -645,7 +645,7 @@ It is straightforward to verify the statement by checking each critical pair of 
 %----------
 
 %========================================
-\section{Complexity}\label{section:FlowRewriteComplexity}
+\subsection{Complexity}\label{subsection:FlowRewriteComplexity}
 
 %------------------------------------------------------------
 \begin{proposition}\label{proposition:SizeWeakeningReduction}

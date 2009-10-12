@@ -1,10 +1,7 @@
-% Thesis main file
-
-\documentclass[a4paper,11pt]{report}
-\usepackage{baththesis}
-
+\documentclass[a4paper,11pt]{article}
+%TODO: remove
 \usepackage{makeidx}
-\makeindex
+
 \usepackage{graphicx}
 \usepackage{fancyhdr}
 \usepackage{amsmath,amsthm}
@@ -15,136 +12,27 @@
 \usepackage[pdfborder={0 0 0}]{hyperref}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%% Set up page size:
-%%% Changes (Rob, 08/11/00)
-%%\setlength{\oddsidemargin}{0.5in}    %left margin for odd pages
-%\setlength{\oddsidemargin}{0.6in}    %left margin for odd pages
-%\setlength{\evensidemargin}{\oddsidemargin}  %left margin for even pages
-%\setlength{\textwidth}{5.7in}
-%%\setlength{\topmargin}{10pt}         %top of page to top of head
-%\setlength{\topmargin}{0pt}         %top of page to top of head
-%%\setlength{\topmargin}{-10pt}   
-%\setlength{\headheight}{15pt}         %no head required
-%\setlength{\headsep}{15pt}
-%\setlength{\textheight}{9.0in}       %leave default foot
-%\setlength{\parindent}{0pt}          %no paragraph indentation
-\setlength{\parskip}{0.5\baselineskip}  %allow one extra blank line as a
-                                        %default between paragraphs, as req by 3.ii
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\def\@jpcmakeindexhead#1{%
-  \vspace*{50\p@}%
-  {\parindent \z@ \raggedright \normalfont
-    \ifnum \c@secnumdepth >\m@ne
-        \huge\bfseries \@chapapp\space \thechapter
-        \par\nobreak
-        \vskip 20\p@
-    \fi
-    \interlinepenalty\@M
-    \Huge \bfseries #1\par\nobreak
-    \vskip 40\p@
-  }}
 
 \input{defs}
-\makeindex
 
-\degree{Doctor of Philosophy}
 \author{Tom Erik Gundersen}
 \title{A General View of Normalisation through Atomic Flows}
-\degreeyear{July 2009}
-\norestrictions
 
 \begin{document}
 \bibliographystyle{alpha}
-%\bibliographystyle{agsm}
-%\bibliographystyle{harvard}
-%\bibliographystyle{chicago}
-\renewcommand{\thepage}{\roman{page}}
+
 \maketitle
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-\thispagestyle{plain}
-{\begin{center}
-\vspace*{1.7cm}
-{\def\baselinestretch{1.2}\Huge\bf A General View of Normalisation through Atomic Flows \par}
-\vspace{4cm}
-%\newline
-{\begin{center}{\huge Tom Erik Gundersen }\end{center}}
-\end{center}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\clearpage
-%\thispagestyle{plain}
-%%\singlespacing
-%%\onehalfspacing
-%%\doublespacing
-%\begin{center}
-%\vspace{20pt}
-%  \Large\bfseries{SUMMARY}
-%\end{center}
-%%\input{abstract.tex}
-
-%\clearpage
-%\thispagestyle{plain}
-%\begin{center}
-%  {\Large\bfseries{ACKNOWLEDGEMENTS}}
-%\end{center}
-%%\input{acknowledgements.tex}
-%
-%\clearpage
-%\thispagestyle{plain}
-%\begin{center}
-%  {\Large\bfseries{PUBLICATIONS}}
-%\end{center}
-%\begin{flushleft}
-%%\input{papers.tex}
-%\end{flushleft}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-{
-%\setlength{\parskip}{0pt}
-\tableofcontents 
-%\listoffigures
-}
-\newpage
-\pagenumbering{arabic}
 \input{introduction.tex}
-\part{Derivations}
 \input{formalism.tex}
 \input{sks.tex}
-\part{Atomic Flows}
 \input{atomic_flows.tex}
 \input{atomic_flows_and_derivations.tex}
 \input{normal_forms.tex}
-\part{Normalisation}
 \input{global_reductions.tex}
 \input{local_reductions.tex}
 \input{main_result.tex}
-%\part{Conclusions}
-%\input{conclusions.tex}
-\printindex
-%\part{Appendices}
-%\appendix
-%\input{appendix_a.tex}
-%\setcounter{chapter}{2} %1- what you want
-%\input{appendix_b.tex}
-%\input{appendix_c.tex}
 
-%\par\vfil\null\newpage
-%{\pagestyle{fancy}
-%\lhead   [\rm{\textbf{\thepage}}]{\scriptsize\textsc{BIBLIOGRAPHY}}
-%\rhead   [\sl{\textbf{{ \leftmark}}}]{\rm{{\thepage}}}
-%\cfoot{}
-%\pagestyle{fancy}
 \small
 \bibliography{di-biblio,biblio}
 
