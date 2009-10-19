@@ -4,7 +4,7 @@
 % to \vlupdate
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{virginialake}[2009/06/25 v1.18]
+\ProvidesPackage{virginialake}[2009/10/19 v1.20]
 \newif\ifvirginialakeusesxy\virginialakeusesxytrue
 \DeclareOption{noxy}{\virginialakeusesxyfalse}
 \newif\ifvirginialakepdftex\virginialakepdftexfalse
@@ -14,7 +14,7 @@
 \newif\ifvirginialakelutzsyntax\virginialakelutzsyntaxfalse
 \DeclareOption{lutzsyntax}{\virginialakelutzsyntaxtrue}
 \ProcessOptions
-\RequirePackage{fp-basic}
+\@ifpackageloaded{fp-basic}{\relax}{\RequirePackage{fp-basic}\FPmessagesfalse}
 \ifvirginialakeusesxy
     \RequirePackage[usenames]{color}
     \ifvirginialakepdftex
@@ -85,6 +85,18 @@
       {\mathord{\raise.2ex \hbox{$\scriptstyle      \neg           $}}}
       {\mathord{\raise.12ex\hbox{$\scriptscriptstyle\neg           $}}}
       {\mathord{           \hbox{$\scriptscriptstyle\neg           $}}}}
+
+\newcommand{\vljm}{\mathchoice
+      {\mathbin{\raise.2ex \hbox{$\scriptstyle      \supset        $}}}
+      {\mathbin{\raise.2ex \hbox{$\scriptstyle      \supset        $}}}
+      {\mathbin{\raise.12ex\hbox{$\scriptscriptstyle\supset        $}}}
+      {\mathbin{           \hbox{$\scriptscriptstyle\supset        $}}}}
+
+\newcommand{\vlmj}{\mathchoice
+      {\mathbin{\raise.2ex \hbox{$\scriptstyle      \subset        $}}}
+      {\mathbin{\raise.2ex \hbox{$\scriptstyle      \subset        $}}}
+      {\mathbin{\raise.12ex\hbox{$\scriptscriptstyle\subset        $}}}
+      {\mathbin{           \hbox{$\scriptscriptstyle\subset        $}}}}
 
 \newcommand{\vlgoodsyntax}{
    \def\vlleftparbracket   {\ifvirginialakesmallbrackets[\else\left [\fi}
@@ -210,7 +222,13 @@
 \gdef\vlscn{\catcode`[=\active\let[\vlparopencn
             \catcode`(=\active\let(\vlcopopencn}
 
-\gdef\vlupdate #1{   \expandafter\let\csname\expandafter\vlgobble\string #1vltemp\endcsname #1   \def #1{\bgroup\vlprepstructures     \csname\expandafter\vlgobble\string #1vlaux\endcsname}   \expandafter\def\csname\expandafter\vlgobble\string #1vlaux\endcsname ##1{%      \csname\expandafter\vlgobble\string #1vltemp\endcsname{##1}\egroup}}}%--------------------------------------
+\gdef\vlupdate #1{
+   \expandafter\let\csname\expandafter\vlgobble\string #1vltemp\endcsname #1
+   \def #1{\bgroup\vlprepstructures
+     \csname\expandafter\vlgobble\string #1vlaux\endcsname}
+   \expandafter\def\csname\expandafter\vlgobble\string #1vlaux\endcsname ##1{%
+      \csname\expandafter\vlgobble\string #1vltemp\endcsname{##1}\egroup}}
+}%--------------------------------------
 
 \newcommand{\vlparclose  }{\egroup\vlrightparbracket  }
 
@@ -376,7 +394,6 @@
    {\vlhyaux{#3}}
    {\kern-\deropen\kern-\ht\strutbox\kern-\dp\strutbox}
    {\hbox{$\vcenter{\vbox{\offinterlineskip
-                    \hbox{$\copy\stembox$}%\kern-1\dp\stembox
                     \hbox{$\copy\stembox$}}}$}}
    {\kern-\deropen}}
 
@@ -399,15 +416,26 @@
 
 \newcommand{\vlrightlabel}[1]{\@ifnotmtarg{#1}{\;#1}\relax}
 
-\newcommand{\vlde}[4]{\setbox\stembox=\hbox{$\scriptstyle\|$}
+\newcommand{\vlvruler}{\leaders
+      \vbox{\hbox{$\mskip-5mu\scriptstyle\mathchar"0377\mskip-5mu$}\kern-1pt}\vfill}
+
+\newdimen\vlstemheight\vlstemheight=9pt
+
+\newcommand{\vldf}[5]{\newcount\vlstemheightc\vlstemheightc=\vlstemheight
+                      \FPmul\vlstemheightc{\the\vlstemheightc}{#5}
+   \setbox\stembox=\vbox to \vlstemheightc sp{\vlvruler}
    \vlstemrraux{                }{                 }{#3              }  {
    \vlstemraux {\vlleftlabel{#1}}{\vlrightlabel{#2}}{\kern\wd\stembox} {
    \vlstemrraux{                }{                 }{\kern\wd\stembox}{
    #4                                                                 }}}}
 
-\newcommand{\vlpr}[3]{\vlde{#1}{#2}{#3}
-   {\vlhyaux{\vbox to0pt{\vss
-                           \kern3pt\hbox{$\scriptstyle-$}\vss\kern-2\deropen}}}}
+\newcommand{\vlde}[4]{\vldf{#1}{#2}{#3}{#4}1}
+
+\newcommand{\vlpf}[4]{\vldf{#1}{#2}{#3}
+   {\vlhyaux{\vbox to0pt{\vss\kern\fontdimen22\textfont2\kern.25pt
+                         \hbox{$\scriptstyle-$}\vss}}}{#4}}
+
+\newcommand{\vlpr}[3]{\vlpf{#1}{#2}{#3}1}
 
 \newcommand{\vlproofaux}[3]{\vlderivationaux{\vlpr{#1}{#2}{#3}}}
 
@@ -417,6 +445,13 @@
 
 \newcommand{\vlder}{\vlderivationinit\vlderaux}
 
+\newcommand{\vlhruler}{\vfill
+   \hbox to \hsize{\xleaders\vbox to0pt{\vss
+                                        \hbox{\kern-1.33pt
+                                              $\scriptstyle-$%
+                                              \kern-1.33pt}
+                                        \vss}\hfill}\vfill}
+
 \newcommand{\vldsinaux}[3]{\vldaux
    {\smash{\ifvlsmallleftlabels\lower\fontdimen22\scriptfont2
                           \else\lower\fontdimen22\textfont2\fi
@@ -424,7 +459,7 @@
    {\smash{\lower\fontdimen22\textfont2\hbox{$\vlrightlabel{#2}$}}}
    {\vlhy{#3}}
    {\kern\deropen}
-   {\hrule height.2pt depth.2pt width\hsize}
+   {\vbox to.4pt{\vlhruler}}
    {\kern\deropen}}
 
 \newdimen\vldsiqdimenleft
@@ -440,8 +475,7 @@
    {\smash{\lower\vldsiqdimenright\hbox{$\vlrightlabel{#2}$}}}
    {\vlhy{#3}}
    {\kern\deropen\kern-.7pt}
-   {\hrule height.2pt depth.2pt width\hsize\kern1pt
-          \hrule height.2pt depth.2pt width\hsize}
+   {\vbox to.4pt{\vlhruler}\kern1pt\vbox to.4pt{\vlhruler}}
    {\kern\deropen\kern-.7pt}}
 
 \newbox\derboxin
@@ -680,7 +714,7 @@
 (0  ,1.5);(2.6,1.5)**[|<\atflowthickfour>]@{-}
 \endxy}\vss}}
 
-\newif\ifaftriangle\aftriangletrue
+\newif\ifaftriangle\aftriangletrue % This is left for backward compatibility
 
 \newcommand\afaidexcolaux[2]{
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
@@ -701,7 +735,6 @@
 \newcommand{\afaidexcoll}[9]{\multiply\atflowelwidth by#7
                                \divide\atflowelwidth by#8
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
-(4  ,4.625)*{\ifaftriangle\atflowup\fi};
 (4  ,2    )*{\afaidexcolaux #9};
 (1.5,4    );(6.5,4)**[|<\atflowthickthree>]@{-};
 (2  ,2    )*{\aflabelleft {#1}};
@@ -714,7 +747,6 @@
 \newcommand{\afaidmexcoll}[9]{\multiply\atflowelwidth by#7
                                 \divide\atflowelwidth by#8
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
-(4  ,4.625)*{\ifaftriangle\atflowup\fi};
 (4  ,2    )*{\afaidmexcolaux #9{#7}{#8}};
 (1.5,4    );(6.5,4)**[|<\atflowthickthree>]@{-};
 (2  ,2    )*{\aflabelleft {#1}};
@@ -748,14 +780,11 @@
 
 \newcommand{\afaidmex }[8]{\afaidmexcoll{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{{}{}}}
 
-\newcommand{\afaidnwcol}[3]{
+\newcommand{\afaidnw}[2]{
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
-(4  ,4.625)*{\ifaftriangle\atflowup\fi};
 (1.5,4    );(6.5,4)**[|<\atflowthickthree>]@{-};
 (4  ,6    )*{\aflabelleft {#1\,}};
 (4  ,6    )*{\aflabelright{\,#2}}}}
-
-\newcommand{\afaidnw}[2]{\afaidnwcol{#1}{#2}{}}
 
 \newcommand\afaiuexcolaux[2]{
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
@@ -776,7 +805,6 @@
 \newcommand{\afaiuexcoll}[9]{\multiply\atflowelwidth by#7
                                \divide\atflowelwidth by#8
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
-(4,3.375)*{\ifaftriangle\atflowdown\fi};
 (4,6    )*{\afaiuexcolaux #9};
 (1.5,4  );(6.5,4)**[|<\atflowthickthree>]@{-};
 (2,6    )*{\aflabelleft {#1}};
@@ -789,7 +817,6 @@
 \newcommand{\afaiumexcoll}[9]{\multiply\atflowelwidth by#7
                                 \divide\atflowelwidth by#8
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
-(4,3.375)*{\ifaftriangle\atflowdown\fi};
 (4,6    )*{\afaiumexcolaux #9{#7}{#8}};
 (1.5,4  );(6.5,4)**[|<\atflowthickthree>]@{-};
 (2,6    )*{\aflabelleft {#1}};
@@ -819,14 +846,11 @@
 
 \newcommand{\afaiumex }[8]{\afaiumexcoll{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{{}{}}}
 
-\newcommand{\afaiunwcol}[3]{
+\newcommand{\afaiunw}[2]{
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
-(4  ,3.375)*{\ifaftriangle\atflowdown\fi};
 (1.5,4    );(6.5,4)**[|<\atflowthickthree>]@{-};
 (4  ,2    )*{\aflabelleft {#1\,}};
 (4  ,2    )*{\aflabelright{\,#2}}}}
-
-\newcommand{\afaiunw}[2]{\afaiunwcol{#1}{#2}{}}
 
 \newcommand\afacdcolaux[3]{
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
@@ -1937,13 +1961,13 @@
 
 \newcommand{\vlsmashend    }{\egroup    \smash{\vlread}}
 
-\newcommand{\vldownsmash}{\bgroup\vlprepstructures
+\newcommand{\vldownsmash}{\strut\bgroup\vlprepstructures
                           \afterassignment\vldownsmashend\global\def\vlread}
 
-\newcommand{\vlupsmash  }{\bgroup\vlprepstructures
+\newcommand{\vlupsmash  }{\strut\bgroup\vlprepstructures
                           \afterassignment  \vlupsmashend\global\def\vlread}
 
-\newcommand{\vlsmash    }{\bgroup\vlprepstructures
+\newcommand{\vlsmash    }{\strut\bgroup\vlprepstructures
                           \afterassignment    \vlsmashend\global\def\vlread}
 
 %---------------------------------- END OF \vlsmash, \vlupsmash AND \vldownsmash
