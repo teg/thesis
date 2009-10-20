@@ -161,6 +161,9 @@ In the following we refer to the figure in Definition~\ref{definition:IsolatedSu
 \end{proof}
 %----------
 
+
+\TODO{The order of the arguments is odd...}
+
 %------------------------------
 \begin{definition}\label{definition:IsolatedSubflowRemover}
 The \emph{Isolated Subflow Remover}\index{Isolated Subflow Remover!operator}, $\ISR$, is an operator whose arguments are an atom $a$ and a derivation $\Phi$ that is in simple form with respect to $a$. If $\Phi$ is weakly streamlined with respect to $a$, then $\ISR(\Phi,a)=\Phi$; otherwise, consider the following  $\ai$-decomposed form of $\Phi$:
@@ -315,6 +318,9 @@ with atomic flow
 (-8,-11.5)*{\afvjum{15}{\boldsymbol\iota}{}};
 }\quad.
 \]
+
+\TODO{Similar to comment in next section.}
+
 We then define $\ISR(\Phi,a)$ to be such that $\Psi\to_\fris\ISR(\Phi,a)$, where $\phi$ and $\psi$ are the flows, by the same names, shown in Definition~\vref{definition:IsolatedSubflowRemoval}.
 \end{definition}
 %---------------
@@ -338,7 +344,7 @@ Given an atom $a$ and a derivation $\Phi$ that is in simple form with respect to
 \begin{proof}
 If $\Phi$ is weakly streamlined with respect to $a$, the result is trivial. Assume $\Phi$ is not weakly streamlined with respect to $a$, and let $\phi$, $\psi$, $\phi'$, $\psi'$ and $\psi''$ be the atomic flows given in Definition~\ref{definition:IsolatedSubflowRemover}, then
 \begin{enumerate}
-\item by definition there is no path in $\phi$ from an interaction to a cut vertex whose edges are mapped to from instances of $a$. By Lemma~\vref{lemma:IsolatedSubflowRemovalPaths}, we know that if there is a path from an interaction to a cut vertex in the atomic flow of $\ISR(\Phi,a)$ whose edges are mapped to from instances of $a$, then there must be a path from an interaction to a cut vertex in $\phi$ whose edges are mapped to from instances $a$. Hence, the statement follows by contradiction;
+\item by definition there is no path in $\phi$ from an interaction to a cut vertex whose edges are mapped to from instances of $a$. By Lemma~\vref{lemma:IsolatedSubflowRemovalPaths}, we know that if there is a path from an interaction to a cut vertex in the atomic flow of $\ISR(\Phi,a)$ whose edges are mapped to from instances of $a$, then there must be a path from an interaction to a cut vertex in $\phi$ whose edges are mapped to from instances $a$\TODO{O'RLY!?}. Hence, the statement follows by contradiction;
 \item
 \begin{itemize}
  \item if there is a path from an interaction (resp., cut) vertex in the atomic flow of $\ISR(\Phi,a)$ whose edges are mapped to from instances of $b$, then, by \newline Lemma~\vref{lemma:IsolatedSubflowRemovalPaths}, there is a path from an interaction (resp., cut) vertex in $\phi$, so also in $\phi'$, whose edges are mapped to from instances of $b$. Hence, the statement follows by contradiction; and

@@ -251,6 +251,8 @@ We know that the size of $\Phi'$ depends at most cubically on the size of $\Phi$
 \end{proof}
 %----------
 
+\TODO{The following Lemma is wrong and the second case is not needed.}
+
 %-------------------------------------
 \begin{lemma}\label{lemma:PathBreaker}
 Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\frpb\psi$; let $f_1$, $f_2$, $f_3$, $g_1$, $g_2$ and $g_3$ be the isomorphisms, let $\nu_\ai$ be the evidenced cut (resp., interaction) vertex described in the contractum, and let $\nu'_\ai$ be the evidenced cut (resp., interaction) vertex described in the redex of Definition~\ref{definition:PathBreaker}; then, given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$, such that
@@ -326,6 +328,9 @@ The \emph{Path Breaker}\index{Path Breaker!operator}, $\PB$, is an operator whos
 }\quad,
 \]
 with atomic flow
+
+\TODO{Make sure no evidenced interaction/cut can be mapped to from anything else than $a$ or $\bar a$.}
+
 \[
 \phi''\;=\;
 \atomicflow
@@ -437,6 +442,9 @@ with atomic flow
 ( 16, 13)*{\aflabelleft{\psi}};
 }\quad.
 \]
+
+\TODO{Existence and size of $\PB$ as given by Theorem~\vref{theorem:SoundPathBreaker}.}
+
 We then define $\PB(\Phi,a)$ to be such that $\Psi\to_\frpb\PB(\Phi,a)$, where $\phi$ and $\psi$ are the flows, by the same names, shown in Definition~\vref{definition:PathBreaker}.
 \end{definition}
 %---------------
