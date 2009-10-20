@@ -52,7 +52,7 @@ Reduction\/ $\to_\fris$ is sound; moreover, if\/ $\Phi\to_\fris\Psi$, then the s
 \begin{proof}
 Let $\Phi$ be a derivation with flow $\phi'$, such that $\phi'\to_\fris\psi'$. We show that there exists a derivation $\Psi$ with flow $\psi'$ and with the same premiss and conclusion as $\Phi$. In the following, we refer to the figure in Definition~\ref{definition:IsolatedSubflowRemoval}.
 
-Since $\psi$ is connected, we assume, by Convention~\vref{convention:AlternativeAiDecomposedForm}, that the following derivation is an $\ai$-decomposed form of $\Phi$:
+Since $\psi$ is connected, we can construct, by Theorem~\vref{theorem:aiDecomposedForm} and Convention~\vref{convention:AlternativeAiDecomposedForm}, the following $\ai$-decomposed form of $\Phi$, whose size depends at most cubically on $\Phi$:
 \[
 \vlder{\Phi'}{}
 {
@@ -132,7 +132,7 @@ Since $\psi$ is connected and contains no identity or cut vertices, the mapping 
  }
 }\quad.
 \]
-We know that the size of $\Phi_\ttt$ and the size of $\Phi_\fff$ depend polynomially on the size of $\Phi$ by Theorem~\vref{theorem:aiDecomposedForm} and Proposition~\vref{proposition:DerivationSubstitution}, and that the size of $\Psi$ depends at most quadratically on the size of $\alpha$ and $\beta$ by Lemma~\vref{lemma:GenericContraction}, so the size of $\Psi$ depends polynomially on the size of $\Phi$.
+We know that the size of $\Phi_\ttt$ and the size of $\Phi_\fff$ depend polynomially on the size of $\Phi'$ by Theorem~\vref{theorem:aiDecomposedForm} and Proposition~\vref{proposition:DerivationSubstitution}, and that the size of $\Psi$ depends at most quadratically on the size of $\alpha$ and $\beta$ by Lemma~\vref{lemma:GenericContraction}, so the size of $\Psi$ depends polynomially on the size of $\Phi$.
 \end{proof}
 %----------
 
