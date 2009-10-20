@@ -11,9 +11,10 @@
 .directory
 *.toc
 *.idx
-*.synctex.gz
+*.synctex.gz*
 *.tmproj
 *.kilepr
 *.ilg
 *.ind
+.DS_Store
 
