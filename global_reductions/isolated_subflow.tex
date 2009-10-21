@@ -139,7 +139,12 @@ We know that the size of $\Phi_\ttt$ and the size of $\Phi_\fff$ depend polynomi
 
 %-------------------------------------
 \begin{lemma}\label{lemma:IsolatedSubflowRemovalPaths}
-Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\fris\psi$; let $f_1$ and $f_2$ be the isomorphisms and let $\nu_\ai$ be the evidenced cut (resp., interaction) vertex described in Definition~\ref{definition:IsolatedSubflowRemoval}; then, given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$, such that
+Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\fris\psi$; in the following we refer to Definition~\ref{definition:IsolatedSubflowRemoval}:
+\begin{itemize}
+\item let $f_1$ and $f_2$ be the evidenced isomorphisms; and
+\item let $\nu_\ai$ be the evidenced cut (resp., interaction) vertex,
+\end{itemize}
+then, given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$, such that
 \begin{itemize}
 \item $\nu=f_1(\nu')$ or $\nu=f_2(\nu')$;
 \item if there is a path from $\nu$ to $\bot$ (resp., $\top$) in $\psi$, then there is a path from $\nu'$ to $\bot$ (resp., $\top$) in $\phi$; and
@@ -148,7 +153,7 @@ Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\fris\psi$; let $f_
 \end{lemma}
 
 \begin{proof}
-In the following we refer to the figure in Definition~\ref{definition:IsolatedSubflowRemoval}:
+We consider each case separately:
 \begin{itemize}
  \item by definition;
  \item any path from $\nu$ to $\bot$ (resp., $\top$) in $\psi$ must contain an edge $\epsilon$, such that, for some lower (resp., upper) edge $\epsilon'$ of $\phi$, $f_1(\epsilon')=\epsilon$ or $f_2(\epsilon')=\epsilon$. Hence, there is a path from $\nu'$ to $\bot$ (resp., $\top$) in $\phi$; and
