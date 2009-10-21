@@ -251,27 +251,31 @@ We know that the size of $\Phi'$ depends at most cubically on the size of $\Phi$
 \end{proof}
 %----------
 
-\TODO{The following Lemma is wrong and the second case is not needed.}
-
 %-------------------------------------
 \begin{lemma}\label{lemma:PathBreaker}
-Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\frpb\psi$; let $f_1$, $f_2$, $f_3$, $g_1$, $g_2$ and $g_3$ be the isomorphisms, let $\nu_\ai$ be the evidenced cut (resp., interaction) vertex described in the contractum, and let $\nu'_\ai$ be the evidenced cut (resp., interaction) vertex described in the redex of Definition~\ref{definition:PathBreaker}; then, given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$, such that
+Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\frpb\psi$; in the following we refer to Definition~\ref{definition:PathBreaker}:
 \begin{itemize}
-\item for some $1\le i\le 3$, $\nu=f_i(\nu')$ or $\nu=g_i(\nu')$, or $\nu=\nu_\ai$ and $\nu'=\nu'_\ai$;
+\item let $f_1$, $f_2$, $f_3$, $g_1$, $g_2$ and $g_3$ be the evidenced isomorphisms;
+\item let $\nu'_\aiu$ be the evidenced cut and let $\nu'_\aid$ be the evidenced interaction vertex in the redex; and
+\item let $\nu_\aiu$ be the evidenced cut and let $\nu_\aid$ be the evidenced interaction vertex in the contractum,
+\end{itemize}
+then, given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$, such that
+\begin{itemize}
+\item for some $1\le i\le 3$, $\nu=f_i(\nu')$ or $\nu=g_i(\nu')$, or $\nu=\nu_\aid$ and $\nu'=\nu'_\aid$ (resp., $\nu=\nu_\aiu$ and $\nu'=\nu'_\aiu$);
 \item if there is a path from $\nu$ to $\bot$ (resp., $\top$) in $\psi$, then there is a path from $\nu'$ to $\bot$ (resp., $\top$) in $\phi$; and
-\item if there is a cut (resp., interaction) vertex $\hat\nu$ in $\psi$, such that there is a path from $\nu$ to $\hat\nu$ in $\psi$, then there is a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$, such that, for some $1\le i\le 3$, $\hat\nu=f_i(\nu')$ or $\hat\nu=g_i(\nu')$, or $\hat\nu=\nu_\ai$ and $\hat\nu'=\nu'_\ai$; and there is a path from $\nu'$ to $\hat\nu'$ in $\phi$.
+\item if there is a cut (resp., interaction) vertex $\hat\nu$ in $\psi$, such that there is a path from $\nu$ to $\hat\nu$ in $\psi$, then there is a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$, such that, for some $1\le i\le 3$, $\hat\nu=f_i(\nu')$ or $\hat\nu=g_i(\nu')$, or $\hat\nu=\nu_\aiu$ and $\hat\nu'=\nu'_\aiu$ (resp., $\hat\nu=\nu_\aid$ and $\hat\nu'=\nu'_\aid$); and there is a path from $\nu'$ to $\hat\nu'$ in $\phi$.
 \end{itemize}
 \end{lemma}
 
 \begin{proof}
-In the following we refer to the figure in Definition~\ref{definition:PathBreaker}:
+We consider each case separately:
 \begin{itemize}
   \item by definition;
-  \item any path from $\nu$ to $\top$ (resp., $\bot$) in $\psi$ must contain an edge $\epsilon$, such that, for some upper (resp., lower) edge $\epsilon'$ of $\phi$ and some $1\le i\le 3$, $f_i(\epsilon')=\epsilon$ or $g_i(\epsilon')=\epsilon$. Hence, there is a path from $\nu'$ to $\top$ (resp., $\bot$) in $\phi$; and
+  \item any path from $\nu$ to $\bot$ (resp., $\top$) in $\psi$ must contain an edge $\epsilon$, such that, for some lower (resp., upper) edge $\epsilon'$ of $\phi$ and some $1\le i\le 3$, $f_i(\epsilon')=\epsilon$ or $g_i(\epsilon')=\epsilon$. Hence, there is a path from $\nu'$ to $\bot$ (resp., $\top$) in $\phi$; and
  \item we have to consider two cases:
  \begin{itemize}
   \item for some $1\le i\le 3$, $\nu=f_i(\nu')$ and $\hat\nu=f_i(\hat\nu')$, or $\nu=g_i(\nu')$ and $\hat\nu=g_i(\hat\nu')$, then there is a path from $\nu'$ to $\hat\nu'$ in $\phi$; or
-  \item $\nu=g_1(\nu')$ and $\hat\nu=g_2(\hat\nu')$, or $\nu=f_2(\nu')$ and $\hat\nu=f_3(\hat\nu')$ (resp., $\nu=g_2(\nu')$ and $\hat\nu=g_1(\hat\nu')$, or $\nu=f_3(\nu')$ and $\hat\nu=f_2(\hat\nu')$), then there is a path from $\nu'$ to $\nu_\ai$ in $\phi$.
+  \item $\nu=g_1(\nu')$ and $\hat\nu=g_2(\hat\nu')$, or $\nu=f_2(\nu')$ and $\hat\nu=f_3(\hat\nu')$ (resp., $\nu=g_2(\nu')$ and $\hat\nu=g_1(\hat\nu')$, or $\nu=f_3(\nu')$ and $\hat\nu=f_2(\hat\nu')$), then there is a path from $\nu'$ to $\nu'_\aiu$ (resp., $\nu'_\aid$) in $\phi$.
  \end{itemize}
 \end{itemize}
 \end{proof}
