@@ -431,20 +431,18 @@ Given an atomic flow $\phi$ and a polarity assignment $\pi$ for $\phi$, the pola
 %---------------
 
 %=======================================================
-\subsection{Paths and Cycles}\label{subsection:PathsAndCycles}
+\subsection{Paths}\label{subsection:Paths}
 
-We now define the notions of `path', `$\ai$-path' and `$\ai$-cycle' in atomic flows. Paths are sequences of adjacent edges that only `go down' or only `go up'; $\ai$-paths are formed by joining paths at interaction or cointeraction vertices; $\ai$-cycles are circular $\ai$-paths.
+We now define the notion of `path' in atomic flows. Paths are sequences of adjacent edges that only `go down' or only `go up'.
 
 %---------------------------------------
 \begin{definition}\label{definition:FlowPaths}
 Given an atomic flow $(V,E,\eta,\up,\lo)$ and $\epsilon_1,\dots,\epsilon_h\in E$ such that, for $1\le i<h$, we have $\lo(\epsilon_i)=\up(\epsilon_{i+1})$, $\up(\epsilon_1)=\nu$ and $\lo(\epsilon_h)=\nu'$, we say that $\epsilon_1,\dots,\epsilon_h$ is a \emph{path from $\nu$ to $\nu'$}\index{path} and that $\epsilon_h,\dots,\epsilon_1$ is a \emph{path from $\nu'$ to $\nu$}; both paths have \emph{length} $h$\index{path!length}.
-
-An \emph{$\ai$-path from $\nu$ to $\nu'$}\index{$\ai$-path} of \emph{length}\index{$\ai$-path!length} $h$ is either a path from $\nu$ to $\nu'$ of length $h$ or a sequence of edges $\epsilon_1,\dots,\epsilon_k,\epsilon_{k+1},\dots,\epsilon_h$ such that $\epsilon_k \ne \epsilon_{k+1}$ and, for some $\nu''\in V$ with $\eta(\nu'')\in\{\aid,\aiu\}$, we have that $\epsilon_1,\dots,\epsilon_k$ is an $\ai$-path from $\nu$ to $\nu''$ and $\epsilon_{k+1},\dots,\epsilon_h$ is an $\ai$-path from $\nu''$ to $\nu'$. An $\ai$-path of length $h$ is \emph{maximal}\index{$\ai$-path!maximal} if no $\ai$-path containing its edges has length greater than $h$. An $\ai$-path from (resp., to) $\nu$ of length $h$ is a \emph{maximal\/ $\ai$-path from} (resp., \emph{to}) $\nu$ if no $\ai$-path from (resp., to) $\nu$ containing its edges has length greater than $h$.
 \end{definition}
 
 %---------------------------------------
 \begin{example}\label{example:Paths}
-The atomic flow on the left has the $\ai$-paths on the right, and the paths are marked with an asterisk:
+The atomic flow on the left has the paths on the right:
 \[
 \begin{array}{@{}c@{}c@{}}
 \atomicflow{
@@ -458,15 +456,15 @@ The atomic flow on the left has the $\ai$-paths on the right, and the paths are 
 (11.5, 0)*{\invisiblemark}}
 \qquad&
 \begin{array}{@{}lllll@{}}
-\one^*               &                &                  &           &       \\
-\one,\two            &\two^*          &\three^*          &           &       \\
-\one,\two,\four      &\two,\four^*    &\three,\four^*    &\four^*    &       \\
-\one,\two,\four,\five&\two,\four,\five&\three,\four,\five&\four,\five&\five^*\\
+\one                 &                &                  &           &       \\
+                     &\two            &\three            &           &       \\
+                     &\two,\four      &\three,\four      &\four      &       \\
+                     &                &                  &           &\five  \\
 \end{array}\quad.
 \\
 \end{array}
 \]
-In addition, the flow has the paths and $\ai$-paths obtained from the shown ones by inverting the order of edges, for example $\five,\four,\two,\one$ is an $\ai$-path. The $\ai$-paths from the interaction vertex are $\one$ and $\two$ and $\two,\four$ and $\two,\four,\five$; the $\ai$-paths to the contraction vertex are $\one,\two$ and $\two$ and $\three$ and $\four$ and $\five,\four$. The maximal $\ai$-paths are $\one,\two,\four,\five$ and $\three,\four,\five$ and their inverses. The maximal $\ai$-paths from the cointeraction vertex are $\four,\two,\one$ and $\four,\three$ and $\five$; the maximal $\ai$-paths to the contraction vertex are $\one,\two$ and $\three$ and $\five,\four$.
+In addition, the flow has the paths obtained from the shown ones by inverting the order of edges, for example $\four,\three$ is a path. The paths from the interaction vertex are $\one$ and $\two$ and $\two,\four$; the paths to the contraction vertex are $\two$ and $\three$ and $\four$.
 \end{example}
 
 %=========================================
