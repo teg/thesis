@@ -1,128 +1,159 @@
+%================================================
+\section{Atomic Flows}\label{section:AtomicFlows}
 
-%====================
-\section{Atomic Flows}
+Atomic flows, which have been introduced in \cite{GuglGund:07:Normalis:lr}, are, essentially, specialised Buss flow graphs \cite{Buss:91:The-Unde:uq}. They are particular directed graphs associated with $\SKS$ derivations: every derivation yields one atomic flow obtained by tracing the atom occurrences in the derivation. Infinitely many derivations correspond to each atomic flow; this suggests that much of the information in a derivation is lost in its associated atomic flow; in particular, there is no information about instances of logical rules, only structural rules play a role. As shown in \cite{GuglGund:07:Normalis:lr}, it turns out that atomic flows contain sufficient structure to control normalisation procedures, providing in particular induction measures that can be used to ensure termination. Such normalisation procedures require exponential time on the size of the derivation to be normalised. In the present work, we improve the complexity of proof normalisation to quasipolynomial time, but an essential role is played by the complex logical relations of threshold formulae, which are external and independent from the given proof. This means that atomic flows are not sufficient to define the normalisation procedure; however, they still are a very convenient tool for defining and understanding several of its aspects.
 
-\TODO{Decide what to keep and what to cut from this section.}
+We can single out three features of atomic flows that, in general, and not just in this work, help in designing normalisation procedures:
 
-In this chapter we introduce the main contribution of this thesis, a geometric, bureaucracy-free formalism, called `atomic flows'. An atomic flow is a directed graph obtained from a derivation by only retaining information about the creation and destruction of atom occurrences. Atomic flows are, essentially, specialised Buss flow graphs \cite{Buss:91:The-Unde:uq,Carb:97:Interpol:fk}. Notably, the atomic flow of a derivation completely disregards all the logical relations and associated inference rule instances; so, an atomic flow is not a derivation, but only a very abstract representation of it.
+\begin{enumerate}
+%---------------------------------------
+\item\label{ItemUseTop} Atomic flows conveniently express the topological structure of atom occurrences in a proof. This is especially useful for defining the `simple form' of proofs, in Definition~\ref{DefSimpleForm}.
+%---------------------------------------
+\item\label{ItemUseSubst} Atomic flows provide for an efficient way to control substitutions for atom occurrences in derivations. This is especially useful for defining the `cut-free form' of proofs, in Definition~\ref{DefNorm}.
+%---------------------------------------
+\item\label{ItemUseNorm} We can define graph rewriting systems over atomic flows that control normalisation procedures on derivations. This could be used for obtaining the `analytic form' of proofs, as we do in Theorem~\ref{ThNormAn}. 
+\end{enumerate}
+Our aim now is to quickly and informally provide the necessary notions about atomic flows, especially concerning aspects \eqref{ItemUseTop} and \eqref{ItemUseSubst} above. Although the feature \eqref{ItemUseNorm} of atomic flows did help us in obtaining proofs in analytic form, we estimate that formally introducing the necessary machinery is unjustified in this paper. In fact, given our limited needs here, we can operate directly on derivations, without the intermediate support of atomic flows. Nonetheless, being aware of the underlying atomic-flow methods is useful for the reader who wishes to further investigate this matter. So, we informally provide, in Section~\ref{SectNorm}, enough material to make the connection with the atomic-flow techniques that are fully developed in \cite{GuglGund:07:Normalis:lr}.
 
-Atomic flows have much in common with proof nets \cite{Stra:05:From-Dee:yb}. However, we prove that, no matter how we freely build an atomic flow (as opposed to a proof net structure), the flow is associated with some derivation. So, atomic flows are always `sequentialisable', in proof-net parlance. In fact, atomic flows carry much less information than derivations do, because they do not keep track of the logical relations between the atoms they trace, only their structural information is retained (in the sense of structural rules, as opposed to logical ones).
+We obtain one atomic flow from each derivation by tracing all its atom occurrences and by keeping track of their creation and destruction (in identity/cut and weak\-en\-ing/co\-weak\-en\-ing instances), their duplication (in contraction/cocontraction instances) and their duality (in identity/cut instances). Technically, atomic flows are directed graphs of a special kind, but it is more intuitive to consider them as diagrams generated by composing \emph{elementary atomic flows} that belong to one of seven kinds.
 
-We can think of atomic flows as composite diagrams that are freely generated from a set of six elementary diagrams. Technically, atomic flows are special kinds of labelled directed acyclic graphs, and the properties of their vertices are dictated by their labels, which we define as follows.
-
-%----------------------------------------------
-\begin{definition}\label{definition:FlowLabels}
-We call the following six diagrams (\emph{atomic-flow}) \emph{labels}\index{flow!labels}:
+The first kind of elementary atomic flow is the \emph{edge}
 \[
-\begin{array}{@{}c@{}c@{}c@{}}
-      \vcenter{\afaid{}{}{}{}{}{}}&
-\qquad\vcenter{\afawd{}{}{}{}}&
-\qquad\vcenter{\afacd{}{}{}{}{}{}}\\
-\noalign{\smallskip}
-      \mbox{$\aid$ or \emph{interaction}}&
-\qquad\mbox{$\awd$ or \emph{weakening}}&
-\qquad\mbox{$\acd$ or \emph{contraction}}\\
-\noalign{\bigskip}
-      \vcenter{\afaiu{}{}{}{}{}{}}&
-\qquad\vcenter{\afawu{}{}{}{}}&
-\qquad\vcenter{\afacu{}{}{}{}{}{}}\\
-\noalign{\smallskip}
-      \mbox{$\aiu$ or \emph{cut}}&
-\qquad\mbox{$\awu$ or \emph{coweakening}}&
-\qquad\mbox{$\acu$ or \emph{cocontraction}}\\
-\end{array}\quad.
+\atomicflow
+{
+(0,0)*{\afvj4};
+}
 \]
-\end{definition}
-%---------------
+which corresponds to one or more occurrences of the same atom in a given derivation, all of which are not active in any structural rule instance, \emph{i.e.}, they are not the atom occurrences that instantiate a structural rule.
 
+The other six kinds of elementary diagrams are associated with the six structural inference rules, as shown in Figure~\ref{FigVertAF}, and they are called \emph{vertices}; each vertex has some incident edges. At the left of each arrow, we see an instance of a structural rule, where the atom occurrences are labelled by small numerals; at the right of the arrow, we see the vertex corresponding to the rule instance, whose incident edges are labelled in accord with the atom occurrences they correspond to. We qualify each vertex according to the rule it corresponds to; for example, in a given atomic flow, we might talk about a \emph{contraction vertex}, or a \emph{cut vertex}, and so on. Instead of small numerals, sometimes we use $\epsilon$ or $\iota$ or colour to label edges (as well as atom occurrences), but we do not always use labels.
 
-\newcommand{\one  }{{\mathchoice{\scriptstyle\mathbf1}
-                                {\scriptstyle\mathbf1}
-                                {\scriptstyle\mathbf1}
+\newcommand{\one  }{{\mathchoice{\scriptstyle      \mathbf1}
+                                {\scriptstyle      \mathbf1}
+                                {\scriptstyle      \mathbf1}
                                 {\scriptscriptstyle\mathbf1}}}
-\newcommand{\two  }{{\mathchoice{\scriptstyle\mathbf2}
-                                {\scriptstyle\mathbf2}
-                                {\scriptstyle\mathbf2}
+\newcommand{\two  }{{\mathchoice{\scriptstyle      \mathbf2}
+                                {\scriptstyle      \mathbf2}
+                                {\scriptstyle      \mathbf2}
                                 {\scriptscriptstyle\mathbf2}}}
-\newcommand{\three}{{\mathchoice{\scriptstyle\mathbf3}
-                                {\scriptstyle\mathbf3}
-                                {\scriptstyle\mathbf3}
+\newcommand{\three}{{\mathchoice{\scriptstyle      \mathbf3}
+                                {\scriptstyle      \mathbf3}
+                                {\scriptstyle      \mathbf3}
                                 {\scriptscriptstyle\mathbf3}}}
-\newcommand{\four }{{\mathchoice{\scriptstyle\mathbf4}
-                                {\scriptstyle\mathbf4}
-                                {\scriptstyle\mathbf4}
+%-------------------------------------------------------------------------------
+\begin{figure}
+\[
+\begin{array}{@{}c@{}c@{}c@{}c@{}c@{}c@{}}
+\vlinf\aid{}{\vls[a^\one.\bar a^\two]}\ttt&\quad{\to}\quad
+\afaid{}{}{}{}{}{}&\qquad\qquad
+\vlinf\awd{}{a^\one}\fff&\quad{\to}\quad
+\afawd{}{}{}{}&\qquad\qquad
+\vlinf\acd{}{a^\three}{\vls[a^\one.a^\two]}&\quad{\to}\quad
+\afacd{}{}{}{}{}{}
+\\
+\noalign{\bigskip}
+\vlinf\aiu{}\fff{\vls(a^\one.\bar a^\two)}&\quad{\to}\quad
+\afaiu{}{}{}{}{}{}&\qquad\qquad
+\vlinf\awu{}\ttt{a^\one}&\quad{\to}\quad
+\afawu{}{}{}{}&\qquad\qquad
+\vlinf\acu{}{\vls(a^\one.a^\two)}{a^\three}&\quad{\to}\quad
+\afacu{}{}{}{}{}{}\\
+\end{array}
+\]
+\caption{Vertices of atomic flows.}
+\label{FigVertAF}
+\end{figure}
+
+All edges are directed, but we do not explicitly show the orientation. Instead, we consider it as implicitly given by the way we draw them, namely, edges are oriented along the vertical direction. So, the vertices corresponding to dual rules, in Figure~\ref{FigVertAF}, are distinct, for example, an identity vertex and a cut vertex are different because the orientation of their edges is different. On the other hand, the horizontal direction plays no role in distinguishing atomic flows; this corresponds to commutativity of logical relations.
+
+\newcommand{\ppl}{{\mathchoice{\scriptstyle+}
+                              {\scriptstyle+}
+                              {\scriptstyle+}
+                              {\scriptscriptstyle+}}}
+\newcommand{\pmi}{{\mathchoice{\scriptstyle-}
+                              {\scriptstyle-}
+                              {\scriptstyle-}
+                              {\scriptscriptstyle-}}}
+We can define (\emph{atomic}) \emph{flows} as the smallest set of diagrams containing elementary atomic flows, and closed under the composition operation consisting in identifying zero or more edges such that no cycle is created. In addition, for a diagram to be an atomic flow, it must be possible to assign it a polarity, according to the following definition. A \emph{polarity assignment} is a mapping of each edge to an element of $\{\pmi,\ppl\}$, such that the two edges of each identity or cut vertex map to different values and the three edges of each contraction or cocontraction vertex map to the same value. We denote atomic flows by $\phi$ and $\psi$.
+
+Let us see some examples. The flow
+\begin{equation}\label{ExFlow}
+\atomicflow{
+(17,12)*{\afaid{}{}{}{}{}{}};
+(-3, 8)*{\afvjd8{}{}};
+(-1, 8)*{\afvjd8{}{}};
+( 1, 8)*{\afvjd8{}{}};
+( 4, 8)*{\afvjd8{}{}};
+(10, 8)*{\afacu{}{}{}{}{}{}};
+(17, 4)*{\afaiu{}{}{}{}{}{}};
+( 6, 2)*{\afaiunw{}{}}}
+\end{equation}
+is obtained by juxtaposing (\emph{i.e.}, composing by identifying zero edges):
+\begin{itemize}
+\item three edges, 
+\item a flow obtained by composing a cut vertex with a cocontraction vertex, and
+\item a flow obtained by composing an identity vertex with a cut vertex.
+\end{itemize}
+Note that there are no cycles in the flow, and that we can find 32 different polarity assignments, \emph{i.e.}, two for each of the five connected components of the flow (this is a general rule).
+
+\newcommand{\four}{{\mathchoice{\scriptstyle      \mathbf4}
+                                {\scriptstyle      \mathbf4}
+                                {\scriptstyle      \mathbf4}
                                 {\scriptscriptstyle\mathbf4}}}
 \newcommand{\five }{{\mathchoice{\scriptstyle\mathbf5}
                                 {\scriptstyle\mathbf5}
                                 {\scriptstyle\mathbf5}
                                 {\scriptscriptstyle\mathbf5}}}
-\newcommand{\six  }{{\mathchoice{\scriptstyle\mathbf6}
-                                {\scriptstyle\mathbf6}
-                                {\scriptstyle\mathbf6}
-                                {\scriptscriptstyle\mathbf6}}}
-\newcommand{\seven}{{\mathchoice{\scriptstyle\mathbf7}
-                                {\scriptstyle\mathbf7}
-                                {\scriptstyle\mathbf7}
-                                {\scriptscriptstyle\mathbf7}}}
-\newcommand{\eight}{{\mathchoice{\scriptstyle\mathbf8}
-                                {\scriptstyle\mathbf8}
-                                {\scriptstyle\mathbf8}
-                                {\scriptscriptstyle\mathbf8}}}
-\newcommand{\nine }{{\mathchoice{\scriptstyle\mathbf9}
-                                {\scriptstyle\mathbf9}
-                                {\scriptstyle\mathbf9}
-                                {\scriptscriptstyle\mathbf9}}}
-\newcommand{\ppl  }{{\mathchoice{\scriptstyle+}
-                                {\scriptstyle+}
-                                {\scriptstyle+}
-                                {\scriptscriptstyle+}}}
-\newcommand{\pmi  }{{\mathchoice{\scriptstyle-}
-                                {\scriptstyle-}
-                                {\scriptstyle-}
-                                {\scriptscriptstyle-}}}
-\newcommand{\card}[1]{\mathord\vert #1\mathord\vert}
-\newcommand{\up}{{\mathit up}}
-\newcommand{\lo}{{\mathit lo}}
-%---------------------------------------
-\begin{definition}\label{definition:AtomicFlow}
-An (\emph{atomic}) \emph{flow}\index{flow}\index{atomic flow|see{flow}} is a tuple $(V,E,\eta,\up,\lo)$, denoted $\phi$ or $\psi$, such that:
-\begin{enumerate}
-%-------------------
-\item $V$ is a finite set of \emph{vertices}\index{flow!vertices}, denoted by $\nu$;
-%-------------------
-\item $E$ is a finite set of \emph{edges}\index{flow!edges}, denoted by $\epsilon$, $\iota$ or small numerals $\one$, $\two$, $\dots$;
-%-------------------
-\item $\eta\colon V\to\{\aid,\aiu,\awd,\awu,\acd,\acu\}$ maps vertices to their \emph{labels}\index{flow!labels};
-%-------------------
-\item $\up\colon E\to V\cup\{\top\}$ and $\lo\colon E\to V\cup\{\bot\}$ are, respectively, the \emph{upper} and \emph{lower} maps, and $\top$ and $\bot$ are special vertices not belonging to $V$; we define, for every $\nu\in V\cup\{\top,\bot\}$, the set $L_\nu=\{\,\epsilon\mid\up(\epsilon)=\nu\,\}$ of \emph{lower edges of $\nu$}, the set $U_\nu=\{\,\epsilon\mid\lo(\epsilon)=\nu\,\}$ of \emph{upper edges of $\nu$}, and the set $E_\nu=L_\nu\cup U_\nu$ of \emph{edges of $\nu$};
-%-------------------
-\item if $\card S$ denotes the cardinality of set $S$, we have that
-\begin{align*}
-\mbox{if $\eta(\nu)=\aid$ then $\card{L_\nu}=2$ and $\card{U_\nu}=0$,}&\\
-\mbox{if $\eta(\nu)=\aiu$ then $\card{L_\nu}=0$ and $\card{U_\nu}=2$,}&\\
-\mbox{if $\eta(\nu)=\awd$ then $\card{L_\nu}=1$ and $\card{U_\nu}=0$,}&\\
-\mbox{if $\eta(\nu)=\awu$ then $\card{L_\nu}=0$ and $\card{U_\nu}=1$,}&\\
-\mbox{if $\eta(\nu)=\acd$ then $\card{L_\nu}=1$ and $\card{U_\nu}=2$,}&\\
-\mbox{if $\eta(\nu)=\acu$ then $\card{L_\nu}=2$ and $\card{U_\nu}=1$;}&
-\end{align*}
-%-------------------
-\item\label{definition:AtomicFlow:item:Acyclic} there is no sequence $\epsilon_1$, $\dots$, $\epsilon_h$ of edges of $V$ such that $\up(\epsilon_i)=\lo(\epsilon_{i+1\pmod h})$, for $1\le i\le h$;
-%-------------------
-\item\label{definition:AtomicFlow:item:PolarityAssignment} there is a \emph{polarity assignment}\index{flow!polarity assignment} $\pi\colon E\to\{\pmi,\ppl\}$ such that, for every $\nu\in V$,
-\begin{enumerate}
-%---------
-\item if $\eta(\nu)\in\{\acd,\acu\}$ then $\pi(E_\nu)=\{\pmi\}$ or $\pi(E_\nu)=\{\ppl\}$;
-%---------
-\item if $\eta(\nu)\in\{\aid,\aiu\}$ then $\pi(E_\nu)=\{\pmi,\ppl\}$.
-\end{enumerate}
-\end{enumerate}
-Given an atomic flow $\phi$, we say that the sets $L_\top=\{\epsilon_1,\dots,\epsilon_h\}$ and $U_\bot=\{\iota_1,\dots,\iota_k\}$ contain, respectively, the \emph{upper}\index{flow!upper edges} and \emph{lower edges of $\phi$}\index{flow!lower edges}.
-\end{definition}
-%---------------
 
-An atomic flow is a directed graph, whose edges are associated to atom occurrences in derivations, and the direction of the edges corresponds to the up-down direction in a derivation. Vertices are associated to points in the derivation where atom occurrences are created or destroyed, and the nature of each vertex is described by its label. Naturally, these graphs are acyclic (condition~\ref{definition:AtomicFlow:item:Acyclic}). The two special vertices $\top$ and $\bot$ represent the top and bottom of a derivation: we can consider $\top$ the vertex that creates all the atom occurrences in the premiss and $\bot$ the vertex that destroys all atom occurrences in the conclusion.
 
-The polarity assignment condition (\ref{definition:AtomicFlow:item:PolarityAssignment}) ensures that atoms in (co)contractions have the same polarity, and those in interactions and cuts have dual polarities (as happens in derivations). Every atomic flow has $2^n$ polarity assignments, where $n$ is the number of connected components in the graph. We should not be worried about the apparent complexity of the polarity assignment condition: in fact, we could equivalently consider two sorts of (co)contraction and (co)weakening labels, the negative and the positive ones, and ask for vertices to be joined by respecting their polarities. This is clearly a locally checkable property, much simpler than, for example, some global correctness criterion for proof nets.
+Let us see another example. These are three different representations of the same flow:
+\[
+\atomicflow{
+(10,8)*{\afacu\four{}{}{}{}\two};
+( 0,8)*{\afvjd8\one{}};
+( 4,8)*{\afvjd8{}\five};
+( 6,2)*{\afaiunw{}{}};
+( 6,0)*{\afaiuex{}{}{}\three{}{}31}}
+\quad,\qquad
+\aflower{\atomicflow{
+( 0  ,6)*{\afvjd{8}\one\ppl};
+( 6  ,6)*{\afacu\three{}{}\four\two\pmi};
+(12  ,6)*{\afvjd{8}\ppl\five};
+(10  ,0)*{\afaiunw{}{}};
+( 2  ,0)*{\afaiunw{}{}};
+(-1.5,0)*{\invisiblemark};
+(13.5,0)*{\invisiblemark}}}
+\qquad\hbox{and}\qquad
+\atomicflow{
+( 8  ,10)*{\afacu{}\three{}\four\two\ppl};
+( 0  , 8)*{\afvjd{12}\one\pmi};
+( 4  ,10)*{\afvjd{8}\five\pmi};
+( 5  , 4)*{\afex24};
+(10  , 4)*{\afvj4};
+( 2  , 0)*{\afaiunw{}{}};
+( 8  , 0)*{\afaiunw{}{}};
+(-1.5, 0)*{\invisiblemark};
+(11.5, 0)*{\invisiblemark}}
+\quad,
+\]
+where we label edges to show their correspondence. In the two rightmost flows, we indicate the two different polarity assignments that are possible.
+
+The following two diagrams are not atomic flows:
+\[
+\atomicflow{
+(4,11.7)*{\afacu{}{}{}{}{}{}};
+(0, 3.7)*{\afacd{}{}{}{}{}{}};
+(8, 7.7)*{\afvj{16}};
+(4,16);(8,16)**[|<\atflowthickone>]\crv{(4,18)&(6,20)&(8,18)};
+(0,0);(8,0)**[|<\atflowthickone>]\crv{(0,-2)&(4,-4)&(8,-2)}
+}
+\qquad\mbox{and}\qquad
+\atomicflow{
+(0,4)*{\afaidnw{}{}};
+(0,0)*{\afacd{}{}{}{}{}{}}
+}\quad.
+\]
+The left one is not a flow because it contains a cycle, and the right one because there is no possible polarity assignment.
 
 \newbox\contrup\setbox\contrup=\hbox{$
    \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
@@ -143,6 +174,7 @@ The polarity assignment condition (\ref{definition:AtomicFlow:item:PolarityAssig
    \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
    \atomicflow{(0,0)*{\afawu{}{}{}{}{}{}}}$}
 
+%---------------------------------------------
 \begin{notation}\label{notation:LabelsOnBoxes}
 Let $\phi$ be an atomic flow with upper edges $\boldsymbol\epsilon=\epsilon_1,\dots,\epsilon_n$ and lower edges $\boldsymbol\iota=\iota_1,\dots,\iota_m$, we then represent it as
 \[
@@ -181,103 +213,16 @@ We sometimes use flow labels to indicate what kind of vertices an atomic flow mi
 }\quad,
 \]
 do not contain $\aid$, $\aiu$, $\awd$, $\awu$ vertices, and the flow to the right does not contain $\acu$ vertices.
-
-In general, we represent atomic flows as directed-graph diagrams, except that the special vertices $\top$ and $\bot$ are not shown, and the labels of the vertices are explicitly shown as graphical elements. When we refer to the vertices of an atomic flow, we do not include $\top$ and $\bot$. Sometimes we identify vertices with their labels. 
 \end{notation}
 %-------------
 
-%--------------
-\begin{example}
-Consider the atomic flow
-\begin{align*}
-A=(&\{\;\nu_1\;,\;\nu_2\;,\;\nu_3\;\},\\
-   &\{\;\one\;,\;\two\;,\;\three\;,\;\four\;,\;\five\;\},\\
-   &\{\;\nu_1\mapsto\aiu\;,\;\nu_2\mapsto\acu\;,\;\nu_3\mapsto\aiu\;\},\\
-   &\{\;\one\mapsto\top\;,\;\two\mapsto\top\;,\;\three\mapsto\nu_2\;,\;
-        \four\mapsto\nu_2\;,\;\five\mapsto\top\;\},\\
-   &\{\;\one\mapsto\nu_1\;,\;\two\mapsto\nu_2\;,\;\three\mapsto\nu_1\;,\;
-        \four\mapsto\nu_3\;,\;\five\mapsto\nu_3\;\})
-\quad;
-\end{align*}
-the following are three of its possible representations:
-\[
-\atomicflow{
-(10,8)*{\afacu\four{}{}{}{}\two};
-( 0,8)*{\afvjd8\one{}};
-( 4,8)*{\afvjd8{}\five};
-( 6,2)*{\afaiunw{}{}};
-( 6,0)*{\afaiuex{}{}{}\three{}{}31}}
-\quad,\qquad
-\aflower{\atomicflow{
-( 0  ,6)*{\afvjd{8}\one\ppl};
-( 6  ,6)*{\afacu\three{}{}\four\two\pmi};
-(12  ,6)*{\afvjd{8}\ppl\five};
-(10  ,0)*{\afaiunw{}{}};
-( 2  ,0)*{\afaiunw{}{}};
-(-1.5,0)*{\invisiblemark};
-(13.5,0)*{\invisiblemark}}}
-\qquad\hbox{and}\qquad
-\atomicflow{
-( 8  ,10)*{\afacu{}\three{}\four\two\ppl};
-( 0  , 8)*{\afvjd{12}\one\pmi};
-( 4  ,10)*{\afvjd{8}\five\pmi};
-( 5  , 4)*{\afex24};
-(10  , 4)*{\afvj4};
-( 2  , 0)*{\afaiunw{}{}};
-( 8  , 0)*{\afaiunw{}{}};
-(-1.5, 0)*{\invisiblemark};
-(11.5, 0)*{\invisiblemark}}
-\quad;
-\]
-in the last two diagrams, we also indicated each of the two possible polarity assignments. This flow has one cocontraction and two cointeraction vertices; it has three upper edges, $\one$, $\two$ and $\five$, and no lower edges.
-\end{example}
-%------------
-
-\begin{example}
-The flow
-\[
-\atomicflow{
-(17,12)*{\afaid{}{}{}{}{}{}};
-(-3, 8)*{\afvjd8{}{}};
-(-1, 8)*{\afvjd8{}{}};
-( 1, 8)*{\afvjd8{}{}};
-( 4, 8)*{\afvjd8{}{}};
-(10, 8)*{\afacu{}{}{}{}{}{}};
-(17, 4)*{\afaiu{}{}{}{}{}{}};
-( 6, 2)*{\afaiunw{}{}}}
-\]
-is obtained by juxtaposing (\emph{i.e.}, composing by identifying zero edges):
-\begin{itemize}
-\item three edges, 
-\item a flow obtained by composing a cut vertex with a cocontraction vertex, and
-\item a flow obtained by composing an identity vertex with a cut vertex.
-\end{itemize}
-Note that there are no cycles in the flow, and that we can find 32 different polarity assignments, \emph{i.e.}, two for each of the five connected components of the flow.
-\end{example}
-
-%--------------
-\begin{example}
-The following two diagrams are not atomic flows:
-\[
-\atomicflow{
-(4,11.7)*{\afacu{}{}{}{}{}{}};
-(0, 3.7)*{\afacd{}{}{}{}{}{}};
-(8, 7.7)*{\afvj{16}};
-(4,16);(8,16)**[|<\atflowthickone>]\crv{(4,18)&(6,20)&(8,18)};
-(0,0);(8,0)**[|<\atflowthickone>]\crv{(0,-2)&(4,-4)&(8,-2)}
-}
-\qquad\mbox{and}\qquad
-\atomicflow{
-(0,4)*{\afaidnw{}{}};
-(0,0)*{\afacd{}{}{}{}{}{}}
-}\quad.
-\]
-The left one is not a flow because there is a cycle in it, and the right one because there is no possible polarity assignment.
-\end{example}
-%------------
-
 %===========================================================
 \subsection{Flow Isomorphism}\label{section:FlowIsomorphism}
+
+\newcommand{\up}{{\mathit up}}
+\newcommand{\lo}{{\mathit lo}}
+
+\TODO{Define: $\up$ and $\lo$.}
 
 %---------------------------------------------------
 \begin{definition}\label{definition:FlowIsomorphism}
