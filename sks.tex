@@ -1,44 +1,162 @@
+%===============================================================================================
+\section{Propositional Logic in Deep Inference}\label{section:PropositionalLogicInDeepInference}
+
+In the range of the deep-inference methodology, we can define several formalisms, \emph{i.e.} general prescriptions on how to design proof systems. For example, the sequent calculus and natural deduction are formalisms in Gentzen-style proof theory, where the structure of proofs is determined by the tree structure of the formulae they prove.
+
+The first, and conceptually simplest, formalism that has been defined in deep inference is called the \emph{calculus of structures}, or \emph{CoS} \cite{Gugl:06:A-System:kl}. CoS is now well developed for classical \cite{Brun:03:Atomic-C:oz,Brun:06:Cut-Elim:cq,Brun:06:Locality:zh,BrunTiu:01:A-Local-:mz,Brun:06:Deep-Inf:qy}, intuitionistic \cite{Tiu:06:A-Local-:gf}, linear \cite{Stra:02:A-Local-:ul,Stra:03:MELL-in-:oy}, modal \cite{Brun::Deep-Seq:ay,GoreTiu:06:Classica:uq,Stou:06:A-Deep-I:rt} and com\-mu\-ta\-tive/non-commutative logics \cite{Gugl:06:A-System:kl,Tiu:06:A-System:ai,Stra:03:Linear-L:lp,Brus:02:A-Purely:wd,Di-G:04:Structur:wy,GuglStra:01:Non-comm:rp,GuglStra:02:A-Non-co:lq,StraGugl:09:A-System:vn,GuglStra:02:A-Non-co:dq,Kahr:06:Reducing:hc,Kahr:07:System-B:fk}.
+
 \newcommand{\SKS}{\mathsf{SKS}}
 
-\subsection{System SKS}
+The standard proof system of propositional logic in CoS is called $\SKS$. The basic proof-complexity properties of $\SKS$, and, as a consequence, of propositional logic in CoS, have been studied in \cite{BrusGugl:07:On-the-P:fk}:
+\begin{itemize}
+\item $\SKS$ is polynomially equivalent to Frege proof systems.
+\item $\SKS$ can be extended with Tseitin's extension and substitution, and the proof systems so obtained are polynomially equivalent to Frege proof systems augmented by extension and substitution.
+\item Analytic $\SKS$ polynomially simulates analytic Gentzen proof systems, but the converse does not hold: in fact, Statman's tautologies admit polynomial proofs in analytic $\SKS$ but, as is well known, only exponential ones in analytic Gentzen \cite{Stat:78:Bounds-f:fj}.
+\end{itemize}
 
-\TODO{Define $\SKS$ in a convenient way.}
+In this paper, we work in CoS and $\SKS$, but we introduce a new notation for CoS. We do so to conveniently describe certain derivations related to threshold formulae, which would seem very cumbersome otherwise (we mainly have in mind Definition~\ref{DefThrDer}). In related work, we are defining a new formalism, currently dubbed \emph{Formalism A}, which generalises CoS and formally allows for the new notation.
 
-\newcommand{\ai   }{{\mathsf{ai}}}
-\newcommand{\aw   }{{\mathsf{aw}}}
-\newcommand{\ac   }{{\mathsf{ac}}}
-\newcommand{\aid  }{{\ai{\downarrow}}}
-\newcommand{\awd  }{{\aw{\downarrow}}}
-\newcommand{\acd  }{{\ac{\downarrow}}}
-\newcommand{\aiu  }{{\ai{\uparrow}}}
-\newcommand{\awu  }{{\aw{\uparrow}}}
-\newcommand{\acu  }{{\ac{\uparrow}}}
-\newcommand{\swi  }{\mathsf{s}}
-\newcommand{\med  }{\mathsf{m}}
-\newcommand{\asor }{{=_\mathsf{a}{\downarrow}}}
-\newcommand{\asand}{{=_\mathsf{a}{\uparrow}}}
-\newcommand{\coor }{{=_{\vee\mathsf{c}}}}
-\newcommand{\coand}{{=_{\wedge\mathsf{c}}}}
-\newcommand{\fffd }{{{=_{\fff}}{\downarrow}}}
-\newcommand{\fffu }{{{=_{\fff}}{\uparrow}}}
-\newcommand{\tttd }{{{=_{\ttt}}{\downarrow}}}
-\newcommand{\tttu }{{{=_{\ttt}}{\uparrow}}}
-\newcommand{\tttord }{{{=_{\ttt\vee}}{\downarrow}}}
-\newcommand{\fffandd }{{{=_{\fff\wedge}}{\downarrow}}}
-\newcommand{\tttoru }{{{=_{\ttt\vee}}{\uparrow}}}
-\newcommand{\fffandu }{{{=_{\fff\wedge}}{\uparrow}}}
+In this section, we quickly introduce all the necessary notions. The standard reference for $\SKS$ in CoS and its typical constructions is \cite{Brun:04:Deep-Inf:rq}; an introduction to $\SKS$ with an emphasis on proof complexity is in \cite{BrusGugl:07:On-the-P:fk}.
+
+\newcommand{\fff}{\mathsf f}
+\newcommand{\ttt}{\mathsf t}
+\emph{Formulae}, denoted by $\alpha$, $\beta$, $\gamma$ and $\delta$ are freely built from: \emph{units}, $\fff$ (false), $\ttt$ (true); \emph{atoms}, denoted by $a$, $b$, $c$, $d$ and $e$; \emph{disjunction} and \emph{conjunction}, ${\vlsbr[\alpha.\beta]}$ and $\vlsbr(\alpha.\beta)$. The different brackets have the only purpose of improving legibility; we usually omit external brackets of formulae, and sometimes we omit superfluous brackets under associativity. On the set of atoms a (non-identical) involution $\bar\cdot$ is defined and called \emph{negation}; $a$ and $\bar a$ are \emph{dual} atoms. We denote \emph{contexts}, \emph{i.e.}, formulae with a hole, by $\xi\vlhole$ and $\zeta\vlhole$; for example, if $\xi\vlscn[a]$ is $\vls(b.[a.c])$, then $\xi\vlhole$ is $\vls(b.[\vlhole.c])$, $\xi\{b\}$ is $\vls(b.[b.c])$ and $\xi\vlscn(a.d)$ is $\vls(b.[(a.d).c])$.
+
+Note that negation is only defined for atoms, and this is not a limitation because, thanks to De Morgan laws, negation can always be `pushed to' atoms. Also, note that there are no negative or positive atoms in an absolute sense; we can only say that if we arbitrarily consider $\bar a$ positive, then $a$ must be negative, for example.
+
+A CoS (\emph{inference}) \emph{rule} $\rho$ is an expression $\vlinf\rho{}\beta\alpha$, where the formulae $\alpha$ and $\beta$ are called \emph{premiss} and \emph{conclusion}, respectively; an inference rule \emph{instance} $\vlupsmash{\vlinf\rho{}\delta\gamma}$, where $\gamma$ and $\delta$ are instances of $\alpha$ and $\beta$, respectively, generates an (\emph{inference}) \emph{step} $\vlinf\rho{}{\xi\vlscn[\delta]}{\xi\vlscn[\gamma]}$, for each context $\xi\vlhole$. A \emph{derivation}, $\Phi$, \emph{from} $\alpha$ (\emph{premiss}) \emph{to} $\beta$ (\emph{conclusion}) is a chain of inference steps with $\alpha$ at the top and $\beta$ at the bottom, and is usually indicated by $\vlder\Phi{\mathcal S}{\beta}{\alpha}$, where $\mathcal S$ is the name of the proof system or a set of inference rules (we might omit $\Phi$ and $\mathcal S$); a \emph{proof}, often denoted by $\Pi$, is a derivation with premiss $\ttt$; besides $\Phi$, we denote derivations with $\Psi$. Sometimes we group $n\ge0$ inference steps of the same rule $\rho$ together into one step, and we label the step with $n\cdot\rho$.
+
+\newcommand{\size}[1]{{\left\vert #1\right\vert}}\vlupdate\size
+The \emph{size} $\size\alpha$ of a formula $\alpha$, and the \emph{size} $\size\Phi$ of a derivation $\Phi$, is the number of unit and atom occurrences appearing in it.
+
+By $\alpha\{a_1/\beta_1,\dots,a_h/\beta_h\}$, we denote the operation of simultaneously substituting formulae $\beta_1$, \dots, $\beta_h$ into all the occurrences of the atoms $a_1$, \dots, $a_h$ in the formula $\alpha$, respectively; note that the occurrences of $\bar a_1$, \dots, $\bar a_h$ are not automatically substituted. Often, we only substitute certain occurrences of atoms, and these are indicated with superscripts that establish a relation with atomic flows. As a matter of fact, we extend the notion of substitution to derivations in the natural way, but this requires a certain care. The issue is clarified in Section~\ref{SectAF} (see, in particular, Notations~\ref{NotSubst} and \ref{NotDerSubst} and Proposition~\ref{PropSubst}).
+
+\newcommand{\ai  }{\mathsf{ai}}
+\newcommand{\aw  }{\mathsf{aw}}
+\newcommand{\ac  }{\mathsf{ac}}
+\newcommand{\aid }{{\ai{\downarrow}}}
+\newcommand{\awd }{{\aw{\downarrow}}}
+\newcommand{\acd }{{\ac{\downarrow}}}
+\newcommand{\aiu }{{\ai{\uparrow}}}
+\newcommand{\awu }{{\aw{\uparrow}}}
+\newcommand{\acu }{{\ac{\uparrow}}}
+\newcommand{\swi }{\mathsf{s}}
+\newcommand{\med }{\mathsf{m}}
+\emph{System\/ $\SKS$} is a CoS proof system, defined by the following \emph{structural} inference rules:
+\[
+\begin{array}{@{}c@{}c@{}c@{}}
+      \vlinf\aid{}{\vls[a.{\bar a}]}\ttt&
+\qquad\vlinf\awd{}a\fff                 &
+\qquad\vlinf\acd{}a{\vls[a.a]}          \\
+\noalign{\smallskip}
+      \emph{identity}                   &
+\qquad\emph{weakening}                  &
+\qquad\emph{contraction}                \\
+\noalign{\bigskip}
+      \vlinf\aiu{}\fff{\vls(a.{\bar a})}&
+\qquad\vlinf\awu{}\ttt a                &
+\qquad\vlinf\acu{}{\vls (a.a)}a         \\
+\noalign{\smallskip}
+      \emph{cut}&
+\qquad\emph{coweakening}&
+\qquad\emph{cocontraction}\\
+\end{array}
+\quad,
+\]
+and by the following two \emph{logical} inference rules:
+\[
+\begin{array}{@{}c@{}c@{}}
+\vlinf\swi{}{\vls[(\alpha.\beta).\gamma]}{\vls(\alpha.[\beta.\gamma])}&\qquad
+\vlinf\med{}{\vls([\alpha.\gamma].[\beta.\delta])}
+            {\vls[(\alpha.\beta).(\gamma.\delta)]}                    \\
+\noalign{\smallskip}
+\emph{switch}                                                         &\qquad
+\emph{medial}                                                         \\
+\end{array}
+\quad.
+\]
+In addition to these rules, there is a rule $\vlsmash{\vlinf={}\delta\gamma}$, such that $\gamma$ and $\delta$ are opposite sides in one of the following equations:
+\begin{equation}\label{Eq}
+\begin{array}{@{}r@{}l@{}r@{}l@{}}
+\vls[\alpha.\beta]         &{}=\vls[\beta.\alpha]         &\qquad\qquad
+\vls[\alpha.\fff]          &{}=\vls[\alpha]               \\
+\noalign{\smallskip}
+\vls(\alpha.\beta)         &{}=\vls(\beta.\alpha)         &\qquad\qquad
+\vls(\alpha.\ttt)          &{}=\vls(\alpha)               \\
+\noalign{\smallskip}
+\vls[[\alpha.\beta].\gamma]&{}=\vls[\alpha.[\beta.\gamma]]&\qquad\qquad
+\vls[\ttt.\ttt]            &{}=\vls[\ttt]                 \\
+\noalign{\smallskip}
+\vls((\alpha.\beta).\gamma)&{}=\vls(\alpha.(\beta.\gamma))&\qquad\qquad
+\vls(\fff.\fff)            &{}=\vls(\fff)                 
+\end{array}
+\quad.
+\end{equation}
+We do not always show the instances of rule $=$, and when we do show them, we gather several contiguous instances into one. We consider the $=$ rule as implicitly present in all systems. The first row in Figure~\ref{FigExAF} shows some $\SKS$ example derivations.
+
+The equality relation $=$ on formulae is defined by closing the equations in \eqref{Eq} by reflexivity, symmetry, transitivity and by stipulating that $\alpha=\beta$ implies $\xi\vlscn[\alpha]=\xi\vlscn[\beta]$; to indicate literal equality of the formulae $\alpha$ and $\beta$ we adopt the notation $\alpha\equiv\beta$.
+
+A \emph{cut-free} derivation is a derivation where $\aiu$ is not used, \emph{i.e.}, a derivation in $\SKS\setminus\{\aiu\}$. Of special importance in this paper is the following proof system:
+
+\newcommand{\aSKS}{\mathsf{aSKS}}
+%-------------------------------------------------------------------------------
+\begin{definition}
+\emph{Analytic\/ $\SKS$} is the system $\aSKS=\SKS\setminus\{\aiu,\awu\}$.
+\end{definition}
+
+The notion of analyticity in deep inference has similarities and differences with analyticity in Gentzen formalisms. The similarities mainly reside in the normalisation theory of deep inference, which has similar properties to the Gentzen theory ones. On the other hand, analyticity in Gentzen is based on the subformula property, which guarantees certain properties on the depth of formulae in derivations. Such properties do not hold in deep inference, unless we properly restrict it. These issues are discussed in \cite{BrusGugl:07:On-Analy:uq,BrusGugl:07:On-the-P:fk,Jera::On-the-C:kx}.
+
+\newcommand{\SKSg}{\mathsf{SKSg}}
+\newcommand{\gw  }{\mathsf w}
+\newcommand{\wed }{{\gw{\downarrow}}}
+\newcommand{\weu }{{\gw{\uparrow}}}
+\newcommand{\gc  }{\mathsf c}
+\newcommand{\cod }{{\gc{\downarrow}}}
+\newcommand{\cou }{{\gc{\uparrow}}}
+\newcommand{\gi  }{\mathsf i}
+\newcommand{\gid }{{\gi{\downarrow}}}
+Besides $\SKS$, another standard deep-inference system is $\SKSg$, which is the same as $\SKS$, except that it does not contain medial and its structural rules are not restricted to atoms. In particular, we use in this paper the rules
+\[
+\vlinf\wed{}\alpha\fff
+\quad,\qquad
+\vlinf\weu{}\ttt\alpha
+\quad,\qquad
+\vlinf\cod{}\alpha{\vls[\alpha.\alpha]}
+\qquad\text{and}\qquad
+\vlinf\cou{}{\vls(\alpha.\alpha)}\alpha
+\quad.
+\]
+Clearly, a derivation in $\SKS$ is also a derivation in $\SKSg$. It can easily be proved that $\SKS$ and all its fragments containing the logical and $=$ rules polynomially simulate, respectively, $\SKSg$ and its corresponding fragments \cite{BrusGugl:07:On-the-P:fk}. For example, $\{\swi,\med,=,\acd\}$ polynomially simulates $\{\swi,=,\cod\}$, and $\aSKS=\{\swi,\med,=,\aid,\awd,\acd,\acu\}$ polynomially simulates $\{\swi,=,\gid,\wed,\cod,\cou\}$ (where $\gid$ is the nonatomic identity). This allows us to transfer properties from $\SKS$ to $\SKSg$; in particular, the main result in this paper, \emph{i.e.}, that $\SKS$ proofs can be transformed into analytic ones in quasipolynomial time, holds also for $\SKSg$ proofs. One reason to work with $\SKS$ instead of $\SKSg$, as we do in this paper, is that atomicity of rules allows us to use atomic flows more conveniently.
+
+\newcommand{\KS}{\mathsf{KS}}
+A notable analytic system is $\KS=\{\swi,\med,=,\aid,\awd,\acd\}$, which is complete for propositional logic \cite{BrunTiu:01:A-Local-:mz,Brun:04:Deep-Inf:rq}; this, of course, entails completeness for all the systems that contain $\KS$, such as $\aSKS$ and $\SKS$.
+
+We can replace instances of nonatomic structural rules by derivations with the same premiss and conclusion, and that only contain atomic structural rules. The price to pay is a quadratic growth in size. This is stated by the following, routine proposition (keep in mind that, from now on, we consider the $=$ rule as implicitly present in all systems). An example is the rightmost upper derivation in Figure~\ref{FigExAF}, which stands for a nonatomic cocontraction.
+
+%-------------------------------------------------------------------------------
+\begin{proposition}\label{PropGenAtPol}
+Rule instances of\/ $\wed$, $\weu$, $\cod$ and\/ $\cou$ can be derived in quadratic time by derivations in\/ $\{\awd\}$, $\{\awu\}$, $\{\med,\acd\}$ and\/ $\{\med,\acu\}$, respectively.
+\end{proposition}
+
+Sometimes, we use a nonatomic rule instance to stand for some derivation in $\SKS$ that derives that instance, as per Proposition~\ref{PropGenAtPol}.
+
+For CoS proofs, we adopt a special notation that allows us considerable efficiency in describing derivations, especially in the crucial Definition~\ref {DefThrDer}. We denote the result of including every formula of $\Phi$ into the context $\xi\vlhole$ by $\xi\vlscn[\Phi]$: since we adopt deep inference, $\xi\vlscn[\Phi]$ is a valid derivation. Then, given the two derivations $\vldownsmash{\vlder\Phi{}\beta\alpha}$ and $\vldownsmash{\vlder\Psi{}\delta\gamma}$, by $\vls[\Phi.\Psi]$ and $\vls(\Phi.\Psi)$ we denote, respectively,
+\[
+\vlinf={}{\vlsbr[\beta\vlx.\vlx\vlder\Psi{}\delta\gamma]}
+         {\vlsbr[\vlder\Phi{}\beta\alpha\vlx.\vlx\gamma]}
+\qquad\text{and}\qquad
+\vlinf={}{\vlsbr(\beta\vlx.\vlx\vlder\Psi{}\delta\gamma)}
+         {\vlsbr(\vlder\Phi{}\beta\alpha\vlx.\vlx\gamma)}
+\quad,
+\]
+or any other CoS derivations obtained by interleaving $\Phi$ and $\Psi$ and respecting the specified logical relations between $\Phi$ and $\Psi$. We call this the \emph{Formalism A} notation. Examples of Formalism A derivations are in the second row of Figure~\ref {FigExAF}, in correspondence with CoS derivations in the first row. Note that we omit structural rule names in Formalism A notation (since they are easily inferable, this improves legibility).
+
+The size of CoS derivations is, obviously, at most quadratic in the size of Formalism A derivations denoting them. We use this fact implicitly throughout the paper, and we always measure the CoS size of derivations, even if we show them in Formalism A notation. Because of its convenience, the Formalism A notation is currently being developed as a full-fledged deep-inference formalism.
+
+
 
 \TODO{Define superswitches.}
 
 \newcommand{\supers}{\mathsf{ss}}
 \newcommand{\ssu}{\supers\uparrow}
 \newcommand{\ssd}{\supers\downarrow}
-
-\TODO{Define generic contraction and weakening.}
-
-\newcommand{\contr}{\mathsf{c}}
-\newcommand{\cod}{{\contr{\downarrow}}}
-\newcommand{\cou}{{\contr{\uparrow}}}
-\newcommand{\weakn}{\mathsf{w}}
-\newcommand{\wed}{{\weakn{\downarrow}}}
-\newcommand{\weu}{{\weakn{\uparrow}}}
