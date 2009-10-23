@@ -2,78 +2,33 @@
 
 \subsection{Extracting Flows from Derivations}\label{subsection:ExtractingFlowsFromDerivations}
 
-We now define the mapping from derivations to atomic flows. As we said, the idea is that structural rule instances map to the respective atomic-flow vertices, and the edges trace the atom occurrences between rule instances. We first state a fact, whose proof is immediate.
-
-%------------------------------------------------
-\begin{proposition}\label{proposition:FlowUnique}
-Given an\/ $\SKS$ derivation\/ $\Phi$, there is a unique atomic flow $\phi$ such that:
-\begin{enumerate}
-%
-\item there is a surjective map between the set of atom occurrences of\/ $\Phi$ and the set of edges of $\phi$;
-%
-\item there is a bijective map between the set of structural inference rule instances of\/ $\Phi$ and the set of vertices of $\phi$, such that, for each inference rule instance $\rho$ that maps to a vertex $\nu$, the label of $\nu$ are given below, for each possible case of the inference rules:
+Let us see how to extract atomic flows from derivations. Given an $\SKS$ derivation $\Phi$, we obtain, by the following prescriptions, a unique atomic flow $\phi$, such that there is a surjective map between atom occurrences in $\Phi$ and edges of $\phi$:
+\begin{itemize}
+%-------------------
+\item Each structural inference step in $\Phi$ is associated with one and only one vertex in $\phi$, such that active atom occurrences in the rule instance map to edges incident with the vertex. The correspondence is indicated in Figure~\ref{FigVertAF}. For example, the flow associated with the inference step at the left is indicated at the right:
 \[
-\begin{array}{@{}ccc@{}ccc@{}}
-\vlinf{\aid}{}{\vls[a^\one.{\bar a^\two}]}{\ttt}&\mbox{to\/}&
-\vcenter{\afaid\one{}{}\two{}{}}
-\quad,&\qquad
-\vlinf{\aiu}{}{\fff}{\vls(a^\one.{\bar a^\two})}&\mbox{to\/}&
-\vcenter{\afaiu\one{}{}\two{}{}}
-\quad,\\
-\noalign{\medskip}
-\vlinf{\awd}{}{a^\one}{\fff}                    &\mbox{to\/}&
-\vcenter{\afawd{}{}{}\one{}} 
-\quad,&\qquad
-\vlinf{\awu}{}{\ttt}{a^\one}                    &\mbox{to\/}&
-\vcenter{\afawu{}{}{}\one{}}
-\quad,\\
-\noalign{\medskip}
-\vlinf{\acd}{}{a^\three}{\vls[a^\one.a^\two]}   &\mbox{to\/}&
-\vcenter{\afacd\one{}{}\two{}\three}
-\quad,&\qquad
-\vlinf{\acu}{}{\vls(a^\two.a^\three)}{a^\one}   &\mbox{to\/}&
-\vcenter{\afacu\two{}{}\three{}\one}
-\quad,\\
-\end{array}
+\vlinf\acd
+      {}
+      {\vls(a^\one.[b^\two.a^\five])}
+      {\vls(a^\one.[b^\two.[a^\three.a^\four]])}
+\qquad\text{and}\qquad
+%\vcenter{\hbox{\includegraphics{Figures/figStrEx}}}
+\quad.
 \]
-and the map between the atom occurrences in the premiss (resp., conclusion) of $\rho$ and the upper (resp., lower) edges of $\nu$ is indicated by small numerals; and
-%
-\item for each inference rule instance of\/ $\Phi$ of kind
-\[\hss
-\begin{array}{@{}r@{}l@{}}
-\vlinf{\swi}{}{\vls[(\alpha.\beta).\gamma]}
-              {\vls(\alpha.[\beta.\gamma])}           \quad,&\qquad
-\vlinf{\med}{}{\vls([\alpha.\gamma].[\beta.\delta])}
-              {\vls[(\alpha.\beta).(\gamma.\delta)]}  \quad,      \\
-\noalign{\smallskip}
-\vlinf{\coor}{}{\vls[\beta.\alpha]}{\vls[\alpha.\beta]}\quad,\qquad
-\vlinf{\coand}{}{\vls(\beta.\alpha)}{\vls(\alpha.\beta)}\quad,&\qquad
-\vlinf{\asor}{}{\vls[[\alpha.\beta].\gamma]}
-         {\vls[\alpha.[\beta.\gamma]]}                \quad,\qquad
-\vlinf{\asand}{}{\vls(\alpha.(\beta.\gamma))}
-         {\vls((\alpha.\beta).\gamma)}                \quad,      \\
-\noalign{\smallskip}
-\vlinf{\fffd}{}{\vls[\alpha.\fff]}{\alpha}           \quad,\qquad
-\vlinf{\tttd}{}{\vls(\alpha.\ttt)}{\alpha}           \quad,&\qquad
-\vlinf{\fffu}{}{\alpha}{\vls(\ttt.\alpha)}        \qquad\hbox{and\/}\qquad
-\vlinf{\tttu}{}{\alpha}{\vls[\fff.\alpha]}
-\end{array}
+Note that the nonactive atoms are `traced' by associating each trace with one edge; this corresponds well to abbreviating, say, the inference step $\vldownsmash{\vlinf\acd{}{\xi\vlscn[a]}{\xi\vlscn[a.a]}}$ by $\xi\left\{\vlinf{}{}a{\vls[a.a]}\right\}$.
+%-------------------
+\item For each other inference step in $\Phi$, all the atom occurrences in the premiss are respectively mapped to the same edges of $\phi$ as the atom occurrences in the conclusion. For example, the flow associated with the inference step
+\[
+\vlinf\med
+      {}
+      {\vls(a^\one.([b^\two.d^\four]).([c^\three.e^\five]))}
+      {\vls(a^\one.[(b^\two.c^\three).(d^\four.e^\five)])}
+\qquad\text{is}\qquad
+%\vcenter{\hbox{\includegraphics{Figures/figNonStrEx}}}
+\quad.
 \]
-all the atom occurrences in $\alpha$, $\beta$, $\gamma$ and $\delta$ in the premiss are respectively mapped to the same edges of $\phi$ as the atom occurrences in $\alpha$, $\beta$, $\gamma$ and $\delta$ in the conclusion.
-\end{enumerate}
-\end{proposition}
-
-%---------------------------------------
-\begin{definition}\label{definition:AssociatedFlow}
-Given a derivation $\Phi$, we say that the unique atomic flow $\phi$ defined in Proposition~\vref{proposition:FlowUnique} is the atomic flow \emph{associated with}\index{flow!associated with derivation} the derivation $\Phi$. Sometimes, when an atom occurrence $a$ in $\Phi$ is mapped to an edge $\epsilon$ in $\phi$, we decorate $a$ with the label $\epsilon$ or the label $\phi$.
-\end{definition}
-%---------------
-
-%--------------
-\begin{example}
-Figure~\vref{figure:ExampleAtomicFlows} has three examples of derivations and their associated atomic flows, where colors are used to indicate the mapping from atom occurrences to edges.
-\end{example}
-%------------
+\end{itemize}
+The flow $\phi$ so obtained is called the atomic flow \emph{associated with} the derivation $\Phi$. We show three examples in Figure~\ref{figure:ExampleAtomicFlows}: in the top row we see three $\SKS$ derivations in the standard CoS syntax; in the row below, we show the same derivations in the Formalism A notation; in the bottom row, we see the three corresponding atomic flows.
 
 \newcommand{\RD}[1]{{\color{Red}#1}}
 \newcommand{\GR}[1]{{\color{Green}#1}}
@@ -219,7 +174,7 @@ Figure~\vref{figure:ExampleAtomicFlows} has three examples of derivations and th
 (12,0)*{\afacucol{}{}{}{}{}{}{Periwinkle}{SpringGreen}{Magenta}}}
 \end{array}
 \]
-\caption{Examples of derivations in the calculus of structures (top row), their translation into the functorial calculus (middle row), and the atomic flows associated with the latter (bottom row).}
+\caption{Examples of derivations in the calculus of structures (top row), their representation in Formalism A notation (middle row), and their associated atomic flows (bottom row).}
 \label{figure:ExampleAtomicFlows}
 \end{figure}
 
@@ -240,6 +195,117 @@ Consider the rightmost derivation and its associated atomic flow in Figure~\ref{
 \]
 \end{example}
 %------------
+
+Perhaps surprisingly, it can be proved that every flow is associated with infinitely many $\SKS$ derivations (see \cite{GuglGund:07:Normalis:lr}).
+
+As we mention at the beginning of this section, atomic flows help in selectively substituting for atom occurrences. In fact, given a derivation and its associated flow, we can use edges and boxes to individuate atom occurrences in the derivation, and then possibly substitute for them. For example, let us suppose that we are given the following associated derivation and flow:
+\TODO{Fix rendering of flow:}
+\[
+\Phi=
+\vlsbr[\vlderivation                                              {
+       \vlin{    }{}\fff                                         {
+       \vlin{\med}{}{\vls(\vlinf{}{}a{\vls[a.a]}
+                         .\vlinf={}{\bar a}{\vls[\fff.\bar a]})}{
+       \vlhy        {\vls[(a.\fff).(a
+                                   .\vlinf{}{}{\bar a}\fff)]   }}}}
+      \vlx.\vlx\bar a]
+\qquad\text{and}\qquad
+%\atomicflow{
+%(0,6.1)*{\afacd{}{}{}{}{}{}};
+%(4,5.8)*{\afawd{}{}{}\one};
+%(8,5.6)*{\afvj9};
+%(2,0  )*{\afaiunw{}{}};
+%}
+\quad.
+\]
+We can then distinguish between the three occurrences of $\bar a$ that are mapped to edge $\one$ and the one that is not, as in
+\[
+\Phi=
+\vlsbr[\vlderivation                                                        {
+       \vlin{    }{}\fff                                                   {
+       \vlin{\med}{}{\vls(\vlinf{}{}a{\vls[a.a]}
+                         .\vlinf={}{\bar a^\one}{\vls[\fff.\bar a^\one]})}{
+       \vlhy        {\vls[(a.\fff).(a
+                                   .\vlinf{}{}{\bar a^\one}\fff)]        }}}}
+      \vlx.\vlx\bar a]
+\quad;
+\]
+we can also substitute for these occurrences, for example by $\{\bar a^\one/\fff\}$; such a situation occurs in the proof of Theorem~\ref{ThSimpleForm}. Note that simply substituting $\fff$ for $\bar a^\one$ would invalidate this derivation because it would break the cut and weakening instances; however, the proof of Theorem~\ref{ThSimpleForm} specifies how to fix such broken instances.
+
+We generalise this labelling mechanism to boxes. For example, we can use a different representation of the flow of $\Phi$ to individuate two classes $a^\phi$ and $\bar a^\phi$ of atom occurrences, as follows:
+\[
+\Phi=
+\vlsbr[\vlderivation                                                        {
+       \vlin{    }{}\fff                                                   {
+       \vlin{\med}{}{\vls(\vlinf{}{}{a^\phi}{\vls[a.a]}
+                         .\vlinf={}{\bar a^\phi}{\vls[\fff.\bar a^\phi]})}{
+       \vlhy        {\vls[(a.\fff).(a
+                                   .\vlinf{}{}{\bar a^\phi}\fff)]        }}}}
+      \vlx.\vlx\bar a^\phi]
+\qquad\text{and}\qquad
+%\vcenter{\hbox{\includegraphics{Figures/figSubstExBox}}}
+\quad.
+\]
+
+%-------------------------------------------------------------------------------
+\begin{notation}\label{NotSubst}
+Given a formula $\alpha$ in a derivation whose associated atomic flow contains a flow $\phi$, we indicate with $a^\phi$ every occurrence of the atom $a$ in $\alpha$ whose associated edge is in $\phi$. So, as in the following Proposition~\ref {PropSubst}, $\alpha\{a^\phi/\beta,\bar a^\phi/\bar\beta\}$ stands for the formula $\alpha$ where the atom occurrences of $a$ and its dual, whose associated edges are in $\phi$, are substituted with formula $\beta$ and its dual, respectively.
+\end{notation}
+
+%-------------------------------------------------------------------------------
+\begin{proposition}\label{PropSubst}
+Given a derivation\/ $\vlder\Phi\SKS{\alpha'}\alpha$, let its associated flow have shape
+\[
+%\vcenter{\hbox{\includegraphics{Figures/figPropSubstA}}}
+\quad,
+\]
+such that $\phi$ is a connected component each of whose edges is associated with atom $a$ or $\bar a$; then, for any formula $\beta$, there exists a derivation
+\[
+\vlder\Psi\SKS{\alpha'\{a^\phi/\beta,\bar a^\phi/\bar\beta\}}
+              {\alpha \{a^\phi/\beta,\bar a^\phi/\bar\beta\}}
+\]
+whose associated flow is
+\[
+%\vcenter{\hbox{\includegraphics{Figures/figPropSubstB}}}
+\quad,
+\]
+where $m$ is the number of atom occurrences in $\beta$; moreover, the size of\/ $\Psi$ depends at most linearly on the size of\/ $\Phi$ and quadratically on the size of $\beta$.
+\end{proposition}
+
+%-------------------------------------------------------------------------------
+\begin{proof}
+We can proceed by structural induction on $\beta$ and then on $\phi$. For the two cases of $\beta\equiv\vls[\gamma.\delta]$ and $\beta\equiv\vls(\gamma.\delta)$ we have to consider, for each vertex of $\phi$, one of the following situations:
+\[%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% We shrank space: \qquad -> \quad
+\vlderivation                                               {
+\vlin\swi{}{\vls[\gamma.\delta.(\bar\gamma.\bar\delta)] }  { 
+\vlin\swi{}{\vls[\gamma.(\bar\gamma.[\delta.\bar\delta])]}{
+\vlhy      {\vls(\vlinf{}{}{\vls[\gamma.\bar\gamma]}\ttt
+                .\vlinf{}{}{\vls[\delta.\bar\delta]}\ttt)}}}}
+\quad,\quad
+\vls[\vlinf{}{}\gamma\fff.\vlinf{}{}\delta\fff]
+\quad,\quad
+\vls(\vlinf{}{}\gamma\fff.\vlinf{}{}\delta\fff)
+\quad,\quad
+\vls[\vlinf{}{}\gamma{\vls[\gamma.\gamma]}.\vlinf{}{}\delta{\vls[\delta.\delta]}]
+\quad,\quad
+\vlinf\med
+      {}
+      {\vls(\vlinf{}{}\gamma{\vls[\gamma.\gamma]}
+           .\vlinf{}{}\delta{\vls[\delta.\delta]})}
+      {\vls[(\gamma.\delta).(\gamma.\delta)]}
+\quad,
+\]
+and their dual ones.
+\end{proof}
+
+%-------------------------------------------------------------------------------
+\begin{notation}\label{NotDerSubst}
+In the hypotheses of Proposition~\ref{PropSubst}, we can describe $\Psi$ as $\Phi\{a^\phi/\beta,\bar a^\phi/\bar\beta\}$; one of $a^\phi/\beta$ or $\bar a^\phi/\bar\beta$ might be missing, when no identity or cut vertices are present in $\phi$.
+\end{notation}
+
+
+
+\TODO{Merge the previous on substitutions with what comes in a later section.}
 
 %=================================================================
 \subsection{A Normal Form of Derivation}\label{subsection:DerNormalForm}
