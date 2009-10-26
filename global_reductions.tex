@@ -88,7 +88,7 @@ where $n$ is the number of atom occurrences in $\gamma$; moreover, the size of\/
 
 %-------------------------------------------------------------------------------
 \begin{proof}
-We can proceed by structural induction on $\Phi$. For every formula in $\Phi$ we substitute $a^\phi$ with $\gamma$. Since all the edges in $\phi$ are mapped to from $a$ (and not $\bar a$), we know that all the vertices in $\phi$ are mapped to from instances of $\acd$, $\acu$, $\awd$ and $\awu$. We substitute every instance of $\acd$, $\acu$, $\awd$ and $\awu$ where $a^\phi$ appears, by $\cod$, $\cou$, $\wed$, $\weu$, respectively, with $\gamma$ in the place of $a^\phi$. The result then follows by Lemma~\vref{lemma:GenericWeakening} and Lemma~\vref{lemma:GenericContraction}.
+We can proceed by structural induction on $\Phi$. For every formula in $\Phi$ we substitute $a^\phi$ with $\gamma$. Since all the edges in $\phi$ are mapped to from $a$ (and not $\bar a$), we know that all the vertices in $\phi$ are mapped to from instances of $\acd$, $\acu$, $\awd$ and $\awu$. We substitute every instance of $\acd$, $\acu$, $\awd$ and $\awu$ where $a^\phi$ appears, by $\cod$, $\cou$, $\wed$, $\weu$, respectively, with $\gamma$ in the place of $a^\phi$. The result then follows by Proposition~\vref{proposition:GenericStructural}.
 \end{proof}
 %----------
 
@@ -106,7 +106,7 @@ The notion of substitution can be extended to allow $\phi$ to contain interactio
 
 %-----------------
 \begin{convention}
-To avoid ambiguity in Definitions~\vref{definition:FourBoxes}, \vref{definition:IsolatedSubflowRemoval}, \vref{definition:PathBreaker} and \vref{definition:MultipleIsolatedSubflowsRemoval} we have establish the following convention:
+To avoid ambiguity in Definitions~\vref{definition:FourBoxes}, \vref{definition:IsolatedSubflowRemoval} and \vref{definition:PathBreaker} we have establish the following convention:
 Let $\boldsymbol\epsilon=\epsilon_1,\dots,\epsilon_n$, $\boldsymbol\iota=\iota_1,\dots,\iota_m$, $\boldsymbol{\epsilon'}=\epsilon'_1,\dots,\epsilon'_n$ and $\boldsymbol{\iota'}=\iota'_1,\dots,\iota'_m$, then, when we write
 \[
 \atomicflow

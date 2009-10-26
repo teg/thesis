@@ -92,7 +92,7 @@ In addition to these rules, there is a rule $\vlsmash{\vlinf={}\delta\gamma}$, s
 \end{array}
 \quad.
 \end{equation}
-We do not always show the instances of rule $=$, and when we do show them, we gather several contiguous instances into one. We consider the $=$ rule as implicitly present in all systems. The first row in Figure~\ref{FigExAF} shows some $\SKS$ example derivations.
+We do not always show the instances of rule $=$, and when we do show them, we gather several contiguous instances into one. We consider the $=$ rule as implicitly present in all systems. The first row in Figure~\ref{figure:ExampleAtomicFlows} shows some $\SKS$ example derivations.
 
 The equality relation $=$ on formulae is defined by closing the equations in \eqref{Eq} by reflexivity, symmetry, transitivity and by stipulating that $\alpha=\beta$ implies $\xi\vlscn[\alpha]=\xi\vlscn[\beta]$; to indicate literal equality of the formulae $\alpha$ and $\beta$ we adopt the notation $\alpha\equiv\beta$.
 
@@ -131,14 +131,27 @@ Clearly, a derivation in $\SKS$ is also a derivation in $\SKSg$. It can easily b
 \newcommand{\KS}{\mathsf{KS}}
 A notable analytic system is $\KS=\{\swi,\med,=,\aid,\awd,\acd\}$, which is complete for propositional logic \cite{BrunTiu:01:A-Local-:mz,Brun:04:Deep-Inf:rq}; this, of course, entails completeness for all the systems that contain $\KS$, such as $\aSKS$ and $\SKS$.
 
-We can replace instances of nonatomic structural rules by derivations with the same premiss and conclusion, and that only contain atomic structural rules. The price to pay is a quadratic growth in size. This is stated by the following, routine proposition (keep in mind that, from now on, we consider the $=$ rule as implicitly present in all systems). An example is the rightmost upper derivation in Figure~\ref{FigExAF}, which stands for a nonatomic cocontraction.
+We can replace instances of nonatomic structural rules by derivations with the same premiss and conclusion, and that only contain atomic structural rules. The price to pay is a quadratic growth in size. This is stated by the following, routine proposition (keep in mind that, from now on, we consider the $=$ rule as implicitly present in all systems). An example is the rightmost upper derivation in Figure~\ref{figure:ExampleAtomicFlows}, which stands for a nonatomic cocontraction.
 
-%-------------------------------------------------------------------------------
-\begin{proposition}\label{PropGenAtPol}
+%--------------------------------------
+\begin{proposition}\label{proposition:GenericStructural}
 Rule instances of\/ $\wed$, $\weu$, $\cod$ and\/ $\cou$ can be derived in quadratic time by derivations in\/ $\{\awd\}$, $\{\awu\}$, $\{\med,\acd\}$ and\/ $\{\med,\acu\}$, respectively.
 \end{proposition}
+%----------------
 
-Sometimes, we use a nonatomic rule instance to stand for some derivation in $\SKS$ that derives that instance, as per Proposition~\ref{PropGenAtPol}.
+\TODO{Define superswitches.}
+
+\newcommand{\supers}{\mathsf{ss}}
+\newcommand{\ssu}{\supers\uparrow}
+\newcommand{\ssd}{\supers\downarrow}
+
+%------------------
+\begin{lemma}\label{lemma:SuperSwitch}
+\TODO{Prove that superswitches can be derived in cubic time.}
+\end{lemma}
+%----------------
+
+Sometimes, we use a nonatomic rule instance to stand for some derivation in $\SKS$ that derives that instance, as per Proposition~\ref{proposition:GenericStructual}.
 
 For CoS proofs, we adopt a special notation that allows us considerable efficiency in describing derivations, especially in the crucial Definition~\ref {DefThrDer}. We denote the result of including every formula of $\Phi$ into the context $\xi\vlhole$ by $\xi\vlscn[\Phi]$: since we adopt deep inference, $\xi\vlscn[\Phi]$ is a valid derivation. Then, given the two derivations $\vldownsmash{\vlder\Phi{}\beta\alpha}$ and $\vldownsmash{\vlder\Psi{}\delta\gamma}$, by $\vls[\Phi.\Psi]$ and $\vls(\Phi.\Psi)$ we denote, respectively,
 \[
@@ -149,14 +162,7 @@ For CoS proofs, we adopt a special notation that allows us considerable efficien
          {\vlsbr(\vlder\Phi{}\beta\alpha\vlx.\vlx\gamma)}
 \quad,
 \]
-or any other CoS derivations obtained by interleaving $\Phi$ and $\Psi$ and respecting the specified logical relations between $\Phi$ and $\Psi$. We call this the \emph{Formalism A} notation. Examples of Formalism A derivations are in the second row of Figure~\ref {FigExAF}, in correspondence with CoS derivations in the first row. Note that we omit structural rule names in Formalism A notation (since they are easily inferable, this improves legibility).
+or any other CoS derivations obtained by interleaving $\Phi$ and $\Psi$ and respecting the specified logical relations between $\Phi$ and $\Psi$. We call this the \emph{Formalism A} notation. Examples of Formalism A derivations are in the second row of Figure~\ref{figure:ExampleAtomicFlows}, in correspondence with CoS derivations in the first row. Note that we omit structural rule names in Formalism A notation (since they are easily inferable, this improves legibility).
 
 The size of CoS derivations is, obviously, at most quadratic in the size of Formalism A derivations denoting them. We use this fact implicitly throughout the paper, and we always measure the CoS size of derivations, even if we show them in Formalism A notation. Because of its convenience, the Formalism A notation is currently being developed as a full-fledged deep-inference formalism.
 
-
-
-\TODO{Define superswitches.}
-
-\newcommand{\supers}{\mathsf{ss}}
-\newcommand{\ssu}{\supers\uparrow}
-\newcommand{\ssd}{\supers\downarrow}
