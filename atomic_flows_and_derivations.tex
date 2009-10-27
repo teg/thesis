@@ -250,60 +250,67 @@ We generalise this labelling mechanism to boxes. For example, we can use a diffe
 Given a formula $\alpha$ in a derivation whose associated atomic flow contains a flow $\phi$, we indicate with $a^\phi$ every occurrence of the atom $a$ in $\alpha$ whose associated edge is in $\phi$. So, as in the following Proposition~\ref {proposition:DerivationSubstitution}, $\alpha\{a^\phi/\gamma\}$ stands for the formula $\alpha$ where the atom occurrences of $a$, whose associated edges are in $\phi$, are substituted with formula $\gamma$.
 \end{notation}
 
-%-------------------------------------------------------------------------------
-\begin{proposition}\label{PropSubst}
-Given a derivation\/ $\vlder\Phi\SKS{\alpha'}\alpha$, let its associated flow have shape
+%------------------------------------------------------------
+\begin{proposition}\label{proposition:DerivationSubstitution}
+Given a derivation\/ $\vlder\Phi\SKS{\beta}\alpha$, let its associated flow have shape
 \[
-%\vcenter{\hbox{\includegraphics{Figures/figPropSubstA}}}
+\atomicflow{
+(-5, 6)*{\afvjdm4{}{}};
+( 5, 6)*{\afvjdm4{}{}};
+(-1, 2)*{\aflabelleft\phi};
+( 9, 2)*{\aflabelleft\psi};
+(-5, 0)*{\affr88};
+( 5, 0)*{\affr88};
+(-5,-6)*{\afvjum4{}{}};
+( 5,-6)*{\afvjum4{}{}}
+}
 \quad,
 \]
-such that $\phi$ is a connected component each of whose edges is associated with atom $a$ or $\bar a$; then, for any formula $\beta$, there exists a derivation
+such that $\phi$ is a connected component whose edges are each associated with atom $a$; then, for any formula $\gamma$, there exists a derivation
 \[
-\vlder\Psi\SKS{\alpha'\{a^\phi/\beta,\bar a^\phi/\bar\beta\}}
-              {\alpha \{a^\phi/\beta,\bar a^\phi/\bar\beta\}}
+\vlder\Psi\SKS{\beta \{a^\phi/\gamma\}}
+              {\alpha\{a^\phi/\gamma\}}
 \]
 whose associated flow is
 \[
-%\vcenter{\hbox{\includegraphics{Figures/figPropSubstB}}}
+\atomicflow{
+(-17, 6)*{\afvjdm4{}{}};
+( -5, 6)*{\afvjdm4{}{}};
+(  5, 6)*{\afvjdm4{}{}};
+(-13, 2)*{\aflabelleft{f_1(\phi)}};
+( -1, 2)*{\aflabelleft{f_n(\phi)}};
+(  9, 2)*{\aflabelleft\psi};
+(-17, 0)*{\affr88};
+(-11, 0)*{\cdots};
+( -5, 0)*{\affr88};
+(  5, 0)*{\affr88};
+(-17,-6)*{\afvjum4{}{}};
+( -5,-6)*{\afvjum4{}{}};
+(  5,-6)*{\afvjum4{}{}};
+}
 \quad,
 \]
-where $m$ is the number of atom occurrences in $\beta$; moreover, the size of\/ $\Psi$ depends at most linearly on the size of\/ $\Phi$ and quadratically on the size of $\beta$.
+where $n$ is the number of atom occurrences in $\gamma$; moreover, the size of\/ $\Psi$ depends linearly on the size of\/ $\Phi$ and quadratically on the size of $\gamma$.
 \end{proposition}
+%----------------
 
 %-------------------------------------------------------------------------------
 \begin{proof}
-We can proceed by structural induction on $\beta$ and then on $\phi$. For the two cases of $\beta\equiv\vls[\gamma.\delta]$ and $\beta\equiv\vls(\gamma.\delta)$ we have to consider, for each vertex of $\phi$, one of the following situations:
-\[%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% We shrank space: \qquad -> \quad
-\vlderivation                                               {
-\vlin\swi{}{\vls[\gamma.\delta.(\bar\gamma.\bar\delta)] }  { 
-\vlin\swi{}{\vls[\gamma.(\bar\gamma.[\delta.\bar\delta])]}{
-\vlhy      {\vls(\vlinf{}{}{\vls[\gamma.\bar\gamma]}\ttt
-                .\vlinf{}{}{\vls[\delta.\bar\delta]}\ttt)}}}}
-\quad,\quad
-\vls[\vlinf{}{}\gamma\fff.\vlinf{}{}\delta\fff]
-\quad,\quad
-\vls(\vlinf{}{}\gamma\fff.\vlinf{}{}\delta\fff)
-\quad,\quad
-\vls[\vlinf{}{}\gamma{\vls[\gamma.\gamma]}.\vlinf{}{}\delta{\vls[\delta.\delta]}]
-\quad,\quad
-\vlinf\med
-      {}
-      {\vls(\vlinf{}{}\gamma{\vls[\gamma.\gamma]}
-           .\vlinf{}{}\delta{\vls[\delta.\delta]})}
-      {\vls[(\gamma.\delta).(\gamma.\delta)]}
-\quad,
-\]
-and their dual ones.
+We can proceed by structural induction on $\Phi$. For every formula in $\Phi$ we substitute $a^\phi$ with $\gamma$. Since all the edges in $\phi$ are mapped to from $a$ (and not $\bar a$), we know that all the vertices in $\phi$ are mapped to from instances of $\acd$, $\acu$, $\awd$ and $\awu$. We substitute every instance of $\acd$, $\acu$, $\awd$ and $\awu$ where $a^\phi$ appears, by $\cod$, $\cou$, $\wed$, $\weu$, respectively, with $\gamma$ in the place of $a^\phi$. The result then follows by Proposition~\vref{proposition:GenericStructural}.
 \end{proof}
+%----------
 
-%-------------------------------------------------------------------------------
-\begin{notation}\label{NotDerSubst}
-In the hypotheses of Proposition~\ref{PropSubst}, we can describe $\Psi$ as $\Phi\{a^\phi/\beta,\bar a^\phi/\bar\beta\}$; one of $a^\phi/\beta$ or $\bar a^\phi/\bar\beta$ might be missing, when no identity or cut vertices are present in $\phi$.
+%---------------
+\begin{notation}\label{notation:DerivationSubstitution}
+The derivation $\Psi$ obtained in the proof of Propostion~\vref{proposition:DerivationSubstitution} is denoted $\Phi\{a^\phi/\gamma\}$.
 \end{notation}
+%-------------
 
-
-
-\TODO{Merge the previous on substitutions with what comes in a later section.}
+%-------------
+\begin{remark}\label{remark:ExtendDerivationSubstitution}
+The notion of substitution can be extended to allow $\phi$ to contain interaction and cut vertices, but we shall not need that in this article.
+\end{remark}
+%-----------
 
 %=================================================================
 \subsection{A Normal Form of Derivation}\label{subsection:DerNormalForm}

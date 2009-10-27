@@ -42,68 +42,6 @@ We provide constructive soundness proofs for every reduction in this thesis, so 
 \end{convention}
 %---------------
 
-%------------------------------------------------------------
-\begin{proposition}\label{proposition:DerivationSubstitution}
-Given a derivation\/ $\vlder\Phi\SKS{\beta}\alpha$, let its associated flow have shape
-\[
-\atomicflow{
-(-5, 6)*{\afvjdm4{}{}};
-( 5, 6)*{\afvjdm4{}{}};
-(-1, 2)*{\aflabelleft\phi};
-( 9, 2)*{\aflabelleft\psi};
-(-5, 0)*{\affr88};
-( 5, 0)*{\affr88};
-(-5,-6)*{\afvjum4{}{}};
-( 5,-6)*{\afvjum4{}{}}
-}
-\quad,
-\]
-such that $\phi$ is a connected component whose edges are each associated with atom $a$; then, for any formula $\gamma$, there exists a derivation
-\[
-\vlder\Psi\SKS{\beta \{a^\phi/\gamma\}}
-              {\alpha\{a^\phi/\gamma\}}
-\]
-whose associated flow is
-\[
-\atomicflow{
-(-17, 6)*{\afvjdm4{}{}};
-( -5, 6)*{\afvjdm4{}{}};
-(  5, 6)*{\afvjdm4{}{}};
-(-13, 2)*{\aflabelleft{f_1(\phi)}};
-( -1, 2)*{\aflabelleft{f_n(\phi)}};
-(  9, 2)*{\aflabelleft\psi};
-(-17, 0)*{\affr88};
-(-11, 0)*{\cdots};
-( -5, 0)*{\affr88};
-(  5, 0)*{\affr88};
-(-17,-6)*{\afvjum4{}{}};
-( -5,-6)*{\afvjum4{}{}};
-(  5,-6)*{\afvjum4{}{}};
-}
-\quad,
-\]
-where $n$ is the number of atom occurrences in $\gamma$; moreover, the size of\/ $\Psi$ depends linearly on the size of\/ $\Phi$ and quadratically on the size of $\gamma$.
-\end{proposition}
-%----------------
-
-%-------------------------------------------------------------------------------
-\begin{proof}
-We can proceed by structural induction on $\Phi$. For every formula in $\Phi$ we substitute $a^\phi$ with $\gamma$. Since all the edges in $\phi$ are mapped to from $a$ (and not $\bar a$), we know that all the vertices in $\phi$ are mapped to from instances of $\acd$, $\acu$, $\awd$ and $\awu$. We substitute every instance of $\acd$, $\acu$, $\awd$ and $\awu$ where $a^\phi$ appears, by $\cod$, $\cou$, $\wed$, $\weu$, respectively, with $\gamma$ in the place of $a^\phi$. The result then follows by Proposition~\vref{proposition:GenericStructural}.
-\end{proof}
-%----------
-
-%---------------
-\begin{notation}
-The derivation $\Psi$ obtained in the proof of Propostion~\vref{proposition:DerivationSubstitution} is denoted $\Phi\{a^\phi/\gamma\}$.
-\end{notation}
-%-------------
-
-%-------------
-\begin{remark}
-The notion of substitution can be extended to allow $\phi$ to contain interaction and cut vertices, but we shall not need that in this thesis.
-\end{remark}
-%-----------
-
 %-----------------
 \begin{convention}
 To avoid ambiguity in Definition~\vref {definition:FourBoxes}, Definition~\vref {definition:IsolatedSubflowRemoval} and Definition~\vref {definition:PathBreaker} we have establish the following convention:
