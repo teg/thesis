@@ -7,11 +7,11 @@ We can single out three features of atomic flows that, in general, and not just 
 
 \begin{enumerate}
 %---------------------------------------
-\item\label{ItemUseTop} Atomic flows conveniently express the topological structure of atom occurrences in a proof. This is especially useful for defining the `simple form' of proofs, in Definition~\ref{DefSimpleForm}.
+\item\label{item:UseTop} Atomic flows conveniently express the topological structure of atom occurrences in a proof. This is especially useful for defining the `simple form' of proofs, in Definition~\ref{DefSimpleForm}.
 %---------------------------------------
-\item\label{ItemUseSubst} Atomic flows provide for an efficient way to control substitutions for atom occurrences in derivations. This is especially useful for defining the `cut-free form' of proofs, in Definition~\ref{DefNorm}.
+\item\label{item:UseSubst} Atomic flows provide for an efficient way to control substitutions for atom occurrences in derivations. This is especially useful for defining the `cut-free form' of proofs, in Definition~\ref{DefNorm}.
 %---------------------------------------
-\item\label{ItemUseNorm} We can define graph rewriting systems over atomic flows that control normalisation procedures on derivations. This could be used for obtaining the `analytic form' of proofs, as we do in Theorem~\ref{ThNormAn}. 
+\item\label{item:UseNorm} We can define graph rewriting systems over atomic flows that control normalisation procedures on derivations. This could be used for obtaining the `analytic form' of proofs, as we do in Theorem~\ref{ThNormAn}. 
 \end{enumerate}
 Our aim now is to quickly and informally provide the necessary notions about atomic flows, especially concerning aspects \eqref{ItemUseTop} and \eqref{ItemUseSubst} above. Although the feature \eqref{ItemUseNorm} of atomic flows did help us in obtaining proofs in analytic form, we estimate that formally introducing the necessary machinery is unjustified in this paper. In fact, given our limited needs here, we can operate directly on derivations, without the intermediate support of atomic flows. Nonetheless, being aware of the underlying atomic-flow methods is useful for the reader who wishes to further investigate this matter. So, we informally provide, in Section~\ref{SectNorm}, enough material to make the connection with the atomic-flow techniques that are fully developed in \cite{GuglGund:07:Normalis:lr}.
 
@@ -26,7 +26,7 @@ The first kind of elementary atomic flow is the \emph{edge}
 \]
 which corresponds to one or more occurrences of the same atom in a given derivation, all of which are not active in any structural rule instance, \emph{i.e.}, they are not the atom occurrences that instantiate a structural rule.
 
-The other six kinds of elementary diagrams are associated with the six structural inference rules, as shown in Figure~\ref{FigVertAF}, and they are called \emph{vertices}; each vertex has some incident edges. At the left of each arrow, we see an instance of a structural rule, where the atom occurrences are labelled by small numerals; at the right of the arrow, we see the vertex corresponding to the rule instance, whose incident edges are labelled in accord with the atom occurrences they correspond to. We qualify each vertex according to the rule it corresponds to; for example, in a given atomic flow, we might talk about a \emph{contraction vertex}, or a \emph{cut vertex}, and so on. Instead of small numerals, sometimes we use $\epsilon$ or $\iota$ or colour to label edges (as well as atom occurrences), but we do not always use labels.
+The other six kinds of elementary diagrams are associated with the six structural inference rules, as shown in Figure~\vref{figure:AtomicFlowVertices}, and they are called \emph{vertices}; each vertex has some incident edges. At the left of each arrow, we see an instance of a structural rule, where the atom occurrences are labelled by small numerals; at the right of the arrow, we see the vertex corresponding to the rule instance, whose incident edges are labelled in accord with the atom occurrences they correspond to. We qualify each vertex according to the rule it corresponds to; for example, in a given atomic flow, we might talk about a \emph{contraction vertex}, or a \emph{cut vertex}, and so on. Instead of small numerals, sometimes we use $\epsilon$ or $\iota$ or colour to label edges (as well as atom occurrences), but we do not always use labels.
 
 \newcommand{\one  }{{\mathchoice{\scriptstyle      \mathbf1}
                                 {\scriptstyle      \mathbf1}
@@ -61,10 +61,10 @@ The other six kinds of elementary diagrams are associated with the six structura
 \end{array}
 \]
 \caption{Vertices of atomic flows.}
-\label{FigVertAF}
+\label{figure:AtomicFlowVertices}
 \end{figure}
 
-All edges are directed, but we do not explicitly show the orientation. Instead, we consider it as implicitly given by the way we draw them, namely, edges are oriented along the vertical direction. So, the vertices corresponding to dual rules, in Figure~\ref{FigVertAF}, are distinct, for example, an identity vertex and a cut vertex are different because the orientation of their edges is different. On the other hand, the horizontal direction plays no role in distinguishing atomic flows; this corresponds to commutativity of logical relations.
+All edges are directed, but we do not explicitly show the orientation. Instead, we consider it as implicitly given by the way we draw them, namely, edges are oriented along the vertical direction. So, the vertices corresponding to dual rules, in Figure~\ref{figure:AtomicFlowVertices}, are distinct, for example, an identity vertex and a cut vertex are different because the orientation of their edges is different. On the other hand, the horizontal direction plays no role in distinguishing atomic flows; this corresponds to commutativity of logical relations.
 
 \newcommand{\ppl}{{\mathchoice{\scriptstyle+}
                               {\scriptstyle+}
@@ -342,7 +342,7 @@ We consider atomic flows to be equal modulo flow isomorphisms and modulo the equ
 %---------------
 
 %---------------
-\begin{notation}
+\begin{notation}\label{notation:LabelsFlowPolarity}
 Given an atomic flow $\phi$ and a polarity assignment $\pi$ for $\phi$, whenever we write
 \[
 \atomicflow{
@@ -365,7 +365,7 @@ respectively, we mean that all the edges in $\phi$ have polarity assignment $\pp
 %-------------
 
 %-----------------
-\begin{definition}
+\begin{definition}\label{definition:DualPolarity}
 Given an atomic flow $\phi$ and a polarity assignment $\pi$ for $\phi$, the polarity assignment $\bar\pi$ for $\phi$ is defined to be, for every $\epsilon$ in $\phi$:
 \[
 \bar\pi(\epsilon)=

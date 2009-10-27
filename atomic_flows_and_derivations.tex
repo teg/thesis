@@ -3,7 +3,7 @@
 Let us see how to extract atomic flows from derivations. Given an $\SKS$ derivation $\Phi$, we obtain, by the following prescriptions, a unique atomic flow $\phi$, such that there is a surjective map between atom occurrences in $\Phi$ and edges of $\phi$:
 \begin{itemize}
 %-------------------
-\item Each structural inference step in $\Phi$ is associated with one and only one vertex in $\phi$, such that active atom occurrences in the rule instance map to edges incident with the vertex. The correspondence is indicated in Figure~\ref{FigVertAF}. For example, the flow associated with the inference step at the left is indicated at the right:
+\item Each structural inference step in $\Phi$ is associated with one and only one vertex in $\phi$, such that active atom occurrences in the rule instance map to edges incident with the vertex. The correspondence is indicated in Figure~\ref{figure:AtomicFlowVertices}. For example, the flow associated with the inference step at the left is indicated at the right:
 \[
 \vlinf\acd
       {}
@@ -183,7 +183,7 @@ Given a derivation $\Phi$ with atomic flow $\phi$, and an atom $a$, the \emph{re
 %---------------
 
 %--------------
-\begin{example}
+\begin{example}\label{example:FlowRestriction}
 Consider the rightmost derivation and its associated atomic flow in Figure~\ref{figure:ExampleAtomicFlows}. The restriction of this flow to $a$ is:
 \[
 \atomicflow{
@@ -246,8 +246,8 @@ We generalise this labelling mechanism to boxes. For example, we can use a diffe
 \]
 
 %-------------------------------------------------------------------------------
-\begin{notation}\label{NotSubst}
-Given a formula $\alpha$ in a derivation whose associated atomic flow contains a flow $\phi$, we indicate with $a^\phi$ every occurrence of the atom $a$ in $\alpha$ whose associated edge is in $\phi$. So, as in the following Proposition~\ref {PropSubst}, $\alpha\{a^\phi/\beta,\bar a^\phi/\bar\beta\}$ stands for the formula $\alpha$ where the atom occurrences of $a$ and its dual, whose associated edges are in $\phi$, are substituted with formula $\beta$ and its dual, respectively.
+\begin{notation}\label{notation:FormulaSubstitution}
+Given a formula $\alpha$ in a derivation whose associated atomic flow contains a flow $\phi$, we indicate with $a^\phi$ every occurrence of the atom $a$ in $\alpha$ whose associated edge is in $\phi$. So, as in the following Proposition~\ref {proposition:DerivationSubstitution}, $\alpha\{a^\phi/\gamma\}$ stands for the formula $\alpha$ where the atom occurrences of $a$, whose associated edges are in $\phi$, are substituted with formula $\gamma$.
 \end{notation}
 
 %-------------------------------------------------------------------------------
