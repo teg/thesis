@@ -264,21 +264,24 @@ then, given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an inte
 \item for some $1\le i\le 3$, $\nu=f_i(\nu')$ or $\nu=g_i(\nu')$, or $\nu=\nu_\aid$ and $\nu'=\nu'_\aid$ (resp., $\nu=\nu_\aiu$ and $\nu'=\nu'_\aiu$);
 \item if there is a path from $\nu$ to $\bot$ (resp., $\top$) in $\psi$, then there is a path from $\nu'$ to $\bot$ (resp., $\top$) in $\phi$; and
 \item if there is a cut (resp., interaction) vertex $\hat\nu$ in $\psi$, such that there is a path from $\nu$ to $\hat\nu$ in $\psi$, then there is a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$, such that, for some $1\le i\le 3$, $\hat\nu=f_i(\nu')$ or $\hat\nu=g_i(\nu')$, or $\hat\nu=\nu_\aiu$ and $\hat\nu'=\nu'_\aiu$ (resp., $\hat\nu=\nu_\aid$ and $\hat\nu'=\nu'_\aid$); and there is a path from $\nu'$ to $\hat\nu'$ in $\phi$.
+\item there is no path from $\nu_\aid$ to $\nu_\aiu$.
 \end{itemize}
 \end{lemma}
 
 \TODO{Check commens from Alessio}
+\Tom{Added one case and moved proof that used to be in proposition.}
 
 \begin{proof}
 We consider each case separately:
 \begin{itemize}
   \item by definition;
   \item any path from $\nu$ to $\bot$ (resp., $\top$) in $\psi$ must contain an edge $\epsilon$, such that, for some lower (resp., upper) edge $\epsilon'$ of $\phi$ and some $1\le i\le 3$, $f_i(\epsilon')=\epsilon$ or $g_i(\epsilon')=\epsilon$. Hence, there is a path from $\nu'$ to $\bot$ (resp., $\top$) in $\phi$; and
- \item we have to consider two cases:
- \begin{itemize}
-  \item for some $1\le i\le 3$, $\nu=f_i(\nu')$ and $\hat\nu=f_i(\hat\nu')$, or $\nu=g_i(\nu')$ and $\hat\nu=g_i(\hat\nu')$, then there is a path from $\nu'$ to $\hat\nu'$ in $\phi$; or
-  \item $\nu=g_1(\nu')$ and $\hat\nu=g_2(\hat\nu')$, or $\nu=f_2(\nu')$ and $\hat\nu=f_3(\hat\nu')$ (resp., $\nu=g_2(\nu')$ and $\hat\nu=g_1(\hat\nu')$, or $\nu=f_3(\nu')$ and $\hat\nu=f_2(\hat\nu')$), then there is a path from $\nu'$ to $\nu'_\aiu$ (resp., $\nu'_\aid$) in $\phi$.
- \end{itemize}
+  \item we have to consider two cases:
+  \begin{itemize}
+    \item for some $1\le i\le 3$, $\nu=f_i(\nu')$ and $\hat\nu=f_i(\hat\nu')$, or $\nu=g_i(\nu')$ and $\hat\nu=g_i(\hat\nu')$, then there is a path from $\nu'$ to $\hat\nu'$ in $\phi$; or
+    \item $\nu=g_1(\nu')$ and $\hat\nu=g_2(\hat\nu')$, or $\nu=f_2(\nu')$ and $\hat\nu=f_3(\hat\nu')$ (resp., $\nu=g_2(\nu')$ and $\hat\nu=g_1(\hat\nu')$, or $\nu=f_3(\nu')$ and $\hat\nu=f_2(\hat\nu')$), then there is a path from $\nu'$ to $\nu'_\aiu$ (resp., $\nu'_\aid$) in $\phi$.
+  \end{itemize}
+  \item in Definition~\ref{definition:PathBreaker} we have colored the edges that might occur in paths from $\nu_\aid$ in red and paths that might occur in path to $\nu_\aiu$ in green. Since the red and the green edges never coincide, there can be no paths from $\nu_\aid$ to $\nu_\aiu$
 \end{itemize}
 \end{proof}
 %----------
@@ -449,6 +452,8 @@ We then define $\PB(\Phi,a)$ to be such that $\Psi\to_\frpb\PB(\Phi,a)$, where $
 \end{definition}
 %---------------
 
+\Tom{Moved some details to the previous lemma.}
+
 %------------------------------------------------------------
 \begin{proposition}\label{proposition:PathBreaker}
 Given an atom $a$ and a derivation $\Phi$,
@@ -462,8 +467,8 @@ Given an atom $a$ and a derivation $\Phi$,
 \begin{proof}
 If $\Phi$ is weakly streamlined with respect to both $a$ and $\bar a$, the result is trivial. Assume $\Phi$ is not weakly streamlined with respect to both $a$ and $\bar a$, and let $\phi$, $\psi$, $\phi'$, $\psi'$, $\phi''$ and $\psi''$ be the atomic flows given in Definition~\ref{definition:DerPathBreaker} and let $\nu_\aid$ (resp., $\nu_\aiu$) be the evidenced interaction (resp., cut) vertex in $\psi''$, then
 \begin{enumerate}
-\item by Definition~\ref{definition:DerPathBreaker} all the paths from an interaction (resp., cut) vertex whose edges are mapped to from instances of $a$ or $\bar a$ must start from $\nu_\aid$ (resp., $\nu_\aiu$). In Definition~\ref{definition:PathBreaker} we have colored these edges in red (resp., green). Since the red and the green edges never coincide, there are no paths from $\nu_\aid$ to $\nu_\aiu$;
-\item if there is a path from an interaction (resp., cut) vertex in the atomic flow of $\PB(\Phi,a)$ whose edges are mapped to from instances of $b$, then, by Lemma~\vref{lemma:PathBreaker}, there is a path from an interaction (resp., cut) vertex in $\phi$ or $\psi$, so also in $\phi'$ or $\psi'$, whose edges are mapped to from instances of $b$. Hence, the statement follows by contradiction; and
+\item by Definition~\ref{definition:DerPathBreaker} all the paths from an interaction (resp., cut) vertex whose edges are mapped to from instances of $a$ or $\bar a$ must start from $\nu_\aid$ (resp., $\nu_\aiu$). The statement then follows by Lemma~\vref{lemma:PathBreaker};
+\item if there is a path from an interaction (resp., cut) vertex in the atomic flow of $\PB(\Phi,a)$ whose edges are mapped to from instances of $b$, then, by Lemma~\ref{lemma:PathBreaker}, there is a path from an interaction (resp., cut) vertex in $\phi$ or $\psi$, so also in $\phi'$ or $\psi'$, whose edges are mapped to from instances of $b$. Hence, the statement follows by contradiction; and
 \item the statement follows by Theorem~\vref{theorem:SoundPathBreaker}.
 \end{enumerate}
 \end{proof}
