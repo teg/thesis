@@ -17,4 +17,5 @@
 *.ilg
 *.ind
 .DS_Store
+*.eps
 
