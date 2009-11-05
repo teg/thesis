@@ -1,0 +1,99 @@
+%%!TEX TS-program = latex
+\documentclass[a4paper]{amsart}
+
+\usepackage[urw-garamond]{mathdesign}
+\usepackage[lutzsyntax]{virginialake}
+   \aftrianglefalse
+   \everydisplay={\vlsmallleftlabels}
+
+\begin{document}
+\thispagestyle{empty}
+
+\[
+\atomicflow{
+%one
+(-32,0)="A";
+"A"+(-8,0)*{\invisiblemark};
+"A"+( 1,18.5)*{\aflabelleft{\boldsymbol{\epsilon_1}}};
+"A"+( 1,18.90)*{\afvjm{2.2}};
+"A"+( 1,12.25)*{\afacumexsq{}{}{}{}{}{}84};
+"A"+(-3, 5)*{\afvjm2};
+"A"+( 3, 8)*{\afawdm{}{}{}{}};
+%
+"A"+(-3, 6.5)*{\aflabelleft{f_1(\boldsymbol{\epsilon_1})}};
+"A"+( 3, 6.5)*{\aflabelleft{f_1(\boldsymbol{\epsilon_2})}};
+"A"+( 0, 0)*{\affr88};
+"A"+( 4, 2)*{\aflabelleft{f_1(\phi)}};
+"A"+(-3,-5.5)*{\aflabelleft{f_1(\boldsymbol{\iota_1})}};
+"A"+( 3,-5.5)*{\aflabelleft{f_1(\boldsymbol{\iota_2})}};
+%
+"A"+(-3, -5)*{\afvjm2};
+"A"+( 1,-12)*{\afacdmexsq{}{}{}{}{}{}84};
+"A"+( 1,-17.75)*{\aflabelleft{\boldsymbol{\iota_1}}};
+"A"+( 1,-19)*{\afvjm2};
+"A"+( 3, -8)*{\afawum{}{}{}{}};
+%two
+(-16,10)="A";
+"A"+(-3,8)*{\afawdm{}{}{}{}};
+"A"+(14,8)*{\afaidmex{}{}{}{}{}{}{11}2};
+%
+"A"+(-3, 6.5)*{\aflabelleft{f_2(\boldsymbol{\epsilon_1})}};
+"A"+( 3, 6.5)*{\aflabelleft{f_2(\boldsymbol{\epsilon_2})}};
+"A"+( 0, 0)*{\affr88};
+"A"+( 4, 2)*{\aflabelleft{f_2(\phi)}};
+"A"+(-4,-5.5)*{\aflabelleft{f_2(\boldsymbol{\iota_1})}};
+"A"+( 3,-5.5)*{\aflabelleft{f_2(\boldsymbol{\iota_2})}};
+%
+"A"+(-7,-10)*{\afcjrm8{12}};
+"A"+( 3,-8)*{\afawum{}{}{}{}};
+%three
+(-16,-10)="A";
+"A"+( -7,10)*{\afcjlm8{12}};
+"A"+(  3, 8)*{\afawdm{}{}{}{}};
+%
+"A"+(-4, 6.5)*{\aflabelleft{f_3(\boldsymbol{\epsilon_1})}};
+"A"+( 3, 6.5)*{\aflabelleft{f_3(\boldsymbol{\epsilon_2})}};
+"A"+( 0, 0)*{\affr88};
+"A"+( 4, 2)*{\aflabelleft{f_3(\phi)}};
+"A"+(-3,-5.5)*{\aflabelleft{f_3(\boldsymbol{\iota_1})}};
+"A"+( 3,-5.5)*{\aflabelleft{f_3(\boldsymbol{\iota_2})}};
+%
+"A"+( 14,-8)*{\afaiumex{}{}{}{}{}{}{11}2};
+"A"+(-3,-8)*{\afawum{}{}{}{}};
+%four
+(-2, 0)="A";
+(-5, 8)*{\afawdm{}{}{}{}};
+( 1, 8)*{\afvjm8};
+%
+"A"+(-3, 6.5)*{\aflabelleft{f_4(\boldsymbol{\epsilon_1})}};
+"A"+( 3, 6.5)*{\aflabelleft{f_4(\boldsymbol{\epsilon_2})}};
+"A"+( 0, 0)*{\affr88};
+"A"+( 4, 2)*{\aflabelleft{f_4(\phi)}};
+"A"+(-3,-5.5)*{\aflabelleft{f_4(\boldsymbol{\iota_1})}};
+"A"+( 3,-5.5)*{\aflabelleft{f_4(\boldsymbol{\iota_2})}};
+%
+( 1,-8)*{\afvjm8};
+(-5,-8)*{\afawum{}{}{}{}};
+%psi
+(13, 16)*{\afvjdm{8}{}{\boldsymbol{\epsilon_4}}};
+(13,  8)*{\afvjum{8}{}{g(\boldsymbol{\epsilon_4})}};
+( 9, 13)*{\afvjm2};
+( 7,  8)*{\afacdm{}{}{}{}{}{}};
+( 3, 12)*{\afaidnw{}{}};
+%
+(10,0)="A";
+"A"+(-3, 6.5)*{\aflabelright{g(\boldsymbol{\epsilon_3})}};
+"A"+( 0, 0)*{\affr88};
+"A"+( 4, 2)*{\aflabelleft{g(\psi)}};
+"A"+(-3,-5.5)*{\aflabelright{g(\boldsymbol{\iota_3})}};
+%
+( 3,-14)*{\afaiunw{}{}};
+( 7, -8)*{\afacum{}{}{}{}{}{}};
+( 9,-13)*{\afvjm2};
+(13, -8)*{\afvjdm{8}{}{g(\boldsymbol{\iota_4})}};
+(13,-16)*{\afvjum{8}{}{\boldsymbol{\iota_4}}};
+(18,  0)*{\invisiblemark};
+}
+\]
+
+\end{document}

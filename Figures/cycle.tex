@@ -1,0 +1,21 @@
+%%!TEX TS-program = latex
+\documentclass[a4paper]{amsart}
+
+\usepackage[urw-garamond]{mathdesign}
+\usepackage[lutzsyntax]{virginialake}
+   \aftrianglefalse
+   \everydisplay={\vlsmallleftlabels}
+
+\begin{document}
+\thispagestyle{empty}
+
+\[
+\atomicflow{
+(4,11.7)*{\afacu{}{}{}{}{}{}};
+(0, 3.7)*{\afacd{}{}{}{}{}{}};
+(8, 7.7)*{\afvj{16}};
+(4,16);(8,16)**[|<\atflowthickone>]\crv{(4,18)&(6,20)&(8,18)};
+(0,0);(8,0)**[|<\atflowthickone>]\crv{(0,-2)&(4,-4)&(8,-2)}}
+\]
+
+\end{document}

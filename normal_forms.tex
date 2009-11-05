@@ -37,133 +37,22 @@ An atomic flow is
 \item\label{definition:FlowNormalForms:item:SimpleForm}
 \emph{in simple form with respect to the polarity assignment $\pi$}\index{simple form!flow} if it can be represented as
 \[
-\atomicflow{
-(-20, 14)*{\afvjm4};
-(-20,  8)*{\affr68};
-(-20, 10)*{\aflabelleft{\ppl}};
-%-
-(-22,  0)*{\afvjm8};
-%-
-(-20, -8)*{\affr68};
-(-20, -6)*{\aflabelleft{\ppl}};
-(-20,-14)*{\afvjm4};
-%-
-( -3, 16)*{\afaidmex{}{}{}{}{}{}92};
-(-12,  8)*{\affr68};
-(-12, 10)*{\aflabelleft{\ppl}};
-(-15,  0)*{\afcjrm68};
-%-
-(-15,  0)*{\afcjlm68};
-(-12, -8)*{\affr68};
-(-12, -6)*{\aflabelleft{\ppl}};
-( -3,-16)*{\afaiumex{}{}{}{}{}{}92};
-%--
-( -1,  8)*{\afaidmex{}{}{}{}{}{}32};
-( -4,  0)*{\affr68};
-( -4,  2)*{\aflabelleft{\ppl}};
-(  6,  8)*{\afvjm8};
-( 10, 10)*{\afvjm{12}};
-(  6,  0)*{\affr{10}8};
-(  4,  2)*{\aflabelleft{\pmi}};
-(  6, -8)*{\afvjm8};
-( 10,-10)*{\afvjm{12}};
-( -1, -8)*{\afaiumex{}{}{}{}{}{}32};
-}\qquad
-\atomicflow{
-( -8, 12.75)*{\afvjm{6.5}};
-(  0, 13.5)*{\afawdm{}{}{}{}{}{}};
-%---
-( -6, 5.5)*{\copy\contrup};
-( -4, 5.5)*{\affr{10}8};
-( -2, 5.5)*{\copy\contrdown};
-%---
-( -5,-2.5)*{\afaium{}{}{}{}{}{}};
-(  0,   0)*{\afvjm3};
-(  5, 2.5)*{\afaidm{}{}{}{}{}{}};
-%---
-(  2,-5.5)*{\copy\contrup};
-(  4,-5.5)*{\affr{10}8};
-(  6,-5.5)*{\copy\contrdown};
-%---
-(  0,-13.5)*{\afawum{}{}{}{}{}{}};
-(  8,-12.75)*{\afvjm{6.5}};
-}\quad;
+\vcenter{\hbox{\includegraphics{Figures/normSimpleForm}}}
+\quad;
 \]
 %---
 \item\label{definition:FlowNormalForms:item:WeaklyStreamlinedPolarity}
 \emph{weakly streamlined with respect to the polarity assignment $\pi$}\index{streamlined!weakly!with respect to polarity assignment} if it can be represented as
 \[
-\atomicflow{
-(-20, 14)*{\afvjm4};
-(-20,  8)*{\affr68};
-(-20, 10)*{\aflabelleft{\ppl}};
-%-
-(-22,  0)*{\afvjm8};
-%-
-(-20, -8)*{\affr68};
-(-20, -6)*{\aflabelleft{\ppl}};
-(-20,-14)*{\afvjm4};
-%-
-( -9, 16)*{\afaidmex{}{}{}{}{}{}32};
-(-12,  8)*{\affr68};
-(-12, 10)*{\aflabelleft{\ppl}};
-(-15,  0)*{\afcjrm68};
-%-
-(-15,  0)*{\afcjlm68};
-(-12, -8)*{\affr68};
-(-12, -6)*{\aflabelleft{\ppl}};
-( -9,-16)*{\afaiumex{}{}{}{}{}{}32};
-%--
-( -6,  8)*{\afvjm8};
-(  0, 10)*{\afvjm{12}};
-( -3,  0)*{\affr88};
-( -4,  2)*{\aflabelleft{\pmi}};
-( -6, -8)*{\afvjm8};
-(  0,-10)*{\afvjm{12}};
-}\qquad
-\atomicflow{
-( -8, 12.75)*{\afvjm{6.5}};
-(  0, 13.5)*{\afawdm{}{}{}{}{}{}};
-%---
-( -6, 5.5)*{\copy\contrup};
-( -4, 5.5)*{\affr{10}8};
-( -2, 5.5)*{\copy\contrdown};
-%---
-( -5,-2.5)*{\afaium{}{}{}{}{}{}};
-(  0,   0)*{\afvjm3};
-(  5, 2.5)*{\afaidm{}{}{}{}{}{}};
-%---
-(  2,-5.5)*{\copy\contrup};
-(  4,-5.5)*{\affr{10}8};
-(  6,-5.5)*{\copy\contrdown};
-%---
-(  0,-13.5)*{\afawum{}{}{}{}{}{}};
-(  8,-12.75)*{\afvjm{6.5}};
-}\quad;
+\vcenter{\hbox{\includegraphics{Figures/normWeakPolForm}}}
+\quad;
 \]
 %---
 \item\label{definition:FlowNormalForms:item:WeaklyStreamlined}
 \emph{weakly streamlined}\index{streamlined!weakly} if it can be represented as
 \[
-\atomicflow{
-( -8, 11.5)*{\afvjm4};
-(  0, 13.5)*{\afawdm{}{}{}{}{}{}};
-%---
-( -6, 5.5)*{\copy\contrup};
-( -4, 5.5)*{\affr{10}8};
-( -2, 5.5)*{\copy\contrdown};
-%---
-( -5,-2.5)*{\afaium{}{}{}{}{}{}};
-(  0,   0)*{\afvjm3};
-(  5, 2.5)*{\afaidm{}{}{}{}{}{}};
-%---
-(  2,-5.5)*{\copy\contrup};
-(  4,-5.5)*{\affr{10}8};
-(  6,-5.5)*{\copy\contrdown};
-%---
-(  0,-13.5)*{\afawum{}{}{}{}{}{}};
-(  8,-11.5)*{\afvjm4};
-}\quad;
+\vcenter{\hbox{\includegraphics{Figures/normWeakForm}}}
+\quad;
 \]
 \end{enumerate}
 \end{definition}
@@ -180,25 +69,12 @@ A derivation with associated atomic flow $\phi$ is \emph{weakly streamlined} if 
 \begin{example}\label{example:Streamlined}
 The following three flows are weakly streamlined:
 \[
-\aflower{\atomicflow{
-(0,6)*{\afacd{}{}{}{}{}{}};
-(4,6)*{\afawd{}{}{}{}};
-(2,0)*{\afaiunw{}{}}}}
+%\aflower{} what does this do?
+\vcenter{\hbox{\includegraphics{Figures/exWeakStr1}}}
 \quad,\qquad
-\atomicflow{
-( 2,0)*{\afacd{}{}{}{}{}{}};
-( 0,4)*{\afawdnw{}{}};
-( 6,8)*{\afacu{}{}{}{}{}{}};
-(10,2)*{\afaiunw{}{}{}{}};
-(12,8)*{\afvj8}}
+\vcenter{\hbox{\includegraphics{Figures/exWeakStr2}}}
 \qquad\hbox{and}\qquad
-\atomicflow{
-(10,8)*{\afacu{}{}{}{}{}{}};
-(16,8)*{\afvj8};
-( 2,4)*{\afaidnw{}{}};
-( 0,0)*{\afvj8};
-(14,2)*{\afaiunw{}{}};
-( 6,0)*{\afacd{}{}{}{}{}{}}}
+\vcenter{\hbox{\includegraphics{Figures/exWeakStr3}}}
 \quad.
 \]
 \end{example}

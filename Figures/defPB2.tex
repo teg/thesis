@@ -1,0 +1,54 @@
+%%!TEX TS-program = latex
+\documentclass[a4paper]{amsart}
+
+\usepackage[urw-garamond]{mathdesign}
+\usepackage[lutzsyntax]{virginialake}
+   \aftrianglefalse
+   \everydisplay={\vlsmallleftlabels}
+
+\begin{document}
+\thispagestyle{empty}
+
+\[
+\newbox\contrup\setbox\contrup=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afacu{}{}{}{}{}{}}}$}
+\newbox\contrdown\setbox\contrdown=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afacd{}{}{}{}{}{}}}$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\atomicflow{
+(-11, 11.5)*{\afvjdm{15}{\boldsymbol\epsilon}{}};
+( 13, 11.5)*{\afvjdm{15}{}{\boldsymbol{\epsilon'}}};
+(  1, 18)*{\afaidex{}{}{}{}{}{}{12}{4}};
+%-
+( -5, 10)*{\affr68};
+( -5, 10)*{\copy\contrup};
+( -5,  5)*{\afvjm2};
+( -8,  0)*{\affr{8}{8}};
+( -4,  2)*{\aflabelleft{\phi'}};
+( -5, -5)*{\afvjm2};
+( -5,-10)*{\affr68};
+( -5,-10)*{\copy\contrdown};
+%-
+(  7, 10)*{\affr68};
+(  7, 10)*{\copy\contrup};
+(  7,  5)*{\afvjm2};
+( 10,  0)*{\affr{8}{8}};
+( 14,  2)*{\aflabelleft{\psi'}};
+(  7, -5)*{\afvjm2};
+(  7,-10)*{\affr68};
+(  7,-10)*{\copy\contrdown};
+%-
+(  1,-18)*{\afaiuex{}{}{}{}{}{}{12}{4}};
+(-11,-11.5)*{\afvjum{15}{\boldsymbol\iota}{}};
+( 13,-11.5)*{\afvjum{15}{}{\boldsymbol{\iota'}}};
+%----
+( -6,  0)*{\affr{14}{30}};
+(  1, 13)*{\aflabelleft{\phi}};
+(9.5,  0)*{\affr{13}{30}};
+( 16, 13)*{\aflabelleft{\psi}};
+}
+\]
+
+\end{document}

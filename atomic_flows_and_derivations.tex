@@ -149,27 +149,13 @@ The flow $\phi$ so obtained is called the atomic flow \emph{associated with} the
 \\
 \noalign{\bigskip}
 %---------------------------------------
-\atomicflow{
-(0,0)*{\afaiucol{}{}{}{}{}{}{Green}{Red}{}};
-(0,4)*{\afaidnw{}{}}}
+\vcenter{\hbox{\includegraphics{Figures/flowExtract1}}}
 \qquad&
 %-------------------
-\atomicflow{
-( 2,14)*{\afvjcol4{Green}};
-( 0,10)*{\afvjcol{12}{Red}};
-(16,10)*{\afvjcol{12}{Magenta}};
-( 4, 8)*{\afacdcol{}{}{}{}{}{}{Green}{YellowOrange}{RawSienna}};
-(10, 8)*{\afacucol{}{}{}{}{}{}{DarkOrchid}{ProcessBlue}{SpringGreen}};
-( 2, 2)*{\afaiunw{}{}};
-( 8, 2)*{\afvjcol4{DarkOrchid}};
-(14, 2)*{\afaiunw{}{}};
-( 8,12)*{\afaidnw{}{}}}
+\vcenter{\hbox{\includegraphics{Figures/flowExtract2}}}
 \qquad&
 %-------------------
-\atomicflow{
-( 0,0)*{\afacucol{}{}{}{}{}{}{RawSienna}{Green}{Red}};
-( 6,0)*{\afacucol{}{}{}{}{}{}{YellowOrange}{DarkOrchid}{ProcessBlue}};
-(12,0)*{\afacucol{}{}{}{}{}{}{Periwinkle}{SpringGreen}{Magenta}}}
+\vcenter{\hbox{\includegraphics{Figures/flowExtract3}}}
 \end{array}
 \]
 \caption{Examples of derivations in the calculus of structures (top row), their representation in Formalism A notation (middle row), and their associated atomic flows (bottom row).}
@@ -186,10 +172,7 @@ Given a derivation $\Phi$ with atomic flow $\phi$, and an atom $a$, the \emph{re
 \begin{example}\label{example:FlowRestriction}
 Consider the rightmost derivation and its associated atomic flow in Figure~\ref{figure:ExampleAtomicFlows}. The restriction of this flow to $a$ is:
 \[
-\atomicflow{
-(-3,0)*{\afacucol{}{}{}{}{}{}{RawSienna}{Green}{Red}};
-( 3,0)*{\afacucol{}{}{}{}{}{}{Periwinkle}{SpringGreen}{Magenta}}
-}
+\vcenter{\hbox{\includegraphics{Figures/flowExtract4}}}
 \]
 \end{example}
 %------------
@@ -197,7 +180,6 @@ Consider the rightmost derivation and its associated atomic flow in Figure~\ref{
 Perhaps surprisingly, it can be proved that every flow is associated with infinitely many $\SKS$ derivations (see \cite{GuglGund:07:Normalis:lr}).
 
 As we mention at the beginning of this section, atomic flows help in selectively substituting for atom occurrences. In fact, given a derivation and its associated flow, we can use edges and boxes to individuate atom occurrences in the derivation, and then possibly substitute for them. For example, let us suppose that we are given the following associated derivation and flow:
-\TODO{Fix rendering of flow:}
 \[
 \Phi=
 \vlsbr[\vlderivation                                              {
@@ -208,12 +190,7 @@ As we mention at the beginning of this section, atomic flows help in selectively
                                    .\vlinf{}{}{\bar a}\fff)]   }}}}
       \vlx.\vlx\bar a]
 \qquad\text{and}\qquad
-%\atomicflow{
-%(0,6.1)*{\afacd{}{}{}{}{}{}};
-%(4,5.8)*{\afawd{}{}{}\one};
-%(8,5.6)*{\afvj9};
-%(2,0  )*{\afaiunw{}{}};
-%}
+\vcenter{\hbox{\includegraphics{Figures/substEx}}}
 \quad.
 \]
 We can then distinguish between the three occurrences of $\bar a$ that are mapped to edge $\one$ and the one that is not, as in
@@ -241,7 +218,7 @@ We generalise this labelling mechanism to boxes. For example, we can use a diffe
                                    .\vlinf{}{}{\bar a^\phi}\fff)]        }}}}
       \vlx.\vlx\bar a^\phi]
 \qquad\text{and}\qquad
-%\vcenter{\hbox{\includegraphics{Figures/figSubstExBox}}}
+\vcenter{\hbox{\includegraphics{Figures/substExBox}}}
 \quad.
 \]
 
@@ -254,17 +231,7 @@ Given a formula $\alpha$ in a derivation whose associated atomic flow contains a
 \begin{proposition}\label{proposition:DerivationSubstitution}
 Given a derivation\/ $\vlder\Phi\SKS{\beta}\alpha$, let its associated flow have shape
 \[
-\atomicflow{
-(-5, 6)*{\afvjdm4{}{}};
-( 5, 6)*{\afvjdm4{}{}};
-(-1, 2)*{\aflabelleft\phi};
-( 9, 2)*{\aflabelleft\psi};
-(-5, 0)*{\affr88};
-( 5, 0)*{\affr88};
-(-5,-6)*{\afvjum4{}{}};
-( 5,-6)*{\afvjum4{}{}}
-}
-\quad,
+\vcenter{\hbox{\includegraphics{Figures/propSubst1}}}\quad,
 \]
 such that $\phi$ is a connected component whose edges are each associated with atom $a$; then, for any formula $\gamma$, there exists a derivation
 \[
@@ -273,21 +240,7 @@ such that $\phi$ is a connected component whose edges are each associated with a
 \]
 whose associated flow is
 \[
-\atomicflow{
-(-17, 6)*{\afvjdm4{}{}};
-( -5, 6)*{\afvjdm4{}{}};
-(  5, 6)*{\afvjdm4{}{}};
-(-13, 2)*{\aflabelleft{f_1(\phi)}};
-( -1, 2)*{\aflabelleft{f_n(\phi)}};
-(  9, 2)*{\aflabelleft\psi};
-(-17, 0)*{\affr88};
-(-11, 0)*{\cdots};
-( -5, 0)*{\affr88};
-(  5, 0)*{\affr88};
-(-17,-6)*{\afvjum4{}{}};
-( -5,-6)*{\afvjum4{}{}};
-(  5,-6)*{\afvjum4{}{}};
-}
+\vcenter{\hbox{\includegraphics{Figures/propSubst2}}}
 \quad,
 \]
 where $n$ is the number of atom occurrences in $\gamma$; moreover, the size of\/ $\Psi$ depends linearly on the size of\/ $\Phi$ and quadratically on the size of $\gamma$.
