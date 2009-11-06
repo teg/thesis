@@ -1,12 +1,8 @@
 \newcommand{\PB}{\mathsf{PB}}
 
-\TODO{Make sure we don't join $a$ with $\bar a$.}
-
 Given a derivation $\Phi$ and an atom $a$, the operator, $\PB$, defined in this section produces a derivation with the same premiss and conclusion as $\Phi$, which is weakly streamlined with respect to both $a$ and $\bar a$. This operator is a strict improvement over $\ISR$, since it does not require the input derivation to be in simple form, and it deals with the dual atoms in parallell. We will see later how a derivation containing $n$ atoms can be weakly streamlined by $n/2$ applications of $\PB$.
 
 The operator is defined in terms of the following flow reduction.
-
-\Tom{I considered coloring the edges of the redex as well as the contractum, but I was not sure how to do it...}
 
 %--------------------------------
 \newcommand{\frpb}{{\mathsf{pb}}}
@@ -18,7 +14,7 @@ We define the reduction $\to_\frpb$ (where $\frpb$ stands for \emph{path breaker
 \vcenter{\hbox{\includegraphics{Figures/redPBContractum}}}
 \quad,
 \]
-where the evidenced interaction and cut vertices belong to the same connected component.
+such that, in the redex, there is a path from the evidenced interaction vertex to the evidenced cut vertex.
 \end{definition}
 %---------------
 
@@ -30,7 +26,7 @@ Reduction $\to_\frpb$ is sound; moreover, if\/ $\Phi\to_\frpb\Psi$, then the siz
 \begin{proof}
 Let $\Phi$ be a derivation with flow $\phi'$, such that $\phi'\to_\frpb\psi'$. We show that there exists a derivation $\Psi$ with flow $\psi'$ and with the same premiss and conclusion as $\Phi$. In the following, we refer to the figure in Definition~\vref{definition:PathBreaker}.
 
-Since the evidenced interaction and cut vertices belong to the same connected component, we can construct, by Theorem~\vref{theorem:aiDecomposedForm} and Convention~\vref{convention:AlternativeAiDecomposedForm}, the following $\ai$-decomposed form of $\Phi$, whose size depends at most cubically on $\Phi$:
+Since there is a path from the evidenced interaction vertex to the evidenced cut vertex, we can construct, by Theorem~\vref{theorem:aiDecomposedForm} and Convention~\vref{convention:AlternativeAiDecomposedForm}, the following $\ai$-decomposed form of $\Phi$, whose size depends at most cubically on $\Phi$:
 \[
 \vlder{\Phi'}{}
 {
