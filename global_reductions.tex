@@ -51,17 +51,7 @@ We provide constructive soundness proofs for every reduction in this thesis, so 
 \begin{proposition}\label{proposition:DerivationSubstitution}
 Given a derivation\/ $\vlder\Phi\SKS{\beta}\alpha$, let its associated flow have shape
 \[
-\atomicflow{
-(-5, 6)*{\afvjdm4{}{}};
-( 5, 6)*{\afvjdm4{}{}};
-(-1, 2)*{\aflabelleft\phi};
-( 9, 2)*{\aflabelleft\psi};
-(-5, 0)*{\affr88};
-( 5, 0)*{\affr88};
-(-5,-6)*{\afvjum4{}{}};
-( 5,-6)*{\afvjum4{}{}}
-}
-\quad,
+\vcenter{\hbox{\includegraphics{Figures/propSubst1}}}\quad,
 \]
 such that $\phi$ is a connected component whose edges are each associated with atom $a$; then, for any formula $\gamma$, there exists a derivation
 \[
@@ -70,22 +60,7 @@ such that $\phi$ is a connected component whose edges are each associated with a
 \]
 whose associated flow is
 \[
-\atomicflow{
-(-17, 6)*{\afvjdm4{}{}};
-( -5, 6)*{\afvjdm4{}{}};
-(  5, 6)*{\afvjdm4{}{}};
-(-13, 2)*{\aflabelleft{f_1(\phi)}};
-( -1, 2)*{\aflabelleft{f_n(\phi)}};
-(  9, 2)*{\aflabelleft\psi};
-(-17, 0)*{\affr88};
-(-11, 0)*{\cdots};
-( -5, 0)*{\affr88};
-(  5, 0)*{\affr88};
-(-17,-6)*{\afvjum4{}{}};
-( -5,-6)*{\afvjum4{}{}};
-(  5,-6)*{\afvjum4{}{}};
-}
-\quad,
+\vcenter{\hbox{\includegraphics{Figures/propSubst2}}}
 \]
 where $n$ is the number of atom occurrences in $\gamma$; moreover, the size of\/ $\Psi$ depends linearly on the size of\/ $\Phi$ and quadratically on the size of $\gamma$.
 \end{proposition}
@@ -114,79 +89,15 @@ The notion of substitution can be extended to allow $\phi$ to contain interactio
 To avoid ambiguity in Definitions~\vref{definition:FourBoxes}, \vref{definition:IsolatedSubflowRemoval}, \vref{definition:PathBreaker} and \vref{definition:MultipleIsolatedSubflowsRemoval} we have establish the following convention:
 Let $\boldsymbol\epsilon=\epsilon_1,\dots,\epsilon_n$, $\boldsymbol\iota=\iota_1,\dots,\iota_m$, $\boldsymbol{\epsilon'}=\epsilon'_1,\dots,\epsilon'_n$ and $\boldsymbol{\iota'}=\iota'_1,\dots,\iota'_m$, then, when we write
 \[
-\atomicflow
-{
-(-10, 0)*{\invisiblemark};
-(  0, 6)*{\afvjdm4{\boldsymbol\epsilon}{}};
-(  0, 0)*{\affr{14}8};
-(  0, 0)*{\copy\contrup};
-( -6,-6)*{\afvjdm4{f_1(\boldsymbol\epsilon)}{}};
-(  0,-6)*{\cdots};
-(  6,-6)*{\afvjdm4{}{f_k(\boldsymbol\epsilon)}};
-( 10, 0)*{\invisiblemark};
-}
+\vcenter{\hbox{\includegraphics{Figures/convDissamb1}}}
 \qquad\mbox{and}\qquad
-\atomicflow
-{
-(-10, 0)*{\invisiblemark};
-(  0,-6)*{\afvjum4{\boldsymbol\iota}{}};
-(  0, 0)*{\affr{14}8};
-(  0, 0)*{\copy\contrdown};
-( -6, 6)*{\afvjum4{f_1(\boldsymbol\iota)}{}};
-(  0, 6)*{\cdots};
-(  6, 6)*{\afvjum4{}{f_k(\boldsymbol\iota)}};
-( 10, 0)*{\invisiblemark};
-}
+\vcenter{\hbox{\includegraphics{Figures/convDissamb2}}}
 \]
 we mean
 \[
-\atomicflow
-{
-(-10, 0)*{\invisiblemark};
-(  0,6)*{\afvjd4{\epsilon_1}{}};
-(  0,0)*{\affr{14}8};
-(  0,0)*{\copy\contrup};
-( -6,-6)*{\afvjd4{f_1(\epsilon_1)}{}};
-(  0,-6)*{\cdots};
-(  6,-6)*{\afvjd4{}{f_k(\epsilon_1)}};
-( 10, 0)*{\invisiblemark};
-}
-\quad\cdots\quad
-\atomicflow
-{
-(-10, 0)*{\invisiblemark};
-(  0,6)*{\afvjd4{\epsilon_n}{}};
-(  0,0)*{\affr{14}8};
-(  0,0)*{\copy\contrup};
-( -6,-6)*{\afvjd4{f_1(\epsilon_n)}{}};
-(  0,-6)*{\cdots};
-(  6,-6)*{\afvjd4{}{f_k(\epsilon_n)}};
-( 10, 0)*{\invisiblemark};
-}
+\vcenter{\hbox{\includegraphics{Figures/convDissamb3}}}
 \qquad\mbox{and}\qquad
-\atomicflow
-{
-(-10, 0)*{\invisiblemark};
-(  0,-6)*{\afvjd4{\iota_1}{}};
-(  0, 0)*{\affr{14}8};
-(  0, 0)*{\copy\contrdown};
-( -6, 6)*{\afvjd4{f_1(\iota_1)}{}};
-(  0, 6)*{\cdots};
-(  6, 6)*{\afvjd4{}{f_k(\iota_1)}};
-( 10, 0)*{\invisiblemark};
-}
-\quad\cdots\quad
-\atomicflow
-{
-(-10, 0)*{\invisiblemark};
-(  0,-6)*{\afvjd4{\iota_m}{}};
-(  0, 0)*{\affr{14}8};
-(  0, 0)*{\copy\contrdown};
-( -6, 6)*{\afvjd4{f_1(\iota_m)}{}};
-(  0, 6)*{\cdots};
-(  6, 6)*{\afvjd4{}{f_k(\iota_m)}};
-( 10, 0)*{\invisiblemark};
-}
+\vcenter{\hbox{\includegraphics{Figures/convDissamb4}}}
 \quad,
 \]
 respectively. In other words, edges are not connected in unexpected ways.

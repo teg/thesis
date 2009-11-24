@@ -1,0 +1,91 @@
+%%!TEX TS-program = latex
+\documentclass[a4paper]{amsart}
+
+\usepackage[urw-garamond]{mathdesign}
+\usepackage[lutzsyntax]{../virginialake}
+   \aftrianglefalse
+   \everydisplay={\vlsmallleftlabels}
+
+\begin{document}
+\thispagestyle{empty}
+
+\[
+\newbox\contrup\setbox\contrup=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afacu{}{}{}{}{}{}}}$}
+\newbox\contrdown\setbox\contrdown=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afacd{}{}{}{}{}{}}}$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\atomicflow{
+(-12, 56)*{\afvjm4};
+(-12, 50)*{\copy\contrup};
+(-12, 50)*{\affr{16}{8}};
+( -5, 44)*{\afvjdm4{}{f_1(\boldsymbol\epsilon)}};
+( -7, 34)*{\afcjlm{4}{24}};
+(-12, 42)*{\cdots};
+(-10,  2)*{\afcjlm{10}{32}};
+(-15, 32)*{\afvjm{28}};
+(-12,-13)*{\afcjlm{14}{42}};
+(-19, 27)*{\afvjm{38}};
+%--
+( 5, 46)*{\afawdm{}{}{}{}};
+( 0, 38)*{\affr{12}{8}};
+( 6, 40)*{\aflabelleft{f_1(\phi)}};
+(-5, 32.5)*{\aflabelright{f_1(\boldsymbol\iota)}};
+( 5, 33)*{\afvjm2};
+( 9, 28)*{\affr{10}{8}};
+(14, 30)*{\aflabelleft{\eta_1}};
+( 5, 23)*{\afvjm2};
+(11, 23)*{\afvjm2};
+(-5, 24.5)*{\aflabelright{f_2(\boldsymbol\epsilon)}};
+( 0, 18)*{\affr{12}{8}};
+( 6, 20)*{\aflabelleft{f_2(\phi)}};
+(-5, 12.5)*{\aflabelright{f_2(\boldsymbol\iota)}};
+( 5, 13)*{\afvjm2};
+(11, 13)*{\afvjm2};
+(11, 18)*{\affr{6}{8}};
+(14, 20)*{\aflabelleft{\mu_1}};
+( 9,  8)*{\affr{10}{8}};
+(14, 10)*{\aflabelleft{\eta_2}};
+( 5,  3)*{\afvjm2};
+(11,  3)*{\afvjm2};
+%-
+( 0,  1)*{\vdots};
+%-
+( 5, -3)*{\afvjm2};
+(11, -3)*{\afvjm2};
+( 9, -8)*{\affr{10}{8}};
+(14, -6)*{\aflabelleft{\eta_{N-1}}};
+( 5,-13)*{\afvjm2};
+(11,-13)*{\afvjm2};
+(-5,-11.5)*{\aflabelright{f_N(\boldsymbol\epsilon)}};
+( 0,-18)*{\affr{12}{8}};
+( 6,-16)*{\aflabelleft{f_N(\phi)}};
+(-5,-23.5)*{\aflabelright{f_N(\boldsymbol\iota)}};
+(11,-18)*{\affr{6}{8}};
+(14,-16)*{\aflabelleft{\mu_{N-1}}};
+( 5,-23)*{\afvjm2};
+(11,-23)*{\afvjm2};
+( 9,-28)*{\affr{10}{8}};
+(14,-26)*{\aflabelleft{\eta_N}};
+( 5,-33)*{\afvjm2};
+(-5,-31.5)*{\aflabelright{f_{N+1}(\boldsymbol\epsilon)}};
+( 0,-38)*{\affr{12}{8}};
+( 6,-36)*{\aflabelleft{f_{N+1}(\phi)}};
+( 5,-46)*{\afawum{}{}{}{}};
+%--
+(-12, 13)*{\afcjrm{14}{42}};
+(-19,-27)*{\afvjm{38}};
+(-10, -2)*{\afcjrm{10}{32}};
+(-15,-32)*{\afvjm{28}};
+(-12,-42)*{\cdots};
+( -7,-34)*{\afcjrm{4}{24}};
+( -5,-44)*{\afvjum4{}{f_{N+1}(\boldsymbol\iota)}};
+(-12,-50)*{\affr{16}{8}};
+(-12,-50)*{\copy\contrdown};
+(-12,-56)*{\afvjm4};
+}
+\]
+
+\end{document}

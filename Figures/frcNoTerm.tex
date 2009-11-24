@@ -1,0 +1,46 @@
+%%!TEX TS-program = latex
+\documentclass[a4paper]{amsart}
+
+\usepackage[urw-garamond]{mathdesign}
+\usepackage[lutzsyntax]{../virginialake}
+   \aftrianglefalse
+   \everydisplay={\vlsmallleftlabels}
+
+\begin{document}
+\thispagestyle{empty}
+
+\[
+\newcommand{\frc}{{\mathsf c}}
+\atomicflow{
+( 4  ,8)*{\afaidnw{}{}};
+( 6  ,6)*{\afvj4};
+( 3  ,0)*{\afaiuex{}{}{}{}{}{}32};
+( 0  ,4)*{\afacd{}{}{}{}{}{}};
+(-3.5,0)*{\invisiblemark};
+( 7.5,0)*{\invisiblemark}}
+\quad\to_\frc\quad
+\atomicflow{
+( 9  ,12)*{\afaidex{}{}{}{}{}{}32};
+( 6  , 8)*{\afacu{}{}{}{}{}{}};
+(12  , 6)*{\afvj4};
+( 0  , 8)*{\afvj8};
+( 2  , 2)*{\afaiunw{}{}};
+(10  , 2)*{\afaiunw{}{}{}{}{}{}};
+(-1.5, 0)*{\invisiblemark};
+(13.5, 0)*{\invisiblemark}}
+\quad\to_\frc\quad
+\atomicflow{
+( 6  , 8)*{\afaidnw{}{}};
+(14  , 8)*{\afaidnw{}{}};
+( 4  , 6)*{\afvj4};
+(16  , 6)*{\afvj4};
+( 0  , 6)*{\afvj4};
+( 2  , 0)*{\afaiu{}{}{}{}{}{}};
+(13  , 0)*{\afaiuex{}{}{}{}{}{}32};
+(10  , 4)*{\afacd{}{}{}{}{}{}};
+(-1.5, 0)*{\invisiblemark};
+(17.5, 0)*{\invisiblemark}}
+\quad\to_\frc\quad\cdots
+\]
+
+\end{document}

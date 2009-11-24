@@ -1,0 +1,34 @@
+%%!TEX TS-program = latex
+\documentclass[a4paper]{amsart}
+
+\usepackage[urw-garamond]{mathdesign}
+\usepackage[lutzsyntax]{../virginialake}
+   \aftrianglefalse
+   \everydisplay={\vlsmallleftlabels}
+
+\begin{document}
+\thispagestyle{empty}
+
+\[
+\newcommand{\frc}{{\mathsf c}}
+\atomicflow{
+(0,29  )*{\afacu{}{}{}{}{}{}};
+(0,21  )*{\afacd{}{}{}{}{}{}};
+(0,15.8)*{\vdots};
+(0, 8  )*{\afacu{}{}{}{}{}{}};
+(0, 0  )*{\afacd{}{}{}{}{}{}}}
+\quad\to_\frc^\star\quad
+\atomicflow{
+( 0,29  )*{\afacuexsq{}{}{}{}{}{}21};
+(-4,21  )*{\afacunw{}{}{}{}{}{}};
+( 4,21  )*{\afacunw{}{}{}{}{}{}};
+(-6,17.8)*{\vdots};
+(-2,17.8)*{\vdots};
+( 2,17.8)*{\vdots};
+( 6,17.8)*{\vdots};
+( 0, 4  )*{\afacdexsq{}{}{}{}{}{}21};
+(-4,10  )*{\afacdnw{}{}{}{}{}{}};
+( 4,10  )*{\afacdnw{}{}{}{}{}{}}}
+\]
+
+\end{document}

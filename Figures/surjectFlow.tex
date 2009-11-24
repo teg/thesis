@@ -1,0 +1,32 @@
+%%!TEX TS-program = latex
+\documentclass[a4paper]{amsart}
+
+\usepackage[urw-garamond]{mathdesign}
+\usepackage[lutzsyntax]{../virginialake}
+   \aftrianglefalse
+   \everydisplay={\vlsmallleftlabels}
+
+\begin{document}
+\thispagestyle{empty}
+
+\[
+\phi\;=\;
+\atomicflow
+{
+( 2, 12)*{\afvjm4};
+( 2,  6)*{\affr{10}8};
+( 4,  8)*{\aflabelright{\phi_1}};
+( 6, -6)*{\afvjm{16}};
+%---
+(-2,  0)*{\afvjd4{\epsilon_1}{}};
+( 0,  0)*{\cdots};
+( 2,  0)*{\afvjd4{}{\epsilon_h}};
+%---
+(-6,  6)*{\afvjm{16}};
+(-2, -6)*{\affr{10}8};
+( 0, -4)*{\aflabelright{\phi_2}};
+(-2,-12)*{\afvjm4};
+}
+\]
+
+\end{document}

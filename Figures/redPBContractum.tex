@@ -1,0 +1,128 @@
+%%!TEX TS-program = latex
+\documentclass[a4paper]{amsart}
+
+\usepackage[urw-garamond]{mathdesign}
+\usepackage[lutzsyntax]{virginialake}
+   \aftrianglefalse
+   \everydisplay={\vlsmallleftlabels}
+
+\begin{document}
+\thispagestyle{empty}
+
+\[
+\newbox\contrup\setbox\contrup=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afacu{}{}{}{}{}{}}}$}
+\newbox\contrdown\setbox\contrdown=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afacd{}{}{}{}{}{}}}$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\atomicflow
+{
+%%%%% RED %%%%%
+(0,-20)="D";
+(0,-10)="Dhalf";
+%% contractions
+"D"+"D"="A";
+%left
+"A"+(-14,-15.5)-"D"*{\afvjmcol{23}{Red}};
+"A"+(-11,-17)*{\afvjumcol{4}{\boldsymbol\iota}{}{Red}};
+%right
+"A"+(11,-11.5)-"Dhalf"*{\afvjmcol{11}{Red}};
+"A"+(14,-15.5)-"D"*{\afvjmcol{23}{Red}};
+"A"+(11,-17)*{\afvjumcol{4}{}{\boldsymbol{\iota'}}{Red}};
+% top boxes
+(0,0)="A";
+"A"+(-11,-14)*{\afcjrmcol{6}{20}{Red}};
+"A"+(11,-14)*{\afcjlmcol{6}{20}{Red}};
+"A"+( 0,  8)*{\afaidcol{}{}{}{}{}{}{Red}{Red}};
+"A"+(-2, -8)*{\afawucol{}{}{}{}{}{Red}};
+% join one
+"A"+(2,-10)*{\afvjcol{12}{Red}};
+% middle boxes
+"A"+"D"="A";
+"A"+(9.5,-10)*{\afcjlmcol{3}{12}{Red}};
+"A"+( 2,-8)*{\afawucol{}{}{}{}{}{Red}};
+%%%%% GREEN %%%%%
+%% cocontractions
+(0,0)="A";
+%left
+"A"+(-11,17)*{\afvjdmcol{4}{\boldsymbol\epsilon}{}{OliveGreen}};
+"A"+"D"+(-14,15.5)*{\afvjmcol{23}{OliveGreen}};
+"A"+"Dhalf"+(-11,11.5)*{\afvjmcol{11}{OliveGreen}};
+%right
+"A"+(11,17)*{\afvjdmcol{4}{}{\boldsymbol{\epsilon'}}{OliveGreen}};
+"A"+"D"+(14,15.5)*{\afvjmcol{23}{OliveGreen}};
+% middle boxes
+"A"+"D"="A";
+"A"+(-9.5,10)*{\afcjlmcol{3}{12}{OliveGreen}};
+"A"+(-2, 8)*{\afawdcol{}{}{}{}{}{OliveGreen}};
+% join two
+"A"+(-2,-10)*{\afvjcol{12}{OliveGreen}};
+% bottom boxes
+"A"+"D"="A";
+"A"+(-11,14)*{\afcjlmcol{6}{20}{OliveGreen}};
+"A"+(11,14)*{\afcjrmcol{6}{20}{OliveGreen}};
+"A"+( 0,-8)*{\afaiucol{}{}{}{}{}{}{OliveGreen}{OliveGreen}};
+"A"+( 2, 8)*{\afawdcol{}{}{}{}{}{OliveGreen}};
+%%%%% BLACK %%%%%
+%% cocontractions
+(0,0)="A";
+%left
+"A"+(-8,5.5)*{\afvjm3};
+"A"+(-11,11)*{\affr88};
+"A"+(-11,11)*{\copy\contrup};
+%right
+"A"+(8,5.5)*{\afvjm3};
+"A"+"Dhalf"+(11,11.5)*{\afvjm{11}};
+"A"+(11,11)*{\affr88};
+"A"+(11,11)*{\copy\contrup};
+%% contractions
+"D"+"D"="A";
+%left
+"A"+(-11,-11.5)-"Dhalf"*{\afvjm{11}};
+"A"+(-8,-5.5)*{\afvjm3};
+"A"+(-11,-11)*{\affr88};
+"A"+(-11,-11)*{\copy\contrdown};
+%right
+"A"+(8,-5.5)*{\afvjm3};
+"A"+(11,-11)*{\affr88};
+"A"+(11,-11)*{\copy\contrdown};
+% top boxes
+(0,0)="A";
+"A"+(-8,5.9)*{\aflabelright{f_1(\boldsymbol\epsilon)}};
+"A"+(-5,  0)*{\affr{8}{8}};
+"A"+(-6,  2)*{\aflabelright{f_1(\phi)}};
+"A"+(-8,-5.3)*{\aflabelright{f_1(\boldsymbol\iota)}};
+%
+"A"+(8,5.9)*{\aflabelleft{g_1(\boldsymbol{\epsilon'})}};
+"A"+( 5,  0)*{\affr{8}{8}};
+"A"+( 4,  2)*{\aflabelright{g_1(\psi)}};
+"A"+(8,-5.3)*{\aflabelleft{g_1(\boldsymbol{\iota'})}};
+% middle boxes
+"A"+"D"="A";
+"A"+(9.5,10)*{\afcjrm{3}{12}};
+"A"+(-9.5,-10)*{\afcjrm{3}{12}};
+"A"+(-8,5.9)*{\aflabelright{f_2(\boldsymbol\epsilon)}};
+"A"+(-5, 0)*{\affr{8}{8}};
+"A"+(-6, 2)*{\aflabelright{f_2(\phi)}};
+"A"+(-8,-5.3)*{\aflabelright{f_2(\boldsymbol\iota)}};
+%
+"A"+(8,5.9)*{\aflabelleft{g_2(\boldsymbol{\epsilon'})}};
+"A"+( 5, 0)*{\affr{8}{8}};
+"A"+( 4, 2)*{\aflabelright{g_2(\psi)}};
+"A"+(8,-5.3)*{\aflabelleft{g_2(\boldsymbol{\iota'})}};
+% bottom boxes
+"A"+"D"="A";
+"A"+(-8,5.9)*{\aflabelright{f_3(\boldsymbol\epsilon)}};
+"A"+(-5, 0)*{\affr{8}{8}};
+"A"+(-6, 2)*{\aflabelright{f_3(\phi)}};
+"A"+(-8,-5.3)*{\aflabelright{f_3(\boldsymbol\iota)}};
+%
+"A"+(8,5.9)*{\aflabelleft{g_3(\boldsymbol{\epsilon'})}};
+"A"+( 5, 0)*{\affr{8}{8}};
+"A"+( 4, 2)*{\aflabelright{g_3(\psi)}};
+"A"+(8,-5.3)*{\aflabelleft{g_3(\boldsymbol{\iota'})}};
+}\]
+
+\end{document}

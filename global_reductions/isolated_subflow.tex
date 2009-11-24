@@ -11,30 +11,10 @@ The operator is defined in terms of the following flow reduction.
 \begin{definition}\label{definition:IsolatedSubflowRemoval}
 We define the reduction $\to_\fris$ (where $\fris$ stands for \emph{isolated subflow}\index{Isolated Subflow Remover!reduction}) as follows, for any atomic flow $\phi$ and any connected atomic flow $\psi$ that does not contain identity or cut vertices:
 \[
-\atomicflow{
-(-8, 6)*{\afvjdm4{\boldsymbol\epsilon}{}};
-( 1, 8)*{\afaidex{}{}{}{}{}{}{6}{4}};
-(-5, 0)*{\affr{8}{8}};
-(-4, 2)*{\aflabelright{\phi}};
-( 4, 0)*{\affr{6}{8}};
-( 4, 2)*{\aflabelright{\psi}};
-( 1,-8)*{\afaiuex{}{}{}{}{}{}{6}{4}};
-(-8,-6)*{\afvjum4{\boldsymbol\iota}{}};
-}
+\vcenter{\hbox{\includegraphics{Figures/redISRRedex}}}
 \quad\to_\fris\quad
-\atomicflow{
-( 0, 16.5)*{\afacumexsq{f_1(\boldsymbol\epsilon)}{}{}{f_2(\boldsymbol\epsilon)}{\boldsymbol\epsilon}{}{12}{4}};
-( 6,  4  )*{\afvjm{12}};
-( 0, 14  )*{\afawd{}{}{}{}};
-(-3,  6  )*{\affr{8}{8}};
-( 1,  8  )*{\aflabelleft{f_1(\phi)}};
-( 0,  0  )*{\afvj4};
-( 3, -6  )*{\affr{8}{8}};
-( 7, -4  )*{\aflabelleft{f_2(\phi)}};
-( 0,-14  )*{\afawu{}{}{}{}};
-(-6, -4  )*{\afvjm{12}};
-( 0,-16  )*{\afacdmexsq{f_1(\boldsymbol\iota)}{}{}{f_2(\boldsymbol\iota)}{\boldsymbol\iota}{}{12}{4}};
-}\quad.
+\vcenter{\hbox{\includegraphics{Figures/redISRContractum}}}
+\quad.
 \]
 \end{definition}
 %---------------
@@ -220,16 +200,7 @@ The \emph{Isolated Subflow Remover}\index{Isolated Subflow Remover!operator}, $\
 \]
 with atomic flow
 \[
-\atomicflow{
-(-8, 6)*{\afvjdm4{\boldsymbol\epsilon}{}};
-( 1, 8)*{\afaidmex{}{}{}{}{}{}{6}{4}};
-(-5, 0)*{\affr{8}{8}};
-(-1, 2)*{\aflabelleft{\phi'}};
-( 4, 0)*{\affr{6}{8}};
-( 7, 2)*{\aflabelleft{\psi'}};
-( 1,-8)*{\afaiumex{}{}{}{}{}{}{6}{4}};
-(-8,-6)*{\afvjum4{\boldsymbol\iota}{}};
-}
+\vcenter{\hbox{\includegraphics{Figures/defISR1}}}
 \quad,
 \]
 where $\psi'$ is the juxtaposition of all the isolated subflows mapped to from occurrences of $a$ in $\Phi$. Consider the derivation
@@ -292,35 +263,8 @@ where $\psi'$ is the juxtaposition of all the isolated subflows mapped to from o
 with atomic flow
 \[
 \psi''\;=\;
-\atomicflow{
-(-8, 11.5)*{\afvjdm{15}{\boldsymbol\epsilon}{}};
-( 4, 18)*{\afaidex{}{}{}{}{}{}{12}{4}};
-%-
-(-2, 10)*{\affr68};
-(-2, 10)*{\copy\contrup};
-(-2,  5)*{\afvjm2};
-(-3,  0)*{\affr{14}{30}};
-( 4, 13)*{\aflabelleft{\phi}};
-(-5,  0)*{\affr{8}{8}};
-(-1,  2)*{\aflabelleft{\phi'}};
-(-2, -5)*{\afvjm2};
-(-2,-10)*{\affr68};
-(-2,-10)*{\copy\contrdown};
-%-
-(10, 10)*{\affr68};
-(10, 10)*{\copy\contrup};
-(10,  5)*{\afvjm2};
-(11,  0)*{\affr{10}{30}};
-(16, 13)*{\aflabelleft{\psi}};
-(10,  0)*{\affr{6}{8}};
-(13,  2)*{\aflabelleft{\psi'}};
-(10, -5)*{\afvjm2};
-(10,-10)*{\affr68};
-(10,-10)*{\copy\contrdown};
-%-
-( 4,-18)*{\afaiuex{}{}{}{}{}{}{12}{4}};
-(-8,-11.5)*{\afvjum{15}{\boldsymbol\iota}{}};
-}\quad.
+\vcenter{\hbox{\includegraphics{Figures/defISR2}}}
+\quad.
 \]
 We then define $\ISR(\Phi,a)$ to be such that $\Psi\to_\fris\ISR(\Phi,a)$, where $\phi$ and $\psi$ are the flows, by the same names, shown in Definition~\vref{definition:IsolatedSubflowRemoval}.
 \end{definition}

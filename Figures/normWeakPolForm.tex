@@ -1,0 +1,89 @@
+%%!TEX TS-program = latex
+\documentclass[a4paper]{amsart}
+
+\usepackage[urw-garamond]{mathdesign}
+\usepackage[lutzsyntax]{virginialake}
+   \aftrianglefalse
+   \everydisplay={\vlsmallleftlabels}
+
+\begin{document}
+\thispagestyle{empty}
+
+\[
+\newbox\contrup\setbox\contrup=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afacu{}{}{}{}{}{}}}$}
+\newbox\contrdown\setbox\contrdown=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afacd{}{}{}{}{}{}}}$}
+\newbox\interdown\setbox\interdown=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afaid{}{}{}{}{}{}}}$}
+\newbox\interup\setbox\interup=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afaiu{}{}{}{}{}{}}}$}
+\newbox\weakdown\setbox\weakdown=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afawd{}{}{}{}{}{}}}$}
+\newbox\weakup\setbox\weakup=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afawu{}{}{}{}{}{}}}$}
+\newcommand{\ppl}{{\mathchoice{\scriptstyle+}
+                              {\scriptstyle+}
+                              {\scriptstyle+}
+                              {\scriptscriptstyle+}}}
+\newcommand{\pmi}{{\mathchoice{\scriptstyle-}
+                              {\scriptstyle-}
+                              {\scriptstyle-}
+                              {\scriptscriptstyle-}}}
+%---------------------------------------
+\atomicflow{
+(-20, 14)*{\afvjm4};
+(-20,  8)*{\affr68};
+(-20, 10)*{\aflabelleft{\ppl}};
+%-
+(-22,  0)*{\afvjm8};
+%-
+(-20, -8)*{\affr68};
+(-20, -6)*{\aflabelleft{\ppl}};
+(-20,-14)*{\afvjm4};
+%-
+( -9, 16)*{\afaidmex{}{}{}{}{}{}32};
+(-12,  8)*{\affr68};
+(-12, 10)*{\aflabelleft{\ppl}};
+(-15,  0)*{\afcjrm68};
+%-
+(-15,  0)*{\afcjlm68};
+(-12, -8)*{\affr68};
+(-12, -6)*{\aflabelleft{\ppl}};
+( -9,-16)*{\afaiumex{}{}{}{}{}{}32};
+%--
+( -6,  8)*{\afvjm8};
+(  0, 10)*{\afvjm{12}};
+( -3,  0)*{\affr88};
+( -4,  2)*{\aflabelleft{\pmi}};
+( -6, -8)*{\afvjm8};
+(  0,-10)*{\afvjm{12}};
+}\qquad
+\atomicflow{
+( -8, 12.75)*{\afvjm{6.5}};
+(  0, 13.5)*{\afawdm{}{}{}{}{}{}};
+%---
+( -6, 5.5)*{\copy\contrup};
+( -4, 5.5)*{\affr{10}8};
+( -2, 5.5)*{\copy\contrdown};
+%---
+( -5,-2.5)*{\afaium{}{}{}{}{}{}};
+(  0,   0)*{\afvjm3};
+(  5, 2.5)*{\afaidm{}{}{}{}{}{}};
+%---
+(  2,-5.5)*{\copy\contrup};
+(  4,-5.5)*{\affr{10}8};
+(  6,-5.5)*{\copy\contrdown};
+%---
+(  0,-13.5)*{\afawum{}{}{}{}{}{}};
+(  8,-12.75)*{\afvjm{6.5}};
+}
+\]
+
+\end{document}

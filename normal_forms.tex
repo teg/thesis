@@ -37,207 +37,43 @@ An atomic flow is
 \item\label{definition:FlowNormalForms:item:SimpleForm}
 \emph{in simple form with respect to the polarity assignment $\pi$}\index{simple form!flow} if it can be represented as
 \[
-\atomicflow{
-(-20, 14)*{\afvjm4};
-(-20,  8)*{\affr68};
-(-20, 10)*{\aflabelleft{\ppl}};
-%-
-(-22,  0)*{\afvjm8};
-%-
-(-20, -8)*{\affr68};
-(-20, -6)*{\aflabelleft{\ppl}};
-(-20,-14)*{\afvjm4};
-%-
-( -3, 16)*{\afaidmex{}{}{}{}{}{}92};
-(-12,  8)*{\affr68};
-(-12, 10)*{\aflabelleft{\ppl}};
-(-15,  0)*{\afcjrm68};
-%-
-(-15,  0)*{\afcjlm68};
-(-12, -8)*{\affr68};
-(-12, -6)*{\aflabelleft{\ppl}};
-( -3,-16)*{\afaiumex{}{}{}{}{}{}92};
-%--
-( -1,  8)*{\afaidmex{}{}{}{}{}{}32};
-( -4,  0)*{\affr68};
-( -4,  2)*{\aflabelleft{\ppl}};
-(  6,  8)*{\afvjm8};
-( 10, 10)*{\afvjm{12}};
-(  6,  0)*{\affr{10}8};
-(  4,  2)*{\aflabelleft{\pmi}};
-(  6, -8)*{\afvjm8};
-( 10,-10)*{\afvjm{12}};
-( -1, -8)*{\afaiumex{}{}{}{}{}{}32};
-}\qquad
-\atomicflow{
-( -8, 12.75)*{\afvjm{6.5}};
-(  0, 13.5)*{\afawdm{}{}{}{}{}{}};
-%---
-( -6, 5.5)*{\copy\contrup};
-( -4, 5.5)*{\affr{10}8};
-( -2, 5.5)*{\copy\contrdown};
-%---
-( -5,-2.5)*{\afaium{}{}{}{}{}{}};
-(  0,   0)*{\afvjm3};
-(  5, 2.5)*{\afaidm{}{}{}{}{}{}};
-%---
-(  2,-5.5)*{\copy\contrup};
-(  4,-5.5)*{\affr{10}8};
-(  6,-5.5)*{\copy\contrdown};
-%---
-(  0,-13.5)*{\afawum{}{}{}{}{}{}};
-(  8,-12.75)*{\afvjm{6.5}};
-}\quad;
+\vcenter{\hbox{\includegraphics{Figures/normSimpleForm}}}
+\quad;
 \]
 %---
 \item\label{definition:FlowNormalForms:item:WeaklyStreamlinedPolarity}
 \emph{weakly streamlined with respect to the polarity assignment $\pi$}\index{streamlined!weakly!with respect to polarity assignment} if it can be represented as
 \[
-\atomicflow{
-(-20, 14)*{\afvjm4};
-(-20,  8)*{\affr68};
-(-20, 10)*{\aflabelleft{\ppl}};
-%-
-(-22,  0)*{\afvjm8};
-%-
-(-20, -8)*{\affr68};
-(-20, -6)*{\aflabelleft{\ppl}};
-(-20,-14)*{\afvjm4};
-%-
-( -9, 16)*{\afaidmex{}{}{}{}{}{}32};
-(-12,  8)*{\affr68};
-(-12, 10)*{\aflabelleft{\ppl}};
-(-15,  0)*{\afcjrm68};
-%-
-(-15,  0)*{\afcjlm68};
-(-12, -8)*{\affr68};
-(-12, -6)*{\aflabelleft{\ppl}};
-( -9,-16)*{\afaiumex{}{}{}{}{}{}32};
-%--
-( -6,  8)*{\afvjm8};
-(  0, 10)*{\afvjm{12}};
-( -3,  0)*{\affr88};
-( -4,  2)*{\aflabelleft{\pmi}};
-( -6, -8)*{\afvjm8};
-(  0,-10)*{\afvjm{12}};
-}\qquad
-\atomicflow{
-( -8, 12.75)*{\afvjm{6.5}};
-(  0, 13.5)*{\afawdm{}{}{}{}{}{}};
-%---
-( -6, 5.5)*{\copy\contrup};
-( -4, 5.5)*{\affr{10}8};
-( -2, 5.5)*{\copy\contrdown};
-%---
-( -5,-2.5)*{\afaium{}{}{}{}{}{}};
-(  0,   0)*{\afvjm3};
-(  5, 2.5)*{\afaidm{}{}{}{}{}{}};
-%---
-(  2,-5.5)*{\copy\contrup};
-(  4,-5.5)*{\affr{10}8};
-(  6,-5.5)*{\copy\contrdown};
-%---
-(  0,-13.5)*{\afawum{}{}{}{}{}{}};
-(  8,-12.75)*{\afvjm{6.5}};
-}\quad;
+\vcenter{\hbox{\includegraphics{Figures/normWeakPolForm}}}
+\quad;
 \]
 %---
 \item\label{definition:FlowNormalForms:item:WeaklyStreamlined}
 \emph{weakly streamlined}\index{streamlined!weakly} if it can be represented as
 \[
-\atomicflow{
-( -8, 11.5)*{\afvjm4};
-(  0, 13.5)*{\afawdm{}{}{}{}{}{}};
-%---
-( -6, 5.5)*{\copy\contrup};
-( -4, 5.5)*{\affr{10}8};
-( -2, 5.5)*{\copy\contrdown};
-%---
-( -5,-2.5)*{\afaium{}{}{}{}{}{}};
-(  0,   0)*{\afvjm3};
-(  5, 2.5)*{\afaidm{}{}{}{}{}{}};
-%---
-(  2,-5.5)*{\copy\contrup};
-(  4,-5.5)*{\affr{10}8};
-(  6,-5.5)*{\copy\contrdown};
-%---
-(  0,-13.5)*{\afawum{}{}{}{}{}{}};
-(  8,-11.5)*{\afvjm4};
-}\quad;
+\vcenter{\hbox{\includegraphics{Figures/normWeakForm}}}
+\quad;
 \]
 %---
 \item\label{definition:FlowNormalForms:item:Streamlined}
 \emph{streamlined}\index{streamlined} if it can be represented as
 \[
-\atomicflow{
-( -5, 11.5)*{\afvjm4};
-%---
-(-7.5, 5.5)*{\copy\contrup};
-(  -5, 5.5)*{\affr{12}8};
-(-2.5, 5.5)*{\copy\contrdown};
-%---
-(-10,-2.5)*{\afawum{}{}{}{}{}{}};
-( -5,-2.5)*{\afaium{}{}{}{}{}{}};
-(  0,   0)*{\afvjm3};
-(  5, 2.5)*{\afaidm{}{}{}{}{}{}};
-( 10, 2.5)*{\afawdm{}{}{}{}{}{}};
-%---
-(2.5,-5.5)*{\copy\contrup};
-(  5,-5.5)*{\affr{12}8};
-(7.5,-5.5)*{\copy\contrdown};
-%---
-(  5,-11.5)*{\afvjm4};
-}\quad;
+\vcenter{\hbox{\includegraphics{Figures/normForm}}}
+\quad;
 \]
 %---
 \item\label{definition:FlowNormalForms:item:SuperStreamlined}
 \emph{super streamlined}\index{streamlined!super} if it can be represented as
 \[
-\atomicflow{
-(-12,  9.5)*{\afawum{}{}{}{}{}{}};
-%---
-( -4, 11.5)*{\afvjm4};
-%---
-( -6, 5.5)*{\copy\contrup};
-( -4, 5.5)*{\affr{10}8};
-( -2, 5.5)*{\copy\contrdown};
-%---
-( -5,-2.5)*{\afaium{}{}{}{}{}{}};
-(  0,   0)*{\afvjm3};
-(  5, 2.5)*{\afaidm{}{}{}{}{}{}};
-%---
-(  2,-5.5)*{\copy\contrup};
-(  4,-5.5)*{\affr{10}8};
-(  6,-5.5)*{\copy\contrdown};
-%---
-(  4,-11.5)*{\afvjm4};
-%---
-( 12, -9.5)*{\afawdm{}{}{}{}{}{}};
-}\quad;\quad\mbox{and}
+\vcenter{\hbox{\includegraphics{Figures/normSuperForm}}}
+\quad;\quad\mbox{and}
 \]
 %---
 \item\label{definition:FlowNormalForms:item:HyperStreamlined}
 \emph{hyper streamlined}\index{streamlined!hyper} if it can be represented as
 \[
-\atomicflow{
-(-12,  9.5)*{\afawum{}{}{}{}{}{}};
-%---
-( -4, 11.5)*{\afvjm4};
-%---
-( -4, 5.5)*{\copy\contrup};
-( -4, 5.5)*{\affr{10}8};
-%---
-( -5,-2.5)*{\afaium{}{}{}{}{}{}};
-(  0,   0)*{\afvjm3};
-(  5, 2.5)*{\afaidm{}{}{}{}{}{}};
-%---
-(  4,-5.5)*{\affr{10}8};
-(  4,-5.5)*{\copy\contrdown};
-%---
-(  4,-11.5)*{\afvjm4};
-%---
-( 12, -9.5)*{\afawdm{}{}{}{}{}{}};
-}\quad.
+\vcenter{\hbox{\includegraphics{Figures/normHyperForm}}}
+\quad.
 \]
 \end{enumerate}
 \end{definition}
@@ -254,25 +90,12 @@ A derivation with associated atomic flow $\phi$ is \emph{weakly streamlined} (re
 \begin{example}\label{example:Streamlined}
 The first flow is weakly streamlined, the other two are hyper streamlined:
 \[
-\aflower{\atomicflow{
-(0,6)*{\afacd{}{}{}{}{}{}};
-(4,6)*{\afawd{}{}{}{}};
-(2,0)*{\afaiunw{}{}}}}
+%\aflower{} what does this do?
+\vcenter{\hbox{\includegraphics{Figures/exWeakStr1}}}
 \quad,\qquad
-\atomicflow{
-( 2,0)*{\afacd{}{}{}{}{}{}};
-( 0,4)*{\afawdnw{}{}};
-( 6,8)*{\afacu{}{}{}{}{}{}};
-(10,2)*{\afaiunw{}{}{}{}};
-(12,8)*{\afvj8}}
+\vcenter{\hbox{\includegraphics{Figures/exWeakStr2}}}
 \qquad\hbox{and}\qquad
-\atomicflow{
-(10,8)*{\afacu{}{}{}{}{}{}};
-(16,8)*{\afvj8};
-( 2,4)*{\afaidnw{}{}};
-( 0,0)*{\afvj8};
-(14,2)*{\afaiunw{}{}};
-( 6,0)*{\afacd{}{}{}{}{}{}}}
+\vcenter{\hbox{\includegraphics{Figures/exWeakStr3}}}
 \quad.
 \]
 \end{example}
@@ -295,30 +118,10 @@ Given an atomic flow with no upper (resp., lower) edges, it can be represented a
 \begin{enumerate}
 \item\label{proposition:FlowNormalFormsNoUpper:item:Streamlined}
 \[
-\atomicflow{
-(  5, 2.5)*{\afaidm{}{}{}{}{}{}};
-( 10, 2.5)*{\afawdm{}{}{}{}{}{}};
-%---
-(4,-5.5)*{\copy\contrup};
-(6,-5.5)*{\affr{10}8};
-(8,-5.5)*{\copy\contrdown};
-%---
-(6,-11.5)*{\afvjm4};
-(0,-18)*{\invisiblemark};
-}
+\vcenter{\hbox{\includegraphics{Figures/normFormNoUpper}}}
 \qquad
 \left(\mbox{resp.,}\quad
-\atomicflow{
-( 0,18)*{\invisiblemark};
-(-6,11.5)*{\afvjm4};
-%---
-(-8, 5.5)*{\copy\contrup};
-(-6, 5.5)*{\affr{10}8};
-(-4, 5.5)*{\copy\contrdown};
-%---
-(-10,-2.5)*{\afawum{}{}{}{}{}{}};
-( -5,-2.5)*{\afaium{}{}{}{}{}{}};
-}
+\vcenter{\hbox{\includegraphics{Figures/normFormNoLower}}}
 \quad\right)
 \quad,
 \]
@@ -326,32 +129,10 @@ if it is streamlined;
 %---
 \item\label{proposition:FlowNormalFormsNoUpper:item:SuperStreamlined}
 \[
-\atomicflow{
-(  4, 2.5)*{\afaidm{}{}{}{}{}{}};
-%---
-(  2,-5.5)*{\copy\contrup};
-(  4,-5.5)*{\affr88};
-(  6,-5.5)*{\copy\contrdown};
-%---
-(  4,-11.5)*{\afvjm4};
-%---
-( 11, -9.5)*{\afawdm{}{}{}{}{}{}};
-(0,-18)*{\invisiblemark};
-}
+\vcenter{\hbox{\includegraphics{Figures/normFormSuperNoUpper}}}
 \qquad
 \left(\mbox{resp.,}\quad
-\atomicflow{
-( 0,18)*{\invisiblemark};
-(-11,  9.5)*{\afawum{}{}{}{}{}{}};
-%---
-( -4, 11.5)*{\afvjm4};
-%---
-( -6, 5.5)*{\copy\contrup};
-( -4, 5.5)*{\affr88};
-( -2, 5.5)*{\copy\contrdown};
-%---
-( -4,-2.5)*{\afaium{}{}{}{}{}{}};
-}
+\vcenter{\hbox{\includegraphics{Figures/normFormSuperNoLower}}}
 \quad\right)
 \quad,
 \]
@@ -359,30 +140,10 @@ if it is super streamlined; and
 %---
 \item\label{proposition:FlowNormalFormsNoUpper:item:HyperStreamlined}
 \[
-\atomicflow{
-(  4, 2.5)*{\afaidm{}{}{}{}{}{}};
-%---
-(  4,-5.5)*{\affr88};
-(  4,-5.5)*{\copy\contrdown};
-%---
-(  4,-11.5)*{\afvjm4};
-%---
-( 11, -9.5)*{\afawdm{}{}{}{}{}{}};
-(0,-18)*{\invisiblemark};
-}
+\vcenter{\hbox{\includegraphics{Figures/normFormHyperNoUpper}}}
 \qquad
 \left(\mbox{resp.,}\quad
-\atomicflow{
-( 0,18)*{\invisiblemark};
-(-11,  9.5)*{\afawum{}{}{}{}{}{}};
-%---
-( -4, 11.5)*{\afvjm4};
-%---
-( -4, 5.5)*{\copy\contrup};
-( -4, 5.5)*{\affr88};
-%---
-( -4,-2.5)*{\afaium{}{}{}{}{}{}};
-}
+\vcenter{\hbox{\includegraphics{Figures/normFormHyperNoLower}}}
 \quad\right)
 \quad,
 \]

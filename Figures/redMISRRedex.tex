@@ -1,0 +1,43 @@
+%%!TEX TS-program = latex
+\documentclass[a4paper]{amsart}
+
+\usepackage[urw-garamond]{mathdesign}
+\usepackage[lutzsyntax]{../virginialake}
+   \aftrianglefalse
+   \everydisplay={\vlsmallleftlabels}
+
+\begin{document}
+\thispagestyle{empty}
+
+\[
+\newbox\contrup\setbox\contrup=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afacu{}{}{}{}{}{}}}$}
+\newbox\contrdown\setbox\contrdown=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afacd{}{}{}{}{}{}}}$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\atomicflow{
+(-12,  8)*{\afvjdm8{}{\boldsymbol\epsilon}};
+(  4, 10)*{\afaidex{}{}{}{}{}{}{20}{4}};
+( -6,  5)*{\afvj2};
+( -4,  6)*{\cdots};
+( 14,  5)*{\afvj2};
+(  1,  8)*{\afaidex{}{}{}{}{}{}{6}{4}};
+( -7,  0)*{\affr{12}{8}};
+( -1,  2)*{\aflabelleft{\phi}};
+(  4,  0)*{\affr{6}{8}};
+(  7,  2)*{\aflabelleft{\psi_1}};
+(  9,  0)*{\cdots};
+( 14,  0)*{\affr{6}{8}};
+( 17,  2)*{\aflabelleft{\psi_n}};
+(  1, -8)*{\afaiuex{}{}{}{}{}{}{6}{4}};
+( -6, -5)*{\afvj2};
+( -4, -6)*{\cdots};
+( 14, -5)*{\afvj2};
+(  4,-10)*{\afaiuex{}{}{}{}{}{}{20}{4}};
+(-12, -8)*{\afvjum8{}{\boldsymbol\iota}};
+}
+\]
+
+\end{document}

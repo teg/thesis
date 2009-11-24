@@ -1,0 +1,35 @@
+%%!TEX TS-program = latex
+\documentclass[a4paper]{amsart}
+
+\usepackage[urw-garamond]{mathdesign}
+\usepackage[lutzsyntax]{../virginialake}
+   \aftrianglefalse
+   \everydisplay={\vlsmallleftlabels}
+
+\begin{document}
+\thispagestyle{empty}
+
+\[
+\newcommand{\one  }{{\mathchoice{\scriptstyle      \mathbf1}
+                                {\scriptstyle      \mathbf1}
+                                {\scriptstyle      \mathbf1}
+                                {\scriptscriptstyle\mathbf1}}}
+\newcommand{\two  }{{\mathchoice{\scriptstyle      \mathbf2}
+                                {\scriptstyle      \mathbf2}
+                                {\scriptstyle      \mathbf2}
+                                {\scriptscriptstyle\mathbf2}}}
+%---------------------------------------
+\afraise{\atomicflow{
+( 0  ,0)*{\afacd{}{}{}\one{}\two};
+(-2  ,4)*{\afawdnw{}{}};
+(-3.5,0)*{\invisiblemark};
+( 3.5,0)*{\invisiblemark}}}
+\quad{\to}\quad
+\atomicflow{
+( 0  ,3.3)*{\aflabelright{\one,\two}};
+( 0  ,3  )*{\afvj8};
+(-1.5,0  )*{\invisiblemark};
+( 3  ,0  )*{\invisiblemark}}
+\]
+
+\end{document}

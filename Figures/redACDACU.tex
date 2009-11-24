@@ -1,0 +1,46 @@
+%%!TEX TS-program = latex
+\documentclass[a4paper]{amsart}
+
+\usepackage[urw-garamond]{mathdesign}
+\usepackage[lutzsyntax]{../virginialake}
+   \aftrianglefalse
+   \everydisplay={\vlsmallleftlabels}
+
+\begin{document}
+\thispagestyle{empty}
+
+\[
+\newcommand{\one  }{{\mathchoice{\scriptstyle      \mathbf1}
+                                {\scriptstyle      \mathbf1}
+                                {\scriptstyle      \mathbf1}
+                                {\scriptscriptstyle\mathbf1}}}
+\newcommand{\two  }{{\mathchoice{\scriptstyle      \mathbf2}
+                                {\scriptstyle      \mathbf2}
+                                {\scriptstyle      \mathbf2}
+                                {\scriptscriptstyle\mathbf2}}}
+\newcommand{\three}{{\mathchoice{\scriptstyle      \mathbf3}
+                                {\scriptstyle      \mathbf3}
+                                {\scriptstyle      \mathbf3}
+                                {\scriptscriptstyle\mathbf3}}}
+\newcommand{\four }{{\mathchoice{\scriptstyle      \mathbf4}
+                                {\scriptstyle      \mathbf4}
+                                {\scriptstyle      \mathbf4}
+                                {\scriptscriptstyle\mathbf4}}}
+%---------------------------------------
+\atomicflow{
+( 0,4)*{\afacd\one{}{}\two{}{}};
+( 0,-4)*{\afacu\three{}{}\four{}{}};
+(-4,0)*{\invisiblemark};
+( 4,0)*{\invisiblemark}}
+\quad\to\quad
+\atomicflow{
+(0,12)*{\afacu{}{}{}{}\one{}};
+(6,12)*{\afacu{}{}{}{}{}\two};
+( 0,0)*{\afacd{}{}{}{}\three{}};
+( 6,0)*{\afacd{}{}{}{}{}\four};
+(-2,6)*{\afvj4};
+( 8,6)*{\afvj4};
+( 3,6)*{\afex24}}
+\]
+
+\end{document}

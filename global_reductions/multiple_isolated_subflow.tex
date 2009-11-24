@@ -36,123 +36,15 @@ For every $n>0$, given
 let, for $1\le k\le N$, $\eta_k$ be the atomic flow of\/ $\Gammasf_k$, and let
 \[
 \mu_k\;=\;
-\atomicflow
-{
-(  4,  6)*{\afvjm4};
-(  4,  0)*{\affr{8}{8}};
-(  8,  2)*{\aflabelleft{f_{1,1}(\psi_1)}};
-(  4, -6)*{\afvjm4};
-( 10,  0)*{\cdots};
-( 16,  6)*{\afvjm4};
-( 16,  0)*{\affr{8}{8}};
-( 20,  2)*{\aflabelleft{f_{1,l_1}(\psi_1)}};
-( 16, -6)*{\afvjm4};
-( 22,  0)*{\cdots};
-( 28,  6)*{\afvjm4};
-( 28,  0)*{\affr{8}{8}};
-( 32,  2)*{\aflabelleft{f_{n,1}(\psi_n)}};
-( 28, -6)*{\afvjm4};
-( 34,  0)*{\cdots};
-( 40,  6)*{\afvjm4};
-( 40,  0)*{\affr{8}{8}};
-( 44,  2)*{\aflabelleft{f_{n,l_n}(\psi_n)}};
-( 40, -6)*{\afvjm4};
-}
+\vcenter{\hbox{\includegraphics{Figures/redMISRAux}}}
 \quad,
 \]
 where, for $1\le i\le n$, $l_i$ is the number of atom occurrences in $\gamma_{k,i}$, we define the reduction $\to_{\frmis_n}$ (where $\frmis$ stands for \emph{multiple isolated subflows}\index{Multiple Isolated Subflows Remover!reduction}) as follows, for any atomic flow $\phi$ and any connected atomic flows $\psi_1$, $\dots$, $\psi_n$ that do not contain interaction or cut vertices:
 \[
-\atomicflow{
-(-12,  8)*{\afvjdm8{}{\boldsymbol\epsilon}};
-(  4, 10)*{\afaidex{}{}{}{}{}{}{20}{4}};
-( -6,  5)*{\afvj2};
-( -4,  6)*{\cdots};
-( 14,  5)*{\afvj2};
-(  1,  8)*{\afaidex{}{}{}{}{}{}{6}{4}};
-( -7,  0)*{\affr{12}{8}};
-( -1,  2)*{\aflabelleft{\phi}};
-(  4,  0)*{\affr{6}{8}};
-(  7,  2)*{\aflabelleft{\psi_1}};
-(  9,  0)*{\cdots};
-( 14,  0)*{\affr{6}{8}};
-( 17,  2)*{\aflabelleft{\psi_n}};
-(  1, -8)*{\afaiuex{}{}{}{}{}{}{6}{4}};
-( -6, -5)*{\afvj2};
-( -4, -6)*{\cdots};
-( 14, -5)*{\afvj2};
-(  4,-10)*{\afaiuex{}{}{}{}{}{}{20}{4}};
-(-12, -8)*{\afvjum8{}{\boldsymbol\iota}};
-}
+\vcenter{\hbox{\includegraphics{Figures/redMISRRedex}}}
 \quad\to_{\frmis_n}\quad
-\atomicflow{
-(-12, 56)*{\afvjm4};
-(-12, 50)*{\copy\contrup};
-(-12, 50)*{\affr{16}{8}};
-( -5, 44)*{\afvjdm4{}{f_1(\boldsymbol\epsilon)}};
-( -7, 34)*{\afcjlm{4}{24}};
-(-12, 42)*{\cdots};
-(-10,  2)*{\afcjlm{10}{32}};
-(-15, 32)*{\afvjm{28}};
-(-12,-13)*{\afcjlm{14}{42}};
-(-19, 27)*{\afvjm{38}};
-%--
-( 5, 46)*{\afawdm{}{}{}{}};
-( 0, 38)*{\affr{12}{8}};
-( 6, 40)*{\aflabelleft{f_1(\phi)}};
-(-5, 32.5)*{\aflabelright{f_1(\boldsymbol\iota)}};
-( 5, 33)*{\afvjm2};
-( 9, 28)*{\affr{10}{8}};
-(14, 30)*{\aflabelleft{\eta_1}};
-( 5, 23)*{\afvjm2};
-(11, 23)*{\afvjm2};
-(-5, 24.5)*{\aflabelright{f_2(\boldsymbol\epsilon)}};
-( 0, 18)*{\affr{12}{8}};
-( 6, 20)*{\aflabelleft{f_2(\phi)}};
-(-5, 12.5)*{\aflabelright{f_2(\boldsymbol\iota)}};
-( 5, 13)*{\afvjm2};
-(11, 13)*{\afvjm2};
-(11, 18)*{\affr{6}{8}};
-(14, 20)*{\aflabelleft{\mu_1}};
-( 9,  8)*{\affr{10}{8}};
-(14, 10)*{\aflabelleft{\eta_2}};
-( 5,  3)*{\afvjm2};
-(11,  3)*{\afvjm2};
-%-
-( 0,  1)*{\vdots};
-%-
-( 5, -3)*{\afvjm2};
-(11, -3)*{\afvjm2};
-( 9, -8)*{\affr{10}{8}};
-(14, -6)*{\aflabelleft{\eta_{N-1}}};
-( 5,-13)*{\afvjm2};
-(11,-13)*{\afvjm2};
-(-5,-11.5)*{\aflabelright{f_N(\boldsymbol\epsilon)}};
-( 0,-18)*{\affr{12}{8}};
-( 6,-16)*{\aflabelleft{f_N(\phi)}};
-(-5,-23.5)*{\aflabelright{f_N(\boldsymbol\iota)}};
-(11,-18)*{\affr{6}{8}};
-(14,-16)*{\aflabelleft{\mu_{N-1}}};
-( 5,-23)*{\afvjm2};
-(11,-23)*{\afvjm2};
-( 9,-28)*{\affr{10}{8}};
-(14,-26)*{\aflabelleft{\eta_N}};
-( 5,-33)*{\afvjm2};
-(-5,-31.5)*{\aflabelright{f_{N+1}(\boldsymbol\epsilon)}};
-( 0,-38)*{\affr{12}{8}};
-( 6,-36)*{\aflabelleft{f_{N+1}(\phi)}};
-( 5,-46)*{\afawum{}{}{}{}};
-%--
-(-12, 13)*{\afcjrm{14}{42}};
-(-19,-27)*{\afvjm{38}};
-(-10, -2)*{\afcjrm{10}{32}};
-(-15,-32)*{\afvjm{28}};
-(-12,-42)*{\cdots};
-( -7,-34)*{\afcjrm{4}{24}};
-( -5,-44)*{\afvjum4{}{f_{N+1}(\boldsymbol\iota)}};
-(-12,-50)*{\affr{16}{8}};
-(-12,-50)*{\copy\contrdown};
-(-12,-56)*{\afvjm4};
-}\quad.
+\vcenter{\hbox{\includegraphics{Figures/redMISRContractum}}}
+\quad.
 \]
 \end{definition}
 %---------------
@@ -211,22 +103,8 @@ For every $0\le k\le N$, we obtain the derivation $\Phi_k$ from $\Phi'$ as follo
 \]
 Since each of $\psi_1$, $\dots$, $\psi_n$ is connected and contains no interaction or cut vertices, the mapping from occurrences of $\bar a_i^{\psi_i}$ to edges of $\psi_i$ is surjective. Hence, we know that $\Phi_k$ has atomic flow
 \[
-\atomicflow{
-(-5, 6)*{\afvjm4};
-( 1, 6)*{\afvj4};
-( 3, 6)*{\cdots};
-( 5, 6)*{\afvj4};
-(11, 6)*{\afvjm4};
-( 0, 0)*{\affr{12}{8}};
-( 6, 2)*{\aflabelleft{f_i(\phi)}};
-(11, 0)*{\affr{6}{8}};
-(14, 2)*{\aflabelleft{\mu_{k-1}}};
-(-5,-6)*{\afvjm4};
-( 1,-6)*{\afvj4};
-( 3,-6)*{\cdots};
-( 5,-6)*{\afvj4};
-(11,-6)*{\afvjm4};
-}\quad.
+\vcenter{\hbox{\includegraphics{Figures/thmMISR}}}
+\quad.
 \]
 We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gammasf_1$, $\dots$, $\Gammasf_N$ to get the desired derivation $\Psi$ with atomic flow $\psi'$ and the same premiss and conclusion as $\Phi$:
 \[
@@ -469,27 +347,7 @@ For every $n>0$, given the atoms, formulae and derivations described in Definiti
 \]
 with atomic flow
 \[
-\atomicflow{
-(-12,  8)*{\afvjdm8{}{\boldsymbol\epsilon}};
-(  4, 10)*{\afaidmex{}{}{}{}{}{}{20}{4}};
-( -6,  5)*{\afvjm2};
-( -4,  6)*{\cdots};
-( 14,  5)*{\afvjm2};
-(  1,  8)*{\afaidmex{}{}{}{}{}{}{6}{4}};
-( -7,  0)*{\affr{12}{8}};
-( -4,  2)*{\aflabelright{\phi'}};
-(  4,  0)*{\affr{6}{8}};
-(  4,  2)*{\aflabelright{\psi'_1}};
-(  9,  0)*{\cdots};
-( 14,  0)*{\affr{6}{8}};
-( 14,  2)*{\aflabelright{\psi'_n}};
-(  1, -8)*{\afaiumex{}{}{}{}{}{}{6}{4}};
-( -6, -5)*{\afvjm2};
-( -4, -6)*{\cdots};
-( 14, -5)*{\afvjm2};
-(  4,-10)*{\afaiumex{}{}{}{}{}{}{20}{4}};
-(-12, -8)*{\afvjum8{}{\boldsymbol\iota}};
-}
+\vcenter{\hbox{\includegraphics{Figures/defMISR1}}}
 \quad,
 \]
 where, for $1\le i\le n$, $\psi_i$ is the juxtaposition of all the isolated subflows mapped to from occurrences of $a_i$ in $\Phi$. Consider the derivation
@@ -592,61 +450,8 @@ where, for $1\le i\le n$, $\psi_i$ is the juxtaposition of all the isolated subf
 with atomic flow
 \[
 \psi''\;=\;
-\atomicflow{
-(-16, 12)*{\afvjdm{16}{\boldsymbol\epsilon}{}};
-(  7, 20)*{\afaidex{}{}{}{}{}{}{34}{4}};
-(  4, 18)*{\afaidex{}{}{}{}{}{}{12}{4}};
-%-
-(-10, 15)*{\afvj2};
-(-10, 10)*{\affr68};
-(-10, 10)*{\copy\contrup};
-(-10,  5)*{\afvjm2};
-( -6,  5)*{\cdots};
-( -2, 10)*{\affr68};
-( -2, 10)*{\copy\contrup};
-( -2,  5)*{\afvjm2};
-( -9,  0)*{\affr{16}{8}};
-( -1,  2)*{\aflabelleft{\phi'}};
-(-10, -5)*{\afvjm2};
-(-10,-10)*{\affr68};
-(-10,-10)*{\copy\contrdown};
-(-10,-15)*{\afvj2};
-( -6, -5)*{\cdots};
-( -2, -5)*{\afvjm2};
-( -2,-10)*{\affr68};
-( -2,-10)*{\copy\contrdown};
-%-
-(10, 10)*{\affr68};
-(10, 10)*{\copy\contrup};
-(10,  5)*{\afvjm2};
-(24, 15)*{\afvj2};
-(24, 10)*{\affr68};
-(24, 10)*{\copy\contrup};
-(24,  5)*{\afvjm2};
-(10,  0)*{\affr{6}{8}};
-(11,  2)*{\aflabelleft{\psi'_1}};
-(18,  0)*{\cdots};
-(24,  0)*{\affr{6}{8}};
-(27,  2)*{\aflabelleft{\psi'_n}};
-(10, -5)*{\afvjm2};
-(10,-10)*{\affr68};
-(10,-10)*{\copy\contrdown};
-(24, -5)*{\afvjm2};
-(24,-10)*{\affr68};
-(24,-10)*{\copy\contrdown};
-(24,-15)*{\afvj2};
-%-
-(-16,-12)*{\afvjum{16}{\boldsymbol\iota}{}};
-(  4,-18)*{\afaiuex{}{}{}{}{}{}{12}{4}};
-(  7,-20)*{\afaiuex{}{}{}{}{}{}{34}{4}};
-%----
-(-7,  0)*{\affr{22}{30}};
-( 4, 13)*{\aflabelleft{\phi}};
-(11,  0)*{\affr{10}{30}};
-(16, 13)*{\aflabelleft{\psi_1}};
-(25,  0)*{\affr{10}{30}};
-(30, 13)*{\aflabelleft{\psi_n}};
-}\quad.
+\vcenter{\hbox{\includegraphics{Figures/defMISR2}}}
+\quad.
 \]
 We then define $\MISR_n(\Phi,a_1,\dots,a_n)$ to be such that $\Psi\to_\frmis\MISR(\Phi,a_1,\dots,a_n)$, where $\phi$, $\psi_1$, $\dots$, $\psi_n$ are the flows, by the same names, shown in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}.
 \end{definition}

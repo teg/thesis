@@ -1,0 +1,41 @@
+%%!TEX TS-program = latex
+\documentclass[a4paper]{amsart}
+
+\usepackage[urw-garamond]{mathdesign}
+\usepackage[lutzsyntax]{../virginialake}
+   \aftrianglefalse
+   \everydisplay={\vlsmallleftlabels}
+
+\begin{document}
+\thispagestyle{empty}
+
+\[
+\newcommand{\one  }{{\mathchoice{\scriptstyle      \mathbf1}
+                                {\scriptstyle      \mathbf1}
+                                {\scriptstyle      \mathbf1}
+                                {\scriptscriptstyle\mathbf1}}}
+\newcommand{\two  }{{\mathchoice{\scriptstyle      \mathbf2}
+                                {\scriptstyle      \mathbf2}
+                                {\scriptstyle      \mathbf2}
+                                {\scriptscriptstyle\mathbf2}}}
+\newcommand{\three}{{\mathchoice{\scriptstyle      \mathbf3}
+                                {\scriptstyle      \mathbf3}
+                                {\scriptstyle      \mathbf3}
+                                {\scriptscriptstyle\mathbf3}}}
+%---------------------------------------
+\aflower{\atomicflow{
+(   6, 8)*{\afvjd8{}\three{}{}};
+(   3, 0)*{\afaiuex{}{}{}{}{}{}32};
+(   0, 8)*{\afacd\one{}{}\two{}{}};
+(-3.5, 0)*{\invisiblemark};
+( 7.5, 0)*{\invisiblemark}}}
+\quad\to\quad
+\aflower{\atomicflow{
+(  10,8)*{\afacu{}{}{}{}{}\three};
+(   0,8)*{\afvjd8\one{}};
+(   4,8)*{\afvjd8{}\two};
+(   6,2)*{\afaiunw{}{}};
+(   6,0)*{\afaiuex{}{}{}{}{}{}31}}}
+\]
+
+\end{document}

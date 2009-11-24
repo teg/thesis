@@ -1,0 +1,25 @@
+%%!TEX TS-program = latex
+\documentclass[a4paper]{amsart}
+
+\usepackage[urw-garamond]{mathdesign}
+\usepackage[lutzsyntax]{virginialake}
+   \aftrianglefalse
+   \everydisplay={\vlsmallleftlabels}
+
+\begin{document}
+\thispagestyle{empty}
+
+\[
+\atomicflow{
+( 2,14)*{\afvjcol4{Green}};
+( 0,10)*{\afvjcol{12}{Red}};
+(16,10)*{\afvjcol{12}{Magenta}};
+( 4, 8)*{\afacdcol{}{}{}{}{}{}{Green}{YellowOrange}{RawSienna}};
+(10, 8)*{\afacucol{}{}{}{}{}{}{DarkOrchid}{ProcessBlue}{SpringGreen}};
+( 2, 2)*{\afaiunw{}{}};
+( 8, 2)*{\afvjcol4{DarkOrchid}};
+(14, 2)*{\afaiunw{}{}};
+( 8,12)*{\afaidnw{}{}}}
+\]
+
+\end{document}

@@ -1,0 +1,45 @@
+%%!TEX TS-program = latex
+\documentclass[a4paper]{amsart}
+
+\usepackage[urw-garamond]{mathdesign}
+\usepackage[lutzsyntax]{../virginialake}
+   \aftrianglefalse
+   \everydisplay={\vlsmallleftlabels}
+
+\begin{document}
+\thispagestyle{empty}
+
+\[
+\newcommand{\ppl  }{{\mathchoice{\scriptstyle+}
+                                {\scriptstyle+}
+                                {\scriptstyle+}
+                                {\scriptscriptstyle+}}}
+\newcommand{\pmi  }{{\mathchoice{\scriptstyle-}
+                                {\scriptstyle-}
+                                {\scriptstyle-}
+                                {\scriptscriptstyle-}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\aflower{\atomicflow{
+(-2  ,0)*{\afawu{}{}\ppl{}};
+( 2  ,0)*{\afawu{}{}{}\pmi};
+(-3.5,0)*{\invisiblemark};
+( 3.5,0)*{\invisiblemark}}}
+\quad\to\quad
+\aflower{\atomicflow{
+( 0  ,2)*{\afaiu\ppl{}{}\pmi{}{}};
+(-3.5,0)*{\invisiblemark};
+( 3.5,0)*{\invisiblemark}}}
+\qquad\qquad
+\aflower{\atomicflow{
+(-2,0)*{\afawu{}{}\ppl{}};
+( 2,0)*{\afawu{}{}{}\ppl};
+(-3.5,0)*{\invisiblemark};
+( 3.5,0)*{\invisiblemark}}}
+\quad\to\quad
+\aflower{\atomicflow{
+( 0  , 2)*{\afaiu\ppl{}{}{\scriptstyle?}{}{}};
+(-3.5, 0)*{\invisiblemark};
+( 3.5, 0)*{\invisiblemark}}}
+\]
+
+\end{document}

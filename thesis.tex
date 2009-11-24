@@ -1,3 +1,4 @@
+%&pdflatex
 % Thesis main file
 
 \documentclass[a4paper,11pt]{report}
@@ -5,15 +6,27 @@
 
 \usepackage{makeidx}
 \makeindex
-\usepackage{graphicx}
+%\usepackage{microtype}
+
 \usepackage{fancyhdr}
 \usepackage{amsmath,amsthm}
 \usepackage{varioref}
-\usepackage[lutzsyntax]{virginialake}\aftrianglefalse
 \usepackage[urw-garamond]{mathdesign} % Comment this to use Times fonts
   \expandafter\ifx\csname leqslant\endcsname\relax\usepackage{txfonts}\fi
+\usepackage[lutzsyntax,noxy]{virginialake}
+\usepackage[pdftex]{graphicx}
+\usepackage[pdftex,dvipsnames,usenames]{color}
 \usepackage[pdfborder={0 0 0}]{hyperref}
 
+%TODO What is the purpose of this:
+%\multlinegap=0pt
+%\setbox0=\hbox{$\>$}\setlength\arraycolsep{\wd0}
+
+%---------------------------------------------------------- REMOVE WHEN FINISHED
+\synctex=1
+% uncomment to show labels in the margin:
+%\usepackage[notref,notcite]{showkeys}
+%---------------------------------------------------------- REMOVE WHEN FINISHED
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

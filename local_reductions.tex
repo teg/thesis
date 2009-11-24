@@ -24,133 +24,46 @@ In Figure~\vref{figure:ReductionRules}, we define graphical expressions of the k
 \[
 \begin{array}{@{}c@{}c@{}}
 %-------------------
-\rwdcd\colon\quad\afraise{\atomicflow{
-( 0  ,0)*{\afacd{}{}{}\one{}\two};
-(-2  ,4)*{\afawdnw{}{}};
-(-3.5,0)*{\invisiblemark};
-( 3.5,0)*{\invisiblemark}}}
-\quad\to\quad
-\atomicflow{
-( 0  ,3.3)*{\aflabelright{\one,\two}};
-( 0  ,3  )*{\afvj8};
-(-1.5,0  )*{\invisiblemark};
-( 3  ,0  )*{\invisiblemark}}
+\rwdcd\colon\quad
+\vcenter{\hbox{\includegraphics{Figures/redAWDACD}}}
 &\qquad
 %-------------------
-\rcuwu\colon\quad\aflower{\atomicflowinv{
-( 0  ,0)*{\afacu{}{}{}\two{}\one};
-(-2  ,6)*{\afawunw{}{}};
-( 3.5,0)*{\invisiblemark}}}
-\quad\to\quad
-\atomicflow{
-(0,3  )*{\afvj8};
-(0,3.3)*{\aflabelright{\one,\two}};
-(3,0  )*{\invisiblemark}}
+\rcuwu\colon\quad
+\vcenter{\hbox{\includegraphics{Figures/redACUAWU}}}
 \\
 %-------------------
-\rwdiu\colon\quad\atomicflow{
-( 0  ,0)*{\afaiu{}{}{}\one{}{}};
-(-2  ,4)*{\afawdnw{}{}};
-(-3.5,0)*{\invisiblemark};
-( 3.5,0)*{\invisiblemark}}
-\quad\to\quad
-\aflower{\atomicflow{
-( 0  ,0)*{\afawu{}{}{}\one};
-(-1.5,0)*{\invisiblemark};
-( 1.5,0)*{\invisiblemark}}}
+\rwdiu\colon\quad
+\vcenter{\hbox{\includegraphics{Figures/redAWDAIU}}}
 &\qquad
 %-------------------
-\ridwu\colon\quad\atomicflowinv{
-( 0  ,0)*{\afaid{}{}{}\one{}{}};
-(-2  ,6)*{\afawunw{}{}};
-( 3.5,0)*{\invisiblemark}}
-\quad\to\quad
-\afraise{\atomicflowinv{
-(0  ,0)*{\afawd{}{}{}\one};
-(1.5,0)*{\invisiblemark}}}
+\ridwu\colon\quad
+\vcenter{\hbox{\includegraphics{Figures/redAIDAWU}}}
 \\
 %-------------------
 \multispan2{\hfil$
-\rwdwu\colon\quad\atomicflow{
-( 0  ,6)*{\afawd{}{}{}{}};
-( 0  ,0)*{\afawunw{}{}{}{}};
-(-1.5,0)*{\invisiblemark};
-( 1.5,0)*{\invisiblemark}}
-\quad\to\quad
-\atomicflow{}
+\rwdwu\colon\quad
+\vcenter{\hbox{\includegraphics{Figures/redAWDAWU}}}
 $\hfil}\\
 %-------------------
-\rwdcu\colon\quad\afraise{\atomicflow{
-( 0  ,-4)*{\afacu\one{}{}\two{}{}};
-( 0  , 0)*{\afawdnw{}{}};
-(-3.5, 0)*{\invisiblemark};
-( 3.5, 0)*{\invisiblemark}}}
-\quad\to\quad
-\atomicflow{
-(-2  ,-4)*{\afawd{}{}\one{}};
-( 2  ,-4)*{\afawd{}{}{}\two};
-(-3.5, 0)*{\invisiblemark};
-( 3.5, 0)*{\invisiblemark}}
+\rwdcu\colon\quad
+\vcenter{\hbox{\includegraphics{Figures/redAWDACU}}}
 &\qquad
 %-------------------
-\rcdwu\colon\quad\aflower{\atomicflowinv{
-( 0  ,-4)*{\afacd\one{}{}\two{}{}};
-( 0  , 2)*{\afawunw{}{}};
-(-3.5, 0)*{\invisiblemark};
-( 3.5, 0)*{\invisiblemark}}}
-\quad\to\quad
-\atomicflowinv{
-(-2  ,-4)*{\afawu{}{}\one{}};
-( 2  ,-4)*{\afawu{}{}{}\two};
-(-3.5, 0)*{\invisiblemark};
-( 3.5, 0)*{\invisiblemark}}
+\rcdwu\colon\quad
+\vcenter{\hbox{\includegraphics{Figures/redACDAWU}}}
 \\
 %-------------------
-\rcdiu\colon\quad\aflower{\atomicflow{
-(   6, 8)*{\afvjd8{}\three{}{}};
-(   3, 0)*{\afaiuex{}{}{}{}{}{}32};
-(   0, 8)*{\afacd\one{}{}\two{}{}};
-(-3.5, 0)*{\invisiblemark};
-( 7.5, 0)*{\invisiblemark}}}
-\quad\to\quad
-\aflower{\atomicflow{
-(  10,8)*{\afacu{}{}{}{}{}\three};
-(   0,8)*{\afvjd8\one{}};
-(   4,8)*{\afvjd8{}\two};
-(   6,2)*{\afaiunw{}{}};
-(   6,0)*{\afaiuex{}{}{}{}{}{}31}}}
+\rcdiu\colon\quad
+\vcenter{\hbox{\includegraphics{Figures/redACDAIU}}}
 &\qquad
 %-------------------
-\ridcu\colon\quad\afraise{\atomicflowinv{
-(   6,8)*{\afvju8{}\three{}{}};
-(   3,0)*{\afaidex {}{}{}{}{}{}32};
-(   0,8)*{\afacu\one{}{}\two{}{}};
-(-3.5,0)*{\invisiblemark};
-( 7.5,0)*{\invisiblemark}}}
-\quad\to\quad
-\afraise{\atomicflowinv{
-(  10,8)*{\afacd{}{}{}{}{}\three};
-(   0,8)*{\afvju8\one{}};
-(   4,8)*{\afvju8{}\two};
-(   6,4)*{\afaidnw{}{}};
-(   6,0)*{\afaidex{}{}{}{}{}{}31}}}
+\ridcu\colon\quad
+\vcenter{\hbox{\includegraphics{Figures/redAIDACU}}}
 \\
 %-------------------
 \multispan2{\hfil$
-\rcdcu\colon\quad\atomicflow{
-( 0,4)*{\afacd\one{}{}\two{}{}};
-( 0,-4)*{\afacu\three{}{}\four{}{}};
-(-4,0)*{\invisiblemark};
-( 4,0)*{\invisiblemark}}
-\quad\to\quad
-\atomicflow{
-(0,12)*{\afacu{}{}{}{}\one{}};
-(6,12)*{\afacu{}{}{}{}{}\two};
-( 0,0)*{\afacd{}{}{}{}\three{}};
-( 6,0)*{\afacd{}{}{}{}{}\four};
-(-2,6)*{\afvj4};
-( 8,6)*{\afvj4};
-( 3,6)*{\afex24}}
+\rcdcu\colon\quad
+\vcenter{\hbox{\includegraphics{Figures/redACDACU}}}
 $\hfil}\\
 %%-------------------
 \end{array}
@@ -164,29 +77,7 @@ $\hfil}\\
 The `reduction' on the left, when used inside a larger atomic flow, might create a situation as on the right:
 \nopagebreak[4]\medskip\afnegspace
 \[
-\atomicflow{
-( 0  ,0)*{\afacu{}{}{}{}{}{}};
-( 0  ,4)*{\afawdnw{}{}}}
-\quad\to\quad
-\atomicflow{
-(0,8)*{\invisiblemark};
-( 0  ,0)*{\afaid{}{}{}{}{}{}}}
-\qquad\qquad
-\atomicflow{
-( 0  , 8)*{\afacu{}{}{}{}\ppl{}};
-( 0  ,12)*{\afawdnw{}{}};
-(-2  , 4)*{\aflabelleft\ppl};
-( 2  , 4)*{\aflabelright\ppl};
-( 0  , 0)*{\afacd{}{}{}{}\ppl{}};
-(-3.5, 0)*{\invisiblemark};
-( 3.5, 0)*{\invisiblemark}}
-\quad\to\quad
-\atomicflow{
-(0,16)*{\invisiblemark};
-( 0  ,4)*{\afaidnw{}{}};
-( 0  ,0)*{\afacd\ppl{}{}{\scriptstyle?}\ppl{}};
-(-3.5,0)*{\invisiblemark};
-( 3.5,0)*{\invisiblemark}}
+\vcenter{\hbox{\includegraphics{Figures/redNoPolar}}}
 \quad,
 \] 
 where the graph at the right is not an atomic flow, for lack of a polarity assignment.
@@ -212,38 +103,13 @@ The condition on polarity assignments for a reduction rule $r$ guarantees that t
 \begin{remark}\label{remark:FlowReductionRuleNoConnect}
 Because of the condition on polarity assignments for reduction rules, two distinct connected components in a flow cannot be connected by a reduction. To see that this is impossible, consider the following `reduction rule', which violates the condition on polarity assignments:
 \[
-\aflower{\atomicflow{
-(-2,0)*{\afawu{}{}{}{}};
-( 2,0)*{\afawu{}{}{}{}}}}
-\quad\to\quad
-\aflower{\atomicflow{
-( 0  , 2)*{\afaiu{}{}{}{}{}{}}}}
+\vcenter{\hbox{\includegraphics{Figures/redNoConnect}}}
 \quad.
 \]
 \afnegspace
 For this `reduction rule' there exist both valid (left) and invalid (right) polarity assignments:
 \[
-\aflower{\atomicflow{
-(-2  ,0)*{\afawu{}{}\ppl{}};
-( 2  ,0)*{\afawu{}{}{}\pmi};
-(-3.5,0)*{\invisiblemark};
-( 3.5,0)*{\invisiblemark}}}
-\quad\to\quad
-\aflower{\atomicflow{
-( 0  ,2)*{\afaiu\ppl{}{}\pmi{}{}};
-(-3.5,0)*{\invisiblemark};
-( 3.5,0)*{\invisiblemark}}}
-\qquad\qquad
-\aflower{\atomicflow{
-(-2,0)*{\afawu{}{}\ppl{}};
-( 2,0)*{\afawu{}{}{}\ppl};
-(-3.5,0)*{\invisiblemark};
-( 3.5,0)*{\invisiblemark}}}
-\quad\to\quad
-\aflower{\atomicflow{
-( 0  , 2)*{\afaiu\ppl{}{}{\scriptstyle?}{}{}};
-(-3.5, 0)*{\invisiblemark};
-( 3.5, 0)*{\invisiblemark}}}
+\vcenter{\hbox{\includegraphics{Figures/redNoConnectInContext}}}
 \quad.
 \]
 \afnegspace
@@ -317,17 +183,8 @@ The proof of the following theorem is essentially contained in Figures~\ref{figu
 \[
 \begin{array}{@{}l@{}c@{}}
 %---------------------------------------
-\rwdcd\colon\hfil\afraise{\atomicflow{
-( 0  ,0)*{\afacd\three{}{}\one{}\two};
-(-2  ,4)*{\afawdnw{}{}};
-(-3.5,0)*{\invisiblemark};
-( 3.5,0)*{\invisiblemark}}}
-\quad\to\quad
-\atomicflow{
-( 0  ,3.3)*{\aflabelright{\one,\two}};
-( 0  ,3  )*{\afvj8};
-(-1.5,0  )*{\invisiblemark};
-( 3  ,0  )*{\invisiblemark}}
+\rwdcd\colon\hfil
+\vcenter{\hbox{\includegraphics{Figures/redAWDACD}}}
 &\qquad
 \vlder{\Phi}{}{\zeta\left\{\vlinf{}{}{a^\two}{\vls[a^\three.a^\one]}\right\}}
               {\xi\left\{\vlinf{}{}{a^\three}{\fff}\right\}}
@@ -337,16 +194,8 @@ The proof of the following theorem is essentially contained in Figures~\ref{figu
 \\
 \noalign{\bigskip}
 %---------------------------------------
-\rwdiu\colon\hfil\atomicflow{
-( 0  ,0)*{\afaiu\two {}{}\one{}{}};
-(-2  ,4)*{\afawdnw{}{}};
-(-3.5,0)*{\invisiblemark};
-( 3.5,0)*{\invisiblemark}}
-\quad\to\quad
-\aflower{\atomicflow{
-( 0  ,0)*{\afawu{}{}{}\one};
-(-1.5,0)*{\invisiblemark};
-( 1.5,0)*{\invisiblemark}}}
+\rwdiu\colon\hfil
+\vcenter{\hbox{\includegraphics{Figures/redAWDAIU}}}
 &\qquad
 \vlder{\Phi}{}{\zeta\left\{\vlinf{}{}{\fff}{\vls(a^\two.\bar a^\one)}\right\}}
               {\xi\left\{\vlinf{}{}{a^\two}{\fff}\right\}}
@@ -356,13 +205,8 @@ The proof of the following theorem is essentially contained in Figures~\ref{figu
 \\
 \noalign{\bigskip}
 %---------------------------------------
-\rwdwu\colon\hfil\atomicflow{
-( 0  ,6)*{\afawd{}{}{}\one};
-( 0  ,0)*{\afawunw{}{}{}{}};
-(-1.5,0)*{\invisiblemark};
-( 1.5,0)*{\invisiblemark}}
-\quad\to\quad
-\atomicflow{}
+\rwdwu\colon\hfil
+\vcenter{\hbox{\includegraphics{Figures/redAWDAWU}}}
 &\qquad
 \vlder{\Phi}{}{\zeta\left\{\vlinf{}{}{\ttt}{a^\one}\right\}}
               {\xi\left\{\vlinf{}{}{a^\one}{\fff}\right\}}
@@ -384,17 +228,8 @@ The proof of the following theorem is essentially contained in Figures~\ref{figu
 \\
 \noalign{\bigskip}
 %---------------------------------------
-\rwdcu\colon\hfil\afraise{\atomicflow{
-( 0  ,-4)*{\afacu\one{}{}\two{}\three};
-( 0  , 0)*{\afawdnw{}{}};
-(-3.5, 0)*{\invisiblemark};
-( 3.5, 0)*{\invisiblemark}}}
-\quad\to\quad
-\atomicflow{
-(-2  ,-4)*{\afawd{}{}\one{}};
-( 2  ,-4)*{\afawd{}{}{}\two};
-(-3.5, 0)*{\invisiblemark};
-( 3.5, 0)*{\invisiblemark}}
+\rwdcu\colon\hfil
+\vcenter{\hbox{\includegraphics{Figures/redAWDACU}}}
 &\qquad
 \vlder{\Phi}{}{\zeta\left\{\vlinf{}{}{\vls(a^\one.a^\two)}{a^\three}\right\}}
               {\xi\left\{\vlinf{}{}{a^\three}{\fff}\right\}}
@@ -481,19 +316,8 @@ $}
 \[
 \begin{array}{@{}l@{}c@{}}
 %---------------------------------------
-\rcdiu\colon\aflower{\atomicflow{
-(   6, 8)*{\afvjd8{}\three{}{}};
-(   3, 0)*{\afaiuex{}\four{}{}{}{}32};
-(   0, 8)*{\afacd\one{}{}\two{}{}};
-(-3.5, 0)*{\invisiblemark};
-( 7.5, 0)*{\invisiblemark}}}
-\quad\to\quad
-\aflower{\atomicflow{
-(10,8)*{\afacu{}{}{}{}{}\three};
-( 0,8)*{\afvjd8\one{}};
-( 4,8)*{\afvjd8{}\two};
-( 6,2)*{\afaiunw{}{}};
-( 6,0)*{\afaiuex{}{}{}{}{}{}31}}}
+\rcdiu\colon
+\vcenter{\hbox{\includegraphics{Figures/redACDAIU}}}
 &\qquad
 \vlder{\Phi}{}{\zeta\left\{\vlinf{}{}{\fff}{\vls(a^\four.\bar a^\three)}\right\}}
               {\xi\left\{\vlinf{}{}{a^\four}{\vls[a^\one.a^\two]}\right\}}
@@ -503,21 +327,8 @@ $}
 \\
 \noalign{\bigskip}
 %---------------------------------------
-\rcdcu\colon\hfil\atomicflow{
-( 0, 4)*{\afacd\one{}{}\two{}{}};
-( 0, 0)*{\aflabelright{\five}};
-( 0,-4)*{\afacu\three{}{}\four{}{}};
-(-4, 0)*{\invisiblemark};
-( 4, 0)*{\invisiblemark}}
-\quad\to\quad
-\atomicflow{
-( 0,12)*{\afacu{}{}{}{}\one{}};
-( 6,12)*{\afacu{}{}{}{}{}\two};
-( 0, 0)*{\afacd{}{}{}{}\three{}};
-( 6, 0)*{\afacd{}{}{}{}{}\four};
-(-2, 6)*{\afvj4};
-( 8, 6)*{\afvj4};
-( 3, 6)*{\afex24}}
+\rcdcu\colon\hfil
+\vcenter{\hbox{\includegraphics{Figures/redACDACU}}}
 &\qquad
 \vlder{\Phi}{}{\zeta\left\{\vlinf{}{}{\vls(a^\three.a^\four)}{a^\five}\right\}}
               {\xi\left\{\vlinf{}{}{a^\five}{\vls[a^\one.a^\two]}\right\}}
@@ -577,40 +388,12 @@ At every reduction, the number of edges decreases.
 %----------
 
 %-----------------------------
-\begin{remark}\label{RemCycle}
+\begin{remark}\label{remark:FRCNotTerminating}
 Flow rewriting system $\frc$ is not terminating:
 \nopagebreak[4]\medskip\afnegspace
 \[
-\atomicflow{
-( 4  ,8)*{\afaidnw{}{}};
-( 6  ,6)*{\afvj4};
-( 3  ,0)*{\afaiuex{}{}{}{}{}{}32};
-( 0  ,4)*{\afacd{}{}{}{}{}{}};
-(-3.5,0)*{\invisiblemark};
-( 7.5,0)*{\invisiblemark}}
-\quad\to_\frc\quad
-\atomicflow{
-( 9  ,12)*{\afaidex{}{}{}{}{}{}32};
-( 6  , 8)*{\afacu{}{}{}{}{}{}};
-(12  , 6)*{\afvj4};
-( 0  , 8)*{\afvj8};
-( 2  , 2)*{\afaiunw{}{}};
-(10  , 2)*{\afaiunw{}{}{}{}{}{}};
-(-1.5, 0)*{\invisiblemark};
-(13.5, 0)*{\invisiblemark}}
-\quad\to_\frc\quad
-\atomicflow{
-( 6  , 8)*{\afaidnw{}{}};
-(14  , 8)*{\afaidnw{}{}};
-( 4  , 6)*{\afvj4};
-(16  , 6)*{\afvj4};
-( 0  , 6)*{\afvj4};
-( 2  , 0)*{\afaiu{}{}{}{}{}{}};
-(13  , 0)*{\afaiuex{}{}{}{}{}{}32};
-(10  , 4)*{\afacd{}{}{}{}{}{}};
-(-1.5, 0)*{\invisiblemark};
-(17.5, 0)*{\invisiblemark}}
-\quad\to_\frc\quad\cdots\quad.
+\vcenter{\hbox{\includegraphics{Figures/frcNoTerm}}}
+\quad.
 \]
 \afnegspace
 We see that if a contraction vertex belongs to an $\ai$-cycle, reductions by $\frc$ make it `bounce' in the $\ai$-cycle and create a trail; while bouncing, the vertex alternates between contraction and cocontraction.
@@ -663,24 +446,7 @@ The number of reductions used to arrive at $\Psi$ is bound by the number of edge
 \begin{remark}\label{remark:RewriteContractionExponential}
 Normalising by $\frc$ can blow the size of atomic flows exponentially, in particular in a situation like the following (noted by Lutz Stra{\ss}burger):
 \[
-\atomicflow{
-(0,29  )*{\afacu{}{}{}{}{}{}};
-(0,21  )*{\afacd{}{}{}{}{}{}};
-(0,15.8)*{\vdots};
-(0, 8  )*{\afacu{}{}{}{}{}{}};
-(0, 0  )*{\afacd{}{}{}{}{}{}}}
-\quad\to_\frc^\star\quad
-\atomicflow{
-( 0,29  )*{\afacuexsq{}{}{}{}{}{}21};
-(-4,21  )*{\afacunw{}{}{}{}{}{}};
-( 4,21  )*{\afacunw{}{}{}{}{}{}};
-(-6,17.8)*{\vdots};
-(-2,17.8)*{\vdots};
-( 2,17.8)*{\vdots};
-( 6,17.8)*{\vdots};
-( 0, 4  )*{\afacdexsq{}{}{}{}{}{}21};
-(-4,10  )*{\afacdnw{}{}{}{}{}{}};
-( 4,10  )*{\afacdnw{}{}{}{}{}{}}}
+\vcenter{\hbox{\includegraphics{Figures/frcExponential}}}
 \quad.
 \]
 In fact, if there are $n$ couples of cocontraction/contraction vertices like the two shown above on the left, then there are $2^n$ maximal $\ai$-paths, and their number (and length) is conserved by $\to_\frc^\star$ (see Remark~\vref{remark:Rank}). Exactly one $\ai$-path passes through each edge in the middle portion of the flow on the right. It follows that normalising derivations by $\frc$ can also blow their size exponentially.
