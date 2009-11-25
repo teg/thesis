@@ -365,6 +365,7 @@ See, in Figure~\vref{figure:AuxillaryThresholdDerivations}, some examples of der
 
 %-------------------------------------------------------------------------------
 \begin{figure}
+{\small
 \begin{eqnarray*}
 %---------------------------------------
 \Gth 015\avecletter&=&
@@ -507,28 +508,28 @@ See, in Figure~\vref{figure:AuxillaryThresholdDerivations}, some examples of der
 ]\quad,\\
 \noalign{\smallskip}
 %---------------------------------------
-\Gth 535\avecletter&=&
-\vlderivation{
-\vlin{}{}{\vls \fff}{
-\vlhy{\vls (a.b.\fff.d.e)}
-}}\quad,\\
-\noalign{\smallskip}
+%\Gth 535\avecletter&=&
+%vlderivation{
+%\vlin{}{}{\vls \fff}{
+%\vlhy{\vls (a.b.\fff.d.e)}
+%}}\quad,\\
+%\noalign{\smallskip}
 %---------------------------------------
-\Gth 055\avecletter&=&
-\vls [\ttt.\vlderivation{
-\vlin{}{}{d}{
-\vlhy{\vls \fff}
-}}
-.\vlderivation{
-\vlin{}{}{c}{
-\vlhy{\vls \fff}
-}}
-.\vlderivation{
-\vlin{}{}{\vls [a.b]}{
-\vlhy{\vls \fff}
-}}
-]\quad,\\
-\noalign{\smallskip}
+%\Gth 055\avecletter&=&
+%\vls [\ttt.\vlderivation{
+%\vlin{}{}{d}{
+%\vlhy{\vls \fff}
+%}
+%.\vlderivation{
+%\vlin{}{}{c}{
+%\vlhy{\vls \fff}
+%}}
+%.\vlderivation{
+%\vlin{}{}{\vls [a.b]}{
+%\vlhy{\vls \fff}
+%}}
+%]\quad,\\
+%\noalign{\smallskip}
 %---------------------------------------
 \Gth 155\avecletter&=&
 \vls [([a.b].[\ttt.\vlderivation{
@@ -605,9 +606,12 @@ See, in Figure~\vref{figure:AuxillaryThresholdDerivations}, some examples of der
 }}\quad.
 \end{eqnarray*}
 \caption{Examples of $\Gth kl5\avecletter$, where $\avecletter=(a,b,c,d,e)$.}
+}
 \label{figure:AuxillaryThresholdDerivations}
 \end{figure}
+%-----------
 
+\Tom{Removed two example derivations and shrank the font in Figure~\vref{figure:AuxillaryThresholdDerivations} to avoid overfull.}
 
 %-------------------------------------------------------------------------------
 \begin{theorem}\label{theorem:AuxillaryThresholdDerivations}
@@ -667,10 +671,11 @@ The shape of $\Gth kln\avec1n$ can be verified by inspecting Definition~\vref{de
 and $\th0p\avec1p\equiv\ttt$.) General (co)weak\-en\-ing rule instances can be replaced by atomic ones because of Lemma~\vref{lemma:GenericWeakening}. The size bound on $\Gth kln\avec1n$ follows from Proposition~\vref{proposition:DerivationSubstitution} and Theorem~\vref{theorem:SizeThreshold}.
 \end{proof}
 
+\Tom{Rephrased slightly to avoid overfull}
+
 \begin{definition}\label{definition:ThresholdDerivations}
-Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the derivations $\vlsmash{\Gammasf^n_k\avec1n}$ as follows:
+Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the derivation $\vlsmash{\Gammasf^n_k\avec1n}$ to be:
 \[
-\Gammasf^n_k\avec1n\quad=\quad
 \vlderivation
 {
  \vlde{}{\{\cou\}}
@@ -779,7 +784,7 @@ Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the d
    }
   }
  }
-}\quad.
+}\;.
 \]
 \end{definition}
 

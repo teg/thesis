@@ -205,9 +205,11 @@ The left one is not a flow because it contains a cycle, and the right one becaus
 \end{example}
 %------------
 
+\Tom{Rephrased slightly to avoid overfull.}
+
 %---------------------------------------------------
 \begin{definition}\label{definition:FlowIsomorphism}
-An (\emph{atomic}) \emph{flow isomorphism}\index{flow!isomorphism} between the atomic flows $\phi_1=(V_1,E_1,\eta_1,\up_1,\lo_1)$ and $\phi_2=(V_2,E_2,\eta_2,\up_2,\lo_2)$ is a pair of functions $(f_V,f_E)$, such that
+Given two flows $\phi_1=(V_1,E_1,\eta_1,\up_1,\lo_1)$ and $\phi_2=(V_2,E_2,\eta_2,\up_2,\lo_2)$, an (\emph{atomic}) \emph{flow isomorphism}\index{flow!isomorphism} between $\phi_1$ and $\phi_2$ is a pair of functions $(f_V,f_E)$, such that
 \begin{itemize}
 \item $f_V$ is a bijection from $V_1$ to $V_2$; and 
 \item $f_E$ is a bijection from $E_1$ to $E_2$,
@@ -315,11 +317,11 @@ In addition, the flow has the paths and $\ai$-paths obtained from the shown ones
 
 \TODO{Give examples.}
 
-\Tom{Removed superfluos clause.}
+\Tom{Removed superfluos clause and rephrased slightly to avoid overfull.}
 
 %-------------------------------------------
 \begin{definition}\label{definition:Subflow}
-We say that the flow $\phi_1=(V_1,E_1,\eta_1,\up_1,\lo_1)$ is a \emph{subflow}\index{subflow} of\newline $\phi_2=(V_2,E_2,\eta_2,\up_2,\lo_2)$, if
+Given two flows $\phi_1=(V_1,E_1,\eta_1,\up_1,\lo_1)$ and $\phi_2=(V_2,E_2,\eta_2,\up_2,\lo_2)$, we say that $\phi_1$ is a \emph{subflow}\index{subflow} of $\phi_2$, if
 \begin{itemize}
 \item $V_1\subset V_2$;
 \item $E_1\subset E_2$;
@@ -332,7 +334,9 @@ We say that the flow $\phi_1=(V_1,E_1,\eta_1,\up_1,\lo_1)$ is a \emph{subflow}\i
 \\
 \top & \mbox{otherwise.}
 \end{cases}
-\qquad\mbox{and}\qquad
+\qquad\mbox{and}
+\]
+\[
 \lo_1(\epsilon)=
 \begin{cases}
 \lo_2(\epsilon) & \mbox{if $\lo_2(\epsilon)\in V_1$,}
