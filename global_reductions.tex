@@ -47,43 +47,6 @@ We provide constructive soundness proofs for every reduction in this thesis, so 
 \end{convention}
 %---------------
 
-%------------------------------------------------------------
-\begin{proposition}\label{proposition:DerivationSubstitution}
-Given a derivation\/ $\vlder\Phi\SKS{\beta}\alpha$, let its associated flow have shape
-\[
-\vcenter{\hbox{\includegraphics{Figures/propSubst1}}}\quad,
-\]
-such that $\phi$ is a connected component whose edges are each associated with atom $a$; then, for any formula $\gamma$, there exists a derivation
-\[
-\vlder\Psi\SKS{\beta \{a^\phi/\gamma\}}
-              {\alpha\{a^\phi/\gamma\}}
-\]
-whose associated flow is
-\[
-\vcenter{\hbox{\includegraphics{Figures/propSubst2}}}
-\]
-where $n$ is the number of atom occurrences in $\gamma$; moreover, the size of\/ $\Psi$ depends linearly on the size of\/ $\Phi$ and quadratically on the size of $\gamma$.
-\end{proposition}
-%----------------
-
-%-------------------------------------------------------------------------------
-\begin{proof}
-We can proceed by structural induction on $\Phi$. For every formula in $\Phi$ we substitute $a^\phi$ with $\gamma$. Since all the edges in $\phi$ are mapped to from $a$ (and not $\bar a$), we know that all the vertices in $\phi$ are mapped to from instances of $\acd$, $\acu$, $\awd$ and $\awu$. We substitute every instance of $\acd$, $\acu$, $\awd$ and $\awu$ where $a^\phi$ appears, by $\cod$, $\cou$, $\wed$, $\weu$, respectively, with $\gamma$ in the place of $a^\phi$. The result then follows by Lemma~\vref{lemma:GenericWeakening} and Lemma~\vref{lemma:GenericContraction}.
-\end{proof}
-%----------
-
-%---------------
-\begin{notation}
-The derivation $\Psi$ obtained in the proof of Propostion~\vref{proposition:DerivationSubstitution} is denoted $\Phi\{a^\phi/\gamma\}$.
-\end{notation}
-%-------------
-
-%-------------
-\begin{remark}
-The notion of substitution can be extended to allow $\phi$ to contain interaction and cut vertices, but we shall not need that in this thesis.
-\end{remark}
-%-----------
-
 %-----------------
 \begin{convention}
 To avoid ambiguity in Definitions~\vref{definition:FourBoxes}, \vref{definition:IsolatedSubflowRemoval}, \vref{definition:PathBreaker} and \vref{definition:MultipleIsolatedSubflowsRemoval} we have establish the following convention:
