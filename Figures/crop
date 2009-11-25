@@ -1,3 +1,32 @@
 #!/bin/bash
-pdfcrop $1.pdf $1.pdf
+
+if [ $# == 0 ]; then
+	echo ""
+	echo "Example usage:"
+	echo ""
+	echo "./crop figure1"
+	echo "./crop figure1.tex"
+	echo "./crop figure1 figure2"
+	echo "./crop figure1.tex figure2.tex"
+	echo "./crop *.tex"
+	echo ""
+	echo "The script allows sty files to be placed in the immediate parent directory."
+	echo ""
+	echo "The script has not been tested at all except for the above examples. If it is used in other ways it might eat your babies."
+fi
+
+export TEXINPUTS="../:"
+
+for figure in $@
+do
+	fig=`basename $figure .tex` || return 1
+	latex $fig.tex || return 1
+	dvips $fig.dvi || return 1
+	rm $fig.dvi || return 1
+	ps2pdf $fig.ps || return 1
+	rm $fig.ps || return 1
+	rm $fig.aux || return 1
+	rm $fig.log || return 1
+	pdfcrop $fig.pdf $fig.pdf || return 1
+done
 
