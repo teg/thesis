@@ -4,7 +4,7 @@
 % to \vlupdate
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{virginialake}[2009/06/25 v1.18]
+\ProvidesPackage{virginialake}[2009/11/26 v1.23]
 \newif\ifvirginialakeusesxy\virginialakeusesxytrue
 \DeclareOption{noxy}{\virginialakeusesxyfalse}
 \newif\ifvirginialakepdftex\virginialakepdftexfalse
@@ -14,7 +14,7 @@
 \newif\ifvirginialakelutzsyntax\virginialakelutzsyntaxfalse
 \DeclareOption{lutzsyntax}{\virginialakelutzsyntaxtrue}
 \ProcessOptions
-\RequirePackage{fp-basic}
+\@ifpackageloaded{fp-basic}{\relax}{\RequirePackage{fp-basic}\FPmessagesfalse}
 \ifvirginialakeusesxy
     \RequirePackage[usenames]{color}
     \ifvirginialakepdftex
@@ -85,6 +85,18 @@
       {\mathord{\raise.2ex \hbox{$\scriptstyle      \neg           $}}}
       {\mathord{\raise.12ex\hbox{$\scriptscriptstyle\neg           $}}}
       {\mathord{           \hbox{$\scriptscriptstyle\neg           $}}}}
+
+\newcommand{\vljm}{\mathchoice
+      {\mathbin{\raise.2ex \hbox{$\scriptstyle      \supset        $}}}
+      {\mathbin{\raise.2ex \hbox{$\scriptstyle      \supset        $}}}
+      {\mathbin{\raise.12ex\hbox{$\scriptscriptstyle\supset        $}}}
+      {\mathbin{           \hbox{$\scriptscriptstyle\supset        $}}}}
+
+\newcommand{\vlmj}{\mathchoice
+      {\mathbin{\raise.2ex \hbox{$\scriptstyle      \subset        $}}}
+      {\mathbin{\raise.2ex \hbox{$\scriptstyle      \subset        $}}}
+      {\mathbin{\raise.12ex\hbox{$\scriptscriptstyle\subset        $}}}
+      {\mathbin{           \hbox{$\scriptscriptstyle\subset        $}}}}
 
 \newcommand{\vlgoodsyntax}{
    \def\vlleftparbracket   {\ifvirginialakesmallbrackets[\else\left [\fi}
@@ -210,7 +222,13 @@
 \gdef\vlscn{\catcode`[=\active\let[\vlparopencn
             \catcode`(=\active\let(\vlcopopencn}
 
-\gdef\vlupdate #1{   \expandafter\let\csname\expandafter\vlgobble\string #1vltemp\endcsname #1   \def #1{\bgroup\vlprepstructures     \csname\expandafter\vlgobble\string #1vlaux\endcsname}   \expandafter\def\csname\expandafter\vlgobble\string #1vlaux\endcsname ##1{%      \csname\expandafter\vlgobble\string #1vltemp\endcsname{##1}\egroup}}}%--------------------------------------
+\gdef\vlupdate #1{
+   \expandafter\let\csname\expandafter\vlgobble\string #1vltemp\endcsname #1
+   \def #1{\bgroup\vlprepstructures
+     \csname\expandafter\vlgobble\string #1vlaux\endcsname}
+   \expandafter\def\csname\expandafter\vlgobble\string #1vlaux\endcsname ##1{%
+      \csname\expandafter\vlgobble\string #1vltemp\endcsname{##1}\egroup}}
+}%--------------------------------------
 
 \newcommand{\vlparclose  }{\egroup\vlrightparbracket  }
 
@@ -262,6 +280,7 @@
 
 \newcount\vlsavederboxonec
 \newcount\vlsavederdimc
+\newcount\vldummycount
 
 \newcommand{\vlderivationinit}{\bgroup
    \vlprepstructures
@@ -376,7 +395,6 @@
    {\vlhyaux{#3}}
    {\kern-\deropen\kern-\ht\strutbox\kern-\dp\strutbox}
    {\hbox{$\vcenter{\vbox{\offinterlineskip
-                    \hbox{$\copy\stembox$}%\kern-1\dp\stembox
                     \hbox{$\copy\stembox$}}}$}}
    {\kern-\deropen}}
 
@@ -399,23 +417,66 @@
 
 \newcommand{\vlrightlabel}[1]{\@ifnotmtarg{#1}{\;#1}\relax}
 
-\newcommand{\vlde}[4]{\setbox\stembox=\hbox{$\scriptstyle\|$}
+\newdimen\vlstemheight\vlstemheight=8pt
+
+\newcommand{\vlvruler}{\setbox0=\hbox{$\scriptstyle\mskip-4mu
+                                        \mathchar"030D\mskip-4mu$}
+   \dimen0=\vlstemheightc sp\advance\dimen0 by-\ht0
+                            \advance\dimen0 by-\dp0\advance\dimen0 by1pt
+   \vbox to\vlstemheightc sp{\copy0\vss
+                             \xleaders\vbox{\kern-1pt\copy0\kern-1pt}
+                                \vskip\dimen0}
+                             \vss\copy0\kern0pt}
+
+\newcount\vlstemheightc
+
+\newcommand{\vldf}[5]{\vldummycount=\vlstemheight
+                      \FPmul\vlstemheightc{\the\vldummycount}{#5}
+   \setbox\stembox=\vbox to \vlstemheightc sp{\vlvruler}
    \vlstemrraux{                }{                 }{#3              }  {
    \vlstemraux {\vlleftlabel{#1}}{\vlrightlabel{#2}}{\kern\wd\stembox} {
    \vlstemrraux{                }{                 }{\kern\wd\stembox}{
    #4                                                                 }}}}
 
-\newcommand{\vlpr}[3]{\vlde{#1}{#2}{#3}
-   {\vlhyaux{\vbox to0pt{\vss
-                           \kern3pt\hbox{$\scriptstyle-$}\vss\kern-2\deropen}}}}
+\newcommand{\vlde}[4]{\vldf{#1}{#2}{#3}{#4}1}
 
-\newcommand{\vlproofaux}[3]{\vlderivationaux{\vlpr{#1}{#2}{#3}}}
+\newcommand{\vlpf}[4]{\vldf{#1}{#2}{#3}
+   {\vlhyaux{\vbox to0pt{\vss\kern\fontdimen22\textfont2\kern-.2pt
+                         \hbox{$\scriptstyle-$}\vss}}}{#4}}
 
-\newcommand{\vlproof}{\vlderivationinit\vlproofaux}
+\newcommand{\vlpr}[3]{\vlpf{#1}{#2}{#3}1}
 
-\newcommand{\vlderaux}[4]{\vlderivationaux{\vlde{#1}{#2}{#3}{\vlhy{#4}}}}
+\newcommand{\vlproofaux}[4]{\vlderivationaux{\vlpf{#2}{#3}{#4}{#1}}}
 
-\newcommand{\vlder}{\vlderivationinit\vlderaux}
+\newcommand{\vlproof }{\vlderivationinit\vlproofaux1}
+
+\newcommand{\vlproofd}{\vlderivationinit\vlproofaux2}
+
+\newcommand{\vlderaux}[5]{\vlderivationaux{\vldf{#2}{#3}{#4}{\vlhy{#5}}{#1}}}
+
+\newcommand{\vlder }{\vlderivationinit\vlderaux1}
+
+\newcommand{\vlderd}{\vlderivationinit\vlderaux2}
+
+\newcommand{\vlhruler}{\setbox0=\vbox to0pt{\vss\hbox{$\scriptstyle-$}\vss}
+   \dimen0=\hsize\advance\dimen0 by-\wd0\advance\dimen0 by-1pt
+   \vfill
+   \hbox to\hsize{\copy0\hss
+                  \xleaders\vbox to0pt{\vss
+                                       \hbox{\kern-1.3pt\copy0\kern-1.3pt}
+                                       \vss}\hskip\dimen0
+                  \hss\copy0}%
+   \vfill}
+
+\newcommand{\vlhhruler}{\setbox0=\vbox to0pt{\vss\hbox{$\scriptstyle=$}\vss}
+   \dimen0=\hsize\advance\dimen0 by-\wd0\advance\dimen0 by-1pt
+   \vfill
+   \hbox to\hsize{\copy0\hss
+                  \xleaders\vbox to0pt{\vss
+                                       \hbox{\kern-1.3pt\copy0\kern-1.3pt}
+                                       \vss}\hskip\dimen0
+                  \hss\copy0}%
+   \vfill}
 
 \newcommand{\vldsinaux}[3]{\vldaux
    {\smash{\ifvlsmallleftlabels\lower\fontdimen22\scriptfont2
@@ -424,11 +485,12 @@
    {\smash{\lower\fontdimen22\textfont2\hbox{$\vlrightlabel{#2}$}}}
    {\vlhy{#3}}
    {\kern\deropen}
-   {\hrule height.2pt depth.2pt width\hsize}
+   {\vbox to.4pt{\vlhruler}}
    {\kern\deropen}}
 
 \newdimen\vldsiqdimenleft
 \newdimen\vldsiqdimenright
+
 \newcommand{\vldsiqaux}[3]{\ifvlsmallleftlabels
                                 \vldsiqdimenleft=\fontdimen22\scriptfont2
                            \else\vldsiqdimenleft=\fontdimen22\textfont2\fi
@@ -436,16 +498,16 @@
                            \vldsiqdimenright=\fontdimen22\textfont2
                            \advance\vldsiqdimenright by-.7pt
    \vldaux
-   {\smash{\lower\vldsiqdimenleft\hbox{$\vlleftlabel {#1}$}}}
+   {\smash{\lower\vldsiqdimenleft \hbox{$\vlleftlabel {#1}$}}}
    {\smash{\lower\vldsiqdimenright\hbox{$\vlrightlabel{#2}$}}}
    {\vlhy{#3}}
    {\kern\deropen\kern-.7pt}
-   {\hrule height.2pt depth.2pt width\hsize\kern1pt
-          \hrule height.2pt depth.2pt width\hsize}
+   {\vbox to1.8pt{\vlhhruler}}
    {\kern\deropen\kern-.7pt}}
 
 \newbox\derboxin
 \newdimen\derboxinwidth
+
 \newcommand{\vlin}[4]{#4
    \dercldim=\derldim
    \derccdim=\dercdim
@@ -562,12 +624,13 @@
 
 \newcommand{\vltraux}[3]{\vltrauxx{}{}{#2}{#3}{#1}}
 
-\newcommand{\vltrlaux}[5]{\newcount\vltrindc
-                          \ifdim\derccdim>\dercdim\vltrindc=\derccdim
-                             \else\vltrindc=\dercdim
+\newcount\vltrindc
+\newdimen\vltrindd
+
+\newcommand{\vltrlaux}[5]{\ifdim\derccdim>\dercdim\vldummycount=\derccdim
+                             \else\vldummycount=\dercdim
                              \fi
-                          \FPmul\vltrindc{\the\vltrindc}{0.25}
-                          \newdimen\vltrindd
+                          \FPmul\vltrindc{\the\vldummycount}{0.25}
                           \vltrindd=\vltrindc sp
                           \advance\vltrindd by-10pt
    \vltrauxx{\scriptstyle #2\strut\kern-\vltrindd}
@@ -598,6 +661,8 @@
 \newcommand{\vltreederl}[7]{\vlderivation{\vltrl{#1}{#2}{#3}{#4}{\vlhy{#5}}
                                                                 {\vlhy{#6}}
                                                                 {\vlhy{#7}}}}
+
+\newcommand{\vlvdots}{\vbox to12pt{\vfil\hbox{$\smash\vdots$}}}
 
 %------------------------------------------------- END OF MACROS FOR DERIVATIONS
 
@@ -680,7 +745,7 @@
 (0  ,1.5);(2.6,1.5)**[|<\atflowthickfour>]@{-}
 \endxy}\vss}}
 
-\newif\ifaftriangle\aftriangletrue
+\newif\ifaftriangle\aftriangletrue % This is left for backward compatibility
 
 \newcommand\afaidexcolaux[2]{
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
@@ -701,7 +766,6 @@
 \newcommand{\afaidexcoll}[9]{\multiply\atflowelwidth by#7
                                \divide\atflowelwidth by#8
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
-(4  ,4.625)*{\ifaftriangle\atflowup\fi};
 (4  ,2    )*{\afaidexcolaux #9};
 (1.5,4    );(6.5,4)**[|<\atflowthickthree>]@{-};
 (2  ,2    )*{\aflabelleft {#1}};
@@ -714,7 +778,6 @@
 \newcommand{\afaidmexcoll}[9]{\multiply\atflowelwidth by#7
                                 \divide\atflowelwidth by#8
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
-(4  ,4.625)*{\ifaftriangle\atflowup\fi};
 (4  ,2    )*{\afaidmexcolaux #9{#7}{#8}};
 (1.5,4    );(6.5,4)**[|<\atflowthickthree>]@{-};
 (2  ,2    )*{\aflabelleft {#1}};
@@ -748,14 +811,11 @@
 
 \newcommand{\afaidmex }[8]{\afaidmexcoll{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{{}{}}}
 
-\newcommand{\afaidnwcol}[3]{
+\newcommand{\afaidnw}[2]{
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
-(4  ,4.625)*{\ifaftriangle\atflowup\fi};
 (1.5,4    );(6.5,4)**[|<\atflowthickthree>]@{-};
 (4  ,6    )*{\aflabelleft {#1\,}};
 (4  ,6    )*{\aflabelright{\,#2}}}}
-
-\newcommand{\afaidnw}[2]{\afaidnwcol{#1}{#2}{}}
 
 \newcommand\afaiuexcolaux[2]{
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
@@ -776,7 +836,6 @@
 \newcommand{\afaiuexcoll}[9]{\multiply\atflowelwidth by#7
                                \divide\atflowelwidth by#8
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
-(4,3.375)*{\ifaftriangle\atflowdown\fi};
 (4,6    )*{\afaiuexcolaux #9};
 (1.5,4  );(6.5,4)**[|<\atflowthickthree>]@{-};
 (2,6    )*{\aflabelleft {#1}};
@@ -789,7 +848,6 @@
 \newcommand{\afaiumexcoll}[9]{\multiply\atflowelwidth by#7
                                 \divide\atflowelwidth by#8
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
-(4,3.375)*{\ifaftriangle\atflowdown\fi};
 (4,6    )*{\afaiumexcolaux #9{#7}{#8}};
 (1.5,4  );(6.5,4)**[|<\atflowthickthree>]@{-};
 (2,6    )*{\aflabelleft {#1}};
@@ -819,14 +877,11 @@
 
 \newcommand{\afaiumex }[8]{\afaiumexcoll{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{{}{}}}
 
-\newcommand{\afaiunwcol}[3]{
+\newcommand{\afaiunw}[2]{
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
-(4  ,3.375)*{\ifaftriangle\atflowdown\fi};
 (1.5,4    );(6.5,4)**[|<\atflowthickthree>]@{-};
 (4  ,2    )*{\aflabelleft {#1\,}};
 (4  ,2    )*{\aflabelright{\,#2}}}}
-
-\newcommand{\afaiunw}[2]{\afaiunwcol{#1}{#2}{}}
 
 \newcommand\afacdcolaux[3]{
 \xybox{<\atflowelwidth,0pt>:<0pt,\atflowelheight>::
@@ -1937,13 +1992,13 @@
 
 \newcommand{\vlsmashend    }{\egroup    \smash{\vlread}}
 
-\newcommand{\vldownsmash}{\bgroup\vlprepstructures
+\newcommand{\vldownsmash}{\strut\bgroup\vlprepstructures
                           \afterassignment\vldownsmashend\global\def\vlread}
 
-\newcommand{\vlupsmash  }{\bgroup\vlprepstructures
+\newcommand{\vlupsmash  }{\strut\bgroup\vlprepstructures
                           \afterassignment  \vlupsmashend\global\def\vlread}
 
-\newcommand{\vlsmash    }{\bgroup\vlprepstructures
+\newcommand{\vlsmash    }{\strut\bgroup\vlprepstructures
                           \afterassignment    \vlsmashend\global\def\vlread}
 
 %---------------------------------- END OF \vlsmash, \vlupsmash AND \vldownsmash
