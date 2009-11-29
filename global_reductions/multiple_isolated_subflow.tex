@@ -44,8 +44,9 @@ where, for $1\le i\le n$, $l_i$ is the number of atom occurrences in $\gamma_{k,
 \vcenter{\hbox{\includegraphics{Figures/redMISRRedex}}}
 \quad\to_{\frmis_n}\quad
 \vcenter{\hbox{\includegraphics{Figures/redMISRContractum}}}
-\quad.
+\quad,
 \]
+where we call the evidenced interaction (resp., cut) vertices $\nu_{\aid,1}$, $\dots$, $\nu_{\aid,n}$ (resp., $\nu_{\aiu,1}$, $\dots$, $\nu_{\aiu,n}$).
 \end{definition}
 %---------------
 
@@ -239,27 +240,35 @@ Since $\max\{\size{\gamma_{0,1}},\dots,\size{\gamma_{N,n}}\}$ is less than or eq
 \end{proof}
 %----------
 
+\Tom{Added explanation:}
+
+We now show the basic properties of $\to_\frmis$. Namely, that the reduction does not create any `new' interaction or cut vertices, and that it does not create any `new' paths between interaction or $\top$ and cut or $\bot$ vertices.
+
+\Tom{Changed from itemize to enumerate.}
+
+\Tom{Exchanged $\top$ and $\bot$ in item 2, and clarified statement.}
+
 %-------------------------------------
 \begin{lemma}\label{lemma:MultipleIsolatedSubflowsRemovalPaths}
-Given two atomic flows $\phi$ and $\psi$ and an $n>0$, such that $\phi\to_{\frmis_n}\psi$; let $f_1$, $\dots$, $f_{N+1}$ be the isomorphisms and let $\nu_{\ai,1}$, $\dots$, $\nu_{\ai,n}$ be the evidenced cut (resp., interaction) vertices described in Definition~\ref{definition:MultipleIsolatedSubflowsRemoval}; then, given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$, such that
-\begin{itemize}
+In the following we refer to the names given in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}. Given two atomic flows $\phi$ and $\psi$ and an $n>0$, such that $\phi\to_{\frmis_n}\psi$ then, given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$, such that
+\begin{enumerate}
 \item for some $1\le i\le N+1$, $\nu=f_i(\nu')$;
-\item if there is a path from $\nu$ to $\bot$ (resp., $\top$) in $\psi$, then there is a path from $\nu'$ to $\bot$ (resp., $\top$) in $\phi$; and
-\item if there is a cut (resp., interaction) vertex $\hat\nu$ in $\psi$, such that there is a path from $\nu$ to $\hat\nu$ in $\psi$, then there is a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$, such that, for some $1\le i\le N+1$, $\hat\nu=f_i(\nu')$, or, for some $1\le i\le n$, $\hat\nu'=\nu_{\ai,i}$; and there is a path from $\nu'$ to $\hat\nu'$ in $\phi$.
-\end{itemize}
+\item if there is a path from $\nu$ to $\bot$ (resp., $\top$), then there is a path from $\nu'$ to $\bot$ (resp., $\top$); and
+\item if there is a cut (resp., interaction) vertex $\hat\nu$ in $\psi$, such that there is a path from $\nu$ to $\hat\nu$, then there is a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$, such that, for some $1\le i\le N+1$, $\hat\nu=f_i(\nu')$, or, for some $1\le i\le n$, $\hat\nu'=\nu_{\aiu,i}$ (resp., $\hat\nu'=\nu_{\aid,i}$); and there is a path from $\nu'$ to $\hat\nu'$.
+\end{enumerate}
 \end{lemma}
 
 \begin{proof}
-In the following we refer to the figure in Definition~\ref{definition:MultipleIsolatedSubflowsRemoval}:
-\begin{itemize}
+We consider each case separately:
+\begin{enumerate}
  \item the statement follows by definition;
- \item any path from $\nu$ to $\top$ (resp., $\bot$) in $\psi$ must contain an edge $\epsilon$, such that, for some upper (resp., lower) edge $\epsilon'$ of $\phi$ and some $1\le i\le N+1$, $f_i(\epsilon')=\epsilon$. Hence, there is a path from $\nu'$ to $\top$ (resp., $\bot$) in $\phi$; and
+ \item any path from $\nu$ to $\bot$ (resp., $\top$) must contain an edge $\epsilon$, such that, for some lower (resp., upper) edge $\epsilon'$ of $\phi$ and some $1\le i\le N+1$, $f_i(\epsilon')=\epsilon$. Hence, there is a path from $\nu'$ to $\bot$ (resp., $\top$); and
  \item we have to consider two cases:
- \begin{itemize}
-  \item for some $1\le i\le N+1$, $\nu=f_i(\nu')$ and $\hat\nu=f_i(\hat\nu')$, then there is a path from $\nu'$ to $\hat\nu'$ in $\phi$; or
-  \item for some $1\le i<j\le N+1$, $\nu=f_i(\nu')$ and $\hat\nu=f_j(\hat\nu')$ (resp., $\nu=f_j(\nu')$ and $\hat\nu=f_i(\hat\nu')$),then, for some $1\le i\le n$, there is a path from $\nu'$ to $\nu_{\ai,i}$ in $\phi$.
- \end{itemize}
-\end{itemize}
+ \begin{enumerate}
+  \item for some $1\le i\le N+1$, $\nu=f_i(\nu')$ and $\hat\nu=f_i(\hat\nu')$, then there is a path from $\nu'$ to $\hat\nu'$; or
+  \item for some $1\le i<j\le N+1$, $\nu=f_i(\nu')$ and $\hat\nu=f_j(\hat\nu')$ (resp., $\nu=f_j(\nu')$ and $\hat\nu=f_i(\hat\nu')$), then, for some $1\le i\le n$, there is a path from $\nu'$ to $\nu_{\aiu,i}$ (resp., $\nu_{\aiu,i}$).
+ \end{enumerate}
+\end{enumerate}
 \end{proof}
 %----------
 
@@ -457,16 +466,18 @@ We then define $\MISR_n(\Phi,a_1,\dots,a_n)$ to be such that $\Psi\to_\frmis\MIS
 \end{definition}
 %---------------
 
+\Tom{Changed itemize to enumerate.}
+
 %--------------------------------------------------------------------
 \begin{proposition}\label{proposition:MultipleIsolatedSubflowRemover}
 Given the atoms, formulae and derivations described in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}, and atoms $a_1$, $\dots$, $a_n$ and a derivation $\Phi$ that is in simple form with respect to $a_1$, $\dots$, $a_n$,
 \begin{enumerate}
 \item $\MISR_n(\Phi,a_1,\dots,a_n)$ is weakly streamlined with respect to $a_1$, $\dots$, $a_n$;
 \item for any atom $b$,
-\begin{itemize}
+\begin{enumerate}
 \item if $\Phi$ is weakly streamlined with respect to $b$, then $\MISR_n(\Phi,a_1,\dots,a_n)$ is weakly streamlined with respect to $b$, and
 \item if $b$ is not the dual of any of $a_1$, $\dots$, $a_n$ and $\Phi$ is in simple form with respect to $b$, then $\MISR_n(\Phi,a_1,\dots,a_n)$ is in simple form with respect to $b$; and
-\end{itemize}
+\end{enumerate}
 \item the size of\/ $\MISR_n(\Phi,a_1,\dots,a_n)$ depends linearly on $N$, polynomially on the size of\/ $\Phi$, and at most polynomially on $\max\{\size{\Gammasf_1},\dots,\size{\Gammasf_N}\}$.
 \end{enumerate}
 \end{proposition}
@@ -476,10 +487,10 @@ If $\Phi$ is weakly streamlined to some atom from $a_1$, $\dots$, $a_n$, the res
 \begin{enumerate}
 \item by definition there is no path in $\phi$ from an interaction to a cut vertex whose edges are mapped to from instances of one of $a_1$, $\dots$, $a_n$. By Lemma~\vref{lemma:MultipleIsolatedSubflowsRemovalPaths}, we know that if there is a path from an interaction to a cut vertex in the atomic flow of $\MISR_n(\Phi,a_1,\dots,a_n)$ whose edges are mapped to from instances of one of $a_1$, $\dots$, $a_n$, then there must be a path from an interaction to a cut vertex in $\phi$ whose edges are mapped to from instances of one of $a_1$, $\dots$, $a_n$. Hence, the statement follows by contradiction;
 \item
-\begin{itemize}
+\begin{enumerate}
  \item if there is a path from an interaction (resp., cut) vertex in the atomic flow of $\MISR_n(\Phi,a_1,\dots,a_n)$ whose edges are mapped to from $b$, then, by Lemma~\ref{lemma:MultipleIsolatedSubflowsRemovalPaths}, there is a path from an interaction (resp., cut) vertex in $\phi$, so also in $\phi'$, whose edges are mapped to from $b$. Hence, the statement follows by contradiction; and
  \item if there is an interaction (reps., cut) vertex $\nu$ and a cut (resp., interaction) vertex $\hat\nu$ in the atomic flow of $\MISR_n(\Phi,a_1,\dots,a_n)$ such that there is a path from $\nu$ to $\hat\nu$ and a path from $\nu$ to $\bot$ (resp., $\top$), both of whose edges are mapped to from $b$, then, by Lemma~\ref{lemma:MultipleIsolatedSubflowsRemovalPaths}, there is an interaction (reps., cut) vertex $\nu'$ and a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$ such that there is a path from $\nu$ to $\hat\nu$ and a path from $\nu$ to $\bot$ (resp., $\top$), both of whose edges are mapped to from $b$. Furthermore, since we can assume that $b$ is not any of $a_1$, $\dots$, $a_n$ or their duals, $\phi$ restricted to $b$ equals $\phi'$ restricted to $b$. Hence, the statement follows by contradiction.
-\end{itemize}
+\end{enumerate}
 \item the statement follows by Theorem~\vref{theorem:SoundMultipleIsolatedSubflowsRemoval}.
 \end{enumerate}
 \end{proof}
