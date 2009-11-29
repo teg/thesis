@@ -2,13 +2,15 @@
 %====================
 \chapter{Atomic Flows}
 
-\TODO{``Abstract representation'' is wrong, use ``invariant''.}
+\Tom{formalism -> invariant}
 
-In this chapter we introduce the main contribution of this thesis, a geometric, bureaucracy-free formalism, called `atomic flows'. An atomic flow is a directed graph obtained from a derivation by only retaining information about the creation and destruction of atom occurrences. Atomic flows are, essentially, specialised Buss flow graphs \cite{Buss:91:The-Unde:uq,Carb:97:Interpol:fk}. Notably, the atomic flow of a derivation completely disregards all the logical relations and associated inference rule instances; so, an atomic flow is not a derivation, but only a very abstract representation of it.
+\Tom{abstract representation}
 
-\TODO{Add something along the lines of: ``Atomic flows are essentially the same as the kind of proof nets developed in [Str05,Str09], based on work done in [LS05]. The only difference is that these proof nets implement the (co)associativity of (co)contraction, while atomic flows do not. For a more detailed comparison see [Str09]. Despite their similarities, the motivation and use of atomic flows differ from that of proof nets.''}
+In this chapter we introduce the main tool used in this thesis, a geometric proof invariant called `atomic flows'. The main contribution is the novel uses of atomic flows. An atomic flow is a directed graph obtained from a derivation by only retaining information about the creation and destruction of atom occurrences. Atomic flows are, essentially, specialised Buss flow graphs \cite{Buss:91:The-Unde:uq,Carb:97:Interpol:fk}. Furthermore, atomic flows are also essentially the same as the kind of proof nets developed in [Str05,Str09], based on work done in [LS05]. The only difference is that these proof nets implement (co)associativity of (co)contraction, while atomic flows do not. For a more detailed comparison see [Str09]. Despite their similarities, the motivation and use of atomic flows differ from that of proof nets.
 
-Atomic flows have much in common with proof nets \cite{Stra:05:From-Dee:yb}. However, we prove that, no matter how we freely build an atomic flow (as opposed to a proof net structure), the flow is associated with some derivation. So, atomic flows are always `sequentialisable', in proof-net parlance. In fact, atomic flows carry much less information than derivations do, because they do not keep track of the logical relations between the atoms they trace, only their structural information is retained (in the sense of structural rules, as opposed to logical ones).
+Notably, the atomic flow of a derivation completely disregards all the logical relations and associated inference rule instances; so, an atomic flow is not a derivation.
+
+\Tom{Deleted here all mention of mapping from flows to derivations, as this was missleading in this context. It will be covered in greater detail later instead.}
 
 We can think of atomic flows as composite diagrams that are freely generated from a set of six elementary diagrams. Technically, atomic flows are special kinds of labelled directed acyclic graphs, and the properties of their vertices are dictated by their labels, which we define as follows.
 
