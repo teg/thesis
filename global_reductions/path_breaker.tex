@@ -301,11 +301,13 @@ Given an atom $a$ and a derivation $\Phi$,
 \end{enumerate}
 \end{proposition}
 
+\Tom{Fixed typo in second case:}
+
 \begin{proof}
 If $\Phi$ is weakly streamlined with respect to both $a$ and $\bar a$, the result is trivial. Assume $\Phi$ is not weakly streamlined with respect to both $a$ and $\bar a$, and let $\phi$, $\psi$, $\phi'$, $\psi'$, $\phi''$ and $\psi''$ be the flows given in Definition~\vref{definition:DerPathBreaker} and let $\nu_\aid$ (resp., $\nu_\aiu$) be the evidenced interaction (resp., cut) vertex in $\psi''$, then
 \begin{enumerate}
 \item by Definition~\ref{definition:DerPathBreaker} all the paths from an interaction (resp., cut) vertex whose edges are mapped to from instances of $a$ or $\bar a$ must start from $\nu_\aid$ (resp., $\nu_\aiu$). The statement then follows by Lemma~\vref{lemma:PathBreaker};
-\item if there is a path from an interaction (resp., cut) vertex in the atomic flow of $\PB(\Phi,a)$ whose edges are mapped to from instances of $b$, then, by Lemma~\ref{lemma:PathBreaker}, there is a path from an interaction (resp., cut) vertex in $\phi$ or $\psi$, so also in $\phi'$ or $\psi'$, whose edges are mapped to from instances of $b$. Hence, the statement follows by contradiction; and
+\item if the flow of $\PB(\Phi,a)$ contains a path from an interaction vertex to a cut vertex  whose edges are mapped to from instances of $b$, then, by Lemma~\ref{lemma:PathBreaker}, there is a path from an interaction to a cut vertex in $\phi$ or $\psi$, so also in $\phi'$ or $\psi'$, whose edges are mapped to from instances of $b$. Hence, the statement follows by contradiction; and
 \item the statement follows by Theorem~\vref{theorem:SoundPathBreaker}.
 \end{enumerate}
 \end{proof}

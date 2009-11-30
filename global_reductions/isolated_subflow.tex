@@ -295,7 +295,7 @@ Given an atom $a$ and a derivation $\Phi$ that is in simple form with respect to
 \end{enumerate}
 \end{proposition}
 
-\TODO{Alessio said: `\emph{This should be OK despite a possible mistake in 6.1.11. In fact, I think it would be better to justify point 2 by something else than (whatever becomes of) Lemma 6.1.11. The reason is that independent copies are made of the flows of b's, and then they are joined by (co)contractions. (Right?)}'.}
+\Tom{Fixed typo in second case:}
 
 \begin{proof}
 If $\Phi$ is weakly streamlined with respect to $a$, the result is trivial. Assume $\Phi$ is not weakly streamlined with respect to $a$, and let $\phi$, $\psi$, $\phi'$, $\psi'$ and $\psi''$ be the flows given in Definition~\vref{definition:IsolatedSubflowRemover}, then
@@ -303,8 +303,8 @@ If $\Phi$ is weakly streamlined with respect to $a$, the result is trivial. Assu
 \item by definition there is no path in $\phi$ from an interaction to a cut vertex whose edges are mapped to from instances of $a$. By Lemma~\vref{lemma:IsolatedSubflowRemovalPaths}, we know that if there is a path from an interaction to a cut vertex in the flow of $\ISR(\Phi,a)$ whose edges are mapped to from instances of $a$, then there must be a path from an interaction to a cut vertex in $\phi$ whose edges are mapped to from instances $a$. Hence, the statement follows by contradiction;
 \item
 \begin{enumerate}
- \item if there is a path from an interaction (resp., cut) vertex in the atomic flow of $\ISR(\Phi,a)$ whose edges are mapped to from instances of $b$, then, by \newline Lemma~\vref{lemma:IsolatedSubflowRemovalPaths}, there is a path from an interaction (resp., cut) vertex in $\phi$, so also in $\phi'$, whose edges are mapped to from instances of $b$. Hence, the statement follows by contradiction; and
- \item if there is an interaction (resp., cut) vertex $\nu$ and a cut (resp., interaction) vertex $\hat\nu$ in the atomic flow of $\ISR(\Phi,a)$ such that there is a path from $\nu$ to $\hat\nu$ and a path from $\nu$ to $\bot$ (resp., $\top$), both of whose edges are mapped to from instances of $b$, then, by Lemma~\vref{lemma:IsolatedSubflowRemovalPaths}, there is an interaction (resp., cut) vertex $\nu'$ and a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$ such that there is a path from $\nu$ to $\hat\nu$ and a path from $\nu$ to $\bot$ (resp., $\top$), both of whose edges are mapped to from instances of $b$. Furthermore, since we can assume that $b$ is not $a$ or $\bar a$, $\phi$ restricted to $b$ equals $\phi'$ restricted to $b$. Hence, the statement follows by contradiction.
+ \item if the flow of $\ISR(\Phi,a)$ contains a path from an interaction vertex to a cut vertex whose edges are mapped to from instances of $b$, then, by Lemma~\vref{lemma:IsolatedSubflowRemovalPaths}, there is a path from an interaction vertex to a cut vertex in $\phi$, so also in $\phi'$, whose edges are mapped to from instances of $b$. Hence, the statement follows by contradiction; and
+ \item if there is an interaction (resp., cut) vertex $\nu$ and a cut (resp., interaction) vertex $\hat\nu$ in the flow of $\ISR(\Phi,a)$ such that there is a path from $\nu$ to $\hat\nu$ and a path from $\nu$ to $\bot$ (resp., $\top$), both of whose edges are mapped to from instances of $b$, then, by Lemma~\vref{lemma:IsolatedSubflowRemovalPaths}, there is an interaction (resp., cut) vertex $\nu'$ and a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$ such that there is a path from $\nu$ to $\hat\nu$ and a path from $\nu$ to $\bot$ (resp., $\top$), both of whose edges are mapped to from instances of $b$. Furthermore, since we can assume that $b$ is not $a$ or $\bar a$, $\phi$ restricted to $b$ equals $\phi'$ restricted to $b$. Hence, the statement follows by contradiction.
 \end{enumerate}
 \item the statement follows by Theorem~\vref{theorem:SoundIsolatedSubflowRemoval}.
 \end{enumerate}
