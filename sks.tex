@@ -70,7 +70,7 @@ and the \emph{invertible}\index{inference rule!invertible} (\emph{logical}) rule
 \]
 \end{definition}
 
-The calculus of structures and system $\SKS$ were originally defined in terms of equivalence classes of formulae, called `structures', and without the above invertible logical rules. However, we find it more convenient to use formulae instead, since it makes it simpler to `trace atom occurences', which we will see in Section~\vref{section:ExtractingFlowsFromDerivations}. We now show that the two approaches are morally the same.
+The calculus of structures and system $\SKS$ were originally defined in terms of equivalence classes of formulae, called `structures', and without the above invertible logical rules. However, we find it more convenient to use formulae instead, since it makes it simpler to `trace atom occurrences', which we will see in Section~\vref{section:ExtractingFlowsFromDerivations}. We now show that the two approaches are morally the same.
 
 %------------------------------------------------------
 \begin{definition}\label{definition:EquivalenceRelation}
@@ -210,10 +210,10 @@ We now give some standard results which will also serve as examples of system $\
 Given a context $\xi\vlhole$ and a formula $\alpha$ there exist derivations $\vlder{}{\{\swi\}}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlder{}{\{\swi\}}{\vls[\xi\{\fff\}.\alpha]}{\xi\{\alpha\}}$; both of whose size depend at most quadratically on the size of $\xi\{\alpha\}$.
 \end{lemma}
 
-\Tom{atoms -> atom occurences}
+\Tom{atoms -> atom occurrences}
 
 \begin{proof}
-We show how to construct the first derivation, the second one can be done symmetrically. We argue by induction on the number of atom occurences in $\xi\vlhole$. The base case, $\xi\vlhole=\vlhole$, is trivial and the inductive cases are:
+We show how to construct the first derivation, the second one can be done symmetrically. We argue by induction on the number of atom occurrences in $\xi\vlhole$. The base case, $\xi\vlhole=\vlhole$, is trivial and the inductive cases are:
 \[
 \vlderivation
 {
@@ -281,7 +281,7 @@ we write $\vlinf{\supers}{}{\vls[\zeta\{\fff\}.\xi\{\alpha\}]}{\vls(\zeta\{\alph
 Given a formula $\alpha$, there exist derivations $\vlupsmash{\vlder{}{\{\awd,\swi\}}{\alpha}{\fff}}$ and $\vlupsmash{\vlder{}{\{\awu,\swi\}}{\ttt}{\alpha}}$; both of whose size depend at most quadratically on the size of $\alpha$.
 \end{lemma}
 
-\Tom{atoms -> atom occurences}
+\Tom{atoms -> atom occurrences}
 
 \begin{proof}
 We show how to construct the first derivation, the second one can be done symmetrically.
@@ -290,7 +290,7 @@ Let $a_1$, $\dots$, $a_n$ be the atoms appearing in $\alpha$, then there exists 
 \vlder{}{\{\awd\}}{\alpha}{\alpha\{a_1/\fff,\dots,a_n/\fff\}}
 \quad.
 \]
-Since $\alpha\{a_1/\fff,\dots,a_n/\fff\}$ contains no atom occurences, there exists a derivation
+Since $\alpha\{a_1/\fff,\dots,a_n/\fff\}$ contains no atom occurrences, there exists a derivation
 \[
 \vlder{}{\{\fffd,\tttd,\fffandd,\tttord\}}{\alpha\{a_1/\fff,\dots,a_n/\fff\}}{\fff}
 \qquad\mbox{or}\qquad
