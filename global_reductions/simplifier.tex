@@ -1,9 +1,9 @@
-Consider an atomic flow $\phi'$ with polarity assignemnt $\pi$, such that $\phi$ is the subflow of $\phi'$ containing all the edges with a positive polarity assignment. We can observe that $\phi$ contains four types of paths: 1) paths from $\top$ to $\bot$; 2) paths from an interaction vertex to $\bot$; 3) paths from $\top$ to a cut vertex; and 4) paths from an interaction vertex to a cut vertex. We can turn $\phi'$ into simple form with respect to $\pi$ if we can make sure that no edge belongs to both a path of type 1) and a path of type 4). In the following reduction, we acheive this by making four copies of $\phi$ each of which only contains one of the above types of paths.
+Consider a flow $\phi'$ with polarity assignemnt $\pi$, such that $\phi$ is the subflow of $\phi'$ containing all the edges with a positive polarity assignment. We can observe that $\phi$ contains four types of paths: 1) paths from $\top$ to $\bot$; 2) paths from an interaction vertex to $\bot$; 3) paths from $\top$ to a cut vertex; and 4) paths from an interaction vertex to a cut vertex. We can turn $\phi'$ into simple form with respect to $\pi$ if we can make sure that no edge belongs to both a path of type 1) and a path of type 4). In the following reduction, we acheive this by making four copies of $\phi$ each of which only contains one of the above types of paths.
 
 %--------------------------------
 \newcommand{\frfb}{{\mathsf{sf}}}
 \begin{definition}\label{definition:FourBoxes}
-We define the reduction $\to_\frfb$ (where $\frfb$ stands for \emph{simple form}\index{simplifier!reduction}) as follows, for any atomic flows $\phi$ and $\psi$ that do not contain any interaction or cut vertices:
+We define the reduction $\to_\frfb$ (where $\frfb$ stands for \emph{simple form}\index{simplifier!reduction}) as follows, for any two flows $\phi$ and $\psi$ that do not contain any interaction or cut vertices:
 \[
 \vcenter{\hbox{\includegraphics{Figures/redSimRedex}}}
 \quad\to_\frfb\quad
@@ -15,7 +15,7 @@ We define the reduction $\to_\frfb$ (where $\frfb$ stands for \emph{simple form}
 
 %------------------------------------------------
 \begin{remark}\label{remark:RestrictionFourBoxes}
-The reduction $\to_\frfb$ would still be sound if we removed the restriction on the flows $\phi$ and $\psi$ in Definition~\ref{definition:FourBoxes}. However, such a reduction would no longer correspond to the intuition described above.
+The reduction $\to_\frfb$ would still be sound if we removed the restriction on the flows $\phi$ and $\psi$ in Definition~\vref{definition:FourBoxes}. However, such a reduction would no longer correspond to the intuition described above.
 \end{remark}
 %-----------
 
@@ -41,13 +41,13 @@ be the $\ai$-decomposed form of $\Phi$.
 
 \TODO{Consider using $\epsilon$'s instead of $\phi$'s above.}
 
-We show several intermediate derivations which will be used to build $\Psi$. To make it easier to verify the atomic flow of $\Psi$, we will, through a slight misuse of notation, label the atom occurrences of the intermediate derivations to indicate what atomic flow each atom occurrence will map to, once the derivations are combined to create $\Psi$.
+We show several intermediate derivations which will be used to build $\Psi$. To make it easier to verify the flow of $\Psi$, we will, through a slight misuse of notation, label the atom occurrences of the intermediate derivations to indicate what atomic flow each atom occurrence will map to, once the derivations are combined to create $\Psi$.
 
 Consider the substitution
 \[
 \sigma=\{a_1^\phi/\vlsmallbrackets\vlsbr([a_1^{f_1(\phi)}.a_1^{f_2(\phi)}].[a_1^{f_3(\phi)}.a_1^{f_4(\phi)}]),\dots,a_n^\phi/\vlsmallbrackets\vlsbr([a_n^{f_1(\phi)}.a_n^{f_2(\phi)}].[a_n^{f_3(\phi)}.a_n^{f_4(\phi)}])\}\;.
 \]
-We can then obtain, by Proposition~\vref{proposition:DerivationSubstitution}, the derivation $\Phi'\sigma$ with atomic flow
+We can then obtain, by Proposition~\vref{proposition:DerivationSubstitution}, the derivation $\Phi'\sigma$ with flow
 \[
 \vcenter{\hbox{\includegraphics{Figures/thmSimplifier1}}}
 \qquad.
@@ -98,7 +98,7 @@ which allow us to build
 \vlder{\Psi_\bot}{}{\beta}{\beta\sigma}
 \quad,
 \]
-with atomic flows
+with flows
 \[
 \vcenter{\hbox{\includegraphics{Figures/thmSimplifier2}}}
 \qquad\mbox{and}\qquad
@@ -179,7 +179,7 @@ which allow us to build
 ]
 \quad,
 \]
-with atomic flows
+with flows
 \[
 \vcenter{\hbox{\includegraphics{Figures/thmSimplifier4}}}
 \qquad\mbox{and}\qquad
@@ -216,7 +216,7 @@ Combining these derivations we can build
  }
 }\quad,
 \]
-with the desired atomic flow.
+with the desired flow.
 
 We know that the size of $\Phi'\sigma$ depends at most polynomially on the size of $\Phi$ by Theorem~\vref{theorem:aiDecomposedForm} and Proposition~\vref{proposition:DerivationSubstitution}, and it is straightforward to observe that the sizes of $\Psi_\ttt$, $\Psi_\top$, $\Psi_\fff$ and $\Psi_\bot$ depend at most linearly on the size of $\Phi$, so the size of $\Psi$ depends at most polynomially on the size of $\Phi$.
 \end{proof}
@@ -227,7 +227,7 @@ We know that the size of $\Phi'\sigma$ depends at most polynomially on the size 
 %----------------------------------
 \newcommand{\Simpl}{\mathsf{Si}}
 \begin{definition}\label{definition:Simplifier}
-The \emph{Simplifier}\index{Simplifier}, $\Simpl$, is an operator whose arguments are distinct and pairwise non-dual atoms $a_1$, $\dots$, $a_n$ and a derivation $\Phi$, with atomic flow
+The \emph{Simplifier}\index{Simplifier}, $\Simpl$, is an operator whose arguments are distinct and pairwise non-dual atoms $a_1$, $\dots$, $a_n$ and a derivation $\Phi$, with flow
 \[
 \vcenter{\hbox{\includegraphics{Figures/defSimplifier}}}
 \quad,
@@ -251,7 +251,7 @@ Given distinct and pairwise non-dual atoms $a_1$, $\dots$, $a_n$, and a derivati
 In the following we refer to the figure in Definition~\vref{definition:FourBoxes}:
 \begin{itemize}
 \item by case (\ref{definition:FlowNormalForms:item:SimpleForm}) of Definition~\vref{definition:FlowNormalForms};
-\item by studying the atomic flows in Definition~\ref{definition:FourBoxes} we can observe that for every path from an interaction vertex to a cut vertex in the atomic flow of $\Simpl(\Phi,a_1,\dots,a_n)$ whose edges are mapped to from occurrences of $b$, there is a path from an interaction vertex to a cut vertex in the atomic flow of $\Phi$ whose edges are mapped to from occurrences of $b$; and
+\item by studying the flows in Definition~\ref{definition:FourBoxes} we can observe that for every path from an interaction vertex to a cut vertex in the atomic flow of $\Simpl(\Phi,a_1,\dots,a_n)$ whose edges are mapped to from occurrences of $b$, there is a path from an interaction vertex to a cut vertex in the flow of $\Phi$ whose edges are mapped to from occurrences of $b$; and
 \item by Theorem~\vref{theorem:SoundFourBoxes}.
 \end{itemize}
 \end{proof}

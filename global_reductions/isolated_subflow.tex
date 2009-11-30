@@ -2,14 +2,18 @@
 
 Given a derivation $\Phi$ in simple form with respect to an atom $a$, the operator, $\ISR$, defined in this section produces a derivation with the same premiss and conclusion as $\Phi$, which is weakly streamlined with respect to $a$.
 
-We will see later how a derivation containing $n$ atoms can be weakly streamlined by two applications of $\Simpl$ and $n$ applications of $\ISR$. This is the most basic procedure for obtaining a weakly streamlined derivation, in particular it only deals with one atom at a time. In the following sections we will see how we can deal with several atoms in parallell.
+\Tom{occurences of}
+
+We will see later how a derivation containing occurences of $n$ atoms can be weakly streamlined by two applications of $\Simpl$ and $n$ applications of $\ISR$. This is the most basic procedure for obtaining a weakly streamlined derivation, in particular it only deals with one atom at a time. In the following sections we will see how we can deal with several atoms in parallell.
 
 The operator is defined in terms of the following flow reduction.
+
+\Tom{connected flom -> connected component}
 
 %--------------------------------
 \newcommand{\fris}{{\mathsf{is}}}
 \begin{definition}\label{definition:IsolatedSubflowRemoval}
-We define the reduction $\to_\fris$ (where $\fris$ stands for \emph{isolated subflow}\index{Isolated Subflow Remover!reduction}) as follows, for any atomic flow $\phi$ and any connected atomic flow $\psi$ that does not contain identity or cut vertices:
+We define the reduction $\to_\fris$ (where $\fris$ stands for \emph{isolated subflow}\index{Isolated Subflow Remover!reduction}) as follows, for any flow $\phi$ and any connected component $\psi$ that does not contain identity or cut vertices:
 \[
 \vcenter{\hbox{\includegraphics{Figures/redISRRedex}}}
 \quad\to_\fris\quad
@@ -24,7 +28,7 @@ where we call the evidenced interaction (resp., cut) vertex $\nu_\aid$ (resp., $
 
 %-------------------------------------------------------------
 \begin{remark}\label{remark:IsolatedSubflowRemovalRestriction}
-The condition on the atomic flow $\psi$ in Definition~\ref{definition:IsolatedSubflowRemoval} ensures that all the edges in $\psi$ are mapped to from occurrences of the same atom. However, the reduction would still be sound if, at the expense of a slightly more verbose soundness proof, we relaxed the condition to say that there is a path from $\nu_\aid$ to $\nu_\aiu$.
+The condition on the flow $\psi$ in Definition~\vref{definition:IsolatedSubflowRemoval} ensures that all the edges in $\psi$ are mapped to from occurrences of the same atom. However, the reduction would still be sound if, at the expense of a slightly more verbose soundness proof, we relaxed the condition to say that there is a path from $\nu_\aid$ to $\nu_\aiu$.
 \end{remark}
 
 %---------------------------------------------------------
@@ -33,7 +37,7 @@ Reduction\/ $\to_\fris$ is sound; moreover, if\/ $\Phi\to_\fris\Psi$, then the s
 \end{theorem}
 
 \begin{proof}
-Let $\Phi$ be a derivation with flow $\phi'$, such that $\phi'\to_\fris\psi'$. We show that there exists a derivation $\Psi$ with flow $\psi'$ and with the same premiss and conclusion as $\Phi$. In the following, we refer to the figure in Definition~\ref{definition:IsolatedSubflowRemoval}.
+Let $\Phi$ be a derivation with flow $\phi'$, such that $\phi'\to_\fris\psi'$. We show that there exists a derivation $\Psi$ with flow $\psi'$ and with the same premiss and conclusion as $\Phi$. In the following, we refer to the figure in Definition~\vref{definition:IsolatedSubflowRemoval}.
 
 Since $\psi$ is connected, we assume, by Convention~\vref{convention:AlternativeAiDecomposedForm}, that the following derivation is an $\ai$-decomposed form of $\Phi$:
 \[
@@ -130,8 +134,8 @@ We now show the basic properties of $\to_\fris$. Namely, that the reduction does
 
 %-------------------------------------
 \begin{lemma}\label{lemma:IsolatedSubflowRemovalPaths}
-In the following we refer to the names given in Definition~\ref{definition:IsolatedSubflowRemoval}. 
-Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\fris\psi$ then, given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$, such that
+In the following we refer to the names given in Definition~\vref{definition:IsolatedSubflowRemoval}. 
+Given two flows $\phi$ and $\psi$, such that $\phi\to_\fris\psi$ then, given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$, such that
 \begin{enumerate}
 \item $\nu=f_1(\nu')$ or $\nu=f_2(\nu')$;
 \item if there is a path from $\nu$ to $\bot$ (resp., $\top$), then there is a path from $\nu'$ to $\bot$ (resp., $\top$); and
@@ -203,7 +207,7 @@ The \emph{Isolated Subflow Remover}\index{Isolated Subflow Remover!operator}, $\
  )
 }\quad,
 \]
-with atomic flow
+with flow
 \[
 \vcenter{\hbox{\includegraphics{Figures/defISR1}}}
 \quad,
@@ -265,7 +269,7 @@ where $\psi'$ is the juxtaposition of all the isolated subflows mapped to from o
  )
 }\quad,
 \]
-with atomic flow
+with flow
 \[
 \psi''\;=\;
 \vcenter{\hbox{\includegraphics{Figures/defISR2}}}
@@ -294,9 +298,9 @@ Given an atom $a$ and a derivation $\Phi$ that is in simple form with respect to
 \TODO{Alessio said: `\emph{This should be OK despite a possible mistake in 6.1.11. In fact, I think it would be better to justify point 2 by something else than (whatever becomes of) Lemma 6.1.11. The reason is that independent copies are made of the flows of b's, and then they are joined by (co)contractions. (Right?)}'.}
 
 \begin{proof}
-If $\Phi$ is weakly streamlined with respect to $a$, the result is trivial. Assume $\Phi$ is not weakly streamlined with respect to $a$, and let $\phi$, $\psi$, $\phi'$, $\psi'$ and $\psi''$ be the atomic flows given in Definition~\ref{definition:IsolatedSubflowRemover}, then
+If $\Phi$ is weakly streamlined with respect to $a$, the result is trivial. Assume $\Phi$ is not weakly streamlined with respect to $a$, and let $\phi$, $\psi$, $\phi'$, $\psi'$ and $\psi''$ be the flows given in Definition~\vref{definition:IsolatedSubflowRemover}, then
 \begin{enumerate}
-\item by definition there is no path in $\phi$ from an interaction to a cut vertex whose edges are mapped to from instances of $a$. By Lemma~\vref{lemma:IsolatedSubflowRemovalPaths}, we know that if there is a path from an interaction to a cut vertex in the atomic flow of $\ISR(\Phi,a)$ whose edges are mapped to from instances of $a$, then there must be a path from an interaction to a cut vertex in $\phi$ whose edges are mapped to from instances $a$. Hence, the statement follows by contradiction;
+\item by definition there is no path in $\phi$ from an interaction to a cut vertex whose edges are mapped to from instances of $a$. By Lemma~\vref{lemma:IsolatedSubflowRemovalPaths}, we know that if there is a path from an interaction to a cut vertex in the flow of $\ISR(\Phi,a)$ whose edges are mapped to from instances of $a$, then there must be a path from an interaction to a cut vertex in $\phi$ whose edges are mapped to from instances $a$. Hence, the statement follows by contradiction;
 \item
 \begin{enumerate}
  \item if there is a path from an interaction (resp., cut) vertex in the atomic flow of $\ISR(\Phi,a)$ whose edges are mapped to from instances of $b$, then, by \newline Lemma~\vref{lemma:IsolatedSubflowRemovalPaths}, there is a path from an interaction (resp., cut) vertex in $\phi$, so also in $\phi'$, whose edges are mapped to from instances of $b$. Hence, the statement follows by contradiction; and

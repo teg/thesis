@@ -3,7 +3,7 @@
 
 \TODO{non-trivial automorphism.}
 
-In this chapter, we see local transformations, which are based on reduction rules. It is convenient to classify reduction rules into those for weakening and those for contraction. After seeing flow reductions and tying them with derivations, in Section~\ref{section:Soundness}, we explore some of their basic properties, in the two short Sections~\ref{section:TerminationConfluence} and \ref{section:FlowRewriteComplexity}.
+In this chapter, we see local transformations, which are based on reduction rules. It is convenient to classify reduction rules into those for weakening and those for contraction. After seeing flow reductions and tying them with derivations, in Section~\vref{section:Soundness}, we explore some of their basic properties, in the two short Sections~\vref{section:TerminationConfluence} and \vref{section:FlowRewriteComplexity}.
 
 \begin{definition}\label{definition:FlowGraphicalExpressions}
 In Figure~\vref{figure:ReductionRules}, we define graphical expressions of the kind $r\colon\phi'\to\psi'$, where $r$ is a name and $\phi'$ and $\psi'$ are flows.
@@ -74,7 +74,7 @@ $\hfil}\\
 
 %---------------------------------------
 \begin{example}\label{example:NoPolarityAssignment}
-The `reduction' on the left, when used inside a larger atomic flow, might create a situation as on the right:
+The `reduction' on the left, when used inside a larger flow, might create a situation as on the right:
 \nopagebreak[4]\medskip\afnegspace
 \[
 \vcenter{\hbox{\includegraphics{Figures/redNoPolar}}}
@@ -123,7 +123,7 @@ The graphical expressions in Figure~\vref{figure:ReductionRules} are atomic-flow
 
 %---------------------------------------
 \begin{definition}\label{definition:FlowRewritingSystem}
-A finite set of reduction rules is a \emph{flow rewriting system}\index{flow rewriting system}. For every flow rewriting system $F=\{r_1,\dots,r_h\}$ we define ${\to_F}={\to_{r_1}\cup\cdots\cup{\to_{r_h}}}$. The reflexive transitive closure of $\to_F$ is denoted by $\to_F^\star$. Given a set of atomic flows $S$, we say that a flow rewriting system $F$ is \emph{terminating on $S$}\index{flow rewriting system!terminating} if there is no infinite chain $\phi_1\to_F\phi_2\to_F\cdots$, for every $\phi_1\in S$; if $F$ is terminating on the set of atomic flows, we say that it is \emph{terminating}. We say that atomic flow $\phi$ is \emph{normal}\index{flow rewriting system!normal} for flow rewriting system $F$ if there is no atomic flow $\psi$ such that $\phi\to_F\psi$.
+A finite set of reduction rules is a \emph{flow rewriting system}\index{flow rewriting system}. For every flow rewriting system $F=\{r_1,\dots,r_h\}$ we define ${\to_F}={\to_{r_1}\cup\cdots\cup{\to_{r_h}}}$. The reflexive transitive closure of $\to_F$ is denoted by $\to_F^\star$. Given a set of atomic flows $S$, we say that a flow rewriting system $F$ is \emph{terminating on $S$}\index{flow rewriting system!terminating} if there is no infinite chain $\phi_1\to_F\phi_2\to_F\cdots$, for every $\phi_1\in S$; if $F$ is terminating on the set of atomic flows, we say that it is \emph{terminating}. We say that the flow $\phi$ is \emph{normal}\index{flow rewriting system!normal} for flow rewriting system $F$ if there is no flow $\psi$ such that $\phi\to_F\psi$.
 \end{definition}
 
 \newcommand{\frw}{{\mathsf w}}
@@ -157,13 +157,13 @@ We now state two propositions whose proofs are immediate from the appropriate de
 
 %-------------------------------------------------------
 \begin{proposition}\label{proposition:SuperStreamlining}
-Given a weakly-streamlined atomic flow $\phi$, if $\phi\to_\frw^\star\psi$ and $\psi$ is normal for $\frw$, then $\psi$ is super streamlined.
+Given a weakly-streamlined flow $\phi$, if $\phi\to_\frw^\star\psi$ and $\psi$ is normal for $\frw$, then $\psi$ is super streamlined.
 \end{proposition}
 %----------------
 
 %-------------------------------------------------------
 \begin{proposition}\label{proposition:HyperStreamlining}
-Given a super-streamlined atomic flow $\phi$, if $\phi\to_\frc^\star\psi$ and $\psi$ is normal for $\frc$, then $\psi$ is hyper streamlined.
+Given a super-streamlined flow $\phi$, if $\phi\to_\frc^\star\psi$ and $\psi$ is normal for $\frc$, then $\psi$ is hyper streamlined.
 \end{proposition}
 %----------------
 
@@ -176,7 +176,7 @@ Given a super-streamlined atomic flow $\phi$, if $\phi\to_\frc^\star\psi$ and $\
 A reduction rule $r$ is \emph{sound}\index{reduction!rule!sound} if $\to_r$ is sound.
 \end{definition}
 
-The proof of the following theorem is essentially contained in Figures~\ref{figure:ReductionRulesWeakening} and \ref{figure:ReductionRulesContraction}.
+The proof of the following theorem is essentially contained in Figure~\vref{figure:ReductionRulesWeakening} and Figure~\vref{figure:ReductionRulesContraction}.
 
 %---------------------------------------
 \begin{figure}[tbp]
@@ -402,7 +402,7 @@ We see that if a contraction vertex belongs to an $\ai$-cycle, reductions by $\f
 
 %-------------------------------------------------------------------
 \begin{theorem}\label{theorem:RewritingSystemContractionTerminating}
-Flow rewriting system\/ $\frc$ is terminating on the set of cycle-free atomic flows.
+Flow rewriting system\/ $\frc$ is terminating on the set of cycle-free flows.
 \end{theorem}
 
 \newcommand{\rk}{{\mathsf r}}
@@ -438,13 +438,13 @@ Given a derivation $\Phi$, there exists a derivation $\Psi$, such that $\Phi\to_
 \end{proposition}
 
 \begin{proof}
-The number of reductions used to arrive at $\Psi$ is bound by the number of edges in the atomic flow of $\Phi$, so by the size of $\Phi$. Furthermore, each reductions shown in Figure~\vref{figure:ReductionRulesWeakening} grows the derivation by at most a constant. Hence, the size of $\Psi$ depends at most linearly on the size of $\Phi$.
+The number of reductions used to arrive at $\Psi$ is bound by the number of edges in the flow of $\Phi$, so by the size of $\Phi$. Furthermore, each reductions shown in Figure~\vref{figure:ReductionRulesWeakening} grows the derivation by at most a constant. Hence, the size of $\Psi$ depends at most linearly on the size of $\Phi$.
 \end{proof}
 %----------
 
 %---------------------------------------
 \begin{remark}\label{remark:RewriteContractionExponential}
-Normalising by $\frc$ can blow the size of atomic flows exponentially, in particular in a situation like the following (noted by Lutz Stra{\ss}burger):
+Normalising by $\frc$ can blow the size of flows exponentially, in particular in a situation like the following (noted by Lutz Stra{\ss}burger):
 \[
 \vcenter{\hbox{\includegraphics{Figures/frcExponential}}}
 \quad.

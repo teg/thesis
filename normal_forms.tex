@@ -8,7 +8,7 @@ These observations prompted us to look for a generalisation of cut elimination t
 
 We defined normal forms based on the causal dependency between structural inference rule instances. Atomic flows contain (by design) exactly the information needed in order to define normal forms in this way.
 
-We call our generalisation of cut elimination \emph{streamlining} and we describe it in terms of atomic flows. Intuitively, if we consider identities and weakenings to be the `creators' of atom occurrences, and cuts and coweakening as the `destroyers' of atom occurrences, then an atomic flow is streamlined if no atom is first created and then destroyed. The shape of a streamlined atomic flow is given in case (\ref{definition:FlowNormalForms:item:Streamlined}) of Definition~\ref{definition:FlowNormalForms}.
+We call our generalisation of cut elimination \emph{streamlining} and we describe it in terms of atomic flows. Intuitively, if we consider identities and weakenings to be the `creators' of atom occurrences, and cuts and coweakening as the `destroyers' of atom occurrences, then an atomic flow is streamlined if no atom is first created and then destroyed. The shape of a streamlined atomic flow is given in case (\ref{definition:FlowNormalForms:item:Streamlined}) of Definition~\vref{definition:FlowNormalForms}.
 
 The most challenging aspect of streamlining is the elimination of paths from interaction to cut vertices. For this reason, we define the notion of \emph{weakly streamlined} atomic flows, in case (\ref{definition:FlowNormalForms:item:WeaklyStreamlined}) of Definition~\ref{definition:FlowNormalForms}. An atomic flow is weakly streamlined if it contains no paths from interaction to cut vertices. This is the topic of Chapter~\vref{chapter:GlobalReductions}.
 
@@ -79,11 +79,11 @@ An atomic flow is
 \end{definition}
 
 \begin{definition}\label{definition:DerSimpleForm}
-A derivation with associated atomic flow $\phi$ is \emph{in simple form with respect to} (\emph{the atom}) $a$\index{simple form!derivation!with respect to atom}, if $\pi$ is a polarity assignment for $\phi$, such that the edges in $\phi$ mapped to from occurrences of $a$ have a positive polarity, and the restriction of $\phi$ to $a$ is in simple form with respect to $\pi$.
+A derivation with associated flow $\phi$ is \emph{in simple form with respect to} (\emph{the atom}) $a$\index{simple form!derivation!with respect to atom}, if $\pi$ is a polarity assignment for $\phi$, such that the edges in $\phi$ mapped to from occurrences of $a$ have a positive polarity, and the restriction of $\phi$ to $a$ is in simple form with respect to $\pi$.
 \end{definition}
 
 \begin{definition}\label{definition:DerStreamlined}
-A derivation with associated atomic flow $\phi$ is \emph{weakly streamlined} (resp., \emph{streamlined}\index{streamlined!derivation}, \emph{super streamlined} and \emph{hyper streamlined}) if $\phi$ is \emph{weakly streamlined} (resp., \emph{streamlined}, \emph{super streamlined} and \emph{hyper streamlined}). The derivation is \emph{weakly streamlined with respect to} (\emph{the atom}) $a$\index{streamlined!weakly!with respect to atom}, if $\pi$ is a polarity assignment for $\phi$, such that the edges in $\phi$ mapped to from occurrences of $a$ have a positive polarity, and the restriction of $\phi$ to $a$ is weakly streamlined with respect to $\pi$.
+A derivation with associated flow $\phi$ is \emph{weakly streamlined} (resp., \emph{streamlined}\index{streamlined!derivation}, \emph{super streamlined} and \emph{hyper streamlined}) if $\phi$ is \emph{weakly streamlined} (resp., \emph{streamlined}, \emph{super streamlined} and \emph{hyper streamlined}). The derivation is \emph{weakly streamlined with respect to} (\emph{the atom}) $a$\index{streamlined!weakly!with respect to atom}, if $\pi$ is a polarity assignment for $\phi$, such that the edges in $\phi$ mapped to from occurrences of $a$ have a positive polarity, and the restriction of $\phi$ to $a$ is weakly streamlined with respect to $\pi$.
 \end{definition}
 
 %---------------------------------------
@@ -103,11 +103,11 @@ The first flow is weakly streamlined, the other two are hyper streamlined:
 We now state some facts whose proofs are immediate from Definition~\vref{definition:FlowNormalForms}.
 
 \begin{proposition}\label{proposition:FlowWeaklyStreamlinedPolarity}
-Given a polarity assignment $\pi$, an atomic flow that is weakly streamlined with respect to both $\pi$ and $\bar\pi$ is weakly streamlined. 
+Given a polarity assignment $\pi$, a flow that is weakly streamlined with respect to both $\pi$ and $\bar\pi$ is weakly streamlined. 
 \end{proposition}
 
 \begin{proposition}\label{proposition:FlowCutFree}
-A streamlined atomic flow with no pair of upper (resp., lower) edges such that there is an $\ai$-path between them, contains no cut (resp., axiom) vertices.
+A streamlined flow with no pair of upper (resp., lower) edges such that there is an $\ai$-path between them, contains no cut (resp., axiom) vertices.
 \end{proposition}
 
 The following proposition makes the connection between cut elimination and streamlining. We consider the special case of atomic flows of proofs, \emph{i.e.}, atomic flows without upper edges, and observe that a streamlined proof is cut free and a hyper streamlined proof is a proof in system $\KS$.

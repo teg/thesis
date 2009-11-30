@@ -70,7 +70,7 @@ and the \emph{invertible}\index{inference rule!invertible} (\emph{logical}) rule
 \]
 \end{definition}
 
-The calculus of structures and system $\SKS$ were originally defined in terms of equivalence classes of formulae, called `structures', and without the above invertible logical rules. However, we find it more convenient to use formulae instead, since it makes it simpler to `trace atom occurrences', which we will see in Section~\ref{section:ExtractingFlowsFromDerivations}. We now show that the two approaches are morally the same.
+The calculus of structures and system $\SKS$ were originally defined in terms of equivalence classes of formulae, called `structures', and without the above invertible logical rules. However, we find it more convenient to use formulae instead, since it makes it simpler to `trace atom occurences', which we will see in Section~\vref{section:ExtractingFlowsFromDerivations}. We now show that the two approaches are morally the same.
 
 %------------------------------------------------------
 \begin{definition}\label{definition:EquivalenceRelation}
@@ -92,7 +92,7 @@ By Notation~\vref{notation:Equation} and Lemma~\vref{lemma:DerInContext}, for an
 
 %---------------------------------------------------------
 \begin{proposition}\label{proposition:EquivalenceRelation}
-The relation $=$ defined in Definition~\ref{definition:EquivalenceRelation} is an equivalence relation.
+The relation $=$ defined in Definition~\vref{definition:EquivalenceRelation} is an equivalence relation.
 \end{proposition}
 %----------------
 
@@ -210,8 +210,10 @@ We now give some standard results which will also serve as examples of system $\
 Given a context $\xi\vlhole$ and a formula $\alpha$ there exist derivations $\vlder{}{\{\swi\}}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlder{}{\{\swi\}}{\vls[\xi\{\fff\}.\alpha]}{\xi\{\alpha\}}$; both of whose size depend at most quadratically on the size of $\xi\{\alpha\}$.
 \end{lemma}
 
+\Tom{atoms -> atom occurences}
+
 \begin{proof}
-We show how to construct the first derivation, the second one can be done symmetrically. We argue by induction on the number of atoms in $\xi\vlhole$. The base case, $\xi\vlhole=\vlhole$, is trivial and the inductive cases are:
+We show how to construct the first derivation, the second one can be done symmetrically. We argue by induction on the number of atom occurences in $\xi\vlhole$. The base case, $\xi\vlhole=\vlhole$, is trivial and the inductive cases are:
 \[
 \vlderivation
 {
@@ -279,6 +281,8 @@ we write $\vlinf{\supers}{}{\vls[\zeta\{\fff\}.\xi\{\alpha\}]}{\vls(\zeta\{\alph
 Given a formula $\alpha$, there exist derivations $\vlupsmash{\vlder{}{\{\awd,\swi\}}{\alpha}{\fff}}$ and $\vlupsmash{\vlder{}{\{\awu,\swi\}}{\ttt}{\alpha}}$; both of whose size depend at most quadratically on the size of $\alpha$.
 \end{lemma}
 
+\Tom{atoms -> atom occurences}
+
 \begin{proof}
 We show how to construct the first derivation, the second one can be done symmetrically.
 Let $a_1$, $\dots$, $a_n$ be the atoms appearing in $\alpha$, then there exists a derivation
@@ -286,7 +290,7 @@ Let $a_1$, $\dots$, $a_n$ be the atoms appearing in $\alpha$, then there exists 
 \vlder{}{\{\awd\}}{\alpha}{\alpha\{a_1/\fff,\dots,a_n/\fff\}}
 \quad.
 \]
-Since $\alpha\{a_1/\fff,\dots,a_n/\fff\}$ contains no atoms, there exists a derivation
+Since $\alpha\{a_1/\fff,\dots,a_n/\fff\}$ contains no atom occurences, there exists a derivation
 \[
 \vlder{}{\{\fffd,\tttd,\fffandd,\tttord\}}{\alpha\{a_1/\fff,\dots,a_n/\fff\}}{\fff}
 \qquad\mbox{or}\qquad
@@ -329,8 +333,10 @@ Since $\alpha\{a_1/\fff,\dots,a_n/\fff\}$ contains no atoms, there exists a deri
 Given a formula $\alpha$, there exist derivations $\vlupsmash{\vlder{}{\{\acd,\med\}}{\alpha}{\vls[\alpha.\alpha]}}$ and $\vlupsmash{\vlder{}{\{\acu,\med\}}{\vls(\alpha.\alpha)}{\alpha}}$; both of whose size depend at most quadratically on the size of $\alpha$.
 \end{lemma}
 
+\Tom{number of atoms in $\alpha$ -> size of $\alpha$}
+
 \begin{proof}
-We show how to construct the first derivation, the second one can be done symmetrically. We argue by induction on the number of atoms appearing in $\alpha$. We have to consider the following base case and two inductive cases:
+We show how to construct the first derivation, the second one can be done symmetrically. We argue by induction on the size of $\alpha$. We have to consider the following base case and two inductive cases:
 \[
 \vlinf{}{}{a}{\vls[a.a]}
 \qquad\hbox{,}\qquad
@@ -395,7 +401,7 @@ We show how to construct the first derivation, the second one can be done symmet
 \newcommand{\weu}{{\weakn{\uparrow}}}
 
 \begin{notation}\label{notation:GenericWeakeningContraction}
-In the non-atomic version of system $\SKS$ the derivations shown in the proofs of Lemma~\ref{lemma:GenericWeakening} and Lemma~\vref{lemma:GenericContraction} correspond to (co)\-weak\-en\-ing and (co)contractions, respectively. For this reason we sometimes write the inference rules $\vlinf{\wed}{}{\alpha}{\fff}$, $\vlinf{\weu}{}{\ttt}{\alpha}$, $\vlinf{\cod}{}{\alpha}{\vls[\alpha.\alpha]}$ and $\vlinf{\cou}{}{\vls(\alpha.\alpha)}{\alpha}$ instead of the derivations $\vlder{}{\{\awd,\swi\}}{\alpha}{\fff}$, $\vlder{}{\{\awu,\swi\}}{\ttt}{\alpha}$, $\vlder{}{\{\acd,\med\}}{\alpha}{\vls[\alpha.\alpha]}$ and $\vlder{}{\{\acu,\med\}}{\vls(\alpha.\alpha)}{\alpha}$, respectively.
+In the non-atomic version of system $\SKS$ the derivations shown in the proofs of Lemma~\vref{lemma:GenericWeakening} and Lemma~\vref{lemma:GenericContraction} correspond to (co)\-weak\-en\-ing and (co)contractions, respectively. For this reason we sometimes write the inference rules $\vlinf{\wed}{}{\alpha}{\fff}$, $\vlinf{\weu}{}{\ttt}{\alpha}$, $\vlinf{\cod}{}{\alpha}{\vls[\alpha.\alpha]}$ and $\vlinf{\cou}{}{\vls(\alpha.\alpha)}{\alpha}$ instead of the derivations $\vlder{}{\{\awd,\swi\}}{\alpha}{\fff}$, $\vlder{}{\{\awu,\swi\}}{\ttt}{\alpha}$, $\vlder{}{\{\acd,\med\}}{\alpha}{\vls[\alpha.\alpha]}$ and $\vlder{}{\{\acu,\med\}}{\vls(\alpha.\alpha)}{\alpha}$, respectively.
 \end{notation}
 
 To give an example of the notions defined so far, we now show a completeness proof of system $\SKS$.
@@ -405,7 +411,7 @@ System $\SKS$ is complete for propositional classical logic.
 \end{theorem}
 
 \begin{proof}
-Consider a tautology $\alpha$. We show by induction on the number of atoms in $\alpha$ that there exists a proof of $\alpha$ in $\SKS$. For the base case, let $\alpha$ consist only of units. Then, since $\alpha$ is a tautology, we can build
+Consider a tautology $\alpha$. We show by induction on the number of atoms appearing in $\alpha$ that there exists a proof of $\alpha$ in $\SKS$. For the base case, let $\alpha$ consist only of units. Then, since $\alpha$ is a tautology, we can build
 \[
 \vlder{}{\{\fffd,\tttd,\fffandd,\tttord\}}{\alpha}{\ttt}\quad.
 \]
@@ -498,7 +504,7 @@ Using $\Phi$ and the inductive hypothesis we can build the desired derivation:
 \end{proof}
 
 \begin{remark}
-Given any formulae $\alpha$ and $\beta$ and any context $\xi\vlhole$, then, by a construction similar to the one in the proof of Lemma~\vref{lemma:SuperSwitch}, we can build a derivation $\vlder{}{\{\swi,\coor,\coand,\asor\}}{\vls[\xi\{\alpha\}.\beta]}{\xi\{\vls[\alpha.\beta]\}}$. If we use this derivation instead of the rule $\ssd$ in the proof of Theorem~\ref{theorem:SKSComplete}, it follows that the system
+Given any formulae $\alpha$ and $\beta$ and any context $\xi\vlhole$, then, by a construction similar to the one in the proof of Lemma~\vref{lemma:SuperSwitch}, we can build a derivation $\vlder{}{\{\swi,\coor,\coand,\asor\}}{\vls[\xi\{\alpha\}.\beta]}{\xi\{\vls[\alpha.\beta]\}}$. If we use this derivation instead of the rule $\ssd$ in the proof of Theorem~\vref{theorem:SKSComplete}, it follows that the system
 \[
 \{\aid,\acd,\awd,\swi,\med,\coor,\coand,\asor,\fffd,\tttd,\fffandd,\tttord\}
 \]
@@ -506,7 +512,7 @@ is complete for classical logic. This justifies the naming of the invertible rul
 \end{remark}
 
 \begin{remark}
-If we allow the use of all the rules of $\SKS$, as opposed to only the down fragment, we can build a more compact proof than what we do in Theorem~\ref{theorem:SKSComplete}, by using the following as the inductive case:
+If we allow the use of all the rules of $\SKS$, as opposed to only the down fragment, we can build a more compact proof than what we do in Theorem~\vref{theorem:SKSComplete}, by using the following as the inductive case:
 \[
 \vlderivation
 {

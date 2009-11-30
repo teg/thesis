@@ -7,7 +7,7 @@ The operator is defined in terms of the following flow reduction.
 %--------------------------------
 \newcommand{\frpb}{{\mathsf{pb}}}
 \begin{definition}\label{definition:PathBreaker}
-We define the reduction $\to_\frpb$ (where $\frpb$ stands for \emph{path breaker}\index{Path Breaker!reduction}) as follows, for any atomic flows $\phi$ and $\psi$:
+We define the reduction $\to_\frpb$ (where $\frpb$ stands for \emph{path breaker}\index{Path Breaker!reduction}) as follows, for any two flows $\phi$ and $\psi$:
 \[
 \vcenter{\hbox{\includegraphics{Figures/redPBRedex}}}
 \quad\to_\frpb\quad
@@ -139,7 +139,7 @@ We now show the basic properties of $\to_\frpb$. Namely, that the reduction does
 
 %-------------------------------------
 \begin{lemma}\label{lemma:PathBreaker}
-In the following we refer to the names given in Definition~\ref{definition:PathBreaker}. Given two atomic flows $\phi$ and $\psi$, such that $\phi\to_\frpb\psi$, then, given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$, such that
+In the following we refer to the names given in Definition~\vref{definition:PathBreaker}. Given two flows $\phi$ and $\psi$, such that $\phi\to_\frpb\psi$, then, given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$, such that
 \begin{enumerate}
 \item for some $1\le i\le 3$, $\nu=f_i(\nu')$ or $\nu=g_i(\nu')$, or $\nu=\nu_\aid$ and $\nu'=\nu'_\aid$ (resp., $\nu=\nu_\aiu$ and $\nu'=\nu'_\aiu$);
 \item if there is a path from $\nu$ to $\bot$ (resp., $\top$) in $\psi$, then there is a path from $\nu'$ to $\bot$ (resp., $\top$) in $\phi$; and
@@ -216,7 +216,7 @@ The \emph{Path Breaker}\index{Path Breaker!operator}, $\PB$, is an operator whos
  )
 }\quad,
 \]
-with atomic flow
+with flow
 \[
 \phi''\;=\;
 \vcenter{\hbox{\includegraphics{Figures/defPB1}}}
@@ -279,7 +279,7 @@ such that occurrences of $a$ do not appear in an interaction or cut instance in 
  )
 }\quad,
 \]
-with atomic flow
+with flow
 \[
 \psi''\;=\;
 \vcenter{\hbox{\includegraphics{Figures/defPB2}}}
@@ -302,7 +302,7 @@ Given an atom $a$ and a derivation $\Phi$,
 \end{proposition}
 
 \begin{proof}
-If $\Phi$ is weakly streamlined with respect to both $a$ and $\bar a$, the result is trivial. Assume $\Phi$ is not weakly streamlined with respect to both $a$ and $\bar a$, and let $\phi$, $\psi$, $\phi'$, $\psi'$, $\phi''$ and $\psi''$ be the atomic flows given in Definition~\ref{definition:DerPathBreaker} and let $\nu_\aid$ (resp., $\nu_\aiu$) be the evidenced interaction (resp., cut) vertex in $\psi''$, then
+If $\Phi$ is weakly streamlined with respect to both $a$ and $\bar a$, the result is trivial. Assume $\Phi$ is not weakly streamlined with respect to both $a$ and $\bar a$, and let $\phi$, $\psi$, $\phi'$, $\psi'$, $\phi''$ and $\psi''$ be the flows given in Definition~\vref{definition:DerPathBreaker} and let $\nu_\aid$ (resp., $\nu_\aiu$) be the evidenced interaction (resp., cut) vertex in $\psi''$, then
 \begin{enumerate}
 \item by Definition~\ref{definition:DerPathBreaker} all the paths from an interaction (resp., cut) vertex whose edges are mapped to from instances of $a$ or $\bar a$ must start from $\nu_\aid$ (resp., $\nu_\aiu$). The statement then follows by Lemma~\vref{lemma:PathBreaker};
 \item if there is a path from an interaction (resp., cut) vertex in the atomic flow of $\PB(\Phi,a)$ whose edges are mapped to from instances of $b$, then, by Lemma~\ref{lemma:PathBreaker}, there is a path from an interaction (resp., cut) vertex in $\phi$ or $\psi$, so also in $\phi'$ or $\psi'$, whose edges are mapped to from instances of $b$. Hence, the statement follows by contradiction; and
@@ -313,7 +313,7 @@ If $\Phi$ is weakly streamlined with respect to both $a$ and $\bar a$, the resul
 
 %-----------------------------------------
 \begin{example}\label{example:PathBreaker}
-Given a derivation $\Phi$ where the atoms $a_1$ and $a_2$ occur, such that the atomic flow associated with $\Phi$ is
+Given a derivation $\Phi$ where the atoms $a_1$ and $a_2$ occur, such that the flow associated with $\Phi$ is
 \[
 \vcenter{\hbox{\includegraphics{Figures/exPB1}}}
 \quad,
@@ -321,7 +321,7 @@ Given a derivation $\Phi$ where the atoms $a_1$ and $a_2$ occur, such that the a
 
 \TODO{Alessio said: `\emph{This is a long shot. Perhaps you can argue a bit more and more clearly about the red edges. Not clear what the latter and former subflows are.}'.}
 
-where all the edges in $\phi_1$ are mapped to from $a_1$ and all the edges in $\phi_2$ are mapped to from $a_2$, and there are no edges in $\psi$ that are mapped to from $a_1$ or $a_2$, then the atomic flow associated with $\PB((\Phi,a_1),a_2)$ is the juxtaposition of the following three flows (where indications of the different isomorphisms are left out):
+where all the edges in $\phi_1$ are mapped to from $a_1$ and all the edges in $\phi_2$ are mapped to from $a_2$, and there are no edges in $\psi$ that are mapped to from $a_1$ or $a_2$, then the flow associated with $\PB((\Phi,a_1),a_2)$ is the juxtaposition of the following three flows (where indications of the different isomorphisms are left out):
 
 \TODO{adjust labels}
 

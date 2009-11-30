@@ -134,14 +134,14 @@ The polarity assignment condition (\ref{definition:AtomicFlow:item:PolarityAssig
 
 %---------------------------------------------
 \begin{notation}\label{notation:LabelsOnBoxes}
-Let $\phi$ be an atomic flow with upper edges $\boldsymbol\epsilon=\epsilon_1,\dots,\epsilon_n$ and lower edges $\boldsymbol\iota=\iota_1,\dots,\iota_m$, we then represent it as
+Let $\phi$ be a flow with upper edges $\boldsymbol\epsilon=\epsilon_1,\dots,\epsilon_n$ and lower edges $\boldsymbol\iota=\iota_1,\dots,\iota_m$, we then represent it as
 \[
 \vcenter{\hbox{\includegraphics{Figures/boxDef1}}}
 \qquad\mbox{or}\qquad
 \vcenter{\hbox{\includegraphics{Figures/boxDef2}}}
 \quad.
 \]
-We sometimes use flow labels to indicate what kind of vertices an atomic flow might contain. \emph{E.g.}, the following flows
+We sometimes use flow labels to indicate what kind of vertices a flow might contain. \emph{E.g.}, the following flows
 \[
 \vcenter{\hbox{\includegraphics{Figures/boxDef3}}}
 \qquad\mbox{and}\qquad
@@ -156,7 +156,7 @@ In general, we represent atomic flows as directed-graph diagrams, except that th
 
 %--------------
 \begin{example}
-Consider the atomic flow
+Consider the flow
 \begin{align*}
 A=(&\{\;\nu_1\;,\;\nu_2\;,\;\nu_3\;\},\\
    &\{\;\one\;,\;\two\;,\;\three\;,\;\four\;,\;\five\;\},\\
@@ -239,7 +239,7 @@ We extend the double-line notation to collections of isomorphic flows. For examp
 
 %-----------------------------------------------------
 \begin{notation}\label{notation:LabelsIsomorphicFlows}
-Given an atomic flow
+Given a flow
 \[
 \vcenter{\hbox{\includegraphics{Figures/flowIso1}}}
 \quad,
@@ -258,20 +258,20 @@ we mean that $f$ is a given flow isomorphism between $\phi$ and $\psi$.
 
 %---------------
 \begin{notation}
-Given an atomic flow $\phi$ and a polarity assignment $\pi$ for $\phi$, whenever we write
+Given a flow $\phi$ and a polarity assignment $\pi$ for $\phi$, whenever we write
 \[
 \vcenter{\hbox{\includegraphics{Figures/flowPolPl}}}
 \qquad\mbox{or}\qquad
 \vcenter{\hbox{\includegraphics{Figures/flowPolMi}}}
 \quad,
 \]
-respectively, we mean that all the edges in $\phi$ have polarity assignment $\ppl$ or $\pmi$, respectively. If we label an atomic flow with a polarity assignment it can not contain any interaction or cut vertices duo to property~\ref{definition:AtomicFlow:item:PolarityAssignment} of Definition~\vref{definition:AtomicFlow}.
+respectively, we mean that all the edges in $\phi$ have polarity assignment $\ppl$ or $\pmi$, respectively. If we label a flow with a polarity assignment it can not contain any interaction or cut vertices duo to property~\ref{definition:AtomicFlow:item:PolarityAssignment} of Definition~\vref{definition:AtomicFlow}.
 \end{notation}
 %-------------
 
 %-----------------
 \begin{definition}
-Given an atomic flow $\phi$ and a polarity assignment $\pi$ for $\phi$, the polarity assignment $\bar\pi$ for $\phi$ is defined to be, for every $\epsilon$ in $\phi$:
+Given a flow $\phi$ and a polarity assignment $\pi$ for $\phi$, the polarity assignment $\bar\pi$ for $\phi$ is defined to be, for every $\epsilon$ in $\phi$:
 \[
 \bar\pi(\epsilon)=
 \begin{cases}
@@ -297,7 +297,7 @@ An \emph{$\ai$-path from $\nu$ to $\nu'$}\index{$\ai$-path} of \emph{length}\ind
 
 %---------------------------------------
 \begin{example}\label{example:Paths}
-The atomic flow on the left has the $\ai$-paths on the right, and the paths are marked with an asterisk:
+The flow on the left has the $\ai$-paths on the right, and the paths are marked with an asterisk:
 \[
 \begin{array}{@{}c@{}c@{}}
 \vcenter{\hbox{\includegraphics{Figures/flowPaths}}}

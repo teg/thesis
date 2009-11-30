@@ -33,13 +33,13 @@ For every $n>0$, given
 }\quad,
 \]
 \end{itemize}
-let, for $1\le k\le N$, $\eta_k$ be the atomic flow of\/ $\Gammasf_k$, and let
+let, for $1\le k\le N$, $\eta_k$ be the flow of\/ $\Gammasf_k$, and let
 \[
 \mu_k\;=\;
 \vcenter{\hbox{\includegraphics{Figures/redMISRAux}}}
 \quad,
 \]
-where, for $1\le i\le n$, $l_i$ is the number of atom occurrences in $\gamma_{k,i}$, we define the reduction $\to_{\frmis_n}$ (where $\frmis$ stands for \emph{multiple isolated subflows}\index{Multiple Isolated Subflows Remover!reduction}) as follows, for any atomic flow $\phi$ and any connected atomic flows $\psi_1$, $\dots$, $\psi_n$ that do not contain interaction or cut vertices:
+where, for $1\le i\le n$, $l_i$ is the number of atom occurrences in $\gamma_{k,i}$, we define the reduction $\to_{\frmis_n}$ (where $\frmis$ stands for \emph{multiple isolated subflows}\index{Multiple Isolated Subflows Remover!reduction}) as follows, for any flow $\phi$ and any connected components $\psi_1$, $\dots$, $\psi_n$ that do not contain interaction or cut vertices:
 \[
 \vcenter{\hbox{\includegraphics{Figures/redMISRRedex}}}
 \quad\to_{\frmis_n}\quad
@@ -71,6 +71,8 @@ then ${\to_{\frmis_1}}={\to_\fris}$.
 \end{remark}
 %-----------
 
+\Tom{connected flow -> connected component}
+
 %------------------------------------------------------------------
 \begin{theorem}\label{theorem:SoundMultipleIsolatedSubflowsRemoval}
 For every $n>0$, reduction\/ ${\to_{\frmis_n}}$ is sound; moreover, if\/ $\Phi\to_{\frmis_n}\Psi$, then the size of\/ $\Psi$ depends linearly on $N$, polynomially on the size of\/ $\Phi$ and at most polynomially on\/ $\max\{\size{\Gammasf_1},\dots,\size{\Gammasf_N}\}$.
@@ -89,7 +91,7 @@ Since each of $\psi_1$, $\dots$, $\psi_n$ is connected, we assume, by Convention
  \vls(\vlinf{}{}{\vls[a_1.\bar a_1^{\psi_1}]}{\ttt}\;.\;\vlinf{}{}{\vls[a_n.\bar a_n^{\psi_n}]}{\ttt}\;.\;\alpha)
 }\quad,
 \]
-for some atoms $a_1$, $\dots$, $a_n$ (that, without loss of generality, we assume coincide with the atoms given in Definition~\ref{definition:MultipleIsolatedSubflowsRemoval}) and formulae $\alpha$ and $\beta$.
+for some atoms $a_1$, $\dots$, $a_n$ (that, without loss of generality, we assume coincide with the atoms given in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}) and formulae $\alpha$ and $\beta$.
 
 For every $0\le k\le N$, we obtain the derivation $\Phi_k$ from $\Phi'$ as follows:
 \[
@@ -102,12 +104,12 @@ For every $0\le k\le N$, we obtain the derivation $\Phi_k$ from $\Phi'$ as follo
  \vls([a_1.\gamma_{k,1}].\cdots.[a_n.\gamma_{k,n}].\alpha)
 }
 \]
-Since each of $\psi_1$, $\dots$, $\psi_n$ is connected and contains no interaction or cut vertices, the mapping from occurrences of $\bar a_i^{\psi_i}$ to edges of $\psi_i$ is surjective. Hence, we know that $\Phi_k$ has atomic flow
+Since each of $\psi_1$, $\dots$, $\psi_n$ is a connected component and contains no interaction or cut vertices, the mapping from occurrences of $\bar a_i^{\psi_i}$ to edges of $\psi_i$ is surjective. Hence, we know that $\Phi_k$ has flow
 \[
 \vcenter{\hbox{\includegraphics{Figures/thmMISR}}}
 \quad.
 \]
-We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gammasf_1$, $\dots$, $\Gammasf_N$ to get the desired derivation $\Psi$ with atomic flow $\psi'$ and the same premiss and conclusion as $\Phi$:
+We combine $\Phi_0$, $\dots$, $\Phi_N$, $\Gammasf_1$, $\dots$, $\Gammasf_N$ to get the desired derivation $\Psi$ with flow $\psi'$ and the same premiss and conclusion as $\Phi$:
 \[
 \vlderivation
 {
@@ -250,7 +252,7 @@ We now show the basic properties of $\to_\frmis$. Namely, that the reduction doe
 
 %-------------------------------------
 \begin{lemma}\label{lemma:MultipleIsolatedSubflowsRemovalPaths}
-In the following we refer to the names given in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}. Given two atomic flows $\phi$ and $\psi$ and an $n>0$, such that $\phi\to_{\frmis_n}\psi$ then, given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$, such that
+In the following we refer to the names given in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}. Given two flows $\phi$ and $\psi$ and an $n>0$, such that $\phi\to_{\frmis_n}\psi$ then, given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$, such that
 \begin{enumerate}
 \item for some $1\le i\le N+1$, $\nu=f_i(\nu')$;
 \item if there is a path from $\nu$ to $\bot$ (resp., $\top$), then there is a path from $\nu'$ to $\bot$ (resp., $\top$); and
@@ -354,7 +356,7 @@ For every $n>0$, given the atoms, formulae and derivations described in Definiti
  )
 }\quad,
 \]
-with atomic flow
+with flow
 \[
 \vcenter{\hbox{\includegraphics{Figures/defMISR1}}}
 \quad,
@@ -456,7 +458,7 @@ where, for $1\le i\le n$, $\psi_i$ is the juxtaposition of all the isolated subf
  )
 }\quad,
 \]
-with atomic flow
+with flow
 \[
 \psi''\;=\;
 \vcenter{\hbox{\includegraphics{Figures/defMISR2}}}
@@ -485,7 +487,7 @@ Given the atoms, formulae and derivations described in Definition~\vref{definiti
 \begin{proof}
 If $\Phi$ is weakly streamlined to some atom from $a_1$, $\dots$, $a_n$, the result follows by induction. Assume $\Phi$ is not weakly streamlined to any atom from $a_1$, $\dots$, $a_n$, and let $\phi$, $\psi_1$, $\dots$, $\psi_n$, $\phi'$, $\psi'_1$, $\dots$, $\psi'_n$ and $\psi''$ be the atomic flows given in Definition~\ref{definition:MultipleIsolatedSubflowsRemover}, then
 \begin{enumerate}
-\item by definition there is no path in $\phi$ from an interaction to a cut vertex whose edges are mapped to from instances of one of $a_1$, $\dots$, $a_n$. By Lemma~\vref{lemma:MultipleIsolatedSubflowsRemovalPaths}, we know that if there is a path from an interaction to a cut vertex in the atomic flow of $\MISR_n(\Phi,a_1,\dots,a_n)$ whose edges are mapped to from instances of one of $a_1$, $\dots$, $a_n$, then there must be a path from an interaction to a cut vertex in $\phi$ whose edges are mapped to from instances of one of $a_1$, $\dots$, $a_n$. Hence, the statement follows by contradiction;
+\item by definition there is no path in $\phi$ from an interaction to a cut vertex whose edges are mapped to from instances of one of $a_1$, $\dots$, $a_n$. By Lemma~\vref{lemma:MultipleIsolatedSubflowsRemovalPaths}, we know that if there is a path from an interaction to a cut vertex in the flow of $\MISR_n(\Phi,a_1,\dots,a_n)$ whose edges are mapped to from instances of one of $a_1$, $\dots$, $a_n$, then there must be a path from an interaction to a cut vertex in $\phi$ whose edges are mapped to from instances of one of $a_1$, $\dots$, $a_n$. Hence, the statement follows by contradiction;
 \item
 \begin{enumerate}
  \item if there is a path from an interaction (resp., cut) vertex in the atomic flow of $\MISR_n(\Phi,a_1,\dots,a_n)$ whose edges are mapped to from $b$, then, by Lemma~\ref{lemma:MultipleIsolatedSubflowsRemovalPaths}, there is a path from an interaction (resp., cut) vertex in $\phi$, so also in $\phi'$, whose edges are mapped to from $b$. Hence, the statement follows by contradiction; and
@@ -498,7 +500,7 @@ If $\Phi$ is weakly streamlined to some atom from $a_1$, $\dots$, $a_n$, the res
 
 %--------------------------------------------------
 \begin{remark}\label{remark:FromGammasToThresholds}
-Given the atoms, formulae and derivations described in Definition~\ref{definition:MultipleIsolatedSubflowsRemoval}, we can prove by induction on $k$, that, for every $1\le i\le n$ and every $0\le k\le N$, the formula $\gamma_{k,i}$ is
+Given the atoms, formulae and derivations described in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}, we can prove by induction on $k$, that, for every $1\le i\le n$ and every $0\le k\le N$, the formula $\gamma_{k,i}$ is
 \begin{itemize}
  \item true if at least $k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are true; and
  \item false if at least $N-k$ of the atoms $a_1$, $\dots$, $a_{i-1}$, $a_{i+1}$, $\dots$, $a_n$ are false.
