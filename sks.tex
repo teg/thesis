@@ -333,13 +333,20 @@ Since $\alpha\{a_1/\fff,\dots,a_n/\fff\}$ contains no atom occurrences, there ex
 Given a formula $\alpha$, there exist derivations $\vlupsmash{\vlder{}{\{\acd,\med\}}{\alpha}{\vls[\alpha.\alpha]}}$ and $\vlupsmash{\vlder{}{\{\acu,\med\}}{\vls(\alpha.\alpha)}{\alpha}}$; both of whose size depend at most quadratically on the size of $\alpha$.
 \end{lemma}
 
-\Tom{number of atoms in $\alpha$ -> size of $\alpha$}
+\Tom{number of atoms in $\alpha$ -> size of $\alpha$; added two base casse}
 
 \begin{proof}
-We show how to construct the first derivation, the second one can be done symmetrically. We argue by induction on the size of $\alpha$. We have to consider the following base case and two inductive cases:
+We show how to construct the first derivation, the second one can be done symmetrically. We argue by induction on the size of $\alpha$. We have to consider the following three base cases
 \[
+\vlinf{\fffandu}{}{\ttt}{\vls[\ttt.\ttt]}
+\qquad,\qquad
+\vlinf{\tttu}{}{\fff}{\vls[\fff.\fff]}
+\qquad\mbox{and}\qquad
 \vlinf{}{}{a}{\vls[a.a]}
-\qquad\hbox{,}\qquad
+\quad,
+\]
+and two inductive cases:
+\[
 \vlinf{\med}{}
 {
  \vls
