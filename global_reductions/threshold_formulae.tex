@@ -182,6 +182,9 @@ The size of the threshold formulae dominates the cost of the normalisation proce
 For any $n>0$ and $k\ge0$, $\size{\th kn\avec1n}\le\size{\th{\lfloor n/2\rfloor+1}n\avec1n}$.
 \end{proposition}
 
+\newcommand{\Ord}[1]{{\mathsf O}(#1)}
+\Tom{$\Ord{\cdot}$ is not defined, but it is very standard, so I leave it undefined.}
+
 %-------------------------------------------------------------------------------
 \begin{lemma}\label{lemma:SizeThresholdMax}
 The size of\/ $\th{\lfloor n/2\rfloor+1}n\avec1n$ is $n^{\Ord{\log n}}$.
@@ -234,13 +237,13 @@ It immediately follows from Proposition~\vref{proposition:LargestThresholdFormul
 \begin{remark}\label{remark:UpsideDownCoweakening}
 Given $n>1$, let $p=\lfloor n/2\rfloor$ and $q=n-p$. For $0\le k\le q$ and $1\le l\le p$, the following derivation is well defined:
 \[
-\vlinf{\gwu}
+\vlinf{\weu}
       {}
       {\fff}
       {\vls({\vlnos(\th pp\avec1p)}\{a_l/\fff\}.\th kq\avec{p+1}n)}
 =
 \vls(
-\vlinf{\gwu}
+\vlinf{\weu}
       {}
       {\vls(\ttt)}
       {\vls(a_1.\cdots.a_{l-1}.a_{l+1}.\cdots.a_p.\th kq\avec{p+1}n)}
@@ -249,13 +252,13 @@ Given $n>1$, let $p=\lfloor n/2\rfloor$ and $q=n-p$. For $0\le k\le q$ and $1\le
 \]
 Analogously, for $0\le k\le p$ and $p+1\le l\le n$, we can define the following derivation:
 \[
-\vlinf{\gwu}
+\vlinf{\weu}
       {}
       {\fff}
       {\vls(\th kp\avec1p.{\vlnos(\th qq\avec{p+1}n)}\{a_l/\fff\})}
 =
 \vls(
-\vlinf{\gwu}
+\vlinf{\weu}
       {}
       {\vls(\ttt)}
       {\vls(\th kp\avec1p.a_{p+1}.\cdots.a_{l-1}.a_{l+1}.\cdots.a_n)}
@@ -278,13 +281,13 @@ Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$, and let $p=\lfloor n/2\rfloo
 For $n>1$ and $1\le l\le n$, we define the derivations $\Uth kln\avec1n$ and $\Dth kln\avec1n$ as follows:
 \[
 \Uth kln\avec1n=\begin{cases}
-\vlinf{\gwu}
+\vlinf{\weu}
       {}
       {\fff}
       {\vls({\vlnos(\th pp\avec1p)}\{a_l/\fff\}.\th{k-p}q\avec{p+1}n)}
              &\text{if $p\le k\le n$ and $l\le p$}\\
 \noalign{\medskip}
-\vlinf{\gwu}
+\vlinf{\weu}
       {}
       {\fff}
       {\vls(\th{k-q}p\avec1p.{\vlnos(\th qq\avec{p+1}n)}\{a_l/\fff\})}
@@ -296,13 +299,13 @@ For $n>1$ and $1\le l\le n$, we define the derivations $\Uth kln\avec1n$ and $\D
 and
 \[
 \Dth kln\avec1n=\begin{cases}
-\vlinf{\gwd}
+\vlinf{\wed}
       {}
       {\th kq\avec{p+1}n}
       {\fff}
              &\text{if $0<k\le q$ and $l\le p$}\\
 \noalign{\medskip}
-\vlinf{\gwd}
+\vlinf{\wed}
       {}
       {\th kp\avec1p}
       {\fff}
@@ -360,7 +363,7 @@ For $k\ge0$ and $1\le l\le n$, we define the derivations $\vlsmash{\Gth kln\avec
 
 %-------------------------------------------------------------------------------
 \begin{example}\label{example:AuxillaryThresholdDerivations}
-See, in Figure~\vref{figure:AuxillaryThresholdDerivations}, some examples of derivations $\vlsmash{\Gth kln\avec1n}$. Note that, for clarity, we removed all instances of the trivial derivations $\Uth112\avec12=\Uth122\avec12=\Uth113\avec13=\vldownsmash{\vlinf\gwu{}\fff\fff}$. We can do so because these derivation instances appear as disjuncts.
+See, in Figure~\vref{figure:AuxillaryThresholdDerivations}, some examples of derivations $\vlsmash{\Gth kln\avec1n}$. Note that, for clarity, we removed all instances of the trivial derivations $\Uth112\avec12=\Uth122\avec12=\Uth113\avec13=\vldownsmash{\vlinf\weu{}\fff\fff}$. We can do so because these derivation instances appear as disjuncts.
 \end{example}
 
 %-------------------------------------------------------------------------------
@@ -640,12 +643,12 @@ The shape of $\Gth kln\avec1n$ can be verified by inspecting Definition~\vref{de
 .
 \th jq\avec{p+1}n)
 .
-\vlinf{\gwu}
+\vlinf{\weu}
       {}
       {\fff}
       {\vls({\vlnos(\th pp\avec1p)}\{a_l/\fff\}.\th{k-p}q\avec{p+1}n)}
 .
-\vlinf{\gwd}
+\vlinf{\wed}
       {}
       {\th{k+1}q\avec{p+1}n}
       {\fff}
