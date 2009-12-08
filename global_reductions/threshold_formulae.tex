@@ -30,21 +30,28 @@ Threshold formulae realise boolean threshold functions, which are defined as boo
 
 There are several ways of encoding threshold functions into formulae, and the problem is to find, among them, an encoding that allows us to obtain Theorem~\vref{theorem:ThresholdDerivations}. Efficiently obtaining the property stated in Theorem~\ref{theorem:ThresholdDerivations} crucially depends also on the proof system we adopt.
 
-In the following, $\lfloor x\rfloor$ denotes the maximum integer $n$ such that $n\le x$.
+\Tom{Used to be: In the following, $\lfloor x\rfloor$ denotes the maximum integer $n$ such that $n\le x$.}
+
+In the following, $\underline  n$ (resp., $\overline  n$) denotes the maximum (resp., minimum) integer $x$ such that $x\le n/2$ (resp., $x\ge n/2$). The reason for this notation will become clear in Definition~\vref{definition:ThresholdFormulae}. We will need to split the $n$ atoms $a_1$, $\dots$, $a_n$ into the $\underline  n$ atoms $a_1$, $\dots$, $a_{\underline  n}$ and the $\overline  n$ atoms $a_{\underline  n+1}$, $\dots$, $a_n$.
 
 The following class of threshold formulae, which we found to work for system $\SKS$, is a simplification of the one adopted in \cite{AtseGalePudl:02:Monotone:yu}.
 
-\newcommand{\avecletter}{{\boldsymbol a}}
-\newcommand{\avec}[2]{\avecletter_{#1}^{#2}}
-%----------------------------------------------
-\begin{definition}\label{definition:AtomVector}
-\TODO{Define $\avec1n$.}
-\end{definition}
+\newcommand{\avec}[2]{(a_{#1},\dots,a_{#2})}
+\Tom{Redefined the macro outputting ${\boldsymbol a}_l^n$ to output $(a_l,\dots,a_n)$. It is no longer a vector of $n-l+1$ atoms, but it is the inputs to a function of arity $n-l+1$.}
+
 %---------------
 
+\Tom{Added explanation:}
+
 \renewcommand{\th}[2]{\mathop{\thetaup_{#1}^{#2}}}
-%-------------------------------------------------------------------------------
-\begin{definition}\label{definition:ThresholdFormulae}
+
+We now define a class of operators $\th kn$, which takes $n$ atoms as arguments and returns a formula that is true if and only if at least $k$ of the inputs are true.
+
+\Tom{Changed away from using $p$ and $q$.}
+
+\Tom{No longer require the atoms to be distinct, as it the restriction might just as well be put where it is used (it will then also be clear straight away why it is needed).}
+
+\Tom{Changed the definition to make it clear that the the names of the atoms are local variables (in programming parlance), so we have a wellfounded definition. The old definition was in terms of global variables (so it could not rely on an implicit renaming). This is the old definition:
 Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$, and let $p=\lfloor n/2\rfloor$ and $q=n-p$; for $k\ge0$, we define the \emph{threshold formulae\/}\index{threshold!formulae} $\th kn\avec1n$ as follows:
 \begin{itemize}
 %---------------------------------------
@@ -62,11 +69,44 @@ $\th kn\avec1n\equiv\bigvee_{\begin{subarray}{l}i+j=k      \\
 \vlsbr(\th ip\avec1p.\th jq\avec{p+1}n)$.
 %---------------------------------------
 \end{itemize}
+}
+
+%-------------------------------------------------------------------------------
+\begin{definition}\label{definition:ThresholdFormulae}
+For every $n>0$ and $k\ge0$, we define the operator $\th kn$ inductively as follows:
+\[
+\th kn\avec1n=
+\begin{cases}
+    \ttt
+  &
+    \text{if $k=0$}
+  \\
+    \fff
+  &
+    \text{if $k>n$}
+  \\
+    a_1
+  &
+    \text{if $n=k=1$}
+  \\
+    \bigvee_{
+      \begin{subarray}{l}
+	i+j=k
+      \\
+	0\le i\le \underline  n
+      \\ 
+	0\le j\le \overline  n
+      \end{subarray}
+    }
+    \vlsbr(\th i{\underline  n}\avec1{\underline  n}.\th j{\overline  n}\avec{\underline  n+1}n)
+  &
+    \text{otherwise.}
+\end{cases}
+\]
+For any $n$ atoms $a_1$, $\dots$, $a_n$, we call $\th kn\avec1n$ the \emph{threshold formula at level $k$} (\emph{with respect to $a_1$, $\dots$, $a_n$\/})\index{threshold!formulae}.
 \end{definition}
 
 See, in Figure~\vref{figure:ThresholdFormulae}, some examples of threshold formulae.
-
-The only reason why we require atoms to be distinct in threshold formulae is to avoid certain technical problems with substitutions in Definitions~\vref{definition:AuxillaryThresholdDerivation} and \vref{definition:ThresholdDerivations}. However, there is no substantial difficulty in relaxing this definition to any set of atoms.
 
 %-------------------------------------------------------------------------------
 \begin{figure}
@@ -179,7 +219,7 @@ The size of the threshold formulae dominates the cost of the normalisation proce
 
 %-------------------------------------------------------------------------------
 \begin{proposition}\label{proposition:LargestThresholdFormula}
-For any $n>0$ and $k\ge0$, $\size{\th kn\avec1n}\le\size{\th{\lfloor n/2\rfloor+1}n\avec1n}$.
+For any $n>0$ and $k\ge0$, $\size{\th kn\avec1n}\le\size{\th{\underline  n+1}n\avec1n}$.
 \end{proposition}
 
 \newcommand{\Ord}[1]{{\mathsf O}(#1)}
@@ -187,37 +227,40 @@ For any $n>0$ and $k\ge0$, $\size{\th kn\avec1n}\le\size{\th{\lfloor n/2\rfloor+
 
 %-------------------------------------------------------------------------------
 \begin{lemma}\label{lemma:SizeThresholdMax}
-The size of\/ $\th{\lfloor n/2\rfloor+1}n\avec1n$ is $n^{\Ord{\log n}}$.
+The size of\/ $\th{\underline  n+1}n\avec1n$ is $n^{\Ord{\log n}}$.
 \end{lemma}
+
+\Tom{Added a bit more explanation to the proof, and changed away from using $p$ and $q$.}
 
 %-------------------------------------------------------------------------------
 \begin{proof}
-Observe that $\size{\th kn\avec1n}\le\size{\th k{n+1}\avec1{n+1}}$. Let $p=\lfloor n/2\rfloor$ and $q=n-p$ and consider:
+Observe that $\size{\th kn\avec1n}\le\size{\th k{n+1}\avec1{n+1}}$. Consider:
 \begin{equation}\label{PropQuasIneq}
 \begin{split}
-\size{\th{p+1}n\avec1n}
-&=\textstyle\sum_{\begin{subarray}{l}i+j=p+1    \\
-                                     0\le i\le p\\
-                                     0\le j\le q
+\size{\th{\underline  n+1}n\avec1n}
+&=\textstyle\sum_{\begin{subarray}{l}i+j=\underline  n+1    \\
+                                     0\le i\le \underline  n\\
+                                     0\le j\le {\overline  n}
                   \end{subarray}}
-  \left(\size{\th ip\avec1p}+
-        \size{\th jq\avec{p+1}n}\right)             \\
-&\le\textstyle\sum_{\begin{subarray}{l}i+j=p+1\\
-                                       0\le i,j\le q
+  \left(\size{\th i{\underline  n}\avec1{\underline  n}}+
+        \size{\th j{\overline  n}\avec{\underline  n+1}n}\right)             \\
+&\le\textstyle\sum_{\begin{subarray}{l}i+j=\underline  n+1\\
+                                       0\le i,j\le {\overline  n}
                     \end{subarray}}
-  \left(\size{\th iq\avec1q}+
-        \size{\th jq\avec1q}\right)                 \\
-&\le2(q+1)
-  \size{\th{\lfloor q/2\rfloor+1}q\avec1q}\quad,
+  \left(\size{\th i{\overline  n}\avec1{\overline  n}}+
+        \size{\th j{\overline  n}\avec1{\overline  n}}\right)                 \\
+&\le2({\overline  n}+1)
+  \size{\th{\underline {(\overline  n)}+1}{\overline  n}\avec1{\overline  n}}\quad,
 \end{split}
 \end{equation}
-where we use Proposition~\vref{proposition:LargestThresholdFormula}. We show that, for $h=2/(\log3-\log2)$ and for any $n>0$, we have $\size{\th{\lfloor n/2\rfloor+1}n\avec1n}\le n^{h\log n}$. We reason by induction on $n$; the case $n=1$ trivially holds. By the inequality~\eqref{PropQuasIneq}, and for $n>1$, we have
+where we use Proposition~\vref{proposition:LargestThresholdFormula}. Let $h=2/\log\frac{3}{2}$, then we show that, for any $n>0$, we have $\size{\th{\underline  n+1}n\avec1n}\le n^{h\log n}$. We reason by induction on $n$; the case $n=1$ trivially holds. For $n>1$, we have that $2(\overline  n+1)\le n^2$, $\overline  n\le n$ and $\overline  n\le\frac{2}{3}n$, so by the inequality~\eqref{PropQuasIneq}, we have
 \begin{equation*}
 \begin{split}
-\size{\th{\lfloor n/2\rfloor+1}n\avec1n}
-&\le2(n-\lfloor n/2\rfloor+1)
-     (n-\lfloor n/2\rfloor)^{h\log(n-\lfloor n/2\rfloor)}       \\
-&\le n^2n^{h\log(2n/3)}=n^{h\log n-h(\log3-\log2)+2}=n^{h\log n}
+\size{\th{\underline  n+1}n\avec1n}
+&\le2(\overline  n+1)
+     {\overline  n}^{h\log\overline  n}
+       \\
+&\le n^2n^{h\log(\frac{2}{3}n)}=n^{h\log n-h\log\frac{3}{2}+2}=n^{h\log n}
 \quad.
 \end{split}
 \end{equation*}
@@ -233,65 +276,72 @@ For any $k\ge0$ the size of\/ $\th kn\avec1n$ is $n^{\Ord{\log n}}$.
 It immediately follows from Proposition~\vref{proposition:LargestThresholdFormula} and Lemma~\vref{lemma:SizeThresholdMax}.
 \end{proof}
 
+\Tom{Specify that we are considering $n$ distinct atoms and change away from using $p$ and $q$.}
+
 %-------------------------------------------------------------------------------
 \begin{remark}\label{remark:UpsideDownCoweakening}
-Given $n>1$, let $p=\lfloor n/2\rfloor$ and $q=n-p$. For $0\le k\le q$ and $1\le l\le p$, the following derivation is well defined:
+Given $n>1$ and distinct atoms $a_1$, $\dots$, $a_n$. For $0\le k\le \overline  n$ and $1\le l\le \underline  n$, the following derivation is well defined:
 \[
 \vlinf{\weu}
       {}
       {\fff}
-      {\vls({\vlnos(\th pp\avec1p)}\{a_l/\fff\}.\th kq\avec{p+1}n)}
+      {\vls({\th {\underline  n}{\underline  n}\avec1{\underline  n}}\{a_l/\fff\}.\th k{\overline  n}\avec{{\underline  n}+1}n)}
 =
 \vls(
 \vlinf{\weu}
       {}
       {\vls(\ttt)}
-      {\vls(a_1.\cdots.a_{l-1}.a_{l+1}.\cdots.a_p.\th kq\avec{p+1}n)}
+      {\vls(a_1.\cdots.a_{l-1}.a_{l+1}.\cdots.a_{\underline  n}.\th k{\overline  n}\avec{{\underline  n}+1}n)}
 .\fff)
 \quad.
 \]
-Analogously, for $0\le k\le p$ and $p+1\le l\le n$, we can define the following derivation:
+Analogously, for $0\le k\le {\underline  n}$ and ${\underline  n}+1\le l\le n$, we can define the following derivation:
 \[
 \vlinf{\weu}
       {}
       {\fff}
-      {\vls(\th kp\avec1p.{\vlnos(\th qq\avec{p+1}n)}\{a_l/\fff\})}
+      {\vls(\th k{\underline  n}\avec1{\underline  n}.{\vlnos(\th {\overline  n}{\overline  n}\avec{{\underline  n}+1}n)}\{a_l/\fff\})}
 =
 \vls(
 \vlinf{\weu}
       {}
       {\vls(\ttt)}
-      {\vls(\th kp\avec1p.a_{p+1}.\cdots.a_{l-1}.a_{l+1}.\cdots.a_n)}
+      {\vls(\th k{\underline  n}\avec1{\underline  n}.a_{{\underline  n}+1}.\cdots.a_{l-1}.a_{l+1}.\cdots.a_n)}
 .\fff)
 \quad.
 \]
 Both classes of derivations are used in Definition~\vref{definition:AuxillaryThresholdDerivation}.
+
+The only reason why we require atoms to be distinct is to avoid certain technical problems with substitutions. The same situation occurs in Definitions~\vref{definition:AuxillaryThresholdDerivation} and \vref{definition:ThresholdDerivations}.
 \end{remark}
+
+\Tom{Broke one case into two to avoid overfull.}
 
 \newcommand{\Uth}[3]{\mathop{\mathsf\Upsilon_{#1,#2}^{#3}}}
 \newcommand{\Dth}[3]{\mathop{\mathsf\Delta_{#1,#2}^{#3}}}
 \newcommand{\Gth}[3]{\mathop{\Gammasf_{#1,#2}^{#3}}}
 %-------------------------------------------------------------------------------
 \begin{definition}\label{definition:AuxillaryThresholdDerivation}
-Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$, and let $p=\lfloor n/2\rfloor$ and $q=n-p$.
+Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$.
 \begin{itemize}
 %---------------------------------------
 %---------------------------------------
 \item
 For $n>1$ and $1\le l\le n$, we define the derivations $\Uth kln\avec1n$ and $\Dth kln\avec1n$ as follows:
 \[
-\Uth kln\avec1n=\begin{cases}
+\Uth kln\avec1n=
+\begin{cases}
 \vlinf{\weu}
       {}
       {\fff}
-      {\vls({\vlnos(\th pp\avec1p)}\{a_l/\fff\}.\th{k-p}q\avec{p+1}n)}
-             &\text{if $p\le k\le n$ and $l\le p$}\\
+      {\vls({\vlnos(\th {\underline  n}{\underline  n}\avec1{\underline  n})}\{a_l/\fff\}.\th{k-{\underline  n}}{\overline  n}\avec{{\underline  n}+1}n)}
+             &\text{if ${\underline  n}\le k\le n$ and $l\le {\underline  n}$}\\
 \noalign{\medskip}
 \vlinf{\weu}
       {}
       {\fff}
-      {\vls(\th{k-q}p\avec1p.{\vlnos(\th qq\avec{p+1}n)}\{a_l/\fff\})}
-             &\text{if $q\le k\le n$ and $p<l$}\\
+      {\vls(\th{k-{\overline  n}}{\underline  n}\avec1{\underline  n}.{\vlnos(\th {\overline  n}{\overline  n}\avec{{\underline  n}+1}n)}\{a_l/\fff\})}
+             &\text{if ${\overline  n}\le k\le n$ and ${\underline  n}<l$}\\
 \noalign{\medskip}
 \fff         &\text{otherwise}
               \end{cases}
@@ -301,15 +351,15 @@ and
 \Dth kln\avec1n=\begin{cases}
 \vlinf{\wed}
       {}
-      {\th kq\avec{p+1}n}
+      {\th k{\overline  n}\avec{{\underline  n}+1}n}
       {\fff}
-             &\text{if $0<k\le q$ and $l\le p$}\\
+             &\text{if $0<k\le {\overline  n}$ and $l\le {\underline  n}$}\\
 \noalign{\medskip}
 \vlinf{\wed}
       {}
-      {\th kp\avec1p}
+      {\th k{\underline  n}\avec1{\underline  n}}
       {\fff}
-             &\text{if $0<k\le p$ and $p<l$}\\
+             &\text{if $0<k\le {\underline  n}$ and ${\underline  n}<l$}\\
 \noalign{\medskip}
 \fff         &\text{otherwise}
               \end{cases}\quad.
@@ -326,31 +376,28 @@ For $k\ge0$ and $1\le l\le n$, we define the derivations $\vlsmash{\Gth kln\avec
 %---------------------------------------
 \item for $k>n$, $\Gth kln\avec1n=\fff$;
 %---------------------------------------
-\item for $n>1$ and $k\le n$, let
+\item for $n>1$, $k\le n$ and $l\le\underline  n$, let $\Gth kln\avec1n$ be
 \[
-\Gth kln\avec1n=\begin{cases}
-%---------------------------------------
 \vls[
 \bigvee_{\begin{subarray}{l}i+j=k      \\ 
-                            0\le i<p   \\ 
-                            0\le j\le q
+                            0\le i<{\underline  n}   \\ 
+                            0\le j\le {\overline  n}
          \end{subarray}}(
-\Gth ilp\avec1p.
-\th jq\avec{p+1}n).
+\Gth il{\underline  n}\avec1{\underline  n}.
+\th j{\overline  n}\avec{{\underline  n}+1}n).
 \Uth kln\avec1n.\Dth{k+1}ln\avec1n]
-&\text{if $l\le p$}\\
-\noalign{\medskip}
+\]
 %---------------------------------------
+\item for $n>1$, $k\le n$ and $\underline  n<l$, let $\Gth kln\avec1n$ be
+\[
 \vls[
 \bigvee_{\begin{subarray}{l}i+j=k      \\
-                            0\le i\le p\\ 
-                            0\le j<q
+                            0\le i\le {\underline  n}\\ 
+                            0\le j<{\overline  n}
          \end{subarray}}(
-\th ip\avec1p.
-\Gth j{l-p}q\avec{p+1}n).
+\th i{\underline  n}\avec1{\underline  n}.
+\Gth j{l-{\underline  n}}{\overline  n}\avec{{\underline  n}+1}n).
 \Uth kln\avec1n.\Dth{k+1}ln\avec1n]
-&\text{if $p<l$}
-\end{cases}
 \quad.
 \]
 %---------------------------------------
@@ -360,325 +407,69 @@ For $k\ge0$ and $1\le l\le n$, we define the derivations $\vlsmash{\Gth kln\avec
 \end{itemize}
 \end{definition}
 
-
-%-------------------------------------------------------------------------------
-\begin{example}\label{example:AuxillaryThresholdDerivations}
-See, in Figure~\vref{figure:AuxillaryThresholdDerivations}, some examples of derivations $\vlsmash{\Gth kln\avec1n}$. Note that, for clarity, we removed all instances of the trivial derivations $\Uth112\avec12=\Uth122\avec12=\Uth113\avec13=\vldownsmash{\vlinf\weu{}\fff\fff}$. We can do so because these derivation instances appear as disjuncts.
-\end{example}
-
-%-------------------------------------------------------------------------------
-\begin{figure}
-{\small
-\begin{eqnarray*}
-%---------------------------------------
-\Gth 015\avecletter&=&
-\vls [\ttt.\vlderivation{
-\vlin{}{}{b}{
-\vlhy{\vls \fff}
-}}
-.\vlderivation{
-\vlin{}{}{\vls [c.d.e]}{
-\vlhy{\vls \fff}
-}}
-]\quad,\\
-\noalign{\smallskip}
-%---------------------------------------
-\Gth 115\avecletter&=&
-\vls [b.([\ttt.\vlderivation{
-\vlin{}{}{b}{
-\vlhy{\vls \fff}
-}}
-].[c.d.e]).\vlderivation{
-\vlin{}{}{\vls [(c.[d.e]).(d.e)]}{
-\vlhy{\vls \fff}
-}}
-]\quad,\\
-\noalign{\smallskip}
-%---------------------------------------
-\Gth 215\avecletter&=&
-\vls [(b.[c.d.e]).([\ttt.\vlderivation{
-\vlin{}{}{b}{
-\vlhy{\vls \fff}
-}}
-].[(c.[d.e]).(d.e)]).\vlderivation{
-\vlin{}{}{\vls \fff}{
-\vlhy{\vls (\fff.b)}
-}}
-.\vlderivation{
-\vlin{}{}{\vls (c.d.e)}{
-\vlhy{\vls \fff}
-}}
-]\quad,\\
-\noalign{\smallskip}
-%---------------------------------------
-\Gth 315\avecletter&=&
-\vls [(b.[(c.[d.e]).(d.e)]).([\ttt.\vlderivation{
-\vlin{}{}{b}{
-\vlhy{\vls \fff}
-}}
-].c.d.e).\vlderivation{
-\vlin{}{}{\vls \fff}{
-\vlhy{\vls (\fff.b.[c.d.e])}
-}}
-]\quad,\\
-\noalign{\smallskip}
-%---------------------------------------
-\Gth 415\avecletter&=&
-\vls [(b.c.d.e).\vlderivation{
-\vlin{}{}{\vls \fff}{
-\vlhy{\vls (\fff.b.[(c.[d.e]).(d.e)])}
-}}
-]\quad,\\
-\noalign{\smallskip}
-%---------------------------------------
-\Gth 515\avecletter&=&
-\vlderivation{
-\vlin{}{}{\vls \fff}{
-\vlhy{\vls (\fff.b.c.d.e)}
-}}
-\quad,\\
-\noalign{\smallskip}
-%---------------------------------------
-\Gth 035\avecletter&=&
-\vls [\ttt.\vlderivation{
-\vlin{}{}{\vls [d.e]}{
-\vlhy{\vls \fff}
-}}
-.\vlderivation{
-\vlin{}{}{\vls [a.b]}{
-\vlhy{\vls \fff}
-}}
-]\quad,\\
-\noalign{\smallskip}
-%---------------------------------------
-\Gth 135\avecletter&=&
-\vls [([a.b].[\ttt.\vlderivation{
-\vlin{}{}{\vls [d.e]}{
-\vlhy{\vls \fff}
-}}
-]).d.e.\vlderivation{
-\vlin{}{}{\vls (d.e)}{
-\vlhy{\vls \fff}
-}}
-.\vlderivation{
-\vlin{}{}{\vls (a.b)}{
-\vlhy{\vls \fff}
-}}
-]\quad,\\
-\noalign{\smallskip}
-%---------------------------------------
-\Gth 235\avecletter&=&
-\vls [(a.b.[\ttt.\vlderivation{
-\vlin{}{}{\vls [d.e]}{
-\vlhy{\vls \fff}
-}}
-]).([a.b].[d.e.\vlderivation{
-\vlin{}{}{\vls (d.e)}{
-\vlhy{\vls \fff}
-}}
-]).(d.e).\vlderivation{
-\vlin{}{}{\vls \fff}{
-\vlhy{\vls (\fff.[d.e])}
-}}
-]\quad,\\
-\noalign{\smallskip}
-%---------------------------------------
-\Gth 335\avecletter&=&
-\vls [(a.b.[d.e.\vlderivation{
-\vlin{}{}{\vls (d.e)}{
-\vlhy{\vls \fff}
-}}
-]).([a.b].[(d.e).\vlderivation{
-\vlin{}{}{\vls \fff}{
-\vlhy{\vls (\fff.[d.e])}
-}}
-]).\vlderivation{
-\vlin{}{}{\vls \fff}{
-\vlhy{\vls (\fff.d.e)}
-}}
-]\quad,\\
-\noalign{\smallskip}
-%---------------------------------------
-\Gth 435\avecletter&=&
-\vls [(a.b.[(d.e).\vlderivation{
-\vlin{}{}{\vls \fff}{
-\vlhy{\vls (\fff.[d.e])}
-}}
-]).\vlderivation{
-\vlin{}{}{\vls \fff}{
-\vlhy{\vls ([a.b].\fff.d.e)}
-}}
-]\quad,\\
-\noalign{\smallskip}
-%---------------------------------------
-%\Gth 535\avecletter&=&
-%vlderivation{
-%\vlin{}{}{\vls \fff}{
-%\vlhy{\vls (a.b.\fff.d.e)}
-%}}\quad,\\
-%\noalign{\smallskip}
-%---------------------------------------
-%\Gth 055\avecletter&=&
-%\vls [\ttt.\vlderivation{
-%\vlin{}{}{d}{
-%\vlhy{\vls \fff}
-%}
-%.\vlderivation{
-%\vlin{}{}{c}{
-%\vlhy{\vls \fff}
-%}}
-%.\vlderivation{
-%\vlin{}{}{\vls [a.b]}{
-%\vlhy{\vls \fff}
-%}}
-%]\quad,\\
-%\noalign{\smallskip}
-%---------------------------------------
-\Gth 155\avecletter&=&
-\vls [([a.b].[\ttt.\vlderivation{
-\vlin{}{}{d}{
-\vlhy{\vls \fff}
-}}
-.\vlderivation{
-\vlin{}{}{c}{
-\vlhy{\vls \fff}
-}}
-]).(c.[\ttt.\vlderivation{
-\vlin{}{}{d}{
-\vlhy{\vls \fff}
-}}
-]).d.\vlderivation{
-\vlin{}{}{\vls (a.b)}{
-\vlhy{\vls \fff}
-}}
-]\quad,\\
-\noalign{\smallskip}
-%---------------------------------------
-\Gth 255\avecletter&=&
-\vls [(a.b.[\ttt.\vlderivation{
-\vlin{}{}{d}{
-\vlhy{\vls \fff}
-}}
-.\vlderivation{
-\vlin{}{}{c}{
-\vlhy{\vls \fff}
-}}
-]).([a.b].[(c.[\ttt.\vlderivation{
-\vlin{}{}{d}{
-\vlhy{\vls \fff}
-}}
-]).d]).(c.d).\vlderivation{
-\vlin{}{}{\vls \fff}{
-\vlhy{\vls (d.\fff)}
-}}
-]\quad,\\
-\noalign{\smallskip}
-%---------------------------------------
-\Gth 355\avecletter&=&
-\vls [(a.b.[(c.[\ttt.\vlderivation{
-\vlin{}{}{d}{
-\vlhy{\vls \fff}
-}}
-]).d]).([a.b].[(c.d).\vlderivation{
-\vlin{}{}{\vls \fff}{
-\vlhy{\vls (d.\fff)}
-}}
-]).\vlderivation{
-\vlin{}{}{\vls \fff}{
-\vlhy{\vls (c.d.\fff)}
-}}
-]\quad,\\
-\noalign{\smallskip}
-%---------------------------------------
-\Gth 455\avecletter&=&
-\vls [(a.b.[(c.d).\vlderivation{
-\vlin{}{}{\vls \fff}{
-\vlhy{\vls (d.\fff)}
-}}
-]).\vlderivation{
-\vlin{}{}{\vls \fff}{
-\vlhy{\vls ([a.b].c.d.\fff)}
-}}
-]\quad,\\
-\noalign{\smallskip}
-%---------------------------------------
-\Gth 555\avecletter&=&
-\vlderivation{
-\vlin{}{}{\vls \fff}{
-\vlhy{\vls (a.b.c.d.\fff)}
-}}\quad.
-\end{eqnarray*}
-\caption{Examples of $\Gth kl5\avecletter$, where $\avecletter=(a,b,c,d,e)$.}
-}
-\label{figure:AuxillaryThresholdDerivations}
-\end{figure}
-%-----------
-
-\Tom{Removed two example derivations and shrank the font in Figure~\vref{figure:AuxillaryThresholdDerivations} to avoid overfull.}
+\Tom{Removed example of $\Gth kln\avec1n$, as it was not very helpful.}
 
 %-------------------------------------------------------------------------------
 \begin{theorem}\label{theorem:AuxillaryThresholdDerivations}
 For any $n>0$, $k\ge0$ and\/ $1\le l\le n$, the derivation\/ $\vlsmash{\Gth kln\avec1n}$ has shape
 \[
-\vlder{}{\{\awd,\awu\}}{(\th{k+1}n\avec1n)\{a_l/\ttt\}}
-                       {(\th kn\avec1n)\{a_l/\fff\}}
+\vlder{}{\{\awd,\awu\}}{\th{k+1}n\avec1n\{a_l/\ttt\}}
+                       {\th kn\avec1n\{a_l/\fff\}}
 \quad,
 \]
 and\/ $\size{\Gth kln\avec1n}$ is $n^{\Ord{\log n}}$.
 \end{theorem}
 
+\Tom{Broke the derivation horizontally in a different wayto avoid overfull.}
+
 %-------------------------------------------------------------------------------
 \begin{proof}
-The shape of $\Gth kln\avec1n$ can be verified by inspecting Definition~\vref{definition:AuxillaryThresholdDerivation}. For example, this is the case when $n>1$ and $l\le p\le k<q$, where $p=\lfloor n/2\rfloor$ and $q=n-p$:
-\vlstore{\noalign{\medskip}
+The shape of $\Gth kln\avec1n$ can be verified by inspecting Definition~\vref{definition:AuxillaryThresholdDerivation}. For example, this is the case when $n>1$ and $l\le \underline  n\le k<\overline  n$:
+\vlstore
+{
+}
+\[
+\vlder{\Gth kln\avec1n}
+      {}
+      {\th{k+1}n\avec1n\{a_l/\ttt\}}
+      {\th kn\avec1n\{a_l/\fff\}}
+\;=\;
 \vls[
 \textstyle\bigvee_{\begin{subarray}{l}i+j=k      \\
                                       0\le i<p   \\
                                       0\le j\le q
-                   \end{subarray}}(
-\vlder{\Gth ilp\avec1p}
+                   \end{subarray}}
+(\vlder{\Gth ilp\avec1p}
       {}
-      {(\th{i+1}p\avec1p)\{a_l/\ttt\}}
-      {(\th ip\avec1p)\{a_l/\fff\}}
-.
+      {\th{i+1}p\avec1p\{a_l/\ttt\}}
+      {\th ip\avec1p\{a_l/\fff\}}
+\;\;.\;\;
 \th jq\avec{p+1}n)
-.
+\;\;.]
+\]
+\[
+\vls[
+.\;
 \vlinf{\weu}
       {}
       {\fff}
       {\vls({\vlnos(\th pp\avec1p)}\{a_l/\fff\}.\th{k-p}q\avec{p+1}n)}
-.
+\;.\;
 \vlinf{\wed}
       {}
       {\th{k+1}q\avec{p+1}n}
       {\fff}
-]}
-\begin{multline*}
-\vlder{\Gth kln\avec1n}
-      {}
-      {(\th{k+1}n\avec1n)\{a_l/\ttt\}}
-      {(\th kn\avec1n)\{a_l/\fff\}}
-={}\\
-\vlread
+]
 \quad.
-\end{multline*}
-(Remember that
-\[
-\th kn\avec1n\equiv\bigvee_{\begin{subarray}{l}
-                            i+j=k\\ 
-                            0\le i\le p\\ 
-                            0\le j\le q
-                            \end{subarray}}
-                   \vlsbr(\th ip\avec1p.\th jq\avec{p+1}n)
 \]
-and $\th0p\avec1p\equiv\ttt$.) General (co)weak\-en\-ing rule instances can be replaced by atomic ones because of Lemma~\vref{lemma:GenericWeakening}. The size bound on $\Gth kln\avec1n$ follows from Proposition~\vref{proposition:DerivationSubstitution} and Theorem~\vref{theorem:SizeThreshold}.
+General (co)weak\-en\-ing rule instances can be replaced by atomic ones because of Lemma~\vref{lemma:GenericWeakening}. The size bound on $\Gth kln\avec1n$ follows from Proposition~\vref{proposition:DerivationSubstitution} and Theorem~\vref{theorem:SizeThreshold}.
 \end{proof}
 
 \Tom{Rephrased slightly to avoid overfull}
 
 \begin{definition}\label{definition:ThresholdDerivations}
 Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the derivation $\vlsmash{\Gammasf^n_k\avec1n}$ to be:
-\[
+\[\hss
 \vlderivation
 {
  \vlde{}{\{\cou\}}
@@ -697,7 +488,7 @@ Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the d
       \vls[a_1.\cdots.a_1]
      }
     \;\;.\;\;
-     (\th {k+1}n\avec1n)\{a_1/\fff\}
+     \th {k+1}n\avec1n\{a_1/\fff\}
     ]
    }
    {
@@ -716,7 +507,7 @@ Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the d
       \vls[a_n.\cdots.a_n]
      }
     \;\;.\;\;
-     (\th {k+1}n\avec1n)\{a_n/\fff\}
+     \th {k+1}n\avec1n\{a_n/\fff\}
     ]
    }
    {
@@ -749,12 +540,12 @@ Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the d
         a_1
        }
       \;\;.\;\;
-       \vlder{\Gth kin\avec1n}{}
+       \vlder{\Gth k1n\avec1n}{}
        {
-        (\th {k+1}n\avec1n)\{a_1/\ttt\}
+        \th {k+1}n\avec1n\{a_1/\ttt\}
        }
        {
-        (\th kn\avec1n)\{a_1/\fff\}
+        \th kn\avec1n\{a_1/\fff\}
        }
       )
      }
@@ -776,10 +567,10 @@ Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the d
       \;\;.\;\;
        \vlder{\Gth knn\avec1n}{}
        {
-        (\th {k+1}n\avec1n)\{a_n/\ttt\}
+        \th {k+1}n\avec1n\{a_n/\ttt\}
        }
        {
-        (\th kn\avec1n)\{a_n/\fff\}
+        \th kn\avec1n\{a_n/\fff\}
        }
       )
      }
@@ -797,10 +588,10 @@ For any $n>0$ and $k\ge0$, the derivation\/ $\vlsmash{\Gammasf^n_k\avec1n}$ has 
 \[
 \vlder{}{\SKS\setminus\{\aid,\aiu\}}
 {
- \vls([a_1.(\th{k+1}n\avec1n)\{a_1/\fff\}].\cdots.[a_n.(\th{k+1}n\avec1n)\{a_n/\fff\}])
+ \vls([a_1.\th{k+1}n\avec1n\{a_1/\fff\}].\cdots.[a_n.\th{k+1}n\avec1n\{a_n/\fff\}])
 }
 {
- \vls[(a_1.(\th{k}n\avec1n)\{a_1/\fff\}).\cdots.(a_n.(\th{k}n\avec1n)\{a_n/\fff\})]
+ \vls[(a_1.\th{k}n\avec1n\{a_1/\fff\}).\cdots.(a_n.\th{k}n\avec1n\{a_n/\fff\})]
 }
 \quad,
 \]
