@@ -352,13 +352,22 @@ if $\nu_1$ and $\nu_2$ are vertices in $\phi_1$, and there is a vertex $\nu'$ in
 \end{definition}
 %---------------
 
-\TODO{Swap around variables. (and check)}
+\Tom{Renamed a $\psi$ to a $\phi$ and added example.}
 
 %--------------------------------------------------
 \begin{definition}\label{defintion:IsolatedSubflow}
-Given two flows $\phi$ and $\psi$, such that $\phi$ is a subflow of $\psi$, we say that \emph{$\phi$ is an isolated subflow of $\psi$}\index{subflow!isolated} if there is no path in $\phi$ from a vertex in $\psi$ to $\top$ or $\bot$.
+Given two flows $\phi$ and $\psi$, such that $\phi$ is a subflow of $\psi$, we say that \emph{$\phi$ is an isolated subflow of $\psi$}\index{subflow!isolated} if there is no path in $\psi$ from a vertex in $\phi$ to $\top$ or $\bot$.
 \end{definition}
 %---------------
+
+\begin{example}
+In the following flow, $\phi$ is an isolated subflow of $\psi$:
+\[
+\vcenter{\hbox{\includegraphics{Figures/exIsolatedSubflow}}}
+\quad.
+\]
+For other examples of isolated subflows see Definition~\vref{definition:IsolatedSubflowRemoval} and Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}.
+\end{example}
 
 %------------------------------------------------------
 \begin{definition}\label{definition:ConnectedComponent}
