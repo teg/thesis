@@ -17,6 +17,8 @@
    \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
    \atomicflow{(0,0)*{\afacd{}{}{}{}{}{}}}$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newbox\flowone\setbox\flowone=\hbox{$
+\divide\atflowunit by6\multiply\atflowunit by5\afsetunits
 \atomicflow
 {
 %cocontraction - top
@@ -145,8 +147,10 @@
 "A"+(0, 0)*{\affr{10}{8}};
 "A"+( 2, 2)*{\aflabelright{\phi_1}};
 }
-\]
-\[
+$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newbox\flowtwo\setbox\flowtwo=\hbox{$
+\divide\atflowunit by6\multiply\atflowunit by5\afsetunits
 \atomicflow
 {
 (12,-50)="D";
@@ -313,23 +317,25 @@
 "A"+(-4,0)*{\copy\contrdown};
 "A"+(-4,-5.5)*{\afvjm3};
 }
-\]
-\[
+$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newbox\flowthree\setbox\flowthree=\hbox{$
+\divide\atflowunit by6\multiply\atflowunit by5\afsetunits
 \atomicflow{
-(0,34.5)*{\afvjm3};
-(0,29)*{\affr{82}8};
-(0,29)*{\copy\contrup};
+(0,17.5)*{\afvjm3};
+(0,12)*{\affr{82}8};
+(0,12)*{\copy\contrup};
 %
-(0,-29)*{\affr{82}8};
-(0,-29)*{\copy\contrdown};
-(0,-34.5)*{\afvjm3};
+(0,-12)*{\affr{82}8};
+(0,-12)*{\copy\contrdown};
+(0,-17.5)*{\afvjm3};
 %-------------------
 (30,0)="B";
 %---------------
 (0,0)-"B"="A";
-"A"+(-10,14.5)*{\afvjm{21}};
-"A"+(0,14.5)*{\afvjm{21}};
-"A"+(10,14.5)*{\afvjm{21}};
+"A"+(-10,6)*{\afvjm4};
+"A"+(0,6)*{\afvjm4};
+"A"+(10,6)*{\afvjm4};
 %---
 "A"+(-10,0)*{\affr88};
 "A"+( -9,2)*{\aflabelright\psi};
@@ -338,15 +344,15 @@
 "A"+( 10,0)*{\affr88};
 "A"+( 11,2)*{\aflabelright\psi};
 %---
-"A"+(-10,-14.5)*{\afvjm{21}};
-"A"+(0,-14.5)*{\afvjm{21}};
-"A"+(10,-14.5)*{\afvjm{21}};
+"A"+(-10,-6)*{\afvjm4};
+"A"+(0,-6)*{\afvjm4};
+"A"+(10,-6)*{\afvjm4};
 %---------------
 (0,0)="A";
 %---
-"A"+(-10,14.5)*{\afvjm{21}};
-"A"+(0,14.5)*{\afvjm{21}};
-"A"+(10,14.5)*{\afvjm{21}};
+"A"+(-10,6)*{\afvjm4};
+"A"+(0,6)*{\afvjm4};
+"A"+(10,6)*{\afvjm4};
 %---
 "A"+(-10,0)*{\affr88};
 "A"+( -9,2)*{\aflabelright\psi};
@@ -355,15 +361,15 @@
 "A"+( 10,0)*{\affr88};
 "A"+( 11,2)*{\aflabelright\psi};
 %---
-"A"+(-10,-14.5)*{\afvjm{21}};
-"A"+(0,-14.5)*{\afvjm{21}};
-"A"+(10,-14.5)*{\afvjm{21}};
+"A"+(-10,-6)*{\afvjm4};
+"A"+(0,-6)*{\afvjm4};
+"A"+(10,-6)*{\afvjm4};
 %---------------
 "A"+"B"="A";
 %---
-"A"+(-10,14.5)*{\afvjm{21}};
-"A"+(0,14.5)*{\afvjm{21}};
-"A"+(10,14.5)*{\afvjm{21}};
+"A"+(-10,6)*{\afvjm4};
+"A"+(0,6)*{\afvjm4};
+"A"+(10,6)*{\afvjm4};
 %---
 "A"+(-10,0)*{\affr88};
 "A"+( -9,2)*{\aflabelright\psi};
@@ -372,10 +378,17 @@
 "A"+( 10,0)*{\affr88};
 "A"+( 11,2)*{\aflabelright\psi};
 %---
-"A"+(-10,-14.5)*{\afvjm{21}};
-"A"+(0,-14.5)*{\afvjm{21}};
-"A"+(10,-14.5)*{\afvjm{21}};
+"A"+(-10,-6)*{\afvjm4};
+"A"+(0,-6)*{\afvjm4};
+"A"+(10,-6)*{\afvjm4};
 }
+$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\xy
+(-40,100)*{\box\flowone};
+( 40,100)*{\box\flowtwo};
+(  0, 10)*{\box\flowthree};
+\endxy
 \]
 
 \end{document}
