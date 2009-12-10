@@ -137,31 +137,30 @@ We now show the basic properties of $\to_\frpb$. Namely, that the reduction does
 
 \Tom{Changed from itemize to enumerate.}
 
+\Tom{Added one case and its proof, which used to be in the later Proposition.}
+
 %-------------------------------------
 \begin{lemma}\label{lemma:PathBreaker}
 In the following we refer to the names given in Definition~\vref{definition:PathBreaker}. Given two flows $\phi$ and $\psi$, such that $\phi\to_\frpb\psi$, then, given an interaction (resp., cut) vertex $\nu$ in $\psi$, there is an interaction (resp., cut) vertex $\nu'$ in $\phi$, such that
 \begin{enumerate}
 \item for some $1\le i\le 3$, $\nu=f_i(\nu')$ or $\nu=g_i(\nu')$, or $\nu=\nu_\aid$ and $\nu'=\nu'_\aid$ (resp., $\nu=\nu_\aiu$ and $\nu'=\nu'_\aiu$);
-\item if there is a path from $\nu$ to $\bot$ (resp., $\top$) in $\psi$, then there is a path from $\nu'$ to $\bot$ (resp., $\top$) in $\phi$; and
-\item if there is a cut (resp., interaction) vertex $\hat\nu$ in $\psi$, such that there is a path from $\nu$ to $\hat\nu$ in $\psi$, then there is a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$, such that, for some $1\le i\le 3$, $\hat\nu=f_i(\nu')$ or $\hat\nu=g_i(\nu')$, or $\hat\nu=\nu_\aiu$ and $\hat\nu'=\nu'_\aiu$ (resp., $\hat\nu=\nu_\aid$ and $\hat\nu'=\nu'_\aid$); and there is a path from $\nu'$ to $\hat\nu'$ in $\phi$.
+\item if there is a path from $\nu$ to $\bot$ (resp., $\top$) in $\psi$, then there is a path from $\nu'$ to $\bot$ (resp., $\top$) in $\phi$;
+\item if there is a cut (resp., interaction) vertex $\hat\nu$ in $\psi$, such that there is a path from $\nu$ to $\hat\nu$ in $\psi$, then there is a cut (resp., interaction) vertex $\hat\nu'$ in $\phi$, such that, for some $1\le i\le 3$, $\hat\nu=f_i(\hat\nu')$ or $\hat\nu=g_i(\hat\nu')$, or $\hat\nu=\nu_\aiu$ and $\hat\nu'=\nu'_\aiu$ (resp., $\hat\nu=\nu_\aid$ and $\hat\nu'=\nu'_\aid$); and there is a path from $\nu'$ to $\hat\nu'$ in $\phi$; and
 \item there is no path from $\nu_\aid$ to $\nu_\aiu$.
 \end{enumerate}
 \end{lemma}
-
-\TODO{Check commens from Alessio}
-\Tom{Added one case and moved proof that used to be in proposition.}
 
 \begin{proof}
 We consider each case separately:
 \begin{enumerate}
   \item by definition;
-  \item any path from $\nu$ to $\bot$ (resp., $\top$) in $\psi$ must contain an edge $\epsilon$, such that, for some lower (resp., upper) edge $\epsilon'$ of $\phi$ and some $1\le i\le 3$, $f_i(\epsilon')=\epsilon$ or $g_i(\epsilon')=\epsilon$. Hence, there is a path from $\nu'$ to $\bot$ (resp., $\top$) in $\phi$; and
+  \item any path from $\nu$ to $\bot$ (resp., $\top$) in $\psi$ must contain an edge $\epsilon$, such that, for some lower (resp., upper) edge $\epsilon'$ of $\phi$ and some $1\le i\le 3$, $f_i(\epsilon')=\epsilon$ or $g_i(\epsilon')=\epsilon$. Hence, there is a path from $\nu'$ to $\bot$ (resp., $\top$) in $\phi$;
   \item we have to consider two cases:
   \begin{enumerate}
-    \item for some $1\le i\le 3$, $\nu=f_i(\nu')$ and $\hat\nu=f_i(\hat\nu')$, or $\nu=g_i(\nu')$ and $\hat\nu=g_i(\hat\nu')$, then there is a path from $\nu'$ to $\hat\nu'$ in $\phi$; or
-    \item $\nu=g_1(\nu')$ and $\hat\nu=g_2(\hat\nu')$, or $\nu=f_2(\nu')$ and $\hat\nu=f_3(\hat\nu')$ (resp., $\nu=g_2(\nu')$ and $\hat\nu=g_1(\hat\nu')$, or $\nu=f_3(\nu')$ and $\hat\nu=f_2(\hat\nu')$), then there is a path from $\nu'$ to $\nu'_\aiu$ (resp., $\nu'_\aid$) in $\phi$.
+    \item for some $1\le i\le 3$, $\nu=f_i(\nu')$ and $\hat\nu=f_i(\hat\nu')$, or $\nu=g_i(\nu')$ and $\hat\nu=g_i(\hat\nu')$, then there is a path from $\nu'$ to $\hat\nu'$ in $\phi$, or
+    \item $\nu=g_1(\nu')$ and $\hat\nu=g_2(\hat\nu')$, or $\nu=f_2(\nu')$ and $\hat\nu=f_3(\hat\nu')$ (resp., $\nu=g_2(\nu')$ and $\hat\nu=g_1(\hat\nu')$, or $\nu=f_3(\nu')$ and $\hat\nu=f_2(\hat\nu')$), then there is a path from $\nu'$ to $\nu'_\aiu$ (resp., $\nu'_\aid$) in $\phi$; and
   \end{enumerate}
-  \item in Definition~\ref{definition:PathBreaker} we have colored the edges that might occur in paths from $\nu_\aid$ in red and paths that might occur in path to $\nu_\aiu$ in green. Since the red and the green edges never coincide, there can be no paths from $\nu_\aid$ to $\nu_\aiu$
+  \item in Definition~\ref{definition:PathBreaker} we have colored the edges that might occur in paths from $\nu_\aid$ in red and paths that might occur in path to $\nu_\aiu$ in green. Since the red and the green edges never coincide, there can be no paths from $\nu_\aid$ to $\nu_\aiu$.
 \end{enumerate}
 \end{proof}
 %----------
