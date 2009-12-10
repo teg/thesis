@@ -4,9 +4,11 @@ With the operator $\ISR$ we can produce weakly streamilend derivations with resp
 
 We will see later how a derivation containing $2n$ atoms can be weakly streamlined by two applications of $\Simpl$ and two applications of $\MISR_n$.
 
-The operator is defined in terms of the following flow reduction. Unlike the flow reductions of the preceeding sections, we here present a reductions which depends on several parameters.
+\Tom{Added explanation:}
 
-In Subsection~\vref{subsection:ThresholdFormulae}, we present one possible combination of valid parameters, which yeields quasipolynomial streamlining. We conjecture that by finding different parameters we will be able to obtain more efficient versions of this reduction. In particular, we hope to be able to obtain polynomial streamlining.
+The operator is defined in terms of the following flow reduction. Unlike the flow reductions of the preceding sections, we here present a reductions which depends on several parameters. It is important to note that these parameters are independent of the derivation to which we later apply the operator. In order to perform streamlining on an arbitrary number of atoms in parallel, we need find a class of atomic flows, $\eta_k$, which are used as a sort of sharing mechanism. We are at this stage not able to describe the flows $\eta_k$ without relying on their corresponding derivations. For this reason, it might help the understanding of Definition~\vref{definition:MultipleIsolatedSubflowsRemoval} to refer to the derivation given in the proof of Theorem~\vref{theorem:SoundMultipleIsolatedSubflowsRemoval}.
+
+In Subsection~\vref{subsection:ThresholdFormulae}, we present one possible combination of valid parameters, which yields quasipolynomial streamlining. We conjecture that by finding different parameters we will be able to obtain more efficient versions of this reduction. In particular, we hope to be able to obtain polynomial streamlining.
 
 \newcommand{\Gammasf}{\mathsf\Gamma}
 %----------------------------------
@@ -50,8 +52,10 @@ where we call the evidenced interaction (resp., cut) vertices $\nu_{\aid,1}$, $\
 \end{definition}
 %---------------
 
+\Tom{Added a missing `is':}
+
 \begin{remark}
-The reduction ${\to_{\frmis_n}}$ denoted as if it only depends on $n$, this is a misuse of notation, and we will take it for granted that we also have the other parameters whenever we use ${\to_{\frmis_n}}$.
+The reduction ${\to_{\frmis_n}}$ is denoted as if it only depends on $n$, this is a misuse of notation, and we will take it for granted that we also have the other parameters whenever we write ${\to_{\frmis_n}}$.
 \end{remark}
 
 %--------------------------------------------------------------
