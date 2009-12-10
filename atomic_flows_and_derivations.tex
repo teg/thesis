@@ -5,13 +5,13 @@
 
 We now define the mapping from derivations to flows. As we said, the idea is that structural rule instances map to the respective atomic-flow vertices, and the edges trace the atom occurrences between rule instances. We first state a fact, whose proof is immediate.
 
-\Tom{Rehprased slightly and removed ``unique''.}
+\Tom{Rehprased slightly and added ``up to isomorphism''.}
 
-\TODO{Proof.}
+\Tom{Added sketch of proof.}
 
 %------------------------------------------------
 \begin{proposition}\label{proposition:FlowUnique}
-Given a derivation\/ $\Phi$ in the system $\SKS$, there is a flow $\phi$ such that:
+Given a derivation\/ $\Phi$ in the system $\SKS$, there is a unique (up to isomorphism) flow $\phi$ such that:
 \begin{enumerate}
 %
 \item there is a surjective map between the set of atom occurrences of\/ $\Phi$ and the set of edges of $\phi$;
@@ -69,7 +69,7 @@ all the atom occurrences in $\alpha$, $\beta$, $\gamma$ and $\delta$ in the prem
 \end{proposition}
 
 \begin{proof}
-\TODO{}
+We sketch the proof: We proceede by induction on $\Phi$. If $\Phi$ is a formula or a horizontal composition of derivations, the result is immediate. Otherwise, if $\Phi$ is a vertical composition of two derivations by an inference rule, the result follows by induction and a case analysis of each inference rule of $\SKS$.
 \end{proof}
 
 \TODO{Macro for ``mapped from occurrences of''.}
@@ -236,7 +236,9 @@ Consider the rightmost derivation and its associated flow in Figure~\vref{figure
 \end{example}
 %------------
 
-\TODO{Explain a bit the meaning of this result.}
+\Tom{Gave the motivation for the following theorem.}
+
+We now show that the definition of atomic flows is `minimal', in the sense that, if we restrict the definition, Proposition~\vref{proposition:FlowUnique} is no longer true.
 
 %-------------------------------------------------
 \begin{theorem}\label{theorem:SurjectiveDerToFlow}
