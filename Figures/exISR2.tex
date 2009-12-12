@@ -1,0 +1,144 @@
+%%!TEX TS-program = latex
+\documentclass[a4paper]{amsart}
+
+\usepackage[urw-garamond]{mathdesign}
+\usepackage[lutzsyntax]{virginialake}
+   \aftrianglefalse
+   \everydisplay={\vlsmallleftlabels}
+
+\begin{document}
+\thispagestyle{empty}
+
+\[
+\newbox\contrup\setbox\contrup=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afacu{}{}{}{}{}{}}}$}
+\newbox\contrdown\setbox\contrdown=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afacd{}{}{}{}{}{}}}$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newbox\flowone\setbox\flowone=\hbox{$
+\divide\atflowunit by6\multiply\atflowunit by5\afsetunits
+\atomicflow
+{
+%cocontraction - top
+(0,25.5)*{\afvjm{3}};
+(0,20)*{\affr{30}8};
+(0,20)*{\copy\contrup};
+%contraction - bot
+(0,-20)*{\affr{30}8};
+(0,-20)*{\copy\contrdown};
+(0,-25.5)*{\afvjm{3}};
+%---------------------
+(-8,0)="A";
+"A"+( 6,  7  )*{\afvjm{18}};
+"A"+(-6, 13  )*{\afvjm6};
+"A"+( 0, 14  )*{\afawd{}{}{}{}};
+"A"+(-3,  6  )*{\affr{8}{8}};
+"A"+( 1,  8  )*{\aflabelleft{\phi_1}};
+"A"+( 0,  0  )*{\afvjcol4{Red}};
+"A"+( 3, -6  )*{\affr{8}{8}};
+"A"+( 7, -4  )*{\aflabelleft{\phi_1}};
+"A"+( 0,-14  )*{\afawu{}{}{}{}};
+"A"+( 6,-13  )*{\afvjm6};
+"A"+(-6, -7  )*{\afvjm{18}};
+%---------------------
+(8,0)="A";
+"A"+( 6,  7  )*{\afvjm{18}};
+"A"+(-6, 13  )*{\afvjm6};
+"A"+( 0, 14  )*{\afawd{}{}{}{}};
+"A"+(-3,  6  )*{\affr{8}{8}};
+"A"+( 1,  8  )*{\aflabelleft{\phi_1}};
+"A"+( 0,  0  )*{\afvjcol4{Red}};
+"A"+( 3, -6  )*{\affr{8}{8}};
+"A"+( 7, -4  )*{\aflabelleft{\phi_1}};
+"A"+( 0,-14  )*{\afawu{}{}{}{}};
+"A"+( 6,-13  )*{\afvjm6};
+"A"+(-6, -7  )*{\afvjm{18}};
+}
+$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newbox\flowtwo\setbox\flowtwo=\hbox{$
+\divide\atflowunit by6\multiply\atflowunit by5\afsetunits
+\atomicflow
+{
+(0,35.5)*{\afvjm3};
+(0,30)*{\affr{24}8};
+(0,30)*{\copy\contrup};
+%
+(0,-30)*{\affr{24}8};
+(0,-30)*{\copy\contrdown};
+(0,-35.5)*{\afvjm3};
+%---------------
+(3,16)="A";
+"A"+(-8,  8)*{\afawd{}{}{}{}};
+"A"+(-2,  7)*{\afvjm6};
+"A"+( 2,  8)*{\afawd{}{}{}{}};
+"A"+( 8,  7)*{\afvjm6};
+"A"+(-1,  2)*{\aflabelleft{\phi_2}};
+"A"+(-5,  0)*{\affr88};
+"A"+( 9,  2)*{\aflabelleft{\phi_2}};
+"A"+( 5,  0)*{\affr88};
+"A"+(-3,-10)*{\afacdexsqcol{}{}{}{}{}{}{5}{2}{Red}{Red}{Red}};
+"A"+( 1.75,-11)*{\afcjlm{7.5}{14}};
+"A"+( 5.5,-30)*{\afvjm{24}};
+"A"+( 8,-23)*{\afvjm{38}};
+%-----------
+(-3,-16)="A";
+"A"+(-8,23)*{\afvjm{38}};
+"A"+(-5.5,30)*{\afvjm{24}};
+"A"+(-1.75,11)*{\afcjlm{7.5}{14}};
+"A"+( 3,10.6)*{\afacuexsqcol{}{}{}{}{}{}{5}{2}{Red}{Red}{Red}};
+"A"+(-1, 2)*{\aflabelleft{\phi_2}};
+"A"+(-5, 0)*{\affr88};
+"A"+( 9, 2)*{\aflabelleft{\phi_2}};
+"A"+( 5, 0)*{\affr88};
+"A"+(-8,-7)*{\afvjm6};
+"A"+(-2,-8)*{\afawu{}{}{}{}};
+"A"+( 2,-7)*{\afvjm6};
+"A"+( 8,-8)*{\afawu{}{}{}{}};
+}
+$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newbox\flowthree\setbox\flowthree=\hbox{$
+\divide\atflowunit by6\multiply\atflowunit by5\afsetunits
+\atomicflow{
+(5,17.5)*{\afvjm3};
+(5,12)*{\affr{38}8};
+(5,12)*{\copy\contrup};
+%
+(5,-12)*{\affr{38}8};
+(5,-12)*{\copy\contrdown};
+(5,-17.5)*{\afvjm3};
+%---------------
+(0,0)="A";
+%---
+"A"+(-10,6)*{\afvjm4};
+"A"+(0,6)*{\afvjm4};
+"A"+(10,6)*{\afvjm4};
+"A"+(20,6)*{\afvjm4};
+%---
+"A"+(-10,0)*{\affr88};
+"A"+( -9,2)*{\aflabelright\psi};
+"A"+(  0,0)*{\affr88};
+"A"+(  1,2)*{\aflabelright\psi};
+"A"+( 10,0)*{\affr88};
+"A"+( 11,2)*{\aflabelright\psi};
+"A"+( 20,0)*{\affr88};
+"A"+( 21,2)*{\aflabelright\psi};
+%---
+"A"+(-10,-6)*{\afvjm4};
+"A"+(0,-6)*{\afvjm4};
+"A"+(10,-6)*{\afvjm4};
+"A"+(20,-6)*{\afvjm4};
+}
+$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\xy
+(-40,0)*{\box\flowone};
+( -2,0)*{\box\flowtwo};
+( 40,0)*{\box\flowthree};
+\endxy
+\]
+
+\end{document}

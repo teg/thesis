@@ -311,4 +311,22 @@ If $\Phi$ is weakly streamlined with respect to $a$, the result is trivial. Assu
 \end{proof}
 %----------
 
-\TODO{Copy example from AF1.}
+\Tom{Added example:}
+
+We now give an example of an application of $\ISR$. In particular we want to show its inherent non-confluency.
+
+%-----------------------------------------
+\begin{example}\label{example:IsolatedSubflowRemover}
+Given a derivation $\Phi$ where the atoms $a_1$ and $a_2$ occur, such that the flow associated with $\Phi$ is
+\[
+\vcenter{\hbox{\includegraphics{Figures/exISR1}}}
+\quad,
+\]
+and where all the edges in $\phi_1$ (resp., $\phi_1'$) are mapped to from $a_1$ (resp., $\bar a_1$) and all the edges in $\phi_2$ (resp, $\phi_2'$) are mapped to from $a_2$ (resp., $\bar a_2$), and there are no edges in $\psi$ that are mapped to from $a_1$ or $a_2$, then the flow associated with $\ISR(\ISR(\Phi,a_1),a_2)$ is the following flow (where indications of the different isomorphisms are left out):
+\[
+\vcenter{\hbox{\includegraphics{Figures/exISR2}}}
+\quad.
+\]
+We marked some edges in red to point out the fundamental difference between the subflow containing $\phi_1$ and the subflow containing $\phi_2$. Note that, in order to improve readability, we have removed a contraction and a cocontraction vertex from the subflow containing $\phi_2$, by using \emph{weakening reductions}. Weakening reductions are defined in Definition~\vref{definition:FlowRewritingWeakening}.
+\end{example}
+%------------

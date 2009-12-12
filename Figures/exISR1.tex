@@ -1,0 +1,42 @@
+%%!TEX TS-program = latex
+\documentclass[a4paper]{amsart}
+
+\usepackage[urw-garamond]{mathdesign}
+\usepackage[lutzsyntax]{virginialake}
+   \aftrianglefalse
+   \everydisplay={\vlsmallleftlabels}
+
+\begin{document}
+\thispagestyle{empty}
+
+\[
+\atomicflow{
+(-8, 6)*{\afvjdm4{}{}};
+( 1, 8)*{\afaidex{}{}{}{}{}{}{6}{4}};
+(-5, 0)*{\affr{8}{8}};
+(-4, 2)*{\aflabelright{\phi_1}};
+( 4, 0)*{\affr{6}{8}};
+( 4, 2)*{\aflabelright{\phi_1'}};
+( 1,-8)*{\afaiuex{}{}{}{}{}{}{6}{4}};
+(-8,-6)*{\afvjum4{}{}};
+}\quad
+\atomicflow{
+(-8, 6)*{\afvjdm4{}{}};
+( 1, 8)*{\afaidex{}{}{}{}{}{}{6}{4}};
+(-5, 0)*{\affr{8}{8}};
+(-4, 2)*{\aflabelright{\phi_2}};
+( 4, 0)*{\affr{6}{8}};
+( 4, 2)*{\aflabelright{\phi_2'}};
+( 1,-8)*{\afaiuex{}{}{}{}{}{}{6}{4}};
+(-8,-6)*{\afvjum4{}{}};
+}\quad
+\atomicflow
+{
+(0,6)*{\afvjm4};
+(0,0)*{\affr88};
+(4,2)*{\aflabelleft{\psi}};
+(0,-6)*{\afvjm4};
+}
+\]
+
+\end{document}
