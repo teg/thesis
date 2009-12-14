@@ -280,7 +280,7 @@ We consider each case separately:
 
 %--------------------------------
 \begin{definition}\label{definition:MultipleIsolatedSubflowsRemover}
-For every $n>0$, given the atoms, formulae and derivations described in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}, the \emph{Multiple Isolated Subflow Remover}\index{Multiple Isolated Subflows Remover!operator}, $\MISR_n$, is an operator whose arguments are atoms $a_1$, $\dots$, $a_n$ (that, without loss of generality, we assume coincide with the atoms given in Definition~\ref{definition:MultipleIsolatedSubflowsRemoval}), and a derivation $\Phi$ that is in simple form with respect to $a_1$, $\dots$, $a_n$. If $n=1$ and $\Phi$ is weakly streamlined with respect to $a_1$, then $\MISR_1(\Phi,a_1)=\Phi$; if $n>1$ and, for some $1\le i\le n$, $\Phi$ is weakly streamlined with respect to $a_i$, then $\MISR(\Phi,a_1,\dots,a_n)=\MISR_{n-1}=(\Phi,a_1,\dots,a_{i-1},a_{i+1},\dots,a_n)$; otherwise, consider the following $\ai$-decomposed form of $\Phi$:
+For every $n>0$, given the atoms, formulae and derivations described in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}, the \emph{Multiple Isolated Subflow Remover}\index{Multiple Isolated Subflows Remover!operator}, $\MISR_n$, is an operator whose arguments are atoms $a_1$, $\dots$, $a_n$ (that, without loss of generality, we assume coincide with the atoms given in Definition~\ref{definition:MultipleIsolatedSubflowsRemoval}), and a derivation $\Phi$ that is in simple form with respect to $a_1$, $\dots$, $a_n$. If $n=1$ and $\Phi$ is weakly streamlined with respect to $a_1$, then $\MISR_1(\Phi,a_1)=\Phi$; if $n>1$ and, for some $1\le i\le n$, $\Phi$ is weakly streamlined with respect to $a_i$, then $\MISR_n(\Phi,a_1,\dots,a_n)=\MISR_{n-1}(\Phi,a_1,\dots,a_{i-1},a_{i+1},\dots,a_n)$; otherwise, consider the following $\ai$-decomposed form of $\Phi$:
 \[
 \vlder{\Phi'}{}
 {
@@ -339,7 +339,7 @@ For every $n>0$, given the atoms, formulae and derivations described in Definiti
   {
    \ttt
   }
- \;.\;
+ \;.\;\cdots\;.\;
   \vlinf{}{}
   {
    \vls[a_n^{\psi_n}.\bar a_n]
@@ -468,7 +468,7 @@ with flow
 \vcenter{\hbox{\includegraphics{Figures/defMISR2}}}
 \quad.
 \]
-We then define $\MISR_n(\Phi,a_1,\dots,a_n)$ to be such that $\Psi\to_\frmis\MISR(\Phi,a_1,\dots,a_n)$, where $\phi$, $\psi_1$, $\dots$, $\psi_n$ are the flows, by the same names, shown in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}.
+We then define $\MISR_n(\Phi,a_1,\dots,a_n)$ to be such that $\Psi\to_\frmis\MISR_n(\Phi,a_1,\dots,a_n)$, where $\phi$, $\psi_1$, $\dots$, $\psi_n$ are the flows, by the same names, shown in Definition~\vref{definition:MultipleIsolatedSubflowsRemoval}.
 \end{definition}
 %---------------
 
