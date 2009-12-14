@@ -16,14 +16,17 @@ A path can be eliminated by removing the edges that make up the path. However, w
 
 Sometimes, the elimination of edges mapped to by an atom $a$ might interfere with the elimination of edges mapped to from the atom $\bar a$. For this reason, we find it convenient to define special cases of simple form and weakly streamlined, where for every pair of dual atoms the edges mapped to from one of them are ignored. These are cases (\ref{definition:FlowNormalForms:item:SimpleForm}) and (\ref{definition:FlowNormalForms:item:WeaklyStreamlinedPolarity}) of Definition~\ref{definition:FlowNormalForms}.
 
-\TODO{Get intuition about simple form.}
+\Tom{Added one bullet point for each normal form:}
 
-The intuition behind the other normal forms are:
-\begin{itemize}
+In summary, the intuition behind each of the normal forms in Definition~\vref{definition:FlowNormalForms} is:
+\begin{enumerate}
+\item a flow is in simple form with respect to a given polarity assignment, if all the edes with a positive polarity assignment can be partitioned into two classes, the ones that belong to paths connecting identity and cut vertices (the rightmost box markde with a $\ppl$ in the below figure) and the ones that do not (the four leftmost boxes marked with $\ppl$ in the below figure);
+\item a flow is weakly streamlined with respect to a given polarity assignment, if there are no edges with a possitive polarity assignment in paths from interaction cut to vertices;
+\item a flow is weakly streamlined if it contains no paths from interaction to cut vertices;
 \item a weakly streamlined flow is streamlined if it contains no paths from interaction (resp., cut) to coweakening (resp., weakening) vertices, or from weakening to coweakening vertices;
 \item a streamlined flow is \emph{super streamlined} if it contains no paths from (co)weakening to (co)contraction vertices; and
 \item a super streamlined flow is \emph{hyper streamlined} if it contains no path whose first edge is an upper edge of a cocontraction vertex and last edge is the lower edge of a contraction vertex.
-\end{itemize}
+\end{enumerate}
 
 
 
