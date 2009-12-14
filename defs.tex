@@ -25,6 +25,13 @@
 \newtheorem{remark}[theorem]{Remark}
 
 %-------------------------------------------
+% Make sure the numbering of theorems are reset
+\makeatletter
+\@addtoreset{theorem}{chapter}
+\@addtoreset{theorem}{section}
+\makeatother
+
+%-------------------------------------------
 \definecolor{darkgreen}{rgb}{0.0,0.4,0.0}
 \definecolor{darkred}{rgb}{0.4,0.0,0.0}
 \newif\ifnonotes\nonotesfalse
