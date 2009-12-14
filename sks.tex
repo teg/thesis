@@ -277,6 +277,25 @@ We often write $\vlinf{\ssu}{}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\v
 we write $\vlinf{\supers}{}{\vls[\zeta\{\fff\}.\xi\{\alpha\}]}{\vls(\zeta\{\alpha\}.\xi\{\ttt\})}$.
 \end{notation}
 
+\Tom{Added Lemma with proof. This was implicitly proven in Theorem~\vref{theorem:ThresholdDerivations}.}
+
+We now show a consequenc of the previous Lemma, which will be very useful in Subsection~\vref{subsection:ThresholdFormulae}.
+
+%------------------------------------------------
+\begin{lemma}\label{lemma:SuperSwitchContraction}
+Given a formula $\alpha$ and an atom $a$, there exist derivations $\vlder{}{\{\acu,\swi\}}{\alpha}{\vls(a.\alpha\{a/\ttt\})}$ and $\vlder{}{\{\acd,\swi\}}{\vls[\alpha\{a/\fff\}.a]}{\alpha}$; both of whose size depend at most quadratically on the size of $\alpha$.
+\end{lemma}
+
+\begin{proof}
+We show how to construct the first derivation, the second one can be done symmetrically. The result follows by induction on the number of occurrences of $a$ in $\alpha$, and Lemma~\vref{lemma:SuperSwitch}. The base case is trivial. Let $\xi\vlhole$ be some context such that, $\alpha=\xi\{a\}$, then the inductive case is:
+\[
+\vlder{}{\{\swi\}}{\vls(a.(\xi\{a/\ttt\})\{a\})}{\vls(\vlinf{}{}{\vls(a.a)}{a}.(\xi\{a/\ttt\})\{\ttt\})}
+\quad.
+\]
+\end{proof}
+%----------
+
+
 \begin{lemma}\label{lemma:GenericWeakening}
 Given a formula $\alpha$, there exist derivations $\vlupsmash{\vlder{}{\{\awd,\swi\}}{\alpha}{\fff}}$ and $\vlupsmash{\vlder{}{\{\awu,\swi\}}{\ttt}{\alpha}}$; both of whose size depend at most quadratically on the size of $\alpha$.
 \end{lemma}

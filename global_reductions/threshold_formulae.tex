@@ -469,6 +469,8 @@ General (co)weak\-en\-ing rule instances can be replaced by atomic ones because 
 
 \Tom{Rephrased slightly to avoid overfull}
 
+\Tom{Extracted a constructin with superswitches and (co)contractions into its own Lemma.}
+
 \begin{definition}\label{definition:ThresholdDerivations}
 Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the derivation $\vlsmash{\Gammasf^n_k\avec1n}$ to be:
 \[\hss
@@ -478,17 +480,11 @@ Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the d
  {
   \vlsbr
   (
-   \vlder{}{\{\ssd\}}
+   \vlder{}{\{\acd,\swi\}}
    {
     \vlsbr
     [
-     \vlder{}{\{\acd\}}
-     {
-      a_1
-     }
-     {
-      \vls[a_1.\cdots.a_1]
-     }
+     a_1
     \;\;.\;\;
      \th {k+1}n\avec1n\{a_1/\fff\}
     ]
@@ -497,17 +493,11 @@ Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the d
     \th {k+1}n\avec1n
    }
   \;\;.\;\;\cdots\;\;.\;\;
-   \vlder{}{\{\ssd\}}
+   \vlder{}{\{\acd,\swi\}}
    {
     \vlsbr
     [
-     \vlder{}{\{\acd\}}
-     {
-      a_n
-     }
-     {
-      \vls[a_n.\cdots.a_n]
-     }
+     a_n
     \;\;.\;\;
      \th {k+1}n\avec1n\{a_n/\fff\}
     ]
@@ -527,20 +517,14 @@ Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the d
    {
     \vlsbr
     [
-     \vlder{}{\{\ssu\}}
+     \vlder{}{\{\acu,\swi\}}
      {
       \th {k+1}n\avec1n
      }
      {
       \vlsbr
       (
-       \vlder{}{\acu}
-       {
-        \vls(a_1.\cdots.a_1)
-       }
-       {
-        a_1
-       }
+       a_1
       \;\;.\;\;
        \vlder{\Gth k1n\avec1n}{}
        {
@@ -552,20 +536,14 @@ Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the d
       )
      }
     \;\;.\;\;\cdots\;\;.\;\;
-     \vlder{}{\{\ssu\}}
+     \vlder{}{\{\acu,\swi\}}
      {
       \th {k+1}n\avec1n
      }
      {
       \vlsbr
       (
-       \vlder{}{\acu}
-       {
-        \vls(a_n.\cdots.a_n)
-       }
-       {
-        a_n
-       }
+       a_n
       \;\;.\;\;
        \vlder{\Gth knn\avec1n}{}
        {
@@ -580,8 +558,9 @@ Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$. For $k\ge0$, we define the d
    }
   }
  }
-}\;.
+}\;,
 \]
+where we use the derivations constructed in the proof of Lemma~\vref{lemma:SuperSwitchContraction}.
 \end{definition}
 
 %-------------------------------------------------------------------------------
