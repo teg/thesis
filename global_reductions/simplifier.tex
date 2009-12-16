@@ -39,8 +39,6 @@ Assume all the edges in $\phi$ are mapped to from occurrences of the atoms $a_1$
 \]
 be the $\ai$-decomposed form of $\Phi$.
 
-\TODO{Consider using $\epsilon$'s instead of $\phi$'s above.}
-
 We show several intermediate derivations which will be used to build $\Psi$. To make it easier to verify the flow of $\Psi$, we will, through a slight misuse of notation, label the atom occurrences of the intermediate derivations to indicate what atomic flow each atom occurrence will map to, once the derivations are combined to create $\Psi$.
 
 Consider the substitution
@@ -68,7 +66,7 @@ For every $1\le i\le n$, there exist derivations
   \;.\;
    \vlinf{}{}{a_i^{f_4(\phi)}}{\fff}
   ]
- )  
+ )
 }
 {a_i}
 \qquad\mbox{and}\qquad
@@ -88,9 +86,6 @@ For every $1\le i\le n$, there exist derivations
 )
 \quad,
 \]
-
-\TODO{`build' is too vague}
-
 which allow us to build
 \[
 \vlder{\Psi_\top}{}{\alpha\sigma}{\alpha}
@@ -221,8 +216,6 @@ with the desired flow.
 We know that the size of $\Phi'\sigma$ depends at most polynomially on the size of $\Phi$ by Theorem~\vref{theorem:aiDecomposedForm} and Proposition~\vref{proposition:DerivationSubstitution}, and it is straightforward to observe that the sizes of $\Psi_\ttt$, $\Psi_\top$, $\Psi_\fff$ and $\Psi_\bot$ depend at most linearly on the size of $\Phi$, so the size of $\Psi$ depends at most polynomially on the size of $\Phi$.
 \end{proof}
 %----------
-
-\TODO{Alessio: I simplified this section to not talk about polarities. Changed definition of operator and proved proposition. Does not affect the following subsections (only the final Main Result section (it makes it much simpler).}
 
 %----------------------------------
 \newcommand{\Simpl}{\mathsf{Si}}

@@ -72,6 +72,8 @@ all the atom occurrences in $\alpha$, $\beta$, $\gamma$ and $\delta$ in the prem
 We sketch the proof: We proceede by induction on $\Phi$. If $\Phi$ is a formula or a horizontal composition of derivations, the result is immediate. Otherwise, if $\Phi$ is a vertical composition of two derivations by an inference rule, the result follows by induction and a case analysis of each inference rule of $\SKS$.
 \end{proof}
 
+\Tom{I decided not to do this for lack of time (unless you insist of course):}
+
 \TODO{Macro for ``mapped from occurrences of''.}
 
 %---------------------------------------
@@ -133,7 +135,7 @@ Figure~\vref{figure:ExampleAtomicFlows} has three examples of derivations and th
    {\vls((\RD{a}.[[\GR{\bar a}.\YO{\bar a}].\SG{a}]).\MG{\bar a})} {
 \vlin\aid{}
    {\vls((\RD{a}.[\GR{\bar a}.[\YO{\bar a}.\SG{a}]]).\MG{\bar a})}{
-\vlhy        
+\vlhy
    {\vls((\RD{a}.[\GR{\bar a}.\ttt]).\MG{\bar a})                }}}}}}}}}}}
 \qquad&
 %-------------------
@@ -167,7 +169,7 @@ Figure~\vref{figure:ExampleAtomicFlows} has three examples of derivations and th
 %-------------------
 \vlinf=
       {}
-      {\vls(\DO{a}\;.\;\vlinf{}{}\fff{\vls(\PR{a}.\MG{\bar a})})}      
+      {\vls(\DO{a}\;.\;\vlinf{}{}\fff{\vls(\PR{a}.\MG{\bar a})})}
       {\vlsbr(\vlinf\swi
                     {}
                     {\vls[\vlinf{}
