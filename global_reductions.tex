@@ -1,39 +1,43 @@
 \chapter{Global Reductions}\label{chapter:GlobalReductions}
 
-\TODO{Consider internal/external instead of global/local}
-
 In this and the next chapter we see the second use of atomic flows: Controlling normalisation of derivations. Conventional wisdom teaches us that normalisation is a delicate property, and that a careful design of inference rules is necessary in order to obtain it. Atomic flows were designed to describe normal forms, by removing a lot of information about the inference rules, it is therefore surprising that they contain enough information to design normalisation procedures.
 
-There are two kinds of flow reductions: global and local ones. In global reductions, the entire flow is rewritten: normally, two or more slightly altered copies of a flow are connected together. In local reductions, a bounded subflow in a flow is substituted by another subflow that fits in the context.
+There are two kinds of flow reductions: global and local ones. Global reductions rewrites the entire flow: normally, two or more slightly altered copies of a flow are connected together. Local reductions substitutes a bounded subflow in a flow by another subflow that fits in the context.
+
+\Tom{Added paragraph:}
+
+Alternatively, as suggested by Fran\c{c}ois Lamarche, we could talk about external and internal instead of global and local reductions. This guides the intuition in the sense that the global reductions never `look inside' the flows they work on. The size of the flows being copied is unbounded, however, the alterations to each of the copies are bounded, and it always happens at the `outside' of the flow.
 
 This chapter is dedicated to the most challenging part of normalisation: obtaining weakly streamlined derivations through global reductions. The process is non-confluent, and at first glance it increases the size of derivations exponentially. However, a second surprise was the fact that we are able to design procedures for weakly streamlining which only grow derivations quasipolynomially.
 
 We will define several `atomic flow reductions' which can be combined in different ways in order to obtain normalisation. Since we aim to produce derivations on normal forms, and not only their atomic flows, we find it convenient to define \emph{operators} on derivations in terms of the flow reductions. It is important to note that we could have performed all the procedures purely in terms of atomic flows. The final results about derivations would follow from the `soundness' of the flow reductions. We chose to be a bit more explicit and provide the derivations directly.
 
-\TODO{Change $f$ and $g$ into something else, as not coincide whith function names used afterwards.}
+\Tom{Changed from $f$ and $g$ to $u$ and $l$.}
 
 %-------------------------------------------------
 \begin{definition}\label{definition:FlowReduction}
 An (\emph{atomic-flow}) \emph{reduction $R$}\index{reduction} is a binary relation on the set of atomic flows, such that $\phi\mathrel{R}\psi$ if
 \begin{enumerate}
 \item
-there is a one-to-one map, $f$, from the upper edges of $\phi$ to the upper edges of $\psi$;
+there is a one-to-one map, $u$, from the upper edges of $\phi$ to the upper edges of $\psi$;
 \item
-there is a one-to-one map, $g$, from the lower edges of $\phi$ to the lower edges of $\psi$; and
+there is a one-to-one map, $l$, from the lower edges of $\phi$ to the lower edges of $\psi$; and
 \item\label{definition:FlowReduction:item:Polarity}
-for every polarity assignment $\pi$ for $\phi$, there is a polarity assignment $\pi'$ for $\psi$ such that $\pi'(f(\epsilon))=\pi(\epsilon)$ and $\pi'(g(\iota))=\pi(\iota)$, for any upper edge $\epsilon$ and any lower edge $\iota$ of $\phi'$.
+for every polarity assignment $\pi$ for $\phi$, there is a polarity assignment $\pi'$ for $\psi$ such that $\pi'(u(\epsilon))=\pi(\epsilon)$ and $\pi'(l(\iota))=\pi(\iota)$, for any upper edge $\epsilon$ and any lower edge $\iota$ of $\phi'$.
 \end{enumerate}
 We call $\phi$ a \emph{redex} and $\psi$ a \emph{contractum} of $\mathrel R$.
 \end{definition}
 %---------------
 
-%-----------------------------------------------
-\begin{remark}\label{remark:LabelBijectionEdges}
-Given a reduction $R$ and two flows $\phi$ and $\psi$, such that $\phi\mathrel{R}\psi$, we indicate the bijections $f$ and $g$ by labeling the upper (resp., lower) edge $f(\epsilon)$ (resp., $g(\epsilon)$) of $\psi$ by $\epsilon$, for every upper (resp., lower) edge $\epsilon$ of $\phi$.
-\end{remark}
-%-----------
+%----------------------------------------------------------------
+\begin{convention}\label{convention:LabelBijectionEdgesReduction}
+Given a reduction $R$ and two flows $\phi$ and $\psi$, such that $\phi\mathrel{R}\psi$, we indicate the bijections $u$ and $l$ by labeling the upper (resp., lower) edge $u(\epsilon)$ (resp., $l(\epsilon)$) of $\psi$ by $\epsilon$, for every upper (resp., lower) edge $\epsilon$ of $\phi$.
+\end{convention}
+%---------------
 
-\TODO{``lifting''}
+\Tom{Added explanation:}
+
+It is important to notice the difference in notation, between the bijections between edges belonging to isomorphic flows, and the bijections between upper and lower edges in a redex/contractum pair. For an example of these two conventions being used simultaneously, see Definition~\vref{definition:FourBoxes}.
 
 %--------------------------------------------------
 \begin{definition}\label{definition:SoundRedcution}
