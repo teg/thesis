@@ -53,8 +53,6 @@ We now present the functorial calculus in the context of classical propositional
 
 The intuition behind derivations in the functorial calculus is that we can compose derivations by the same connectives we can compose formulae.
 
-\TODO{Why not use automatic normal forms?}
-
 %----------------------------------------------
 \begin{definition}\label{definition:Derivation}
 Given a deductive system $\mathcal S$, and formulae $\alpha$ and $\beta$; a (\emph{functorial calculus}) \emph{derivation $\Psi$ in $\mathcal S$ from $\alpha$ to $\beta$}\index{derivation!functorial calculus}, denoted $\vlder{\Psi}{\mathcal{S}}{\beta}{\alpha}$, is defined to be
@@ -236,6 +234,15 @@ to be equal, and we denote them both by
 \]
 \end{convention}
 %---------------
+
+\Tom{Added the following remark:}
+
+%----------------------------------------------------
+\begin{remark}\label{remark:NoNeedAssocOfComposition}
+If desireable, Convention~\vref{convention:DerAssociativeComposition} could be made redundant by forcing associativity of horizontal composition in Definition~\vref{definition:Derivation}. The only reason we did not do this was for the sake of brevity of the following results.
+\end{remark}
+%-----------
+
 
 %--------------------------------------
 \begin{lemma}\label{lemma:DerInContext}
