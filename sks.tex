@@ -295,6 +295,9 @@ We show how to construct the first derivation, the second one can be done symmet
 \end{proof}
 %----------
 
+\Tom{Added:}
+
+For an example of the use of Lemma~\vref{lemma:SuperSwitchContraction} see Remark~\vref{remark:CompactSKSComplete}.
 
 \begin{lemma}\label{lemma:GenericWeakening}
 Given a formula $\alpha$, there exist derivations $\vlupsmash{\vlder{}{\{\awd,\swi\}}{\alpha}{\fff}}$ and $\vlupsmash{\vlder{}{\{\awu,\swi\}}{\ttt}{\alpha}}$; both of whose size depend at most quadratically on the size of $\alpha$.
@@ -537,8 +540,10 @@ Given any formulae $\alpha$ and $\beta$ and any context $\xi\vlhole$, then, by a
 is complete for classical logic. This justifies the naming of the invertible rules, as the tradition is in deep inference to label admissible rules with an $\uparrow$.
 \end{remark}
 
-\begin{remark}
-If we allow the use of all the rules of $\SKS$, as opposed to only the down fragment, we can build a more compact proof than what we do in Theorem~\vref{theorem:SKSComplete}, by using the following as the inductive case:
+\Tom{Changed the following remark to illustrate the use of Lemma~\vref{lemma:SuperSwitchContraction}.}
+
+\begin{remark}\label{remark:CompactSKSComplete}
+If we do not restrict ourselves to the downfragment of $\SKS$, we can build a more compact proof than what we do in Theorem~\vref{theorem:SKSComplete}, by using the following as the inductive case:
 \[
 \vlderivation
 {
@@ -551,20 +556,14 @@ If we allow the use of all the rules of $\SKS$, as opposed to only the down frag
   {
    \vls
    [
-    \vlder{}{\{\ssu\}}
+    \vlder{}{\{\acu,\swi\}}
     {
      \alpha
     }
     {
      \vlsbr
      (
-      \vlder{}{\{\acu\}}
-      {
-       \vls(a.\cdots.a)
-      }
-      {
-       a
-      }
+      a
      \;\;.\;\;
       \vlder{}{\{\awd\}}
       {
@@ -576,20 +575,14 @@ If we allow the use of all the rules of $\SKS$, as opposed to only the down frag
      )
     }
    \;\;\;\;.\;\;\;\;
-    \vlder{}{\{\ssu\}}
+    \vlder{}{\{\acu,\swi\}}
     {
      \alpha
     }
     {
      \vlsbr
      (
-      \vlder{}{\{\acu\}}
-      {
-       \vls(\bar a.\cdots.\bar a)
-      }
-      {
-       \bar a
-      }
+      \bar a
      \;\;.\;\;
       \vlder{}{\{\awd\}}
       {
@@ -631,6 +624,7 @@ If we allow the use of all the rules of $\SKS$, as opposed to only the down frag
    }
   }
  }
-}\quad.
+}\quad,
 \]
+where we have used the derivations constructed in the proof of Lemma~\vref{lemma:SuperSwitchContraction}.
 \end{remark}
