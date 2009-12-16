@@ -76,9 +76,11 @@ We sketch the proof: We proceede by induction on $\Phi$. If $\Phi$ is a formula 
 
 \TODO{Macro for ``mapped from occurrences of''.}
 
+\Tom{Moved definition of $a^\phi$ and $a^\epsilon$ away from here.}
+
 %---------------------------------------
 \begin{definition}\label{definition:AssociatedFlow}
-Given a derivation $\Phi$, we say that the flow $\phi$ constructed in the proof of  Proposition~\vref{proposition:FlowUnique} is the (\emph{atomic}) \emph{flow associated with}\index{flow!associated with derivation} the derivation $\Phi$. Sometimes, when an atom occurrence $a$ in $\Phi$ is mapped to an edge $\epsilon$ in $\phi$, we decorate $a$ with the label $\epsilon$ or the label $\phi$.
+Given a derivation $\Phi$, we say that the flow $\phi$ constructed in the proof of  Proposition~\vref{proposition:FlowUnique} is the (\emph{atomic}) \emph{flow associated with}\index{flow!associated with derivation} the derivation $\Phi$.
 \end{definition}
 %---------------
 
@@ -341,12 +343,17 @@ whose flow is $\phi$.
 \end{proof}
 %----------
 
-\Tom{Added example (from paper on quasipolynomial normalisation.}
+\Tom{Added notation which used to be defined in a previous definition:}
 
-\TODO{Clean up the following example (cf. AFII).}
+%---------------
+\begin{notation}
+Given a derivation $\Phi$, an atom occurrence $a$ in $\Phi$ and the flow $\phi$ of $\Phi$, then, whenever we write $a^\epsilon$ or $a^\psi$, we mean that there is a subflow $\psi$ of $\phi$ containing the edge $\epsilon$, such that $a$ is mapped to $\epsilon$.
+\end{notation}
+%-------------
 
-\begin{example}
-As we mention at the beginning of this section, atomic flows help in selectively substituting for atom occurrences. In fact, given a derivation and its associated flow, we can use edges and boxes to individuate atom occurrences in the derivation, and then possibly substitute for them. For example, let us suppose that we are given the following associated derivation and flow:
+\Tom{Added intuition (from paper on quasipolynomial normalisation).}
+
+We will now see how this notation might be useful when selectively substituting for atom occurrences. For example, let us suppose that we are given the following associated derivation and flow:
 \[
 \Phi=
 \vlsbr[\vlderivation                                              {
@@ -386,9 +393,9 @@ We generalise this labelling mechanism to boxes. For example, we can use a diffe
       \vlx.\vlx\bar a^\phi]
 \qquad\text{and}\qquad
 \vcenter{\hbox{\includegraphics{Figures/substExBox}}}
+\quad.
 \]
-\end{example}
-%------------
+This notation is used in Proposition~\vref{proposition:DerivationSubstitution}, where we define how we can, in certain cases, substitute formulae in place of atom occurrences. This technique is used in Theorem~\vref{theorem:SoundFourBoxes}, Theorem~\vref{theorem:SoundIsolatedSubflowRemoval} and Theorem~\vref{theorem:SoundMultipleIsolatedSubflowsRemoval}.
 
 \Tom{Moved the following Proposition, Notation and Remark from the sectoin on Global Reductions.}
 
