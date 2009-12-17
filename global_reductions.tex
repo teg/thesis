@@ -1,6 +1,8 @@
 \chapter{Global Reductions}\label{chapter:GlobalReductions}
 
-In this and the next chapter we see the second use of atomic flows: Controlling normalisation of derivations. Conventional wisdom teaches us that normalisation is a delicate property, and that a careful design of inference rules is necessary in order to obtain it. Atomic flows were designed to describe normal forms, by removing a lot of information about the inference rules, it is therefore surprising that they contain enough information to design normalisation procedures.
+\Tom{`property' -> `process'}
+
+In this and the next chapter we see the second use of atomic flows: Controlling normalisation of derivations. Conventional wisdom teaches us that normalisation is a delicate process, and that a careful design of inference rules is necessary in order to obtain it. Atomic flows were designed to describe normal forms, by removing a lot of information about the inference rules, it is therefore surprising that they contain enough information to design normalisation procedures.
 
 There are two kinds of flow reductions: global and local ones. Global reductions rewrites the entire flow: normally, two or more slightly altered copies of a flow are connected together. Local reductions substitutes a bounded subflow in a flow by another subflow that fits in the context.
 
@@ -61,7 +63,7 @@ Alternatively, as suggested by Fran\c{c}ois Lamarche, instead of saying that a r
 
 %-----------------
 \begin{convention}
-To avoid ambiguity in Definition~\vref{definition:FourBoxes}, Definition~\vref{definition:IsolatedSubflowRemoval}, Definition~\vref{definition:PathBreaker} and Definition~\vref{definition:MultipleIsolatedSubflowsRemoval} we have establish the following convention:
+To avoid ambiguity in Definition~\vref{definition:FourBoxes}, Definition~\vref{definition:IsolatedSubflowRemoval}, Definition~\vref{definition:PathBreaker} and Definition~\vref{definition:MultipleIsolatedSubflowsRemoval} we have established the following convention:
 Let $\boldsymbol\epsilon=\epsilon_1,\dots,\epsilon_n$, $\boldsymbol\iota=\iota_1,\dots,\iota_m$, $\boldsymbol{\epsilon'}=\epsilon'_1,\dots,\epsilon'_n$ and $\boldsymbol{\iota'}=\iota'_1,\dots,\iota'_m$, then, when we write
 \[
 \vcenter{\hbox{\includegraphics{Figures/convDissamb1}}}

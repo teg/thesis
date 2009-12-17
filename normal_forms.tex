@@ -10,7 +10,7 @@ We defined normal forms based on the causal dependency between structural infere
 
 We call our generalisation of cut elimination \emph{streamlining} and we describe it in terms of atomic flows. Intuitively, if we consider identities and weakenings to be the `creators' of atom occurrences, and cuts and coweakening as the `destroyers' of atom occurrences, then an atomic flow is streamlined if no atom is first created and then destroyed. The shape of a streamlined atomic flow is given in case (\ref{definition:FlowNormalForms:item:Streamlined}) of Definition~\vref{definition:FlowNormalForms}.
 
-The most challenging aspect of streamlining is the elimination of paths from interaction to cut vertices. For this reason, we define the notion of \emph{weakly streamlined} atomic flows, in case (\ref{definition:FlowNormalForms:item:WeaklyStreamlined}) of Definition~\ref{definition:FlowNormalForms}. An atomic flow is weakly streamlined if it contains no paths from interaction to cut vertices. This is the topic of Chapter~\vref{chapter:GlobalReductions}.
+The most challenging aspect of streamlining is the elimination of paths from interaction to cut vertices. For this reason, we define the notion of a \emph{weakly streamlined} atomic flow, in case (\ref{definition:FlowNormalForms:item:WeaklyStreamlined}) of Definition~\ref{definition:FlowNormalForms}. An atomic flow is weakly streamlined if it contains no path from an interaction to a cut vertex. This is the topic of Chapter~\vref{chapter:GlobalReductions}.
 
 A path can be eliminated by removing the edges that make up the path. However, we might imagine a situation where an edge belongs to two paths, one we want to eliminate and one we want to keep. An atomic flow is in \emph{simple form}, if this situation does not occur. One approach to eliminating paths from a flow is to transform it into simple form and then eliminating the edges connecting interaction and cut vertices.
 
@@ -20,7 +20,7 @@ Sometimes, the elimination of edges mapped to by an atom $a$ might interfere wit
 
 In summary, the intuition behind each of the normal forms in Definition~\vref{definition:FlowNormalForms} is:
 \begin{enumerate}
-\item a flow is in simple form with respect to a given polarity assignment, if all the edes with a positive polarity assignment can be partitioned into two classes, the ones that belong to paths connecting identity and cut vertices (the rightmost box markde with a $\ppl$ in the below figure) and the ones that do not (the four leftmost boxes marked with $\ppl$ in the below figure);
+\item a flow is in simple form with respect to a given polarity assignment, if all the edes with a positive polarity assignment can be partitioned into two classes, the ones that belong to paths connecting interaction and cut vertices (the rightmost box markde with a $\ppl$ in the below figure) and the ones that do not (the four leftmost boxes marked with $\ppl$ in the below figure);
 \item a flow is weakly streamlined with respect to a given polarity assignment, if there are no edges with a possitive polarity assignment in paths from interaction cut to vertices;
 \item a flow is weakly streamlined if it contains no paths from interaction to cut vertices;
 \item a weakly streamlined flow is streamlined if it contains no paths from interaction (resp., cut) to coweakening (resp., weakening) vertices, or from weakening to coweakening vertices;

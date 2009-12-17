@@ -54,7 +54,7 @@ We now define a class of operators $\th kn$, which takes $n$ atoms as arguments 
 \Tom{No longer require the atoms to be distinct, as it the restriction might just as well be put where it is used (it will then also be clear straight away why it is needed).}
 
 \Tom{Changed the definition to make it clear that the the names of the atoms are local variables (in programming parlance), so we have a wellfounded definition. The old definition was in terms of global variables (so it could not rely on an implicit renaming). This is the old definition:
-Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$, and let $p=\lfloor n/2\rfloor$ and $q=n-p$; for $k\ge0$, we define the \emph{threshold formulae\/}\index{threshold!formulae} $\th kn\avec1n$ as follows:
+Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$, and let $p=\lfloor n/2\rfloor$ and $q=n-p$; for $k\ge0$, we define the \emph{threshold formulae\/} $\th kn\avec1n$ as follows:
 \begin{itemize}
 %---------------------------------------
 \item for any $n>0$ let $\th0n\avec1n\equiv\ttt$;
@@ -64,11 +64,11 @@ Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$, and let $p=\lfloor n/2\rfloo
 \item $\th11(a_1)\equiv a_1$;
 %---------------------------------------
 \item for any $n>1$ and $0<k\le n$ let
-$\th kn\avec1n\equiv\bigvee_{\begin{subarray}{l}i+j=k      \\
+\[\th kn\avec1n\equiv\bigvee_{\begin{subarray}{l}i+j=k      \\
                                                 0\le i\le p\\
                                                 0\le j\le q
                              \end{subarray}}
-\vlsbr(\th ip\avec1p.\th jq\avec{p+1}n)$.
+\vlsbr(\th ip\avec1p.\th jq\avec{p+1}n)\;.\]
 %---------------------------------------
 \end{itemize}
 }
@@ -105,7 +105,7 @@ For every $n>0$ and $k\ge0$, we define the operator $\th kn$ inductively as foll
     \text{otherwise.}
 \end{cases}
 \]
-For any $n$ atoms $a_1$, $\dots$, $a_n$, we call $\th kn\avec1n$ the \emph{threshold formula at level $k$} (\emph{with respect to $a_1$, $\dots$, $a_n$\/})\index{threshold!formulae}.
+For any $n$ atoms $a_1$, $\dots$, $a_n$, we call $\th kn\avec1n$ the \emph{threshold formula at level $k$} (\emph{with respect to $a_1$, $\dots$, $a_n$\/})\index{threshold formula}.
 \end{definition}
 
 See, in Figure~\vref{figure:ThresholdFormulae}, some examples of threshold formulae.
@@ -224,9 +224,6 @@ The size of the threshold formulae dominates the cost of the normalisation proce
 For any $n>0$ and $k\ge0$, $\size{\th kn\avec1n}\le\size{\th{\underline  n+1}n\avec1n}$.
 \end{proposition}
 
-\newcommand{\Ord}[1]{{\mathsf O}(#1)}
-\Tom{$\Ord{\cdot}$ is not defined, but it is very standard, so I leave it undefined.}
-
 %-------------------------------------------------------------------------------
 \begin{lemma}\label{lemma:SizeThresholdMax}
 The size of\/ $\th{\underline  n+1}n\avec1n$ is $n^{\Ord{\log n}}$.
@@ -283,7 +280,7 @@ It immediately follows from Proposition~\vref{proposition:LargestThresholdFormul
 %-------------------------------------------------------------------------------
 \begin{remark}\label{remark:UpsideDownCoweakening}
 Given $n>1$ and distinct atoms $a_1$, $\dots$, $a_n$. For $0\le k\le \overline  n$ and $1\le l\le \underline  n$, the following derivation is well defined:
-\[
+\[\hss
 \vlinf{\weu}
       {}
       {\fff}
@@ -298,7 +295,7 @@ Given $n>1$ and distinct atoms $a_1$, $\dots$, $a_n$. For $0\le k\le \overline  
 \;.
 \]
 Analogously, for $0\le k\le {\underline  n}$ and ${\underline  n}+1\le l\le n$, we can define the following derivation:
-\[
+\[\hss
 \vlinf{\weu}
       {}
       {\fff}
@@ -330,7 +327,7 @@ Consider $n>0$, distinct atoms $a_1$, \dots, $a_n$.
 %---------------------------------------
 \item
 For $n>1$ and $1\le l\le n$, we define the derivations $\Uth kln\avec1n$ and $\Dth kln\avec1n$ as follows:
-\[
+\[\hss
 \Uth kln\avec1n=
 \begin{cases}
 \vlinf{\weu}
@@ -400,7 +397,7 @@ For $k\ge0$ and $1\le l\le n$, we define the derivations $\vlsmash{\Gth kln\avec
 \th i{\underline  n}\avec1{\underline  n}.
 \Gth j{l-{\underline  n}}{\overline  n}\avec{{\underline  n}+1}n).
 \Uth kln\avec1n.\Dth{k+1}ln\avec1n]
-\quad.
+\;.
 \]
 %---------------------------------------
 \end{itemize}
@@ -464,7 +461,7 @@ The shape of $\Gth kln\avec1n$ can be verified by inspecting Definition~\vref{de
 ]
 \quad.
 \]
-General (co)weak\-en\-ing rule instances can be replaced by atomic ones because of Lemma~\vref{lemma:GenericWeakening}. The size bound on $\Gth kln\avec1n$ follows from Proposition~\vref{proposition:DerivationSubstitution} and Theorem~\vref{theorem:SizeThreshold}.
+General (co)weak\-en\-ing rule instances can be replaced by their atomic counterparts due to Lemma~\vref{lemma:GenericWeakening}. The size bound on $\Gth kln\avec1n$ follows from Proposition~\vref{proposition:DerivationSubstitution} and Theorem~\vref{theorem:SizeThreshold}.
 \end{proof}
 
 \Tom{Rephrased slightly to avoid overfull}

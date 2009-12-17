@@ -2,7 +2,9 @@
 
 \section{System SKS}
 
-We now define the standard deductive system for classical propositional logic in deep inference $\SKS$\index{$\SKS$} \cite{Brun:03:Atomic-C:oz,Brun:06:Cut-Elim:cq,Brun:06:Locality:zh,BrunTiu:01:A-Local-:mz}. For an excellent reference to previous work on normalisation in $\SKS$, see \cite{Brun:04:Deep-Inf:rq}. Subsystems of $\SKS$ are used throughout this thesis.
+\Tom{Rephrased first sentence.}
+
+We now define the standard deductive system $\SKS$\index{$\SKS$} for classical propositional logic in deep inference  \cite{Brun:03:Atomic-C:oz,Brun:06:Cut-Elim:cq,Brun:06:Locality:zh,BrunTiu:01:A-Local-:mz}. For an excellent reference to previous work on normalisation in $\SKS$, see \cite{Brun:04:Deep-Inf:rq}. Subsystems of $\SKS$ are used throughout this thesis.
 
 The results presented in this section, with the exception of Theorem~\vref{theorem:SKSComplete}, are standard results which can be found in the literature. We include the proofs for completeness and as means for giving examples of the functorial calculus.
 
@@ -108,8 +110,11 @@ whose size depends at most quadratically on the sum of the sizes of $\alpha$ and
 \end{remark}
 %-----------
 
+\Tom{`Let' -> `Given'.}
+
+%-------------------------------------------------
 \begin{notation}\label{notation:ImplicitEquations}
-When we work in (subsystems of) $\SKS$, we often omit mentioning the invertible rules. Let $\mathcal{S}$ be a subsystem of $\SKS$, then, unless specified otherwise, when we write $\mathcal{S}$ we mean $\mathcal{S}\cup\{\coor,\coand,\asor,\asand,\fffd,\tttd,\fffu,\tttu,\fffandd,\tttord,\fffandu,\tttoru\}$. Furthermore, if $\rho\in\SKS$, and there is a derivation
+When we work in (subsystems of) $\SKS$, we often omit mentioning the invertible rules. Given $\mathcal{S}$ be a subsystem of $\SKS$, then, unless specified otherwise, when we write $\mathcal{S}$ we mean $\mathcal{S}\cup\{\coor,\coand,\asor,\asand,\fffd,\tttd,\fffu,\tttu,\fffandd,\tttord,\fffandu,\tttoru\}$. Furthermore, if $\rho\in\SKS$, and there is a derivation
 \[
 \vlderivation
 {
@@ -263,8 +268,10 @@ for some $\xi'\vlhole$ and $\beta$ where $\beta$ is not a unit and $\Psi$ and $\
 \newcommand{\ssu}{\supers\uparrow}
 \newcommand{\ssd}{\supers\downarrow}
 
+\Tom{Removed $\{\swi\}$ from the stem of derivations.}
+
 \begin{notation}\label{notation:SuperSwitch}
-We often write $\vlinf{\ssu}{}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlinf{\ssd}{}{\vls[\xi\{\fff\}.\alpha]}{\xi\{\alpha\}}$, instead of, respectively, the derivations $\vlder{}{\{\swi\}}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlder{}{\{\swi\}}{\vls[\xi\{\fff\}.\alpha]}{\xi\{\alpha\}}$, as defined in the proof of Lemma~\vref{lemma:SuperSwitch}. Instead of the derivation
+We often write $\vlinf{\ssu}{}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlinf{\ssd}{}{\vls[\xi\{\fff\}.\alpha]}{\xi\{\alpha\}}$, instead of, respectively, the derivations $\vlder{}{}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlder{}{}{\vls[\xi\{\fff\}.\alpha]}{\xi\{\alpha\}}$, as defined in the proof of Lemma~\vref{lemma:SuperSwitch}. Instead of the derivation
 \[
 \vlinf{\swi}{}
 {

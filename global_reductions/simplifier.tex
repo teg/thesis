@@ -1,9 +1,9 @@
-Consider a flow $\phi'$ with polarity assignemnt $\pi$, such that $\phi$ is the subflow of $\phi'$ containing all the edges with a positive polarity assignment. We can observe that $\phi$ contains four types of paths: 1) paths from $\top$ to $\bot$; 2) paths from an interaction vertex to $\bot$; 3) paths from $\top$ to a cut vertex; and 4) paths from an interaction vertex to a cut vertex. We can turn $\phi'$ into simple form with respect to $\pi$ if we can make sure that no edge belongs to both a path of type 1) and a path of type 4). In the following reduction, we acheive this by making four copies of $\phi$ each of which only contains one of the above types of paths.
+Consider a flow $\phi'$ with polarity assignemnt $\pi$, such that $\phi$ is the subflow of $\phi'$ containing all the edges with a positive polarity assignment. We can observe that $\phi$ contains four types of paths: 1) paths from $\top$ to $\bot$; 2) paths from an interaction vertex to $\bot$; 3) paths from $\top$ to a cut vertex; and 4) paths from an interaction vertex to a cut vertex. We can turn $\phi'$ into simple form with respect to $\pi$ if we can make sure that no edge belongs to both a path of type 1) and a path of type 4). In the following reduction, we achieve this by making four copies of $\phi$ each of which only contains one of the above types of paths.
 
 %--------------------------------
 \newcommand{\frfb}{{\mathsf{sf}}}
 \begin{definition}\label{definition:FourBoxes}
-We define the reduction $\to_\frfb$ (where $\frfb$ stands for \emph{simple form}\index{simplifier!reduction}) as follows, for any two flows $\phi$ and $\psi$ that do not contain any interaction or cut vertices:
+We define the reduction $\to_\frfb$ (where $\frfb$ stands for \emph{simple form}\index{Simplifier!reduction}) as follows, for any two flows $\phi$ and $\psi$ that do not contain any interaction or cut vertices:
 \[
 \vcenter{\hbox{\includegraphics{Figures/redSimRedex}}}
 \quad\to_\frfb\quad
@@ -220,7 +220,7 @@ We know that the size of $\Phi'\sigma$ depends at most polynomially on the size 
 %----------------------------------
 \newcommand{\Simpl}{\mathsf{Si}}
 \begin{definition}\label{definition:Simplifier}
-The \emph{Simplifier}\index{Simplifier}, $\Simpl$, is an operator whose arguments are distinct and pairwise non-dual atoms $a_1$, $\dots$, $a_n$ and a derivation $\Phi$, with flow
+The \emph{Simplifier}\index{Simplifier!operator}, $\Simpl$, is an operator whose arguments are distinct and pairwise non-dual atoms $a_1$, $\dots$, $a_n$ and a derivation $\Phi$, with flow
 \[
 \vcenter{\hbox{\includegraphics{Figures/defSimplifier}}}
 \quad,

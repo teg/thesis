@@ -10,7 +10,7 @@ In this chapter we introduce the main tool used in this thesis, a geometric proo
 
 \Tom{Changed comparison with proof nets (Lutz approves).}
 
-Atomic flows can be seen as either specialised Buss flow graphs \cite{Buss:91:The-Unde:uq,Carb:97:Interpol:fk}, or a variation of the kind of proof nets developed in \cite{Stra:05:From-Dee:yb,Stra:09:From-Dee:fr}, based on work done in \cite{LamaStra:05:Naming-P:ov}. The only difference between atomic flows and these proof nets is that the proof nets implement (co)associativity of (co)contraction and dinaturality of identity and cut, while atomic flows do not. For a more detailed comparison see \cite{Stra:09:From-Dee:fr}. Despite their similarities, the motivation and use of atomic flows differ from that of proof nets.
+Atomic flows can be seen as either specialised Buss flow graphs \cite{Buss:91:The-Unde:uq,Carb:97:Interpol:fk}, or a variation of the kind of proof nets developed in \cite{Stra:05:From-Dee:yb,Stra:09:From-Dee:fr}, based on work done in \cite{LamaStra:05:Naming-P:ov}. The only difference between atomic flows and these proof nets is that the proof nets implement (co)associativity of (co)contraction and dinaturality of interaction and cut, while atomic flows do not. For a more detailed comparison see \cite{Stra:09:From-Dee:fr}. Despite their similarities, the motivation and use of atomic flows differ from that of proof nets.
 
 \Tom{Deleted here all mention of mapping from flows to derivations, as this was missleading in this context. It will be covered in greater detail later instead.}
 
@@ -91,11 +91,14 @@ We call the following six diagrams (\emph{atomic-flow}) \emph{labels}\index{flow
                                 {\scriptstyle-}
                                 {\scriptscriptstyle-}}}
 \newcommand{\card}[1]{\mathord\vert #1\mathord\vert}
-\newcommand{\up}{{\mathit up}}
-\newcommand{\lo}{{\mathit lo}}
+\newcommand{\up}{{\mathrm{up}}}
+\newcommand{\lo}{{\mathrm{lo}}}
+
+\Tom{Changed typesetting of $\up$ and $\lo$.}
+
 %---------------------------------------
 \begin{definition}\label{definition:AtomicFlow}
-An (\emph{atomic}) \emph{flow}\index{flow}\index{atomic flow|see{flow}} is a tuple $(V,E,\eta,\up,\lo)$, denoted $\phi$ or $\psi$, such that:
+An (\emph{atomic}) \emph{flow}\index{flow}\index{atomic flow|see{flow}} is a tuple $(V,E,\eta,\up,\lo)$, such that:
 \begin{enumerate}
 %-------------------
 \item $V$ is a finite set of \emph{vertices}\index{flow!vertices}, denoted by $\nu$;
@@ -130,6 +133,13 @@ Given an atomic flow $\phi$, we say that the sets $L_\top=\{\epsilon_1,\dots,\ep
 \end{definition}
 %---------------
 
+\Tom{Extracted notation from defintion:}
+
+\begin{notation}
+We will use the letters $\phi$ and $\psi$, sometimes with standard additional decorations, to denote atomic flows.
+\end{notation}
+
+
 An atomic flow is a directed graph, whose edges are associated to atom occurrences in derivations, and the direction of the edges corresponds to the up-down direction in a derivation. Vertices are associated to points in the derivation where atom occurrences are created or destroyed, and the nature of each vertex is described by its label. Naturally, these graphs are acyclic (condition~\ref{definition:AtomicFlow:item:Acyclic}). The two special vertices $\top$ and $\bot$ represent the top and bottom of a derivation: we can consider $\top$ the vertex that creates all the atom occurrences in the premiss and $\bot$ the vertex that destroys all atom occurrences in the conclusion.
 
 The polarity assignment condition (\ref{definition:AtomicFlow:item:PolarityAssignment}) ensures that atoms in (co)contractions have the same polarity, and those in interactions and cuts have dual polarities (as happens in derivations). Every atomic flow has $2^n$ polarity assignments, where $n$ is the number of connected components in the graph. We should not be worried about the apparent complexity of the polarity assignment condition: in fact, we could equivalently consider two sorts of (co)contraction and (co)weakening labels, the negative and the positive ones, and ask for vertices to be joined by respecting their polarities. This is clearly a locally checkable property, much simpler than, for example, some global correctness criterion for proof nets.
@@ -150,7 +160,7 @@ We sometimes use flow labels to indicate what kind of vertices a flow might cont
 \vcenter{\hbox{\includegraphics{Figures/boxDef4}}}
 \quad,
 \]
-do not contain $\aid$, $\aiu$, $\awd$, $\awu$ vertices, and the flow to the right does not contain $\acu$ vertices.
+do not contain $\aid$, $\aiu$, $\awd$, $\awu$ vertices, and in addition the flow to the right does not contain $\acu$ vertices.
 
 In general, we represent atomic flows as directed-graph diagrams, except that the special vertices $\top$ and $\bot$ are not shown, and the labels of the vertices are explicitly shown as graphical elements. When we refer to the vertices of an atomic flow, we do not include $\top$ and $\bot$. Sometimes we identify vertices with their labels. 
 \end{notation}
@@ -182,17 +192,19 @@ in the last two diagrams, we also indicated each of the two possible polarity as
 \end{example}
 %------------
 
+\Tom{Changed informal explanation of juxtaposition of flows:}
+
 %--------------
 \begin{example}
 The flow
 \[
 \vcenter{\hbox{\includegraphics{Figures/flowExample1}}}\quad,
 \]
-is obtained by juxtaposing (\emph{i.e.}, composing by identifying zero edges):
+is obtained by juxtaposing (\emph{i.e.}, taking the disjoint sum, identifying $\top$ and $\bot$):
 \begin{itemize}
 \item three edges, 
 \item a flow obtained by composing a cut vertex with a cocontraction vertex, and
-\item a flow obtained by composing an identity vertex with a cut vertex.
+\item a flow obtained by composing an interaction vertex with a cut vertex.
 \end{itemize}
 Note that there are no cycles in the flow, and that we can find 32 different polarity assignments, \emph{i.e.}, two for each of the five connected components of the flow.
 \end{example}
@@ -213,7 +225,7 @@ The left one is not a flow because it contains a cycle, and the right one becaus
 
 %---------------------------------------------------
 \begin{definition}\label{definition:FlowIsomorphism}
-Given two flows $\phi_1=(V_1,E_1,\eta_1,\up_1,\lo_1)$ and $\phi_2=(V_2,E_2,\eta_2,\up_2,\lo_2)$, an (\emph{atomic}) \emph{flow isomorphism}\index{flow!isomorphism} between $\phi_1$ and $\phi_2$ is a pair of functions $(f_V,f_E)$, such that
+Given two flows $\phi_1=(V_1,E_1,\eta_1,\up_1,\lo_1)$ and $\phi_2=(V_2,E_2,\eta_2,\up_2,\lo_2)$, an \emph{isomorphism}\index{isomorphism} between $\phi_1$ and $\phi_2$ is a pair of functions $(f_V,f_E)$, such that
 \begin{itemize}
 \item $f_V$ is a bijection from $V_1$ to $V_2$; and 
 \item $f_E$ is a bijection from $E_1$ to $E_2$,
@@ -252,7 +264,7 @@ and a flow $\psi$ which is isomorphic to $\phi$, whenever we write
 \vcenter{\hbox{\includegraphics{Figures/flowIso2}}}
 \quad,
 \]
-we mean that $f$ is a given flow isomorphism between $\phi$ and $\psi$.
+we mean that $f$ is a given isomorphism between $\phi$ and $\psi$.
 \end{notation}
 %-------------
 

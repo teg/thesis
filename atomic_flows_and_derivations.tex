@@ -86,7 +86,7 @@ Given a derivation $\Phi$, we say that the flow $\phi$ constructed in the proof 
 
 %--------------
 \begin{example}
-Figure~\vref{figure:ExampleAtomicFlows} has three examples of derivations and their associated flows, where colors are used to indicate the mapping from atom occurrences to edges.
+Figure~\vref{figure:ExampleAtomicFlows} has three examples of derivations and their associated flows, where colours are used to indicate the mapping from atom occurrences to edges.
 \end{example}
 %------------
 
@@ -256,10 +256,10 @@ First, we show that, for any atom $a$ and formula contexts $\xi\vlhole$ and $\ze
 \[
 \vlder{}{\{\swi,\med\}}
 {
- \vls[(\xi\{\{a\}.\zeta\{\fff\}).\ttt]
+ \vls[(\xi\{a\}.\zeta\{\fff\}).\ttt]
 }
 {
- \vls[(\xi\{\{\ttt\}.\zeta\{a\}).\ttt]
+ \vls[(\xi\{\ttt\}.\zeta\{a\}).\ttt]
 }\quad,
 \]
 in other words we can `move' the atom $a$ from the context $\xi\vlhole$ to the context $\zeta\vlhole$ by using a derivation whose flow contains no vertices:
@@ -424,9 +424,11 @@ We can proceed by structural induction on $\Phi$. For every formula in $\Phi$ we
 \end{proof}
 %----------
 
+\Tom{`Propostion' -> `Proposition'.}
+
 %---------------
 \begin{notation}
-The derivation $\Psi$ obtained in the proof of Propostion~\vref{proposition:DerivationSubstitution} is denoted $\Phi\{a^\phi/\gamma\}$.
+The derivation $\Psi$ obtained in the proof of Proposition~\vref{proposition:DerivationSubstitution} is denoted $\Phi\{a^\phi/\gamma\}$.
 \end{notation}
 %-------------
 
@@ -439,7 +441,7 @@ The notion of substitution can be extended to allow $\phi$ to contain interactio
 %=================================================================
 \section{A Normal Form of Derivation}\label{section:DerNormalForm}
 
-In this section we introduce the \emph{$\ai$-decomposed form} of a derivation. The reason for introducing this normal form is that we will often find it convenient to assume that identity instances appear at the top and cut instances appear at the bottom of a derivation. The important features of this normal form is that a derivation can be transformed into $\ai$-decomposed form without changing its atomic flow, and without significantly changing its size.
+In this section we introduce the \emph{$\ai$-decomposed form} of a derivation. The reason for introducing this normal form is that we will often find it convenient to assume that interaction instances appear at the top and cut instances appear at the bottom of a derivation. The important features of this normal form is that a derivation can be transformed into $\ai$-decomposed form without changing its atomic flow, and without significantly changing its size.
 
 \begin{definition}\label{definition:aiDecomposedForm}
 Given two derivations
@@ -458,6 +460,8 @@ Given two derivations
 for some atoms $a_1,\dots,a_n,b_1,\dots,b_m$, such that $\Phi$ and $\Psi$ have isomorphic flows, we say that $\Psi$ is an \emph{$\ai$-decomposed form of\/ $\Phi$}\index{$\ai$-decomposed form}.
 \end{definition}
 
+\Tom{Removed `partially sequentialised'.}
+
 \begin{convention}\label{convention:AlternativeAiDecomposedForm}
 Given a derivation $\Phi$ and an $\ai$-decomposed form of\/ $\Phi$:
 \[
@@ -469,7 +473,7 @@ Given a derivation $\Phi$ and an $\ai$-decomposed form of\/ $\Phi$:
  \vlsbr(\vlinf{}{}{\vls[a_1.\bar a_1]}{\ttt}\;.\;\cdots\;.\;\vlinf{}{}{\vls[a_n.\bar a_n]}{\ttt}\;.\;\vlinf{}{}{\vls[c_1.\bar c_1]}{\ttt}\;.\;\cdots\;.\;\vlinf{}{}{\vls[c_k.\bar c_k]}{\ttt}\;.\;\alpha)
 }\quad,
 \]
-we sometimes want to single out only some of the interaction or cut instances. We therefore also call the following, partially sequentialised, derivation an $\ai$-decomposed form of $\Phi$:
+we sometimes want to single out only some of the interaction or cut instances. We therefore also call the following derivation an $\ai$-decomposed form of $\Phi$:
 \[
 \vlderivation
 {
@@ -505,7 +509,7 @@ we sometimes want to single out only some of the interaction or cut instances. W
 Given a derivation $\Phi$, an $\ai$-decomposed form of\/ $\Phi$ whose size depends at most cubically on the size of $\Phi$ can be constructed.
 \end{theorem}
 \begin{proof}
-Using Lemma~\vref{lemma:SuperSwitch} apply, from top-to-bottom and left-to-right, the following transformations to each of the identity and cut instances in $\Phi$:
+Using Lemma~\vref{lemma:SuperSwitch} apply, from top-to-bottom and left-to-right, the following transformations to each of the interaction and cut instances in $\Phi$:
 \[
 \vlderivation
 {
@@ -548,7 +552,7 @@ Using Lemma~\vref{lemma:SuperSwitch} apply, from top-to-bottom and left-to-right
  }
 }\quad
 \]
-to obtain an $\ai$-decomposed form of $\Phi$. The size of the $\ai$-decomposed form obtained in this way depends at most cubically on the size of $\Phi$, since, by Lemma~\vref{lemma:SuperSwitch}, each of the transformations increase the size of the derivation at most quadratically and the number of transformations is bound by the size of $\Phi$.
+to obtain an $\ai$-decomposed form of $\Phi$. The size of the $\ai$-decomposed form obtained in this way depends at most cubically on the size of $\Phi$, since, by Lemma~\vref{lemma:SuperSwitch}, each of the transformations increase the size of the derivation at most quadratically and the number of transformations is bounded by the size of $\Phi$.
 \end{proof}
 
 \begin{remark}\label{remakr:aiDecomposedFormUnique}
