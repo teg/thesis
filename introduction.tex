@@ -1,10 +1,22 @@
-\chapter{Introduction}
+This thesis belongs to \emph{strucural proof theory}, the subdiscipline of logic that studies formal representation and manipulation of mathematical proof. Strucural proof theory is an important field of study as it allows us, among other things, to automatically verify or search for proofs and prove consistency of mathematical theories.
 
-\TODO{Replace this introduction:}
+Furthermore, representations of proofs are interesting mathematical objects in their own right. In particular, they are related to longstanding open problems: The problem of $NP$ versus $co$-$NP$, from computational complexity theory, and Hilbert's problem of \emph{identity of proofs}, can both be stated in terms of representations and manipulation of proofs.
 
-\emph{Proof theory} studies formal representations of mathematical proofs. Formal representations of proofs are needed in order to, among other things, automatically verify or search for proofs and prove consistency of mathematical theories.
+A language for representing proofs is called a \emph{formalism}. Strucural proof theory was founded when Gentzen introduced the formalisms \emph{natural deduction} and \emph{sequent calculus} \cite{Gent:69:Investig:xi}. Essentially, a formalism following the Gentzen methodology represents a proof as a tree, obtained by recursively breaking formulae apart at their main connective.
 
-Furthermore, representations of proofs are interesting mathematical objects in their own right. In particular, they are related to longstanding open problems: The problem of $NP$ versus $co$-$NP$, from computational complexity theory, and the problem of \emph{identity of proofs}, can both be stated in terms of representations of proofs.
+\emph{Deep inference} \cite{Gugl:06:A-System:kl} is a methodology that allows for more general formalisms than Gentzen's traditional ones. In particular, deep inference allows deduction to take place at any place in a formula, rather than just at the main connective. In this thesis we introduce a new deep-inference formalism, called \emph{the functorial calculus}, in which we present our results. This formalism should be seen as a proof-of-concept of what is acheivable using the deep-inference methodology, and as a guide to design new formalisms.
+
+Gentzen's formalisms came with notions of \emph{normal form} of proofs and \emph{normalisation theories} describing how to manipulting proofs in order to obtain their normal forms. In natural deduction a proof is in normal form if no `elimination rule' follows an `introduction rule'; and in the sequent calculus a proof is in normal form if it does not contain the `cut rule'.
+
+Since the functorial calculus allows more proofs than Gentzen's formalisms the traditional notions of normal forms can not be imported directly. In particular, the functorial calculus has an up-down symmetry, which is not present in a tree structure. A direct consequence of this is that, unlike in the sequent calculus, the cut rule can not be eliminated. The first contribution of this thesis is to define several notions of normal forms, among them the notion of \emph{streamlining}, which, in the special case of proof with the shape of sequent calculus proof, corresponds to cut elimination.
+
+In order to define the notion of streamlining, we found it insufficient to argue about the absence of rules (like in the sequent calculus), or the order of rules (like in natural deduction). We found that we needed something a bit more general, namely the causal dependency of the creation and destruction of information (more specifically, \emph{atoms}). For this purpose, we designed a class of directed, acyclic graphs that capture this information, we call these graphs \emph{atomic flows}. Intuitively, we will consider a proof to be on normal form if no information is first created and then destroyed.
+
+\emph{natural deduction} and \emph{sequent calculus} \cite{Gent:69:Investig:xi}. In particular, deep-inference formalisms can express classical logic using only \emph{local} \cite{BrunTiu:01:A-Local-:mz} inference rules, something which is impossible in the traditional formalisms \cite{Brun:03:Two-Rest:mn}.
+
+
+
+\emph{Normalisation} is the process of manipulating a proof in order to turn it into a \emph{normal form}. Different proof systems have different notions of normal form; in Gentzen's traditional formalisms the \emph{sequent calculus} and \emph{natural deduction}. Traditionally, normalisation means \emph{cut elimination}. A \emph{cut} is an inference rule embodying the concept of \emph{modus ponens}, or the use of lemmata in a proof. A proof is in normal form if it does not contain an instance of the cut rule. Cut elimination is the most important technique in structural proof theory. From the point of view of computational interpretation of proofs, a cut corresponds to composition and cut elimination corresponds to $\beta$-reduction.
 
 The problem of identity of proofs was originally intended by Hilbert to be the 24th problem of his famous Paris lecture in 1900 \cite{Thie:03:Hilberts:yu}, and it amounts to answering the question: \emph{When are two proofs the same?} This thesis is part of a program which tries to solve the identity of proofs problem in the setting of propositional logic.
 
