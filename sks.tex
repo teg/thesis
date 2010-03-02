@@ -14,7 +14,7 @@ The standard proof system of propositional logic in CoS is called $\SKS$. The ba
 \item Analytic $\SKS$ polynomially simulates analytic Gentzen proof systems, but the converse does not hold: in fact, Statman's tautologies admit polynomial proofs in analytic $\SKS$ but, as is well known, only exponential ones in analytic Gentzen \cite{Stat:78:Bounds-f:fj}.
 \end{itemize}
 
-In this paper, we work in CoS and $\SKS$, but we introduce a new notation for CoS. We do so to conveniently describe certain derivations related to threshold formulae, which would seem very cumbersome otherwise (we mainly have in mind Definition~\ref{DefThrDer}). In related work, we are defining a new formalism, currently dubbed \emph{Formalism A}, which generalises CoS and formally allows for the new notation.
+In this paper, we work in CoS and $\SKS$, but we introduce a new notation for CoS. \TODO{Rewrite: We do so to conveniently describe certain derivations related to threshold formulae, which would seem very cumbersome otherwise.} In related work, we are defining a new formalism, currently dubbed \emph{Formalism A}, which generalises CoS and formally allows for the new notation.
 
 In this section, we quickly introduce all the necessary notions. The standard reference for $\SKS$ in CoS and its typical constructions is \cite{Brun:04:Deep-Inf:rq}; an introduction to $\SKS$ with an emphasis on proof complexity is in \cite{BrusGugl:07:On-the-P:fk}.
 
@@ -29,7 +29,7 @@ A CoS (\emph{inference}) \emph{rule} $\rho$ is an expression $\vlinf\rho{}\beta\
 \newcommand{\size}[1]{{\left\vert #1\right\vert}}\vlupdate\size
 The \emph{size} $\size\alpha$ of a formula $\alpha$, and the \emph{size} $\size\Phi$ of a derivation $\Phi$, is the number of unit and atom occurrences appearing in it.
 
-By $\alpha\{a_1/\beta_1,\dots,a_h/\beta_h\}$, we denote the operation of simultaneously substituting formulae $\beta_1$, \dots, $\beta_h$ into all the occurrences of the atoms $a_1$, \dots, $a_h$ in the formula $\alpha$, respectively; note that the occurrences of $\bar a_1$, \dots, $\bar a_h$ are not automatically substituted. Often, we only substitute certain occurrences of atoms, and these are indicated with superscripts that establish a relation with atomic flows. As a matter of fact, we extend the notion of substitution to derivations in the natural way, but this requires a certain care. The issue is clarified in Section~\ref{SectAF} (see, in particular, Notations~\ref{NotSubst} and \ref{NotDerSubst} and Proposition~\ref{PropSubst}).
+By $\alpha\{a_1/\beta_1,\dots,a_h/\beta_h\}$, we denote the operation of simultaneously substituting formulae $\beta_1$, \dots, $\beta_h$ into all the occurrences of the atoms $a_1$, \dots, $a_h$ in the formula $\alpha$, respectively; note that the occurrences of $\bar a_1$, \dots, $\bar a_h$ are not automatically substituted. Often, we only substitute certain occurrences of atoms, and these are indicated with superscripts that establish a relation with atomic flows. As a matter of fact, we extend the notion of substitution to derivations in the natural way, but this requires a certain care. The issue is clarified in Section~\ref{section:AtomicFlows} (see, in particular, Notations~\ref{notation:FormulaSubstitution} and \ref{notation:DerivationSubstitution} and Proposition~\vref{proposition:DerivationSubstitution}).
 
 \newcommand{\ai  }{\mathsf{ai}}
 \newcommand{\aw  }{\mathsf{aw}}
@@ -151,9 +151,9 @@ Rule instances of\/ $\wed$, $\weu$, $\cod$ and\/ $\cou$ can be derived in quadra
 \end{lemma}
 %----------------
 
-Sometimes, we use a nonatomic rule instance to stand for some derivation in $\SKS$ that derives that instance, as per Proposition~\ref{proposition:GenericStructual}.
+Sometimes, we use a nonatomic rule instance to stand for some derivation in $\SKS$ that derives that instance, as per Proposition~\vref{proposition:GenericStructural}.
 
-For CoS proofs, we adopt a special notation that allows us considerable efficiency in describing derivations, especially in the crucial Definition~\ref {DefThrDer}. We denote the result of including every formula of $\Phi$ into the context $\xi\vlhole$ by $\xi\vlscn[\Phi]$: since we adopt deep inference, $\xi\vlscn[\Phi]$ is a valid derivation. Then, given the two derivations $\vldownsmash{\vlder\Phi{}\beta\alpha}$ and $\vldownsmash{\vlder\Psi{}\delta\gamma}$, by $\vls[\Phi.\Psi]$ and $\vls(\Phi.\Psi)$ we denote, respectively,
+For CoS proofs, we adopt a special notation that allows us considerable efficiency in describing derivations, \TODO{Rewrite: especially in the crucial Definition}. We denote the result of including every formula of $\Phi$ into the context $\xi\vlhole$ by $\xi\vlscn[\Phi]$: since we adopt deep inference, $\xi\vlscn[\Phi]$ is a valid derivation. Then, given the two derivations $\vldownsmash{\vlder\Phi{}\beta\alpha}$ and $\vldownsmash{\vlder\Psi{}\delta\gamma}$, by $\vls[\Phi.\Psi]$ and $\vls(\Phi.\Psi)$ we denote, respectively,
 \[
 \vlinf={}{\vlsbr[\beta\vlx.\vlx\vlder\Psi{}\delta\gamma]}
          {\vlsbr[\vlder\Phi{}\beta\alpha\vlx.\vlx\gamma]}

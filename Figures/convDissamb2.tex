@@ -1,0 +1,33 @@
+%%!TEX TS-program = latex
+\documentclass[a4paper]{amsart}
+
+\usepackage[urw-garamond]{mathdesign}
+\usepackage[lutzsyntax]{virginialake}
+   \aftrianglefalse
+   \everydisplay={\vlsmallleftlabels}
+
+\begin{document}
+\thispagestyle{empty}
+
+\[
+\newbox\contrup\setbox\contrup=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afacu{}{}{}{}{}{}}}$}
+\newbox\contrdown\setbox\contrdown=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afacd{}{}{}{}{}{}}}$}
+%---------------------------------------
+\atomicflow
+{
+(-10, 0)*{\invisiblemark};
+(  0,-6)*{\afvjum4{\boldsymbol\iota}{}};
+(  0, 0)*{\affr{14}8};
+(  0, 0)*{\copy\contrdown};
+( -6, 6)*{\afvjum4{f_1(\boldsymbol\iota)}{}};
+(  0, 6)*{\cdots};
+(  6, 6)*{\afvjum4{}{f_k(\boldsymbol\iota)}};
+( 10, 0)*{\invisiblemark};
+}
+\]
+
+\end{document}

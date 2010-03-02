@@ -1,0 +1,381 @@
+%%!TEX TS-program = latex
+\documentclass[a4paper]{amsart}
+
+\usepackage[urw-garamond]{mathdesign}
+\usepackage[lutzsyntax]{virginialake}
+   \aftrianglefalse
+   \everydisplay={\vlsmallleftlabels}
+
+\begin{document}
+\thispagestyle{empty}
+
+\[
+\newbox\contrup\setbox\contrup=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afacu{}{}{}{}{}{}}}$}
+\newbox\contrdown\setbox\contrdown=\hbox{$
+   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
+   \atomicflow{(0,0)*{\afacd{}{}{}{}{}{}}}$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\atomicflow
+{
+%cocontraction - top
+(4,37.5)*{\afvjm{3}};
+(4,32)*{\affr{50}8};
+(4,32)*{\copy\contrup};
+%contraction - bot
+(-4,-32)*{\affr{50}8};
+(-4,-32)*{\copy\contrdown};
+(-4,-37.5)*{\afvjm{3}};
+%---------------------
+(4,-18)="D";
+(0,-9)="Dhalf";
+%----------------
+%%first
+(-20,0)="B";
+% cocontractions
+"B"-"D"-"D"-(-12,7)="A";
+%left
+"A"+"Dhalf"+"Dhalf"+(4,-4)*{\afvjm{42}};
+"A"+"Dhalf"+(0,-4)*{\afvjm{24}};
+"A"+(-4,-4)*{\afvjm6};
+% contractions
+"B"+"D"+"D"+(-12,7)="A";
+%right
+"A"+(4,4)*{\afvjm6};
+"A"+(0,4)-"Dhalf"*{\afvjm{24}};
+"A"+(-4,4)-"Dhalf"-"Dhalf"*{\afvjm{42}};
+%---
+% top boxes
+"B"-"D"="A";
+"A"+(-2, 8)*{\afaid{}{}{}{}{}{}};
+"A"+( 0,-8)*{\afawu{}{}{}{}{}};
+"A"+( 0, 0)*{\affr{10}{8}};
+"A"+( 2, 2)*{\aflabelright{\phi_1}};
+% join one
+"A"+(4,-9)*{\afvjcol{10}{Red}};
+% middle boxes
+"B"="A";
+"A"+(-4, 8)*{\afawd{}{}{}{}{}};
+"A"+( 4,-8)*{\afawu{}{}{}{}{}};
+"A"+( 0, 0)*{\affr{10}{8}};
+"A"+( 2, 2)*{\aflabelright{\phi_1}};
+% join two
+"A"+(0,-9)*{\afvjcol{10}{Red}};
+% bottom boxes
+"B"+"D"="A";
+"A"+(2,-8)*{\afaiu{}{}{}{}{}{}};
+"A"+(0, 8)*{\afawd{}{}{}{}{}};
+"A"+(0, 0)*{\affr{10}{8}};
+"A"+( 2, 2)*{\aflabelright{\phi_1}};
+%----------------
+%%second
+(0,0)="B";
+% cocontractions
+"B"-"D"-"D"-(-12,7)="A";
+%left
+"A"+"Dhalf"+"Dhalf"+(4,-4)*{\afvjm{42}};
+"A"+"Dhalf"+(0,-4)*{\afvjm{24}};
+"A"+(-4,-4)*{\afvjm6};
+% contractions
+"B"+"D"+"D"+(-12,7)="A";
+%right
+"A"+(4,4)*{\afvjm6};
+"A"+(0,4)-"Dhalf"*{\afvjm{24}};
+"A"+(-4,4)-"Dhalf"-"Dhalf"*{\afvjm{42}};
+%---
+% top boxes
+"B"-"D"="A";
+"A"+(-2, 8)*{\afaid{}{}{}{}{}{}};
+"A"+( 0,-8)*{\afawu{}{}{}{}{}};
+"A"+( 0, 0)*{\affr{10}{8}};
+"A"+( 2, 2)*{\aflabelright{\phi_1}};
+% join one
+"A"+(4,-9)*{\afvjcol{10}{Red}};
+% middle boxes
+"B"="A";
+"A"+(-4, 8)*{\afawd{}{}{}{}{}};
+"A"+( 4,-8)*{\afawu{}{}{}{}{}};
+"A"+( 0, 0)*{\affr{10}{8}};
+"A"+( 2, 2)*{\aflabelright{\phi_1}};
+% join two
+"A"+(0,-9)*{\afvjcol{10}{Red}};
+% bottom boxes
+"B"+"D"="A";
+"A"+(2,-8)*{\afaiu{}{}{}{}{}{}};
+"A"+(0, 8)*{\afawd{}{}{}{}{}};
+"A"+(0, 0)*{\affr{10}{8}};
+"A"+( 2, 2)*{\aflabelright{\phi_1}};
+%----------------
+%%third
+(20,0)="B";
+% cocontractions
+"B"-"D"-"D"-(-12,7)="A";
+%left
+"A"+"Dhalf"+"Dhalf"+(4,-4)*{\afvjm{42}};
+"A"+"Dhalf"+(0,-4)*{\afvjm{24}};
+"A"+(-4,-4)*{\afvjm6};
+% contractions
+"B"+"D"+"D"+(-12,7)="A";
+%right
+"A"+(4,4)*{\afvjm6};
+"A"+(0,4)-"Dhalf"*{\afvjm{24}};
+"A"+(-4,4)-"Dhalf"-"Dhalf"*{\afvjm{42}};
+%---
+% top boxes
+"B"-"D"="A";
+"A"+(-2, 8)*{\afaid{}{}{}{}{}{}};
+"A"+( 0,-8)*{\afawu{}{}{}{}{}};
+"A"+( 0, 0)*{\affr{10}{8}};
+"A"+( 2, 2)*{\aflabelright{\phi_1}};
+% join one
+"A"+(4,-9)*{\afvjcol{10}{Red}};
+% middle boxes
+"B"="A";
+"A"+(-4, 8)*{\afawd{}{}{}{}{}};
+"A"+( 4,-8)*{\afawu{}{}{}{}{}};
+"A"+( 0, 0)*{\affr{10}{8}};
+"A"+( 2, 2)*{\aflabelright{\phi_1}};
+% join two
+"A"+(0,-9)*{\afvjcol{10}{Red}};
+% bottom boxes
+"B"+"D"="A";
+"A"+(2,-8)*{\afaiu{}{}{}{}{}{}};
+"A"+(0, 8)*{\afawd{}{}{}{}{}};
+"A"+(0, 0)*{\affr{10}{8}};
+"A"+( 2, 2)*{\aflabelright{\phi_1}};
+}
+\]
+\[
+\atomicflow
+{
+(12,-50)="D";
+% cocontractions
+(18,-11)="A";
+%
+"A"+(6,5.5)*{\afvjm3};
+"A"+(6,0)*{\affr{34}8};
+"A"+(6,0)*{\copy\contrup};
+"A"+(2,-29)*{\afvjm{50}};
+"A"+(6,-29)*{\afvjm{50}};
+"A"+(10,-33)*{\afvjm{58}};
+"A"+(14,-54)*{\afvjm{100}};
+"A"+(18,-54)*{\afvjm{100}};
+"A"+(22,-58)*{\afvjm{108}};
+% === BOX ONE ===
+(0,-27)="A";
+%-
+"A"+( -6,24)*{\afaidex{}{}{}{}{}{}31};
+%-
+"A"+(-12,16)*{\affr{10}8};
+"A"+(-12,16)*{\copy\contrup};
+"A"+(  0,16)*{\affr{10}8};
+"A"+(  0,16)*{\copy\contrup};
+%-
+"A"+(-16,8)*{\afvj8};
+"A"+(-8,8)*{\afcjr88};
+"A"+(0,8)*{\afcjrm{16}8};
+%
+"A"+(-8,8)*{\afcjl88};
+"A"+(0,8)*{\afvj8};
+"A"+(8,8)*{\afcjrm88};
+%
+"A"+(0,8)*{\afcjl{16}8};
+"A"+(8,8)*{\afcjl88};
+"A"+(16,8)*{\afvjm8};
+%-
+"A"+(-12,0)*{\affr{10}8};
+"A"+(0,0)*{\affr{10}8};
+"A"+(12,0)*{\affr{10}8};
+"A"+(-10,2)*{\aflabelright{\phi_2}};
+"A"+(2,2)*{\aflabelright{\phi_2}};
+"A"+(14,2)*{\aflabelright{\phi_2}};
+%-
+"A"+(-8,-8)*{\afcjl88};
+"A"+(0,-8)*{\afcjlcol{16}8{Red}};
+%-
+"A"+(-8,-8)*{\afcjrm88};
+"A"+(0,-8)*{\afvj8};
+"A"+(8,-8)*{\afcjlcol88{Red}};
+%
+"A"+(0,-8)*{\afcjrm{16}8};
+"A"+(8,-8)*{\afcjr88};
+"A"+(16,-8)*{\afvjcol8{Red}};
+%
+"A"+(  0,-16)*{\affr{10}8};
+"A"+(  0,-16)*{\copy\contrdown};
+"A"+( 12,-16)*{\affr{10}8};
+"A"+( 12,-16)*{\copy\contrdown};
+%---
+"A"+(0,-24)*{\afawu{}{}{}{}};
+"A"+(12,-25)*{\afvjcol{10}{Red}};
+% === BOX TWO ===
+"A"+"D"="A";
+%-
+"A"+(-12,24)*{\afawd{}{}{}{}};
+%-
+"A"+(-12,16)*{\affr{10}8};
+"A"+(-12,16)*{\copy\contrup};
+"A"+(  0,16)*{\affr{10}8};
+"A"+(  0,16)*{\copy\contrup};
+%-
+"A"+(-16,8)*{\afvj8};
+"A"+(-8,8)*{\afcjrcol88{Red}};
+"A"+(0,8)*{\afcjrm{16}8};
+%
+"A"+(-8,8)*{\afcjl88};
+"A"+(0,8)*{\afvjcol8{Red}};
+"A"+(8,8)*{\afcjrm88};
+%
+"A"+(0,8)*{\afcjl{16}8};
+"A"+(8,8)*{\afcjlcol88{Red}};
+%-
+"A"+(-12,0)*{\affr{10}8};
+"A"+(0,0)*{\affr{10}8};
+"A"+(12,0)*{\affr{10}8};
+"A"+(-10,2)*{\aflabelright{\phi_2}};
+"A"+(2,2)*{\aflabelright{\phi_2}};
+"A"+(14,2)*{\aflabelright{\phi_2}};
+%-
+"A"+(-8,-8)*{\afcjlcol88{Red}};
+"A"+(0,-8)*{\afcjl{16}8};
+%-
+"A"+(-8,-8)*{\afcjrm88};
+"A"+(0,-8)*{\afvjcol8{Red}};
+"A"+(8,-8)*{\afcjl88};
+%
+"A"+(0,-8)*{\afcjrm{16}8};
+"A"+(8,-8)*{\afcjrcol88{Red}};
+"A"+(16,-8)*{\afvj8};
+%
+"A"+(  0,-16)*{\affr{10}8};
+"A"+(  0,-16)*{\copy\contrdown};
+"A"+( 12,-16)*{\affr{10}8};
+"A"+( 12,-16)*{\copy\contrdown};
+%---
+"A"+(12,-24)*{\afawu{}{}{}{}};
+"A"+(0,-25)*{\afvjcol{10}{Red}};
+% === BOX THREE ===
+"A"+"D"="A";
+%-
+"A"+(  0,24)*{\afawd{}{}{}{}};
+%-
+"A"+(-12,16)*{\affr{10}8};
+"A"+(-12,16)*{\copy\contrup};
+"A"+(  0,16)*{\affr{10}8};
+"A"+(  0,16)*{\copy\contrup};
+%-
+"A"+(-16,8)*{\afvjcol8{Red}};
+"A"+(-8,8)*{\afcjr88};
+"A"+(0,8)*{\afcjrm{16}8};
+%
+"A"+(-8,8)*{\afcjlcol88{Red}};
+"A"+(0,8)*{\afvj8};
+"A"+(8,8)*{\afcjrm88};
+%
+"A"+(0,8)*{\afcjlcol{16}8{Red}};
+"A"+(8,8)*{\afcjl88};
+%-
+"A"+(-12,0)*{\affr{10}8};
+"A"+(0,0)*{\affr{10}8};
+"A"+(12,0)*{\affr{10}8};
+"A"+(-10,2)*{\aflabelright{\phi_2}};
+"A"+(2,2)*{\aflabelright{\phi_2}};
+"A"+(14,2)*{\aflabelright{\phi_2}};
+%-
+"A"+(-16,-8)*{\afvjm8};
+"A"+(-8,-8)*{\afcjl88};
+"A"+(0,-8)*{\afcjl{16}8};
+%-
+"A"+(-8,-8)*{\afcjrm88};
+"A"+(8,-8)*{\afcjl88};
+"A"+(0,-8)*{\afvj8};
+%
+"A"+(0,-8)*{\afcjrm{16}8};
+"A"+(8,-8)*{\afcjr88};
+"A"+(16,-8)*{\afvj8};
+%
+"A"+(  0,-16)*{\affr{10}8};
+"A"+(  0,-16)*{\copy\contrdown};
+"A"+( 12,-16)*{\affr{10}8};
+"A"+( 12,-16)*{\copy\contrdown};
+%-
+"A"+(  6,-24)*{\afaiuex{}{}{}{}{}{}31};
+%---
+"A"+(-20,-16)="A";
+"A"+(-20,58)*{\afvjm{108}};
+"A"+(-16,54)*{\afvjm{100}};
+"A"+(-12,54)*{\afvjm{100}};
+"A"+(-8,33)*{\afvjm{58}};
+"A"+(-4,29)*{\afvjm{50}};
+"A"+( 0,29)*{\afvjm{50}};
+"A"+(-4,0)*{\affr{34}8};
+"A"+(-4,0)*{\copy\contrdown};
+"A"+(-4,-5.5)*{\afvjm3};
+}
+\]
+\[
+\atomicflow{
+(0,34.5)*{\afvjm3};
+(0,29)*{\affr{82}8};
+(0,29)*{\copy\contrup};
+%
+(0,-29)*{\affr{82}8};
+(0,-29)*{\copy\contrdown};
+(0,-34.5)*{\afvjm3};
+%-------------------
+(30,0)="B";
+%---------------
+(0,0)-"B"="A";
+"A"+(-10,14.5)*{\afvjm{21}};
+"A"+(0,14.5)*{\afvjm{21}};
+"A"+(10,14.5)*{\afvjm{21}};
+%---
+"A"+(-10,0)*{\affr88};
+"A"+( -9,2)*{\aflabelright\psi};
+"A"+(  0,0)*{\affr88};
+"A"+(  1,2)*{\aflabelright\psi};
+"A"+( 10,0)*{\affr88};
+"A"+( 11,2)*{\aflabelright\psi};
+%---
+"A"+(-10,-14.5)*{\afvjm{21}};
+"A"+(0,-14.5)*{\afvjm{21}};
+"A"+(10,-14.5)*{\afvjm{21}};
+%---------------
+(0,0)="A";
+%---
+"A"+(-10,14.5)*{\afvjm{21}};
+"A"+(0,14.5)*{\afvjm{21}};
+"A"+(10,14.5)*{\afvjm{21}};
+%---
+"A"+(-10,0)*{\affr88};
+"A"+( -9,2)*{\aflabelright\psi};
+"A"+(  0,0)*{\affr88};
+"A"+(  1,2)*{\aflabelright\psi};
+"A"+( 10,0)*{\affr88};
+"A"+( 11,2)*{\aflabelright\psi};
+%---
+"A"+(-10,-14.5)*{\afvjm{21}};
+"A"+(0,-14.5)*{\afvjm{21}};
+"A"+(10,-14.5)*{\afvjm{21}};
+%---------------
+"A"+"B"="A";
+%---
+"A"+(-10,14.5)*{\afvjm{21}};
+"A"+(0,14.5)*{\afvjm{21}};
+"A"+(10,14.5)*{\afvjm{21}};
+%---
+"A"+(-10,0)*{\affr88};
+"A"+( -9,2)*{\aflabelright\psi};
+"A"+(  0,0)*{\affr88};
+"A"+(  1,2)*{\aflabelright\psi};
+"A"+( 10,0)*{\affr88};
+"A"+( 11,2)*{\aflabelright\psi};
+%---
+"A"+(-10,-14.5)*{\afvjm{21}};
+"A"+(0,-14.5)*{\afvjm{21}};
+"A"+(10,-14.5)*{\afvjm{21}};
+}
+\]
+
+\end{document}

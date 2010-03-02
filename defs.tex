@@ -24,9 +24,12 @@
 \newtheorem{remark}[theorem]{Remark}
 
 %-------------------------------------------
-
+\definecolor{darkgreen}{rgb}{0.0,0.4,0.0}
+\definecolor{darkred}{rgb}{0.4,0.0,0.0}
 \newif\ifnonotes\nonotesfalse
-\newcommand{\Tom }[1]{\ifnonotes\else{\color{green}     \noindent{\bf T: }#1}\fi}\newcommand{\Ale }[1]{\ifnonotes\else{\color{blue}     \noindent{\bf A: }#1}\fi}
+\newcommand{\Ale }[1]{\ifnonotes\else{\color{blue}     \noindent{\bf A: }#1}\fi}
+\newcommand{\Pao }[1]{\ifnonotes\else{\color{darkgreen}\noindent{\bf P: }#1}\fi}
+\newcommand{\Tom }[1]{\ifnonotes\else{\color{darkred}  \noindent{\bf T: }#1}\fi}
 \newcommand{\TODO}[1]{\ifnonotes\else{\color{red}    \noindent{\bf TODO }#1}\fi}
 %\nonotestrue % If this is commented, notes appear in the paper (if any)
 

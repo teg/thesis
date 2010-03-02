@@ -1,0 +1,49 @@
+%%!TEX TS-program = latex
+\documentclass[a4paper]{amsart}
+
+\usepackage[urw-garamond]{mathdesign}
+\usepackage[lutzsyntax]{virginialake}
+   \aftrianglefalse
+   \everydisplay={\vlsmallleftlabels}
+
+\begin{document}
+\thispagestyle{empty}
+
+\[
+\newcommand{\one  }{{\mathchoice{\scriptstyle\mathbf1}
+                                {\scriptstyle\mathbf1}
+                                {\scriptstyle\mathbf1}
+                                {\scriptscriptstyle\mathbf1}}}
+\newcommand{\two  }{{\mathchoice{\scriptstyle\mathbf2}
+                                {\scriptstyle\mathbf2}
+                                {\scriptstyle\mathbf2}
+                                {\scriptscriptstyle\mathbf2}}}
+\newcommand{\three}{{\mathchoice{\scriptstyle\mathbf3}
+                                {\scriptstyle\mathbf3}
+                                {\scriptstyle\mathbf3}
+                                {\scriptscriptstyle\mathbf3}}}
+\newcommand{\four }{{\mathchoice{\scriptstyle\mathbf4}
+                                {\scriptstyle\mathbf4}
+                                {\scriptstyle\mathbf4}
+                                {\scriptscriptstyle\mathbf4}}}
+\newcommand{\five }{{\mathchoice{\scriptstyle\mathbf5}
+                                {\scriptstyle\mathbf5}
+                                {\scriptstyle\mathbf5}
+                                {\scriptscriptstyle\mathbf5}}}
+\newcommand{\ppl  }{{\mathchoice{\scriptstyle+}
+                                {\scriptstyle+}
+                                {\scriptstyle+}
+                                {\scriptscriptstyle+}}}
+\newcommand{\pmi  }{{\mathchoice{\scriptstyle-}
+                                {\scriptstyle-}
+                                {\scriptstyle-}
+                                {\scriptscriptstyle-}}}
+\atomicflow{
+( 0,6)*{\afvjd{8}\one\ppl};
+( 6,6)*{\afacu\three{}{}\four\two\pmi};
+(12,6)*{\afvjd{8}\ppl\five};
+(10,0)*{\afaiunw{}{}};
+( 2,0)*{\afaiunw{}{}}}
+\]
+
+\end{document}

@@ -1,0 +1,37 @@
+%%!TEX TS-program = latex
+\documentclass[a4paper]{amsart}
+
+\usepackage[urw-garamond]{mathdesign}
+\usepackage[lutzsyntax]{virginialake}
+   \aftrianglefalse
+   \everydisplay={\vlsmallleftlabels}
+
+\begin{document}
+\thispagestyle{empty}
+
+\[
+%---------------------------------------
+\atomicflow
+{
+(-9,0)*{\invisiblemark};
+(-6,0)*{\afvju8{\epsilon_1}{}};
+(-4,4)*{\afaidnw{}{}};
+( 0,0)*{\afacd{}{}{}{}{\epsilon'_1}{}};
+( 4,4)*{\afaidnw{}{}};
+( 6,0)*{\afvju8{}{\epsilon''_1}};
+( 9,0)*{\invisiblemark};
+}
+\quad\cdots\quad
+\atomicflow
+{
+(-9,0)*{\invisiblemark};
+(-6,0)*{\afvju8{\epsilon_n}{}};
+(-4,4)*{\afaidnw{}{}};
+( 0,0)*{\afacd{}{}{}{}{\epsilon'_n}{}};
+( 4,4)*{\afaidnw{}{}};
+( 6,0)*{\afvju8{}{\epsilon''_n}};
+( 9,0)*{\invisiblemark};
+}
+\]
+
+\end{document}

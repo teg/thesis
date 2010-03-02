@@ -19,10 +19,7 @@ We obtain one atomic flow from each derivation by tracing all its atom occurrenc
 
 The first kind of elementary atomic flow is the \emph{edge}
 \[
-\atomicflow
-{
-(0,0)*{\afvj4};
-}
+\vcenter{\hbox{\includegraphics{Figures/edge}}}
 \]
 which corresponds to one or more occurrences of the same atom in a given derivation, all of which are not active in any structural rule instance, \emph{i.e.}, they are not the atom occurrences that instantiate a structural rule.
 
@@ -45,19 +42,25 @@ The other six kinds of elementary diagrams are associated with the six structura
 \[
 \begin{array}{@{}c@{}c@{}c@{}c@{}c@{}c@{}}
 \vlinf\aid{}{\vls[a^\one.\bar a^\two]}\ttt&\quad{\to}\quad
-\afaid{}{}{}{}{}{}&\qquad\qquad
+\vcenter{\hbox{\includegraphics{Figures/vertAFAID}}}
+&\qquad\qquad
 \vlinf\awd{}{a^\one}\fff&\quad{\to}\quad
-\afawd{}{}{}{}&\qquad\qquad
+\vcenter{\hbox{\includegraphics{Figures/vertAFAWD}}}
+&\qquad\qquad
 \vlinf\acd{}{a^\three}{\vls[a^\one.a^\two]}&\quad{\to}\quad
-\afacd{}{}{}{}{}{}
+\vcenter{\hbox{\includegraphics{Figures/vertAFACD}}}
 \\
 \noalign{\bigskip}
 \vlinf\aiu{}\fff{\vls(a^\one.\bar a^\two)}&\quad{\to}\quad
-\afaiu{}{}{}{}{}{}&\qquad\qquad
+\vcenter{\hbox{\includegraphics{Figures/vertAFAIU}}}
+&\qquad\qquad
 \vlinf\awu{}\ttt{a^\one}&\quad{\to}\quad
-\afawu{}{}{}{}&\qquad\qquad
-\vlinf\acu{}{\vls(a^\one.a^\two)}{a^\three}&\quad{\to}\quad
-\afacu{}{}{}{}{}{}\\
+\vcenter{\hbox{\includegraphics{Figures/vertAFAWU}}}
+&\qquad\qquad
+\vlinf\acu{}{\vls(a^\one.a^\two)}{a^\three}
+&\quad{\to}\quad
+\vcenter{\hbox{\includegraphics{Figures/vertAFACU}}}
+\\
 \end{array}
 \]
 \caption{Vertices of atomic flows.}
@@ -78,15 +81,7 @@ We can define (\emph{atomic}) \emph{flows} as the smallest set of diagrams conta
 
 Let us see some examples. The flow
 \begin{equation}\label{ExFlow}
-\atomicflow{
-(17,12)*{\afaid{}{}{}{}{}{}};
-(-3, 8)*{\afvjd8{}{}};
-(-1, 8)*{\afvjd8{}{}};
-( 1, 8)*{\afvjd8{}{}};
-( 4, 8)*{\afvjd8{}{}};
-(10, 8)*{\afacu{}{}{}{}{}{}};
-(17, 4)*{\afaiu{}{}{}{}{}{}};
-( 6, 2)*{\afaiunw{}{}}}
+\vcenter{\hbox{\includegraphics{Figures/flowExample1}}}
 \end{equation}
 is obtained by juxtaposing (\emph{i.e.}, composing by identifying zero edges):
 \begin{itemize}
@@ -108,109 +103,39 @@ Note that there are no cycles in the flow, and that we can find 32 different pol
 
 Let us see another example. These are three different representations of the same flow:
 \[
-\atomicflow{
-(10,8)*{\afacu\four{}{}{}{}\two};
-( 0,8)*{\afvjd8\one{}};
-( 4,8)*{\afvjd8{}\five};
-( 6,2)*{\afaiunw{}{}};
-( 6,0)*{\afaiuex{}{}{}\three{}{}31}}
+\vcenter{\hbox{\includegraphics{Figures/flowExample2}}}
 \quad,\qquad
-\aflower{\atomicflow{
-( 0  ,6)*{\afvjd{8}\one\ppl};
-( 6  ,6)*{\afacu\three{}{}\four\two\pmi};
-(12  ,6)*{\afvjd{8}\ppl\five};
-(10  ,0)*{\afaiunw{}{}};
-( 2  ,0)*{\afaiunw{}{}};
-(-1.5,0)*{\invisiblemark};
-(13.5,0)*{\invisiblemark}}}
+\vcenter{\hbox{\includegraphics{Figures/flowExample3}}}
 \qquad\hbox{and}\qquad
-\atomicflow{
-( 8  ,10)*{\afacu{}\three{}\four\two\ppl};
-( 0  , 8)*{\afvjd{12}\one\pmi};
-( 4  ,10)*{\afvjd{8}\five\pmi};
-( 5  , 4)*{\afex24};
-(10  , 4)*{\afvj4};
-( 2  , 0)*{\afaiunw{}{}};
-( 8  , 0)*{\afaiunw{}{}};
-(-1.5, 0)*{\invisiblemark};
-(11.5, 0)*{\invisiblemark}}
+\vcenter{\hbox{\includegraphics{Figures/flowExample4}}}
 \quad,
 \]
 where we label edges to show their correspondence. In the two rightmost flows, we indicate the two different polarity assignments that are possible.
 
 The following two diagrams are not atomic flows:
 \[
-\atomicflow{
-(4,11.7)*{\afacu{}{}{}{}{}{}};
-(0, 3.7)*{\afacd{}{}{}{}{}{}};
-(8, 7.7)*{\afvj{16}};
-(4,16);(8,16)**[|<\atflowthickone>]\crv{(4,18)&(6,20)&(8,18)};
-(0,0);(8,0)**[|<\atflowthickone>]\crv{(0,-2)&(4,-4)&(8,-2)}
-}
+\vcenter{\hbox{\includegraphics{Figures/cycle}}}
 \qquad\mbox{and}\qquad
-\atomicflow{
-(0,4)*{\afaidnw{}{}};
-(0,0)*{\afacd{}{}{}{}{}{}}
-}\quad.
+\vcenter{\hbox{\includegraphics{Figures/noPolar}}}
+\quad.
 \]
 The left one is not a flow because it contains a cycle, and the right one because there is no possible polarity assignment.
-
-\newbox\contrup\setbox\contrup=\hbox{$
-   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
-   \atomicflow{(0,0)*{\afacu{}{}{}{}{}{}}}$}
-\newbox\contrdown\setbox\contrdown=\hbox{$
-   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
-   \atomicflow{(0,0)*{\afacd{}{}{}{}{}{}}}$}
-\newbox\interdown\setbox\interdown=\hbox{$
-   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
-   \atomicflow{(0,0)*{\afaid{}{}{}{}{}{}}}$}
-\newbox\interup\setbox\interup=\hbox{$
-   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
-   \atomicflow{(0,0)*{\afaiu{}{}{}{}{}{}}}$}
-\newbox\weakdown\setbox\weakdown=\hbox{$
-   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
-   \atomicflow{(0,0)*{\afawd{}{}{}{}{}{}}}$}
-\newbox\weakup\setbox\weakup=\hbox{$
-   \divide\atflowunit by6\multiply\atflowunit by3\afsetunits
-   \atomicflow{(0,0)*{\afawu{}{}{}{}{}{}}}$}
 
 %---------------------------------------------
 \begin{notation}\label{notation:LabelsOnBoxes}
 Let $\phi$ be an atomic flow with upper edges $\boldsymbol\epsilon=\epsilon_1,\dots,\epsilon_n$ and lower edges $\boldsymbol\iota=\iota_1,\dots,\iota_m$, we then represent it as
 \[
-\atomicflow{
-(-3, 6)*{\afvju4{\epsilon_1}{}};
-( 0, 6)*{\cdots};
-( 3, 6)*{\afvju4{}{\epsilon_n}};
-( 0, 0)*{\affr88};
-( 1, 2)*{\aflabelright\phi};
-(-3,-6)*{\afvju4{\iota_1}{}};
-( 0,-6)*{\cdots};
-( 3,-6)*{\afvju4{}{\iota_m}};
-}
+\vcenter{\hbox{\includegraphics{Figures/boxDef1}}}
 \qquad\mbox{or}\qquad
-\atomicflow{
-( 0,6)*{\afvjum4{\boldsymbol\epsilon}{}};
-( 0,0)*{\affr88};
-( 1,2)*{\aflabelright\phi};
-( 0,-6)*{\afvjdm4{\boldsymbol\iota}{}};
-}\quad.
+\vcenter{\hbox{\includegraphics{Figures/boxDef2}}}
+\quad.
 \]
 We sometimes use flow labels to indicate what kind of vertices an atomic flow might contain. \emph{E.g.}, the following flows
 \[
-\atomicflow{
-( 0, 6)*{\afvjm4};
-(-2, 0)*{\copy\contrup};
-( 0, 0)*{\affr{10}8};
-( 2, 0)*{\copy\contrdown};
-( 0,-6)*{\afvjm4};
-}\qquad\mbox{and}\qquad
-\atomicflow{
-(0, 6)*{\afvjm4};
-(0, 0)*{\affr88};
-(0, 0)*{\copy\contrdown};
-(0,-6)*{\afvjm4};
-}\quad,
+\vcenter{\hbox{\includegraphics{Figures/boxDef3}}}
+\qquad\mbox{and}\qquad
+\vcenter{\hbox{\includegraphics{Figures/boxDef4}}}
+\quad,
 \]
 do not contain $\aid$, $\aiu$, $\awd$, $\awu$ vertices, and the flow to the right does not contain $\acu$ vertices.
 \end{notation}
@@ -228,7 +153,12 @@ do not contain $\aid$, $\aiu$, $\awd$, $\awu$ vertices, and the flow to the righ
 
 %---------------------------------------------------
 \begin{definition}\label{definition:FlowIsomorphism}
-An (\emph{atomic}) \emph{flow isomorphism}\index{flow!isomorphism} between the atomic flows $\phi_1=(V_1,E_1,\eta_1,\up_1,\lo_1)$ and $\phi_2=(V_2,E_2,\eta_2,\up_2,\lo_2)$ is a pair of functions $(f_V,f_E)$, such that
+An (\emph{atomic}) \emph{flow isomorphism}\index{flow!isomorphism} between the atomic flows
+\begin{itemize}
+ \item $\phi_1=(V_1,E_1,\eta_1,\up_1,\lo_1)$, and
+ \item $\phi_2=(V_2,E_2,\eta_2,\up_2,\lo_2)$
+\end{itemize}
+is a pair of functions $(f_V,f_E)$, such that
 \begin{itemize}
 \item $f_V$ is a bijection from $V_1$ to $V_2$; and 
 \item $f_E$ is a bijection from $E_1$ to $E_2$,
@@ -245,38 +175,10 @@ such that, for every $\epsilon$ in $E_1$,
 \begin{notation}
 We extend the double-line notation to collections of isomorphic flows. For example, for $n\ge0$; $\boldsymbol{\epsilon}=\epsilon_1,\dots,\epsilon_n$; $\boldsymbol{\epsilon'}=\epsilon'_1,\dots,\epsilon'_n$; and $\boldsymbol{\epsilon''}=\epsilon''_1,\dots,\epsilon''_n$, the following diagrams represent the same flow:
 \[
-\atomicflow
-{
-(-9,0)*{\invisiblemark};
-(-6,0)*{\afvjum8{\boldsymbol{\epsilon}}{}};
-(-4,4)*{\afaidnw{}{}};
-( 0,0)*{\afacdm{}{}{}{}{\boldsymbol{\epsilon'}}{}};
-( 4,4)*{\afaidnw{}{}};
-( 6,0)*{\afvjum8{}{\boldsymbol{\epsilon''}}};
-( 9,0)*{\invisiblemark};
-}
+\vcenter{\hbox{\includegraphics{Figures/doubleLineIso1}}}
 \quad\mbox{and}\quad
-\atomicflow
-{
-(-9,0)*{\invisiblemark};
-(-6,0)*{\afvju8{\epsilon_1}{}};
-(-4,4)*{\afaidnw{}{}};
-( 0,0)*{\afacd{}{}{}{}{\epsilon'_1}{}};
-( 4,4)*{\afaidnw{}{}};
-( 6,0)*{\afvju8{}{\epsilon''_1}};
-( 9,0)*{\invisiblemark};
-}
-\quad\cdots\quad
-\atomicflow
-{
-(-9,0)*{\invisiblemark};
-(-6,0)*{\afvju8{\epsilon_n}{}};
-(-4,4)*{\afaidnw{}{}};
-( 0,0)*{\afacd{}{}{}{}{\epsilon'_n}{}};
-( 4,4)*{\afaidnw{}{}};
-( 6,0)*{\afvju8{}{\epsilon''_n}};
-( 9,0)*{\invisiblemark};
-}\quad.
+\vcenter{\hbox{\includegraphics{Figures/doubleLineIso2}}}
+\quad.
 \]
 \end{notation}
 %---------------
@@ -286,25 +188,13 @@ We extend the double-line notation to collections of isomorphic flows. For examp
 \begin{notation}\label{notation:LabelsIsomorphicFlows}
 Given an atomic flow
 \[
-\atomicflow
-{
-(0, 6)*{\afvjdm4{\boldsymbol\epsilon}{}};
-(0, 0)*{\affr88};
-(4, 2)*{\aflabelleft{\phi}};
-(0,-6)*{\afvjum4{\boldsymbol\iota}{}};
-}
+\vcenter{\hbox{\includegraphics{Figures/flowIso1}}}
 \quad,
 \]
 and a flow $\psi$ which is isomorphic to $\phi$, whenever we write
 \[
 \psi\;=\;
-\atomicflow
-{
-(0, 6)*{\afvjdm4{f(\boldsymbol\epsilon)}{}};
-( 0, 0)*{\affr88};
-(4, 2)*{\aflabelleft{f(\phi)}};
-(0,-6)*{\afvjum4{f(\boldsymbol\iota)}{}};
-}
+\vcenter{\hbox{\includegraphics{Figures/flowIso2}}}
 \quad,
 \]
 we mean that $f$ is a given flow isomorphism between $\phi$ and $\psi$.
@@ -315,22 +205,12 @@ we mean that $f$ is a given flow isomorphism between $\phi$ and $\psi$.
 \begin{notation}\label{notation:LabelsFlowPolarity}
 Given an atomic flow $\phi$ and a polarity assignment $\pi$ for $\phi$, whenever we write
 \[
-\atomicflow{
-( 0,6)*{\afvjum4{}{}};
-( 0,0)*{\affr88};
-(-4,2)*{\aflabelright\ppl};
-( 4,2)*{\aflabelleft\phi};
-( 0,-6)*{\afvjdm4{}{}};
-}\qquad\mbox{or}\qquad
-\atomicflow{
-( 0,6)*{\afvjum4{}{}};
-( 0,0)*{\affr88};
-(-4,2)*{\aflabelright\pmi};
-( 4,2)*{\aflabelleft\phi};
-( 0,-6)*{\afvjdm4{}{}};
-}\quad,
+\vcenter{\hbox{\includegraphics{Figures/flowPolPl}}}
+\qquad\mbox{or}\qquad
+\vcenter{\hbox{\includegraphics{Figures/flowPolMi}}}
+\quad,
 \]
-respectively, we mean that all the edges in $\phi$ have polarity assignment $\ppl$ or $\pmi$, respectively. If we label an atomic flow with a polarity assignment it can not contain any interaction or cut vertices duo to property~\ref{definition:AtomicFlow:item:PolarityAssignment} of Definition~\vref{definition:AtomicFlow}.
+respectively, we mean that all the edges in $\phi$ have polarity assignment $\ppl$ or $\pmi$, respectively. \TODO{We no longer have the formal definiton of atomic flows:} If we label an atomic flow with a polarity assignment it can not contain any interaction or cut vertices duo to property~\ref{definition:AtomicFlow:item:PolarityAssignment} of Definition~\vref{definition:AtomicFlow}.
 \end{notation}
 %-------------
 
@@ -365,15 +245,7 @@ Given an atomic flow $(V,E,\eta,\up,\lo)$ and $\epsilon_1,\dots,\epsilon_h\in E$
 The atomic flow on the left has the paths on the right:
 \[
 \begin{array}{@{}c@{}c@{}}
-\atomicflow{
-( 2  ,10)*{\afaidnw{}{}};
-( 0  , 6)*{\afvju8\one{}};
-( 6  , 6)*{\afacd\two{}\three{}\four{}};
-( 8  ,10)*{\afawdnw{}{}};
-(10  , 6)*{\afvjd8{}\five};
-( 8  , 0)*{\afaiunw{}{}};
-(-1.5, 0)*{\invisiblemark};
-(11.5, 0)*{\invisiblemark}}
+\vcenter{\hbox{\includegraphics{Figures/flowPaths}}}
 \qquad&
 \begin{array}{@{}lllll@{}}
 \one                 &                &                  &           &       \\

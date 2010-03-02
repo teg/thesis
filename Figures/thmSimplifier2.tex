@@ -1,0 +1,25 @@
+%%!TEX TS-program = latex
+\documentclass[a4paper]{amsart}
+
+\usepackage[urw-garamond]{mathdesign}
+\usepackage[lutzsyntax]{virginialake}
+   \aftrianglefalse
+   \everydisplay={\vlsmallleftlabels}
+
+\begin{document}
+\thispagestyle{empty}
+
+\[
+\atomicflow
+{
+( 0, 0)*{\afacumexsq{}{}{}{}{}{}52};
+(-5,-3.75)*{\aflabelleft{f_1(\boldsymbol{\epsilon_1})}};
+( 5,-3.75)*{\aflabelleft{f_3(\boldsymbol{\epsilon_1})}};
+(12,-2)*{\afawdm{}{}{f_2(\boldsymbol{\epsilon_1})}{}};
+(20,-2)*{\afawdm{}{}{f_4(\boldsymbol{\epsilon_1})}{}};
+(24, 0)*{\afvjum{12}{}{g(\boldsymbol{\epsilon_4})}};
+(28, 0)*{\invisiblemark};
+}
+\]
+
+\end{document}

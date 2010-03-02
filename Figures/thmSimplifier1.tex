@@ -1,0 +1,58 @@
+%%!TEX TS-program = latex
+\documentclass[a4paper]{amsart}
+
+\usepackage[urw-garamond]{mathdesign}
+\usepackage[lutzsyntax]{virginialake}
+   \aftrianglefalse
+   \everydisplay={\vlsmallleftlabels}
+
+\begin{document}
+\thispagestyle{empty}
+
+\[
+\atomicflow
+{
+(0,0)="A";
+"A"+(-3, 6)*{\afvjdm4{f_1(\boldsymbol{\epsilon_1})}{}};
+"A"+( 3, 6)*{\afvjdm4{f_1(\boldsymbol{\epsilon_2})}{}};
+"A"+( 0, 0)*{\affr88};
+"A"+( 4, 2)*{\aflabelleft{f_1(\phi)}};
+"A"+(-3,-6)*{\afvjum4{f_1(\boldsymbol{\iota_1})}{}};
+"A"+( 3,-6)*{\afvjum4{f_1(\boldsymbol{\iota_2})}{}};
+%---
+"A"+(14, 0)="A";
+"A"+(-3, 6)*{\afvjdm4{f_2(\boldsymbol{\epsilon_1})}{}};
+"A"+( 3, 6)*{\afvjdm4{f_2(\boldsymbol{\epsilon_2})}{}};
+"A"+( 0, 0)*{\affr88};
+"A"+( 4, 2)*{\aflabelleft{f_2(\phi)}};
+"A"+(-3,-6)*{\afvjum4{f_2(\boldsymbol{\iota_1})}{}};
+"A"+( 3,-6)*{\afvjum4{f_2(\boldsymbol{\iota_2})}{}};
+%---
+"A"+(14, 0)="A";
+"A"+(-3, 6)*{\afvjdm4{f_3(\boldsymbol{\epsilon_1})}{}};
+"A"+( 3, 6)*{\afvjdm4{f_3(\boldsymbol{\epsilon_2})}{}};
+"A"+( 0, 0)*{\affr88};
+"A"+( 4, 2)*{\aflabelleft{f_3(\phi)}};
+"A"+(-3,-6)*{\afvjum4{f_3(\boldsymbol{\iota_1})}{}};
+"A"+( 3,-6)*{\afvjum4{f_3(\boldsymbol{\iota_2})}{}};
+%---
+"A"+(14, 0)="A";
+"A"+(-3, 6)*{\afvjdm4{f_4(\boldsymbol{\epsilon_1})}{}};
+"A"+( 3, 6)*{\afvjdm4{f_4(\boldsymbol{\epsilon_2})}{}};
+"A"+( 0, 0)*{\affr88};
+"A"+( 4, 2)*{\aflabelleft{f_4(\phi)}};
+"A"+(-3,-6)*{\afvjum4{f_4(\boldsymbol{\iota_1})}{}};
+"A"+( 3,-6)*{\afvjum4{f_4(\boldsymbol{\iota_2})}{}};
+%---
+"A"+(14, 0)="A";
+"A"+(-3, 6)*{\afvjdm4{}{g(\boldsymbol{\epsilon_3})}{}};
+"A"+( 3, 6)*{\afvjdm4{}{g(\boldsymbol{\epsilon_4})}{}};
+"A"+( 0, 0)*{\affr88};
+"A"+( 4, 2)*{\aflabelleft{g(\psi)}};
+"A"+(-3,-6)*{\afvjum4{}{g(\boldsymbol{\iota_3})}{}};
+"A"+( 3,-6)*{\afvjum4{}{g(\boldsymbol{\iota_4})}{}};
+%---
+}
+\]
+
+\end{document}
