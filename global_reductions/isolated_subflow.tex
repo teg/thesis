@@ -2,13 +2,9 @@
 
 Given a derivation $\Phi$ in simple form with respect to an atom $a$, the operator, $\ISR$, defined in this section produces a derivation with the same premiss and conclusion as $\Phi$, which is weakly streamlined with respect to $a$.
 
-\Tom{occurrences of}
-
 We will see later how a derivation containing occurrences of $n$ atoms can be weakly streamlined by two applications of $\Simpl$ and $n$ applications of $\ISR$. This is the most basic procedure for obtaining a weakly streamlined derivation, in particular it only deals with one atom at a time. In the following sections we will see how we can deal with several atoms in parallel.
 
 The operator is defined in terms of the following flow reduction.
-
-\Tom{connected flom -> connected component}
 
 %--------------------------------
 \newcommand{\fris}{{\mathsf{is}}}
@@ -23,8 +19,6 @@ We define the reduction $\to_\fris$ (where $\fris$ stands for \emph{isolated sub
 where we call the evidenced interaction (resp., cut) vertex $\nu_\aid$ (resp., $\nu_\aiu$).
 \end{definition}
 %---------------
-
-\Tom{Corrected remark (cf. change to Definition~\vref{definition:PathBreaker}).}
 
 %-------------------------------------------------------------
 \begin{remark}\label{remark:IsolatedSubflowRemovalRestriction}
@@ -124,13 +118,7 @@ We know that the size of $\Phi_\ttt$ and the size of $\Phi_\fff$ depend polynomi
 \end{proof}
 %----------
 
-\Tom{Added explanation:}
-
 We now show the basic properties of $\to_\fris$. Namely, that the reduction does not create any `new' interaction or cut vertices, and that it does not create any `new' paths between interaction or $\top$ and cut or $\bot$ vertices.
-
-\Tom{Exchanged $\top$ and $\bot$ in item 2, and clarified statement.}
-
-\Tom{Changed from itemize to enumerate to make it a bit clearer.}
 
 %-------------------------------------
 \begin{lemma}\label{lemma:IsolatedSubflowRemovalPaths}
@@ -279,8 +267,6 @@ We then define $\ISR(\Phi,a)$ to be such that $\Psi\to_\fris\ISR(\Phi,a)$, where
 \end{definition}
 %---------------
 
-\Tom{Changed itemize to enumerate.}
-
 %------------------------------------------------------------
 \begin{proposition}\label{proposition:IsolatedSubflowRemover}
 Given an atom $a$ and a derivation $\Phi$ that is in simple form with respect to $a$,
@@ -295,8 +281,6 @@ Given an atom $a$ and a derivation $\Phi$ that is in simple form with respect to
 \end{enumerate}
 \end{proposition}
 
-\Tom{Fixed typo in second case:}
-
 \begin{proof}
 If $\Phi$ is weakly streamlined with respect to $a$, the result is trivial. Assume $\Phi$ is not weakly streamlined with respect to $a$, and let $\phi$, $\psi$, $\phi'$, $\psi'$ and $\psi''$ be the flows given in Definition~\vref{definition:IsolatedSubflowRemover}, then
 \begin{enumerate}
@@ -310,8 +294,6 @@ If $\Phi$ is weakly streamlined with respect to $a$, the result is trivial. Assu
 \end{enumerate}
 \end{proof}
 %----------
-
-\Tom{Added example:}
 
 We now give an example of an application of $\ISR$. In particular we want to show its inherent non-confluency.
 

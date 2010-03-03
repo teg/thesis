@@ -225,8 +225,6 @@ Figure~\vref{figure:ExampleAtomicFlows} has three examples of derivations and th
 \end{figure}
 %-----------
 
-\Tom{Avoid non-standard notation ($\phi_a$):}
-
 %--------------------------------------------------
 \begin{definition}\label{definiton:FlowRestriction}
 Given a derivation $\Phi$ with flow $\phi$, and an atom $a$, the \emph{restriction of $\phi$ to $a$}\index{flow!restriction to atom} is the largest subflow $\psi$ of $\phi$, such that every edge of $\psi$ is mapped to from $a$ or $\bar a$.
@@ -357,8 +355,6 @@ Given a derivation $\Phi$, an atom occurrence $a$ in $\Phi$ and the flow $\phi$ 
 \end{notation}
 %-------------
 
-\Tom{Added intuition (from paper on quasipolynomial normalisation).}
-
 We will now see how this notation might be useful when selectively substituting for atom occurrences. For example, let us suppose that we are given the following associated derivation and flow:
 \[
 \Phi=
@@ -403,8 +399,6 @@ We generalise this labelling mechanism to boxes. For example, we can use a diffe
 \]
 This notation is used in Proposition~\vref{proposition:DerivationSubstitution}, where we define how we can, in certain cases, substitute formulae in place of atom occurrences. This technique is used in Theorem~\vref{theorem:SoundFourBoxes}, Theorem~\vref{theorem:SoundIsolatedSubflowRemoval} and Theorem~\vref{theorem:SoundMultipleIsolatedSubflowsRemoval}.
 
-\Tom{Moved the following Proposition, Notation and Remark from the sectoin on Global Reductions.}
-
 %------------------------------------------------------------
 \begin{proposition}\label{proposition:DerivationSubstitution}
 Given a derivation\/ $\vlder\Phi\SKS{\beta}\alpha$, let its associated flow have shape
@@ -427,8 +421,6 @@ where $n$ is the number of atom occurrences in $\gamma$; moreover, the size of\/
 We can proceed by structural induction on $\Phi$. For every formula in $\Phi$ we substitute $a^\phi$ with $\gamma$. Since all the edges in $\phi$ are mapped to from $a$ (and not $\bar a$), we know that all the vertices in $\phi$ are mapped to from instances of $\acd$, $\acu$, $\awd$ and $\awu$. We substitute every instance of $\acd$, $\acu$, $\awd$ and $\awu$ where $a^\phi$ appears, by $\cod$, $\cou$, $\wed$, $\weu$, respectively, with $\gamma$ in the place of $a^\phi$. The result then follows by Lemma~\vref{lemma:GenericWeakening} and Lemma~\vref{lemma:GenericContraction}.
 \end{proof}
 %----------
-
-\Tom{`Propostion' -> `Proposition'.}
 
 %---------------
 \begin{notation}
@@ -463,8 +455,6 @@ Given two derivations
 \]
 for some atoms $a_1,\dots,a_n,b_1,\dots,b_m$, such that $\Phi$ and $\Psi$ have isomorphic flows, we say that $\Psi$ is an \emph{$\ai$-decomposed form of\/ $\Phi$}\index{$\ai$-decomposed form}.
 \end{definition}
-
-\Tom{Removed `partially sequentialised'.}
 
 \begin{convention}\label{convention:AlternativeAiDecomposedForm}
 Given a derivation $\Phi$ and an $\ai$-decomposed form of\/ $\Phi$:

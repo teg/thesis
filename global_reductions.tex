@@ -1,20 +1,14 @@
 \chapter{Global Reductions}\label{chapter:GlobalReductions}
 
-\Tom{`property' -> `process'}
-
 In this and the next chapter we see the second use of atomic flows: Controlling normalisation of derivations. Conventional wisdom teaches us that normalisation is a delicate process, and that a careful design of inference rules is necessary in order to obtain it. Atomic flows were designed to describe normal forms, by removing a lot of information about the inference rules, it is therefore surprising that they contain enough information to design normalisation procedures.
 
 There are two kinds of flow reductions: global and local ones. Global reductions rewrites the entire flow: normally, two or more slightly altered copies of a flow are connected together. Local reductions substitutes a bounded subflow in a flow by another subflow that fits in the context.
-
-\Tom{Added paragraph:}
 
 Alternatively, as suggested by Fran\c{c}ois Lamarche, we could talk about external and internal instead of global and local reductions. This guides the intuition in the sense that the global reductions never `look inside' the flows they work on. The size of the flows being copied is unbounded, however, the alterations to each of the copies are bounded, and it always happens at the `outside' of the flow.
 
 This chapter is dedicated to the most challenging part of normalisation: obtaining weakly streamlined derivations through global reductions. The process is non-confluent, and at first glance it increases the size of derivations exponentially. However, a second surprise was the fact that we are able to design procedures for weakly streamlining which only grow derivations quasipolynomially.
 
 We will define several `atomic flow reductions' which can be combined in different ways in order to obtain normalisation. Since we aim to produce derivations on normal forms, and not only their atomic flows, we find it convenient to define \emph{operators} on derivations in terms of the flow reductions. It is important to note that we could have performed all the procedures purely in terms of atomic flows. The final results about derivations would follow from the `soundness' of the flow reductions. We chose to be a bit more explicit and provide the derivations directly.
-
-\Tom{Changed from $f$ and $g$ to $u$ and $l$.}
 
 %-------------------------------------------------
 \begin{definition}\label{definition:FlowReduction}
@@ -37,8 +31,6 @@ Given a reduction $R$ and two flows $\phi$ and $\psi$, such that $\phi\mathrel{R
 \end{convention}
 %---------------
 
-\Tom{Added explanation:}
-
 It is important to notice the difference in notation, between the bijections between edges belonging to isomorphic flows, and the bijections between upper and lower edges in a redex/contractum pair. For an example of these two conventions being used simultaneously, see Definition~\vref{definition:FourBoxes}.
 
 %--------------------------------------------------
@@ -52,8 +44,6 @@ A reduction $\mathrel{R}$ is \emph{sound}\index{reduction!sound} if, for every $
 We provide constructive soundness proofs for every reduction in this thesis, so from now on, for any reduction $\mathrel{R}$, when we write $\Phi\mathrel{R}\Psi$, we mean that $\Psi$ is the derivation obtained form $\Phi$ in the soundness proof of $\mathrel{R}$.
 \end{convention}
 %---------------
-
-\Tom{Added remark:}
 
 %-----------------------------------
 \begin{remark}\label{remark:lifting}

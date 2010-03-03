@@ -1,8 +1,6 @@
 %======================================
 \chapter{Local Reductions}
 
-\TODO{non-trivial automorphism.}
-
 In this chapter, we see local transformations, which are based on reduction rules. It is convenient to classify reduction rules into those for weakening and those for contraction. After seeing flow reductions and tying them with derivations, in Section~\vref{section:Soundness}, we explore some of their basic properties, in the two short Sections~\vref{section:TerminationConfluence} and \vref{section:FlowRewriteComplexity}.
 
 \begin{definition}\label{definition:FlowGraphicalExpressions}
@@ -343,7 +341,7 @@ $}
 \label{figure:ReductionRulesContraction}
 \end{figure}%
 
-%---------------------------------------
+%-------------------------------------------------
 \begin{theorem}\label{theorem:ReductionRulesSound}
 The reduction rules\/ $\rwdcd$, $\rwdiu$, $\rwdwu $, $\rwdcu$, $\rcdiu$, $\rcdcu$, $\rcuwu$, $\ridwu$, $\rcdwu$ and $\ridcu$ are sound.
 \end{theorem}
@@ -368,6 +366,7 @@ For $r\in\{\rwdcd,\rwdiu,\rwdwu,\rwdcu,\rcdiu,\rcdcu\}$ and $r\colon\phi'\to\psi
 \]
 We can deal with the remaining rules by employing dual derivations to the ones shown.
 \end{proof}
+%----------
 
 %---------------------------------------
 \begin{remark}\label{remark:ReductionRulesSoundIndependence}

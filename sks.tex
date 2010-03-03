@@ -2,8 +2,6 @@
 
 \section{System SKS}
 
-\Tom{Rephrased first sentence.}
-
 We now define the standard deductive system $\SKS$\index{$\SKS$} for classical propositional logic in deep inference  \cite{Brun:03:Atomic-C:oz,Brun:06:Cut-Elim:cq,Brun:06:Locality:zh,BrunTiu:01:A-Local-:mz}. For an excellent reference to previous work on normalisation in $\SKS$, see \cite{Brun:04:Deep-Inf:rq}. Subsystems of $\SKS$ are used throughout this thesis.
 
 The results presented in this section, with the exception of Theorem~\vref{theorem:SKSComplete}, are standard results which can be found in the literature. We include the proofs for completeness and as means for giving examples of the functorial calculus.
@@ -110,8 +108,6 @@ whose size depends at most quadratically on the sum of the sizes of $\alpha$ and
 \end{remark}
 %-----------
 
-\Tom{`Let' -> `Given'.}
-
 %-------------------------------------------------
 \begin{notation}\label{notation:ImplicitEquations}
 When we work in (subsystems of) $\SKS$, we often omit mentioning the invertible rules. Given $\mathcal{S}$ be a subsystem of $\SKS$, then, unless specified otherwise, when we write $\mathcal{S}$ we mean $\mathcal{S}\cup\{\coor,\coand,\asor,\asand,\fffd,\tttd,\fffu,\tttu,\fffandd,\tttord,\fffandu,\tttoru\}$. Furthermore, if $\rho\in\SKS$, and there is a derivation
@@ -215,8 +211,6 @@ We now give some standard results which will also serve as examples of system $\
 Given a context $\xi\vlhole$ and a formula $\alpha$ there exist derivations $\vlder{}{\{\swi\}}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlder{}{\{\swi\}}{\vls[\xi\{\fff\}.\alpha]}{\xi\{\alpha\}}$; both of whose size depend at most quadratically on the size of $\xi\{\alpha\}$.
 \end{lemma}
 
-\Tom{atoms -> atom occurrences}
-
 \begin{proof}
 We show how to construct the first derivation, the second one can be done symmetrically. We argue by induction on the number of atom occurrences in $\xi\vlhole$. The base case, $\xi\vlhole=\vlhole$, is trivial and the inductive cases are:
 \[
@@ -268,8 +262,6 @@ for some $\xi'\vlhole$ and $\beta$ where $\beta$ is not a unit and $\Psi$ and $\
 \newcommand{\ssu}{\supers\uparrow}
 \newcommand{\ssd}{\supers\downarrow}
 
-\Tom{Removed $\{\swi\}$ from the stem of derivations.}
-
 \begin{notation}\label{notation:SuperSwitch}
 We often write $\vlinf{\ssu}{}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlinf{\ssd}{}{\vls[\xi\{\fff\}.\alpha]}{\xi\{\alpha\}}$, instead of, respectively, the derivations $\vlder{}{}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\vlder{}{}{\vls[\xi\{\fff\}.\alpha]}{\xi\{\alpha\}}$, as defined in the proof of Lemma~\vref{lemma:SuperSwitch}. Instead of the derivation
 \[
@@ -283,8 +275,6 @@ We often write $\vlinf{\ssu}{}{\xi\{\alpha\}}{\vls(\alpha.\xi\{\ttt\})}$ and $\v
 \]
 we write $\vlinf{\supers}{}{\vls[\zeta\{\fff\}.\xi\{\alpha\}]}{\vls(\zeta\{\alpha\}.\xi\{\ttt\})}$.
 \end{notation}
-
-\Tom{Added Lemma with proof. This was implicitly proven in Theorem~\vref{theorem:ThresholdDerivations}.}
 
 We now show a consequenc of the previous Lemma, which will be very useful in Subsection~\vref{subsection:ThresholdFormulae}.
 
@@ -302,15 +292,11 @@ We show how to construct the first derivation, the second one can be done symmet
 \end{proof}
 %----------
 
-\Tom{Added:}
-
 For an example of the use of Lemma~\vref{lemma:SuperSwitchContraction} see Remark~\vref{remark:CompactSKSComplete}.
 
 \begin{lemma}\label{lemma:GenericWeakening}
 Given a formula $\alpha$, there exist derivations $\vlupsmash{\vlder{}{\{\awd,\swi\}}{\alpha}{\fff}}$ and $\vlupsmash{\vlder{}{\{\awu,\swi\}}{\ttt}{\alpha}}$; both of whose size depend at most quadratically on the size of $\alpha$.
 \end{lemma}
-
-\Tom{atoms -> atom occurrences}
 
 \begin{proof}
 We show how to construct the first derivation, the second one can be done symmetrically.
@@ -361,8 +347,6 @@ Since $\alpha\{a_1/\fff,\dots,a_n/\fff\}$ contains no atom occurrences, there ex
 \begin{lemma}\label{lemma:GenericContraction}
 Given a formula $\alpha$, there exist derivations $\vlupsmash{\vlder{}{\{\acd,\med\}}{\alpha}{\vls[\alpha.\alpha]}}$ and $\vlupsmash{\vlder{}{\{\acu,\med\}}{\vls(\alpha.\alpha)}{\alpha}}$; both of whose size depend at most quadratically on the size of $\alpha$.
 \end{lemma}
-
-\Tom{number of atoms in $\alpha$ -> size of $\alpha$; added two base casse}
 
 \begin{proof}
 We show how to construct the first derivation, the second one can be done symmetrically. We argue by induction on the size of $\alpha$. We have to consider the following three base cases
@@ -546,8 +530,6 @@ Given any formulae $\alpha$ and $\beta$ and any context $\xi\vlhole$, then, by a
 \]
 is complete for classical logic. This justifies the naming of the invertible rules, as the tradition is in deep inference to label admissible rules with an $\uparrow$.
 \end{remark}
-
-\Tom{Changed the following remark to illustrate the use of Lemma~\vref{lemma:SuperSwitchContraction}.}
 
 \begin{remark}\label{remark:CompactSKSComplete}
 If we do not restrict ourselves to the downfragment of $\SKS$, we can build a more compact proof than what we do in Theorem~\vref{theorem:SKSComplete}, by using the following as the inductive case:

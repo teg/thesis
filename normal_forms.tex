@@ -16,8 +16,6 @@ A path can be eliminated by removing the edges that make up the path. However, w
 
 Sometimes, the elimination of edges mapped to by an atom $a$ might interfere with the elimination of edges mapped to from the atom $\bar a$. For this reason, we find it convenient to define special cases of simple form and weakly streamlined, where for every pair of dual atoms the edges mapped to from one of them are ignored. These are cases (\ref{definition:FlowNormalForms:item:SimpleForm}) and (\ref{definition:FlowNormalForms:item:WeaklyStreamlinedPolarity}) of Definition~\ref{definition:FlowNormalForms}.
 
-\Tom{Added one bullet point for each normal form:}
-
 In summary, the intuition behind each of the normal forms in Definition~\vref{definition:FlowNormalForms} is:
 \begin{enumerate}
 \item a flow is in simple form with respect to a given polarity assignment, if all the edes with a positive polarity assignment can be partitioned into two classes, the ones that belong to paths connecting interaction and cut vertices (the rightmost box markde with a $\ppl$ in the below figure) and the ones that do not (the four leftmost boxes marked with $\ppl$ in the below figure);
@@ -28,7 +26,7 @@ In summary, the intuition behind each of the normal forms in Definition~\vref{de
 \item a super streamlined flow is \emph{hyper streamlined} if it contains no path whose first edge is an upper edge of a cocontraction vertex and last edge is the lower edge of a contraction vertex.
 \end{enumerate}
 
-%---------------------------------------
+%---------------------------------------------------
 \begin{definition}\label{definition:FlowNormalForms}
 An atomic flow is
 \begin{enumerate}
@@ -108,8 +106,6 @@ Given a polarity assignment $\pi$, a flow that is weakly streamlined with respec
 \begin{proposition}\label{proposition:FlowCutFree}
 A streamlined flow with no pair of upper (resp., lower) edges such that there is an $\ai$-path between them, contains no cut (resp., axiom) vertices.
 \end{proposition}
-
-\Tom{Removed the use of the name KS, as this was the only place it was used and as it was not defined.}
 
 The following proposition makes the connection between cut elimination and streamlining. We consider the special case of atomic flows of proofs, \emph{i.e.}, atomic flows without upper edges, and observe that a streamlined proof is cut free and a hyper streamlined proof is a proof in the system $\SKS\setminus\{\aiu,\acu,\awu\}$.
 

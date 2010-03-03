@@ -1,18 +1,9 @@
-
 %====================
 \chapter{Atomic Flows}
 
-\Tom{formalism -> invariant}
-
-\Tom{abstract representation}
-
 In this chapter we introduce the main tool used in this thesis, a geometric proof invariant called `atomic flows'. An atomic flow is a directed graph obtained from a derivation by only retaining information about the creation and destruction of atom occurrences. Notably, the atomic flow of a derivation completely disregards all the logical relations and linear inference rule instances; so, an atomic flow is not a derivation.
 
-\Tom{Changed comparison with proof nets (Lutz approves).}
-
 Atomic flows can be seen as either specialised Buss flow graphs \cite{Buss:91:The-Unde:uq,Carb:97:Interpol:fk}, or a variation of the kind of proof nets developed in \cite{Stra:05:From-Dee:yb,Stra:09:From-Dee:fr}, based on work done in \cite{LamaStra:05:Naming-P:ov}. The only difference between atomic flows and these proof nets is that the proof nets implement (co)associativity of (co)contraction and dinaturality of interaction and cut, while atomic flows do not. For a more detailed comparison see \cite{Stra:09:From-Dee:fr}. Despite their similarities, the motivation and use of atomic flows differ from that of proof nets.
-
-\Tom{Deleted here all mention of mapping from flows to derivations, as this was missleading in this context. It will be covered in greater detail later instead.}
 
 We can think of atomic flows as composite diagrams that are freely generated from a set of six elementary diagrams. Technically, atomic flows are special kinds of labelled directed acyclic graphs, and the properties of their vertices are dictated by their labels, which we define as follows.
 
@@ -94,8 +85,6 @@ We call the following six diagrams (\emph{atomic-flow}) \emph{labels}\index{flow
 \newcommand{\up}{{\mathrm{up}}}
 \newcommand{\lo}{{\mathrm{lo}}}
 
-\Tom{Changed typesetting of $\up$ and $\lo$.}
-
 %---------------------------------------
 \begin{definition}\label{definition:AtomicFlow}
 An (\emph{atomic}) \emph{flow}\index{flow}\index{atomic flow|see{flow}} is a tuple $(V,E,\eta,\up,\lo)$, such that:
@@ -132,8 +121,6 @@ An (\emph{atomic}) \emph{flow}\index{flow}\index{atomic flow|see{flow}} is a tup
 Given an atomic flow $\phi$, we say that the sets $L_\top=\{\epsilon_1,\dots,\epsilon_h\}$ and $U_\bot=\{\iota_1,\dots,\iota_k\}$ contain, respectively, the \emph{upper}\index{flow!upper edges} and \emph{lower edges of $\phi$}\index{flow!lower edges}.
 \end{definition}
 %---------------
-
-\Tom{Extracted notation from defintion:}
 
 \begin{notation}
 We will use the letters $\phi$ and $\psi$, sometimes with standard additional decorations, to denote atomic flows.
@@ -221,8 +208,6 @@ The left one is not a flow because it contains a cycle, and the right one becaus
 \end{example}
 %------------
 
-\Tom{Rephrased slightly to avoid overfull.}
-
 %---------------------------------------------------
 \begin{definition}\label{definition:FlowIsomorphism}
 Given two flows $\phi_1=(V_1,E_1,\eta_1,\up_1,\lo_1)$ and $\phi_2=(V_2,E_2,\eta_2,\up_2,\lo_2)$, an \emph{isomorphism}\index{isomorphism} between $\phi_1$ and $\phi_2$ is a pair of functions $(f_V,f_E)$, such that
@@ -267,8 +252,6 @@ and a flow $\psi$ which is isomorphic to $\phi$, whenever we write
 we mean that $f$ is a given isomorphism between $\phi$ and $\psi$.
 \end{notation}
 %-------------
-
-\Tom{Removed convention.}
 
 %---------------
 \begin{notation}
@@ -331,8 +314,6 @@ In addition, the flow has the paths and $\ai$-paths obtained from the shown ones
 %=========================================
 \section{Subflows}\label{section:Subflows}
 
-\Tom{Removed superfluos clause and rephrased slightly to avoid overfull.}
-
 %-------------------------------------------
 \begin{definition}\label{definition:Subflow}
 Given two flows $\phi_1=(V_1,E_1,\eta_1,\up_1,\lo_1)$ and $\phi_2=(V_2,E_2,\eta_2,\up_2,\lo_2)$, we say that $\phi_1$ is a \emph{subflow}\index{subflow} of $\phi_2$, if
@@ -363,8 +344,6 @@ if $\nu_1$ and $\nu_2$ are vertices in $\phi_1$, and there is a vertex $\nu'$ in
 \end{itemize}
 \end{definition}
 %---------------
-
-\Tom{Renamed a $\psi$ to a $\phi$ and added example.}
 
 %--------------------------------------------------
 \begin{definition}\label{defintion:IsolatedSubflow}
