@@ -3,86 +3,76 @@
 
 \section{Extracting Flows from Derivations}\label{section:ExtractingFlowsFromDerivations}
 
-We now define the mapping from derivations to flows. As we said, the idea is that structural rule instances map to the respective atomic-flow vertices, and the edges trace the atom occurrences between rule instances. We first state a fact, whose proof is immediate.
+We now define the mapping from derivations to flows. As we said, the idea is that structural rule instances map to the respective atomic-flow vertices, and the edges trace the atom occurrences between rule instances.
 
-\Tom{Rehprased slightly and added ``up to isomorphism''.}
+\Tom{Changed from proposition to a definition and a propositions:}
 
-\Tom{Added sketch of proof.}
+\begin{definition}\label{definition:AssociatedFlow}
+Given a derivation\/ $\Phi$, we define the flow $\phi$ \emph{associated with}\index{flow!associated with derivation} $\Phi$:
+\begin{itemize}
+  \item if $\Phi$ is a unit, then $\phi$ is the empty flow;
+  \item if $\Phi$ is an atom, then $\phi$ is a flow containing only the edge $\epsilon$ and no vertices; we say that \emph{$\Phi$ is mapped to $\epsilon$};
+  \item if $\Phi=\vls[\Psi_1.\Psi_2]$ or $\Phi=\vls(\Psi_1.\Psi_2)$, where $\psi_1$ (resp., $\psi_2$) is the flow associated with $\Psi_1$ (resp., $\Psi_2$), then $\phi$ is the disjoint union of $\psi_1$ and $\psi_2$; and
+  \item if
+\[
+\Phi\;=\;
+\vlderivation
+{
+  \vlde{\Phi_2}{}
+  {
+    B
+  }
+  {
+    \vlin{\rho}{}
+    {
+      B'
+    }
+    {
+      \vlde{\Phi_1}{}
+      {
+	A'
+      }
+      {
+	\vlhy
+	{
+	  A
+	}
+      }
+    }
+  }
+}\quad,
+\]
+where $\psi_1$ (resp., $\psi_2$) is the flow associated with $\Psi_1$ (resp., $\Psi_2$), then $\phi$ is the disjoint union of $\phi_1$ and $\phi_2$, where
+\begin{itemize}
+\item if $\rho$ is a structural inference rule, $\phi$ also contains a new vertex $\nu$ that is labelled with the name of $\rho$. Furthermore, the lower (resp., upper) map of $\phi$ maps each of the lower (resp., upper) edges of $\phi_1$ (resp., $\phi_2$) to $\nu$; we say that \emph{$\rho$ is mapped to $\nu$}, and
+\item if $\rho$ is a linear inference rule, then the lower edges of $\phi_1$ are pairwise identified with the upper edges of $\phi_2$ in such a way that an atom occurrence in the premiss of $\rho$ is mapped to the same edge as the corresponding atom occurrence in the conclusion of $\rho$.
+\end{itemize}
+\end{itemize}
+\end{definition}
+
+It should be noted that the flow associated with a derivation is not unique. However, as we will see next, it is unique up to isomorphism:
 
 %------------------------------------------------
 \begin{proposition}\label{proposition:FlowUnique}
-Given a derivation\/ $\Phi$ in the system $\SKS$, there is a unique (up to isomorphism) flow $\phi$ such that:
-\begin{enumerate}
-%
-\item there is a surjective map between the set of atom occurrences of\/ $\Phi$ and the set of edges of $\phi$;
-%
-\item there is a bijective map between the set of structural inference rule instances of\/ $\Phi$ and the set of vertices of $\phi$, such that, for each inference rule instance $\rho$ that maps to a vertex $\nu$, the label of $\nu$ are given below, for each possible case of the inference rules:
-\[
-\begin{array}{@{}ccc@{}ccc@{}}
-\vlinf{\aid}{}{\vls[a^\one.{\bar a^\two}]}{\ttt}&\mbox{to\/}&
-\vcenter{\hbox{\includegraphics{Figures/vertAFAID}}}
-\quad,&\qquad
-\vlinf{\aiu}{}{\fff}{\vls(a^\one.{\bar a^\two})}&\mbox{to\/}&
-\vcenter{\hbox{\includegraphics{Figures/vertAFAIU}}}
-\quad,\\
-\noalign{\medskip}
-\vlinf{\awd}{}{a^\one}{\fff}                    &\mbox{to\/}&
-\vcenter{\hbox{\includegraphics{Figures/vertAFAWD}}}
-\quad,&\qquad
-\vlinf{\awu}{}{\ttt}{a^\one}                    &\mbox{to\/}&
-\vcenter{\hbox{\includegraphics{Figures/vertAFAWU}}}
-\quad,\\
-\noalign{\medskip}
-\vlinf{\acd}{}{a^\three}{\vls[a^\one.a^\two]}   &\mbox{to\/}&
-\vcenter{\hbox{\includegraphics{Figures/vertAFACD}}}
-\quad,&\qquad
-\vlinf{\acu}{}{\vls(a^\two.a^\three)}{a^\one}   &\mbox{to\/}&
-\vcenter{\hbox{\includegraphics{Figures/vertAFACU}}}
-\quad,\\
-\end{array}
-\]
-and the map between the atom occurrences in the premiss (resp., conclusion) of $\rho$ and the upper (resp., lower) edges of $\nu$ is indicated by small numerals; and
-%
-\item for each inference rule instance of\/ $\Phi$ of kind
-\[\hss
-\begin{array}{@{}r@{}l@{}}
-\vlinf{\swi}{}{\vls[(\alpha.\beta).\gamma]}
-              {\vls(\alpha.[\beta.\gamma])}           \quad,&\qquad
-\vlinf{\med}{}{\vls([\alpha.\gamma].[\beta.\delta])}
-              {\vls[(\alpha.\beta).(\gamma.\delta)]}  \quad,      \\
-\noalign{\smallskip}
-\vlinf{\coor}{}{\vls[\beta.\alpha]}{\vls[\alpha.\beta]}\quad,\qquad
-\vlinf{\coand}{}{\vls(\beta.\alpha)}{\vls(\alpha.\beta)}\quad,&\qquad
-\vlinf{\asor}{}{\vls[[\alpha.\beta].\gamma]}
-         {\vls[\alpha.[\beta.\gamma]]}                \quad,\qquad
-\vlinf{\asand}{}{\vls(\alpha.(\beta.\gamma))}
-         {\vls((\alpha.\beta).\gamma)}                \quad,      \\
-\noalign{\smallskip}
-\vlinf{\fffd}{}{\vls[\alpha.\fff]}{\alpha}           \quad,\qquad
-\vlinf{\tttd}{}{\vls(\alpha.\ttt)}{\alpha}           \quad,&\qquad
-\vlinf{\fffu}{}{\alpha}{\vls(\ttt.\alpha)}        \qquad\hbox{and\/}\qquad
-\vlinf{\tttu}{}{\alpha}{\vls[\fff.\alpha]}
-\end{array}
-\]
-all the atom occurrences in $\alpha$, $\beta$, $\gamma$ and $\delta$ in the premiss are respectively mapped to the same edges of $\phi$ as the atom occurrences in $\alpha$, $\beta$, $\gamma$ and $\delta$ in the conclusion.
-\end{enumerate}
+Given a derivation $\Phi$ with the associated flow $\phi$, the flow $\psi$ is associated with $\Phi$ if and only if $\phi$ and $\psi$ are isomorphic.
 \end{proposition}
 
 \begin{proof}
-We sketch the proof: We proceede by induction on $\Phi$. If $\Phi$ is a formula or a horizontal composition of derivations, the result is immediate. Otherwise, if $\Phi$ is a vertical composition of two derivations by an inference rule, the result follows by induction and a case analysis of each inference rule of $\SKS$.
+We sketch the proof, which follows by strucural induction on $\Phi$:
+\begin{itemize}
+  \item If $\phi$ and $\psi$ are isomorphic, then $\psi$ is associated with $\Phi$, because for any partitioning of $\phi$ into subflows, there is a partitioning of $\psi$ into subflows so that the subflows of $\phi$ are pairwise isomorphic to the subflows of $\psi$.
+  \item If $\psi$ is associtaed with $\Phi$, then $\phi$ and $\psi$ are isomorphic, because if $\phi_1$ (resp., $\phi_2$) and $\psi_1$ (resp., $\psi_2$) are isomorphic, then the disjoint union of $\phi_1$ and $\phi_2$ is isomorphic to the disjoint union of $\psi_1$ and $\psi_2$.
+\end{itemize}
 \end{proof}
+%----------
 
-\Tom{I decided not to do this for lack of time (unless you insist of course):}
+\Tom{Added remark, in anticipation of the local rewriting:}
 
-\TODO{Macro for ``mapped from occurrences of''.}
-
-\Tom{Moved definition of $a^\phi$ and $a^\epsilon$ away from here.}
-
-%---------------------------------------
-\begin{definition}\label{definition:AssociatedFlow}
-Given a derivation $\Phi$, we say that the flow $\phi$ constructed in the proof of  Proposition~\vref{proposition:FlowUnique} is the (\emph{atomic}) \emph{flow associated with}\index{flow!associated with derivation} the derivation $\Phi$.
-\end{definition}
-%---------------
+%-------------
+\begin{remark}\label{remark:AmbiguousMapping}
+It should be noted that the mapping from atom occurrences (resp., rule instances) in $\Phi$ to edges (resp., vertices) in $\phi$ is not uniquely defined. However, this will not cause us any problems in this thesis, as in the cases where the mapping is ambiguous (Section~\ref{section:Soundness}), we only rely on its existence.
+\end{remark}
+%-----------
 
 %--------------
 \begin{example}
@@ -242,7 +232,7 @@ Consider the rightmost derivation and its associated flow in Figure~\vref{figure
 
 \Tom{Gave the motivation for the following theorem.}
 
-We now show that the definition of atomic flows is `minimal', in the sense that, if we restrict the definition, Proposition~\vref{proposition:FlowUnique} is no longer true. We do this by showing that every flow is associatedi with some derivation.
+We now show that the definition of atomic flows is `minimal', in the sense that, if we restrict the definition, we can no longer construct a flow associated with every derivation. We do this by showing that every flow is associated with some derivation.
 
 \Tom{Added more explanation:}
 
