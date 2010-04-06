@@ -1,71 +1,182 @@
-This thesis belongs to \emph{strucural proof theory}, the subdiscipline of logic that studies formal representation and manipulation of mathematical proof. Strucural proof theory is an important field of study as it allows us, among other things, to automatically verify, or search for, proofs as well as to prove the consistency of mathematical theories.
+% What is structural proof theory?
+\emph{Structural proof theory} is the subdiscipline of logic that studies formal representation and manipulation of mathematical proofs.
 
-Furthermore, representations of proofs are interesting mathematical objects in
-their own right. In particular, they are related to longstanding open problems:
-The problem of $\mathsf{NP}$ versus $\mathsf{coNP}$, from computational
-complexity theory, and Hilbert's problem of \emph{identity of proofs}, can both
-be stated in terms of representation and manipulation of proofs.
+% What is a formalism?
+A language for representing proofs is called a \emph{formalism}. Traditionally, formalisms are variations of Gentzen's \emph{natural deduction} and \emph{sequent calculus} \cite{Gent:69:Investig:xi}. Essentially, a formalism following Gentzen's methodology represents a proof as a tree, obtained by recursively breaking formulae apart at their main connective.
 
-A language for representing proofs is called a \emph{formalism}. Traditionally,
-in structural proof theory, formalisms are variations of Gentzen's \emph{natural
-deduction} and \emph{sequent calculus} \cite{Gent:69:Investig:xi}. Essentially,
-a formalism following the Gentzen methodology represents a proof as a tree,
-obtained by recursively breaking formulae apart at their main connective.
+% What are inference rules?
+The rules by which proofs are constructed are called \emph{inference rules}. A logic is represented in a given formalism by a set of inference rules, called a \emph{logical system}.
 
-\emph{Deep inference} \cite{Gugl:06:A-System:kl} is a methodology that allows
-for more general formalisms than Gentzen's traditional ones. In particular, deep
-inference allows deduction to take place at any place in a formula, rather than
-just at the main connective. This thesis studies deep-inference formalisms, in particular a new 
-formalism, called \emph{the functorial calculus}, in which we present our
-results. This formalism should be seen as a proof-of-concept of what is
-acheivable using the deep-inference methodology, and as a guide to design new
-formalisms. The first part of this thesis is devoted to the functorial calculus.
+% What is deep inference?
+\emph{Deep inference} \cite{Gugl:06:A-System:kl} is a methodology that allows generalisations of Gentzen's formalisms. The standard deep-inference formalism, the \emph{calculus of structures}, generalises the sequent calculus by allowing deduction at any place in a formula, rather than restricting it to the main connective. As a consequence, it is possible for all inference rules to be unary. In other words, proofs are represented as lists of formulae rather than as trees of sequents.
 
-Gentzen's formalisms came with notions of \emph{normal form} of proofs and \emph{normalisation theories} describing how to manipulting proofs in order to obtain their normal forms. In natural deduction a proof is in normal form if no `elimination rule' follows an `introduction rule'; and in the sequent calculus a proof is in normal form if it does not contain the `cut rule'.
+% What is the functorial calculus?
+In this thesis, a new deep-inference formalism, named the \emph{functorial calculus}, is presented. While, in the sequent calculus, the juxtaposition of two proofs denotes that they are composed by a conjunction, in the functorial calculus, this horizontal composition is generalised to allow both disjunctions and conjunctions. In other words, proofs are represented as directed acyclic graphs of formulae rather than as trees of sequents.
 
-Since the functorial calculus allows more proofs than Gentzen's formalisms the traditional notions of normal forms can not be imported directly. In particular, the functorial calculus has an up-down symmetry, which is not present in a tree structure. A direct consequence of this is that, unlike in the sequent calculus, the cut rule can not be eliminated. The first contribution of this thesis is to define several notions of normal forms, among them the notion of \emph{streamlining}, which, in the special case of proof with the shape of sequent calculus proof, corresponds to cut elimination.
+% What is the relationship between CoS and FC?
+The calculus of structures and the functorial calculus are closely related and translations between the two are given. The relationship between the two formalisms is explored further in \cite{GuglGundPari::A-Proof-:fk}, where a generalisation, called \emph{open deduction}, is presented. It is shown there that a functorial calculus proof corresponds to an equivalence class of calculus of structures proofs.
 
-In order to define the notion of streamlining, we found it insufficient to argue
-about the absence of rules (like in the sequent calculus), or the order of rules
-(like in natural deduction). We found that we needed something more
-general, namely the causal dependency of the creation and destruction of
-information (more specifically, \emph{atoms}). For this purpose, we designed a
-class of directed, acyclic graphs that capture this information, we call these
-graphs \emph{atomic flows}. Intuitively, we will consider a proof to be on
-normal form if no information is first created and then destroyed. The second
-part of this thesis is devoted to atomic flows and normal forms.
+% Why FC
+The functorial calculus was chosen for this thesis, rather than the calculus of structures, for two reasons. Firstly, the smaller proofs and fewer arbitrary choices required by the functorial calculus simplifies the presentation of the results. Secondly, some of the results of this thesis have been presented elsewhere in terms of the calculus of structures \cite{GuglGund:07:Normalis:lr,BrusGuglGundPari:09:Quasip:fk,GuglGundStra::Breaking:uq}, so using the functorial calculus illustrates the fact that the results are not tightly coupled to a specific formalism.
 
-Normalisation techniques in Gentzen-style formalisms fundamentally
-generally relies on the fact that the shape of proofs is dictated by
-the shape of the formulae they prove. As this is not the case in deep
-inference, new normalisation techniques must be developed.
+% What is propositional classical logic in deep inference?
+The focus of this thesis is propositional classical logic. By exploiting the symmetry available in deep-inference, it is possible to represent propositional classical logic in a system where every inference rule belongs to one of two kinds: \emph{atomic} or \emph{linear} \cite{BrunTiu:01:A-Local-:mz}.
 
-As will be demonstrated in this thesis, the same lack of restrictions on the
-construction of proofs that makes Gentzen-style normalisation impossible in deep
-inference, allows new kinds of normalisation that in turn would be impossible
-in Gentzen-style formalisms.
+% Linear rules
+An inference rule is \emph{linear} if, for every instance of the rule, there is a one-to-one correspondence between the atom occurrences in the premiss and the atom occurrences in the conclusion. Linear inference rules increases the flexibility of proofs, as other inference rule instances can in most cases trivially be permuted `through' the linear ones.
 
-Inspired by techniques introduced by Br\"unnler and Tiu
-\cite{Brun:04:Deep-Inf:rq}, we develop methods for manipulating proofs based
-on their atomic flows. To our surprise, we found that atomic flows contain
-all the information needed for studying normalisation. In particular, we found
-that information about logical connectives play no role in our procedures.
+% Atomic rules
+The \emph{atomic} inference rules are rules where only a given atom or its dual occur in every instance. By replacing a generic inference rule with several atomic ones, the flexibility of the proof is increased as the different atomic rules can be permuted independently from each other.
 
-The final part of this thesis is devoted to normalisation procedures defined in
-terms of atmoic flows. We will see two kinds of normalisation procedures:
-global procedures, which are fundamentally non-confluent, but can have less
-than exponential cost; and local procedures, which have exponential cost, but
-are confluent. Together, these normalisation procedures give us the normal forms
-we define earlier in this thesis.
+% Consequences of locality
+The possibility, which is not present in the sequent calculus \cite{Brun:03:Two-Rest:mn}, of having only linear and atomic inference rules allows representations of proofs which are extremely `malleable'.
 
-Our results are presented in the functorial calculus formalism and a specific
-system for propositional classical logic. However, we are not tightly bound to
-this formalism or system. Our techniques would work in any formalism that
-is sufficiently liberal in allowing composition of proofs, and for any system
-with `bounded size inference rule instances'. In particular, this means that
-our methods are not applicable in Gentzen-style formalisms
-\cite{Brun:03:Two-Rest:mn}, but they are in any typical deep-inference
-formalism.
+% First part
+The first part of this thesis will introduce classical logic in the functorial calculus, show the relationship between the functorial calculus and the calculus of structures, and present some standard deep-inference results.
+
+% What is normal forms / normalisation?
+A formalism usually comes with a \emph{normalisation theory}, \emph{i.e.} a notion of \emph{normal form} of proofs as well as a procedure describing how to manipulate proofs in order to obtain their normal form. In natural deduction a proof is in normal form if no `elimination rule' follows an `introduction rule'; and in the sequent calculus a proof is in normal form if it does not contain the \emph{cut rule}.
+
+% What is cut elimination?
+The cut rule, also known as \emph{modus ponens}, is at the heart of proof theory. The cut rule allows an auxiliary result to be proven only once, but used many times. When viewing proofs as programs, the cut is the application of a function to an argument, and normalisation is computation.
+
+% What is the state of normalisation in deep inference?
+%   Normal forms:
+%     Cut/axiom free proofs/refutations
+As in the sequent calculus, the cut rule is admissible from deep-inference proofs without a premiss. In \cite{Brun:04:Deep-Inf:rq}, Br{\"u}nnler presents a cut-elimination procedure for the calculus of structures and studies the connection between proofs with and without cut in the calculus of structures and in the sequent calculus.
+
+% What is the consequence of the symmetry of CoS/FC?
+The fact that the sequent calculus represent proofs as trees makes it inherently asymmetric in the horizontal axis. This asymmetry is not present in the calculus of structures or the functorial calculus. In fact, an asymmetry has to be enforced for the cut rule to be admissible.
+
+%      Axiom elimination
+The symmetry that is possible in deep-inference formalisms allows more notions of normal forms than just cut elimination. In particular, the dual of cut elimination also holds: axioms can be eliminated from proofs of falsehood.
+
+% Why do we want a new notion of normalisation?
+% 
+%   Generaltiy, with respect to:
+%     derivations
+%     logical systems
+%     formalisms
+%   Invariant of bureaucracy
+
+In this thesis a new notion of normal form of propositional classical logic proofs, called \emph{streamlining} is introduced. Unlike cut or axiom elimination, streamlining applies to all deep-inference proofs, and in the asymmetric case where cut or axiom elimination is applicable, the notions coincide. Unlike normal forms based on the order of inference rule instances, streamlining is invariant under rule permutations. Furthermore, streamlining is a largely syntax independent notion, in the sense that it is not tied to a specific formalism, or a specific logical system.
+
+% What do we propose instead?
+% 
+%   Atomic Flows
+% 
+%     proof invariants
+%     structural information only
+%     causal dependencies
+%     no correctness
+In order to describe the notion of streamlining and the related normal forms, we introduce a proof invariant that we call \emph{atomic flows}. Atomic flows are certain kinds of directed acyclic graphs that capture the structural information of proofs. Intuitively, an atomic flow is obtained from a proof by retaining the causal dependencies between creation, duplication and destruction of atoms and discarding all information about logical connectives, units and linear inference rules. A proof is streamlined if there is no path in its atomic flow from the creation to the destruction of an atom.
+
+The second part of this thesis is devoted to atomic flows, their relationship with proofs and the definition of normal forms in terms of atomic flows.
+
+% Atomic flows for normalisation
+Atomic flows were designed to describe normal form of proofs. However, it turns out that atomic flows are also a very convenient tool for designing and arguing about normalisation procedures. In the third part of this thesis two kinds of normalisation procedures are given. All the procedures are first presented in terms of atomic flows, before they are lifted to derivations.
+
+% What are the properties of our procedures?
+%   Two kinds of normalisation procedures, performed independently:
+
+The \emph{global} procedures work by making several copies of an entire atomic flow, `pruning' each copy and `stitching' them together. Three different global procedures are presented, all producing derivations in the same normal form. It appears that there is great flexibility in the design of the global procedures and there is a lot of room for future investigations, especially with respect to complexity. We show that the global procedures can have less than exponential cost. However, they are all inherently non-confluent.
+
+Whereas the global procedures consider the whole atomic flow, the \emph{local} procedures work on one pair of adjacent vertices. These procedures are confluent, but their cost is inherently exponential.
+
+% Are the properties as expected?
+It is expected that propositional classical logic normalisation is inherently exponential and non-confluent, and in fact we observe both these phenomena. However, they are separated into two distinct phases, which can be studied independently. It is worth noting that cut elimination is achieved with less than exponential cost.
+
+% What are the benefits of arguing in terms of atomic flows?
+The main contribution of this thesis is the use of atomic flows for arguing about normalisation. While it is true that all the results could be reformulated in terms of derivations, this would only serve to obfuscate what is going on.
+
+It should be noted that all the important properties of normalisation can be proven in terms of atomic flows alone. In particular results about complexity, termination, confluence and correctness can be proven without reference to derivations. The challenge in designing normalisation procedures is finding the correct atomic flow transformation, verifying that a transformation can be lifted to derivations is always straight forward.
+
+% Atomic flows capture the essence of normalisation
+There are two reasons to consider flows to describe the essence of proofs from the point of view of normalisation: Firstly, the flow of a proof determines how the proof can be normalised. Secondly, isomorphisms between atomic flows are preserved by normalisation. That is, the results of normalising two proofs with isomorphic atomic flows have isomorphic atomic flows.
+
+% How is normalisation related to complexity and bureaucracy?
+With respect to future work, two aspects of normalisation are especially relevant to this thesis: \emph{bureaucracy} and \emph{complexity}.
+
+% Complexity of normalisation
+The complexity of cut elimination in the sequent calculus is known to be exponential \cite{Stat:78:Bounds-f:fj} and it is known that cut elimination has less than exponential cost in deep inference \cite{Jera::On-the-C:kx}, however no lower bound exists. Furthermore, this thesis presents normal forms for which only exponential cost normalisation procedures are known. A possible direction of future work is to establish atomic flows as a tool for studying complexity, and to discover new normalisation procedures with lower complexity bounds.
+
+% Bureaucracy of normalisation
+The term \emph{bureaucracy} was coined by Girard to denote arbitrary syntactic dependencies in proofs. The presence of bureaucracy means that proofs that are `essentially the same' do not have a common canonical representation. Since all known formalisms have some degree of bureaucracy, an important aspect of any normalisation procedures is how it behaves with respect to bureaucracy. A desirable property is that, if two proofs are the same modulo bureaucracy, they have the same normal forms modulo bureaucracy. For the procedures presented in this thesis, this property always holds for notions of bureaucracy captured by atomic flows. Hence, another possible direction of future work is to show what notions of bureaucracy atomic flows capture and to adapt atomic flows to capture more notions of bureaucracy.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \newpage
+% 
+% \Tom{Old crap:}
+% 
+% This thesis belongs to \emph{strucural proof theory}, the subdiscipline of logic that studies formal representation and manipulation of mathematical proof. Strucural proof theory is an important field of study as it allows us, among other things, to automatically verify, or search for, proofs as well as to prove the consistency of mathematical theories.
+% 
+% Furthermore, representations of proofs are interesting mathematical objects in
+% their own right. In particular, they are related to longstanding open problems:
+% The problem of $\mathsf{NP}$ versus $\mathsf{coNP}$, from computational
+% complexity theory, and Hilbert's problem of \emph{identity of proofs}, can both
+% be stated in terms of representation and manipulation of proofs.
+% 
+% A language for representing proofs is called a \emph{formalism}. Traditionally,
+% in structural proof theory, formalisms are variations of Gentzen's \emph{natural
+% deduction} and \emph{sequent calculus} \cite{Gent:69:Investig:xi}. Essentially,
+% a formalism following the Gentzen methodology represents a proof as a tree,
+% obtained by recursively breaking a formulae apart at their main connective.
+% 
+% \emph{Deep inference} \cite{Gugl:06:A-System:kl} is a methodology that allows
+% for more general formalisms than Gentzen's traditional ones. In particular, deep
+% inference allows deduction to take place at any place in a formula, rather than
+% just at the main connective. This thesis studies deep-inference formalisms, in particular a new 
+% formalism, called \emph{the functorial calculus}, in which we present our
+% results. This formalism should be seen as a proof-of-concept of what is
+% acheivable using the deep-inference methodology, and as a guide to design new
+% formalisms. The first part of this thesis is devoted to the functorial calculus.
+% 
+% Gentzen's formalisms came with notions of \emph{normal form} of proofs and \emph{normalisation theories} describing how to manipulting proofs in order to obtain their normal forms. In natural deduction a proof is in normal form if no `elimination rule' follows an `introduction rule'; and in the sequent calculus a proof is in normal form if it does not contain the `cut rule'.
+% 
+% Since the functorial calculus allows more proofs than Gentzen's formalisms the traditional notions of normal forms can not be imported directly. In particular, the functorial calculus has an up-down symmetry, which is not present in a tree structure. A direct consequence of this is that, unlike in the sequent calculus, the cut rule can not be eliminated. The first contribution of this thesis is to define several notions of normal forms, among them the notion of \emph{streamlining}, which, in the special case of proof with the shape of sequent calculus proof, corresponds to cut elimination.
+% 
+% In order to define the notion of streamlining, we found it insufficient to argue
+% about the absence of rules (like in the sequent calculus), or the order of rules
+% (like in natural deduction). We found that we needed something more
+% general, namely the causal dependency of the creation and destruction of
+% information (more specifically, \emph{atoms}). For this purpose, we designed a
+% class of directed, acyclic graphs that capture this information, we call these
+% graphs \emph{atomic flows}. Intuitively, we will consider a proof to be on
+% normal form if no information is first created and then destroyed. The second
+% part of this thesis is devoted to atomic flows and normal forms.
+% 
+% Normalisation techniques in Gentzen-style formalisms fundamentally
+% generally relies on the fact that the shape of proofs is dictated by
+% the shape of the formulae they prove. As this is not the case in deep
+% inference, new normalisation techniques must be developed.
+% 
+% As will be demonstrated in this thesis, the same lack of restrictions on the
+% construction of proofs that makes Gentzen-style normalisation impossible in deep
+% inference, allows new kinds of normalisation that in turn would be impossible
+% in Gentzen-style formalisms.
+% 
+% Inspired by techniques introduced by Br\"unnler and Tiu
+% \cite{Brun:04:Deep-Inf:rq}, we develop methods for manipulating proofs based
+% on their atomic flows. To our surprise, we found that atomic flows contain
+% all the information needed for studying normalisation. In particular, we found
+% that information about logical connectives play no role in our procedures.
+% 
+% The final part of this thesis is devoted to normalisation procedures defined in
+% terms of atmoic flows. We will see two kinds of normalisation procedures:
+% global procedures, which are fundamentally non-confluent, but can have less
+% than exponential cost; and local procedures, which have exponential cost, but
+% are confluent. Together, these normalisation procedures give us the normal forms
+% we define earlier in this thesis.
+% 
+% Our results are presented in the functorial calculus formalism and a specific
+% system for propositional classical logic. However, we are not tightly bound to
+% this formalism or system. Our techniques would work in any formalism that
+% is sufficiently liberal in allowing composition of proofs, and for any system
+% with `bounded size inference rule instances'. In particular, this means that
+% our methods are not applicable in Gentzen-style formalisms
+% \cite{Brun:03:Two-Rest:mn}, but they are in any typical deep-inference
+% formalism.
 % 
 % The problem of identity of proofs was originally intended by Hilbert to be the 24th problem of his famous Paris lecture in 1900 \cite{Thie:03:Hilberts:yu}, and it amounts to answering the question: \emph{When are two proofs the same?} This thesis is part of a program which tries to solve the identity of proofs problem in the setting of propositional logic.
 % 
@@ -130,26 +241,26 @@ formalism.
 % 
 % However, atomic flows discard all information about logical relations and linear rules, so we found it surprising that the remaining information is sufficient to design normalisation procedures. In particular, we have found no difficulties in using our normalisation procedures with different formalisms, different logical connectives and different linear rules, as long as all the inference rules are local and implicationally complete for propositional classical logic.
 
-Some of the results in this thesis are, or will be, available in journal articles. One article has been published, one has been submitted and three are still being written. They are, respectively:
-\begin{itemize}
- \item atomic flows were introduced and the first normalisation results were shown in \emph{Normalisation Control in Deep Inference via Atomic Flows} with Alessio Guglielmi, published in \emph{Logical Methods in Computer Science};
- \item quasipolynomial cut elimination was shown using atomic flows in \emph{A Quasipolynomial Cut-Elimination Procedure in Deep Inference via Atomic Flows and Threshold Formulae}, with Paola Bruscoli, Alessio Guglielmi and Michel Parigot, submitted to \emph{Mathematical Structures in Computer Science};
- \item we show refined and generalised normalisation results in \emph{Breaking Paths in Atomic Flows for Classical Logic}, with Alessio Guglielmi and Lutz Stra{\ss}burger;
- \item we show (among other things) that there is a polynomial relationship between the size of a derivation and the size of its associated atomic flow in \emph{On the Complexity of the Switch and Medial Rules}, with Paola Bruscoli, Alessio Guglielmi and Lutz Stra\ss{}burger; and
- \item we define two new deep-inference formalisms, for which atomic flows and the associated normalisation procedures are invariants in \emph{A Proof Calculus that Reduces Syntactic Bureaucracy}, with Alessio Guglielmi and Michel Parigot.
-\end{itemize}
-
-Strictly speaking, our normalisation results could be expressed without the use of atomic flows. However, the principal advantage of atomic flows is that it allows us to use a graphical language to describe the gist of our ideas. Once the language is mastered, most of the technical details of this thesis can easily be reconstructed based on the illustrations alone. Furthermore, atomic flows provide an intuition for working with normalisation, without which we would not have been able to discover our results.
-
-In these three years we could see that many people saw something in our atomic flows. In particular, I have been working on using atomic flows for implicit computational complexity, finding computational interpretations, as well as normalisation of intuitionistic, modal and first-order logics.
-
-At the moment atomic flows are a tool for studying normalisation. However, the most interesting direction of research on atomic flows for the future is, in my opinion, to define a new formalism based on atomic flows with the aim of solving the problem of identity of proofs. Atomic flows are promising in this regard, since they are bureaucracy free, they represent how proofs behave under different notions of normalisation, and they respect the size of proofs. However, at least one important open questions remains: how much information needs to be added to atomic flows before they preserve the validity of proofs.
-
-% Give idea about preserve validity
-
-The thesis is split in three parts.
-\begin{itemize}
-\item In the first part I introduce the deep-inference formalism we will be using, and a local system for classical propositional logic.
-\item In the second part I define atomic flows, show how flows are related to derivations and define normal forms of derivations in terms of their associated atomic flows.
-\item Finally, in the last part I define several normalisation procedures based on transforming atomic flows.
-\end{itemize}
+% Some of the results in this thesis are, or will be, available in journal articles. One article has been published, one has been submitted and three are still being written. They are, respectively:
+% \begin{itemize}
+%  \item atomic flows were introduced and the first normalisation results were shown in \emph{Normalisation Control in Deep Inference via Atomic Flows} with Alessio Guglielmi, published in \emph{Logical Methods in Computer Science};
+%  \item quasipolynomial cut elimination was shown using atomic flows in \emph{A Quasipolynomial Cut-Elimination Procedure in Deep Inference via Atomic Flows and Threshold Formulae}, with Paola Bruscoli, Alessio Guglielmi and Michel Parigot, submitted to \emph{Mathematical Structures in Computer Science};
+%  \item we show refined and generalised normalisation results in \emph{Breaking Paths in Atomic Flows for Classical Logic}, with Alessio Guglielmi and Lutz Stra{\ss}burger;
+%  \item we show (among other things) that there is a polynomial relationship between the size of a derivation and the size of its associated atomic flow in \emph{On the Complexity of the Switch and Medial Rules}, with Paola Bruscoli, Alessio Guglielmi and Lutz Stra\ss{}burger; and
+%  \item we define two new deep-inference formalisms, for which atomic flows and the associated normalisation procedures are invariants in \emph{A Proof Calculus that Reduces Syntactic Bureaucracy}, with Alessio Guglielmi and Michel Parigot.
+% \end{itemize}
+% 
+% Strictly speaking, our normalisation results could be expressed without the use of atomic flows. However, the principal advantage of atomic flows is that it allows us to use a graphical language to describe the gist of our ideas. Once the language is mastered, most of the technical details of this thesis can easily be reconstructed based on the illustrations alone. Furthermore, atomic flows provide an intuition for working with normalisation, without which we would not have been able to discover our results.
+% 
+% In these three years we could see that many people saw something in our atomic flows. In particular, I have been working on using atomic flows for implicit computational complexity, finding computational interpretations, as well as normalisation of intuitionistic, modal and first-order logics.
+% 
+% At the moment atomic flows are a tool for studying normalisation. However, the most interesting direction of research on atomic flows for the future is, in my opinion, to define a new formalism based on atomic flows with the aim of solving the problem of identity of proofs. Atomic flows are promising in this regard, since they are bureaucracy free, they represent how proofs behave under different notions of normalisation, and they respect the size of proofs. However, at least one important open questions remains: how much information needs to be added to atomic flows before they preserve the validity of proofs.
+% 
+% % Give idea about preserve validity
+% 
+% The thesis is split in three parts.
+% \begin{itemize}
+% \item In the first part I introduce the deep-inference formalism we will be using, and a local system for classical propositional logic.
+% \item In the second part I define atomic flows, show how flows are related to derivations and define normal forms of derivations in terms of their associated atomic flows.
+% \item Finally, in the last part I define several normalisation procedures based on transforming atomic flows.
+% \end{itemize}
