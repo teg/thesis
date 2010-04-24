@@ -5,8 +5,6 @@
 
 We now define the mapping from derivations to flows. As we said, the idea is that structural rule instances map to the respective atomic-flow vertices, and the edges trace the atom occurrences between rule instances.
 
-\Tom{Changed from proposition to a definition and a proposition:}
-
 \begin{definition}\label{definition:AssociatedFlow}
 Given a derivation\/ $\Phi$, we define the flow $\phi$ \emph{associated with}\index{flow!associated with derivation} $\Phi$:
 \begin{itemize}
@@ -65,8 +63,6 @@ We sketch the proof, which follows by structural induction on $\Phi$:
 \end{itemize}
 \end{proof}
 %----------
-
-\Tom{Added remark, in anticipation of the local rewriting:}
 
 %-------------
 \begin{remark}\label{remark:AmbiguousMapping}
@@ -215,8 +211,6 @@ Figure~\vref{figure:ExampleAtomicFlows} has three examples of derivations and th
 \end{figure}
 %-----------
 
-\Tom{`atom' -> `atom occurrences'}
-
 %--------------------------------------------------
 \begin{definition}\label{definiton:FlowRestriction}
 Given a derivation $\Phi$ with flow $\phi$, and an atom $a$, the \emph{restriction of $\phi$ to $a$}\index{flow!restriction to atom} is the largest subflow $\psi$ of $\phi$, such that every edge of $\psi$ is mapped to from occurrences of $a$ or $\bar a$.
@@ -232,11 +226,7 @@ Consider the rightmost derivation and its associated flow in Figure~\vref{figure
 \end{example}
 %------------
 
-\Tom{Gave the motivation for the following theorem.}
-
 We now show that the definition of atomic flows is `minimal', in the sense that every flow is associated with some derivation.
-
-\Tom{Added more explanation:}
 
 It should be noted that the following result relies on the fact that both the formula structures of the premiss and conclusion, as well as all units occuring in the derivation, are ignored when extracting a flow. In particular, the derivation we construct in the following proof is `trivial', in the sense that it proves true from true. An example of this kind of construction can be seen in the first derivation of Figure~\vref{figure:ExampleAtomicFlows}.
 
@@ -338,8 +328,6 @@ where $h\ge0$ (this can possibly be done in many different ways). By the inducti
 whose flow is $\phi$.
 \end{proof}
 %----------
-
-\Tom{Added remark to further justify the previous Theorem:}
 
 %-------------
 \begin{remark}
