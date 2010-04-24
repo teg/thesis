@@ -48,25 +48,17 @@ where $\psi_1$ (resp., $\psi_2$) is the flow associated with $\Psi_1$ (resp., $\
 \end{itemize}
 \end{definition}
 
-It should be noted that the flow associated with a derivation is not unique. However, as we will see next, it is unique up to isomorphism:
+\Tom{Added remarks in place of Proposition:}
 
-%------------------------------------------------
-\begin{proposition}\label{proposition:FlowUnique}
-Given a derivation $\Phi$ with the associated flow $\phi$, the flow $\psi$ is associated with $\Phi$ if and only if $\phi$ and $\psi$ are isomorphic.
-\end{proposition}
+%--------------------------------------
+\begin{remark}\label{remark:FlowUnique}
+Given a derivation $\Phi$, one can associate several atomic flows with it, because we have to choose names for the vertices and edges. However, this is a rather trivial form of non-determinism, since the position of atom occurrences and inference rule instances can be located in a derivation without any ambiguity. Thus, given two atomic flows $\phi$ and $\phi'$ associated with the same derivation $\Phi$, there is a unique flow isomorphism between them that makes the vertices correspond to their position in $\Phi$. Furthermore, if $\phi$ is associated with $\Phi$ and if $\alpha :  \phi' \rightarrow  \phi$ is an atomic flow isomorphism, then one can immediately turn $\phi'$ into an associated flow for $\Phi$, by `transport of structure'.
+\end{remark}
+%-----------
 
-\begin{proof}
-We sketch the proof, which follows by structural induction on $\Phi$:
-\begin{itemize}
-  \item If $\phi$ and $\psi$ are isomorphic, then $\psi$ is associated with $\Phi$, because for any partitioning of $\phi$ into subflows, there is a partitioning of $\psi$ into subflows so that the subflows of $\phi$ are pairwise isomorphic to the subflows of $\psi$.
-  \item If $\psi$ is associtaed with $\Phi$, then $\phi$ and $\psi$ are isomorphic, because if $\phi_1$ (resp., $\phi_2$) and $\psi_1$ (resp., $\psi_2$) are isomorphic, then the disjoint union of $\phi_1$ and $\phi_2$ is isomorphic to the disjoint union of $\psi_1$ and $\psi_2$.
-\end{itemize}
-\end{proof}
-%----------
-
-%-------------
+%--------------------------------------------
 \begin{remark}\label{remark:AmbiguousMapping}
-It should be noted that the mapping from atom occurrences (resp., rule instances) in $\Phi$ to edges (resp., vertices) in $\phi$ is not uniquely defined. However, this will not cause us any problems in this thesis, as in the cases where the mapping is ambiguous (Section~\ref{section:Soundness}), we only rely on its existence.
+It should be noted that the mapping from atom occurrences (resp., rule instances) in $\Phi$ to edges (resp., vertices) in $\phi$ is not uniquely defined. In other words, $\phi$ might have non-trivial automorphisms. However, this will not cause us any problems in this thesis, as in the cases where the mapping is ambiguous (Section~\ref{section:Soundness}), we only rely on its existence.
 \end{remark}
 %-----------
 
