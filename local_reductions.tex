@@ -418,19 +418,68 @@ Let $\phi$ be a cycle-free flow. We associate to each contraction (resp., cocont
 \end{proof}
 %----------
 
-%--------------------------------------------------------------------------
-\begin{theorem}\label{theorem:RewritingSystemContractionWeakeningConfluent}
-Flow rewriting system\/ $\frw\cup\frc$ is confluent.
-\end{theorem}
+\Tom{Added conjecture and a remark, and weakened second remark:}
 
-\begin{proof}
-It is straightforward to verify the statement by checking each critical pair of $\frw\cup\frc$.
-\end{proof}
-%----------
+%--------------------------------------------------------------------------
+\begin{conjecture}\label{conjecture:RewritingSystemContractionWeakeningConfluent}
+Flow rewriting system\/ $\frw\cup\frc$ is `confluent'.
+\end{conjecture}
+
+% No, such an algorithm *cannot* be easily defined. Look at the following
+% 
+%           x
+%       o   |
+%       |   |
+%      -------
+%       \   /
+%        \ /
+%         |
+%         |
+%        / \
+%       /   \
+%      -------
+%       |   |
+%       |   |
+%       |   |
+%      -------
+%       \   /
+%        \ /
+%         |
+%         |
+%        / \
+%       /   \
+%      -------
+%       |   |
+%       o   |
+%           y
+% 
+% Where x and y mark the only two points of contact with the outside world. There are quite a few reduction paths... all the graphs you end up with are in the same isomorphism class.
+% 
+% *But given two arbitrary rewriting paths, how do construct an iso between their end products?*  This has to be a uniform procedure, naturally.
+% 
+% Perhaps that there are simple invariants that can be extracted from the original graph stucture that allow you to do this (I can see a possibility), but really, this is not something you can write up now.
+% 
+% You should say that right now there is no good definition of a confluent rewriting system that acts on structures that have nontrivial isos....
+% 
+% ....well I said "right now" but actually yesterday I found a definition of one... and it is a simple definition... and your system obeys that definition...
+
+
+% No. Theorem 7.2.4 is correct if you work modulo isomorphisms, but in order to make it correct at the level of structures, you need a good notion of confluence when there are nontrivial isos. Such a notion would give an iso between the end product of two arbitrary reduction paths that start with the same graph. 
+% 
+% Actually, the above *is* an abstract notion of confluence for a rewriting system with isos *which is terminating*, what is needed now are sufficient conditions to ensure these isos. You should include it in your discussion.
+% 
+% Remark 7.2.5 is still dependent on a non-existent notion of confluence.
+% 
+% My new notion of confluence is really simple, and it works for non-terminating systems, and I feel like a fool for not having found it earlier. But so far nobody has stated it. I have to say it is rather restrictive, but it works on the present system(s). 
+
+\begin{remark}
+It seems straightforward to verify the statement by checking each critical pair of $\frw\cup\frc$. However, as pointed out by Fran\c{c}ois Lamarche, this is not enough. It is not immediate how the edges and vertices added to an atomic flow by a reduction should be named. We know that if the flows $\psi$ and $\psi'$ are both normal forms of the flow $\phi$, with respect to $\frw\cup\frc$, then there exists an isomorphism between them. However, due to non-trivial automorphisms in $\psi$ and $\psi'$ this isomorphism might not be unique, and we lack a way to construct an isomorphism in a uniform way. This problem will be the focus of future research.
+\end{remark}
+%-----------
 
 %-------------
 \begin{remark}
-Notice that, by Remark~\vref{remark:AmbiguousMapping}, the mapping from a redex in a flow to the corresponding inference rule instances in a derivation might not be unique. This means that a chain of reductions of flows does not uniquely determine the order of the reductions of derivations. However, since the local reductions are confluent, the normal form of derivation is still unique.
+Notice that, by Remark~\vref{remark:AmbiguousMapping}, the mapping from a redex in a flow to the corresponding inference rule instances in a derivation might not be unique. This means that a chain of reductions of flows does not uniquely determine the order of the reductions of derivations. However, once we have a notion of confluence of the local reductions, it will follow that the normal form of derivation is unique.
 \end{remark}
 %-----------
 
