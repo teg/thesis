@@ -48,11 +48,11 @@ where $\psi_1$ (resp., $\psi_2$) is the flow associated with $\Psi_1$ (resp., $\
 \end{itemize}
 \end{definition}
 
-\Tom{Added remarks in place of Proposition:}
+\Tom{Added remarks in place of Proposition, explained the new mapping:}
 
 %--------------------------------------
 \begin{remark}\label{remark:FlowUnique}
-Given a derivation $\Phi$, one can associate several atomic flows with it, because we have to choose names for the vertices and edges. However, this is a rather trivial form of non-determinism, since the position of atom occurrences and inference rule instances can be located in a derivation without any ambiguity. Thus, given two atomic flows $\phi$ and $\phi'$ associated with the same derivation $\Phi$, there is a unique flow isomorphism between them that makes the vertices correspond to their position in $\Phi$. Furthermore, if $\phi$ is associated with $\Phi$ and if $\alpha :  \phi' \rightarrow  \phi$ is an atomic flow isomorphism, then one can immediately turn $\phi'$ into an associated flow for $\Phi$, by `transport of structure'.
+Given a derivation $\Phi$, one can associate several atomic flows with it, because we have to choose names for the vertices and edges. However, this is a rather trivial form of non-determinism, since the position of atom occurrences and inference rule instances can be located in a derivation without any ambiguity. Thus, given two atomic flows $\phi$ and $\phi'$ associated with the same derivation $\Phi$, there is a unique flow isomorphism between them that makes the vertices correspond to their position in $\Phi$. Furthermore, if $\phi$ is associated with $\Phi$ and if $\alpha :  \phi' \rightarrow  \phi$ is an atomic flow isomorphism, then one can immediately turn $\phi'$ into an associated flow for $\Phi$ in the following way: for every atom occurrence $a$ (resp., structural inference rule instance $\rho$) in $\Phi$ and edge $\epsilon$ (resp., vertex $\nu$) in $\phi'$, we let $a$ (resp., $\rho$) map to $\epsilon$ (resp., $\nu$) if and only if $a$ (resp., $\rho$) maps to $\alpha(\epsilon)$ (resp., $\alpha(\rho)$).
 \end{remark}
 %-----------
 
