@@ -62,6 +62,60 @@ It should be noted that the mapping from atom occurrences (resp., rule instances
 \end{remark}
 %-----------
 
+%-----------------------------------------------------
+\begin{example}\label{example:NonTrivialAutomorphisms}
+The following flow has an automorphism that maps $\one$ to $\two$ and $\two$ to $\one$
+\[
+\vcenter{\hbox{\includegraphics{Figures/flowNonTrivialAuto}}}
+\quad,
+\]
+it can therefore be associated with the following derivation in two different ways
+\[
+\vlderivation
+{
+  \vlin{\acd}{}
+  {
+    a
+  }
+  {
+    \vlin{=}{}
+    {
+      \vls[a.a]
+    }
+    {
+      \vlin{\swi}{}
+      {
+	\vls[a.(\ttt.[a.\fff])]
+      }
+      {
+	\vlin{\med}{}
+	{
+	  \vls([a.\ttt].[a.\fff])
+	}
+	{
+	  \vlin{=}{}
+	  {
+	    \vls[(a.a).(\ttt.\fff)]
+	  }
+	  {
+	    \vlin{\acu}{}
+	    {
+	      \vls(a.a)
+	    }
+	    {
+	      \vlhy{a}
+	    }
+	  }
+	}
+      }
+    }
+  }
+}
+\quad.
+\]
+\end{example}
+%------------
+
 %--------------
 \begin{example}
 Figure~\vref{figure:ExampleAtomicFlows} has three examples of derivations and their associated flows, where colours are used to indicate the mapping from atom occurrences to edges.
