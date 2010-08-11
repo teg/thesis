@@ -1,7 +1,7 @@
 %&pdflatex
 % Thesis main file
 
-\documentclass[a4paper,11pt]{report}
+\documentclass[a4paper,11pt,twoside]{report}
 \usepackage{baththesis}
 
 \usepackage{makeidx}
@@ -80,11 +80,12 @@
 \clearpage
 \thispagestyle{plain}
 {\begin{center}
-\vspace*{1.7cm}
+\vspace*{\fill}
 {\def\baselinestretch{1.2}\Huge\bf A General View of Normalisation through Atomic Flows \par}
 \vspace{4cm}
 %\newline
 {\begin{center}{\huge Tom Erik Gundersen }\end{center}}
+\vspace*{\fill}
 \end{center}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -94,18 +95,21 @@
 %\singlespacing
 %\onehalfspacing
 %\doublespacing
+\vspace*{\fill}
 \begin{center}
-\vspace{20pt}
   \Large\bfseries{ABSTRACT}
 \end{center}
 \input{abstract.tex}
+\vspace*{\fill}
 
 \clearpage
 \thispagestyle{plain}
+\vspace*{\fill}
 \begin{center}
   {\Large\bfseries{ACKNOWLEDGEMENTS}}
 \end{center}
 \input{acknowledgements.tex}
+\vspace*{\fill}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -131,22 +135,13 @@
 \input{global_reductions.tex}
 \input{local_reductions.tex}
 \input{main_result.tex}
-%\part{Conclusions}
-%\input{conclusions.tex}
-\printindex
-%\part{Appendices}
-%\appendix
-%\input{appendix_a.tex}
-%\setcounter{chapter}{2} %1- what you want
-%\input{appendix_b.tex}
-%\input{appendix_c.tex}
 
-%\par\vfil\null\newpage
-%{\pagestyle{fancy}
-%\lhead   [\rm{\textbf{\thepage}}]{\scriptsize\textsc{BIBLIOGRAPHY}}
-%\rhead   [\sl{\textbf{{ \leftmark}}}]{\rm{{\thepage}}}
-%\cfoot{}
-%\pagestyle{fancy}
+%\cleardoublepage
+\addcontentsline{toc}{chapter}{Index}
+\printindex
+
+%\cleardoublepage
+\addcontentsline{toc}{chapter}{Bibliography}
 \small
 \bibliography{di-biblio,biblio}
 
