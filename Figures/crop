@@ -17,16 +17,20 @@ fi
 
 export TEXINPUTS="../:"
 
+function crop {
+        latex $1.tex || return 1
+        dvips $1.dvi || return 1
+        rm $fig.dvi || return 1
+        ps2pdf $1.ps || return 1
+        rm $1.ps || return 1
+        rm $1.aux || return 1
+        rm $1.log || return 1
+        pdfcrop $1.pdf $1.pdf || return 1
+}
+
 for figure in $@
 do
 	fig=`basename $figure .tex` || return 1
-	latex $fig.tex || return 1
-	dvips $fig.dvi || return 1
-	rm $fig.dvi || return 1
-	ps2pdf $fig.ps || return 1
-	rm $fig.ps || return 1
-	rm $fig.aux || return 1
-	rm $fig.log || return 1
-	pdfcrop $fig.pdf $fig.pdf || return 1
+	(crop $fig &)
 done
 
