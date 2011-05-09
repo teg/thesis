@@ -1,26 +1,179 @@
-% What is structural proof theory?
-\emph{Structural proof theory} is the subdiscipline of logic that studies formal representation and manipulation of mathematical proofs.
+This thesis develpos a graphical formalisms called \emph{atomic flows} for the study and design of normalisation techniques for propositional classical logic in deep inference. Furthermore, atomic flows are employed to define normal forms of derivations and normalisation procedures are given in terms of atomic flows to obtain these normal forms.
 
-% What is a formalism?
-A language for representing proofs is called a \emph{formalism}. Traditionally, formalisms are variations of Gentzen's \emph{natural deduction} and \emph{sequent calculus} \cite{Gent:69:Investig:xi}. Essentially, a formalism following Gentzen's methodology represents a proof as a tree, obtained by recursively breaking formulae apart at their main connective.
-
-% What are inference rules?
-The rules by which proofs are constructed are called \emph{inference rules}. A logic is represented in a given formalism by a set of inference rules, called a \emph{logical system}.
+\section{A Deep Inference Formalism}
 
 % What is deep inference?
-\emph{Deep inference} \cite{Gugl:06:A-System:kl} is a methodology that allows generalisations of Gentzen's formalisms. The standard deep-inference formalism, the \emph{calculus of structures}, generalises the sequent calculus by allowing deduction at any place in a formula, rather than restricting it to the main connective. As a consequence, it is possible for all inference rules to be unary. In other words, proofs are represented as lists of formulae rather than as trees of sequents.
+\emph{Deep inference} \cite{Gugl:06:A-System:kl} is a methodology that allows generalisations of Gentzen's \emph{natural deduction} and \emph{sequent calculus} \cite{Gent:69:Investig:xi}. The standard deep-inference formalism, the \emph{calculus of structures}, generalises the sequent calculus by allowing deduction at any place in a formula, rather than restricting it to the main connective. As a consequence, it is possible for all inference rules to be unary. In other words, proofs are represented as lists of formulae rather than as trees of sequents. For an introduction to deep inference see \cite{Gugl::Deep-Inf:uq}.
 
 % What is the functorial calculus?
-In this thesis, a new deep-inference formalism, named the \emph{functorial calculus}, is presented. While, in the sequent calculus, the juxtaposition of two proofs denotes that they are composed by a conjunction, in the functorial calculus, this horizontal composition is generalised to allow both disjunctions and conjunctions. In other words, proofs are represented as directed acyclic graphs of formulae rather than as trees of sequents.
+In this thesis, a new deep-inference formalism, named the \emph{functorial calculus}, is presented. While, in the sequent calculus, the juxtaposition of two proofs denotes that they are composed by a conjunction, in the functorial calculus, this horizontal composition is generalised to allow both disjunctions and conjunctions. In other words, proofs are represented as directed acyclic graphs of formulae rather than as trees of sequents. Examples of derivations in the calculus of structures, as well as the corresponding derivations in the functorial calculus are given in the two first rows of Figure~\vref{figure:ExampleAtomicFlows}.
+
+\newcommand{\ai   }{{\mathsf{ai}}}
+\newcommand{\aw   }{{\mathsf{aw}}}
+\newcommand{\ac   }{{\mathsf{ac}}}
+\newcommand{\aid  }{{\ai{\downarrow}}}
+\newcommand{\awd  }{{\aw{\downarrow}}}
+\newcommand{\acd  }{{\ac{\downarrow}}}
+\newcommand{\aiu  }{{\ai{\uparrow}}}
+\newcommand{\awu  }{{\aw{\uparrow}}}
+\newcommand{\acu  }{{\ac{\uparrow}}}
+\newcommand{\swi  }{\mathsf{s}}
+\newcommand{\med  }{\mathsf{m}}
+\newcommand{\asor }{{=_\mathsf{a}{\downarrow}}}
+\newcommand{\asand}{{=_\mathsf{a}{\uparrow}}}
+\newcommand{\coor }{{=_{\vee\mathsf{c}}}}
+\newcommand{\coand}{{=_{\wedge\mathsf{c}}}}
+\newcommand{\fffd }{{{=_{\fff}}{\downarrow}}}
+\newcommand{\fffu }{{{=_{\fff}}{\uparrow}}}
+\newcommand{\tttd }{{{=_{\ttt}}{\downarrow}}}
+\newcommand{\tttu }{{{=_{\ttt}}{\uparrow}}}
+\newcommand{\tttord }{{{=_{\ttt\vee}}{\downarrow}}}
+\newcommand{\fffandd }{{{=_{\fff\wedge}}{\downarrow}}}
+\newcommand{\tttoru }{{{=_{\ttt\vee}}{\uparrow}}}
+\newcommand{\fffandu }{{{=_{\fff\wedge}}{\uparrow}}}
+
+\newcommand{\fff}{\mathsf f}
+\newcommand{\ttt}{\mathsf t}
+\newcommand{\RD}[1]{{\color{Red}#1}}
+\newcommand{\GR}[1]{{\color{Green}#1}}
+\newcommand{\DO}[1]{{\color{DarkOrchid}#1}}
+\newcommand{\PR}[1]{{\color{ProcessBlue}#1}}
+\newcommand{\MG}[1]{{\color{Magenta}#1}}
+\newcommand{\SG}[1]{{\color{SpringGreen}#1}}
+\newcommand{\RS}[1]{{\color{RawSienna}#1}}
+\newcommand{\YO}[1]{{\color{YellowOrange}#1}}
+\newcommand{\PW}[1]{{\color{Periwinkle}#1}}
+%-------------------------------------------------------------------------------
+\begin{figure}
+\[
+%---------------------------------------
+\begin{array}{@{}c@{}c@{}c@{}}
+\vlderivation                                                {
+\vlin=   {}{\ttt                                  }         {
+\vlin\aiu{}{\vls[\fff.\ttt]                       }        {
+\vlin=   {}{\vls[(\GR{a}.\RD{\bar a}).\ttt]       }       {
+\vlin\swi{}{\vls[[(\RD{\bar a}.\GR{a}).\ttt].\ttt]}      {
+\vlin=   {}{\vls[(\RD{\bar a}.[\GR{a}.\ttt]).\ttt]}     {
+\vlin\swi{}{\vls[([\GR{a}.\ttt].\RD{\bar a}).\ttt]}    {
+\vlin=   {}{\vls([\GR{a}.\ttt].[\RD{\bar a}.\ttt])}   {
+\vlin\med{}{\vls([\GR{a}.\ttt].[\ttt.\RD{\bar a}])}  {
+\vlin=   {}{\vls[(\GR{a}.\ttt).(\ttt.\RD{\bar a})]} {
+\vlin\aid{}{\vls[\GR{a}.\RD{\bar a}]              }{
+\vlhy      {\ttt                                  }}}}}}}}}}}}
+\qquad&
+%-------------------
+\vlderivation                                                              {
+\vlin\aiu{}
+   {\vls(\DO{a}.\fff)                                            }        {
+\vlin=   {}
+   {\vls(\DO{a}.(\PR{a}.\MG{\bar a}))                            }       {
+\vlin\acu{}
+   {\vls((\DO{a}.\PR{a}).\MG{\bar a})                            }      {
+\vlin=   {}
+   {\vls(\SG{a}.\MG{\bar a})                                     }     {
+\vlin\aiu{}
+   {\vls([\fff.\SG{a}].\MG{\bar a})                              }    {
+\vlin\acd{}
+   {\vls([(\RD{a}.\RS{\bar a}).\SG{a}].\MG{\bar a})              }   {
+\vlin\swi{}
+   {\vls([(\RD{a}.[\GR{\bar a}.\YO{\bar a}]).\SG{a}].\MG{\bar a})}  {
+\vlin=   {}
+   {\vls((\RD{a}.[[\GR{\bar a}.\YO{\bar a}].\SG{a}]).\MG{\bar a})} {
+\vlin\aid{}
+   {\vls((\RD{a}.[\GR{\bar a}.[\YO{\bar a}.\SG{a}]]).\MG{\bar a})}{
+\vlhy
+   {\vls((\RD{a}.[\GR{\bar a}.\ttt]).\MG{\bar a})                }}}}}}}}}}}
+\qquad&
+%-------------------
+\vlderivation                                                            {
+\vlin=   {}{\vls(([\RS{a}.\YO{b}].\PW{a}).([\GR{a}.\DO{b}].\SG{a}))}    {
+\vlin\med{}{\vls(([\RS{a}.\YO{b}].[\GR{a}.\DO{b}]).(\PW{a}.\SG{a}))}   {
+\vlin\acu{}{\vls([(\RS{a}.\GR{a}).(\YO{b}.\DO{b})].(\PW{a}.\SG{a}))}  {
+\vlin\acu{}{\vls([(\RS{a}.\GR{a}).(\YO{b}.\DO{b})].\MG{a})         } {
+\vlin\acu{}{\vls([(\RS{a}.\GR{a}).\PR{b}].\MG{a})                  }{
+\vlhy      {\vls([\RD{a}.\PR{b}].\MG{a})                           }}}}}}}
+\\
+\noalign{\bigskip}
+%---------------------------------------
+\vlderivation                                                      {
+\vlin\swi{}{\vlsbr[\vlinf{\swi}
+                         {}
+                         {\vls[\vlinf{}
+                                     {}
+                                     {\fff}
+                                     {\vls(\GR{a}.\RD{\bar a})}
+                              \;.\;
+                              \ttt]}
+                         {\vls([\GR{a}.\ttt].\RD{\bar a})}
+                  \;\;.\;\;
+                   \ttt
+                  ]                                            }  {
+\vlin\med{}{\vls([\GR{a}.\ttt].[\ttt.\RD{\bar a}])             } {
+\vlin{}  {}{\vls[\GR{a}.\RD{\bar a}]                           }{
+\vlhy      {\ttt                                               }}}}}
+\qquad&
+%-------------------
+\vlinf=
+      {}
+      {\vls(\DO{a}\;.\;\vlinf{}{}\fff{\vls(\PR{a}.\MG{\bar a})})}
+      {\vlsbr(\vlinf\swi
+                    {}
+                    {\vls[\vlinf{}
+                                {}
+                                \fff
+                                {\vls(\RD{a}
+                                     \;.\;\vlinf{}
+                                            {}
+                                            {\RS{\bar a}}
+                                            {\vls[\GR{\bar a}.\YO{\bar a}]}
+                                     )}
+                         \;\;.\;\;
+                         \vlinf{}{}{\vls(\DO{a}.\PR{a})}{\SG{a}}
+                         ]}
+                    {\vls(\RD{a}
+                         \;.\;[\GR{\bar a}
+                          \;.\;\vlinf{}
+                                 {}
+                                 {\vls[\YO{\bar a}.\SG{a}]}
+                                 \ttt
+                          ]
+                         )}
+            \;\;\;\;.\;\;\;\;
+            \MG{\bar a}
+            )}
+\qquad&
+%-------------------
+\vls(\vlinf\med
+           {}
+           {\vls([\RS{a}.\YO{b}].[\GR{a}.\DO{b}])}
+           {\vls[\vlinf{}{}{\vls(\RS{a}.\GR{a})}{\RD{a}}
+                \;.\;{\vlinf{}{}{\vls(\YO{b}.\DO{b})}{\PR{b}}}
+                ]}
+    \;\;.\;\;
+     \vlinf{}{}{\vls(\PW{a}.\SG{a})}{\MG{a}}
+    )
+\\
+\noalign{\bigskip}
+%---------------------------------------
+\vcenter{\hbox{\includegraphics{Figures/flowExtract1}}}
+\qquad&
+%-------------------
+\vcenter{\hbox{\includegraphics{Figures/flowExtract2}}}
+\qquad&
+%-------------------
+\vcenter{\hbox{\includegraphics{Figures/flowExtract3}}}
+\end{array}
+\]
+\caption{Examples of derivations in the calculus of structures (top row), their translation into the functorial calculus (middle row), and the flows associated with the latter (bottom row).}
+\label{figure:ExampleAtomicFlows}
+\end{figure}
+%-----------
 
 % What is the relationship between CoS and FC?
 The calculus of structures and the functorial calculus are closely related and translations between the two are given. The relationship between the two formalisms is explored further in \cite{GuglGundPari::A-Proof-:fk}, where a generalisation, called \emph{open deduction}, is presented. It is shown there that a functorial calculus proof corresponds to an equivalence class of calculus of structures proofs.
 
-% Why FC
-The functorial calculus was chosen for this thesis, rather than the calculus of structures, for two reasons. Firstly, the smaller proofs and fewer arbitrary choices required by the functorial calculus simplifies the presentation of the results. Secondly, some of the results of this thesis have been presented elsewhere in terms of the calculus of structures \cite{GuglGund:07:Normalis:lr,BrusGuglGundPari:09:Quasip:fk,GuglGundStra::Breaking:uq}, so using the functorial calculus illustrates the fact that the results are not tightly coupled to a specific formalism.
-
 % What is propositional classical logic in deep inference?
-The focus of this thesis is propositional classical logic. By exploiting the symmetry available in deep-inference, it is possible to represent propositional classical logic in a system where every inference rule belongs to one of two kinds: \emph{atomic} or \emph{linear} \cite{BrunTiu:01:A-Local-:mz}.
+The focus of this thesis is propositional classical logic. By exploiting the symmetry available in deep-inference, it is possible to represent propositional classical logic in a system where every inference rule is either \emph{atomic} or \emph{linear} \cite{BrunTiu:01:A-Local-:mz}. This fact is what makes atomic flows suitable for studying deep-inference proofs, and why a similar application of atomic flows to sequent calculus proofs would not work.
 
 % Linear rules
 An inference rule is \emph{linear} if, for every instance of the rule, there is a one-to-one correspondence between the atom occurrences in the premiss and the atom occurrences in the conclusion. Linear inference rules increases the flexibility of proofs, as other inference rule instances can in most cases trivially be permuted `through' the linear ones.
@@ -31,35 +184,7 @@ The \emph{atomic} inference rules are rules where only a given atom or its dual 
 % Consequences of locality
 The possibility, which is not present in the sequent calculus \cite{Brun:03:Two-Rest:mn}, of having only linear and atomic inference rules allows representations of proofs which are extremely `malleable'.
 
-% First part
-The first part of this thesis will introduce classical logic in the functorial calculus, show the relationship between the functorial calculus and the calculus of structures, and present some standard deep-inference results.
-
-% What is normal forms / normalisation?
-A formalism usually comes with a \emph{normalisation theory}, \emph{i.e.} a notion of \emph{normal form} of proofs as well as a procedure describing how to manipulate proofs in order to obtain their normal form. In natural deduction a proof is in normal form if no `elimination rule' follows an `introduction rule'; and in the sequent calculus a proof is in normal form if it does not contain the \emph{cut rule}.
-
-% What is cut elimination?
-The cut rule, also known as \emph{modus ponens}, is at the heart of proof theory. The cut rule allows an auxiliary result to be proven only once, but used many times. When viewing proofs as programs, the cut is the application of a function to an argument, and normalisation is computation.
-
-% What is the state of normalisation in deep inference?
-%   Normal forms:
-%     Cut/axiom free proofs/refutations
-As in the sequent calculus, the cut rule is admissible from deep-inference proofs without a premiss. In \cite{Brun:04:Deep-Inf:rq}, Br{\"u}nnler presents a cut-elimination procedure for the calculus of structures and studies the connection between proofs with and without cut in the calculus of structures and in the sequent calculus.
-
-% What is the consequence of the symmetry of CoS/FC?
-The fact that the sequent calculus represent proofs as trees makes it inherently asymmetric in the horizontal axis. This asymmetry is not present in the calculus of structures or the functorial calculus. In fact, an asymmetry has to be enforced for the cut rule to be admissible.
-
-%      Axiom elimination
-The symmetry that is possible in deep-inference formalisms allows more notions of normal forms than just cut elimination. In particular, the dual of cut elimination also holds: axioms can be eliminated from proofs of falsehood.
-
-% Why do we want a new notion of normalisation?
-% 
-%   Generaltiy, with respect to:
-%     derivations
-%     logical systems
-%     formalisms
-%   Invariant of bureaucracy
-
-In this thesis a new notion of normal form of propositional classical logic proofs, called \emph{streamlining} is introduced. Unlike cut or axiom elimination, streamlining applies to all deep-inference proofs, and in the asymmetric case where cut or axiom elimination is applicable, the notions coincide. Unlike normal forms based on the order of inference rule instances, streamlining is invariant under rule permutations. Furthermore, streamlining is a largely syntax independent notion, in the sense that it is not tied to a specific formalism, or a specific logical system.
+\section{Atomic Flows}
 
 % What do we propose instead?
 % 
@@ -69,198 +194,200 @@ In this thesis a new notion of normal form of propositional classical logic proo
 %     structural information only
 %     causal dependencies
 %     no correctness
-In order to describe the notion of streamlining and the related normal forms, we introduce a proof invariant that we call \emph{atomic flows}. Atomic flows are certain kinds of directed acyclic graphs that capture the structural information of proofs. Intuitively, an atomic flow is obtained from a proof by retaining the causal dependencies between creation, duplication and destruction of atoms and discarding all information about logical connectives, units and linear inference rules. A proof is streamlined if there is no path in its atomic flow from the creation to the destruction of an atom.
 
-The second part of this thesis is devoted to atomic flows, their relationship with proofs and the definition of normal forms in terms of atomic flows.
+Atomic flows were first introduced in \cite{GuglGund:07:Normalis:lr}.
+
+In order to describe notions of normal forms in a syntax independent way, we introduce a proof invariant that we call \emph{atomic flows}. Atomic flows are certain kinds of directed acyclic graphs that capture the structural information of proofs. Intuitively, an atomic flow is obtained from a proof by retaining the causal dependencies between creation, duplication and destruction of atoms and discarding all information about logical connectives, units and linear inference rules.
+
+We can think of atomic flows as composite diagrams that are freely generated from the following six elementary diagrams:
+
+\[
+\begin{array}{@{}c@{}c@{}c@{}}
+\vcenter{\hbox{\includegraphics{Figures/vertAFAID}}}&
+\qquad
+\vcenter{\hbox{\includegraphics{Figures/vertAFAWD}}}&
+\qquad
+\vcenter{\hbox{\includegraphics{Figures/vertAFACD}}}\\
+\noalign{\smallskip}
+      \mbox{$\aid$ or \emph{interaction}}&
+\qquad\mbox{$\awd$ or \emph{weakening}}&
+\qquad\mbox{$\acd$ or \emph{contraction}}\\
+\noalign{\bigskip}
+\vcenter{\hbox{\includegraphics{Figures/vertAFAIU}}}&
+\qquad
+\vcenter{\hbox{\includegraphics{Figures/vertAFAWU}}}&
+\qquad
+\vcenter{\hbox{\includegraphics{Figures/vertAFACU}}}\\
+\noalign{\smallskip}
+      \mbox{$\aiu$ or \emph{cut}}&
+\qquad\mbox{$\awu$ or \emph{coweakening}}&
+\qquad\mbox{$\acu$ or \emph{cocontraction}}\\
+\end{array}\quad.
+\]
+
+Atomic flows are associated to derivations as in the examples in Figure~\vref{figure:ExampleAtomicFlows}. It is especially important to note that equations, linear rules and the units $\ttt$ and $\fff$ are lost in the translation from derivations to atomic flows.
+
+Atomic flows can be seen as either specialised Buss flow graphs \cite{Buss:91:The-Unde:uq,Carb:97:Interpol:fk}, or a variation of the kind of proof nets developed in \cite{Stra:05:From-Dee:yb,Stra:09:From-Dee:fr}. The only difference between atomic flows and these proof nets is that the proof nets implement (co)associativity of (co)contraction as well as dinaturality of interaction and cut, while atomic flows do not, and atomic flows do not retain the formula structures of the premiss and conclusion. Despite their similarities, the motivation and use of atomic flows differ from those of proof nets.
+
+\section{Normal Forms}
+
+In both Gentzen-style formalisms and deep-inference formalisms, the cut can be considered horizontal composition of two proofs. We make two observations: 1) deep-inference formalisms are symmetric in the vertical axis, whereas Gentzen-style formalisms are not; and 2) in order for the cut to be admissible from deep-inference derivations the symmetry must be broken, to correspond to the asymmetry of Gentzen-style formalisms. In particular, the cut is only admissible from derivations with no premiss.
+
+These observations prompted us to look for a generalisation of cut elimination that work for all deep-inference derivations. Furthermore, since we are interested in designing new formalisms, we wanted normal forms based on geometric notions which would be as syntax independent as possible.
+
+We defined normal forms based on the causal dependency between structural inference rule instances. Atomic flows contain (by design) exactly the information needed in order to define normal forms in this way, and a derivation is said to be on normal form if its associated atomic flow is.
+
+We call our generalisation of cut elimination \emph{streamlining} and we describe it in terms of atomic flows. Intuitively, if identities and weakenings are considered to be the `creators' of atom occurrences, and cuts and coweakening are the `destroyers' of atom occurrences, then an atomic flow is streamlined if no atom is first created and then destroyed.
+
+Several variations of streamlining are defined, and the outline of their intuition is as follows:
+
+An atomic flows is \emph{weakly streamlined} if it contains no path from an interaction to a cut vertex. Obtaining this normal form turns out to be the most challenging, and several normalisation procedures that produce weakly streamlined derivations are defined. They all have in common that they are global in nature and that they are non-confluent.
+
+A weakly streamlined derivation can be streamlined by applying a local, confluent, linear and strongly normalising normalisation procedure. A natural continuation of this procedure leads to the notion of \emph{super streamlining}, where in addition to being streamlined weakenings and coweakenings are not connected to any other atomic rules.
+
+Finally, the notion of \emph{hyper streamlining} is obtained from super streamlining by permuting contractions under cocontractions, a procedure which is also local, confluent and strongly normalining, but comes with an exponential cost.
+
+The normal forms are expressed in terms of atomic flows in Figure~\vref{figure:AtomicFlowsNormalForm}, on a notation which is described in more detail in the thesis.
+
+%-------------------------------------------------------------------------------
+\begin{figure}
+\[
+%---------------------------------------
+\begin{array}{@{}c@{\qquad\qquad}c@{}}
+%-------------------
+\vcenter{\hbox{\includegraphics{Figures/normWeakForm}}}
+\qquad&
+%-------------------
+\vcenter{\hbox{\includegraphics{Figures/normForm}}}
+\\
+\noalign{\bigskip}
+\mbox{weakly streamlined}&\mbox{streamlined}
+\\
+\noalign{\bigskip\bigskip}
+%-------------------
+\vcenter{\hbox{\includegraphics{Figures/normSuperForm}}}
+\qquad&
+%-------------------
+\vcenter{\hbox{\includegraphics{Figures/normHyperForm}}}
+\\
+\noalign{\bigskip}
+\mbox{super streamlined}&\mbox{hyper streamlined}
+\end{array}
+\]
+\caption{Normal forms of atomic flows.}
+\label{figure:AtomicFlowsNormalForm}
+\end{figure}
+
+\section{Normalisation}
 
 % Atomic flows for normalisation
-Atomic flows were designed to describe normal form of proofs. However, it turns out that atomic flows are also a very convenient tool for designing and arguing about normalisation procedures. In the third part of this thesis two kinds of normalisation procedures are given. All the procedures are first presented in terms of atomic flows, before they are lifted to derivations.
+Atomic flows were designed to describe normal form of proofs. However, it turns out that atomic flows are also a very convenient tool for designing and arguing about normalisation procedures. Two kinds of normalisation procedures are given in the thesis. All the procedures are first presented in terms of atomic flows, before they are lifted to derivations. Properties such as confluence, termination and complexity can be shown in terms of the atomic flows alone.
 
-% What are the properties of our procedures?
-%   Two kinds of normalisation procedures, performed independently:
+\subsection{Global procedures}
 
-The \emph{global} procedures work by making several copies of an entire atomic flow, `pruning' each copy and `stitching' them together. Three different global procedures are presented, all producing derivations in the same normal form. It appears that there is great flexibility in the design of the global procedures and there is a lot of room for future investigations, especially with respect to complexity. We show that the global procedures can have less than exponential cost. However, they are all inherently non-confluent.
+The \emph{global} procedures, which produce weakly streamlined derivations, work by making several copies of an entire atomic flow, `pruning' each copy and `stitching' them together. It appears that there is great flexibility in the design of the global procedures and there is a lot of room for future investigations, especially with respect to complexity. We show that the global procedures can have less than exponential cost. However, they are all inherently non-confluent.
 
-Whereas the global procedures consider the whole atomic flow, the \emph{local} procedures work on one pair of adjacent vertices. These procedures are confluent, but their cost is inherently exponential.
+\subsubsection{The Path Breaker}
+
+These results were presented at LICS 2010 \cite{GuglGundStra::Breaking:uq}.
+
+The Path Breaker is the conceptually simplest procedure to obtain weakly streamlined atomic flows. The intuition behind the procedure is that if a derivation contains a path from an axiom to a cut, it can be rewritten in such a way that the path is broken. The following diagram expresses the intuition in terms of atomic flows:
+
+%--------------------------------
+\newcommand{\frpb}{{\mathsf{pb}}}
+\[
+\vcenter{\hbox{\includegraphics{Figures/redPBRedex}}}
+\quad\to_\frpb\quad
+\vcenter{\hbox{\includegraphics{Figures/redPBContractum}}}
+\quad.
+\]
+%---------------
+
+In the above diagram on the left there might be a path from the evidenced interaction to the evidenced cut. It can easily be verified by studying the diagram on the right that that it contains no path from the axiom (red) to the cut (green). In the thesis it is show how this transformation can be lifted to derivations, and how when applied repeatedly it will produce a weakly streamlined derivation.
+
+\subsubsection{Quasipolynomial Normalisation}
+
+Parts of these results were presented at LPAR 2010 \cite{BrusGuglGundPari:09:A-Quasip:fk}, and the full results have been submitted to 
+Annals of Pure and Applied Logic \cite{BrusGuglGundPari:11:A-Quasip:uq}.
+
+
+\subsection{Local reductions}
+
+These results were published in Logical Methods in Computer Science \cite{GuglGund:07:Normalis:lr}.
+
+Whereas the global procedures consider the whole atomic flow, the \emph{local} procedures work on one pair of adjacent vertices. These procedures are confluent, but their cost is inherently exponential. The local reducion rules are shown in Figure~\vref{figure:ReductionRules}.
+
+\newcommand{\rwdcd}{{{\mathsf w}{\downarrow}{\hbox{-}}{\mathsf c}{\downarrow}}}
+\newcommand{\rwdiu}{{{\mathsf w}{\downarrow}{\hbox{-}}{\mathsf i}{\uparrow  }}}
+\newcommand{\rwdwu}{{{\mathsf w}{\downarrow}{\hbox{-}}{\mathsf w}{\uparrow  }}}
+\newcommand{\rwdcu}{{{\mathsf w}{\downarrow}{\hbox{-}}{\mathsf c}{\uparrow  }}}
+\newcommand{\rcuwu}{{{\mathsf c}{\uparrow  }{\hbox{-}}{\mathsf w}{\uparrow  }}}
+\newcommand{\rcdwu}{{{\mathsf c}{\downarrow}{\hbox{-}}{\mathsf w}{\uparrow  }}}
+\newcommand{\rcdiu}{{{\mathsf c}{\downarrow}{\hbox{-}}{\mathsf i}{\uparrow  }}}
+\newcommand{\rcdcu}{{{\mathsf c}{\downarrow}{\hbox{-}}{\mathsf c}{\uparrow  }}}
+\newcommand{\ridwu}{{{\mathsf i}{\downarrow}{\hbox{-}}{\mathsf w}{\uparrow  }}}
+\newcommand{\ridcu}{{{\mathsf i}{\downarrow}{\hbox{-}}{\mathsf c}{\uparrow  }}}
+%---------------------------------------
+\begin{figure}[tbp]
+\[
+\begin{array}{@{}c@{}c@{}}
+%-------------------
+\rwdcd\colon\quad
+\vcenter{\hbox{\includegraphics{Figures/redAWDACD}}}
+&\qquad
+%-------------------
+\rcuwu\colon\quad
+\vcenter{\hbox{\includegraphics{Figures/redACUAWU}}}
+\\\noalign{\bigskip}
+%-------------------
+\rwdiu\colon\quad
+\vcenter{\hbox{\includegraphics{Figures/redAWDAIU}}}
+&\qquad
+%-------------------
+\ridwu\colon\quad
+\vcenter{\hbox{\includegraphics{Figures/redAIDAWU}}}
+\\\noalign{\bigskip}
+%-------------------
+\multispan2{\hfil$
+\rwdwu\colon\quad
+\vcenter{\hbox{\includegraphics{Figures/redAWDAWU}}}
+$\hfil}\\\noalign{\bigskip}
+%-------------------
+\rwdcu\colon\quad
+\vcenter{\hbox{\includegraphics{Figures/redAWDACU}}}
+&\qquad
+%-------------------
+\rcdwu\colon\quad
+\vcenter{\hbox{\includegraphics{Figures/redACDAWU}}}
+\\\noalign{\bigskip}
+%-------------------
+\rcdiu\colon\quad
+\vcenter{\hbox{\includegraphics{Figures/redACDAIU}}}
+&\qquad
+%-------------------
+\ridcu\colon\quad
+\vcenter{\hbox{\includegraphics{Figures/redAIDACU}}}
+\\\noalign{\bigskip}
+%-------------------
+\multispan2{\hfil$
+\rcdcu\colon\quad
+\vcenter{\hbox{\includegraphics{Figures/redACDACU}}}
+$\hfil}\\
+%%-------------------
+\end{array}
+\]
+\caption{Atomic-flow reduction rules.}
+\label{figure:ReductionRules}
+\end{figure}%
+
+\section{Conclusions}
 
 % Are the properties as expected?
-It is expected that propositional classical logic normalisation is inherently exponential and non-confluent, and in fact we observe both these phenomena. However, they are separated into two distinct phases, which can be studied independently. It is worth noting that cut elimination is achieved with less than exponential cost.
+It is expected that propositional classical logic normalisation is inherently exponential and non-confluent, and in fact we observe both these phenomena. However, they are separated into two distinct phases, which can be studied independently.
 
 % What are the benefits of arguing in terms of atomic flows?
 The main contribution of this thesis is the use of atomic flows for arguing about normalisation. While it is true that all the results could be reformulated in terms of derivations, this would only serve to obfuscate what is going on.
 
 It should be noted that all the important properties of normalisation can be proven in terms of atomic flows alone. In particular results about complexity, termination, confluence and correctness can be proven without reference to derivations. The challenge in designing normalisation procedures is finding the correct atomic flow transformation, verifying that a transformation can be lifted to derivations is always straight forward.
 
-% Atomic flows capture the essence of normalisation
-There are two reasons to consider flows to describe the essence of proofs from the point of view of normalisation: Firstly, the flow of a proof determines how the proof can be normalised. Secondly, isomorphisms between atomic flows are preserved by normalisation. That is, the results of normalising two proofs with isomorphic atomic flows have isomorphic atomic flows.
-
-% How is normalisation related to complexity and bureaucracy?
-With respect to future work, two aspects of normalisation are especially relevant to this thesis: \emph{bureaucracy} and \emph{complexity}.
-
-% Complexity of normalisation
-The complexity of cut elimination in the sequent calculus is known to be exponential \cite{Stat:78:Bounds-f:fj} and it is known that cut elimination has less than exponential cost in deep inference \cite{Jera::On-the-C:kx}, however no lower bound exists. Furthermore, this thesis presents normal forms for which only exponential cost normalisation procedures are known. A possible direction of future work is to establish atomic flows as a tool for studying complexity, and to discover new normalisation procedures with lower complexity bounds.
-
-% Bureaucracy of normalisation
-The term \emph{bureaucracy} was coined by Girard to denote arbitrary syntactic dependencies in proofs. The presence of bureaucracy means that proofs that are `essentially the same' do not have a common canonical representation. Since all known formalisms have some degree of bureaucracy, an important aspect of any normalisation procedures is how it behaves with respect to bureaucracy. A desirable property is that, if two proofs are the same modulo bureaucracy, they have the same normal forms modulo bureaucracy. For the procedures presented in this thesis, this property always holds for notions of bureaucracy captured by atomic flows. Hence, another possible direction of future work is to show what notions of bureaucracy atomic flows capture and to adapt atomic flows to capture more notions of bureaucracy.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \newpage
-% 
-% \Tom{Old crap:}
-% 
-% This thesis belongs to \emph{strucural proof theory}, the subdiscipline of logic that studies formal representation and manipulation of mathematical proof. Strucural proof theory is an important field of study as it allows us, among other things, to automatically verify, or search for, proofs as well as to prove the consistency of mathematical theories.
-% 
-% Furthermore, representations of proofs are interesting mathematical objects in
-% their own right. In particular, they are related to longstanding open problems:
-% The problem of $\mathsf{NP}$ versus $\mathsf{coNP}$, from computational
-% complexity theory, and Hilbert's problem of \emph{identity of proofs}, can both
-% be stated in terms of representation and manipulation of proofs.
-% 
-% A language for representing proofs is called a \emph{formalism}. Traditionally,
-% in structural proof theory, formalisms are variations of Gentzen's \emph{natural
-% deduction} and \emph{sequent calculus} \cite{Gent:69:Investig:xi}. Essentially,
-% a formalism following the Gentzen methodology represents a proof as a tree,
-% obtained by recursively breaking a formulae apart at their main connective.
-% 
-% \emph{Deep inference} \cite{Gugl:06:A-System:kl} is a methodology that allows
-% for more general formalisms than Gentzen's traditional ones. In particular, deep
-% inference allows deduction to take place at any place in a formula, rather than
-% just at the main connective. This thesis studies deep-inference formalisms, in particular a new 
-% formalism, called \emph{the functorial calculus}, in which we present our
-% results. This formalism should be seen as a proof-of-concept of what is
-% acheivable using the deep-inference methodology, and as a guide to design new
-% formalisms. The first part of this thesis is devoted to the functorial calculus.
-% 
-% Gentzen's formalisms came with notions of \emph{normal form} of proofs and \emph{normalisation theories} describing how to manipulting proofs in order to obtain their normal forms. In natural deduction a proof is in normal form if no `elimination rule' follows an `introduction rule'; and in the sequent calculus a proof is in normal form if it does not contain the `cut rule'.
-% 
-% Since the functorial calculus allows more proofs than Gentzen's formalisms the traditional notions of normal forms can not be imported directly. In particular, the functorial calculus has an up-down symmetry, which is not present in a tree structure. A direct consequence of this is that, unlike in the sequent calculus, the cut rule can not be eliminated. The first contribution of this thesis is to define several notions of normal forms, among them the notion of \emph{streamlining}, which, in the special case of proof with the shape of sequent calculus proof, corresponds to cut elimination.
-% 
-% In order to define the notion of streamlining, we found it insufficient to argue
-% about the absence of rules (like in the sequent calculus), or the order of rules
-% (like in natural deduction). We found that we needed something more
-% general, namely the causal dependency of the creation and destruction of
-% information (more specifically, \emph{atoms}). For this purpose, we designed a
-% class of directed, acyclic graphs that capture this information, we call these
-% graphs \emph{atomic flows}. Intuitively, we will consider a proof to be on
-% normal form if no information is first created and then destroyed. The second
-% part of this thesis is devoted to atomic flows and normal forms.
-% 
-% Normalisation techniques in Gentzen-style formalisms fundamentally
-% generally relies on the fact that the shape of proofs is dictated by
-% the shape of the formulae they prove. As this is not the case in deep
-% inference, new normalisation techniques must be developed.
-% 
-% As will be demonstrated in this thesis, the same lack of restrictions on the
-% construction of proofs that makes Gentzen-style normalisation impossible in deep
-% inference, allows new kinds of normalisation that in turn would be impossible
-% in Gentzen-style formalisms.
-% 
-% Inspired by techniques introduced by Br\"unnler and Tiu
-% \cite{Brun:04:Deep-Inf:rq}, we develop methods for manipulating proofs based
-% on their atomic flows. To our surprise, we found that atomic flows contain
-% all the information needed for studying normalisation. In particular, we found
-% that information about logical connectives play no role in our procedures.
-% 
-% The final part of this thesis is devoted to normalisation procedures defined in
-% terms of atmoic flows. We will see two kinds of normalisation procedures:
-% global procedures, which are fundamentally non-confluent, but can have less
-% than exponential cost; and local procedures, which have exponential cost, but
-% are confluent. Together, these normalisation procedures give us the normal forms
-% we define earlier in this thesis.
-% 
-% Our results are presented in the functorial calculus formalism and a specific
-% system for propositional classical logic. However, we are not tightly bound to
-% this formalism or system. Our techniques would work in any formalism that
-% is sufficiently liberal in allowing composition of proofs, and for any system
-% with `bounded size inference rule instances'. In particular, this means that
-% our methods are not applicable in Gentzen-style formalisms
-% \cite{Brun:03:Two-Rest:mn}, but they are in any typical deep-inference
-% formalism.
-% 
-% The problem of identity of proofs was originally intended by Hilbert to be the 24th problem of his famous Paris lecture in 1900 \cite{Thie:03:Hilberts:yu}, and it amounts to answering the question: \emph{When are two proofs the same?} This thesis is part of a program which tries to solve the identity of proofs problem in the setting of propositional logic.
-% 
-% At face value, the representation of a proof is a syntactic object, typically a tree of strings of symbols. This kind of object is not very good at conveying the `essence', `meaning' or \emph{semantics} of the proof it represents. In fact, usually, the representation is extremely verbose and the underlying proof is almost completely obscured by inessential details.
-% 
-% \emph{Bureaucracy} is the name we give to `inessential details' in the representations of proofs. We have an instance of  bureaucracy, if morally independent parts of a proof are represented as if there is a dependency between them. A consequence of bureaucracy is that proofs that are essentially the same are given seemingly different representations.
-% 
-% In order to solve Hilbert's problem we need to find a way of extracting the semantics of a proof from its representation. Furthermore, depending on the context and the purpose of solving the problem, different notions of semantics might be desirable. An ideal solution would therefore not be to give one answer, but a to provide a framework for giving different answers for different purposes.
-% 
-% Two trivial \emph{syntactic} solutions spring to mind:
-% \begin{itemize}
-%  \item `two proofs are the same if they prove the same statement'. The problem with this solution is that it would identify proofs of widely different sizes and proofs based on completely different ideas; and
-%  \item `two proofs are the same if their representations are the same'. The problem with this solution is that it would distinguish proofs that are the same modulo bureaucracy.
-% \end{itemize}
-% 
-% A third syntactic solution is based on \emph{normalisation}. Normalisation is the process of manipulating a proof in order to turn it into a \emph{normal form}. Traditionally, normalisation means \emph{cut elimination}. A \emph{cut} is an inference rule embodying the concept of \emph{modus ponens}, or the use of lemmata in a proof. A proof is in normal form if it does not contain an instance of the cut rule. Cut elimination is the most important technique in structural proof theory. From the point of view of computational interpretation of proofs, a cut corresponds to composition and cut elimination corresponds to $\beta$-reduction.
-% 
-% Using normalisation we can say: `two proofs are the same if they have the same normal form'. In terms of cut elimination, this approach has two problems: cut elimination is not confluent, so the normal form is not unique; and the size of the cut-free form of a proof might depend exponentially  on the size of the original proof, so proofs of widely different sizes might be identified.
-% 
-% % This thesis has ben influnced by categorical axiomatisations \cite{LamaStra:05:Construc:qq,LamaStra:05:Naming-P:ov}.
-% 
-% \emph{Algebraic} solutions to Hilbert's problem can be given in terms of \emph{categorical axiomatisations} of proofs, \emph{i.e.}, by defining equations on the representations of proofs and consider `two proofs to be the same if they belong to the same equivalence class'. The problems with this approach is that it is not necessarily easy to decide if two proofs are equivalent, and arguing about the size of the proofs modulo equations is not straightforward.
-% 
-% % 'semantics' used to be: 'bureaucracy-free essence'
-% 
-% The approach we are following is a \emph{geometric} one. We consider proofs to be essentially geometric objects, and their shape is their semantics. Like the algebraic approach this will allow us to have a bureaucracy free semantics, and like the syntactic approach this provides us with concrete representations of proofs whose size we can argue about. Finally, in order to provide for different notions of semantics, we consider normalisation to manipulate the shape of proofs under geometric invariants. I will now outline how we intend to obtain the geometric essence of proofs, and where this thesis fits into the program.
-% 
-% A language for representing proofs is called a \emph{formalism}, and the rules by which a proof is constructed are called \emph{inference rules}. We believe there is strong evidence that bureaucracy in the representation of proofs is what obscures their meaning, and that eliminating bureaucracy is what will allow us to discover their geometric essence. The two sources of bureaucracy we try to eliminate are: Bureaucracy caused by the formalism, and bureaucracy caused by the inference rules. These sources of bureaucracy are closely related as the formalism dictates what kind of inference rules are allowed.
-% 
-% A proof contains bureaucracy due to deficiencies in the formalism, if inference rules or sub-proofs can be trivially permuted. This kind of bureaucracy is often a consequence of a proof being represented as a list or a binary tree, which is traditionally the case, as opposed to something more general like a graph. The problem can be manifested by two independent sub-proofs being represented either as the first depending on the second, the second depending on the first, or some intermediate `interleaving' of the two. A `correct' representation might be that the two sub-proofs are conducted in parallel (as is possible in the formalism presented in this thesis), or that one proof is, in a certain sense, conducted inside the other (as will be possible in the formalism we are developing as the successor of the one in this thesis).
-% 
-% The kind of bureaucracy stemming from deficiencies in the inference rules is a bit more subtle. Intuitively, if an inference rule instance `does too much at once', \emph{i.e.}, it can be replaced by several `smaller' inference rule instances, it might create dependencies between parts of the proofs which do not morally depend on each other. In order to replace one inference rule occurrence by several other occurrences, we might need to discover new rules, which in turn might require a change in the formalism. In other words, recognising and eliminating this kind of bureaucracy is not necessarily straightforward.
-% 
-% % linear sequent calculus = sequent calculus without weakening and contraction
-% 
-% We are influenced by Girard's \emph{linear logic} and \emph{proof nets} \cite{Gira:87:Linear-L:wm}. Linear logic is, roughly speaking, a restriction of classical logic by only allowing \emph{linear} inference rules, \emph{i.e.}, rules that do not duplicate or destroy formulae. Proof nets are geometric representations of linear logic proofs, which identify proofs modulo bureaucracy.
-% 
-% In the same way that linearity gave proof nets in the case of linear logic, we want to find a geometric representation of classical logic proofs. However, classical logic can not be represented using only linear rules. Moreover, we are not able to generalise linearity in the traditional, Gentzen style formalisms in a way that is useful to us.
-% 
-% \emph{Deep inference} \cite{Gugl:06:A-System:kl} is a methodology which allows for more general formalisms than Gentzen's traditional \emph{natural deduction} and \emph{sequent calculus} \cite{Gent:69:Investig:xi}. In particular, deep-inference formalisms can express classical logic using only \emph{local} \cite{BrunTiu:01:A-Local-:mz} inference rules, something which is impossible in the traditional formalisms \cite{Brun:03:Two-Rest:mn}.
-% 
-% Locality is a generalisation of linearity. An inference rule is said to be local if the time needed to verify an instance of the rule is bounded by a constant (under certain mild hypotheses). In addition to linear rules, a second class of local rules are the \emph{atomic} ones. Atomic rules are restricted to only apply to atoms. Unlike linear rules, atomic rules can duplicate or destroy formulae, but the size of the formula is bounded. Not all rules are local: In order to verify an instance of a rule that duplicates a formula of arbitrary size, the two copies of the formula must be compared. Since the size of the formula is unbounded, the rule is not local.
-% 
-% Intuitively, since local rules can only depend on a limited amount of information, the `interdependence' of instances of local rules is limited. In terms of bureaucracy, by translating from non-local to local rules we are able to observe that more permutations are possible, and hence that more sub-proofs are independent. In this sense, we reveal more bureaucracy. The challenge lies in discovering geometric objects which represent proofs modulo this bureaucracy.
-% 
-% In summary, deep inference makes locality possible; locality reveals bureaucracy; eliminating bureaucracy allows us to represent proofs as geometric objects; whose shape we conjecture will lead us to a nice semantics. We like to express this using the following slogan:
-% \[
-% \mbox{Locality}\qquad\rightarrow\qquad\mbox{Geometry}\qquad\rightarrow\qquad\mbox{Semantics}\quad.
-% \]
-% 
-% As mentioned above, proofs sometimes need to be normalised in order to be compared. The contribution of this thesis is a geometric language we call \emph{atomic flows} \cite{GuglGund:07:Normalis:lr}, which provides a general view of normalisation.
-% 
-% As for natural deduction and the sequent calculus, we intend normalisation as cut elimination. However, deep-inference formalisms have a certain symmetry with respect to the cut rule, which is not present in the traditional formalisms. In particular, it means that we have an inference rule (the \emph{interaction}) that is the proper deMorgan dual of the cut. Furthermore, cut elimination is only possible in deep inference if this symmetry is broken, in order to correspond to the asymmetry in the traditional formalisms.
-% 
-% Atomic flows are motivated by wanting to generalise traditional normal forms, based on the absence of the cut, to a new notion of normal forms based on geometric properties. Atomic flows are special kinds of labelled directed graphs, defined by discarding from derivations all but the information about causal relations between creation and destruction of atoms. Due to deep inference allowing classical logic to be expressed using local inference rules, all the logical information is contained in the linear rules, which we discard, and all the structural information is contained in the atomic rules, which we keep.
-% 
-% We claim that atomic flows give a more general view of normalisation because they provide new normal forms, of which the traditional normal forms are special cases; at the same time they show that normalisation is a less delicate process than was previously believed.
-% 
-% Since we argue in terms of the geometric properties of atomic flows, we are able to describe a symmetric notion of cut-freeness, which we call \emph{streamlining}. Furthermore, in the special, asymmetric, case where cut elimination makes sense, the notions of streamlining and cut elimination coincide. We are also able to show that, contrary to expectations, streamlining can be performed in less than exponential time.
-% 
-% Conventional wisdom teaches us that in order to achieve normalisation, a certain \emph{harmony} between the inference rules is needed. In other words, if we add or exchange inference rules it is not expected that our normalisation results will trivially continue to work.
-% 
-% However, atomic flows discard all information about logical relations and linear rules, so we found it surprising that the remaining information is sufficient to design normalisation procedures. In particular, we have found no difficulties in using our normalisation procedures with different formalisms, different logical connectives and different linear rules, as long as all the inference rules are local and implicationally complete for propositional classical logic.
-
-% Some of the results in this thesis are, or will be, available in journal articles. One article has been published, one has been submitted and three are still being written. They are, respectively:
-% \begin{itemize}
-%  \item atomic flows were introduced and the first normalisation results were shown in \emph{Normalisation Control in Deep Inference via Atomic Flows} with Alessio Guglielmi, published in \emph{Logical Methods in Computer Science};
-%  \item quasipolynomial cut elimination was shown using atomic flows in \emph{A Quasipolynomial Cut-Elimination Procedure in Deep Inference via Atomic Flows and Threshold Formulae}, with Paola Bruscoli, Alessio Guglielmi and Michel Parigot, submitted to \emph{Mathematical Structures in Computer Science};
-%  \item we show refined and generalised normalisation results in \emph{Breaking Paths in Atomic Flows for Classical Logic}, with Alessio Guglielmi and Lutz Stra{\ss}burger;
-%  \item we show (among other things) that there is a polynomial relationship between the size of a derivation and the size of its associated atomic flow in \emph{On the Complexity of the Switch and Medial Rules}, with Paola Bruscoli, Alessio Guglielmi and Lutz Stra\ss{}burger; and
-%  \item we define two new deep-inference formalisms, for which atomic flows and the associated normalisation procedures are invariants in \emph{A Proof Calculus that Reduces Syntactic Bureaucracy}, with Alessio Guglielmi and Michel Parigot.
-% \end{itemize}
-% 
-% Strictly speaking, our normalisation results could be expressed without the use of atomic flows. However, the principal advantage of atomic flows is that it allows us to use a graphical language to describe the gist of our ideas. Once the language is mastered, most of the technical details of this thesis can easily be reconstructed based on the illustrations alone. Furthermore, atomic flows provide an intuition for working with normalisation, without which we would not have been able to discover our results.
-% 
-% In these three years we could see that many people saw something in our atomic flows. In particular, I have been working on using atomic flows for implicit computational complexity, finding computational interpretations, as well as normalisation of intuitionistic, modal and first-order logics.
-% 
-% At the moment atomic flows are a tool for studying normalisation. However, the most interesting direction of research on atomic flows for the future is, in my opinion, to define a new formalism based on atomic flows with the aim of solving the problem of identity of proofs. Atomic flows are promising in this regard, since they are bureaucracy free, they represent how proofs behave under different notions of normalisation, and they respect the size of proofs. However, at least one important open questions remains: how much information needs to be added to atomic flows before they preserve the validity of proofs.
-% 
-% % Give idea about preserve validity
-% 
-% The thesis is split in three parts.
-% \begin{itemize}
-% \item In the first part I introduce the deep-inference formalism we will be using, and a local system for classical propositional logic.
-% \item In the second part I define atomic flows, show how flows are related to derivations and define normal forms of derivations in terms of their associated atomic flows.
-% \item Finally, in the last part I define several normalisation procedures based on transforming atomic flows.
-% \end{itemize}
+\end{document}
